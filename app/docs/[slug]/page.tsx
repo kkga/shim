@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { CustomMDX } from "app/components/mdx";
-import { formatDate, getAllDocs } from "app/docs/utils";
+import { getAllDocs } from "app/docs/utils";
 import { baseUrl } from "app/sitemap";
 
 export async function generateStaticParams() {
@@ -17,24 +17,16 @@ export function generateMetadata({ params }) {
     return;
   }
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = doc.metadata;
-  let ogImage = image
-    ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
+  let { name, description } = doc.metadata;
+  let ogImage = `${baseUrl}/og?title=${encodeURIComponent(name)}`;
 
   return {
-    title,
+    title: name,
     description,
     openGraph: {
-      title,
+      title: name,
       description,
       type: "article",
-      publishedTime,
       url: `${baseUrl}/docs/${doc.slug}`,
       images: [
         {
@@ -44,7 +36,7 @@ export function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: name,
       description,
       images: [ogImage],
     },
@@ -67,13 +59,9 @@ export default function Doc({ params }) {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            headline: doc.metadata.title,
-            datePublished: doc.metadata.publishedAt,
-            dateModified: doc.metadata.publishedAt,
-            description: doc.metadata.summary,
-            image: doc.metadata.image
-              ? `${baseUrl}${doc.metadata.image}`
-              : `/og?title=${encodeURIComponent(doc.metadata.title)}`,
+            headline: doc.metadata.name,
+            description: doc.metadata.description,
+            image: `/og?title=${encodeURIComponent(doc.metadata.name)}`,
             url: `${baseUrl}/docs/${doc.slug}`,
             author: {
               "@type": "Person",
@@ -83,13 +71,9 @@ export default function Doc({ params }) {
         }}
       />
       <h1 className="title font-semibold text-2xl tracking-tighter">
-        {doc.metadata.title}
+        {doc.metadata.name}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(doc.metadata.publishedAt)}
-        </p>
-      </div>
+      <div className="flex justify-between items-center mt-2 mb-8 text-sm"></div>
       <article className="prose">
         <CustomMDX source={doc.content} />
       </article>

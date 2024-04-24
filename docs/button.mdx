@@ -1,0 +1,63 @@
+---
+name: Button
+description: A button allows a user to perform an action, with mouse, touch, and keyboard interactions.
+category: "Buttons"
+preview: "button"
+---
+
+import DemoBlock from "@/components/DemoBlock.astro";
+import { Code } from "astro:components";
+
+import { Button } from "@/components/ui/Button";
+import buttonRaw from "@/components/ui/Button.tsx?raw";
+
+import DemoMain from "@/components/demos/button-main";
+import demoMainRaw from "@/components/demos/button-main.tsx?raw";
+import DemoSize from "@/components/demos/button-size";
+import demoSizeRaw from "@/components/demos/button-size.tsx?raw";
+import DemoVariant from "@/components/demos/button-variant";
+import demoVariantRaw from "@/components/demos/button-variant.tsx?raw";
+import DemoIntent from "@/components/demos/button-intent";
+import demoIntentRaw from "@/components/demos/button-intent.tsx?raw";
+
+## Usage
+
+<DemoBlock source={demoMainRaw}>
+  <DemoMain client:load />
+</DemoBlock>
+
+## Installation
+
+<DemoBlock source={buttonRaw} />
+
+1. Install the dependencies:
+
+   ```
+   pnpm add @radix-ui/react-slot
+   ```
+
+2. Copy and paste the component code:
+
+{/* <Code code={buttonRaw} theme={"css-variables"} lang="tsx" /> */}
+
+---
+
+## Examples
+
+### Size
+
+<DemoBlock source={demoSizeRaw}>
+  <DemoSize client:load />
+</DemoBlock>
+
+### Intent
+
+<DemoBlock source={demoIntentRaw}>
+  <DemoIntent client:load />
+</DemoBlock>
+
+### Variant
+
+<DemoBlock source={demoVariantRaw}>
+  <DemoVariant client:load />
+</DemoBlock>

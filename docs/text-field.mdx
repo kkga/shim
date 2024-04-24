@@ -1,0 +1,38 @@
+---
+name: TextField
+description: A text field is an input field that allows users to enter text.
+category: "Forms"
+preview: "text-field"
+---
+
+import { Code } from "astro:components";
+import { TextField } from "@ui/text-field";
+import source from "@ui/text-field.tsx?raw";
+
+import Box from "@/components/Box.astro";
+
+<Box>
+  <TextField id="name" type="text" />
+</Box>
+
+## Installation
+
+1. Install the dependencies:
+
+   ```
+   pnpm add @radix-ui/react-label
+   ```
+
+2. Copy and paste the component code:
+
+   <Code code={source} lang="tsx" />
+
+## Usage
+
+```tsx
+import { Label } from "@components/ui/label";
+
+<Label htmlFor="name">Name</Label>;
+```
+
+@/ui/text-field@/components/ui/text-field
