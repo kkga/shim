@@ -1,36 +1,36 @@
-import Link from 'next/link'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
+import Link from "next/link";
+import { formatDate, getAllDocs } from "app/docs/utils";
 
-export function BlogPosts() {
-  let allBlogs = getBlogPosts()
+export function Docs() {
+  let allDocs = getAllDocs();
 
   return (
     <div>
-      {allBlogs
+      {allDocs
         .sort((a, b) => {
           if (
             new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
           ) {
-            return -1
+            return -1;
           }
-          return 1
+          return 1;
         })
-        .map((post) => (
+        .map((doc) => (
           <Link
-            key={post.slug}
+            key={doc.slug}
             className="flex flex-col space-y-1 mb-4"
-            href={`/blog/${post.slug}`}
+            href={`/docs/${doc.slug}`}
           >
             <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
               <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
-                {formatDate(post.metadata.publishedAt, false)}
+                {formatDate(doc.metadata.publishedAt, false)}
               </p>
               <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-                {post.metadata.title}
+                {doc.metadata.title}
               </p>
             </div>
           </Link>
         ))}
     </div>
-  )
+  );
 }
