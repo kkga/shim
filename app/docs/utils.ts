@@ -1,12 +1,14 @@
 import fs from "fs";
 import path from "path";
 
-type Metadata = {
+interface Metadata {
   name: string;
   description: string;
-  sourcePath?: string;
   category?: string;
-};
+  sourcePath?: string;
+  demosPath?: string;
+  docUrl?: string;
+}
 
 function parseFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -47,6 +49,36 @@ function getMDXData(dir) {
       content,
     };
   });
+}
+
+function getRawDemos(dir) {
+  let demoFiles = fs
+    .readdirSync(dir)
+    .filter((file) => path.extname(file) === ".tsx");
+
+  const demos: Record<string, string> = {};
+
+  for (let file of demoFiles) {
+    let content = fs.readFileSync(path.join(dir, file), "utf-8").trim();
+    let slug = path.basename(file, path.extname(file));
+    demos[slug] = content;
+  }
+
+  return demos;
+
+  // return demoFiles.map((file) => {
+  //   let content = fs.readFileSync(path.join(dir, file), "utf-8");
+  //   let slug = path.basename(file, path.extname(file));
+
+  //   return {
+  //     slug,
+  //     content,
+  //   };
+  // });
+}
+
+export function getAllDemos({ componentDir }) {
+  return getRawDemos(path.join(process.cwd(), "app", "demos", componentDir));
 }
 
 export function getAllDocs() {

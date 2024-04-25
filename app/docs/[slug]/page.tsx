@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
-import { CustomMDX } from "app/components/mdx";
+import { mdxComponents } from "app/components/mdx/mdx-components";
 import { getAllDocs } from "app/docs/utils";
+import { getAllDemos } from "app/docs/utils";
 import { baseUrl } from "app/sitemap";
+import { compileMDX } from "next-mdx-remote/rsc";
 
 export async function generateStaticParams() {
   let docs = getAllDocs();
@@ -43,12 +45,25 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function Doc({ params }) {
+export default async function Doc({ params }) {
   let doc = getAllDocs().find((doc) => doc.slug === params.slug);
 
   if (!doc) {
     notFound();
   }
+
+  console.log(doc);
+
+  const { content } = await compileMDX({
+    source: doc.content,
+    options: {
+      scope: {
+        demos: getAllDemos({ componentDir: doc.slug }),
+        // TODO: pass the component source code to the MDX scope
+      },
+    },
+    components: mdxComponents,
+  });
 
   return (
     <section>
@@ -74,9 +89,7 @@ export default function Doc({ params }) {
         {doc.metadata.name}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm"></div>
-      <article className="prose">
-        <CustomMDX source={doc.content} />
-      </article>
+      <article className="prose">{content}</article>
     </section>
   );
 }
