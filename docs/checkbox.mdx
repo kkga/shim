@@ -1,25 +1,20 @@
 ---
 name: Checkbox
-description: A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.
-preview: "checkbox"
-category: "Forms"
+description: Use checkboxes for binary options.
+category: 'Forms'
+sourcePath: 'checkbox'
+demosPath: 'checkbox'
+docUrl: ''
 ---
-
-import { Checkbox } from "@/components/ui/Checkbox";
-
-<Checkbox />
 
 ## Usage
 
-```tsx live
-import { Checkbox } from "react-aria-components";
+<CheckboxDemo.Main />
+<Code>{demos['main']}</Code>
 
-<Checkbox>
-  <div className="checkbox">
-    <svg viewBox="0 0 18 18" aria-hidden="true">
-      <polyline points="1 9 7 14 15 4" />
-    </svg>
-  </div>
-  Unsubscribe
-</Checkbox>;
-```
+## Examples
+
+### Group
+
+<CheckboxDemo.Group />
+<Code>{demos['group']}</Code>

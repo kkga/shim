@@ -77,12 +77,19 @@ function getRawDemos(dir) {
   // });
 }
 
-export function getAllDemos({ componentDir }) {
-  return getRawDemos(path.join(process.cwd(), "app", "demos", componentDir));
-}
-
 export function getAllDocs() {
   return getMDXData(path.join(process.cwd(), "docs"));
+}
+
+export function getComponentSource({ sourcePath }) {
+  return fs.readFileSync(
+    path.join(process.cwd(), "app", "components", "ui", `${sourcePath}.tsx`),
+    "utf-8"
+  );
+}
+
+export function getComponentDemos({ componentDir }) {
+  return getRawDemos(path.join(process.cwd(), "app", "demos", componentDir));
 }
 
 // export function formatDate(date: string, includeRelative = false) {

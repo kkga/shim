@@ -1,8 +1,8 @@
-import { Badge } from "@/components/ui/badge";
+import { Badge } from '@/components/ui/badge'
 
 export default () => (
   <>
-    <Badge size="sm">Small</Badge>
-    <Badge size="md">Small</Badge>
+    <Badge size={1}>Small</Badge>
+    <Badge size={2}>Medium</Badge>
   </>
-);
+)

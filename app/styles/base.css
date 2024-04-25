@@ -1,0 +1,301 @@
+@import "tailwindcss";
+
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/indigo.css";
+@import "@radix-ui/colors/indigo-dark.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/orange.css";
+@import "@radix-ui/colors/orange-dark.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/red-dark.css";
+
+@theme {
+  /* Defaults */
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --default-font-family: "InterVariable", var(--font-family-sans);
+  --default-font-feature-settings: "ss02",
+    var(--font-family-sans--font-feature-settings);
+  --default-font-variation-settings: var(
+    --font-family-sans--font-variation-settings
+  );
+  --default-mono-font-family: var(--font-family-mono);
+  --default-mono-font-feature-settings: var(
+    --font-family-mono--font-feature-settings
+  );
+  --default-mono-font-variation-settings: var(
+    --font-family-mono--font-variation-settings
+  );
+
+  --color-*: initial;
+
+  --color-white: #fff;
+  --color-black: #000;
+  --color-transparent: transparent;
+
+  /* Semantic aliases
+   * https://www.radix-ui.com/colors/docs/overview/aliasing#semantic-aliases 
+   */
+  --color-neutral-1: var(--gray-1);
+  --color-neutral-2: var(--gray-2);
+  --color-neutral-3: var(--gray-3);
+  --color-neutral-4: var(--gray-4);
+  --color-neutral-5: var(--gray-5);
+  --color-neutral-6: var(--gray-6);
+  --color-neutral-7: var(--gray-7);
+  --color-neutral-8: var(--gray-8);
+  --color-neutral-9: var(--gray-9);
+  --color-neutral-10: var(--gray-10);
+  --color-neutral-11: var(--gray-11);
+  --color-neutral-12: var(--gray-12);
+
+  --color-accent-1: var(--indigo-1);
+  --color-accent-2: var(--indigo-2);
+  --color-accent-3: var(--indigo-3);
+  --color-accent-4: var(--indigo-4);
+  --color-accent-5: var(--indigo-5);
+  --color-accent-6: var(--indigo-6);
+  --color-accent-7: var(--indigo-7);
+  --color-accent-8: var(--indigo-8);
+  --color-accent-9: var(--indigo-9);
+  --color-accent-10: var(--indigo-10);
+  --color-accent-11: var(--indigo-11);
+  --color-accent-12: var(--indigo-12);
+
+  --color-success-1: var(--green-1);
+  --color-success-2: var(--green-2);
+  --color-success-3: var(--green-3);
+  --color-success-4: var(--green-4);
+  --color-success-5: var(--green-5);
+  --color-success-6: var(--green-6);
+  --color-success-7: var(--green-7);
+  --color-success-8: var(--green-8);
+  --color-success-9: var(--green-9);
+  --color-success-10: var(--green-10);
+  --color-success-11: var(--green-11);
+  --color-success-12: var(--green-12);
+
+  --color-warning-1: var(--orange-1);
+  --color-warning-2: var(--orange-2);
+  --color-warning-3: var(--orange-3);
+  --color-warning-4: var(--orange-4);
+  --color-warning-5: var(--orange-5);
+  --color-warning-6: var(--orange-6);
+  --color-warning-7: var(--orange-7);
+  --color-warning-8: var(--orange-8);
+  --color-warning-9: var(--orange-9);
+  --color-warning-10: var(--orange-10);
+  --color-warning-11: var(--orange-11);
+  --color-warning-12: var(--orange-12);
+
+  --color-error-1: var(--red-1);
+  --color-error-2: var(--red-2);
+  --color-error-3: var(--red-3);
+  --color-error-4: var(--red-4);
+  --color-error-5: var(--red-5);
+  --color-error-6: var(--red-6);
+  --color-error-7: var(--red-7);
+  --color-error-8: var(--red-8);
+  --color-error-9: var(--red-9);
+  --color-error-10: var(--red-10);
+  --color-error-11: var(--red-11);
+  --color-error-12: var(--red-12);
+
+  /* Use case aliases 
+   * https://www.radix-ui.com/colors/docs/overview/aliasing#use-case-aliases
+   */
+  --color-neutral-base: var(--color-neutral-1);
+  --color-neutral-bg-subtle: var(--color-neutral-2);
+  --color-neutral-bg: var(--color-neutral-3);
+  --color-neutral-bg-hover: var(--color-neutral-4);
+  --color-neutral-bg-active: var(--color-neutral-5);
+  --color-neutral-line: var(--color-neutral-6);
+  --color-neutral-border: var(--color-neutral-7);
+  --color-neutral-border-hover: var(--color-neutral-8);
+  --color-neutral-focus-ring: var(--color-neutral-8);
+  --color-neutral-solid: var(--color-neutral-9);
+  --color-neutral-solid-hover: var(--color-neutral-10);
+  --color-neutral-placeholder: var(--color-neutral-9);
+  --color-neutral-text: var(--color-neutral-11);
+  --color-neutral-text-contrast: var(--color-neutral-12);
+
+  --color-accent-base: var(--color-accent-1);
+  --color-accent-bg-subtle: var(--color-accent-2);
+  --color-accent-bg: var(--color-accent-3);
+  --color-accent-bg-hover: var(--color-accent-4);
+  --color-accent-bg-active: var(--color-accent-5);
+  --color-accent-line: var(--color-accent-6);
+  --color-accent-border: var(--color-accent-7);
+  --color-accent-border-hover: var(--color-accent-8);
+  --color-accent-focus-ring: var(--color-accent-8);
+  --color-accent-solid: var(--color-accent-9);
+  --color-accent-solid-hover: var(--color-accent-10);
+  --color-accent-placeholder: var(--color-accent-9);
+  --color-accent-text: var(--color-accent-11);
+  --color-accent-text-contrast: var(--color-accent-12);
+
+  --color-success-base: var(--color-success-1);
+  --color-success-bg-subtle: var(--color-success-2);
+  --color-success-bg: var(--color-success-3);
+  --color-success-bg-hover: var(--color-success-4);
+  --color-success-bg-active: var(--color-success-5);
+  --color-success-line: var(--color-success-6);
+  --color-success-border: var(--color-success-7);
+  --color-success-border-hover: var(--color-success-8);
+  --color-success-focus-ring: var(--color-success-8);
+  --color-success-solid: var(--color-success-9);
+  --color-success-solid-hover: var(--color-success-10);
+  --color-success-placeholder: var(--color-success-9);
+  --color-success-text: var(--color-success-11);
+  --color-success-text-contrast: var(--color-success-12);
+
+  --color-warning-base: var(--color-warning-1);
+  --color-warning-bg-subtle: var(--color-warning-2);
+  --color-warning-bg: var(--color-warning-3);
+  --color-warning-bg-hover: var(--color-warning-4);
+  --color-warning-bg-active: var(--color-warning-5);
+  --color-warning-line: var(--color-warning-6);
+  --color-warning-border: var(--color-warning-7);
+  --color-warning-border-hover: var(--color-warning-8);
+  --color-warning-focus-ring: var(--color-warning-8);
+  --color-warning-solid: var(--color-warning-9);
+  --color-warning-solid-hover: var(--color-warning-10);
+  --color-warning-placeholder: var(--color-warning-9);
+  --color-warning-text: var(--color-warning-11);
+  --color-warning-text-contrast: var(--color-warning-12);
+
+  --color-error-base: var(--color-error-1);
+  --color-error-bg-subtle: var(--color-error-2);
+  --color-error-bg: var(--color-error-3);
+  --color-error-bg-hover: var(--color-error-4);
+  --color-error-bg-active: var(--color-error-5);
+  --color-error-line: var(--color-error-6);
+  --color-error-border: var(--color-error-7);
+  --color-error-border-hover: var(--color-error-8);
+  --color-error-focus-ring: var(--color-error-8);
+  --color-error-solid: var(--color-error-9);
+  --color-error-solid-hover: var(--color-error-10);
+  --color-error-placeholder: var(--color-error-9);
+  --color-error-text: var(--color-error-11);
+  --color-error-text-contrast: var(--color-error-12);
+
+  /* Type scale */
+  --font-size-xs: 13px;
+  --font-size-xs--line-height: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-sm--line-height: 1.25rem;
+  --font-size-base: 1rem;
+  --font-size-base--line-height: 1.5rem;
+  --font-size-lg: 1.125rem;
+  --font-size-lg--line-height: 1.75rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xl--line-height: 1.75rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-2xl--line-height: 2rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-3xl--line-height: 2.25rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-4xl--line-height: 2.5rem;
+  --font-size-5xl: 3rem;
+  --font-size-5xl--line-height: 1;
+  --font-size-6xl: 3.75rem;
+  --font-size-6xl--line-height: 1;
+  --font-size-7xl: 4.5rem;
+  --font-size-7xl--line-height: 1;
+  --font-size-8xl: 6rem;
+  --font-size-8xl--line-height: 1;
+  --font-size-9xl: 8rem;
+  --font-size-9xl--line-height: 1;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-from-top {
+  from {
+    transform: translateY(4px) scale(0.97);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-to-top {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(4px) scale(0.97);
+  }
+}
+
+@keyframes slide-from-bottom {
+  from {
+    transform: translateY(-4px) scale(0.97);
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-to-bottom {
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-4px) scale(0.97);
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    transform: translateX(4px) scale(0.97);
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slide-to-left {
+  from {
+    transform: translateX(0) scale(1);
+  }
+  to {
+    transform: translateX(4px) scale(0.97);
+  }
+}
+
+@keyframes slide-from-right {
+  from {
+    transform: translateX(-4px) scale(0.97);
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slide-to-right {
+  from {
+    transform: translateX(0) scale(1);
+  }
+  to {
+    transform: translateX(-4px) scale(0.97);
+  }
+}

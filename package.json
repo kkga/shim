@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.5",
+    "@radix-ui/colors": "^3.0.0",
     "@tailwindcss/postcss": "4.0.0-alpha.13",
     "@types/node": "20.11.17",
     "@types/react": "18.2.55",
@@ -13,19 +15,23 @@
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
     "bright": "^0.8.5",
+    "cva": "1.0.0-beta.1",
     "geist": "1.2.2",
     "next": "canary",
     "next-mdx-remote": "^4.4.1",
     "postcss": "^8.4.38",
-    "prism-react-renderer": "^2.3.1",
-    "prism-theme-vars": "^0.2.5",
     "react": "18.2.0",
+    "react-aria-components": "^1.1.1",
     "react-dom": "18.2.0",
-    "react-live": "^4.1.6",
-    "rehype-mdx-code-props": "^3.0.0",
-    "sugar-high": "^0.6.0",
+    "tailwind-merge": "^2.3.0",
     "tailwindcss": "4.0.0-alpha.13",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "usehooks-ts": "^3.1.0"
+  },
+  "prettier": {
+    "experimentalTernaries": true,
+    "semi": false,
+    "singleQuote": true
   },
   "packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019"
 }
