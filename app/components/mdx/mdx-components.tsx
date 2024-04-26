@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { demoComponents } from './demo-components'
 
-Code.theme = 'github-dark'
+Code.theme = 'github-from-css'
 Code.lang = 'tsx'
 
 function Table({ data }) {
@@ -49,6 +49,13 @@ function CustomLink(props) {
 
 function RoundedImage(props) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />
+}
+
+function DemoBox({
+  children,
+  className = 'p-4 flex flex-row gap-4 bg-neutral-bg-subtle rounded-md border border-neutral-border',
+}) {
+  return <div className={className}>{children}</div>
 }
 
 function slugify(str: string) {
@@ -99,5 +106,6 @@ export const mdxComponents = {
   // Code: (props) => <Code {...props} />,
   // code: Code,
   Table,
+  DemoBox,
   ...demoComponents,
 }

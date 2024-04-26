@@ -19,6 +19,7 @@
     "geist": "1.2.2",
     "next": "canary",
     "next-mdx-remote": "^4.4.1",
+    "next-themes": "^0.3.0",
     "postcss": "^8.4.38",
     "react": "18.2.0",
     "react-aria-components": "^1.1.1",

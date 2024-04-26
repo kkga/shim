@@ -1,12 +1,12 @@
-import { compose, cva, cxRenderProps, focusVisibleStyle } from "@lib/utils";
+import { compose, cva, cxRenderProps, focusVisibleStyle } from '@lib/utils'
 
-import type { VariantProps } from "cva";
+import type { VariantProps } from 'cva'
 import {
   Button as RACButton,
   type ButtonProps as RACButtonProps,
-} from "react-aria-components";
+} from 'react-aria-components'
 
-import { buttonStyle } from "./Button";
+import { buttonStyle } from './button'
 
 const iconButtonStyles = compose(
   focusVisibleStyle,
@@ -14,15 +14,15 @@ const iconButtonStyles = compose(
   cva({
     variants: {
       size: {
-        1: "p-0 size-6",
-        2: "p-0 size-8",
+        1: 'p-0 size-6',
+        2: 'p-0 size-8',
       },
     },
     defaultVariants: {
       size: 1,
     },
   })
-);
+)
 
 interface IconButtonProps
   extends RACButtonProps,
@@ -42,6 +42,6 @@ const IconButton = ({
       iconButtonStyles({ variant, intent, size })
     )}
   />
-);
+)
 
-export { IconButton, type IconButtonProps };
+export { IconButton, type IconButtonProps }

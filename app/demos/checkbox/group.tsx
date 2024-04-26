@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxGroup } from '@/components/ui/checkbox'
+import { Checkbox, CheckboxGroup } from '@ui/checkbox'
 
 export default () => (
   <CheckboxGroup

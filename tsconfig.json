@@ -23,6 +23,7 @@
     "strictNullChecks": true,
     "paths": {
       "@/*": ["app/*"],
+      "@ui/*": ["app/components/ui/*"],
       "@lib/*": ["app/lib/*"]
     }
   },

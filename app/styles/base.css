@@ -1,22 +1,32 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@import "@radix-ui/colors/gray.css";
-@import "@radix-ui/colors/gray-dark.css";
-@import "@radix-ui/colors/indigo.css";
-@import "@radix-ui/colors/indigo-dark.css";
-@import "@radix-ui/colors/green.css";
-@import "@radix-ui/colors/green-dark.css";
-@import "@radix-ui/colors/orange.css";
-@import "@radix-ui/colors/orange-dark.css";
-@import "@radix-ui/colors/red.css";
-@import "@radix-ui/colors/red-dark.css";
+@import '@radix-ui/colors/gray.css';
+@import '@radix-ui/colors/gray-alpha.css';
+@import '@radix-ui/colors/gray-dark.css';
+@import '@radix-ui/colors/gray-dark-alpha.css';
+@import '@radix-ui/colors/indigo.css';
+@import '@radix-ui/colors/indigo-alpha.css';
+@import '@radix-ui/colors/indigo-dark.css';
+@import '@radix-ui/colors/indigo-dark-alpha.css';
+@import '@radix-ui/colors/green.css';
+@import '@radix-ui/colors/green-alpha.css';
+@import '@radix-ui/colors/green-dark.css';
+@import '@radix-ui/colors/green-dark-alpha.css';
+@import '@radix-ui/colors/orange.css';
+@import '@radix-ui/colors/orange-alpha.css';
+@import '@radix-ui/colors/orange-dark.css';
+@import '@radix-ui/colors/orange-dark-alpha.css';
+@import '@radix-ui/colors/red.css';
+@import '@radix-ui/colors/red-alpha.css';
+@import '@radix-ui/colors/red-dark.css';
+@import '@radix-ui/colors/red-dark-alpha.css';
 
 @theme {
   /* Defaults */
   --default-transition-duration: 150ms;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  --default-font-family: "InterVariable", var(--font-family-sans);
-  --default-font-feature-settings: "ss02",
+  --default-font-family: 'InterVariable', var(--font-family-sans);
+  --default-font-feature-settings: 'ss02',
     var(--font-family-sans--font-feature-settings);
   --default-font-variation-settings: var(
     --font-family-sans--font-variation-settings
@@ -38,70 +48,70 @@
   /* Semantic aliases
    * https://www.radix-ui.com/colors/docs/overview/aliasing#semantic-aliases 
    */
-  --color-neutral-1: var(--gray-1);
-  --color-neutral-2: var(--gray-2);
-  --color-neutral-3: var(--gray-3);
-  --color-neutral-4: var(--gray-4);
-  --color-neutral-5: var(--gray-5);
-  --color-neutral-6: var(--gray-6);
-  --color-neutral-7: var(--gray-7);
-  --color-neutral-8: var(--gray-8);
-  --color-neutral-9: var(--gray-9);
-  --color-neutral-10: var(--gray-10);
-  --color-neutral-11: var(--gray-11);
-  --color-neutral-12: var(--gray-12);
+  --color-neutral-1: var(--gray-a1);
+  --color-neutral-2: var(--gray-a2);
+  --color-neutral-3: var(--gray-a3);
+  --color-neutral-4: var(--gray-a4);
+  --color-neutral-5: var(--gray-a5);
+  --color-neutral-6: var(--gray-a6);
+  --color-neutral-7: var(--gray-a7);
+  --color-neutral-8: var(--gray-a8);
+  --color-neutral-9: var(--gray-a9);
+  --color-neutral-10: var(--gray-a10);
+  --color-neutral-11: var(--gray-a11);
+  --color-neutral-12: var(--gray-a12);
 
-  --color-accent-1: var(--indigo-1);
-  --color-accent-2: var(--indigo-2);
-  --color-accent-3: var(--indigo-3);
-  --color-accent-4: var(--indigo-4);
-  --color-accent-5: var(--indigo-5);
-  --color-accent-6: var(--indigo-6);
-  --color-accent-7: var(--indigo-7);
-  --color-accent-8: var(--indigo-8);
-  --color-accent-9: var(--indigo-9);
-  --color-accent-10: var(--indigo-10);
-  --color-accent-11: var(--indigo-11);
-  --color-accent-12: var(--indigo-12);
+  --color-accent-1: var(--indigo-a1);
+  --color-accent-2: var(--indigo-a2);
+  --color-accent-3: var(--indigo-a3);
+  --color-accent-4: var(--indigo-a4);
+  --color-accent-5: var(--indigo-a5);
+  --color-accent-6: var(--indigo-a6);
+  --color-accent-7: var(--indigo-a7);
+  --color-accent-8: var(--indigo-a8);
+  --color-accent-9: var(--indigo-a9);
+  --color-accent-10: var(--indigo-a10);
+  --color-accent-11: var(--indigo-a11);
+  --color-accent-12: var(--indigo-a12);
 
-  --color-success-1: var(--green-1);
-  --color-success-2: var(--green-2);
-  --color-success-3: var(--green-3);
-  --color-success-4: var(--green-4);
-  --color-success-5: var(--green-5);
-  --color-success-6: var(--green-6);
-  --color-success-7: var(--green-7);
-  --color-success-8: var(--green-8);
-  --color-success-9: var(--green-9);
-  --color-success-10: var(--green-10);
-  --color-success-11: var(--green-11);
-  --color-success-12: var(--green-12);
+  --color-success-1: var(--green-a1);
+  --color-success-2: var(--green-a2);
+  --color-success-3: var(--green-a3);
+  --color-success-4: var(--green-a4);
+  --color-success-5: var(--green-a5);
+  --color-success-6: var(--green-a6);
+  --color-success-7: var(--green-a7);
+  --color-success-8: var(--green-a8);
+  --color-success-9: var(--green-a9);
+  --color-success-10: var(--green-a10);
+  --color-success-11: var(--green-a11);
+  --color-success-12: var(--green-a12);
 
-  --color-warning-1: var(--orange-1);
-  --color-warning-2: var(--orange-2);
-  --color-warning-3: var(--orange-3);
-  --color-warning-4: var(--orange-4);
-  --color-warning-5: var(--orange-5);
-  --color-warning-6: var(--orange-6);
-  --color-warning-7: var(--orange-7);
-  --color-warning-8: var(--orange-8);
-  --color-warning-9: var(--orange-9);
-  --color-warning-10: var(--orange-10);
-  --color-warning-11: var(--orange-11);
-  --color-warning-12: var(--orange-12);
+  --color-warning-1: var(--orange-a1);
+  --color-warning-2: var(--orange-a2);
+  --color-warning-3: var(--orange-a3);
+  --color-warning-4: var(--orange-a4);
+  --color-warning-5: var(--orange-a5);
+  --color-warning-6: var(--orange-a6);
+  --color-warning-7: var(--orange-a7);
+  --color-warning-8: var(--orange-a8);
+  --color-warning-9: var(--orange-a9);
+  --color-warning-10: var(--orange-a10);
+  --color-warning-11: var(--orange-a11);
+  --color-warning-12: var(--orange-a12);
 
-  --color-error-1: var(--red-1);
-  --color-error-2: var(--red-2);
-  --color-error-3: var(--red-3);
-  --color-error-4: var(--red-4);
-  --color-error-5: var(--red-5);
-  --color-error-6: var(--red-6);
-  --color-error-7: var(--red-7);
-  --color-error-8: var(--red-8);
-  --color-error-9: var(--red-9);
-  --color-error-10: var(--red-10);
-  --color-error-11: var(--red-11);
-  --color-error-12: var(--red-12);
+  --color-error-1: var(--red-a1);
+  --color-error-2: var(--red-a2);
+  --color-error-3: var(--red-a3);
+  --color-error-4: var(--red-a4);
+  --color-error-5: var(--red-a5);
+  --color-error-6: var(--red-a6);
+  --color-error-7: var(--red-a7);
+  --color-error-8: var(--red-a8);
+  --color-error-9: var(--red-a9);
+  --color-error-10: var(--red-a10);
+  --color-error-11: var(--red-a11);
+  --color-error-12: var(--red-a12);
 
   /* Use case aliases 
    * https://www.radix-ui.com/colors/docs/overview/aliasing#use-case-aliases
@@ -182,10 +192,10 @@
   --color-error-text-contrast: var(--color-error-12);
 
   /* Type scale */
-  --font-size-xs: 13px;
+  --font-size-xs: 0.75rem;
   --font-size-xs--line-height: 1rem;
-  --font-size-sm: 0.875rem;
-  --font-size-sm--line-height: 1.25rem;
+  --font-size-sm: 0.8125rem;
+  --font-size-sm--line-height: 1rem;
   --font-size-base: 1rem;
   --font-size-base--line-height: 1.5rem;
   --font-size-lg: 1.125rem;
