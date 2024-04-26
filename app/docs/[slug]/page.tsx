@@ -1,12 +1,16 @@
-import { notFound } from 'next/navigation'
+import { ArrowSquareOut, ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
 import { mdxComponents } from 'app/components/mdx/mdx-components'
-import { getAllDocs } from 'app/docs/utils'
-import { getComponentSource, getComponentDemos } from 'app/docs/utils'
+import {
+  getAllDocs,
+  getComponentDemos,
+  getComponentSource,
+} from 'app/docs/utils'
 import { baseUrl } from 'app/sitemap'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
-  let docs = getAllDocs()
+  const docs = getAllDocs()
 
   return docs.map((doc) => ({
     slug: doc.slug,
@@ -46,13 +50,13 @@ export function generateMetadata({ params }) {
 }
 
 export default async function Doc({ params }) {
-  let doc = getAllDocs().find((doc) => doc.slug === params.slug)
+  const doc = getAllDocs().find((doc) => doc.slug === params.slug)
 
   if (!doc) {
     notFound()
   }
 
-  const { sourcePath, demosPath } = doc.metadata
+  const { sourcePath, demosPath, docUrl, category, composes } = doc.metadata
 
   const { content } = await compileMDX({
     source: doc.content,
@@ -61,6 +65,7 @@ export default async function Doc({ params }) {
         demos: getComponentDemos({ componentDir: demosPath }),
         source: getComponentSource({ sourcePath: sourcePath }),
       },
+      parseFrontmatter: true,
     },
     components: mdxComponents,
   })
@@ -85,12 +90,51 @@ export default async function Doc({ params }) {
           }),
         }}
       />
-      <h1 className="text-neutral-text-contrast font-semibold text-2xl">
+      <h1 className="text-neutral-text-contrast font-semibold text-3xl">
         {doc.metadata.name}
       </h1>
       <p className="text-neutral-text mt-2">{doc.metadata.description}</p>
-      {/* TODO: display component metadata here */}
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm"></div>
+
+      <div className="flex gap-8 mt-6 pt-6 mb-12 before:w-12 before:h-px before:absolute before:top-0 relative before:bg-neutral-border">
+        {docUrl && (
+          <div className="flex flex-col gap-2">
+            <span className="text-xs text-neutral-text font-medium">
+              Documentation
+            </span>
+
+            <a
+              href={docUrl}
+              className="flex items-center gap-0.5 text-sm text-accent-text underline-offset-2 decoration-accent-border hover:underline"
+              rel="noreferrer"
+              target="_blank"
+              title={`View React Aria ${doc.metadata.name} documentation`}
+            >
+              React Aria {doc.metadata.name}
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
+        )}
+
+        {composes && (
+          <div className="flex flex-col gap-2">
+            <span className="text-xs text-neutral-text font-medium">
+              Composes
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {composes.map((component) => (
+                <a
+                  key={component}
+                  href={`/docs/${component}`}
+                  className="text-sm text-accent-text underline-offset-2 decoration-accent-border hover:underline"
+                  title={`View ${component} documentation`}
+                >
+                  {component}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
       <article className="prose">{content}</article>
     </section>
   )

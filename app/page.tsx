@@ -1,8 +1,6 @@
-import { Docs } from "app/components/docs";
-
 export default function Page() {
   return (
-    <section>
+    <main className="max-w-7xl m-auto">
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         My Portfolio
       </h1>
@@ -13,9 +11,6 @@ export default function Page() {
         early error detection ensures cleaner code, and my preference for dark
         mode, which eases long coding sessions by reducing eye strain.`}
       </p>
-      <div className="my-8">
-        <Docs />
-      </div>
-    </section>
-  );
+    </main>
+  )
 }

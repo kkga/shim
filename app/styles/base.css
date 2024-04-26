@@ -45,11 +45,13 @@
   --color-black: #000;
   --color-transparent: transparent;
 
+  --color-pure: var(--color-white);
+
   /* Semantic aliases
    * https://www.radix-ui.com/colors/docs/overview/aliasing#semantic-aliases 
    */
-  --color-neutral-1: var(--gray-a1);
-  --color-neutral-2: var(--gray-a2);
+  --color-neutral-1: var(--gray-1);
+  --color-neutral-2: var(--gray-2);
   --color-neutral-3: var(--gray-a3);
   --color-neutral-4: var(--gray-a4);
   --color-neutral-5: var(--gray-a5);
@@ -218,6 +220,13 @@
   --font-size-8xl--line-height: 1;
   --font-size-9xl: 8rem;
   --font-size-9xl--line-height: 1;
+}
+
+:root {
+  .dark,
+  .dark-theme {
+    --color-pure: var(--color-black);
+  }
 }
 
 @keyframes fade-in {

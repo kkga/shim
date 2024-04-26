@@ -1,129 +1,66 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
 
-interface Metadata {
-  name: string;
-  description: string;
-  category?: string;
-  sourcePath?: string;
-  demosPath?: string;
-  docUrl?: string;
+export interface Metadata {
+  name: string
+  description: string
+  category?: string
+  sourcePath?: string
+  demosPath?: string
+  docUrl?: string
+  composes?: string[]
 }
 
-function parseFrontmatter(fileContent: string) {
-  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
-  let match = frontmatterRegex.exec(fileContent);
-  let frontMatterBlock = match![1];
-  let content = fileContent.replace(frontmatterRegex, "").trim();
-  let frontMatterLines = frontMatterBlock.trim().split("\n");
-  let metadata: Partial<Metadata> = {};
-
-  frontMatterLines.forEach((line) => {
-    let [key, ...valueArr] = line.split(": ");
-    let value = valueArr.join(": ").trim();
-    value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value;
-  });
-
-  return { metadata: metadata as Metadata, content };
+function readMDXFile(filePath: string) {
+  let rawContent = fs.readFileSync(filePath, 'utf-8')
+  const { content, data } = matter(rawContent)
+  return { metadata: data as Metadata, content }
 }
 
-function getMDXFiles(dir) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
-}
-
-function readMDXFile(filePath) {
-  let rawContent = fs.readFileSync(filePath, "utf-8");
-  return parseFrontmatter(rawContent);
-}
-
-function getMDXData(dir) {
-  let mdxFiles = getMDXFiles(dir);
+function getMDXData(dir: string) {
+  const mdxFiles = fs
+    .readdirSync(dir)
+    .filter((file) => path.extname(file) === '.mdx')
   return mdxFiles.map((file) => {
-    let { metadata, content } = readMDXFile(path.join(dir, file));
-    let slug = path.basename(file, path.extname(file));
+    let { metadata, content } = readMDXFile(path.join(dir, file))
+    let slug = path.basename(file, path.extname(file))
 
     return {
       metadata,
       slug,
       content,
-    };
-  });
+    }
+  })
 }
 
-function getRawDemos(dir) {
+function getRawDemos(dir: string) {
   let demoFiles = fs
     .readdirSync(dir)
-    .filter((file) => path.extname(file) === ".tsx");
+    .filter((file) => path.extname(file) === '.tsx')
 
-  const demos: Record<string, string> = {};
+  const demos: Record<string, string> = {}
 
   for (let file of demoFiles) {
-    let content = fs.readFileSync(path.join(dir, file), "utf-8").trim();
-    let slug = path.basename(file, path.extname(file));
-    demos[slug] = content;
+    let content = fs.readFileSync(path.join(dir, file), 'utf-8').trim()
+    let slug = path.basename(file, path.extname(file))
+    demos[slug] = content
   }
 
-  return demos;
-
-  // return demoFiles.map((file) => {
-  //   let content = fs.readFileSync(path.join(dir, file), "utf-8");
-  //   let slug = path.basename(file, path.extname(file));
-
-  //   return {
-  //     slug,
-  //     content,
-  //   };
-  // });
+  return demos
 }
 
 export function getAllDocs() {
-  return getMDXData(path.join(process.cwd(), "docs"));
+  return getMDXData(path.join(process.cwd(), 'docs'))
 }
 
 export function getComponentSource({ sourcePath }) {
   return fs.readFileSync(
-    path.join(process.cwd(), "app", "components", "ui", `${sourcePath}.tsx`),
-    "utf-8"
-  );
+    path.join(process.cwd(), 'app', 'components', 'ui', `${sourcePath}.tsx`),
+    'utf-8'
+  )
 }
 
 export function getComponentDemos({ componentDir }) {
-  return getRawDemos(path.join(process.cwd(), "app", "demos", componentDir));
+  return getRawDemos(path.join(process.cwd(), 'app', 'demos', componentDir))
 }
-
-// export function formatDate(date: string, includeRelative = false) {
-//   let currentDate = new Date();
-//   if (!date.includes("T")) {
-//     date = `${date}T00:00:00`;
-//   }
-//   let targetDate = new Date(date);
-
-//   let yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
-//   let monthsAgo = currentDate.getMonth() - targetDate.getMonth();
-//   let daysAgo = currentDate.getDate() - targetDate.getDate();
-
-//   let formattedDate = "";
-
-//   if (yearsAgo > 0) {
-//     formattedDate = `${yearsAgo}y ago`;
-//   } else if (monthsAgo > 0) {
-//     formattedDate = `${monthsAgo}mo ago`;
-//   } else if (daysAgo > 0) {
-//     formattedDate = `${daysAgo}d ago`;
-//   } else {
-//     formattedDate = "Today";
-//   }
-
-//   let fullDate = targetDate.toLocaleString("en-us", {
-//     month: "long",
-//     day: "numeric",
-//     year: "numeric",
-//   });
-
-//   if (!includeRelative) {
-//     return fullDate;
-//   }
-
-//   return `${fullDate} (${formattedDate})`;
-// }

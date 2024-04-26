@@ -1,11 +1,20 @@
-import { Code } from 'bright'
+// import { Code } from 'bright'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { demoComponents } from './demo-components'
+import { Demo } from './demo'
 
-Code.theme = 'github-from-css'
-Code.lang = 'tsx'
+// Code.theme = 'github-from-css'
+// Code.lang = 'tsx'
+// Code.style = { margin: 0 }
+
+import { highlight } from 'sugar-high'
+
+function Code({ children, ...props }) {
+  let codeHTML = highlight(children)
+  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
+}
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
@@ -51,13 +60,6 @@ function RoundedImage(props) {
   return <Image alt={props.alt} className="rounded-lg" {...props} />
 }
 
-function DemoBox({
-  children,
-  className = 'p-4 flex flex-row gap-4 bg-neutral-bg-subtle rounded-md border border-neutral-border',
-}) {
-  return <div className={className}>{children}</div>
-}
-
 function slugify(str: string) {
   return str
     .toString()
@@ -100,12 +102,9 @@ export const mdxComponents = {
   h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
-  // pre: Pre,
-  pre: Code,
-  Code: Code,
-  // Code: (props) => <Code {...props} />,
-  // code: Code,
+  code: Code,
   Table,
-  DemoBox,
+  Demo,
+  Code,
   ...demoComponents,
 }

@@ -1,15 +1,13 @@
 import './styles/base.css'
 import './styles/site.css'
 
+import { ThemeProvider } from '@/components/theme-provider'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { GeistMono } from 'geist/font/mono'
-import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 import Footer from './components/footer'
-import { Navbar } from './components/nav'
+import { Sidebar } from './components/sidebar'
 import { baseUrl } from './sitemap'
-import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -39,8 +37,6 @@ export const metadata: Metadata = {
   },
 }
 
-const cx = (...classes) => classes.filter(Boolean).join(' ')
-
 export default function RootLayout({
   children,
 }: {
@@ -49,27 +45,28 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cx(
-        'text-neutral-text bg-neutral-base',
-        GeistSans.variable,
-        GeistMono.variable
-      )}
+      className="text-neutral-text bg-neutral-base"
       suppressHydrationWarning
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+      <body
+        style={{ gridTemplateAreas: '"aside main"' }}
+        className="antialiased min-h-screen overflow-auto grid grid-cols-[minmax(auto,320px)_1fr]"
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-            <Navbar />
-            {children}
-            <Footer />
-            <Analytics />
-            <SpeedInsights />
+          <Sidebar />
+
+          <main className="overflow-scroll px-8 py-16">
+            <div className="max-w-3xl mx-auto">{children}</div>
           </main>
+
+          {/* <Footer /> */}
+          <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

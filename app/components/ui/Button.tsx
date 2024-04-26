@@ -32,7 +32,7 @@ const buttonStyle = cva({
       return acc
     }, {} as Record<Intent, string>),
     size: {
-      1: 'text-xs h-6 px-2 rounded-md gap-1.5',
+      1: 'text-sm h-6 px-2 rounded-md gap-1.5',
       2: 'text-sm h-8 px-2 rounded-md gap-2',
     },
   },

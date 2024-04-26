@@ -4,28 +4,22 @@ description: Use checkboxes for binary options.
 category: 'Forms'
 sourcePath: 'checkbox'
 demosPath: 'checkbox'
-docUrl: ''
+docUrl: 'https://react-spectrum.adobe.com/react-aria/Checkbox.html'
+composes: ['Field']
 ---
 
 ## Usage
 
-<DemoBox>
-  <CheckboxDemo.Main />
-</DemoBox>
-<Code>{demos['main']}</Code>
+<Demo demo={<CheckboxDemo.Main />} code={demos['main']} />
 
 ## Examples
 
 ### States
 
-<DemoBox>
-  <CheckboxDemo.States />
-</DemoBox>
-<Code>{demos['states']}</Code>
+<Demo demo={<CheckboxDemo.States />} code={demos['states']} />
 
 ### Group
 
-<DemoBox>
-  <CheckboxDemo.Group />
-</DemoBox>
-<Code>{demos['group']}</Code>
+Use the `CheckboxGroup` component to group checkboxes together. `CheckboxGroup` takes optional `label` and `description` props.
+
+<Demo demo={<CheckboxDemo.Group />} code={demos['group']} />
