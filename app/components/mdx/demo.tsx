@@ -46,7 +46,7 @@ function Demo({
         <div
           className={cx(
             'flex flex-col overflow-auto border-neutral-line',
-            inline ? 'flex-2 border-l' : 'border-t',
+            inline ? 'flex-3 border-l' : 'border-t',
           )}
         >
           {collapsible && (

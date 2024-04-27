@@ -40,17 +40,14 @@ function CopyButton({ children, text, title, className }: CopyButtonProps) {
     <TooltipTrigger delay={500}>
       <IconButton
         onPress={handleCopy}
-        variant={'ghost'}
         intent={justCopied ? 'success' : 'neutral'}
         className={className}
       >
-        {justCopied ? (
+        {justCopied ?
           <Check size={16} weight="bold" />
-        ) : children ? (
+        : children ?
           children
-        ) : (
-          <Copy weight="duotone" size={16} />
-        )}
+        : <Copy weight="duotone" size={16} />}
       </IconButton>
       <Tooltip>{title || 'Copy to clipboard'}</Tooltip>
     </TooltipTrigger>

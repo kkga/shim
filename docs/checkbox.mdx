@@ -1,6 +1,6 @@
 ---
 name: Checkbox
-description: Mark one or multiple options as selected from a list.
+description: Mark one or multiple options as selected.
 category: 'Forms'
 srcFilename: 'checkbox'
 docUrl: 'https://react-spectrum.adobe.com/react-aria/Checkbox.html'
@@ -20,6 +20,8 @@ aria: 'checkbox'
 
 ### Group
 
-Use the `CheckboxGroup` component to group checkboxes together. `CheckboxGroup` takes optional `label` and `description` props.
+Use the `CheckboxGroup` component to group checkboxes together with an
+accessible label. The `label` prop is required to provide an accessible name for
+the group.
 
 <Demo inline demo={<CheckboxDemo.Group />} code={demos['group']} />

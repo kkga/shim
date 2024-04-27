@@ -8,6 +8,10 @@
 @import '@radix-ui/colors/indigo-alpha.css';
 @import '@radix-ui/colors/indigo-dark.css';
 @import '@radix-ui/colors/indigo-dark-alpha.css';
+@import '@radix-ui/colors/cyan.css';
+@import '@radix-ui/colors/cyan-alpha.css';
+@import '@radix-ui/colors/cyan-dark.css';
+@import '@radix-ui/colors/cyan-dark-alpha.css';
 @import '@radix-ui/colors/green.css';
 @import '@radix-ui/colors/green-alpha.css';
 @import '@radix-ui/colors/green-dark.css';
@@ -63,18 +67,18 @@
   --color-neutral-11: var(--gray-a11);
   --color-neutral-12: var(--gray-a12);
 
-  --color-accent-1: var(--indigo-a1);
-  --color-accent-2: var(--indigo-a2);
-  --color-accent-3: var(--indigo-a3);
-  --color-accent-4: var(--indigo-a4);
-  --color-accent-5: var(--indigo-a5);
-  --color-accent-6: var(--indigo-a6);
-  --color-accent-7: var(--indigo-a7);
-  --color-accent-8: var(--indigo-a8);
-  --color-accent-9: var(--indigo-a9);
-  --color-accent-10: var(--indigo-a10);
-  --color-accent-11: var(--indigo-a11);
-  --color-accent-12: var(--indigo-a12);
+  --color-accent-1: var(--cyan-a1);
+  --color-accent-2: var(--cyan-a2);
+  --color-accent-3: var(--cyan-a3);
+  --color-accent-4: var(--cyan-a4);
+  --color-accent-5: var(--cyan-a5);
+  --color-accent-6: var(--cyan-a6);
+  --color-accent-7: var(--cyan-a7);
+  --color-accent-8: var(--cyan-a8);
+  --color-accent-9: var(--cyan-a9);
+  --color-accent-10: var(--cyan-a10);
+  --color-accent-11: var(--cyan-a11);
+  --color-accent-12: var(--cyan-a12);
 
   --color-success-1: var(--green-a1);
   --color-success-2: var(--green-a2);

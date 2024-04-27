@@ -6,11 +6,12 @@ export const demoComponents = {
     Size: dynamic(() => import('@/demos/badge').then((mod) => mod.Size)),
     Intent: dynamic(() => import('@/demos/badge').then((mod) => mod.Intent)),
   },
-  CheckboxDemo: {
-    Main: dynamic(() => import('@/demos/checkbox').then((mod) => mod.Main)),
-    Group: dynamic(() => import('@/demos/checkbox').then((mod) => mod.Group)),
-    States: dynamic(() => import('@/demos/checkbox').then((mod) => mod.States)),
+  MeterDemo: {
+    Main: dynamic(() => import('@/demos/meter').then((mod) => mod.Main)),
+    Custom: dynamic(() => import('@/demos/meter').then((mod) => mod.Custom)),
+    Color: dynamic(() => import('@/demos/meter').then((mod) => mod.Color)),
   },
+
   ButtonDemo: {
     Main: dynamic(() => import('@/demos/button').then((mod) => mod.Main)),
     Variant: dynamic(() => import('@/demos/button').then((mod) => mod.Variant)),
@@ -20,16 +21,41 @@ export const demoComponents = {
   IconButtonDemo: {
     Main: dynamic(() => import('@/demos/icon-button').then((mod) => mod.Main)),
     Intent: dynamic(() =>
-      import('@/demos/icon-button').then((mod) => mod.Intent)
+      import('@/demos/icon-button').then((mod) => mod.Intent),
     ),
     Variant: dynamic(() =>
-      import('@/demos/icon-button').then((mod) => mod.Variant)
+      import('@/demos/icon-button').then((mod) => mod.Variant),
     ),
     Size: dynamic(() => import('@/demos/icon-button').then((mod) => mod.Size)),
   },
-  MeterDemo: {
-    Main: dynamic(() => import('@/demos/meter').then((mod) => mod.Main)),
-    Custom: dynamic(() => import('@/demos/meter').then((mod) => mod.Custom)),
-    Color: dynamic(() => import('@/demos/meter').then((mod) => mod.Color)),
+  ToggleButtonDemo: {
+    Main: dynamic(() =>
+      import('@/demos/toggle-button').then((mod) => mod.Main),
+    ),
+    Controlled: dynamic(() =>
+      import('@/demos/toggle-button').then((mod) => mod.Controlled),
+    ),
+    States: dynamic(() =>
+      import('@/demos/toggle-button').then((mod) => mod.States),
+    ),
+  },
+
+  CheckboxDemo: {
+    Main: dynamic(() => import('@/demos/checkbox').then((mod) => mod.Main)),
+    Group: dynamic(() => import('@/demos/checkbox').then((mod) => mod.Group)),
+    States: dynamic(() => import('@/demos/checkbox').then((mod) => mod.States)),
+  },
+  NumberFieldDemo: {
+    Main: dynamic(() => import('@/demos/number-field').then((mod) => mod.Main)),
+    States: dynamic(() =>
+      import('@/demos/number-field').then((mod) => mod.States),
+    ),
+    Size: dynamic(() => import('@/demos/number-field').then((mod) => mod.Size)),
+  },
+  RadioGroupDemo: {
+    Main: dynamic(() => import('@/demos/radio').then((mod) => mod.Main)),
+    Orientation: dynamic(() =>
+      import('@/demos/radio').then((mod) => mod.Orientation),
+    ),
   },
 }

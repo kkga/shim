@@ -1,10 +1,25 @@
 ---
 name: NumberField
-description: A control that allows the user to input a number.
-preview: "number-field"
-category: "Forms"
+description: Enter a  number, and increment or decrement it with buttons.
+srcFilename: 'number-field'
+category: 'Forms'
+docUrl: 'https://react-spectrum.adobe.com/react-aria/NumberField.html'
+aria: 'spinbutton'
+composes: ['Field']
 ---
 
-import { NumberField } from "@/components/ui/NumberField";
+## Usage
 
-<NumberField />
+<Demo demo={<NumberFieldDemo.Main />} code={demos['main']} />
+
+---
+
+## Examples
+
+### States
+
+<Demo demo={<NumberFieldDemo.States />} code={demos['states']} />
+
+### Size
+
+<Demo demo={<NumberFieldDemo.Size />} code={demos['size']} />

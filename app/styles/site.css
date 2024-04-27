@@ -1,12 +1,10 @@
-/* @import "tailwindcss"; */
-
 ::selection {
   background-color: var(--color-accent-5);
 }
 
 :root {
   --sh-class: var(--color-accent-11);
-  --sh-identifier: var(--color-error-11);
+  --sh-identifier: var(--color-warning-11);
   --sh-sign: var(--color-neutral-10);
   --sh-string: var(--color-success-11);
   --sh-keyword: var(--color-neutral-11);

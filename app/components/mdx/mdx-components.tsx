@@ -99,6 +99,9 @@ export const mdxComponents: MDXRemoteProps['components'] = {
   p: (props) => (
     <p className="my-4 max-w-[80ch] text-neutral-text" {...props} />
   ),
+
+  ul: (props) => <ul className="my-4 list-inside list-disc" {...props} />,
+
   hr: (props) => <hr className="my-12 border-neutral-border" {...props} />,
 
   a: CustomLink,
@@ -107,4 +110,8 @@ export const mdxComponents: MDXRemoteProps['components'] = {
   Demo,
   Table,
   ...demoComponents,
+}
+
+declare global {
+  type MDXProvidedComponents = typeof mdxComponents
 }

@@ -22,10 +22,13 @@
     ],
     "strictNullChecks": true,
     "paths": {
-      "@/*": ["app/*"],
       "@ui/*": ["app/ui/*"],
-      "@lib/*": ["app/lib/*"]
+      "@lib/*": ["app/lib/*"],
+      "@/*": ["app/*"]
     }
+  },
+  "mdx": {
+    "checkMdx": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
