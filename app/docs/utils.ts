@@ -5,9 +5,8 @@ import matter from 'gray-matter'
 export interface Metadata {
   name: string
   description: string
-  category?: string
-  sourcePath?: string
-  demosPath?: string
+  category: string
+  srcFilename: string
   docUrl?: string
   composes?: string[]
 }
@@ -54,13 +53,35 @@ export function getAllDocs() {
   return getMDXData(path.join(process.cwd(), 'docs'))
 }
 
-export function getComponentSource({ sourcePath }) {
+export function getComponentSource(srcFilename: string) {
   return fs.readFileSync(
-    path.join(process.cwd(), 'app', 'components', 'ui', `${sourcePath}.tsx`),
+    path.join(process.cwd(), 'app', 'ui', `${srcFilename}.tsx`),
     'utf-8'
   )
 }
 
-export function getComponentDemos({ componentDir }) {
+export function getComponentDemos(componentDir: string) {
   return getRawDemos(path.join(process.cwd(), 'app', 'demos', componentDir))
+}
+
+export function getNavItems(
+  docs: { metadata: Metadata; slug: string; content: string }[]
+): {
+  section: string
+  items: { name: string; slug: string }[]
+}[] {
+  const navItems = docs.reduce((acc, { metadata, slug }) => {
+    if (!acc[metadata.category]) {
+      acc[metadata.category] = []
+    }
+
+    acc[metadata.category].push({ name: metadata.name, slug })
+
+    return acc
+  }, {} as Record<string, { name: string; slug: string }[]>)
+
+  return Object.entries(navItems).map(([section, items]) => ({
+    section,
+    items,
+  }))
 }

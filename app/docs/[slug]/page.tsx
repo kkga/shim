@@ -1,4 +1,5 @@
-import { ArrowSquareOut, ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
+import { postProcess, preProcess } from '@/lib/rehype-pre-raw'
+import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
 import { mdxComponents } from 'app/components/mdx/mdx-components'
 import {
   getAllDocs,
@@ -8,14 +9,8 @@ import {
 import { baseUrl } from 'app/sitemap'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
-
-export async function generateStaticParams() {
-  const docs = getAllDocs()
-
-  return docs.map((doc) => ({
-    slug: doc.slug,
-  }))
-}
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeSlug from 'rehype-slug'
 
 export function generateMetadata({ params }) {
   let doc = getAllDocs().find((doc) => doc.slug === params.slug)
@@ -56,16 +51,34 @@ export default async function Doc({ params }) {
     notFound()
   }
 
-  const { sourcePath, demosPath, docUrl, category, composes } = doc.metadata
+  const { srcFilename, docUrl, composes } = doc.metadata
+
+  const demos = getComponentDemos(srcFilename)
+  const source = getComponentSource(srcFilename)
 
   const { content } = await compileMDX({
     source: doc.content,
     options: {
-      scope: {
-        demos: getComponentDemos({ componentDir: demosPath }),
-        source: getComponentSource({ sourcePath: sourcePath }),
+      scope: { demos, source },
+      mdxOptions: {
+        remarkPlugins: [],
+        rehypePlugins: [
+          preProcess,
+          rehypeSlug,
+          [
+            rehypeAutolinkHeadings,
+            {
+              behaviour: 'append',
+              properties: {
+                ariaHidden: true,
+                tabIndex: -1,
+                className: 'hash-link',
+              },
+            },
+          ],
+          postProcess,
+        ],
       },
-      parseFrontmatter: true,
     },
     components: mdxComponents,
   })
@@ -93,7 +106,7 @@ export default async function Doc({ params }) {
       <h1 className="text-neutral-text-contrast font-semibold text-3xl">
         {doc.metadata.name}
       </h1>
-      <p className="text-neutral-text mt-2">{doc.metadata.description}</p>
+      <p className="text-neutral-text mt-4">{doc.metadata.description}</p>
 
       <div className="flex gap-8 mt-6 pt-6 mb-12 before:w-12 before:h-px before:absolute before:top-0 relative before:bg-neutral-border">
         {docUrl && (

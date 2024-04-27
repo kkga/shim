@@ -1,15 +1,14 @@
 ---
 name: TextField
 description: A text field is an input field that allows users to enter text.
-category: "Forms"
-preview: "text-field"
+category: 'Forms'
 ---
 
-import { Code } from "astro:components";
-import { TextField } from "@ui/text-field";
-import source from "@ui/text-field.tsx?raw";
+import { Code } from 'astro:components'
+import { TextField } from '@ui/text-field'
+import source from '@ui/text-field.tsx?raw'
 
-import Box from "@/components/Box.astro";
+import Box from '@/components/Box.astro'
 
 <Box>
   <TextField id="name" type="text" />
@@ -30,9 +29,9 @@ import Box from "@/components/Box.astro";
 ## Usage
 
 ```tsx
-import { Label } from "@components/ui/label";
+import { Label } from '@components/ui/label'
 
-<Label htmlFor="name">Name</Label>;
+;<Label htmlFor="name">Name</Label>
 ```
 
 @/ui/text-field@/components/ui/text-field

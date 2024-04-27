@@ -1,5 +1,3 @@
-import { Badge } from "@ui/badge";
+import { Badge } from '@/ui/badge'
 
-export default () => (
-  <Badge>Badge</Badge>
-)
+export default () => <Badge>Badge</Badge>

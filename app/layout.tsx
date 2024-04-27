@@ -1,13 +1,34 @@
 import './styles/base.css'
 import './styles/site.css'
 
-import { ThemeProvider } from '@/components/theme-provider'
+import localFont from 'next/font/local'
+
+import { ClientProviders, ThemeProvider } from '@/components/providers'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
-import Footer from './components/footer'
 import { Sidebar } from './components/sidebar'
+import { getAllDocs, getNavItems } from './docs/utils'
 import { baseUrl } from './sitemap'
+
+const fontMono = localFont({
+  src: '_fonts/CommitMonoVariable.woff2',
+  variable: '--font-mono',
+})
+
+const fontSans = localFont({
+  src: [
+    {
+      path: '_fonts/InterVariable.woff2',
+      style: 'normal',
+    },
+    {
+      path: '_fonts/InterVariable-Italic.woff2',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-sans',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -42,32 +63,37 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const docs = getAllDocs()
+  const navItems = getNavItems(docs)
+
   return (
     <html
       lang="en"
-      className="text-neutral-text bg-neutral-base"
+      className={`${fontMono.variable} ${fontSans.variable} text-neutral-text bg-neutral-base`}
       suppressHydrationWarning
     >
       <body
         style={{ gridTemplateAreas: '"aside main"' }}
-        className="antialiased min-h-screen overflow-auto grid grid-cols-[minmax(auto,320px)_1fr]"
+        className="antialiased min-h-screen overflow-auto grid grid-cols-[minmax(auto,240px)_1fr]"
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Sidebar />
+        <ClientProviders>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Sidebar items={navItems} />
 
-          <main className="overflow-scroll px-8 py-16">
-            <div className="max-w-3xl mx-auto">{children}</div>
-          </main>
+            <main className="overflow-scroll px-8 py-16">
+              <div className="max-w-3xl mx-auto">{children}</div>
+            </main>
 
-          {/* <Footer /> */}
-          <Analytics />
-          <SpeedInsights />
-        </ThemeProvider>
+            {/* <Footer /> */}
+            <Analytics />
+            <SpeedInsights />
+          </ThemeProvider>
+        </ClientProviders>
       </body>
     </html>
   )

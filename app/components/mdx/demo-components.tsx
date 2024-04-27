@@ -4,6 +4,7 @@ export const demoComponents = {
   BadgeDemo: {
     Main: dynamic(() => import('@/demos/badge').then((mod) => mod.Main)),
     Size: dynamic(() => import('@/demos/badge').then((mod) => mod.Size)),
+    Intent: dynamic(() => import('@/demos/badge').then((mod) => mod.Intent)),
   },
   CheckboxDemo: {
     Main: dynamic(() => import('@/demos/checkbox').then((mod) => mod.Main)),

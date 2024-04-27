@@ -1,8 +1,7 @@
 /* @import "tailwindcss"; */
 
 ::selection {
-  background-color: #47a3f3;
-  color: #fefefe;
+  background-color: var(--color-accent-5);
 }
 
 :root {
@@ -19,6 +18,7 @@
 
 html {
   min-width: 360px;
+  font-family: var(--font-sans);
 }
 
 .prose {
@@ -74,7 +74,8 @@ html {
   h4,
   h5,
   h6 {
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing-tight);
     color: var(--color-neutral-text-contrast);
   }
 
@@ -101,23 +102,28 @@ html {
     margin-bottom: var(--spacing-4);
   }
 
-  :not(pre) > code {
-    font-size: 14px;
-  }
-
-  > pre {
-    border: 1px solid var(--color-neutral-line);
-    border-radius: var(--radius);
+  code {
+    font-family: var(--font-mono);
+    font-weight: 450;
   }
 
   pre {
     background-color: var(--color-accent-2);
     font-size: 13px;
-    line-height: 1.5;
+    line-height: 20px;
     padding: var(--spacing-3) var(--spacing-4);
+    border: 1px solid var(--color-neutral-line);
+    border-radius: var(--radius-lg);
+
+    code {
+      background-color: transparent;
+      font-size: inherit;
+      line-height: inherit;
+      padding: 0;
+    }
   }
 
-  .anchor {
+  .hash-link {
     position: absolute;
     visibility: hidden;
     text-decoration: none;
@@ -130,10 +136,11 @@ html {
     &:after {
       content: '#';
       color: var(--color-neutral-placeholder);
+      font-weight: normal;
     }
   }
 
-  *:hover > .anchor {
+  *:hover > .hash-link {
     visibility: visible;
   }
 }

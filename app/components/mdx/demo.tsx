@@ -4,7 +4,8 @@ import { cx } from '@/lib/utils'
 import { CaretDown, CaretRight } from '@phosphor-icons/react/dist/ssr'
 import { useState } from 'react'
 import { Button } from 'react-aria-components'
-import { highlight } from 'sugar-high'
+import { Code } from './mdx-components'
+import { Pre } from './pre'
 
 interface Props {
   demo: React.ReactNode
@@ -47,9 +48,9 @@ function Demo({
           )}
 
           {code && !collapsed && (
-            <pre className="m-0!">
-              <code dangerouslySetInnerHTML={{ __html: highlight(code) }} />
-            </pre>
+            <Pre className="rounded-none! border-none! m-0!" raw={code}>
+              <Code>{code}</Code>
+            </Pre>
           )}
         </div>
       )}
