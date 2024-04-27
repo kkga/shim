@@ -74,7 +74,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
   ),
   h3: (props) => (
     <h3
-      className="mt-10 mb-4 text-xl font-semibold text-neutral-text-contrast"
+      className="mt-10 mb-4 text-xl font-medium text-neutral-text-contrast"
       {...props}
     />
   ),

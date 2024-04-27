@@ -58,4 +58,27 @@ export const demoComponents = {
       import('@/demos/radio').then((mod) => mod.Orientation),
     ),
   },
+  SearchFieldDemo: {
+    Main: dynamic(() => import('@/demos/search-field').then((mod) => mod.Main)),
+    Controlled: dynamic(() =>
+      import('@/demos/search-field').then((mod) => mod.Controlled),
+    ),
+    Size: dynamic(() => import('@/demos/search-field').then((mod) => mod.Size)),
+    States: dynamic(() =>
+      import('@/demos/search-field').then((mod) => mod.States),
+    ),
+  },
+  SliderDemo: {
+    Main: dynamic(() => import('@/demos/slider').then((mod) => mod.Main)),
+    Controlled: dynamic(() =>
+      import('@/demos/slider').then((mod) => mod.Controlled),
+    ),
+    ControlledRange: dynamic(() =>
+      import('@/demos/slider').then((mod) => mod.ControlledRange),
+    ),
+    States: dynamic(() => import('@/demos/slider').then((mod) => mod.States)),
+    Orientation: dynamic(() =>
+      import('@/demos/slider').then((mod) => mod.Orientation),
+    ),
+  },
 }

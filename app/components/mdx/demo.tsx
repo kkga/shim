@@ -35,7 +35,7 @@ function Demo({
     >
       <div
         className={cx(
-          'flex flex-1 flex-col items-start gap-4 overflow-auto p-4',
+          'flex flex-1 flex-col items-start gap-4 overflow-auto p-4 text-sm text-neutral-text',
           className,
         )}
       >
@@ -65,7 +65,7 @@ function Demo({
           )}
 
           {code && !collapsed && (
-            <Pre className="m-0! rounded-none! border-none!" raw={code}>
+            <Pre className="m-0! flex-1 rounded-none! border-none!" raw={code}>
               <Code>{code}</Code>
             </Pre>
           )}

@@ -1,6 +1,49 @@
 ---
 name: Slider
-description: Sliders allow users to select a value from a range of values.
-category: "Forms"
-preview: "slider"
+description: Select one or more values within a range.
+category: 'Forms'
+srcFilename: 'slider'
+docUrl: 'https://react-spectrum.adobe.com/react-aria/Slider.html'
+aria: 'slider'
+composes: ['Field']
 ---
+
+## Usage
+
+<Demo
+  className="items-stretch"
+  demo={<SliderDemo.Main />}
+  code={demos['main']}
+/>
+
+## Examples
+
+### Controlled value
+
+Use `value` and `onChange` props to control the value of the slider.
+
+<Demo
+  className="items-stretch"
+  demo={<SliderDemo.Controlled />}
+  code={demos['controlled']}
+/>
+
+### Controlled range
+
+Use an array of numbers for `value` to control a range.
+
+<Demo
+  className="items-stretch"
+  demo={<SliderDemo.ControlledRange />}
+  code={demos['controlled-range']}
+/>
+
+### Orientation
+
+Use `orientation` prop to change the orientation of the slider.
+
+<Demo
+  className="items-stretch"
+  demo={<SliderDemo.Orientation />}
+  code={demos['orientation']}
+/>

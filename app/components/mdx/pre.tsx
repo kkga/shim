@@ -12,7 +12,7 @@ export function Pre({ raw, children, className, ...props }) {
       {children}
 
       {raw && (
-        <div className="invisible group-hover:visible sticky ml-auto size-5 flex justify-center items-center top-0 right-0">
+        <div className="invisible sticky top-0 right-0 ml-auto flex size-5 items-center justify-center group-hover:visible">
           <CopyButton text={raw} title="Copy to clipboard" />
         </div>
       )}

@@ -38,7 +38,7 @@ html {
 
   code {
     font-family: var(--font-mono);
-    font-weight: 450;
+    font-weight: 350;
   }
 
   pre {
@@ -49,6 +49,7 @@ html {
     padding-left: var(--spacing-4);
     border: 1px solid var(--color-neutral-line);
     border-radius: var(--radius-lg);
+    font-weight: 450;
 
     code {
       background-color: transparent;

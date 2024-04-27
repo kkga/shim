@@ -1,6 +1,52 @@
 ---
 name: SearchField
-description: A search field is an input field that allows users to search for content.
-category: "Forms"
-preview: "search-field"
+description: Enter and clear a search query.
+category: 'Forms'
+srcFilename: 'search-field'
+docUrl: 'https://react-spectrum.adobe.com/react-aria/SearchField.html'
+aria: https://www.w3.org/TR/wai-aria-1.2/#searchbox
+composes: ['Field']
 ---
+
+## Usage
+
+<Demo
+  className="items-stretch"
+  demo={<SearchFieldDemo.Main />}
+  code={demos['main']}
+/>
+
+---
+
+## Examples
+
+### Controlled value
+
+Use `value` and `onChange` props to control the value of the search field.
+
+<Demo
+  className="items-stretch"
+  demo={<SearchFieldDemo.Controlled />}
+  code={demos['controlled']}
+/>
+
+### Size
+
+Use `size` prop to set the size of the search field.
+
+<Demo
+  className="items-stretch"
+  demo={<SearchFieldDemo.Size />}
+  code={demos['size']}
+/>
+
+### States
+
+Use `isDisabled`, `isRequired`, `isInvalid` and `errorMessage` props to set the
+state of the search field.
+
+<Demo
+  className="items-stretch"
+  demo={<SearchFieldDemo.States />}
+  code={demos['states']}
+/>
