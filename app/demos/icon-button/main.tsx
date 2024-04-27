@@ -1,9 +1,8 @@
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
-import { Button } from '@ui/button'
+import { IconButton } from '@ui/icon-button'
 
 export default () => (
-  <Button>
-    Next
+  <IconButton>
     <ArrowRight size={16} weight="duotone" />
-  </Button>
+  </IconButton>
 )

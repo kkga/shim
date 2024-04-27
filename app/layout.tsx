@@ -69,12 +69,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontMono.variable} ${fontSans.variable} text-neutral-text bg-neutral-base`}
+      className={`${fontMono.variable} ${fontSans.variable} bg-neutral-base text-neutral-text`}
       suppressHydrationWarning
     >
       <body
         style={{ gridTemplateAreas: '"aside main"' }}
-        className="antialiased min-h-screen overflow-auto grid grid-cols-[minmax(auto,240px)_1fr]"
+        className="grid min-h-screen grid-cols-[minmax(auto,200px)_1fr] overflow-auto antialiased"
       >
         <ClientProviders>
           <ThemeProvider
@@ -85,8 +85,8 @@ export default function RootLayout({
           >
             <Sidebar items={navItems} />
 
-            <main className="overflow-scroll px-8 py-16">
-              <div className="max-w-3xl mx-auto">{children}</div>
+            <main className="overflow-scroll py-16 px-8">
+              <div className="mx-auto max-w-4xl">{children}</div>
             </main>
 
             {/* <Footer /> */}

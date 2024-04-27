@@ -51,7 +51,7 @@ export default async function Doc({ params }) {
     notFound()
   }
 
-  const { srcFilename, docUrl, composes } = doc.metadata
+  const { srcFilename, docUrl, aria, composes } = doc.metadata
 
   const demos = getComponentDemos(srcFilename)
   const source = getComponentSource(srcFilename)
@@ -103,26 +103,45 @@ export default async function Doc({ params }) {
           }),
         }}
       />
-      <h1 className="text-neutral-text-contrast font-semibold text-3xl">
+      <h1 className="text-3xl font-semibold text-neutral-text-contrast">
         {doc.metadata.name}
       </h1>
-      <p className="text-neutral-text mt-4">{doc.metadata.description}</p>
+      <p className="mt-4 text-neutral-text">{doc.metadata.description}</p>
 
-      <div className="flex gap-8 mt-6 pt-6 mb-12 before:w-12 before:h-px before:absolute before:top-0 relative before:bg-neutral-border">
+      <div className="relative mt-6 mb-12 flex gap-8 pt-6 before:absolute before:top-0 before:h-px before:w-12 before:bg-neutral-border">
         {docUrl && (
           <div className="flex flex-col gap-2">
-            <span className="text-xs text-neutral-text font-medium">
+            <span className="text-xs font-medium text-neutral-text">
               Documentation
             </span>
 
             <a
               href={docUrl}
-              className="flex items-center gap-0.5 text-sm text-accent-text underline-offset-2 decoration-accent-border hover:underline"
+              className="flex items-center gap-0.5 text-sm text-accent-text decoration-accent-border underline-offset-2 hover:underline"
               rel="noreferrer"
               target="_blank"
-              title={`View React Aria ${doc.metadata.name} documentation`}
+              title={`View React Aria documentation`}
             >
-              React Aria {doc.metadata.name}
+              React Aria docs
+              <ArrowUpRight size={16} />
+            </a>
+          </div>
+        )}
+
+        {aria && (
+          <div className="flex flex-col gap-2">
+            <span className="text-xs font-medium text-neutral-text">
+              Pattern
+            </span>
+
+            <a
+              href={`https://www.w3.org/WAI/ARIA/apg/patterns/${aria}`}
+              className="flex items-center gap-0.5 text-sm text-accent-text decoration-accent-border underline-offset-2 hover:underline"
+              title={`View ARIA pattern`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              W3C ARIA pattern
               <ArrowUpRight size={16} />
             </a>
           </div>
@@ -130,7 +149,7 @@ export default async function Doc({ params }) {
 
         {composes && (
           <div className="flex flex-col gap-2">
-            <span className="text-xs text-neutral-text font-medium">
+            <span className="text-xs font-medium text-neutral-text">
               Composes
             </span>
             <div className="flex flex-wrap gap-2">
@@ -138,8 +157,10 @@ export default async function Doc({ params }) {
                 <a
                   key={component}
                   href={`/docs/${component}`}
-                  className="text-sm text-accent-text underline-offset-2 decoration-accent-border hover:underline"
+                  className="text-sm text-accent-text decoration-accent-border underline-offset-2 hover:underline"
                   title={`View ${component} documentation`}
+                  rel="noreferrer"
+                  target="_blank"
                 >
                   {component}
                 </a>
@@ -147,6 +168,23 @@ export default async function Doc({ params }) {
             </div>
           </div>
         )}
+
+        <div className="flex flex-col gap-2">
+          <span className="text-xs font-medium text-neutral-text">
+            Source code
+          </span>
+          <div className="flex flex-wrap gap-2">
+            <a
+              href={`https://github.com/kkga/shim-ui/blob/master/app/ui/${srcFilename}.tsx`}
+              className="text-sm text-accent-text decoration-accent-border underline-offset-2 hover:underline"
+              title={`View ${srcFilename} source`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
       </div>
       <article className="prose">{content}</article>
     </section>

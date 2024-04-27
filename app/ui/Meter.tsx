@@ -1,57 +1,62 @@
+'use client'
+
+import { cx, cxRenderProps } from '@lib/utils'
+import { useMemo } from 'react'
 import {
   Meter as RACMeter,
   type MeterProps as RACMeterProps,
-} from "react-aria-components";
-import { Description, Label } from "./Field";
-import { cxRenderProps } from "@lib/utils";
+} from 'react-aria-components'
+import { Description, Label } from './Field'
 
 interface MeterProps extends RACMeterProps {
-  label?: string;
-  description?: string;
+  label?: string
+  description?: string
+  color?: string | ((value: number) => string)
 }
 
 function Meter({ label, description, ...props }: MeterProps) {
+  const barColor = useMemo(() => {
+    if (props.color instanceof Function) {
+      return props.color(props.value ?? 0)
+    }
+    return props.color
+  }, [props.color, props.value])
+
   return (
     <RACMeter
       {...props}
-      className={cxRenderProps(props.className, "flex flex-col gap-1")}
+      className={cxRenderProps(props.className, 'flex flex-col gap-2')}
     >
       {({ percentage, valueText }) => (
         <>
-          <div className="mb-1 flex justify-between gap-2">
+          <div className="flex justify-between gap-2">
             <Label>{label}</Label>
             <span
-              className={`text-xs ${
-                percentage >= 80 ? "text-error-text" : "text-neutral-text"
-              }`}
+              className={cx(
+                'text-xs',
+                props.color ? ''
+                : percentage > 80 ? 'text-error-text'
+                : 'text-neutral-text',
+              )}
             >
               {valueText}
             </span>
           </div>
           <div className="relative h-1.5 w-full overflow-hidden rounded-[2px] bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
             <div
-              className={`absolute top-0 left-0 h-full ${getColor(percentage)}`}
-              style={{ width: percentage + "%" }}
+              className="absolute top-0 left-0 h-full bg-accent-solid"
+              style={{
+                width: percentage + '%',
+                backgroundColor: barColor,
+              }}
             />
           </div>
           {description && <Description>{description}</Description>}
         </>
       )}
     </RACMeter>
-  );
+  )
 }
 
-const getColor = (percentage: number) => {
-  if (percentage < 70) {
-    return "bg-success-solid";
-  }
-
-  if (percentage < 80) {
-    return "bg-warning-solid";
-  }
-
-  return "bg-error-solid";
-};
-
-export { Meter };
-export type { MeterProps };
+export { Meter }
+export type { MeterProps }

@@ -1,6 +1,6 @@
 import fs from 'fs'
-import path from 'path'
 import matter from 'gray-matter'
+import path from 'path'
 
 export interface Metadata {
   name: string
@@ -8,6 +8,7 @@ export interface Metadata {
   category: string
   srcFilename: string
   docUrl?: string
+  aria?: string
   composes?: string[]
 }
 

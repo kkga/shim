@@ -1,6 +1,6 @@
-import { Check, ClipboardText } from '@phosphor-icons/react'
-import { IconButton } from '@ui/IconButton'
+import { Check, Copy } from '@phosphor-icons/react'
 import { Tooltip, TooltipTrigger } from '@ui/Tooltip'
+import { IconButton } from '@ui/icon-button'
 import { useEffect, useState } from 'react'
 import { useCopyToClipboard } from 'usehooks-ts'
 
@@ -49,7 +49,7 @@ function CopyButton({ children, text, title, className }: CopyButtonProps) {
         ) : children ? (
           children
         ) : (
-          <ClipboardText weight="duotone" size={16} />
+          <Copy weight="duotone" size={16} />
         )}
       </IconButton>
       <Tooltip>{title || 'Copy to clipboard'}</Tooltip>

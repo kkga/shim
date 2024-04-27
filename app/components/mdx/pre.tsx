@@ -5,15 +5,16 @@ import { CopyButton } from './copy-button'
 
 export function Pre({ raw, children, className, ...props }) {
   return (
-    <pre className={cx('relative', className)} {...props}>
+    <pre
+      className={cx('group flex items-start overflow-scroll', className)}
+      {...props}
+    >
       {children}
 
       {raw && (
-        <CopyButton
-          className="absolute top-2.5 right-2.5"
-          text={raw}
-          title="Copy to clipboard"
-        />
+        <div className="invisible group-hover:visible sticky ml-auto size-5 flex justify-center items-center top-0 right-0">
+          <CopyButton text={raw} title="Copy to clipboard" />
+        </div>
       )}
     </pre>
   )

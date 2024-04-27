@@ -26,70 +26,6 @@ html {
   line-height: var(--font-size-base--line-height);
   color: var(--color-neutral-text);
 
-  h1 {
-    font-size: var(--font-size-4xl);
-    line-height: var(--font-size-4xl--line-height);
-    margin-top: var(--spacing-12);
-    margin-bottom: var(--spacing-12);
-  }
-
-  h2 {
-    font-size: var(--font-size-xl);
-    line-height: var(--font-size-2xl--line-height);
-    margin-top: var(--spacing-12);
-    margin-bottom: var(--spacing-2);
-  }
-
-  h3 {
-    font-size: var(--font-size-lg);
-    line-height: var(--font-size-xl--line-height);
-    margin-top: var(--spacing-8);
-    margin-bottom: var(--spacing-2);
-  }
-
-  h4 {
-    font-size: var(--font-size-base);
-    line-height: var(--font-size-lg--line-height);
-    margin-top: var(--spacing-8);
-    margin-bottom: var(--spacing-2);
-  }
-
-  h5 {
-    font-size: var(--font-size-sm);
-    line-height: var(--font-size-base--line-height);
-    margin-top: var(--spacing-8);
-    margin-bottom: var(--spacing-2);
-  }
-
-  h6 {
-    font-size: var(--font-size-xs);
-    line-height: var(--font-size-sm--line-height);
-    margin-top: var(--spacing-8);
-    margin-bottom: var(--spacing-2);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 500;
-    letter-spacing: var(--letter-spacing-tight);
-    color: var(--color-neutral-text-contrast);
-  }
-
-  hr {
-    border: 0;
-    border-top: 1px solid var(--color-neutral-line);
-    margin-top: var(--spacing-12);
-    margin-bottom: var(--spacing-12);
-  }
-
-  p {
-    margin-bottom: var(--spacing-4);
-  }
-
   pre,
   ul,
   ol,
@@ -111,7 +47,8 @@ html {
     background-color: var(--color-accent-2);
     font-size: 13px;
     line-height: 20px;
-    padding: var(--spacing-3) var(--spacing-4);
+    padding: var(--spacing-3);
+    padding-left: var(--spacing-4);
     border: 1px solid var(--color-neutral-line);
     border-radius: var(--radius-lg);
 

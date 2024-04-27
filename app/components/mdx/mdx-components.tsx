@@ -28,21 +28,30 @@ function Table({ data }) {
 }
 
 function CustomLink(props) {
-  let href = props.href
+  const href = props.href
+  const className =
+    'text-accent-text underline-offset-2 underline decoration-accent-line hover:decoration-accent-border-hover'
 
   if (href.startsWith('/')) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} className={className} {...props}>
         {props.children}
       </Link>
     )
   }
 
   if (href.startsWith('#')) {
-    return <a {...props} />
+    return <a className={className} {...props} />
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />
+  return (
+    <a
+      className={className}
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+    />
+  )
 }
 
 export function Code({ children, ...props }) {
@@ -51,12 +60,47 @@ export function Code({ children, ...props }) {
 }
 
 export const mdxComponents: MDXRemoteProps['components'] = {
-  // h1: createHeading(1),
-  // h2: createHeading(2),
-  // h3: createHeading(3),
-  // h4: createHeading(4),
-  // h5: createHeading(5),
-  // h6: createHeading(6),
+  h1: (props) => (
+    <h1
+      className="text-3xl font-semibold text-neutral-text-contrast"
+      {...props}
+    />
+  ),
+  h2: (props) => (
+    <h2
+      className="mt-12 mb-4 text-2xl font-medium text-neutral-text-contrast"
+      {...props}
+    />
+  ),
+  h3: (props) => (
+    <h3
+      className="mt-10 mb-4 text-xl font-semibold text-neutral-text-contrast"
+      {...props}
+    />
+  ),
+  h4: (props) => (
+    <h4
+      className="mt-8 mb-4 text-lg font-semibold text-neutral-text-contrast"
+      {...props}
+    />
+  ),
+  h5: (props) => (
+    <h5
+      className="mt-8 mb-4 text-base font-semibold text-neutral-text-contrast"
+      {...props}
+    />
+  ),
+  h6: (props) => (
+    <h6
+      className="mt-8 mb-4 text-sm font-semibold text-neutral-text-contrast"
+      {...props}
+    />
+  ),
+  p: (props) => (
+    <p className="my-4 max-w-[80ch] text-neutral-text" {...props} />
+  ),
+  hr: (props) => <hr className="my-12 border-neutral-border" {...props} />,
+
   a: CustomLink,
   code: Code,
   pre: Pre,

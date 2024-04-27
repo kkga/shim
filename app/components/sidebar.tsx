@@ -29,7 +29,7 @@ function Nav({ items }: NavProps) {
       >
         {({ section, items }) => (
           <Section id={section} className="flex flex-col gap-px">
-            <Header className="text-neutral-text-contrast h-7 px-2 text-sm flex items-center font-semibold">
+            <Header className="flex h-6 items-center px-2 text-sm font-semibold text-neutral-text-contrast">
               {section}
             </Header>
             <Collection items={items}>
@@ -39,9 +39,9 @@ function Nav({ items }: NavProps) {
                   id={`/docs/${slug}`}
                   href={`/docs/${slug}`}
                   className={cx(
-                    'px-2 h-7 flex items-center rounded text-sm',
-                    'hover:bg-neutral-bg-hover',
-                    'data-[selected]:text-neutral-text-contrast data-[selected]:bg-neutral-bg-active'
+                    'flex h-6 items-center rounded px-2 text-sm text-neutral-text',
+                    'hover:bg-accent-bg-hover',
+                    'data-[selected]:bg-accent-bg-active data-[selected]:text-accent-text-contrast',
                   )}
                 >
                   {name}
@@ -59,15 +59,15 @@ export function Sidebar(props: NavProps) {
   return (
     <aside
       style={{ gridArea: 'aside' }}
-      className="overflow-scroll sticky top-0 max-h-svh text-sm flex flex-col"
+      className="sticky top-0 flex max-h-svh flex-col overflow-scroll text-sm"
     >
-      <header className="px-6 py-4 flex justify-between items-baseline gap-1">
-        <h1 className="text-lg font-black text-neutral-text-contrast">Shim</h1>
+      <header className="flex items-baseline justify-between gap-1 py-4 px-6">
+        <h1 className="text-sm font-black text-neutral-text-contrast">Shim</h1>
       </header>
       <div className="grow p-4">
         <Nav items={props.items} />
       </div>
-      <div className="sticky bottom-0 p-4 bg-neutral-base flex justify-start">
+      <div className="sticky bottom-0 flex justify-start bg-neutral-base p-4">
         <ThemeSwitch />
       </div>
     </aside>

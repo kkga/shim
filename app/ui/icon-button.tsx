@@ -1,3 +1,5 @@
+'use client'
+
 import { compose, cva, cxRenderProps, focusVisibleStyle } from '@lib/utils'
 
 import type { VariantProps } from 'cva'
@@ -14,8 +16,8 @@ const iconButtonStyles = compose(
   cva({
     variants: {
       size: {
-        1: 'p-0 size-6',
-        2: 'p-0 size-8',
+        1: 'p-0! size-6',
+        2: 'p-0! size-8',
       },
     },
     defaultVariants: {

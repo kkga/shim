@@ -13,6 +13,7 @@ interface Props {
   collapsible?: boolean
   collapsed?: boolean
   className?: string
+  inline?: boolean
 }
 
 function Demo({
@@ -21,34 +22,50 @@ function Demo({
   className,
   collapsible,
   collapsed: defaultCollapsed,
+  inline = true,
 }: Props) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed)
 
   return (
-    <div className="flex flex-col rounded-lg border border-neutral-line">
-      <div className={cx('p-4 flex flex-row gap-4', className)}>{demo}</div>
+    <div
+      className={cx(
+        'flex rounded-lg border border-neutral-line',
+        inline ? 'flex-col md:flex-row' : 'flex-col',
+      )}
+    >
+      <div
+        className={cx(
+          'flex flex-1 flex-col items-start gap-4 overflow-auto p-4',
+          className,
+        )}
+      >
+        {demo}
+      </div>
 
       {code && (
-        <div className="flex flex-col border-t border-neutral-line">
+        <div
+          className={cx(
+            'flex flex-col overflow-auto border-neutral-line',
+            inline ? 'flex-2 border-l' : 'border-t',
+          )}
+        >
           {collapsible && (
             <Button
               className={cx(
-                'h-7 text-xs text-neutral-text outline-0 focus-visible:outline-1 -outline-offset-1 outline-accent-focus-ring flex justify-start items-center px-2 gap-1 bg-accent-bg-subtle hover:bg-accent-bg-hover active:bg-accent-bg-active',
-                collapsed ? 'rounded-b-[3px]' : 'rounded-none'
+                'flex h-7 items-center justify-start gap-1 bg-accent-bg-subtle px-2 text-xs text-neutral-text outline-0 -outline-offset-1 outline-accent-focus-ring hover:bg-accent-bg-hover focus-visible:outline-1 active:bg-accent-bg-active',
+                collapsed ? 'rounded-b-[3px]' : 'rounded-none',
               )}
               onPress={() => setCollapsed(!collapsed)}
             >
-              {!collapsed ? (
+              {!collapsed ?
                 <CaretDown weight="bold" size={12} />
-              ) : (
-                <CaretRight weight="bold" size={12} />
-              )}
+              : <CaretRight weight="bold" size={12} />}
               Code
             </Button>
           )}
 
           {code && !collapsed && (
-            <Pre className="rounded-none! border-none! m-0!" raw={code}>
+            <Pre className="m-0! rounded-none! border-none!" raw={code}>
               <Code>{code}</Code>
             </Pre>
           )}

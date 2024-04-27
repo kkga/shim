@@ -17,7 +17,7 @@ import {
 
 const buttonStyle = cva({
   base: [
-    'font-medium inline-flex items-center justify-center',
+    'font-medium inline-flex items-center justify-center shrink-0',
     // disabled
     'data-[disabled]:text-neutral-placeholder data-[disabled]:cursor-not-allowed data-[disabled]:pointer-events-none data-[disabled]:bg-neutral-bg-subtle',
   ],
@@ -156,5 +156,4 @@ const Button = ({
   />
 )
 
-export { Button, type ButtonProps }
-export { buttonStyle }
+export { Button, buttonStyle, type ButtonProps }

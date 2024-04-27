@@ -1,10 +1,45 @@
 ---
 name: Meter
-description: Meters are used to display a value within a specific range.
-category: "Status"
-preview: "meter"
+description: Display a numeric value within a known range.
+category: 'Status'
+srcFilename: 'meter'
+docUrl: 'https://react-spectrum.adobe.com/react-aria/Meter.html'
+aria: 'meter'
+composes: ['Field']
 ---
 
-```tsx
-<Meter />
-```
+## Usage
+
+<Demo
+  className="items-stretch"
+  demo={<MeterDemo.Main />}
+  code={demos['main']}
+/>
+
+---
+
+## Examples
+
+### Custom range and labels
+
+Use the `label` and `description` props to provide additional context. Use
+`minValue` and `maxValue` to set the range of the meter, see more in the
+[API documentation](https://react-spectrum.adobe.com/react-aria/Meter.html#props).
+
+<Demo
+  className="items-stretch"
+  demo={<MeterDemo.Custom />}
+  code={demos['custom']}
+/>
+
+### Bar color
+
+Use the `color` prop to change the color of the meter bar without modifying the
+component source. The color can be a CSS color string or a function that takes
+the current value and returns a color string.
+
+<Demo
+  className="items-stretch"
+  demo={<MeterDemo.Color />}
+  code={demos['color']}
+/>
