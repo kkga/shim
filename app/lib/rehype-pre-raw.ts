@@ -15,7 +15,7 @@ export const preProcess = () => (tree) => {
 export const postProcess = () => (tree) => {
   visit(tree, 'element', (node) => {
     if (node?.type === 'element' && node?.tagName === 'pre') {
-      node.properties['raw'] = node.raw
+      node.properties.raw = node.raw
     }
   })
 }

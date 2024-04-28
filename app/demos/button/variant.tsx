@@ -2,8 +2,8 @@ import { Button } from '@/ui/button'
 
 export default () => (
   <>
-    <Button variant="soft">Soft</Button>
-    <Button variant="solid">Solid</Button>
-    <Button variant="ghost">Ghost</Button>
+    <Button variant='soft'>Soft</Button>
+    <Button variant='solid'>Solid</Button>
+    <Button variant='ghost'>Ghost</Button>
   </>
 )

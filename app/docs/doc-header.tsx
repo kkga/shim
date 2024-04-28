@@ -1,5 +1,5 @@
 import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
-import { Metadata } from './utils'
+import type { Metadata } from './utils'
 
 interface DocHeaderProps {
   metadata: Metadata
@@ -59,7 +59,7 @@ export function DocHeader({ metadata }: DocHeaderProps) {
                   `https://www.w3.org/WAI/ARIA/apg/patterns/${aria}`
                 )
               }
-              title={`View ARIA pattern`}
+              title="View ARIA pattern"
               external
             >
               W3C ARIA
@@ -70,7 +70,7 @@ export function DocHeader({ metadata }: DocHeaderProps) {
           <MetadataItem title="Source code">
             <MetadataLink
               href={`https://github.com/kkga/shim-ui/blob/master/app/ui/${srcFilename}.tsx`}
-              title={`View source code on GitHub`}
+              title="View source code on GitHub"
               external
             >
               GitHub

@@ -13,13 +13,13 @@ import rehypeSlug from 'rehype-slug'
 import { DocHeader } from '../doc-header'
 
 export function generateMetadata({ params }) {
-  let doc = getAllDocs().find((doc) => doc.slug === params.slug)
+  const doc = getAllDocs().find((doc) => doc.slug === params.slug)
   if (!doc) {
     return
   }
 
-  let { name, description } = doc.metadata
-  let ogImage = `${baseUrl}/og?title=${encodeURIComponent(name)}`
+  const { name, description } = doc.metadata
+  const ogImage = `${baseUrl}/og?title=${encodeURIComponent(name)}`
 
   return {
     title: name,
@@ -59,7 +59,7 @@ export default async function Doc({ params }) {
   const { content } = await compileMDX({
     source: doc.content,
     options: {
-      scope: { demos, source },
+      scope: { demos, source, docUrl, aria, composes },
       mdxOptions: {
         remarkPlugins: [],
         rehypePlugins: [
@@ -84,10 +84,11 @@ export default async function Doc({ params }) {
   })
 
   return (
-    <section>
+    <>
       <script
         type="application/ld+json"
         suppressHydrationWarning
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -107,6 +108,6 @@ export default async function Doc({ params }) {
       <DocHeader metadata={doc.metadata} />
 
       <article className="prose">{content}</article>
-    </section>
+    </>
   )
 }

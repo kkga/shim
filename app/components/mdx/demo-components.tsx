@@ -5,6 +5,7 @@ export const demoComponents = {
     Main: dynamic(() => import('@/demos/badge').then((mod) => mod.Main)),
     Size: dynamic(() => import('@/demos/badge').then((mod) => mod.Size)),
     Intent: dynamic(() => import('@/demos/badge').then((mod) => mod.Intent)),
+    Icons: dynamic(() => import('@/demos/badge').then((mod) => mod.Icons)),
   },
   MeterDemo: {
     Main: dynamic(() => import('@/demos/meter').then((mod) => mod.Main)),
@@ -67,6 +68,7 @@ export const demoComponents = {
     States: dynamic(() =>
       import('@/demos/search-field').then((mod) => mod.States),
     ),
+    Icon: dynamic(() => import('@/demos/search-field').then((mod) => mod.Icon)),
   },
   SliderDemo: {
     Main: dynamic(() => import('@/demos/slider').then((mod) => mod.Main)),

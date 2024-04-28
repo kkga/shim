@@ -5,22 +5,30 @@ category: 'Status'
 srcFilename: 'badge'
 ---
 
-## Installation
-
-```sh
-pnpm add @badge
-```
-
 ## Usage
 
+Import the `Badge` component and pass the content as children.
+
 <Demo demo={<BadgeDemo.Main />} code={demos['main']} />
+
+---
 
 ## Examples
 
 ### Size
 
+Use the `size` prop to change the size of the badge.
+
 <Demo demo={<BadgeDemo.Size />} code={demos['size']} />
 
 ### Intent
 
+Use the `intent` prop to change the semantic color of the badge.
+
 <Demo demo={<BadgeDemo.Intent />} code={demos['intent']} />
+
+### With icons
+
+Use icons in badges to provide additional context.
+
+<Demo demo={<BadgeDemo.Icons />} code={demos['icons']} />

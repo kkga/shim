@@ -7,8 +7,9 @@ import { ClientProviders, ThemeProvider } from '@/components/providers'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
+import { useMemo } from 'react'
 import { Sidebar } from './components/sidebar'
-import { getAllDocs, getNavItems } from './docs/utils'
+import { getAllDocs } from './docs/utils'
 import { baseUrl } from './sitemap'
 
 const fontMono = localFont({
@@ -64,7 +65,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const docs = getAllDocs()
-  const navItems = getNavItems(docs)
+
+  const navItems = useMemo(() => {
+    return docs.map((doc) => ({
+      slug: doc.slug,
+      name: doc.metadata.name,
+      category: doc.metadata.category,
+    }))
+  }, [docs])
 
   return (
     <html
@@ -74,7 +82,7 @@ export default function RootLayout({
     >
       <body
         style={{ gridTemplateAreas: '"aside main"' }}
-        className="grid min-h-screen grid-cols-[minmax(auto,200px)_1fr] overflow-auto antialiased"
+        className="grid min-h-screen grid-cols-[minmax(auto,220px)_1fr] overflow-auto antialiased"
       >
         <ClientProviders>
           <ThemeProvider
@@ -85,7 +93,7 @@ export default function RootLayout({
           >
             <Sidebar items={navItems} />
 
-            <main className="overflow-scroll py-16 px-8">
+            <main className="py-16 px-8">
               <div className="mx-auto max-w-5xl">{children}</div>
             </main>
 
