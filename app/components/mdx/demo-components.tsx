@@ -1,5 +1,9 @@
 import dynamic from 'next/dynamic'
 
+export const getMainDemo = (name) => {
+  return dynamic(() => import(`@/demos/${name}`).then((mod) => mod.Main))
+}
+
 export const demoComponents = {
   BadgeDemo: {
     Main: dynamic(() => import('@/demos/badge').then((mod) => mod.Main)),

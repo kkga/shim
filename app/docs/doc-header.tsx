@@ -34,12 +34,12 @@ export function DocHeader({ metadata }: DocHeaderProps) {
 
   return (
     <header>
-      <h1 className="text-3xl font-semibold text-neutral-text-contrast">
+      <h1 className="text-4xl font-semibold text-neutral-text-contrast">
         {name}
       </h1>
       <p className="mt-4 text-neutral-text">{description}</p>
 
-      <div className="relative mt-6 mb-12 flex gap-12 pt-6 before:absolute before:top-0 before:h-px before:w-12 before:bg-neutral-border">
+      <div className="relative mt-6 flex gap-12 pt-6 before:absolute before:top-0 before:h-px before:w-12 before:bg-neutral-border">
         {docUrl && (
           <MetadataItem title="Documentation">
             <MetadataLink

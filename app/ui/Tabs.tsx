@@ -37,7 +37,7 @@ const Tabs = ({ className, orientation, ...props }: RACTabsProps) => {
 
 const tabListStyles = cva({
   base: [
-    'inline-flex gap-6 w-full items-center justify-start shadow-[inset_0_-1px_0_0_var(--color-neutral-border)]',
+    'inline-flex gap-6 w-full items-center justify-start shadow-[inset_0_-1px_0_0_var(--color-neutral-line)]',
     // horizontal
     'data-[orientation=horizontal]:flex-row',
     // vertical

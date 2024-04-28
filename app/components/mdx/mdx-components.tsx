@@ -44,51 +44,56 @@ export function Code({ children, ...props }) {
   )
 }
 
+export const H1 = (props) => (
+  <h1
+    className="text-3xl font-semibold text-neutral-text-contrast"
+    {...props}
+  />
+)
+
+export const H2 = (props) => (
+  <h2
+    className="mt-12 mb-4 text-2xl font-medium text-neutral-text-contrast"
+    {...props}
+  />
+)
+
+export const H3 = (props) => (
+  <h3
+    className="mt-10 mb-4 text-xl font-medium text-neutral-text-contrast"
+    {...props}
+  />
+)
+
+export const H4 = (props) => (
+  <h4
+    className="mt-8 mb-4 text-lg font-semibold text-neutral-text-contrast"
+    {...props}
+  />
+)
+
+export const H5 = (props) => (
+  <h5
+    className="mt-8 mb-4 text-base font-semibold text-neutral-text-contrast"
+    {...props}
+  />
+)
+
 export const mdxComponents: MDXRemoteProps['components'] = {
-  h1: (props) => (
-    <h1
-      className="text-3xl font-semibold text-neutral-text-contrast"
-      {...props}
-    />
-  ),
-  h2: (props) => (
-    <h2
-      className="mt-12 mb-4 text-2xl font-medium text-neutral-text-contrast"
-      {...props}
-    />
-  ),
-  h3: (props) => (
-    <h3
-      className="mt-10 mb-4 text-xl font-medium text-neutral-text-contrast"
-      {...props}
-    />
-  ),
-  h4: (props) => (
-    <h4
-      className="mt-8 mb-4 text-lg font-semibold text-neutral-text-contrast"
-      {...props}
-    />
-  ),
-  h5: (props) => (
-    <h5
-      className="mt-8 mb-4 text-base font-semibold text-neutral-text-contrast"
-      {...props}
-    />
-  ),
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
   h6: (props) => (
     <h6
       className="mt-8 mb-4 text-sm font-semibold text-neutral-text-contrast"
       {...props}
     />
   ),
-  p: (props) => (
-    <p className="my-4 max-w-[80ch] text-neutral-text" {...props} />
-  ),
-
+  p: (props) => <p className="my-4 max-w-[80ch]" {...props} />,
   ul: (props) => <ul className="my-4 list-inside list-disc" {...props} />,
-
   hr: (props) => <hr className="my-12 border-neutral-border" {...props} />,
-
   a: CustomLink,
   code: Code,
   pre: Pre,

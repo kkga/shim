@@ -94,7 +94,9 @@ export default function RootLayout({
             <Sidebar items={navItems} />
 
             <main className="py-16 px-8">
-              <div className="mx-auto max-w-5xl">{children}</div>
+              <div className="mx-auto max-w-5xl space-y-12 text-[15px] leading-normal">
+                {children}
+              </div>
             </main>
 
             {/* <Footer /> */}

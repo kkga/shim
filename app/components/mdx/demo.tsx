@@ -29,7 +29,7 @@ function Demo({
   return (
     <div
       className={cx(
-        'flex overflow-hidden rounded-lg border border-neutral-line',
+        'my-8 flex overflow-hidden rounded-lg border border-neutral-line',
         inline ? 'flex-col md:flex-row' : 'flex-col',
       )}
     >

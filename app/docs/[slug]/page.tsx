@@ -1,3 +1,5 @@
+import { Demo } from '@/components/mdx/demo'
+import { getMainDemo } from '@/components/mdx/demo-components'
 import { postProcess, preProcess } from '@/lib/rehype-pre-raw'
 import { mdxComponents } from 'app/components/mdx/mdx-components'
 import {
@@ -11,6 +13,7 @@ import { notFound } from 'next/navigation'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { DocHeader } from '../doc-header'
+import { InstallInstructions } from './install-instructions'
 
 export function generateMetadata({ params }) {
   const doc = getAllDocs().find((doc) => doc.slug === params.slug)
@@ -55,6 +58,7 @@ export default async function Doc({ params }) {
 
   const demos = getComponentDemos(srcFilename)
   const source = getComponentSource(srcFilename)
+  const MainDemo = getMainDemo(srcFilename)
 
   const { content } = await compileMDX({
     source: doc.content,
@@ -106,6 +110,10 @@ export default async function Doc({ params }) {
       />
 
       <DocHeader metadata={doc.metadata} />
+
+      <Demo demo={<MainDemo />} code={demos.main} />
+
+      <InstallInstructions srcFilename={srcFilename} source={source} />
 
       <article className="prose">{content}</article>
     </>

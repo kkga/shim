@@ -1,12 +1,23 @@
-'use client'
-
-import { cx } from '@/lib/utils'
+import { cx } from 'cva'
 import { CopyButton } from './copy-button'
 
-export function Pre({ raw, children, className, ...props }) {
+interface PreProps {
+  children: React.ReactNode
+  raw?: string
+  className?: string
+}
+
+export function Pre({ raw, children, className, ...props }: PreProps) {
   return (
     <pre
-      className={cx('group flex items-start overflow-scroll', className)}
+      className={cx(
+        'group flex items-start overflow-scroll p-3 pl-4',
+        'max-h-[calc(100vh-16rem)] overflow-x-auto',
+        'rounded-lg border border-neutral-line bg-neutral-bg-subtle ',
+        'font-mono text-[13px] font-[450] leading-5 text-neutral-text',
+        '[&>code]:text-[100%]',
+        className,
+      )}
       {...props}
     >
       {children}

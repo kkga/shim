@@ -25,7 +25,7 @@ function Meter({ label, description, ...props }: MeterProps) {
   return (
     <RACMeter
       {...props}
-      className={cxRenderProps(props.className, 'flex flex-col gap-2')}
+      className={cxRenderProps(props.className, 'flex w-full flex-col gap-2')}
     >
       {({ percentage, valueText }) => (
         <>
@@ -46,7 +46,7 @@ function Meter({ label, description, ...props }: MeterProps) {
             <div
               className="absolute top-0 left-0 h-full bg-accent-solid"
               style={{
-                width: percentage + '%',
+                width: `${percentage}%`,
                 backgroundColor: barColor,
               }}
             />

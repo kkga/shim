@@ -1,3 +1,5 @@
+'use client'
+
 import { Check, Copy } from '@phosphor-icons/react'
 import { Tooltip, TooltipTrigger } from '@ui/Tooltip'
 import { IconButton } from '@ui/icon-button'

@@ -3,10 +3,15 @@
 }
 
 :root {
+  --font-family-mono: var(--font-mono);
+  --font-family-sans: var(--font-sans);
+}
+
+:root {
   --sh-class: var(--color-accent-11);
   --sh-identifier: var(--color-warning-11);
   --sh-sign: var(--color-neutral-10);
-  --sh-string: var(--color-success-11);
+  --sh-string: var(--color-neutral-11);
   --sh-keyword: var(--color-neutral-11);
   --sh-comment: var(--color-neutral-9);
   --sh-jsxliterals: var(--color-neutral-11);
@@ -16,14 +21,9 @@
 
 html {
   min-width: 360px;
-  font-family: var(--font-sans);
 }
 
 .prose {
-  font-size: 15px;
-  line-height: var(--font-size-base--line-height);
-  color: var(--color-neutral-text);
-
   pre,
   ul,
   ol,
@@ -35,50 +35,25 @@ html {
     margin-top: var(--spacing-4);
     margin-bottom: var(--spacing-4);
   }
+}
 
-  code {
-    font-family: var(--font-mono);
-    font-weight: 350;
+.hash-link {
+  position: absolute;
+  visibility: hidden;
+  text-decoration: none;
+  margin-left: -1.5em;
+  padding: 0 0.5em;
+  cursor: pointer;
+
+  &:after {
+    content: '#';
+    color: var(--color-neutral-placeholder);
+    font-weight: normal;
   }
+}
 
-  pre {
-    background-color: var(--color-neutral-bg-subtle);
-    font-size: 13px;
-    line-height: 20px;
-    padding: var(--spacing-3);
-    padding-left: var(--spacing-4);
-    border: 1px solid var(--color-neutral-line);
-    border-radius: var(--radius-lg);
-    font-weight: 450;
-
-    code {
-      background-color: transparent;
-      font-size: inherit;
-      line-height: inherit;
-      padding: 0;
-    }
-  }
-
-  .hash-link {
-    position: absolute;
-    visibility: hidden;
-    text-decoration: none;
-    margin-left: -1em;
-    padding-right: 0.5em;
-    width: 80%;
-    max-width: 700px;
-    cursor: pointer;
-
-    &:after {
-      content: '#';
-      color: var(--color-neutral-placeholder);
-      font-weight: normal;
-    }
-  }
-
-  *:hover > .hash-link {
-    visibility: visible;
-  }
+*:hover > .hash-link {
+  visibility: visible;
 }
 
 pre::-webkit-scrollbar {
