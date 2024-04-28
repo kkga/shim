@@ -1,5 +1,4 @@
 import { postProcess, preProcess } from '@/lib/rehype-pre-raw'
-import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
 import { mdxComponents } from 'app/components/mdx/mdx-components'
 import {
   getAllDocs,
@@ -11,6 +10,7 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
+import { DocHeader } from '../doc-header'
 
 export function generateMetadata({ params }) {
   let doc = getAllDocs().find((doc) => doc.slug === params.slug)
@@ -103,89 +103,9 @@ export default async function Doc({ params }) {
           }),
         }}
       />
-      <h1 className="text-3xl font-semibold text-neutral-text-contrast">
-        {doc.metadata.name}
-      </h1>
-      <p className="mt-4 text-neutral-text">{doc.metadata.description}</p>
 
-      <div className="relative mt-6 mb-12 flex gap-8 pt-6 before:absolute before:top-0 before:h-px before:w-12 before:bg-neutral-border">
-        {docUrl && (
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-neutral-text">
-              Documentation
-            </span>
+      <DocHeader metadata={doc.metadata} />
 
-            <a
-              href={docUrl}
-              className="flex items-center gap-0.5 text-sm text-accent-text decoration-accent-border underline-offset-2 hover:underline"
-              rel="noreferrer"
-              target="_blank"
-              title={`View React Aria documentation`}
-            >
-              React Aria docs
-              <ArrowUpRight size={16} />
-            </a>
-          </div>
-        )}
-
-        {aria && (
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-neutral-text">
-              Pattern
-            </span>
-
-            <a
-              href={`https://www.w3.org/WAI/ARIA/apg/patterns/${aria}`}
-              className="flex items-center gap-0.5 text-sm text-accent-text decoration-accent-border underline-offset-2 hover:underline"
-              title={`View ARIA pattern`}
-              rel="noreferrer"
-              target="_blank"
-            >
-              W3C ARIA pattern
-              <ArrowUpRight size={16} />
-            </a>
-          </div>
-        )}
-
-        {composes && (
-          <div className="flex flex-col gap-2">
-            <span className="text-xs font-medium text-neutral-text">
-              Composes
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {composes.map((component) => (
-                <a
-                  key={component}
-                  href={`/docs/${component}`}
-                  className="text-sm text-accent-text decoration-accent-border underline-offset-2 hover:underline"
-                  title={`View ${component} documentation`}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  {component}
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-
-        <div className="flex flex-col gap-2">
-          <span className="text-xs font-medium text-neutral-text">
-            Source code
-          </span>
-          <div className="flex flex-wrap gap-2">
-            <a
-              href={`https://github.com/kkga/shim-ui/blob/master/app/ui/${srcFilename}.tsx`}
-              className="text-sm text-accent-text decoration-accent-border underline-offset-2 hover:underline"
-              title={`View ${srcFilename} source`}
-              rel="noreferrer"
-              target="_blank"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
       <article className="prose">{content}</article>
     </section>
   )
