@@ -1,31 +1,9 @@
-import { type MDXRemoteProps } from 'next-mdx-remote'
+import type { MDXRemoteProps } from 'next-mdx-remote'
 import Link from 'next/link'
 import { highlight } from 'sugar-high'
 import { Demo } from './demo'
 import { demoComponents } from './demo-components'
 import { Pre } from './pre'
-
-function Table({ data }) {
-  let headers = data.headers.map((header, index) => (
-    <th key={index}>{header}</th>
-  ))
-  let rows = data.rows.map((row, index) => (
-    <tr key={index}>
-      {row.map((cell, cellIndex) => (
-        <td key={cellIndex}>{cell}</td>
-      ))}
-    </tr>
-  ))
-
-  return (
-    <table>
-      <thead>
-        <tr>{headers}</tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
-  )
-}
 
 function CustomLink(props) {
   const href = props.href
@@ -56,7 +34,14 @@ function CustomLink(props) {
 
 export function Code({ children, ...props }) {
   const codeHTML = highlight(children)
-  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />
+  return (
+    <code
+      className="text-[95%]"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+      dangerouslySetInnerHTML={{ __html: codeHTML }}
+      {...props}
+    />
+  )
 }
 
 export const mdxComponents: MDXRemoteProps['components'] = {
@@ -108,7 +93,6 @@ export const mdxComponents: MDXRemoteProps['components'] = {
   code: Code,
   pre: Pre,
   Demo,
-  Table,
   ...demoComponents,
 }
 

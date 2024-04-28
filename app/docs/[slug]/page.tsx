@@ -58,6 +58,7 @@ export default async function Doc({ params }) {
 
   const { content } = await compileMDX({
     source: doc.content,
+    components: mdxComponents,
     options: {
       scope: { demos, source, docUrl, aria, composes },
       mdxOptions: {
@@ -80,7 +81,6 @@ export default async function Doc({ params }) {
         ],
       },
     },
-    components: mdxComponents,
   })
 
   return (

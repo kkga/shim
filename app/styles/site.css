@@ -42,7 +42,7 @@ html {
   }
 
   pre {
-    background-color: var(--color-accent-2);
+    background-color: var(--color-neutral-bg-subtle);
     font-size: 13px;
     line-height: 20px;
     padding: var(--spacing-3);

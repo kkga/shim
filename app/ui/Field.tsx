@@ -1,17 +1,16 @@
-import { compose, cva, cx, cxRenderProps, focusVisibleStyle } from '@lib/utils'
+import { compose, cva, cx, cxRenderProps } from '@lib/utils'
 
 import {
-  Label as RACLabel,
-  Text as RACText,
   FieldError as RACFieldError,
   Group as RACGroup,
   Input as RACInput,
-  type LabelProps,
-  type TextProps,
+  Label as RACLabel,
+  Text as RACText,
   type FieldErrorProps,
   type GroupProps,
   type InputProps,
-  composeRenderProps,
+  type LabelProps,
+  type TextProps,
 } from 'react-aria-components'
 
 const Label = (props: LabelProps) => (
@@ -21,7 +20,7 @@ const Label = (props: LabelProps) => (
       'w-fit cursor-default text-sm font-medium text-neutral-text',
       // peer/group disabled
       'group-data-[disabled]:text-neutral-placeholder peer-data-[disabled]:text-neutral-placeholder',
-      props.className
+      props.className,
     )}
   />
 )
@@ -33,7 +32,7 @@ const Description = (props: TextProps) => (
       'text-xs text-neutral-text',
       // peer/group disabled
       'group-data-[disabled]:text-neutral-placeholder peer-data-[disabled]:text-neutral-placeholder',
-      props.className
+      props.className,
     )}
     {...props}
   />
@@ -77,14 +76,21 @@ const fieldStyle = cva({
 const fieldGroupStyle = compose(
   fieldStyle,
   cva({
-    base: ['group flex items-center'],
+    base: ['group flex items-center overflow-hidden'],
     variants: {
       isFocusWithin: {
         true: 'outline-2 -outline-offset-1 outline-accent-focus-ring',
       },
     },
-  })
+  }),
 )
 
-export { Label, Description, FieldError, FieldGroup, Input }
-export { fieldGroupStyle, fieldStyle }
+export {
+  Description,
+  FieldError,
+  FieldGroup,
+  Input,
+  Label,
+  fieldGroupStyle,
+  fieldStyle,
+}

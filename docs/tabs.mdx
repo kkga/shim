@@ -1,10 +1,25 @@
 ---
 name: Tabs
-description: Tabs are used to organize content across different screens, data sets, and other interactions.
+description: Navigate between different sections of content.
 category: Navigation
-preview: tabs
+srcFilename: tabs
+aria: tabs
+docUrl: 'https://react-spectrum.adobe.com/react-aria/Tabs.html'
 ---
 
-import { TabsDemo } from "@/components/demos/tabs";
+## Usage
 
-<TabsDemo client:load />
+Import `Tabs`, `TabList`, `Tab`, and `TabPanel` components and use them to
+create a tabbed interface.
+
+<Demo demo={<TabsDemo.Main />} code={demos.main} />
+
+---
+
+## Examples
+
+### Controlled selection
+
+Use `selectedKey` and `onSelectionChange` props to control the selected tab.
+
+<Demo demo={<TabsDemo.Controlled />} code={demos.controlled} />

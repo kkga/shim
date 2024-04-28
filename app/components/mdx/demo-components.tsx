@@ -83,4 +83,11 @@ export const demoComponents = {
       import('@/demos/slider').then((mod) => mod.Orientation),
     ),
   },
+
+  TabsDemo: {
+    Main: dynamic(() => import('@/demos/tabs').then((mod) => mod.Main)),
+    Controlled: dynamic(() =>
+      import('@/demos/tabs').then((mod) => mod.Controlled),
+    ),
+  },
 }

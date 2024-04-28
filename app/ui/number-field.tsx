@@ -67,11 +67,11 @@ function NumberField({
                 'flex flex-col self-stretch border-s border-neutral-border group-data-[disabled]:border-neutral-line group-data-[invalid]:border-error-border',
               )}
             >
-              <StepperButton slot="increment" className="rounded-tr">
+              <StepperButton slot="increment">
                 <CaretUp aria-hidden size={10} weight="bold" />
               </StepperButton>
               <div className="h-px bg-neutral-border group-data-[disabled]:bg-neutral-line group-data-[invalid]:bg-error-border" />
-              <StepperButton slot="decrement" className="rounded-br">
+              <StepperButton slot="decrement">
                 <CaretDown aria-hidden size={10} weight="bold" />
               </StepperButton>
             </div>
@@ -89,7 +89,7 @@ function StepperButton({ className, ...props }: ButtonProps) {
     <Button
       {...props}
       className={cx(
-        'flex flex-1 cursor-default items-center justify-center px-1.5 text-neutral-text',
+        'flex flex-1 cursor-default items-center justify-center bg-neutral-base px-1.5 text-neutral-text',
         // hovered
         'data-[hovered]:bg-neutral-bg-hover',
         // pressed
