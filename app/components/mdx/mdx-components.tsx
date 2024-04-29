@@ -96,6 +96,9 @@ export const mdxComponents: MDXRemoteProps['components'] = {
   p: P,
   ul: (props) => <ul className="my-4 list-inside list-disc" {...props} />,
   hr: (props) => <hr className="my-12 border-neutral-border" {...props} />,
+  em: (props) => (
+    <em className="italic text-neutral-text-contrast" {...props} />
+  ),
   a: CustomLink,
   code: Code,
   pre: Pre,

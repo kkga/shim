@@ -77,7 +77,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontMono.variable} ${fontSans.variable} bg-neutral-base text-neutral-text`}
+      className={`${fontMono.variable} ${fontSans.variable} bg-neutral-bg-subtle text-neutral-text`}
       suppressHydrationWarning
     >
       <body
@@ -94,7 +94,9 @@ export default function RootLayout({
             <Sidebar items={navItems} />
 
             <main className="py-16 px-8">
-              <div className="mx-auto max-w-4xl text-base">{children}</div>
+              <div className="mx-auto max-w-4xl text-[15px] leading-6 [&_.s-box]:-mx-4">
+                {children}
+              </div>
             </main>
 
             <Analytics />

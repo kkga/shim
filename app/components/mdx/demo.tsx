@@ -29,7 +29,8 @@ function Demo({
   return (
     <div
       className={cx(
-        'my-8 flex items-start overflow-hidden rounded-sm bg-neutral-bg-subtle ring shadow-sm ring-neutral-solid/15',
+        's-box',
+        'my-8 flex overflow-hidden rounded-xl bg-neutral-base ring shadow-sm ring-neutral-solid/20',
         inline ? 'flex-col md:flex-row' : 'flex-col',
       )}
     >
@@ -45,7 +46,7 @@ function Demo({
       {code && (
         <div
           className={cx(
-            'flex flex-col overflow-auto border-neutral-solid/10',
+            'flex flex-col overflow-auto border-neutral-4',
             inline ? 'flex-3 border-l' : 'border-t',
           )}
         >

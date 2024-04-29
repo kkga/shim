@@ -1,6 +1,6 @@
 'use client'
 
-import { Code, H3, P } from '@/components/mdx/mdx-components'
+import { Code } from '@/components/mdx/mdx-components'
 import { Pre } from '@/components/mdx/pre'
 import { Code as CodeIcon, Terminal } from '@phosphor-icons/react'
 import { Tab, TabList, TabPanel, Tabs } from '@ui/tabs'
@@ -17,15 +17,9 @@ export function InstallInstructions({
   const curlCommand = `curl -O 'https://raw.githubusercontent.com/kkga/shim-ui/master/app/ui/${srcFilename}.tsx'`
 
   return (
-    <section>
-      <H3>Get the component</H3>
-      <P>
-        Run cURL command to download the component file or copy the source code
-        below.
-      </P>
-
-      <Tabs className="my-8 gap-0 overflow-hidden rounded-sm bg-neutral-bg-subtle ring shadow-sm ring-neutral-solid/15">
-        <TabList className="gap-4 px-4 shadow-neutral-solid/10">
+    <>
+      <Tabs className="s-box my-8 gap-0 overflow-hidden rounded-xl bg-neutral-bg-subtle p-0 ring shadow-sm ring-neutral-solid/20">
+        <TabList className="gap-4 px-4 shadow-neutral-4">
           <Tab id="curl" className="border-y-1">
             <Terminal size={16} weight="duotone" />
             cURL
@@ -47,6 +41,6 @@ export function InstallInstructions({
           </Pre>
         </TabPanel>
       </Tabs>
-    </section>
+    </>
   )
 }

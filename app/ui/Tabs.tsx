@@ -14,7 +14,7 @@ import {
 } from 'react-aria-components'
 
 const tabsStyles = cva({
-  base: 'flex gap-4 w-full',
+  base: 'flex gap-4',
   variants: {
     orientation: {
       horizontal: 'flex-col',
