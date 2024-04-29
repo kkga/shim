@@ -55,15 +55,15 @@ html {
 *:hover > .hash-link {
   visibility: visible;
 }
-
+/* 
 pre::-webkit-scrollbar {
   display: none;
 }
 
 pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
 
 /* Remove Safari input shadow on mobile */
 input[type='text'],

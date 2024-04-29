@@ -3,11 +3,11 @@ import { Slider } from '@ui/slider'
 import { useState } from 'react'
 
 export default () => {
-  const [value, setValue] = useState(73)
+  const [value, setValue] = useState<number | number[]>(73)
 
   return (
     <>
-      <Slider label="Randomness" value={value} onChange={setValue} />
+      <Slider label='Randomness' value={value} onChange={setValue} />
       <p>Value: {value}</p>
     </>
   )

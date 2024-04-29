@@ -53,14 +53,14 @@ export const H1 = (props) => (
 
 export const H2 = (props) => (
   <h2
-    className="mt-12 mb-4 text-2xl font-medium leading-tight text-neutral-text-contrast"
+    className="mt-12 mb-3 text-2xl font-medium leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
 
 export const H3 = (props) => (
   <h3
-    className="mt-12 mb-2 text-xl font-medium leading-tight text-neutral-text-contrast"
+    className="mt-12 mb-2 text-lg font-medium leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
@@ -79,7 +79,7 @@ export const H5 = (props) => (
   />
 )
 
-export const P = (props) => <p className="mb-3 max-w-[72ch]" {...props} />
+export const P = (props) => <p className="mb-4 max-w-[72ch]" {...props} />
 
 export const mdxComponents: MDXRemoteProps['components'] = {
   h1: H1,

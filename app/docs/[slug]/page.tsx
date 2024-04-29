@@ -1,7 +1,7 @@
 import { Demo } from '@/components/mdx/demo'
 import { getMainDemo } from '@/components/mdx/demo-components'
 import { postProcess, preProcess } from '@/lib/rehype-pre-raw'
-import { mdxComponents } from 'app/components/mdx/mdx-components'
+import { H3, mdxComponents } from 'app/components/mdx/mdx-components'
 import {
   getAllDocs,
   getComponentDemos,
@@ -111,6 +111,7 @@ export default async function Doc({ params }) {
 
       <DocHeader metadata={doc.metadata} />
 
+      <H3>Basic usage</H3>
       <Demo demo={<MainDemo />} code={demos.main} />
 
       <InstallInstructions srcFilename={srcFilename} source={source} />

@@ -1,19 +1,20 @@
-import { compose, cva, cx, cxRenderProps } from "@lib/utils";
+'use client'
+
+import { compose, cva, cx } from '@lib/utils'
 import {
   TextField as RACTextField,
-  composeRenderProps,
   type TextFieldProps as RACTextFieldProps,
   type ValidationResult,
-} from "react-aria-components";
+} from 'react-aria-components'
 
-import { Description, FieldError, Input, Label, fieldStyle } from "./Field";
+import { Description, FieldError, Input, Label, fieldStyle } from './Field'
 
 interface TextFieldProps extends RACTextFieldProps {
-  label?: string;
-  description?: string;
-  errorMessage?: string | ((validation: ValidationResult) => string);
-  placeholder?: string;
-  size?: 1 | 2;
+  label?: string
+  description?: string
+  errorMessage?: string | ((validation: ValidationResult) => string)
+  placeholder?: string
+  size?: 1 | 2
 }
 
 const inputStyles = compose(
@@ -21,12 +22,12 @@ const inputStyles = compose(
   cva({
     variants: {
       size: {
-        1: "h-6 px-2",
-        2: "h-8 px-3",
+        1: 'h-6 px-2',
+        2: 'h-8 px-3',
       },
     },
-  })
-);
+  }),
+)
 
 const TextField = ({
   label,
@@ -40,7 +41,7 @@ const TextField = ({
   return (
     <RACTextField
       {...props}
-      className={cx(className, "group flex min-w-10 flex-col gap-1.5")}
+      className={cx(className, 'group flex min-w-10 flex-col gap-1.5')}
     >
       {label && <Label>{label}</Label>}
       <Input
@@ -50,7 +51,7 @@ const TextField = ({
       {description && <Description>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </RACTextField>
-  );
-};
+  )
+}
 
-export { TextField, type TextFieldProps };
+export { TextField, type TextFieldProps }

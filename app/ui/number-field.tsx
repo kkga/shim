@@ -54,7 +54,7 @@ function NumberField({
       <FieldGroup
         className={(renderProps) => groupStyles({ size, ...renderProps })}
       >
-        {(renderProps) => (
+        {() => (
           <>
             <Input
               className={cx(
@@ -89,7 +89,7 @@ function StepperButton({ className, ...props }: ButtonProps) {
     <Button
       {...props}
       className={cx(
-        'flex flex-1 cursor-default items-center justify-center bg-neutral-base px-1.5 text-neutral-text',
+        'flex flex-1 cursor-default items-center justify-center bg-neutral-bg px-1.5 text-neutral-text',
         // hovered
         'data-[hovered]:bg-neutral-bg-hover',
         // pressed
