@@ -33,8 +33,8 @@ export function DocHeader({ metadata }: DocHeaderProps) {
   const { name, description, srcFilename, docUrl, aria, composes } = metadata
 
   return (
-    <header>
-      <h1 className="text-4xl font-semibold text-neutral-text-contrast">
+    <header className="mb-16">
+      <h1 className="text-3xl font-medium text-neutral-text-contrast">
         {name}
       </h1>
       <p className="mt-4 text-neutral-text">{description}</p>

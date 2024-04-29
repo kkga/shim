@@ -46,21 +46,21 @@ export function Code({ children, ...props }) {
 
 export const H1 = (props) => (
   <h1
-    className="text-3xl font-semibold text-neutral-text-contrast"
+    className="text-3xl font-semibold leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
 
 export const H2 = (props) => (
   <h2
-    className="mt-12 mb-4 text-2xl font-medium text-neutral-text-contrast"
+    className="mt-12 mb-4 text-2xl font-medium leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
 
 export const H3 = (props) => (
   <h3
-    className="mt-10 mb-4 text-xl font-medium text-neutral-text-contrast"
+    className="mt-12 mb-2 text-xl font-medium leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
@@ -79,6 +79,8 @@ export const H5 = (props) => (
   />
 )
 
+export const P = (props) => <p className="mb-3 max-w-[72ch]" {...props} />
+
 export const mdxComponents: MDXRemoteProps['components'] = {
   h1: H1,
   h2: H2,
@@ -91,7 +93,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
       {...props}
     />
   ),
-  p: (props) => <p className="my-4 max-w-[80ch]" {...props} />,
+  p: P,
   ul: (props) => <ul className="my-4 list-inside list-disc" {...props} />,
   hr: (props) => <hr className="my-12 border-neutral-border" {...props} />,
   a: CustomLink,

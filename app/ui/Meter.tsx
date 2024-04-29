@@ -25,7 +25,7 @@ function Meter({ label, description, ...props }: MeterProps) {
   return (
     <RACMeter
       {...props}
-      className={cxRenderProps(props.className, 'flex w-full flex-col gap-2')}
+      className={cxRenderProps(props.className, 'flex w-full flex-col gap-1.5')}
     >
       {({ percentage, valueText }) => (
         <>
@@ -42,14 +42,16 @@ function Meter({ label, description, ...props }: MeterProps) {
               {valueText}
             </span>
           </div>
-          <div className="relative h-1.5 w-full overflow-hidden rounded-[2px] bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
-            <div
-              className="absolute top-0 left-0 h-full bg-accent-solid"
-              style={{
-                width: `${percentage}%`,
-                backgroundColor: barColor,
-              }}
-            />
+          <div className="flex h-4 items-center">
+            <div className="relative h-1.5 w-full overflow-hidden rounded-[2px] bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
+              <div
+                className="absolute top-0 left-0 h-full bg-accent-solid"
+                style={{
+                  width: `${percentage}%`,
+                  backgroundColor: barColor,
+                }}
+              />
+            </div>
           </div>
           {description && <Description>{description}</Description>}
         </>
