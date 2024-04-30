@@ -1,34 +1,34 @@
 import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpLeft } from '@phosphor-icons/react/dist/ssr'
-import { IconButton } from '@ui/icon-button'
+import { Button } from '@ui/button'
 import { Popover, PopoverTrigger } from '@ui/popover'
 
 export default () => (
   <>
     <PopoverTrigger>
-      <IconButton>
+      <Button square>
         <ArrowUpLeft size={16} />
-      </IconButton>
+      </Button>
       <Popover placement='left bottom'>Left bottom</Popover>
     </PopoverTrigger>
 
     <PopoverTrigger>
-      <IconButton>
+      <Button square>
         <ArrowLeft size={16} />
-      </IconButton>
+      </Button>
       <Popover placement='left'>Left</Popover>
     </PopoverTrigger>
 
     <PopoverTrigger>
-      <IconButton>
+      <Button square>
         <ArrowRight size={16} />
-      </IconButton>
+      </Button>
       <Popover placement='right'>Right</Popover>
     </PopoverTrigger>
 
     <PopoverTrigger>
-      <IconButton>
+      <Button square>
         <ArrowDownRight size={16} />
-      </IconButton>
+      </Button>
       <Popover placement='right top'>Right top</Popover>
     </PopoverTrigger>
   </>

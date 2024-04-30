@@ -23,16 +23,9 @@ export const demoComponents = {
     Size: dynamic(() => import('@/demos/button').then((mod) => mod.Size)),
     Intent: dynamic(() => import('@/demos/button').then((mod) => mod.Intent)),
     Icons: dynamic(() => import('@/demos/button').then((mod) => mod.Icons)),
-  },
-  IconButtonDemo: {
-    Main: dynamic(() => import('@/demos/icon-button').then((mod) => mod.Main)),
-    Intent: dynamic(() =>
-      import('@/demos/icon-button').then((mod) => mod.Intent),
+    IconOnly: dynamic(() =>
+      import('@/demos/button').then((mod) => mod.IconOnly),
     ),
-    Variant: dynamic(() =>
-      import('@/demos/icon-button').then((mod) => mod.Variant),
-    ),
-    Size: dynamic(() => import('@/demos/icon-button').then((mod) => mod.Size)),
   },
   ToggleButtonDemo: {
     Main: dynamic(() =>

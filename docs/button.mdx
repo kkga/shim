@@ -30,3 +30,11 @@ Use the _variant_ prop to set the visual style.
 Use buttons with icons to provide additional context.
 
 <Demo demo={<ButtonDemo.Icons />} code={demos['icons']} />
+
+### With icons only
+
+When using buttons with icons only, use the _square_ prop to ensure correct
+aspect ratio. In this case, it is recommended to provide an _aria-label_ for
+screen readers.
+
+<Demo demo={<ButtonDemo.IconOnly />} code={demos['icon-only']} />

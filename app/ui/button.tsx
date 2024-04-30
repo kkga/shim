@@ -27,16 +27,33 @@ const buttonStyle = cva({
       solid: 'text-white',
       ghost: 'bg-transparent',
     },
-    intent: Intents.reduce((acc, intent) => {
-      acc[intent] = ''
-      return acc
-    }, {} as Record<Intent, string>),
+    intent: Intents.reduce(
+      (acc, intent) => {
+        acc[intent] = ''
+        return acc
+      },
+      {} as Record<Intent, string>,
+    ),
     size: {
       1: 'text-sm h-6 px-2 rounded-md gap-1.5',
       2: 'text-sm h-8 px-2 rounded-md gap-2',
     },
+    square: {
+      true: '',
+      false: '',
+    },
   },
   compoundVariants: [
+    {
+      size: 1,
+      square: [true],
+      className: 'size-6 p-0',
+    },
+    {
+      size: 2,
+      square: [true],
+      className: 'size-8 p-0',
+    },
     {
       intent: 'neutral',
       variant: 'soft',
@@ -148,10 +165,14 @@ const Button = ({
   variant,
   intent,
   size,
+  square,
   ...props
 }: ButtonProps) => (
   <RACButton
-    className={cxRenderProps(className, styles({ variant, intent, size }))}
+    className={cxRenderProps(
+      className,
+      styles({ variant, intent, size, square }),
+    )}
     {...props}
   />
 )

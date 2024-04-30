@@ -2,7 +2,7 @@
 
 import { Check, Copy } from '@phosphor-icons/react'
 import { Tooltip, TooltipTrigger } from '@ui/Tooltip'
-import { IconButton } from '@ui/icon-button'
+import { Button } from '@ui/button'
 import { useEffect, useState } from 'react'
 import { useCopyToClipboard } from 'usehooks-ts'
 
@@ -40,7 +40,8 @@ function CopyButton({ children, text, title, className }: CopyButtonProps) {
 
   return (
     <TooltipTrigger delay={500}>
-      <IconButton
+      <Button
+        square
         onPress={handleCopy}
         intent={justCopied ? 'success' : 'neutral'}
         className={className}
@@ -50,7 +51,7 @@ function CopyButton({ children, text, title, className }: CopyButtonProps) {
         : children ?
           children
         : <Copy weight="duotone" size={16} />}
-      </IconButton>
+      </Button>
       <Tooltip>{title || 'Copy to clipboard'}</Tooltip>
     </TooltipTrigger>
   )

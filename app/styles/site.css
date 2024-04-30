@@ -16,8 +16,18 @@
   --sh-property: var(--color-neutral-11);
   --sh-entity: var(--color-neutral-12);
 
-  --sidebar-width: 240px;
+  --sidebar-width: 280px;
+
+  --color-bg-body: var(--color-neutral-1);
+  --color-bg-panel: var(--color-neutral-2);
 }
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-body: var(--color-neutral-9);
+    --color-bg-panel: var(--color-neutral-8);
+  }
+} */
 
 html {
   min-width: 360px;

@@ -81,7 +81,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fontMono.variable} ${fontSans.variable}`}
     >
-      <body className="bg-neutral-bg-subtle text-neutral-text antialiased dark:bg-neutral-base">
+      <body className="bg-[var(--color-bg-body)] text-neutral-text antialiased">
         <ClientProviders>
           <ThemeProvider
             attribute="class"

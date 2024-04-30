@@ -1,6 +1,13 @@
 'use client'
 
-import { SearchField } from '@ui/search-field'
+import {
+  Cards,
+  CursorClick,
+  List,
+  Path,
+  Textbox,
+  WarningDiamond,
+} from '@phosphor-icons/react'
 import { cx } from 'cva'
 import { usePathname } from 'next/navigation'
 import { useMemo, useState } from 'react'
@@ -44,6 +51,15 @@ const filterItems = (items: NavItem[], filter?: string) => {
   )
 }
 
+const categoryIcons: Record<string, React.ReactNode> = {
+  Overlays: <Cards weight="duotone" size={16} />,
+  Forms: <Textbox weight="duotone" size={16} />,
+  Status: <WarningDiamond weight="duotone" size={16} />,
+  Buttons: <CursorClick weight="duotone" size={16} />,
+  Pickers: <List weight="duotone" size={16} />,
+  Navigation: <Path weight="duotone" size={16} />,
+}
+
 export function Navigation({ items }: { items: NavItem[] }) {
   const pathname = usePathname()
   const [filter, setFilter] = useState('')
@@ -65,32 +81,31 @@ export function Navigation({ items }: { items: NavItem[] }) {
 
   return (
     <>
-      <div className="flex justify-start">
-        <SearchField
-          aria-label="Filter navigation items"
-          prefixIcon={null}
-          placeholder="Filter"
-          value={filter}
-          onChange={setFilter}
-          onClear={() => setFilter('')}
-          className="w-full"
-        />
-      </div>
+      {/* <SearchField
+        aria-label="Filter navigation items"
+        prefixIcon={null}
+        placeholder="Filter"
+        value={filter}
+        onChange={setFilter}
+        onClear={() => setFilter('')}
+        className="w-full"
+      /> */}
 
       <nav
-        className="grow overflow-scroll py-6"
+        className="grow overflow-y-scroll py-5"
         style={{
           maskImage:
-            'linear-gradient(transparent, black 5%, black 95%, transparent)',
+            'linear-gradient(transparent, black 2rem, black calc(100% - 2rem), transparent)',
         }}
       >
         <ListBox
           key={`${items.length}-${filter}`}
           selectionMode="single"
           aria-label="Navigation"
-          className="flex flex-col gap-3"
+          className="flex flex-col gap-6"
           items={sections}
           selectedKeys={[pathname]}
+          layout="grid"
           renderEmptyState={() => (
             <p className="text-center text-sm text-neutral-placeholder">
               Nothing found
@@ -98,9 +113,11 @@ export function Navigation({ items }: { items: NavItem[] }) {
           )}
         >
           {({ section, items }) => (
-            <Section id={section} className="flex flex-col gap-px">
-              <Header className="flex h-6 items-center px-2 text-sm font-medium text-neutral-text-contrast">
+            <Section id={section} className="grid grid-cols-2 gap-1">
+              <Header className="col-span-full flex h-6 items-center gap-1.5  text-xs font-medium text-neutral-9">
+                {categoryIcons[section]}
                 {section}
+                <div className="h-px grow bg-neutral-4"></div>
               </Header>
               <Collection items={items}>
                 {({ slug, name }) => (
@@ -109,7 +126,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
                     id={`/docs/${slug}`}
                     href={`/docs/${slug}`}
                     className={cx(
-                      'flex h-6 items-center rounded-md px-2 text-sm text-neutral-text',
+                      'flex h-6 items-center rounded-md px-2 text-sm text-neutral-text-contrast',
                       '-outline-offset-1 outline-accent-focus-ring focus:outline-1',
                       'hover:bg-accent-bg-hover',
                       'data-[selected]:bg-accent-bg-active data-[selected]:text-accent-text-contrast',
