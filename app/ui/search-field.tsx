@@ -16,7 +16,7 @@ import {
   Input,
   Label,
   fieldGroupStyle,
-} from './Field'
+} from './field'
 
 interface SearchFieldProps extends RACSearchFieldProps {
   label?: string
@@ -32,8 +32,8 @@ const groupStyles = compose(
   cva({
     variants: {
       size: {
-        1: 'h-6 px-px',
-        2: 'h-8 px-[3px]',
+        1: 'h-6 px-px gap-0.5',
+        2: 'h-8 px-[3px] gap-1',
       },
     },
   }),

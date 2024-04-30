@@ -11,7 +11,7 @@ import {
 
 import { compose, cva, cxRenderProps, focusVisibleStyle } from '@lib/utils'
 
-import { Description, FieldError, Label } from './Field'
+import { Description, FieldError, Label } from './field'
 
 interface RadioGroupProps extends Omit<RACRadioGroupProps, 'children'> {
   label?: string

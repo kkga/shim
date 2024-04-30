@@ -6,7 +6,7 @@ import {
   Meter as RACMeter,
   type MeterProps as RACMeterProps,
 } from 'react-aria-components'
-import { Description, Label } from './Field'
+import { Description, Label } from './field'
 
 interface MeterProps extends RACMeterProps {
   label?: string

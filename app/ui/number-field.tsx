@@ -17,7 +17,7 @@ import {
   Input,
   Label,
   fieldGroupStyle,
-} from './Field'
+} from './field'
 
 interface NumberFieldProps extends RACNumberFieldProps {
   label?: string

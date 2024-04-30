@@ -14,7 +14,7 @@ import {
 
 import { compose, cva, cx, cxRenderProps, focusVisibleStyle } from '@lib/utils'
 
-import { Description, FieldError, Label } from './Field'
+import { Description, FieldError, Label } from './field'
 
 interface CheckboxGroupProps extends Omit<RACCheckboxGroupProps, 'children'> {
   label?: string
@@ -81,7 +81,7 @@ const boxStyles = compose(
     defaultVariants: {
       size: 1,
     },
-  })
+  }),
 )
 
 interface CheckboxProps
@@ -105,14 +105,14 @@ function Checkbox({ className, size, children, ...props }: CheckboxProps) {
                 isSelected: isSelected || isIndeterminate,
                 size,
                 ...renderProps,
-              })
+              }),
             )}
           >
-            {isIndeterminate ? (
+            {isIndeterminate ?
               <Minus size={16} />
-            ) : isSelected ? (
+            : isSelected ?
               <Check size={16} weight="bold" />
-            ) : null}
+            : null}
           </div>
           {children}
         </>

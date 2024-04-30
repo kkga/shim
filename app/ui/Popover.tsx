@@ -1,23 +1,26 @@
+'use client'
+
 import {
+  Dialog as RACDialog,
   DialogTrigger as RACDialogTrigger,
   Popover as RACPopover,
+  composeRenderProps,
   type PopoverProps as RACPopoverProps,
-  Dialog as RACDialog,
-} from "react-aria-components";
+} from 'react-aria-components'
 
-import { animateMountStyle, compose, cva, cxRenderProps } from "@lib/utils";
+import { animateMountStyle, compose, cva } from '@lib/utils'
 
-const PopoverTrigger = RACDialogTrigger;
+const PopoverTrigger = RACDialogTrigger
 
 const styles = compose(
   animateMountStyle,
   cva({
-    base: "z-50 min-w-56 overflow-y-auto rounded-lg bg-neutral-bg-subtle p-2 text-neutral-text ring shadow-lg ring-neutral-solid/20 outline-none",
-  })
-);
+    base: 'z-50 rounded-lg bg-neutral-bg-subtle p-4 text-neutral-text text-sm ring shadow-lg ring-neutral-solid/15 outline-none',
+  }),
+)
 
-interface PopoverProps extends Omit<RACPopoverProps, "children"> {
-  children: React.ReactNode;
+interface PopoverProps extends Omit<RACPopoverProps, 'children'> {
+  children: React.ReactNode
 }
 
 const Popover = ({
@@ -27,12 +30,14 @@ const Popover = ({
   ...props
 }: PopoverProps) => (
   <RACPopover
-    {...props}
     offset={offset}
-    className={cxRenderProps(className, styles())}
+    className={composeRenderProps(className, (className, values) =>
+      styles({ ...values, className }),
+    )}
+    {...props}
   >
     <RACDialog className="outline-none">{children}</RACDialog>
   </RACPopover>
-);
+)
 
-export { Popover, PopoverTrigger, type PopoverProps };
+export { Popover, PopoverTrigger, type PopoverProps }

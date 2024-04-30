@@ -8,7 +8,7 @@ import {
   SliderTrack,
   type SliderProps as RACSliderProps,
 } from 'react-aria-components'
-import { Description, Label } from './Field'
+import { Description, Label } from './field'
 
 const trackStyles = cva({
   base: 'rounded-[2px] ring ring-neutral-solid/20 ring-inset',
@@ -60,21 +60,22 @@ function Slider<T extends number | number[]>({
       {...props}
       className={cxRenderProps(
         props.className,
-        'group grid-cols-[1fr_auto] flex-col items-center gap-2 data-[orientation=horizontal]:grid data-[orientation=vertical]:flex',
+        'group grid-cols-[1fr_auto] flex-col items-center gap-2 data-[orientation=vertical]:flex data-[orientation=horizontal]:grid',
       )}
     >
       <Label>{label}</Label>
       <SliderOutput className="text-sm tabular-nums text-neutral-text group-data-[disabled]:text-neutral-placeholder data-[orientation=vertical]:hidden">
         {({ state }) =>
-          state.values.map((_, i) => state.getThumbValueLabel(i)).join(' – ')
+          state.values.map((_, i) => state.getThumbValueLabel(i)).join('–')
         }
       </SliderOutput>
-      <SliderTrack className="group col-span-2 flex items-center data-[orientation=horizontal]:h-4 data-[orientation=vertical]:h-64 data-[orientation=vertical]:w-4">
+      <SliderTrack className="group col-span-2 flex items-center data-[orientation=vertical]:h-64 data-[orientation=vertical]:w-4 data-[orientation=horizontal]:h-4">
         {({ state, ...renderProps }) => (
           <>
             <div className={trackStyles(renderProps)} />
             {state.values.map((_, i) => (
               <SliderThumb
+                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                 key={i}
                 index={i}
                 aria-label={thumbLabels?.[i]}

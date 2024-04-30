@@ -1,3 +1,4 @@
+'use client'
 import { compose, cva, cx, cxRenderProps } from '@lib/utils'
 
 import {
@@ -6,10 +7,12 @@ import {
   Input as RACInput,
   Label as RACLabel,
   Text as RACText,
+  TextArea as RACTextArea,
   type FieldErrorProps,
   type GroupProps,
   type InputProps,
   type LabelProps,
+  type TextAreaProps as TextAreaInputProps,
   type TextProps,
 } from 'react-aria-components'
 
@@ -53,9 +56,13 @@ const Input = (props: InputProps) => {
   return <RACInput {...props} className={cxRenderProps(props.className)} />
 }
 
+const TextAreaInput = (props: TextAreaInputProps) => {
+  return <RACTextArea {...props} className={cxRenderProps(props.className)} />
+}
+
 const fieldStyle = cva({
   base: [
-    'rounded-md border border-neutral-border text-xs shadow-inner bg-neutral-bg-subtle',
+    'rounded-md border border-neutral-border text-sm shadow-inner bg-neutral-bg-subtle',
   ],
   variants: {
     isDisabled: {
@@ -91,6 +98,7 @@ export {
   FieldGroup,
   Input,
   Label,
+  TextAreaInput,
   fieldGroupStyle,
   fieldStyle,
 }
