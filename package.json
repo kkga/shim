@@ -49,9 +49,6 @@
       {
         "files": "./app/demos/**/*.tsx",
         "options": {
-          "arrowParens": "avoid",
-          "semi": false,
-          "singleQuote": true,
           "printWidth": 100,
           "jsxSingleQuote": true
         }
