@@ -23,16 +23,19 @@ export const Intents = [
 export type Intent = (typeof Intents)[number]
 
 export const animateMountStyle = cva({
-  base: [
-    // placement bottom
-    'data-[entering]:data-[placement=bottom]:animate-[fade-in_150ms,slide-from-bottom_150ms]',
-    // placement top
-    'data-[entering]:data-[placement=top]:animate-[fade-in_150ms,slide-from-top_150ms]',
-    // placement right
-    'data-[entering]:data-[placement=right]:animate-[fade-in_150ms,slide-from-right_150ms]',
-    // placement left
-    'data-[entering]:data-[placement=left]:animate-[fade-in_150ms,slide-from-left_150ms]',
-  ],
+  variants: {
+    placement: {
+      bottom: 'animate-[fade-in_150ms,slide-from-bottom_150ms]',
+      top: 'animate-[fade-in_150ms,slide-from-top_150ms]',
+      right: 'animate-[fade-in_150ms,slide-from-right_150ms]',
+      left: 'animate-[fade-in_150ms,slide-from-left_150ms]',
+      center: 'animate-[fade-in_150ms]',
+    },
+    isExiting: {
+      true: 'animate-[fade-out_150ms]',
+      false: '',
+    },
+  },
 })
 
 export const focusVisibleStyle = cva({
