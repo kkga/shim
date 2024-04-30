@@ -13,7 +13,8 @@ import { getAllDocs } from './docs/utils'
 import { baseUrl } from './sitemap'
 
 const fontMono = localFont({
-  src: '_fonts/CommitMonoVariable.woff2',
+  // src: '_fonts/CommitMonoVariable.woff2',
+  src: '_fonts/JetbrainsMono-Regular.woff2',
   variable: '--font-mono',
 })
 
@@ -77,13 +78,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontMono.variable} ${fontSans.variable} bg-neutral-bg-subtle text-neutral-text`}
       suppressHydrationWarning
+      className={`${fontMono.variable} ${fontSans.variable}`}
     >
-      <body
-        style={{ gridTemplateAreas: '"aside main"' }}
-        className="grid min-h-screen grid-cols-[minmax(auto,220px)_1fr] overflow-auto antialiased"
-      >
+      <body className="bg-neutral-bg-subtle text-neutral-text antialiased dark:bg-neutral-base">
         <ClientProviders>
           <ThemeProvider
             attribute="class"
@@ -91,13 +89,18 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Sidebar items={navItems} />
+            <div
+              style={{ gridTemplateAreas: '"sidebar main"' }}
+              className="grid min-h-screen grid-cols-[minmax(auto,var(--sidebar-width))_1fr]"
+            >
+              <Sidebar items={navItems} />
 
-            <main className="py-16 px-8">
-              <div className="mx-auto max-w-4xl text-[15px] leading-6 [&_.s-box]:-mx-4">
-                {children}
-              </div>
-            </main>
+              <main className="py-16 px-8">
+                <div className="mx-auto max-w-4xl text-[15px] leading-6 [&_.s-box]:-mx-4">
+                  {children}
+                </div>
+              </main>
+            </div>
 
             <Analytics />
             <SpeedInsights />
