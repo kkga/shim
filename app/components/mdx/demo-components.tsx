@@ -69,7 +69,9 @@ export const demoComponents = {
     States: dynamic(() =>
       import('@/demos/search-field').then((mod) => mod.States),
     ),
-    Icon: dynamic(() => import('@/demos/search-field').then((mod) => mod.Icon)),
+    PrefixIcon: dynamic(() =>
+      import('@/demos/search-field').then((mod) => mod.PrefixIcon),
+    ),
   },
   SliderDemo: {
     Main: dynamic(() => import('@/demos/slider').then((mod) => mod.Main)),

@@ -3,6 +3,7 @@
 import {
   Cards,
   CursorClick,
+  HouseSimple,
   List,
   Path,
   Textbox,
@@ -52,6 +53,7 @@ const filterItems = (items: NavItem[], filter?: string) => {
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {
+  Intro: <HouseSimple weight="duotone" size={16} />,
   Overlays: <Cards weight="duotone" size={16} />,
   Forms: <Textbox weight="duotone" size={16} />,
   Status: <WarningDiamond weight="duotone" size={16} />,

@@ -1,36 +1,15 @@
 import './styles/base.css'
 import './styles/site.css'
 
-import localFont from 'next/font/local'
-
 import { ClientProviders, ThemeProvider } from '@/components/providers'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata } from 'next'
 import { useMemo } from 'react'
+import { fontMono, fontSans } from './_fonts'
 import { Sidebar } from './components/sidebar'
 import { getAllDocs } from './docs/utils'
 import { baseUrl } from './sitemap'
-
-const fontMono = localFont({
-  // src: '_fonts/CommitMonoVariable.woff2',
-  src: '_fonts/JetbrainsMono-Regular.woff2',
-  variable: '--font-mono',
-})
-
-const fontSans = localFont({
-  src: [
-    {
-      path: '_fonts/InterVariable.woff2',
-      style: 'normal',
-    },
-    {
-      path: '_fonts/InterVariable-Italic.woff2',
-      style: 'italic',
-    },
-  ],
-  variable: '--font-sans',
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -60,6 +39,11 @@ export const metadata: Metadata = {
   },
 }
 
+const staticNavItems = [
+  { slug: 'intro', name: 'What is this', category: 'Intro' },
+  { slug: 'get-started', name: 'Get started', category: 'Intro' },
+]
+
 export default function RootLayout({
   children,
 }: {
@@ -68,11 +52,14 @@ export default function RootLayout({
   const docs = getAllDocs()
 
   const navItems = useMemo(() => {
-    return docs.map((doc) => ({
-      slug: doc.slug,
-      name: doc.metadata.name,
-      category: doc.metadata.category,
-    }))
+    return [
+      ...staticNavItems,
+      ...docs.map((doc) => ({
+        slug: doc.slug,
+        name: doc.metadata.name,
+        category: doc.metadata.category,
+      })),
+    ]
   }, [docs])
 
   return (
