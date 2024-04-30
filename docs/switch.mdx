@@ -1,10 +1,21 @@
 ---
 name: Switch
-description: A control that allows the user to toggle between checked and not checked.
-preview: "switch"
-category: "Forms"
+description: Toggle between two states.
+category: 'Forms'
+srcFilename: 'switch'
+docUrl: 'https://react-spectrum.adobe.com/react-aria/Switch.html'
+aria: 'https://www.w3.org/WAI/ARIA/apg/patterns/switch/'
 ---
 
-import { Switch } from "@/components/ui/Switch";
+### States
 
-<Switch client:load />
+Use _defaultSelected_ to set the initial state of the switch. Use _isDisabled_
+to disable the switch.
+
+<Demo demo={<SwitchDemo.States />} code={demos.states} />
+
+### Controlled
+
+Use _isSelected_ and _onChange_ to control the state of the switch.
+
+<Demo demo={<SwitchDemo.Controlled />} code={demos.controlled} />
