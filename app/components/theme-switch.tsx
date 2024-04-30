@@ -30,7 +30,9 @@ function ThemeSwitch() {
       orientation="horizontal"
       defaultSelectedKeys={theme ? new Set([theme]) : undefined}
       onSelectionChange={(keys) => handleThemeChange(keys)}
-      className={'flex h-6 gap-px rounded-md border border-neutral-line p-px'}
+      className={
+        'flex h-6 gap-px self-start rounded-md border border-neutral-line p-px'
+      }
     >
       <Item id="light">Light</Item>
       <Item id="dark">Dark</Item>

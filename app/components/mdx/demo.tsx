@@ -46,7 +46,7 @@ function Demo({
       {code && (
         <div
           className={cx(
-            'flex flex-col overflow-auto border-neutral-4',
+            'flex flex-col overflow-auto border-neutral-3',
             inline ? 'flex-3 border-l' : 'border-t',
           )}
         >

@@ -22,6 +22,7 @@ export const demoComponents = {
     Variant: dynamic(() => import('@/demos/button').then((mod) => mod.Variant)),
     Size: dynamic(() => import('@/demos/button').then((mod) => mod.Size)),
     Intent: dynamic(() => import('@/demos/button').then((mod) => mod.Intent)),
+    Icons: dynamic(() => import('@/demos/button').then((mod) => mod.Icons)),
   },
   IconButtonDemo: {
     Main: dynamic(() => import('@/demos/icon-button').then((mod) => mod.Main)),
@@ -45,6 +46,9 @@ export const demoComponents = {
     ),
   },
 
+  FieldDemo: {
+    Main: dynamic(() => import('@/demos/field').then((mod) => mod.Main)),
+  },
   CheckboxDemo: {
     Main: dynamic(() => import('@/demos/checkbox').then((mod) => mod.Main)),
     Group: dynamic(() => import('@/demos/checkbox').then((mod) => mod.Group)),
@@ -87,11 +91,28 @@ export const demoComponents = {
       import('@/demos/slider').then((mod) => mod.Orientation),
     ),
   },
+  SwitchDemo: {
+    Main: dynamic(() => import('@/demos/switch').then((mod) => mod.Main)),
+    Controlled: dynamic(() =>
+      import('@/demos/switch').then((mod) => mod.Controlled),
+    ),
+    States: dynamic(() => import('@/demos/switch').then((mod) => mod.States)),
+  },
+  TextFieldDemo: {
+    Main: dynamic(() => import('@/demos/text-field').then((mod) => mod.Main)),
+  },
 
   TabsDemo: {
     Main: dynamic(() => import('@/demos/tabs').then((mod) => mod.Main)),
     Controlled: dynamic(() =>
       import('@/demos/tabs').then((mod) => mod.Controlled),
+    ),
+  },
+
+  PopoverDemo: {
+    Main: dynamic(() => import('@/demos/popover').then((mod) => mod.Main)),
+    Placement: dynamic(() =>
+      import('@/demos/popover').then((mod) => mod.Placement),
     ),
   },
 }

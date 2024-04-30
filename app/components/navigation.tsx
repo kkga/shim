@@ -65,10 +65,10 @@ export function Navigation({ items }: { items: NavItem[] }) {
 
   return (
     <>
-      <div className="sticky top-0 flex justify-start bg-neutral-base py-4">
+      <div className="flex justify-start">
         <SearchField
           aria-label="Filter navigation items"
-          prefixIcon={'filter'}
+          prefixIcon={null}
           placeholder="Filter"
           value={filter}
           onChange={setFilter}
@@ -77,44 +77,51 @@ export function Navigation({ items }: { items: NavItem[] }) {
         />
       </div>
 
-      <nav>
-        {sections.length > 0 ?
-          <ListBox
-            key={`${items.length}-${filter}`}
-            selectionMode="single"
-            aria-label="Navigation"
-            className="flex flex-col gap-3"
-            items={sections}
-            selectedKeys={[pathname]}
-          >
-            {({ section, items }) => (
-              <Section id={section} className="flex flex-col gap-px">
-                <Header className="flex h-6 items-center px-2 text-sm font-semibold text-neutral-text-contrast">
-                  {section}
-                </Header>
-                <Collection items={items}>
-                  {({ slug, name }) => (
-                    <ListBoxItem
-                      textValue={name}
-                      id={`/docs/${slug}`}
-                      href={`/docs/${slug}`}
-                      className={cx(
-                        'flex h-6 items-center rounded-md px-2 text-sm text-neutral-text',
-                        'hover:bg-accent-bg-hover',
-                        'data-[selected]:bg-accent-bg-active data-[selected]:text-accent-text-contrast',
-                      )}
-                    >
-                      {name}
-                    </ListBoxItem>
-                  )}
-                </Collection>
-              </Section>
-            )}
-          </ListBox>
-        : <p className="text-center text-sm text-neutral-placeholder">
-            Nothing found
-          </p>
-        }
+      <nav
+        className="grow overflow-scroll py-6"
+        style={{
+          maskImage:
+            'linear-gradient(transparent, black 5%, black 95%, transparent)',
+        }}
+      >
+        <ListBox
+          key={`${items.length}-${filter}`}
+          selectionMode="single"
+          aria-label="Navigation"
+          className="flex flex-col gap-3"
+          items={sections}
+          selectedKeys={[pathname]}
+          renderEmptyState={() => (
+            <p className="text-center text-sm text-neutral-placeholder">
+              Nothing found
+            </p>
+          )}
+        >
+          {({ section, items }) => (
+            <Section id={section} className="flex flex-col gap-px">
+              <Header className="flex h-6 items-center px-2 text-sm font-medium text-neutral-text-contrast">
+                {section}
+              </Header>
+              <Collection items={items}>
+                {({ slug, name }) => (
+                  <ListBoxItem
+                    textValue={name}
+                    id={`/docs/${slug}`}
+                    href={`/docs/${slug}`}
+                    className={cx(
+                      'flex h-6 items-center rounded-md px-2 text-sm text-neutral-text',
+                      '-outline-offset-1 outline-accent-focus-ring focus:outline-1',
+                      'hover:bg-accent-bg-hover',
+                      'data-[selected]:bg-accent-bg-active data-[selected]:text-accent-text-contrast',
+                    )}
+                  >
+                    {name}
+                  </ListBoxItem>
+                )}
+              </Collection>
+            </Section>
+          )}
+        </ListBox>
       </nav>
     </>
   )
