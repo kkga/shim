@@ -1,6 +1,6 @@
 'use client'
 
-import { compose, cva, cxRenderProps, focusVisibleStyle } from '@lib/utils'
+import { compose, cva, cx, cxRenderProps, focusVisibleStyle } from '@lib/utils'
 import {
   Slider as RACSlider,
   SliderOutput,
@@ -11,7 +11,7 @@ import {
 import { Description, Label } from './field'
 
 const trackStyles = cva({
-  base: 'rounded-[2px] ring ring-neutral-solid/20 ring-inset',
+  base: 'rounded-[2px] ring ring-neutral-solid/20 ring-inset relative',
   variants: {
     orientation: {
       horizontal: 'w-full h-1.5',
@@ -72,7 +72,29 @@ function Slider<T extends number | number[]>({
       <SliderTrack className="group col-span-2 flex items-center data-[orientation=vertical]:h-64 data-[orientation=vertical]:w-4 data-[orientation=horizontal]:h-4">
         {({ state, ...renderProps }) => (
           <>
-            <div className={trackStyles(renderProps)} />
+            <div className={trackStyles(renderProps)}>
+              {state.values.length === 2 && (
+                <div
+                  className={cx(
+                    'absolute bg-accent-solid',
+                    renderProps.orientation === 'horizontal' ?
+                      'top-0 bottom-0'
+                    : 'right-0 left-0',
+                  )}
+                  style={
+                    renderProps.orientation === 'horizontal' ?
+                      {
+                        left: `${state.getThumbPercent(0) * 100}%`,
+                        right: `${100 - state.getThumbPercent(1) * 100}%`,
+                      }
+                    : {
+                        bottom: `${state.getThumbPercent(0) * 100}%`,
+                        top: `${100 - state.getThumbPercent(1) * 100}%`,
+                      }
+                  }
+                />
+              )}
+            </div>
             {state.values.map((_, i) => (
               <SliderThumb
                 // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
