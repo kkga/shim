@@ -19,7 +19,7 @@ export function InstallInstructions({
   return (
     <>
       <Tabs className="s-box my-8 gap-0 overflow-hidden rounded-xl bg-neutral-bg-subtle p-0 ring shadow-sm ring-neutral-solid/20">
-        <TabList className="gap-4 px-4 shadow-neutral-4">
+        <TabList className="gap-4 px-4 shadow-neutral-3">
           <Tab id="curl" className="border-y-1">
             <Terminal size={16} weight="duotone" />
             cURL

@@ -112,12 +112,16 @@ export default async function Doc({ params }) {
       <DocHeader metadata={doc.metadata} />
 
       {/* <H3>Basic usage</H3> */}
-      <Demo demo={<MainDemo />} code={demos.main} />
+      <Demo
+        className={composes?.includes('Field') ? 'items-stretch' : ''}
+        demo={<MainDemo />}
+        code={demos.main}
+      />
 
       <H3>Install</H3>
       <P>
-        Run cURL command to download the component file or copy the source code
-        below.
+        Run cURL command to download the file into your project or copy the
+        source code below.
       </P>
       <InstallInstructions srcFilename={srcFilename} source={source} />
 
