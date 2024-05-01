@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 import { useMemo } from 'react'
 import { fontMono, fontSans } from './_fonts'
 import { Sidebar } from './components/sidebar'
-import { getAllDocs } from './docs/utils'
+import { getComponentDocs, getGuides } from './docs/lib/utils'
 import { baseUrl } from './sitemap'
 
 export const metadata: Metadata = {
@@ -39,21 +39,21 @@ export const metadata: Metadata = {
   },
 }
 
-const staticNavItems = [
-  { slug: 'intro', name: 'What is this', category: 'Intro' },
-  { slug: 'get-started', name: 'Get started', category: 'Intro' },
-]
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const docs = getAllDocs()
+  const docs = getComponentDocs()
+  const guides = getGuides()
 
   const navItems = useMemo(() => {
     return [
-      ...staticNavItems,
+      ...guides.map((guide) => ({
+        slug: `guides/${guide.slug}`,
+        name: guide.metadata.title,
+        category: 'Intro',
+      })),
       ...docs.map((doc) => ({
         slug: doc.slug,
         name: doc.metadata.name,

@@ -1,33 +1,25 @@
 import matter from 'gray-matter'
 import fs from 'node:fs'
 import path from 'node:path'
-
-export interface Metadata {
-  name: string
-  description: string
-  category: string
-  srcFilename: string
-  docUrl?: string
-  aria?: string
-  composes?: string[]
-}
+import { ComponentMetadata, GuideMetadata } from './types'
 
 function readMDXFile(filePath: string) {
   const rawContent = fs.readFileSync(filePath, 'utf-8')
   const { content, data } = matter(rawContent)
-  return { metadata: data as Metadata, content }
+  return { data, content }
 }
 
 function getMDXData(dir: string) {
   const mdxFiles = fs
     .readdirSync(dir)
     .filter((file) => path.extname(file) === '.mdx')
+
   return mdxFiles.map((file) => {
-    const { metadata, content } = readMDXFile(path.join(dir, file))
+    const { data, content } = readMDXFile(path.join(dir, file))
     const slug = path.basename(file, path.extname(file))
 
     return {
-      metadata,
+      data,
       slug,
       content,
     }
@@ -50,17 +42,29 @@ function getRawDemos(dir: string) {
   return demos
 }
 
-export function getAllDocs() {
-  return getMDXData(path.join(process.cwd(), 'docs'))
+function getComponentDocs() {
+  return getMDXData(path.join(process.cwd(), 'docs')).map((doc) => ({
+    ...doc,
+    metadata: doc.data as ComponentMetadata,
+  }))
 }
 
-export function getComponentSource(srcFilename: string) {
+function getGuides() {
+  return getMDXData(path.join(process.cwd(), 'docs', 'guides')).map((doc) => ({
+    ...doc,
+    metadata: doc.data as GuideMetadata,
+  }))
+}
+
+function getComponentSource(srcFilename: string) {
   return fs.readFileSync(
     path.join(process.cwd(), 'app', 'ui', `${srcFilename}.tsx`),
     'utf-8',
   )
 }
 
-export function getComponentDemos(componentDir: string) {
+function getComponentDemos(componentDir: string) {
   return getRawDemos(path.join(process.cwd(), 'app', 'demos', componentDir))
 }
+
+export { getComponentDemos, getComponentDocs, getComponentSource, getGuides }

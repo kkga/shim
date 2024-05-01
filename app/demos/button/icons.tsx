@@ -11,11 +11,11 @@ export default () => (
       <ArrowsClockwise size={16} weight='duotone' />
       Refresh
     </Button>
-    <Button intent='neutral'>
+    <Button intent='neutral' size={2}>
       <Link size={16} weight='duotone' />
       Copy link
     </Button>
-    <Button intent='success'>
+    <Button intent='success' size={2}>
       <Star size={16} weight='duotone' />
       Favorite
     </Button>

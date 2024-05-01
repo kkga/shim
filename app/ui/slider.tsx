@@ -11,7 +11,7 @@ import {
 import { Description, Label } from './field'
 
 const trackStyles = cva({
-  base: 'rounded-[2px] ring ring-neutral-solid/20 ring-inset relative',
+  base: 'rounded-[2px] ring ring-neutral-solid/20 ring-inset relative overflow-hidden',
   variants: {
     orientation: {
       horizontal: 'w-full h-1.5',
@@ -47,12 +47,14 @@ interface SliderProps<T> extends RACSliderProps<T> {
   label?: string
   description?: string
   thumbLabels?: string[]
+  isFilled?: boolean
 }
 
 function Slider<T extends number | number[]>({
   label,
   description,
   thumbLabels,
+  isFilled,
   ...props
 }: SliderProps<T>) {
   return (
@@ -60,7 +62,7 @@ function Slider<T extends number | number[]>({
       {...props}
       className={cxRenderProps(
         props.className,
-        'group grid-cols-[1fr_auto] flex-col items-center gap-2 data-[orientation=vertical]:flex data-[orientation=horizontal]:grid',
+        'group grid-cols-[1fr_auto] flex-col items-center gap-2 data-[orientation=horizontal]:grid data-[orientation=vertical]:flex',
       )}
     >
       <Label>{label}</Label>
@@ -69,11 +71,11 @@ function Slider<T extends number | number[]>({
           state.values.map((_, i) => state.getThumbValueLabel(i)).join('–')
         }
       </SliderOutput>
-      <SliderTrack className="group col-span-2 flex items-center data-[orientation=vertical]:h-64 data-[orientation=vertical]:w-4 data-[orientation=horizontal]:h-4">
+      <SliderTrack className="group col-span-2 flex items-center data-[orientation=horizontal]:h-4 data-[orientation=vertical]:h-64 data-[orientation=vertical]:w-4">
         {({ state, ...renderProps }) => (
           <>
             <div className={trackStyles(renderProps)}>
-              {state.values.length === 2 && (
+              {isFilled && state.values.length === 2 && (
                 <div
                   className={cx(
                     'absolute bg-accent-solid',
@@ -94,10 +96,30 @@ function Slider<T extends number | number[]>({
                   }
                 />
               )}
+              {isFilled && state.values.length === 1 && (
+                <div
+                  className={cx(
+                    'absolute bg-accent-solid',
+                    renderProps.orientation === 'horizontal' ?
+                      'top-0 bottom-0'
+                    : 'right-0 left-0',
+                  )}
+                  style={
+                    renderProps.orientation === 'horizontal' ?
+                      {
+                        left: 0,
+                        right: `${100 - state.getThumbPercent(0) * 100}%`,
+                      }
+                    : {
+                        bottom: 0,
+                        top: `${100 - state.getThumbPercent(0) * 100}%`,
+                      }
+                  }
+                />
+              )}
             </div>
             {state.values.map((_, i) => (
               <SliderThumb
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                 key={i}
                 index={i}
                 aria-label={thumbLabels?.[i]}

@@ -30,7 +30,7 @@ function Demo({
     <div
       className={cx(
         's-box',
-        'my-8 flex overflow-hidden rounded-xl bg-neutral-base ring shadow-sm ring-neutral-solid/20',
+        'my-8 flex overflow-hidden rounded-xl bg-[var(--color-bg-panel)] ring shadow-sm ring-neutral-solid/20',
         inline ? 'flex-col md:flex-row' : 'flex-col',
       )}
     >

@@ -4,10 +4,18 @@
 @import '@radix-ui/colors/gray-alpha.css';
 @import '@radix-ui/colors/gray-dark.css';
 @import '@radix-ui/colors/gray-dark-alpha.css';
+@import '@radix-ui/colors/slate.css';
+@import '@radix-ui/colors/slate-alpha.css';
+@import '@radix-ui/colors/slate-dark.css';
+@import '@radix-ui/colors/slate-dark-alpha.css';
 @import '@radix-ui/colors/indigo.css';
 @import '@radix-ui/colors/indigo-alpha.css';
 @import '@radix-ui/colors/indigo-dark.css';
 @import '@radix-ui/colors/indigo-dark-alpha.css';
+@import '@radix-ui/colors/iris.css';
+@import '@radix-ui/colors/iris-alpha.css';
+@import '@radix-ui/colors/iris-dark.css';
+@import '@radix-ui/colors/iris-dark-alpha.css';
 @import '@radix-ui/colors/cyan.css';
 @import '@radix-ui/colors/cyan-alpha.css';
 @import '@radix-ui/colors/cyan-dark.css';
@@ -54,31 +62,31 @@
   /* Semantic aliases
    * https://www.radix-ui.com/colors/docs/overview/aliasing#semantic-aliases 
    */
-  --color-neutral-1: var(--gray-1);
-  --color-neutral-2: var(--gray-2);
-  --color-neutral-3: var(--gray-a3);
-  --color-neutral-4: var(--gray-a4);
-  --color-neutral-5: var(--gray-a5);
-  --color-neutral-6: var(--gray-a6);
-  --color-neutral-7: var(--gray-a7);
-  --color-neutral-8: var(--gray-a8);
-  --color-neutral-9: var(--gray-a9);
-  --color-neutral-10: var(--gray-a10);
-  --color-neutral-11: var(--gray-a11);
-  --color-neutral-12: var(--gray-a12);
+  --color-neutral-1: var(--slate-1);
+  --color-neutral-2: var(--slate-2);
+  --color-neutral-3: var(--slate-a3);
+  --color-neutral-4: var(--slate-a4);
+  --color-neutral-5: var(--slate-a5);
+  --color-neutral-6: var(--slate-a6);
+  --color-neutral-7: var(--slate-a7);
+  --color-neutral-8: var(--slate-a8);
+  --color-neutral-9: var(--slate-a9);
+  --color-neutral-10: var(--slate-a10);
+  --color-neutral-11: var(--slate-a11);
+  --color-neutral-12: var(--slate-a12);
 
-  --color-accent-1: var(--cyan-a1);
-  --color-accent-2: var(--cyan-a2);
-  --color-accent-3: var(--cyan-a3);
-  --color-accent-4: var(--cyan-a4);
-  --color-accent-5: var(--cyan-a5);
-  --color-accent-6: var(--cyan-a6);
-  --color-accent-7: var(--cyan-a7);
-  --color-accent-8: var(--cyan-a8);
-  --color-accent-9: var(--cyan-a9);
-  --color-accent-10: var(--cyan-a10);
-  --color-accent-11: var(--cyan-a11);
-  --color-accent-12: var(--cyan-a12);
+  --color-accent-1: var(--iris-a1);
+  --color-accent-2: var(--iris-a2);
+  --color-accent-3: var(--iris-a3);
+  --color-accent-4: var(--iris-a4);
+  --color-accent-5: var(--iris-a5);
+  --color-accent-6: var(--iris-a6);
+  --color-accent-7: var(--iris-a7);
+  --color-accent-8: var(--iris-a8);
+  --color-accent-9: var(--iris-a9);
+  --color-accent-10: var(--iris-a10);
+  --color-accent-11: var(--iris-a11);
+  --color-accent-12: var(--iris-a12);
 
   --color-success-1: var(--green-a1);
   --color-success-2: var(--green-a2);

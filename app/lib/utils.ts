@@ -25,14 +25,14 @@ export type Intent = (typeof Intents)[number]
 export const animateMountStyle = cva({
   variants: {
     placement: {
-      bottom: 'animate-[fade-in_150ms,slide-from-bottom_150ms]',
-      top: 'animate-[fade-in_150ms,slide-from-top_150ms]',
-      right: 'animate-[fade-in_150ms,slide-from-right_150ms]',
-      left: 'animate-[fade-in_150ms,slide-from-left_150ms]',
-      center: 'animate-[fade-in_150ms]',
+      bottom: 'animate-[fade-in_100ms,slide-from-bottom_100ms]',
+      top: 'animate-[fade-in_100ms,slide-from-top_100ms]',
+      right: 'animate-[fade-in_100ms,slide-from-right_100ms]',
+      left: 'animate-[fade-in_100ms,slide-from-left_100ms]',
+      center: 'animate-[fade-in_100ms]',
     },
     isExiting: {
-      true: 'animate-[fade-out_150ms]',
+      true: 'animate-[fade-out_100ms]',
       false: '',
     },
   },

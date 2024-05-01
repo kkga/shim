@@ -75,6 +75,7 @@ export const demoComponents = {
   },
   SliderDemo: {
     Main: dynamic(() => import('@/demos/slider').then((mod) => mod.Main)),
+    Filled: dynamic(() => import('@/demos/slider').then((mod) => mod.Filled)),
     Controlled: dynamic(() =>
       import('@/demos/slider').then((mod) => mod.Controlled),
     ),

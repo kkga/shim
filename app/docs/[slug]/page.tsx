@@ -1,12 +1,12 @@
 import { Demo } from '@/components/mdx/demo'
 import { getMainDemo } from '@/components/mdx/demo-components'
-import { postProcess, preProcess } from '@/lib/rehype-pre-raw'
-import { H3, P, mdxComponents } from 'app/components/mdx/mdx-components'
+import { postProcess, preProcess } from '@/docs/lib/rehype-pre-raw'
 import {
-  getAllDocs,
   getComponentDemos,
+  getComponentDocs,
   getComponentSource,
-} from 'app/docs/utils'
+} from '@/docs/lib/utils'
+import { mdxComponents } from 'app/components/mdx/mdx-components'
 import { baseUrl } from 'app/sitemap'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
@@ -16,7 +16,7 @@ import { DocHeader } from '../doc-header'
 import { InstallInstructions } from './install-instructions'
 
 export function generateMetadata({ params }) {
-  const doc = getAllDocs().find((doc) => doc.slug === params.slug)
+  const doc = getComponentDocs().find((doc) => doc.slug === params.slug)
   if (!doc) {
     return
   }
@@ -47,8 +47,14 @@ export function generateMetadata({ params }) {
   }
 }
 
+export async function generateStaticParams() {
+  return getComponentDocs().map((doc) => ({
+    params: { slug: doc.slug },
+  }))
+}
+
 export default async function Doc({ params }) {
-  const doc = getAllDocs().find((doc) => doc.slug === params.slug)
+  const doc = getComponentDocs().find((doc) => doc.slug === params.slug)
 
   if (!doc) {
     notFound()
@@ -92,7 +98,6 @@ export default async function Doc({ params }) {
       <script
         type="application/ld+json"
         suppressHydrationWarning
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
@@ -109,23 +114,19 @@ export default async function Doc({ params }) {
         }}
       />
 
-      <DocHeader metadata={doc.metadata} />
+      <article>
+        <DocHeader metadata={doc.metadata} />
 
-      {/* <H3>Basic usage</H3> */}
-      <Demo
-        className={composes?.includes('Field') ? 'items-stretch' : ''}
-        demo={<MainDemo />}
-        code={demos.main}
-      />
+        <Demo
+          className={composes?.includes('Field') ? 'items-stretch' : ''}
+          demo={<MainDemo />}
+          code={demos.main}
+        />
 
-      <H3>Install</H3>
-      <P>
-        Run cURL command to download the file into your project or copy the
-        source code below.
-      </P>
-      <InstallInstructions srcFilename={srcFilename} source={source} />
+        <InstallInstructions srcFilename={srcFilename} source={source} />
 
-      <article className="prose">{content}</article>
+        {content}
+      </article>
     </>
   )
 }

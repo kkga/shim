@@ -11,9 +11,9 @@ export function Pre({ raw, children, className, ...props }: PreProps) {
   return (
     <pre
       className={cx(
-        'group flex items-start overflow-scroll p-3 pl-4',
+        'group flex items-start overflow-scroll p-3 px-4',
         'max-h-[calc(100vh-16rem)] overflow-x-auto',
-        'rounded-lg border border-neutral-line bg-neutral-bg-subtle ',
+        'rounded-lg border border-neutral-line bg-[var(--color-bg-panel)]',
         'font-mono text-[13px] font-[450] leading-5 text-neutral-text',
         '[&>code]:text-[100%]',
         className,

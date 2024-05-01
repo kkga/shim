@@ -9,6 +9,7 @@ import {
 } from 'react-aria-components'
 
 import { FunnelSimple, MagnifyingGlass, X } from '@phosphor-icons/react'
+import { VariantProps } from 'cva'
 import {
   Description,
   FieldError,
@@ -18,7 +19,9 @@ import {
   fieldGroupStyle,
 } from './field'
 
-interface SearchFieldProps extends RACSearchFieldProps {
+interface SearchFieldProps
+  extends RACSearchFieldProps,
+    VariantProps<typeof fieldGroupStyle> {
   label?: string
   description?: string
   errorMessage?: string | ((validation: ValidationResult) => string)
@@ -73,6 +76,7 @@ const SearchField = ({
   size = 1,
   placeholder = 'Search',
   prefixIcon = 'search',
+  variant,
   ...props
 }: SearchFieldProps) => {
   return (
@@ -86,7 +90,7 @@ const SearchField = ({
           <FieldGroup
             className={(renderProps) =>
               cx(
-                groupStyles({ size, ...renderProps }),
+                groupStyles({ size, variant, ...renderProps }),
                 !prefixIcon && size === 1 && 'pl-2',
                 !prefixIcon && size === 2 && 'pl-3',
               )

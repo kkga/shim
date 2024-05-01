@@ -61,10 +61,14 @@ const TextAreaInput = (props: TextAreaInputProps) => {
 }
 
 const fieldStyle = cva({
-  base: [
-    'rounded-md border border-neutral-border text-sm shadow-inner bg-neutral-bg-subtle',
-  ],
+  base: ['rounded-md text-sm'],
   variants: {
+    variant: {
+      classic: 'border border-neutral-border shadow-inner bg-neutral-bg-subtle',
+      soft: 'border border-transparent bg-neutral-bg',
+      ghost:
+        'border border-transparent bg-transparent hover:bg-neutral-3 focus-within:bg-neutral-3',
+    },
     isDisabled: {
       true: 'border-neutral-line bg-neutral-bg-subtle text-neutral-placeholder shadow-none',
     },
@@ -77,6 +81,9 @@ const fieldStyle = cva({
     isFocusVisible: {
       true: 'outline-2 -outline-offset-1 outline-accent-focus-ring',
     },
+  },
+  defaultVariants: {
+    variant: 'classic',
   },
 })
 

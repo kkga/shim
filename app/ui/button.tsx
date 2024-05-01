@@ -36,7 +36,7 @@ const buttonStyle = cva({
     ),
     size: {
       1: 'text-sm h-6 px-2 rounded-md gap-1.5',
-      2: 'text-sm h-8 px-2 rounded-md gap-2',
+      2: 'text-sm h-8 px-2.5 rounded-lg gap-2',
     },
     square: {
       true: '',

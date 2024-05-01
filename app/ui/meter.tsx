@@ -53,7 +53,9 @@ function Meter({ label, description, ...props }: MeterProps) {
               />
             </div>
           </div>
-          {description && <Description>{description}</Description>}
+          {description && (
+            <Description slot="description">{description}</Description>
+          )}
         </>
       )}
     </RACMeter>

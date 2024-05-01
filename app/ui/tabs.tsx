@@ -8,9 +8,9 @@ import {
   TabPanel as RACTabPanel,
   Tabs as RACTabs,
   type TabListProps as RACTabListProps,
+  type TabPanelProps as RACTabPanelProps,
   type TabProps as RACTabProps,
   type TabsProps as RACTabsProps,
-  type TabPanelProps,
 } from 'react-aria-components'
 
 const tabsStyles = cva({
@@ -77,7 +77,7 @@ const tabPanelStyles = cva({
   base: 'flex-1 py-2',
 })
 
-const TabPanel = (props: TabPanelProps) => {
+const TabPanel = (props: RACTabPanelProps) => {
   return (
     <RACTabPanel
       {...props}

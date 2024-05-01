@@ -1,5 +1,6 @@
 export { default as Controlled } from './controlled'
 export { default as ControlledRange } from './controlled-range'
+export { default as Filled } from './filled'
 export { default as Main } from './main'
 export { default as Orientation } from './orientation'
 export { default as States } from './states'

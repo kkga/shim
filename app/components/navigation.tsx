@@ -9,6 +9,7 @@ import {
   Textbox,
   WarningDiamond,
 } from '@phosphor-icons/react'
+import { SearchField } from '@ui/search-field'
 import { cx } from 'cva'
 import { usePathname } from 'next/navigation'
 import { useMemo, useState } from 'react'
@@ -83,7 +84,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
 
   return (
     <>
-      {/* <SearchField
+      <SearchField
         aria-label="Filter navigation items"
         prefixIcon={null}
         placeholder="Filter"
@@ -91,7 +92,8 @@ export function Navigation({ items }: { items: NavItem[] }) {
         onChange={setFilter}
         onClear={() => setFilter('')}
         className="w-full"
-      /> */}
+        variant="soft"
+      />
 
       <nav
         className="grow overflow-y-scroll py-5"
