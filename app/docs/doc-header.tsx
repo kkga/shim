@@ -1,6 +1,6 @@
 import { ArrowUpRight, WarningDiamond } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
-import type { ComponentMetadata } from './lib/utils'
+import { ComponentMetadata } from './lib/types'
 
 function MetadataItem({ title, children }) {
   return (
