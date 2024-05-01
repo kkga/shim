@@ -1,6 +1,5 @@
 import type { MDXRemoteProps } from 'next-mdx-remote'
 import Link from 'next/link'
-import { highlight } from 'sugar-high'
 import { Demo } from './demo'
 import { demoComponents } from './demo-components'
 import { Pre } from './pre'
@@ -32,13 +31,11 @@ function CustomLink(props) {
   )
 }
 
-export function Code({ children, ...props }) {
-  const codeHTML = highlight(children)
+export async function Code({ children, ...props }) {
   return (
     <code
-      className="text-[95%]"
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
-      dangerouslySetInnerHTML={{ __html: codeHTML }}
+      className="text-[95%] text-neutral-text-contrast"
+      dangerouslySetInnerHTML={{ __html: children }}
       {...props}
     />
   )

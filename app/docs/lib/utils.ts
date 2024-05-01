@@ -57,10 +57,12 @@ function getGuides() {
 }
 
 function getComponentSource(srcFilename: string) {
-  return fs.readFileSync(
-    path.join(process.cwd(), 'app', 'ui', `${srcFilename}.tsx`),
-    'utf-8',
-  )
+  return fs
+    .readFileSync(
+      path.join(process.cwd(), 'app', 'ui', `${srcFilename}.tsx`),
+      'utf-8',
+    )
+    .trim()
 }
 
 function getComponentDemos(componentDir: string) {

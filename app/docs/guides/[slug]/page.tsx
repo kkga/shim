@@ -1,3 +1,4 @@
+import { DocHeader } from '@/docs/doc-header'
 import { postProcess, preProcess } from '@/docs/lib/rehype-pre-raw'
 import { getGuides } from '@/docs/lib/utils'
 import { baseUrl } from '@/sitemap'
@@ -67,7 +68,10 @@ export default async function GuidePage({ params }) {
         }}
       />
 
-      <article>{content}</article>
+      <article>
+        <DocHeader title={title} subtitle={description} />
+        {content}
+      </article>
     </>
   )
 }

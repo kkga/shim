@@ -13,6 +13,8 @@ import { notFound } from 'next/navigation'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import { DocHeader } from '../doc-header'
+import { MetadataRow } from './component-metadata'
+import { DependenciesWarning } from './dependencies-warning'
 import { InstallInstructions } from './install-instructions'
 
 export function generateMetadata({ params }) {
@@ -54,7 +56,8 @@ export async function generateStaticParams() {
 }
 
 export default async function Doc({ params }) {
-  const doc = getComponentDocs().find((doc) => doc.slug === params.slug)
+  const docs = getComponentDocs()
+  const doc = docs.find((doc) => doc.slug === params.slug)
 
   if (!doc) {
     notFound()
@@ -115,7 +118,13 @@ export default async function Doc({ params }) {
       />
 
       <article>
-        <DocHeader metadata={doc.metadata} />
+        <DocHeader
+          title={doc.metadata.name}
+          subtitle={doc.metadata.description}
+        >
+          <MetadataRow {...doc.metadata} />
+          {composes && <DependenciesWarning deps={composes} />}
+        </DocHeader>
 
         <Demo
           className={composes?.includes('Field') ? 'items-stretch' : ''}

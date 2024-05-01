@@ -16,6 +16,18 @@
   --sh-property: var(--color-neutral-11);
   --sh-entity: var(--color-neutral-12);
 
+  --shiki-foreground: var(--color-neutral-10);
+  --shiki-background: transparent;
+  --shiki-token-constant: var(--color-neutral-12);
+  --shiki-token-string: var(--color-neutral-12);
+  --shiki-token-comment: var(--color-neutral-9);
+  --shiki-token-keyword: var(--color-neutral-11);
+  --shiki-token-parameter: var(--color-neutral-11);
+  --shiki-token-function: var(--color-neutral-11);
+  --shiki-token-string-expression: var(--color-neutral-12);
+  --shiki-token-punctuation: var(--color-neutral-10);
+  --shiki-token-link: #ee0000;
+
   --sidebar-width: 280px;
 
   --color-bg-body: var(--color-neutral-2);

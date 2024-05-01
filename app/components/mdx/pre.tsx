@@ -1,13 +1,17 @@
 import { cx } from 'cva'
+import { highlight } from 'sugar-high'
 import { CopyButton } from './copy-button'
 
 interface PreProps {
-  children: React.ReactNode
-  raw?: string
+  code: string
+  lang: string
   className?: string
 }
 
-export function Pre({ raw, children, className, ...props }: PreProps) {
+export async function Pre({ code, lang, className, ...props }: PreProps) {
+  // const codeHTML = await codeToHtml({ code, language: lang })
+  const codeHTML = highlight(code)
+
   return (
     <pre
       className={cx(
@@ -20,13 +24,11 @@ export function Pre({ raw, children, className, ...props }: PreProps) {
       )}
       {...props}
     >
-      {children}
+      <code dangerouslySetInnerHTML={{ __html: codeHTML }} />
 
-      {raw && (
-        <div className="invisible sticky top-0 right-0 ml-auto flex size-5 items-center justify-center group-hover:visible">
-          <CopyButton text={raw} title="Copy to clipboard" />
-        </div>
-      )}
+      <div className="invisible sticky top-0 right-0 ml-auto flex size-5 items-center justify-center group-hover:visible">
+        <CopyButton text={code} title="Copy to clipboard" />
+      </div>
     </pre>
   )
 }
