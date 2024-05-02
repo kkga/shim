@@ -1,4 +1,4 @@
-export { default as Icons } from './icons'
+export { default as Content } from './content'
 export { default as Intent } from './intent'
 export { default as Main } from './main'
 export { default as Size } from './size'

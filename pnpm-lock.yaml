@@ -62,6 +62,9 @@ dependencies:
   rehype-slug:
     specifier: ^6.0.0
     version: 6.0.0
+  sugar-high:
+    specifier: ^0.6.0
+    version: 0.6.0
   tailwind-merge:
     specifier: ^2.3.0
     version: 2.3.0
@@ -88,9 +91,6 @@ devDependencies:
   prettier-plugin-tailwindcss:
     specifier: ^0.5.14
     version: 0.5.14(prettier@3.2.5)
-  shiki:
-    specifier: ^1.4.0
-    version: 1.4.0
 
 packages:
 
@@ -1890,10 +1890,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@shikijs/core@1.4.0:
-    resolution: {integrity: sha512-CxpKLntAi64h3j+TwWqVIQObPTED0FyXLHTTh3MKXtqiQNn2JGcMQQ362LftDbc9kYbDtrksNMNoVmVXzKFYUQ==}
-    dev: true
-
   /@swc/helpers@0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
@@ -3558,12 +3554,6 @@ packages:
     dev: false
     optional: true
 
-  /shiki@1.4.0:
-    resolution: {integrity: sha512-5WIn0OL8PWm7JhnTwRWXniy6eEDY234mRrERVlFa646V2ErQqwIFd2UML7e0Pq9eqSKLoMa3Ke+xbsF+DAuy+Q==}
-    dependencies:
-      '@shikijs/core': 1.4.0
-    dev: true
-
   /simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
     requiresBuild: true
@@ -3628,6 +3618,10 @@ packages:
     dependencies:
       client-only: 0.0.1
       react: 18.2.0
+    dev: false
+
+  /sugar-high@0.6.0:
+    resolution: {integrity: sha512-SBE1FI2NTVgLDo9E9yLO2rBT56HZAi3ONGeoTqJsHIN9cEAATrrKjZfIrSc5H5AoZ/mQd8OI7j27rvVXT9IxoA==}
     dev: false
 
   /supports-preserve-symlinks-flag@1.0.0:

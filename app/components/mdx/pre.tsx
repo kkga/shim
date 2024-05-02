@@ -43,9 +43,9 @@ export async function Pre(props: PreBlockProps | PreMdxProps) {
   return (
     <pre
       className={cx(
-        'group flex items-start overflow-scroll p-3 px-4',
+        'group flex items-start overflow-scroll p-3 pl-4',
         'max-h-[calc(100vh-16rem)] overflow-x-auto',
-        'rounded-lg border border-neutral-line bg-[var(--color-bg-panel)]',
+        'rounded-lg border border-neutral-3 bg-[var(--color-bg-panel)]',
         'font-mono text-[13px] font-[400] leading-5 text-neutral-text',
         '[&>code]:text-[100%]',
         className,

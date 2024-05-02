@@ -34,7 +34,7 @@ function MetadataRow({
   name,
 }: ComponentMetadata) {
   return (
-    <div className="relative mt-6 flex gap-12 pt-6 before:absolute before:top-0 before:h-px before:w-12 before:bg-neutral-border">
+    <div className="relative flex gap-12">
       {docUrl && (
         <MetadataItem title="Documentation">
           <MetadataLink

@@ -6,11 +6,14 @@ interface DocHeaderProps {
 
 export function DocHeader({ title, subtitle, children }: DocHeaderProps) {
   return (
-    <header className="mb-16">
-      <h1 className="text-3xl font-semibold text-neutral-text-contrast">
-        {title}
-      </h1>
-      <p className="mt-2 text-lg text-neutral-text">{subtitle}</p>
+    <header className="relative mb-16 flex flex-col gap-6">
+      <div>
+        <h1 className="text-3xl font-semibold text-neutral-text-contrast">
+          {title}
+        </h1>
+        <p className="mt-2 text-lg text-neutral-text">{subtitle}</p>
+      </div>
+      <div className="h-px w-16 bg-neutral-line"></div>
 
       {children}
     </header>

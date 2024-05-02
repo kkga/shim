@@ -1,40 +1,65 @@
 ---
 title: Get started
+description: What this is and how to use it in your project.
 ---
 
-## Overview
+## What is this?
 
-These components are built on top of the
-[React Aria](https://react-spectrum.adobe.com/react-aria/index.html) library,
-which provides a set of hooks and components for building accessible UI
-components.
+It's a collection of components built on top of
+[React Aria](https://react-spectrum.adobe.com/react-aria/index.html). You
+install the core dependencies and copy-paste (or download) the components you
+need into your project. This way, you own the code and can customize it to your
+liking.
 
-The components are written in TypeScript and utilize Tailwind CSS v4 and [cva]()
-for styling.
+## Why should I use it instead of x/y/z?
 
-## Install instructions
+x/y/z are great, but there are a few reasons why you might want to use this:
 
-### React Aria Components
+- **React Aria:** It's built on top of React Aria, which is a set of
+  high-quality components and hooks for building accessible UIs.
 
-Install the `react-aria-components` package using your package manager of
-choice.
+## Setup
+
+<Steps>
+  <Step title="Add React Aria Components">
+    Install the core components using your package manager of choice.
+
+    ```sh
+    pnpm add react-aria-components
+    ```
+
+  </Step>
+
+  <Step title="Add Tailwind CSS v4">
+    Install the alpha version of Tailwind CSS v4. Refer to the [blog post](https://tailwindcss.com/blog/tailwindcss-v4-alpha#try-out-the-alpha) on how to install it in your project.
+
+    ```sh
+    # using vite
+    pnpm add tailwindcss@next @tailwindcss/vite@next
+
+    # using postcss
+    pnpm add tailwindcss@next @tailwindcss/postcss@next
+    ```
+
+  </Step>
+
+  <Step title="Add styling utilities">
+Install [cva beta](https://beta.cva.style/getting-started/installation) and
+[tailwind-merge](https://github.com/dcastil/tailwind-merge) packages.
 
 ```sh
-pnpm add react-aria-components
+pnpm add cva@beta tailwind-merge
 ```
 
-### Tailwind CSS v4
+  </Step>
 
-Install the `tailwindcss` package using your package manager of choice.
+<Step title="Add icons">
+Install [Phosphor Icons](https://github.com/phosphor-icons/react).
 
 ```sh
-pnpm add tailwindcss@next
+pnpm add @phosphor-icons/react
 ```
 
-### cva
+  </Step>
 
-Install the `cva` package using your package manager of choice.
-
-```sh
-pnpm add cva@beta
-```
+</Steps>

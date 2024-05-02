@@ -1,9 +1,11 @@
+import { Info } from '@phosphor-icons/react/dist/ssr'
 import { cx } from 'cva'
 import type { MDXRemoteProps } from 'next-mdx-remote'
 import Link from 'next/link'
 import { Demo } from './demo'
 import { demoComponents } from './demo-components'
 import { Pre, PreMdxProps } from './pre'
+import { Step, Steps } from './steps'
 
 function CustomLink(props) {
   const href = props.href
@@ -53,7 +55,7 @@ export const H1 = (props) => (
 
 export const H2 = (props) => (
   <h2
-    className="mt-12 mb-3 text-2xl font-medium leading-tight text-neutral-text-contrast"
+    className="mt-12 mb-3 text-xl font-semibold leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
@@ -81,6 +83,13 @@ export const H5 = (props) => (
 
 export const P = (props) => <p className="mb-4 max-w-[72ch]" {...props} />
 
+export const Note = (props) => (
+  <div className="flex items-center gap-2 text-sm text-success-text *:m-0">
+    <Info size={16} weight="duotone" />
+    {props.children}
+  </div>
+)
+
 export const mdxComponents: MDXRemoteProps['components'] = {
   h1: H1,
   h2: H2,
@@ -94,15 +103,24 @@ export const mdxComponents: MDXRemoteProps['components'] = {
     />
   ),
   p: P,
-  ul: (props) => <ul className="my-4 list-inside list-disc" {...props} />,
-  hr: (props) => <hr className="my-12 border-neutral-border" {...props} />,
+  ul: (props) => (
+    <ul className="my-4 max-w-prose list-outside list-disc pl-4" {...props} />
+  ),
+  li: (props) => <li className="mb-4" {...props} />,
+  hr: (props) => <hr className="my-12 border-neutral-line" {...props} />,
   em: (props) => (
     <em className="italic text-neutral-text-contrast" {...props} />
+  ),
+  strong: (props) => (
+    <strong className="font-semibold text-neutral-text-contrast" {...props} />
   ),
   a: CustomLink,
   code: Code,
   pre: (props) => <Pre {...(props as PreMdxProps)} />,
   Demo,
+  Note,
+  Steps,
+  Step,
   ...demoComponents,
 }
 

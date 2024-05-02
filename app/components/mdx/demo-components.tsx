@@ -9,7 +9,7 @@ export const demoComponents = {
     Main: dynamic(() => import('@/demos/badge').then((mod) => mod.Main)),
     Size: dynamic(() => import('@/demos/badge').then((mod) => mod.Size)),
     Intent: dynamic(() => import('@/demos/badge').then((mod) => mod.Intent)),
-    Icons: dynamic(() => import('@/demos/badge').then((mod) => mod.Icons)),
+    Content: dynamic(() => import('@/demos/badge').then((mod) => mod.Content)),
   },
   MeterDemo: {
     Main: dynamic(() => import('@/demos/meter').then((mod) => mod.Main)),

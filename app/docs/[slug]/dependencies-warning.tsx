@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 function DependenciesWarning({ deps }: { deps: string[] }) {
   return (
-    <div className="mt-6 inline-flex items-center gap-2 self-start text-sm text-neutral-text">
+    <div className="inline-flex items-center gap-2 self-start text-sm text-neutral-text">
       <WarningDiamond
         weight="duotone"
         size={16}
