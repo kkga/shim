@@ -1,16 +1,5 @@
+import { redirect } from 'next/navigation'
+
 export default function Page() {
-  return (
-    <main className="max-w-7xl m-auto">
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
-      </h1>
-      <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
-      </p>
-    </main>
-  )
+  redirect('/docs')
 }
