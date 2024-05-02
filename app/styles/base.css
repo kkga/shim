@@ -1,25 +1,13 @@
 @import 'tailwindcss';
 
-@import '@radix-ui/colors/gray.css';
-@import '@radix-ui/colors/gray-alpha.css';
-@import '@radix-ui/colors/gray-dark.css';
-@import '@radix-ui/colors/gray-dark-alpha.css';
 @import '@radix-ui/colors/slate.css';
 @import '@radix-ui/colors/slate-alpha.css';
 @import '@radix-ui/colors/slate-dark.css';
 @import '@radix-ui/colors/slate-dark-alpha.css';
-@import '@radix-ui/colors/indigo.css';
-@import '@radix-ui/colors/indigo-alpha.css';
-@import '@radix-ui/colors/indigo-dark.css';
-@import '@radix-ui/colors/indigo-dark-alpha.css';
 @import '@radix-ui/colors/iris.css';
 @import '@radix-ui/colors/iris-alpha.css';
 @import '@radix-ui/colors/iris-dark.css';
 @import '@radix-ui/colors/iris-dark-alpha.css';
-@import '@radix-ui/colors/cyan.css';
-@import '@radix-ui/colors/cyan-alpha.css';
-@import '@radix-ui/colors/cyan-dark.css';
-@import '@radix-ui/colors/cyan-dark-alpha.css';
 @import '@radix-ui/colors/green.css';
 @import '@radix-ui/colors/green-alpha.css';
 @import '@radix-ui/colors/green-dark.css';
@@ -34,34 +22,14 @@
 @import '@radix-ui/colors/red-dark-alpha.css';
 
 @theme {
-  /* Defaults */
-  --default-transition-duration: 150ms;
-  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  --default-font-family: 'InterVariable', var(--font-family-sans);
-  --default-font-feature-settings: 'ss02',
-    var(--font-family-sans--font-feature-settings);
-  --default-font-variation-settings: var(
-    --font-family-sans--font-variation-settings
-  );
-  --default-mono-font-family: var(--font-family-mono);
-  --default-mono-font-feature-settings: var(
-    --font-family-mono--font-feature-settings
-  );
-  --default-mono-font-variation-settings: var(
-    --font-family-mono--font-variation-settings
-  );
-
-  --color-*: initial;
-
+  --color-*: initial; /* Reset Tailwind colors */
   --color-white: #fff;
   --color-black: #000;
   --color-transparent: transparent;
-
   --color-pure: var(--color-white);
 
-  /* Semantic aliases
-   * https://www.radix-ui.com/colors/docs/overview/aliasing#semantic-aliases 
-   */
+  /* Semantic aliases: https://www.radix-ui.com/colors/docs/overview/aliasing#semantic-aliases */
+
   --color-neutral-1: var(--slate-1);
   --color-neutral-2: var(--slate-2);
   --color-neutral-3: var(--slate-a3);
@@ -127,9 +95,8 @@
   --color-error-11: var(--red-a11);
   --color-error-12: var(--red-a12);
 
-  /* Use case aliases 
-   * https://www.radix-ui.com/colors/docs/overview/aliasing#use-case-aliases
-   */
+  /* Use case aliases: https://www.radix-ui.com/colors/docs/overview/aliasing#use-case-aliases */
+
   --color-neutral-base: var(--color-neutral-1);
   --color-neutral-bg-subtle: var(--color-neutral-2);
   --color-neutral-bg: var(--color-neutral-3);
@@ -206,6 +173,7 @@
   --color-error-text-contrast: var(--color-error-12);
 
   /* Type scale */
+
   --font-size-xs: 0.75rem;
   --font-size-xs--line-height: 1rem;
   --font-size-sm: 0.8125rem;

@@ -121,6 +121,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
   Note,
   Steps,
   Step,
+  Pre,
   ...demoComponents,
 }
 

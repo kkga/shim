@@ -1,6 +1,6 @@
 import { DocHeader } from '@/docs/doc-header'
 import { mdxToHtml } from '@/docs/lib/mdx'
-import { getGuides } from '@/docs/lib/utils'
+import { getBaseCssSource, getGuides, getUtilsSource } from '@/docs/lib/utils'
 import { baseUrl } from '@/sitemap'
 import { notFound } from 'next/navigation'
 
@@ -12,6 +12,8 @@ export async function generateStaticParams() {
 
 export default async function GuidePage({ params }) {
   const guide = getGuides().find((guide) => guide.slug === params.slug)
+  const utilsSource = getUtilsSource()
+  const baseCssSource = getBaseCssSource()
 
   if (!guide) {
     notFound()
@@ -21,6 +23,7 @@ export default async function GuidePage({ params }) {
 
   const { content } = await mdxToHtml({
     source: guide.content,
+    scope: { utilsSource, baseCssSource },
   })
 
   return (

@@ -31,7 +31,13 @@ x/y/z are great, but there are a few reasons why you might want to use this:
   </Step>
 
   <Step title="Add Tailwind CSS v4">
-    Install the alpha version of Tailwind CSS v4. Refer to the [blog post](https://tailwindcss.com/blog/tailwindcss-v4-alpha#try-out-the-alpha) on how to install it in your project.
+
+    <div>
+    This project uses the alpha version of Tailwind CSS v4, which makes it much easier to customize without creating a config file.
+
+    Refer to their alpha release [blog post](https://tailwindcss.com/blog/tailwindcss-v4-alpha#try-out-the-alpha) on how to install it in your project.
+    </div>
+
 
     ```sh
     # using vite
@@ -43,22 +49,73 @@ x/y/z are great, but there are a few reasons why you might want to use this:
 
   </Step>
 
-  <Step title="Add styling utilities">
-Install [cva beta](https://beta.cva.style/getting-started/installation) and
-[tailwind-merge](https://github.com/dcastil/tailwind-merge) packages.
+  <Step title="Add dependencies">
+  
+  <div>
+    [CVA@beta](https://beta.cva.style/getting-started/installation) and [tailwind-merge](https://github.com/dcastil/tailwind-merge) are used to generate style variants and work well with React Aria.
+
+    [Radix Colors](https://www.radix-ui.com/colors) and [Phosphor Icons](https://phosphoricons.com/) are used in the components. Both are great.<br/>
+    While it's possible to replace them with other choices, it means that the components and the Tailwind theme will need to be updated to use the new icons and colors.
+
+  </div>
 
 ```sh
-pnpm add cva@beta tailwind-merge
+pnpm add cva@beta\
+  tailwind-merge\
+  @phosphor-icons/react\
+  @radix-ui/colors
 ```
 
   </Step>
 
-<Step title="Add icons">
-Install [Phosphor Icons](https://github.com/phosphor-icons/react).
+  <Step title="Setup styling utils">
 
-```sh
-pnpm add @phosphor-icons/react
-```
+    <div>
+    Add the styling utilities into your project.
+
+    A good place to put them is in a `lib/utils.ts` file, but
+    you can customize the path alias to your preference at the last step.
+    </div>
+
+    <Pre className="max-h-80!" code={utilsSource} />
+
+  </Step>
+
+  <Step title="Setup base CSS">
+
+    <div>
+    Add the base CSS with Tailwind imports, colors and semantic palette into your project.
+
+    It can be a `base.css` or `theme.css` file, which needs to be imported in your app entry file.
+    </div>
+
+
+    <Pre className="max-h-80!" code={baseCssSource} />
+
+  </Step>
+
+  <Step title="Setup path aliases">
+
+    <div>
+    Add the path aliases to your `tsconfig.json` file.
+
+    This will allow you to import the components and utils with the `@ui/*` and `@lib/*` path aliases.
+
+    If you prefer a different path, you can customize it here, but make sure to update the imports in the components.
+    </div>
+
+
+    ```ts
+    {
+      "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+          "@lib/utils": ["./lib/utils"], // path to the utils file
+          "@ui/*": ["./components/ui/*"], // path to the components
+        }
+      }
+    }
+    ```
 
   </Step>
 

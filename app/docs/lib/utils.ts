@@ -69,4 +69,25 @@ function getComponentDemos(componentDir: string) {
   return getRawDemos(path.join(process.cwd(), 'app', 'demos', componentDir))
 }
 
-export { getComponentDemos, getComponentDocs, getComponentSource, getGuides }
+function getUtilsSource() {
+  return fs.readFileSync(
+    path.join(process.cwd(), 'app', 'lib', 'utils.ts'),
+    'utf-8',
+  )
+}
+
+function getBaseCssSource() {
+  return fs.readFileSync(
+    path.join(process.cwd(), 'app', 'styles', 'base.css'),
+    'utf-8',
+  )
+}
+
+export {
+  getBaseCssSource,
+  getComponentDemos,
+  getComponentDocs,
+  getComponentSource,
+  getGuides,
+  getUtilsSource,
+}
