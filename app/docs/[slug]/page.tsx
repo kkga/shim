@@ -1,18 +1,14 @@
 import { Demo } from '@/components/mdx/demo'
 import { getMainDemo } from '@/components/mdx/demo-components'
-import { postProcess, preProcess } from '@/docs/lib/rehype-pre-raw'
 import {
   getComponentDemos,
   getComponentDocs,
   getComponentSource,
 } from '@/docs/lib/utils'
-import { mdxComponents } from 'app/components/mdx/mdx-components'
 import { baseUrl } from 'app/sitemap'
-import { compileMDX } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeSlug from 'rehype-slug'
 import { DocHeader } from '../doc-header'
+import { mdxToHtml } from '../lib/mdx'
 import { MetadataRow } from './component-metadata'
 import { DependenciesWarning } from './dependencies-warning'
 import { InstallInstructions } from './install-instructions'
@@ -63,36 +59,18 @@ export default async function Doc({ params }) {
     notFound()
   }
 
-  const { srcFilename, docUrl, aria, composes } = doc.metadata
+  const { srcFilename, composes } = doc.metadata
 
   const demos = getComponentDemos(srcFilename)
   const source = getComponentSource(srcFilename)
   const MainDemo = getMainDemo(srcFilename)
 
-  const { content } = await compileMDX({
+  const { content } = await mdxToHtml({
     source: doc.content,
-    components: mdxComponents,
-    options: {
-      scope: { demos, source, docUrl, aria, composes },
-      mdxOptions: {
-        remarkPlugins: [],
-        rehypePlugins: [
-          preProcess,
-          rehypeSlug,
-          [
-            rehypeAutolinkHeadings,
-            {
-              behaviour: 'append',
-              properties: {
-                ariaHidden: true,
-                tabIndex: -1,
-                className: 'hash-link',
-              },
-            },
-          ],
-          postProcess,
-        ],
-      },
+    scope: {
+      ...doc.metadata,
+      demos,
+      source,
     },
   })
 

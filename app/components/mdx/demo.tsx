@@ -33,12 +33,11 @@ function Demo({ demo, code, className, inline = true }: Props) {
             inline ? 'flex-3 border-l' : 'border-t',
           )}
         >
-          {code && (
-            <Pre
-              code={code}
-              className="m-0! flex-1 rounded-none! border-none!"
-            />
-          )}
+          <Pre
+            code={code}
+            lang="tsx"
+            className="m-0! flex-1 rounded-none! border-none!"
+          />
         </div>
       )}
     </div>

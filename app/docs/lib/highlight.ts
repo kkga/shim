@@ -1,20 +1,19 @@
 import { Highlighter, getHighlighter } from 'shiki/bundle-web.mjs'
-import { createCssVariablesTheme } from 'shiki/theme-css-variables'
-
-const myTheme = createCssVariablesTheme({
-  name: 'css-variables',
-  variablePrefix: '--shiki-',
-  variableDefaults: {},
-  fontStyle: true,
-})
 
 let highlighter: Highlighter
-export const codeToHtml = async ({ code, language }) => {
+export const codeToHtml = async ({
+  code,
+  lang,
+}: {
+  code: string
+  lang?: string
+}) => {
   if (!highlighter) {
     highlighter = await getHighlighter({
       langs: ['tsx', 'sh'],
       themes: [
         'dark-plus',
+        'light-plus',
         {
           name: 'css-variables',
           bg: 'transparent',
@@ -39,7 +38,7 @@ export const codeToHtml = async ({ code, language }) => {
   }
 
   return highlighter.codeToHtml(code, {
-    lang: language || 'tsx',
+    lang: lang || 'tsx',
     structure: 'inline',
     theme: 'dark-plus',
     colorReplacements: {

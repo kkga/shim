@@ -1,8 +1,9 @@
+import { cx } from 'cva'
 import type { MDXRemoteProps } from 'next-mdx-remote'
 import Link from 'next/link'
 import { Demo } from './demo'
 import { demoComponents } from './demo-components'
-import { Pre } from './pre'
+import { Pre, PreMdxProps } from './pre'
 
 function CustomLink(props) {
   const href = props.href
@@ -31,11 +32,13 @@ function CustomLink(props) {
   )
 }
 
-export async function Code({ children, ...props }) {
+export function Code({ className, ...props }) {
   return (
     <code
-      className="text-[95%] text-neutral-text-contrast"
-      dangerouslySetInnerHTML={{ __html: children }}
+      className={cx(
+        'font-mono text-[95%] text-neutral-text-contrast',
+        props.className,
+      )}
       {...props}
     />
   )
@@ -98,7 +101,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
   ),
   a: CustomLink,
   code: Code,
-  pre: Pre,
+  pre: (props) => <Pre {...(props as PreMdxProps)} />,
   Demo,
   ...demoComponents,
 }

@@ -1,11 +1,8 @@
 import { DocHeader } from '@/docs/doc-header'
-import { postProcess, preProcess } from '@/docs/lib/rehype-pre-raw'
+import { mdxToHtml } from '@/docs/lib/mdx'
 import { getGuides } from '@/docs/lib/utils'
 import { baseUrl } from '@/sitemap'
-import { compileMDX } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeSlug from 'rehype-slug'
 
 export async function generateStaticParams() {
   return getGuides().map((guide) => ({
@@ -22,29 +19,8 @@ export default async function GuidePage({ params }) {
 
   const { title, description } = guide.metadata
 
-  const { content } = await compileMDX({
+  const { content } = await mdxToHtml({
     source: guide.content,
-    options: {
-      mdxOptions: {
-        remarkPlugins: [],
-        rehypePlugins: [
-          preProcess,
-          rehypeSlug,
-          [
-            rehypeAutolinkHeadings,
-            {
-              behaviour: 'append',
-              properties: {
-                ariaHidden: true,
-                tabIndex: -1,
-                className: 'hash-link',
-              },
-            },
-          ],
-          postProcess,
-        ],
-      },
-    },
   })
 
   return (
