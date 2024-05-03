@@ -22,10 +22,7 @@ export const demoComponents = {
     Variant: dynamic(() => import('@/demos/button').then((mod) => mod.Variant)),
     Size: dynamic(() => import('@/demos/button').then((mod) => mod.Size)),
     Intent: dynamic(() => import('@/demos/button').then((mod) => mod.Intent)),
-    Icons: dynamic(() => import('@/demos/button').then((mod) => mod.Icons)),
-    IconOnly: dynamic(() =>
-      import('@/demos/button').then((mod) => mod.IconOnly),
-    ),
+    Content: dynamic(() => import('@/demos/button').then((mod) => mod.Content)),
   },
   ToggleButtonDemo: {
     Main: dynamic(() =>

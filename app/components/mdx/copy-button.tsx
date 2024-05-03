@@ -41,10 +41,10 @@ function CopyButton({ children, text, title, className }: CopyButtonProps) {
   return (
     <TooltipTrigger delay={500}>
       <Button
-        square
         onPress={handleCopy}
         intent={justCopied ? 'success' : 'neutral'}
         className={className}
+        isSquare
       >
         {justCopied ?
           <Check size={16} weight="bold" />

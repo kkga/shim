@@ -7,11 +7,7 @@ export default () => {
   const [isSelected, setSelected] = useState(false)
 
   return (
-    <ToggleButton
-      isSelected={isSelected}
-      onChange={setSelected}
-      aria-label="pin"
-    >
+    <ToggleButton isSquare isSelected={isSelected} onChange={setSelected} aria-label='pin'>
       <PushPin size={16} weight={isSelected ? 'fill' : 'regular'} />
     </ToggleButton>
   )

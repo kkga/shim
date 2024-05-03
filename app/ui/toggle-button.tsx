@@ -7,6 +7,7 @@ import {
 } from 'react-aria-components'
 
 import { compose, cva, cxRenderProps, focusVisibleStyle } from '@lib/utils'
+import { Children, isValidElement } from 'react'
 
 const styles = compose(
   focusVisibleStyle,
@@ -36,10 +37,26 @@ const styles = compose(
           'bg-error-bg hover:bg-error-bg-hover active:bg-error-bg-active text-error-text data-[selected]:bg-error-solid',
       },
       size: {
-        1: 'size-6 rounded-md',
-        2: 'size-8 rounded-md',
+        1: 'text-sm h-6 px-2 rounded-md gap-1.5',
+        2: 'text-sm h-8 px-2.5 rounded-lg gap-2',
+      },
+      isSquare: {
+        true: '',
+        false: '',
       },
     },
+    compoundVariants: [
+      {
+        size: 1,
+        isSquare: [true],
+        className: 'size-6 p-0',
+      },
+      {
+        size: 2,
+        isSquare: [true],
+        className: 'size-8 p-0',
+      },
+    ],
     defaultVariants: {
       variant: 'soft',
       intent: 'accent',
@@ -57,19 +74,32 @@ const ToggleButton = ({
   variant,
   intent,
   size,
+  isSquare,
   ...props
-}: ToggleButtonProps) => (
-  <RACToggleButton
-    {...props}
-    className={cxRenderProps(
-      className,
-      styles({
-        variant,
-        size,
-        intent,
-      }),
-    )}
-  />
-)
+}: ToggleButtonProps) => {
+  const children =
+    typeof props.children !== 'function' && Children.toArray(props.children)
+
+  const hasOnlySvg =
+    children &&
+    children.length === 1 &&
+    isValidElement(children[0]) &&
+    children[0].type === 'svg'
+
+  return (
+    <RACToggleButton
+      {...props}
+      className={cxRenderProps(
+        className,
+        styles({
+          variant,
+          size,
+          intent,
+          isSquare: typeof isSquare === 'boolean' ? isSquare : hasOnlySvg,
+        }),
+      )}
+    />
+  )
+}
 
 export { ToggleButton, type ToggleButtonProps }

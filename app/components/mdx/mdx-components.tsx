@@ -110,7 +110,9 @@ export const mdxComponents: MDXRemoteProps['components'] = {
     <ul className="my-4 max-w-prose list-outside list-disc pl-4" {...props} />
   ),
   li: (props) => <li className="mb-4" {...props} />,
-  hr: (props) => <hr className="mx-16 my-12 border-neutral-line" {...props} />,
+  hr: (props) => (
+    <hr className="my-12 max-w-prose border-neutral-line" {...props} />
+  ),
   em: (props) => (
     <em className="italic text-neutral-text-contrast" {...props} />
   ),

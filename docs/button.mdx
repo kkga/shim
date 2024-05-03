@@ -9,32 +9,32 @@ aria: 'https://www.w3.org/WAI/ARIA/apg/patterns/button/'
 
 ### Size
 
-Use the _size_ prop to set the size of the button.
+Use `size` to set the size of the button.
 
 <Demo demo={<ButtonDemo.Size />} code={demos['size']} />
 
 ### Intent
 
-Use the _intent_ prop to set the semantic intent.
+Use `intent` to set the semantic color.
 
 <Demo demo={<ButtonDemo.Intent />} code={demos['intent']} />
 
 ### Variant
 
-Use the _variant_ prop to set the visual style.
+Use `variant` to set the visual style.
 
 <Demo demo={<ButtonDemo.Variant />} code={demos['variant']} />
 
-### With icons
+### Content
 
-Use buttons with icons to provide additional context.
+Buttons can contain a label, icon, or both. Use icons by passing an icon
+component as a child. If the only child is an SVG element, the button will be
+sized to a square. This can be controlled manually by setting the `isSquare`
+prop.
 
-<Demo demo={<ButtonDemo.Icons />} code={demos['icons']} />
+<Note>
+  If a visible label isn't specified, an `aria-label` must be provided for
+  accessibility.
+</Note>
 
-### With icons only
-
-When using buttons with icons only, use the _square_ prop to ensure correct
-aspect ratio. In this case, it is recommended to provide an _aria-label_ for
-screen readers.
-
-<Demo demo={<ButtonDemo.IconOnly />} code={demos['icon-only']} />
+<Demo demo={<ButtonDemo.Content />} code={demos['content']} />

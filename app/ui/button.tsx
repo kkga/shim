@@ -10,6 +10,7 @@ import {
 } from '@lib/utils'
 
 import type { VariantProps } from 'cva'
+import { Children, isValidElement } from 'react'
 import {
   Button as RACButton,
   type ButtonProps as RACButtonProps,
@@ -38,7 +39,7 @@ const buttonStyle = cva({
       1: 'text-sm h-6 px-2 rounded-md gap-1.5',
       2: 'text-sm h-8 px-2.5 rounded-lg gap-2',
     },
-    square: {
+    isSquare: {
       true: '',
       false: '',
     },
@@ -46,12 +47,12 @@ const buttonStyle = cva({
   compoundVariants: [
     {
       size: 1,
-      square: [true],
+      isSquare: [true],
       className: 'size-6 p-0',
     },
     {
       size: 2,
-      square: [true],
+      isSquare: [true],
       className: 'size-8 p-0',
     },
     {
@@ -165,16 +166,32 @@ const Button = ({
   variant,
   intent,
   size,
-  square,
+  isSquare,
   ...props
-}: ButtonProps) => (
-  <RACButton
-    className={cxRenderProps(
-      className,
-      styles({ variant, intent, size, square }),
-    )}
-    {...props}
-  />
-)
+}: ButtonProps) => {
+  const children =
+    typeof props.children !== 'function' && Children.toArray(props.children)
+
+  const hasOnlySvg =
+    children &&
+    children.length === 1 &&
+    isValidElement(children[0]) &&
+    children[0].type === 'svg'
+
+  return (
+    <RACButton
+      className={cxRenderProps(
+        className,
+        styles({
+          variant,
+          intent,
+          size,
+          isSquare: typeof isSquare === 'boolean' ? isSquare : hasOnlySvg,
+        }),
+      )}
+      {...props}
+    />
+  )
+}
 
 export { Button, buttonStyle, type ButtonProps }
