@@ -60,7 +60,7 @@ export default function RootLayout({
         category: doc.metadata.category,
       })),
     ]
-  }, [docs])
+  }, [docs, guides])
 
   return (
     <html

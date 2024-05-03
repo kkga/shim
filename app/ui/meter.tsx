@@ -14,13 +14,13 @@ interface MeterProps extends RACMeterProps {
   color?: string | ((value: number) => string)
 }
 
-function Meter({ label, description, ...props }: MeterProps) {
+function Meter({ label, description, color, value, ...props }: MeterProps) {
   const barColor = useMemo(() => {
-    if (props.color instanceof Function) {
-      return props.color(props.value ?? 0)
+    if (color instanceof Function) {
+      return color(value ?? 0)
     }
-    return props.color
-  }, [props.color, props.value])
+    return color
+  }, [color, value])
 
   return (
     <RACMeter
@@ -34,7 +34,7 @@ function Meter({ label, description, ...props }: MeterProps) {
             <span
               className={cx(
                 'text-xs',
-                props.color ? ''
+                color ? ''
                 : percentage > 80 ? 'text-error-text'
                 : 'text-neutral-text',
               )}
