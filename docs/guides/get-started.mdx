@@ -18,7 +18,12 @@ x/y/z are great, but there are a few reasons why you might want to use this:
 - **React Aria:** It's built on top of React Aria, which is a set of
   high-quality components and hooks for building accessible UIs.
 
+---
+
 ## Setup
+
+This guide will walk you through setting up the components in your project. It
+assumes you have a React project set up with TypeScript.
 
 <Steps>
   <Step title="Add React Aria Components">
@@ -52,10 +57,10 @@ x/y/z are great, but there are a few reasons why you might want to use this:
   <Step title="Add dependencies">
   
   <div>
-    [CVA@beta](https://beta.cva.style/getting-started/installation) and [tailwind-merge](https://github.com/dcastil/tailwind-merge) are used to generate style variants and work well with React Aria.
-
+    [cva@beta](https://beta.cva.style/getting-started/installation) and [tailwind-merge](https://github.com/dcastil/tailwind-merge) are used to generate style variants and work well with React Aria. 
     [Radix Colors](https://www.radix-ui.com/colors) and [Phosphor Icons](https://phosphoricons.com/) are used in the components. Both are great.<br/>
-    While it's possible to replace them with other choices, it means that the components and the Tailwind theme will need to be updated to use the new icons and colors.
+
+    While it's possible to replace the icons and colors with other choices, it means that the components and the Tailwind theme will need to be updated to use the new icons and colors.
 
   </div>
 
@@ -77,7 +82,7 @@ pnpm add cva@beta\
     you can customize the path alias to your preference at the last step.
     </div>
 
-    <Pre className="max-h-80!" code={utilsSource} />
+    <Pre collapsed code={utilsSource} />
 
   </Step>
 
@@ -90,7 +95,7 @@ pnpm add cva@beta\
     </div>
 
 
-    <Pre className="max-h-80!" code={baseCssSource} />
+    <Pre collapsed code={baseCssSource} />
 
   </Step>
 

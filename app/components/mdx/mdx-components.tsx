@@ -2,9 +2,10 @@ import { Info } from '@phosphor-icons/react/dist/ssr'
 import { cx } from 'cva'
 import type { MDXRemoteProps } from 'next-mdx-remote'
 import Link from 'next/link'
+import { highlight } from 'sugar-high'
 import { Demo } from './demo'
 import { demoComponents } from './demo-components'
-import { Pre, PreMdxProps } from './pre'
+import { Pre } from './pre'
 import { Step, Steps } from './steps'
 
 function CustomLink(props) {
@@ -34,14 +35,16 @@ function CustomLink(props) {
   )
 }
 
-export function Code({ className, ...props }) {
+export function Code(props) {
+  const html = highlight(props.children)
+
   return (
     <code
       className={cx(
         'font-mono text-[95%] text-neutral-text-contrast',
         props.className,
       )}
-      {...props}
+      dangerouslySetInnerHTML={{ __html: html }}
     />
   )
 }
@@ -107,7 +110,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
     <ul className="my-4 max-w-prose list-outside list-disc pl-4" {...props} />
   ),
   li: (props) => <li className="mb-4" {...props} />,
-  hr: (props) => <hr className="my-12 border-neutral-line" {...props} />,
+  hr: (props) => <hr className="mx-16 my-12 border-neutral-line" {...props} />,
   em: (props) => (
     <em className="italic text-neutral-text-contrast" {...props} />
   ),
@@ -116,7 +119,7 @@ export const mdxComponents: MDXRemoteProps['components'] = {
   ),
   a: CustomLink,
   code: Code,
-  pre: (props) => <Pre {...(props as PreMdxProps)} />,
+  pre: (props) => <Pre {...props} />,
   Demo,
   Note,
   Steps,

@@ -32,10 +32,10 @@ export function InstallInstructions({ srcFilename, source }: Props) {
         </TabList>
 
         <TabPanel id="curl" className="p-0">
-          <Pre code={curlCommand} className="border-none bg-transparent p-4" />
+          <Pre code={curlCommand} className="border-none bg-transparent" />
         </TabPanel>
         <TabPanel id="source" className="p-0">
-          <Pre code={source} className="border-none bg-transparent p-4" />
+          <Pre collapsed code={source} className="border-none bg-transparent" />
         </TabPanel>
       </Tabs>
     </>

@@ -1,6 +1,8 @@
+import { cx } from 'cva'
+
 export function Steps({ children }) {
   return (
-    <div className="my-8 grid grid-cols-[auto_2fr_3fr] gap-x-4 gap-y-8">
+    <div className="my-8 grid gap-x-4 gap-y-8 md:grid-cols-[auto_2fr_3fr]">
       {children}
     </div>
   )
@@ -9,14 +11,16 @@ export function Steps({ children }) {
 export function Step({ title, children }) {
   return (
     <div
-      className={
-        'group relative col-span-full grid grid-cols-subgrid grid-rows-[auto_1fr] items-start gap-y-1 text-[14px] leading-normal *:col-start-2 *:m-0 [&>pre]:col-start-3 [&>pre]:col-end-4 [&>pre]:row-span-2 [&>pre]:row-start-1'
-      }
+      className={cx(
+        'group/step relative col-span-full grid grid-cols-subgrid gap-4 text-[14px] leading-normal',
+        'md:grid-rows-[auto_1fr] md:items-start md:gap-y-2 md:*:col-start-2',
+        'md:[&>.codeblock]:col-start-3 md:[&>.codeblock]:col-end-4 md:[&>.codeblock]:row-span-2 md:[&>.codeblock]:row-start-1',
+      )}
       style={{ counterIncrement: 'step' }}
     >
-      <div className="relative z-10 col-start-1! col-end-3! row-start-1! grid grid-cols-subgrid items-center">
-        <div className="flex size-5 items-center justify-center rounded bg-neutral-5">
-          <span className="text-[11px] font-semibold text-neutral-text before:[content:counter(step)]" />
+      <div className="relative z-10 col-start-1! col-end-3! row-start-1! grid grid-cols-[auto_1fr] items-center gap-2 md:grid-cols-subgrid md:gap-4">
+        <div className="flex size-6 items-center justify-center rounded-full bg-neutral-4">
+          <span className="text-[12px] font-semibold text-neutral-text before:[content:counter(step)]" />
         </div>
         <div className="font-medium leading-5 text-neutral-text-contrast">
           {title}
@@ -25,7 +29,7 @@ export function Step({ title, children }) {
 
       <div
         aria-hidden
-        className="line absolute top-6 right-auto -bottom-7 left-2.5 -z-10 col-start-1! w-px bg-neutral-line group-last:hidden"
+        className="line invisible absolute top-7 right-auto -bottom-7 left-3 -z-10 col-start-1! w-px bg-neutral-line group-last/step:hidden md:visible"
       ></div>
 
       {children}
