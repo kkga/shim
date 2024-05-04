@@ -108,4 +108,11 @@ export const demoComponents = {
       import('@/demos/popover').then((mod) => mod.Placement),
     ),
   },
+
+  ListBoxDemo: {
+    Main: dynamic(() => import('@/demos/listbox').then((mod) => mod.Main)),
+    Sections: dynamic(() =>
+      import('@/demos/listbox').then((mod) => mod.Sections),
+    ),
+  },
 }
