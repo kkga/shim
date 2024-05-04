@@ -9,7 +9,7 @@ import {
   type ValidationResult,
 } from 'react-aria-components'
 
-import { compose, cva, cxRenderProps, focusVisibleStyle } from '@lib/utils'
+import { compose, cva, cxRenderProps, focusStyle } from '@lib/utils'
 
 import { Description, FieldError, Label } from './field'
 
@@ -37,7 +37,7 @@ function RadioGroup(props: RadioGroupProps) {
 }
 
 const styles = compose(
-  focusVisibleStyle,
+  focusStyle,
   cva({
     base: 'relative size-4 rounded-full border shadow-inner before:size-2 before:rounded-full before:bg-white before:absolute before:inset-0 before:m-auto before:shadow before:invisible',
     variants: {

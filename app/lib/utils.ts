@@ -23,29 +23,25 @@ export const Intents = [
 export type Intent = (typeof Intents)[number]
 
 export const animateMountStyle = cva({
-  variants: {
-    placement: {
-      bottom: 'animate-[fade-in_100ms,slide-from-bottom_100ms]',
-      top: 'animate-[fade-in_100ms,slide-from-top_100ms]',
-      right: 'animate-[fade-in_100ms,slide-from-right_100ms]',
-      left: 'animate-[fade-in_100ms,slide-from-left_100ms]',
-      center: 'animate-[fade-in_100ms]',
-    },
-    isExiting: {
-      true: 'animate-[fade-out_100ms]',
-      false: '',
-    },
-  },
+  base: [
+    'data-[exiting]:animate-[fade-out_100ms]',
+    'data-[placement=bottom]:animate-[fade-in_100ms,slide-from-bottom_100ms]',
+    'data-[placement=top]:animate-[fade-in_100ms,slide-from-top_100ms]',
+    'data-[placement=right]:animate-[fade-in_100ms,slide-from-right_100ms]',
+    'data-[placement=left]:animate-[fade-in_100ms,slide-from-left_100ms]',
+  ],
 })
 
-export const focusVisibleStyle = cva({
+export const focusStyle = cva({
   base: [
-    'focus-visible:outline-2 outline-0 outline-offset-2 outline-accent-focus-ring',
+    'outline-offset-2 outline-accent-focus-ring outline-0',
+    'data-[focus-visible]:outline-2',
   ],
-  variants: {
-    isFocusVisible: {
-      true: 'outline-2',
-      false: 'outline-0',
-    },
-  },
+})
+
+export const focusInsetStyle = cva({
+  base: [
+    '-outline-offset-1 outline-accent-focus-ring outline-0',
+    'data-[focus-visible]:outline-1',
+  ],
 })

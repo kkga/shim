@@ -6,11 +6,11 @@ import {
   type ToggleButtonProps as RACToggleButtonProps,
 } from 'react-aria-components'
 
-import { compose, cva, cxRenderProps, focusVisibleStyle } from '@lib/utils'
+import { compose, cva, cxRenderProps, focusStyle } from '@lib/utils'
 import { Children, isValidElement } from 'react'
 
 const styles = compose(
-  focusVisibleStyle,
+  focusStyle,
   cva({
     base: [
       'text-xs font-medium inline-flex items-center justify-center',

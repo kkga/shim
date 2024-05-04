@@ -1,6 +1,6 @@
 'use client'
 
-import { compose, cva, cxRenderProps, focusVisibleStyle } from '@lib/utils'
+import { compose, cva, cxRenderProps, focusStyle } from '@lib/utils'
 import type { VariantProps } from 'cva'
 import {
   Switch as RACSwitch,
@@ -19,7 +19,7 @@ const switchStyles = cva({
 })
 
 const trackStyles = compose(
-  focusVisibleStyle,
+  focusStyle,
   cva({
     base: [
       'flex h-4 w-7 px-px items-center shrink-0 cursor-default rounded-full transition-colors shadow-inner border',

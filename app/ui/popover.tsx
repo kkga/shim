@@ -4,15 +4,14 @@ import {
   Dialog as RACDialog,
   DialogTrigger as RACDialogTrigger,
   Popover as RACPopover,
-  composeRenderProps,
   type PopoverProps as RACPopoverProps,
 } from 'react-aria-components'
 
-import { animateMountStyle, compose, cva } from '@lib/utils'
+import { animateMountStyle, compose, cva, cxRenderProps } from '@lib/utils'
 
 const PopoverTrigger = RACDialogTrigger
 
-const styles = compose(
+const style = compose(
   animateMountStyle,
   cva({
     base: 'z-50 rounded-lg bg-neutral-bg-subtle p-4 text-neutral-text text-sm ring shadow-lg ring-neutral-solid/15 outline-none',
@@ -31,9 +30,7 @@ const Popover = ({
 }: PopoverProps) => (
   <RACPopover
     offset={offset}
-    className={composeRenderProps(className, (className, values) =>
-      styles({ ...values, className }),
-    )}
+    className={cxRenderProps(className, style())}
     {...props}
   >
     <RACDialog className="outline-none">{children}</RACDialog>

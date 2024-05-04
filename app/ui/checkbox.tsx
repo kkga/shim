@@ -12,7 +12,7 @@ import {
   type ValidationResult,
 } from 'react-aria-components'
 
-import { compose, cva, cx, cxRenderProps, focusVisibleStyle } from '@lib/utils'
+import { compose, cva, cx, cxRenderProps, focusStyle } from '@lib/utils'
 
 import { Description, FieldError, Label } from './field'
 
@@ -54,7 +54,7 @@ const checkboxStyles = cva({
 })
 
 const boxStyles = compose(
-  focusVisibleStyle,
+  focusStyle,
   cva({
     base: ['flex shrink-0 items-center justify-center border shadow-inner'],
     variants: {

@@ -5,7 +5,7 @@ import {
   compose,
   cva,
   cxRenderProps,
-  focusVisibleStyle,
+  focusStyle,
   type Intent,
 } from '@lib/utils'
 
@@ -157,7 +157,7 @@ const buttonStyle = cva({
   },
 })
 
-const styles = compose(focusVisibleStyle, buttonStyle)
+const styles = compose(focusStyle, buttonStyle)
 
 interface ButtonProps extends RACButtonProps, VariantProps<typeof styles> {}
 
@@ -187,6 +187,7 @@ const Button = ({
           intent,
           size,
           isSquare: typeof isSquare === 'boolean' ? isSquare : hasOnlySvg,
+          className,
         }),
       )}
       {...props}
@@ -194,4 +195,4 @@ const Button = ({
   )
 }
 
-export { Button, buttonStyle, type ButtonProps }
+export { Button, type ButtonProps }
