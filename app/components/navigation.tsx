@@ -1,16 +1,17 @@
 'use client'
 
+import { compose, cva, focusInsetStyle } from '@lib/utils'
 import {
   Cards,
   CursorClick,
   HouseSimple,
   List,
   Path,
+  Rows,
   Textbox,
   WarningDiamond,
 } from '@phosphor-icons/react'
 import { SearchField } from '@ui/search-field'
-import { cx } from 'cva'
 import { usePathname } from 'next/navigation'
 import { useMemo, useState } from 'react'
 import {
@@ -27,41 +28,20 @@ export interface NavItem {
   category: string
 }
 
-const getItemsByCategory = (items: NavItem[]) => {
-  return items.reduce(
-    (acc, { name, category, slug }) => {
-      if (!acc[category]) {
-        acc[category] = []
-      }
-
-      acc[category].push({ name, slug, category })
-
-      return acc
-    },
-    {} as Record<string, NavItem[]>,
-  )
-}
-
-const filterItems = (items: NavItem[], filter?: string) => {
-  if (!items || !filter) return items
-
-  const lowerFilter = filter.toLowerCase()
-  return items.filter(
-    ({ name, category }) =>
-      name.toLowerCase().includes(lowerFilter) ||
-      category.toLowerCase().includes(lowerFilter),
-  )
-}
-
-const categoryIcons: Record<string, React.ReactNode> = {
-  Intro: <HouseSimple weight="duotone" size={16} />,
-  Overlays: <Cards weight="duotone" size={16} />,
-  Forms: <Textbox weight="duotone" size={16} />,
-  Status: <WarningDiamond weight="duotone" size={16} />,
-  Buttons: <CursorClick weight="duotone" size={16} />,
-  Pickers: <List weight="duotone" size={16} />,
-  Navigation: <Path weight="duotone" size={16} />,
-}
+const itemStyle = compose(
+  focusInsetStyle,
+  cva({
+    base: [
+      'flex h-6 items-center rounded-md px-2 text-sm text-neutral-text-contrast',
+      // hovered
+      'hover:bg-accent-bg-hover',
+      // focused
+      // '-outline-offset-1 outline-accent-focus-ring focus:outline-1',
+      // selected
+      'data-[selected]:bg-accent-bg-active data-[selected]:text-accent-text-contrast',
+    ],
+  }),
+)
 
 export function Navigation({ items }: { items: NavItem[] }) {
   const pathname = usePathname()
@@ -129,12 +109,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
                     textValue={name}
                     id={`/docs/${slug}`}
                     href={`/docs/${slug}`}
-                    className={cx(
-                      'flex h-6 items-center rounded-md px-2 text-sm text-neutral-text-contrast',
-                      '-outline-offset-1 outline-accent-focus-ring focus:outline-1',
-                      'hover:bg-accent-bg-hover',
-                      'data-[selected]:bg-accent-bg-active data-[selected]:text-accent-text-contrast',
-                    )}
+                    className={itemStyle()}
                   >
                     {name}
                   </ListBoxItem>
@@ -146,4 +121,41 @@ export function Navigation({ items }: { items: NavItem[] }) {
       </nav>
     </>
   )
+}
+
+const getItemsByCategory = (items: NavItem[]) => {
+  return items.reduce(
+    (acc, { name, category, slug }) => {
+      if (!acc[category]) {
+        acc[category] = []
+      }
+
+      acc[category].push({ name, slug, category })
+
+      return acc
+    },
+    {} as Record<string, NavItem[]>,
+  )
+}
+
+const filterItems = (items: NavItem[], filter?: string) => {
+  if (!items || !filter) return items
+
+  const lowerFilter = filter.toLowerCase()
+  return items.filter(
+    ({ name, category }) =>
+      name.toLowerCase().includes(lowerFilter) ||
+      category.toLowerCase().includes(lowerFilter),
+  )
+}
+
+const categoryIcons: Record<string, React.ReactNode> = {
+  Intro: <HouseSimple weight="duotone" size={16} />,
+  Overlays: <Cards weight="duotone" size={16} />,
+  Forms: <Textbox weight="duotone" size={16} />,
+  Status: <WarningDiamond weight="duotone" size={16} />,
+  Buttons: <CursorClick weight="duotone" size={16} />,
+  Pickers: <List weight="duotone" size={16} />,
+  Navigation: <Path weight="duotone" size={16} />,
+  Collections: <Rows weight="duotone" size={16} />,
 }
