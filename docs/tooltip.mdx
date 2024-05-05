@@ -1,10 +1,15 @@
 ---
 name: Tooltip
-description: Tooltips display informative text when users hover over, focus on, or tap an element.
+description: Display a description for an element on hover or focus.
 category: "Overlays"
-preview: "tooltip"
+srcFilename: "tooltip"
+docUrl: https://react-spectrum.adobe.com/react-aria/Tooltip.html
+aria: https://www.w3.org/TR/wai-aria-1.2/#tooltip
 ---
 
-import { TooltipDemo } from "@/components/demos/tooltip";
+### Placement
 
-<TooltipDemo client:load />
+Use the `placement` prop to specify where the toolitp should appear relative to
+the trigger.
+
+<Demo demo={<TooltipDemo.Placement />} code={demos.placement} />
