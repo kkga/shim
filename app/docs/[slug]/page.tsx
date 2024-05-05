@@ -1,16 +1,16 @@
-import { Demo } from '@/components/mdx/demo'
-import { getMainDemo } from '@/components/mdx/demo-components'
+import { Demo } from "@/components/mdx/demo"
+import { getMainDemo } from "@/components/mdx/demo-components"
 import {
   getComponentDemos,
   getComponentDocs,
   getComponentSource,
-} from '@/docs/lib/utils'
-import { baseUrl } from 'app/sitemap'
-import { notFound } from 'next/navigation'
-import { DocHeader } from '../doc-header'
-import { mdxToHtml } from '../lib/mdx'
-import { MetadataRow } from './component-metadata'
-import { InstallInstructions } from './install-instructions'
+} from "@/docs/lib/utils"
+import { baseUrl } from "app/sitemap"
+import { notFound } from "next/navigation"
+import { DocHeader } from "../doc-header"
+import { mdxToHtml } from "../lib/mdx"
+import { MetadataRow } from "./component-metadata"
+import { InstallInstructions } from "./install-instructions"
 
 export function generateMetadata({ params }) {
   const doc = getComponentDocs().find((doc) => doc.slug === params.slug)
@@ -27,7 +27,7 @@ export function generateMetadata({ params }) {
     openGraph: {
       title: name,
       description,
-      type: 'article',
+      type: "article",
       url: `${baseUrl}/docs/${doc.slug}`,
       images: [
         {
@@ -36,7 +36,7 @@ export function generateMetadata({ params }) {
       ],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: name,
       description,
       images: [ogImage],
@@ -90,15 +90,15 @@ export default async function Doc({ params }) {
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
             headline: doc.metadata.name,
             description: doc.metadata.description,
             image: `/og?title=${encodeURIComponent(doc.metadata.name)}`,
             url: `${baseUrl}/docs/${doc.slug}`,
             author: {
-              '@type': 'Person',
-              name: 'My Portfolio',
+              "@type": "Person",
+              name: "My Portfolio",
             },
           }),
         }}
@@ -115,7 +115,7 @@ export default async function Doc({ params }) {
           />
         </DocHeader>
 
-        <Demo className="items-stretch" demo={<MainDemo />} code={demos.main} />
+        <Demo demo={<MainDemo />} code={demos.main} />
 
         <InstallInstructions
           dependencies={dependencies.length > 0 ? dependencies : undefined}
