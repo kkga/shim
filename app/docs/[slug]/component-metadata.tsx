@@ -1,5 +1,6 @@
 import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
+import { Fragment } from 'react'
 import { ComponentMetadata } from '../lib/types'
 
 function MetadataItem({ title, children }) {
@@ -15,24 +16,30 @@ function MetadataLink({ href, title, external, children }) {
   return (
     <Link
       href={href}
-      className="flex items-center gap-0.5 text-sm text-accent-text underline decoration-accent-line underline-offset-2 hover:decoration-accent-border-hover"
+      className="text-sm text-accent-text underline decoration-accent-line underline-offset-2 hover:decoration-accent-border-hover"
       title={title}
       rel={external ? 'noreferrer' : undefined}
       target={external ? '_blank' : undefined}
     >
       {children}
-      {external && <ArrowUpRight size={16} />}
+      {external && (
+        <ArrowUpRight className="ml-0.5 inline align-bottom" size={16} />
+      )}
     </Link>
   )
+}
+
+interface MetadataRowProps extends ComponentMetadata {
+  dependencies?: { name: string; slug: string }[]
 }
 
 function MetadataRow({
   docUrl,
   aria,
   srcFilename,
-  composes,
   name,
-}: ComponentMetadata) {
+  dependencies,
+}: MetadataRowProps) {
   return (
     <div className="relative flex gap-12">
       {docUrl && (
@@ -72,20 +79,22 @@ function MetadataRow({
           </MetadataLink>
         </MetadataItem>
       )}
-      {composes && (
+      {dependencies && (
         <MetadataItem title="Composes">
-          <div className="flex flex-wrap gap-2">
-            {composes.map((component) => (
-              <MetadataLink
-                external={false}
-                key={component}
-                href={`/docs/${component}`}
-                title={`View ${component} documentation`}
-              >
-                {component}
-              </MetadataLink>
+          <span className="text-sm">
+            {dependencies.map(({ name, slug }, i) => (
+              <Fragment key={name}>
+                {i > 0 && ', '}
+                <MetadataLink
+                  external={false}
+                  href={`/docs/${slug}`}
+                  title={`View ${name} documentation`}
+                >
+                  {name}
+                </MetadataLink>
+              </Fragment>
             ))}
-          </div>
+          </span>
         </MetadataItem>
       )}
     </div>

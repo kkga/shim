@@ -1,24 +1,24 @@
 import { WarningDiamond } from '@phosphor-icons/react/dist/ssr'
 import Link from 'next/link'
 
-function DependenciesWarning({ deps }: { deps: string[] }) {
+function DependenciesWarning({
+  deps,
+}: {
+  deps: { name: string; slug: string }[]
+}) {
   return (
-    <div className="inline-flex items-center gap-2 self-start text-sm text-neutral-text">
-      <WarningDiamond
-        weight="duotone"
-        size={16}
-        className="text-warning-text"
-      />
+    <div className="flex items-center gap-2 self-start text-sm text-warning-text">
+      <WarningDiamond weight="duotone" size={16} />
       <p>
         Install the dependencies before using this component:{' '}
-        {deps.map((component, i) => (
-          <span key={component}>
+        {deps.map(({ name, slug }, i) => (
+          <span key={name}>
             {i > 0 && ', '}
             <Link
-              href={`/docs/${component}`}
-              className="underline decoration-neutral-line underline-offset-2 hover:decoration-neutral-border-hover"
+              href={`/docs/${slug}`}
+              className="text-current underline decoration-warning-line underline-offset-2 hover:decoration-warning-border-hover"
             >
-              {component}
+              {name}
             </Link>
           </span>
         ))}

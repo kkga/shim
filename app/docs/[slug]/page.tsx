@@ -10,7 +10,6 @@ import { notFound } from 'next/navigation'
 import { DocHeader } from '../doc-header'
 import { mdxToHtml } from '../lib/mdx'
 import { MetadataRow } from './component-metadata'
-import { DependenciesWarning } from './dependencies-warning'
 import { InstallInstructions } from './install-instructions'
 
 export function generateMetadata({ params }) {
@@ -65,6 +64,16 @@ export default async function Doc({ params }) {
   const source = getComponentSource(srcFilename)
   const MainDemo = getMainDemo(srcFilename)
 
+  const dependencies =
+    composes ?
+      (composes
+        .map((name) => {
+          const dep = docs.find((doc) => doc.metadata.name === name)
+          return dep ? { name: dep.metadata.name, slug: dep.slug } : null
+        })
+        .filter((dep) => dep !== null) as { name: string; slug: string }[])
+    : []
+
   const { content } = await mdxToHtml({
     source: doc.content,
     scope: {
@@ -100,17 +109,19 @@ export default async function Doc({ params }) {
           title={doc.metadata.name}
           subtitle={doc.metadata.description}
         >
-          <MetadataRow {...doc.metadata} />
-          {composes && <DependenciesWarning deps={composes} />}
+          <MetadataRow
+            dependencies={dependencies.length > 0 ? dependencies : undefined}
+            {...doc.metadata}
+          />
         </DocHeader>
 
-        <Demo
-          className={composes?.includes('Field') ? 'items-stretch' : ''}
-          demo={<MainDemo />}
-          code={demos.main}
-        />
+        <Demo className="items-stretch" demo={<MainDemo />} code={demos.main} />
 
-        <InstallInstructions srcFilename={srcFilename} source={source} />
+        <InstallInstructions
+          dependencies={dependencies.length > 0 ? dependencies : undefined}
+          srcFilename={srcFilename}
+          source={source}
+        />
 
         {content}
       </article>
