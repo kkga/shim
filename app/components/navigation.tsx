@@ -98,7 +98,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
         >
           {({ section, items }) => (
             <Section id={section} className="grid grid-cols-2 gap-1">
-              <Header className="col-span-full flex h-6 items-center gap-1.5  text-xs font-medium text-neutral-9">
+              <Header className="col-span-full flex h-6 items-center gap-1.5 text-xs font-medium text-neutral-10">
                 {categoryIcons[section]}
                 {section}
                 <div className="h-px grow bg-neutral-4"></div>

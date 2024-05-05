@@ -3,10 +3,10 @@ import { Meter } from '@ui/meter'
 
 export default () => (
   <>
-    <Meter label="Usage" value={80} color="var(--color-warning-solid)" />
-    <Meter label="Almost there" value={95} color={getColor} />
-    <Meter label="Getting there" value={55} color={getColor} />
-    <Meter label="Just starting" value={15} color={getColor} />
+    <Meter label='Usage' value={80} color='var(--color-warning-solid)' />
+    <Meter label='Almost there' value={95} color={getColor} />
+    <Meter label='Getting there' value={55} color={getColor} />
+    <Meter label='Just starting' value={15} color={getColor} />
   </>
 )
 
