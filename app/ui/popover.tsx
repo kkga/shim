@@ -20,20 +20,17 @@ interface PopoverProps extends Omit<RACPopoverProps, "children"> {
   children: React.ReactNode
 }
 
-const Popover = ({
-  className,
-  children,
-  offset = 4,
-  ...props
-}: PopoverProps) => (
-  <RACPopover
-    offset={offset}
-    className={cxRenderProps(className, popoverStyle())}
-    {...props}
-  >
-    <RACDialog className="overflow-auto outline-none">{children}</RACDialog>
-  </RACPopover>
-)
+function Popover({ className, children, offset = 4, ...props }: PopoverProps) {
+  return (
+    <RACPopover
+      offset={offset}
+      className={cxRenderProps(className, popoverStyle())}
+      {...props}
+    >
+      <RACDialog className="overflow-auto outline-none">{children}</RACDialog>
+    </RACPopover>
+  )
+}
 
 const PopoverTrigger = RACDialogTrigger
 
