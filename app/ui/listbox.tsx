@@ -30,7 +30,7 @@ const itemStyles = compose(
   focusInsetStyle,
   cva({
     base: [
-      'flex h-6 items-center px-2 text-sm rounded-md text-neutral-text cursor-default',
+      'flex h-6 items-center px-2 text-sm rounded-md text-neutral-text cursor-default truncate',
       // hovered
       'data-[hovered]:bg-neutral-bg-hover',
       // pressed
@@ -44,9 +44,14 @@ const itemStyles = compose(
 )
 
 function ListBoxItem({ className, ...props }: RACListBoxItemProps) {
+  const textValue =
+    props.textValue ||
+    (typeof props.children === 'string' ? props.children : undefined)
+
   return (
     <RACListBoxItem
       {...props}
+      textValue={textValue}
       className={cxRenderProps(className, itemStyles())}
     />
   )
@@ -59,7 +64,7 @@ interface ListBoxSectionProps<T> extends RACSectionProps<T> {
 function ListBoxSection<T extends object>(props: ListBoxSectionProps<T>) {
   return (
     <RACSection className="flex flex-col gap-px not-last:mb-2">
-      <RACHeader className="bg-panel sticky top-0 z-10 flex h-6 items-center truncate px-2 text-sm font-medium text-neutral-text-contrast backdrop-blur-md">
+      <RACHeader className="flex h-6 items-center truncate px-2 text-sm font-medium text-neutral-text-contrast backdrop-blur-md">
         {props.title}
       </RACHeader>
       <RACCollection items={props.items}>{props.children}</RACCollection>
@@ -68,3 +73,4 @@ function ListBoxSection<T extends object>(props: ListBoxSectionProps<T>) {
 }
 
 export { ListBox, ListBoxItem, ListBoxSection }
+export type { ListBoxSectionProps }

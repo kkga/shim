@@ -1,6 +1,40 @@
 ---
 name: Select
-description: A select is a form control that allows users to select an option from a list of options.
-category: "Pickers"
-preview: "select"
+description: Pick an option from a list.
+category: 'Pickers'
+srcFilename: 'select'
+docUrl: 'https://react-spectrum.adobe.com/react-aria/Select.html'
+aria: 'https://www.w3.org/WAI/ARIA/apg/patterns/listbox/'
+composes: ['Button', 'ListBox', 'Popover', 'Field']
 ---
+
+## Controlled selection with dynamic items
+
+Use `selectedKey` and `onSelectionChange` to control the selected option.
+
+<Demo
+  className="items-stretch"
+  demo={<SelectDemo.Controlled />}
+  code={demos.controlled}
+/>
+
+## Sections
+
+Use `<SelectSection>` component to group options.
+
+<Demo
+  className="items-stretch"
+  demo={<SelectDemo.Sections />}
+  code={demos.sections}
+/>
+
+## States
+
+Use `isDisabled` to disable the select. Use `isInvalid` and `errorMessage` to
+show an error state.
+
+<Demo
+  className="items-stretch"
+  demo={<SelectDemo.States />}
+  code={demos.states}
+/>

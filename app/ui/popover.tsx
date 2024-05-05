@@ -11,10 +11,10 @@ import { animateMountStyle, compose, cva, cxRenderProps } from '@lib/utils'
 
 const PopoverTrigger = RACDialogTrigger
 
-const style = compose(
+const popoverStyle = compose(
   animateMountStyle,
   cva({
-    base: 'z-50 rounded-lg bg-neutral-bg-subtle p-4 text-neutral-text text-sm ring shadow-lg ring-neutral-solid/15 outline-none',
+    base: 'z-50 rounded-lg bg-neutral-bg-subtle p-4 text-neutral-text text-sm ring shadow-lg ring-neutral-solid/15 outline-none overflow-auto',
   }),
 )
 
@@ -30,11 +30,11 @@ const Popover = ({
 }: PopoverProps) => (
   <RACPopover
     offset={offset}
-    className={cxRenderProps(className, style())}
+    className={cxRenderProps(className, popoverStyle())}
     {...props}
   >
-    <RACDialog className="outline-none">{children}</RACDialog>
+    <RACDialog className="overflow-auto outline-none">{children}</RACDialog>
   </RACPopover>
 )
 
-export { Popover, PopoverTrigger, type PopoverProps }
+export { Popover, PopoverTrigger, popoverStyle, type PopoverProps }
