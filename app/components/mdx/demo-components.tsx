@@ -107,6 +107,10 @@ export const demoComponents = {
       import("@/demos/tabs").then((mod) => mod.Controlled),
     ),
   },
+  LinkDemo: {
+    Main: dynamic(() => import("@/demos/link").then((mod) => mod.Main)),
+    Intent: dynamic(() => import("@/demos/link").then((mod) => mod.Intent)),
+  },
 
   PopoverDemo: {
     Main: dynamic(() => import("@/demos/popover").then((mod) => mod.Main)),
