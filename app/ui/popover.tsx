@@ -1,22 +1,22 @@
-'use client'
+"use client"
 
 import {
   Dialog as RACDialog,
   DialogTrigger as RACDialogTrigger,
   Popover as RACPopover,
   type PopoverProps as RACPopoverProps,
-} from 'react-aria-components'
+} from "react-aria-components"
 
-import { animateMountStyle, compose, cva, cxRenderProps } from '@lib/utils'
+import { animateMountStyle, compose, cva, cxRenderProps } from "@lib/utils"
 
 const popoverStyle = compose(
   animateMountStyle,
   cva({
-    base: 'z-50 rounded-lg bg-neutral-bg-subtle p-4 text-neutral-text text-sm ring shadow-lg ring-neutral-solid/15 outline-none overflow-auto',
+    base: "z-20 rounded-lg bg-[var(--color-bg-panel)] p-4 text-neutral-text text-sm ring shadow-xl ring-neutral-solid/20 outline-none overflow-auto",
   }),
 )
 
-interface PopoverProps extends Omit<RACPopoverProps, 'children'> {
+interface PopoverProps extends Omit<RACPopoverProps, "children"> {
   children: React.ReactNode
 }
 
