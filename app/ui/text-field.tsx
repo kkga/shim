@@ -1,13 +1,13 @@
-'use client'
+"use client"
 
-import { compose, cva, cxRenderProps } from '@lib/utils'
+import { compose, cva, cxRenderProps } from "@lib/utils"
 import {
   TextField as RACTextField,
   type TextFieldProps as RACTextFieldProps,
   type ValidationResult,
-} from 'react-aria-components'
+} from "react-aria-components"
 
-import { Description, FieldError, Input, Label, fieldStyle } from './field'
+import { Description, FieldError, Input, Label, fieldStyle } from "./field"
 
 interface TextFieldProps extends RACTextFieldProps {
   label?: string
@@ -22,8 +22,8 @@ const inputStyles = compose(
   cva({
     variants: {
       size: {
-        1: 'h-6 px-2',
-        2: 'h-8 px-3',
+        1: "h-6 px-2",
+        2: "h-8 px-3",
       },
     },
   }),
@@ -40,7 +40,7 @@ const TextField = ({
 }: TextFieldProps) => {
   return (
     <RACTextField
-      className={cxRenderProps(className, 'group flex flex-col gap-1.5')}
+      className={cxRenderProps(className, "group flex flex-col gap-1.5")}
       {...props}
     >
       {label && <Label>{label}</Label>}

@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { compose, cva, cxRenderProps, focusInsetStyle } from '@lib/utils'
+import { compose, cva, cxRenderProps, focusInsetStyle } from "@lib/utils"
 import {
   Collection as RACCollection,
   Header as RACHeader,
@@ -10,7 +10,7 @@ import {
   type ListBoxItemProps as RACListBoxItemProps,
   type ListBoxProps as RACListBoxProps,
   type SectionProps as RACSectionProps,
-} from 'react-aria-components'
+} from "react-aria-components"
 
 function ListBox<T extends object>({ children, ...props }: RACListBoxProps<T>) {
   return (
@@ -18,7 +18,7 @@ function ListBox<T extends object>({ children, ...props }: RACListBoxProps<T>) {
       {...props}
       className={cxRenderProps(
         props.className,
-        'flex w-full flex-col gap-px overflow-auto',
+        "flex w-full flex-col gap-px overflow-auto",
       )}
     >
       {children}
@@ -30,15 +30,15 @@ const itemStyles = compose(
   focusInsetStyle,
   cva({
     base: [
-      'flex h-6 items-center px-2 text-sm rounded-md text-neutral-text cursor-default truncate',
+      "flex h-6 items-center px-2 text-sm rounded-md text-neutral-text cursor-default truncate",
       // hovered
-      'data-[hovered]:bg-neutral-bg-hover',
+      "data-[hovered]:bg-neutral-bg-hover",
       // pressed
-      'data-[pressed]:bg-neutral-bg-active',
+      "data-[pressed]:bg-neutral-bg-active",
       // selected
-      'data-[selected]:bg-accent-solid data-[selected]:text-white',
+      "data-[selected]:bg-accent-solid data-[selected]:text-white",
       // disabled
-      'data-[disabled]:text-neutral-placeholder',
+      "data-[disabled]:text-neutral-placeholder",
     ],
   }),
 )
@@ -46,7 +46,7 @@ const itemStyles = compose(
 function ListBoxItem({ className, ...props }: RACListBoxItemProps) {
   const textValue =
     props.textValue ||
-    (typeof props.children === 'string' ? props.children : undefined)
+    (typeof props.children === "string" ? props.children : undefined)
 
   return (
     <RACListBoxItem

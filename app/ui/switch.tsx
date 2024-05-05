@@ -1,19 +1,19 @@
-'use client'
+"use client"
 
-import { compose, cva, cxRenderProps, focusStyle } from '@lib/utils'
-import type { VariantProps } from 'cva'
+import { compose, cva, cxRenderProps, focusStyle } from "@lib/utils"
+import type { VariantProps } from "cva"
 import {
   Switch as RACSwitch,
   type SwitchProps as RACSwitchProps,
-} from 'react-aria-components'
+} from "react-aria-components"
 
 const switchStyles = cva({
   base: [
-    'group flex items-center gap-2 text-sm font-medium text-neutral-text flex',
+    "group flex items-center gap-2 text-sm font-medium text-neutral-text flex",
   ],
   variants: {
     isDisabled: {
-      true: 'text-neutral-placeholder pointer-events-none',
+      true: "text-neutral-placeholder pointer-events-none",
     },
   },
 })
@@ -22,15 +22,15 @@ const trackStyles = compose(
   focusStyle,
   cva({
     base: [
-      'flex h-4 w-7 px-px items-center shrink-0 cursor-default rounded-full transition-colors shadow-inner border',
+      "flex h-4 w-7 px-px items-center shrink-0 cursor-default rounded-full transition-colors shadow-inner border",
     ],
     variants: {
       isSelected: {
-        true: 'bg-accent-solid border-accent-solid-hover',
-        false: 'bg-neutral-bg border-neutral-border',
+        true: "bg-accent-solid border-accent-solid-hover",
+        false: "bg-neutral-bg border-neutral-border",
       },
       isDisabled: {
-        true: 'bg-neutral-bg-subtle outline-neutral-line shadow-none border-neutral-line',
+        true: "bg-neutral-bg-subtle outline-neutral-line shadow-none border-neutral-line",
       },
     },
   }),
@@ -38,15 +38,15 @@ const trackStyles = compose(
 
 const handleStyles = cva({
   base: [
-    'size-3 transform transition-transform rounded-full bg-white shadow ring ring-black/5',
+    "size-3 transform transition-transform rounded-full bg-white shadow ring ring-black/5",
   ],
   variants: {
     isSelected: {
-      true: 'translate-x-full',
-      false: 'translate-x-0',
+      true: "translate-x-full",
+      false: "translate-x-0",
     },
     isDisabled: {
-      true: 'shadow-none ring-0 bg-neutral-border',
+      true: "shadow-none ring-0 bg-neutral-border",
     },
   },
 })

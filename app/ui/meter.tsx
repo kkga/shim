@@ -1,12 +1,12 @@
-'use client'
+"use client"
 
-import { cx, cxRenderProps } from '@lib/utils'
-import { useMemo } from 'react'
+import { cx, cxRenderProps } from "@lib/utils"
+import { useMemo } from "react"
 import {
   Meter as RACMeter,
   type MeterProps as RACMeterProps,
-} from 'react-aria-components'
-import { Description, Label } from './field'
+} from "react-aria-components"
+import { Description, Label } from "./field"
 
 interface MeterProps extends RACMeterProps {
   label?: string
@@ -25,7 +25,7 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
   return (
     <RACMeter
       {...props}
-      className={cxRenderProps(props.className, 'flex w-full flex-col gap-1.5')}
+      className={cxRenderProps(props.className, "flex w-full flex-col gap-1.5")}
     >
       {({ percentage, valueText }) => (
         <>
@@ -33,10 +33,10 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
             <Label>{label}</Label>
             <span
               className={cx(
-                'text-xs',
-                color ? ''
-                : percentage > 80 ? 'text-error-text'
-                : 'text-neutral-text',
+                "text-xs",
+                color ? ""
+                : percentage > 80 ? "text-error-text"
+                : "text-neutral-text",
               )}
             >
               {valueText}

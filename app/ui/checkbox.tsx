@@ -1,22 +1,22 @@
-'use client'
+"use client"
 
-import type { VariantProps } from 'cva'
-import type { ReactNode } from 'react'
+import type { VariantProps } from "cva"
+import type { ReactNode } from "react"
 
-import { Check, Minus } from '@phosphor-icons/react'
+import { Check, Minus } from "@phosphor-icons/react"
 import {
   Checkbox as RACCheckbox,
   CheckboxGroup as RACCheckboxGroup,
   type CheckboxGroupProps as RACCheckboxGroupProps,
   type CheckboxProps as RACCheckboxProps,
   type ValidationResult,
-} from 'react-aria-components'
+} from "react-aria-components"
 
-import { compose, cva, cx, cxRenderProps, focusStyle } from '@lib/utils'
+import { compose, cva, cx, cxRenderProps, focusStyle } from "@lib/utils"
 
-import { Description, FieldError, Label } from './field'
+import { Description, FieldError, Label } from "./field"
 
-interface CheckboxGroupProps extends Omit<RACCheckboxGroupProps, 'children'> {
+interface CheckboxGroupProps extends Omit<RACCheckboxGroupProps, "children"> {
   label?: string
   children?: ReactNode
   description?: string
@@ -27,7 +27,7 @@ function CheckboxGroup(props: CheckboxGroupProps) {
   return (
     <RACCheckboxGroup
       {...props}
-      className={cxRenderProps(props.className, 'flex flex-col gap-2')}
+      className={cxRenderProps(props.className, "flex flex-col gap-2")}
     >
       <Label>{props.label}</Label>
       {props.children}
@@ -38,14 +38,14 @@ function CheckboxGroup(props: CheckboxGroupProps) {
 }
 
 const checkboxStyles = cva({
-  base: ['group flex items-center gap-2 text-neutral-text outline-none'],
+  base: ["group flex items-center gap-2 text-neutral-text outline-none"],
   variants: {
     size: {
-      1: 'text-sm gap-2',
-      2: 'text-sm gap-3',
+      1: "text-sm gap-2",
+      2: "text-sm gap-3",
     },
     isDisabled: {
-      true: 'text-neutral-placeholder',
+      true: "text-neutral-placeholder",
     },
   },
   defaultVariants: {
@@ -56,18 +56,18 @@ const checkboxStyles = cva({
 const boxStyles = compose(
   focusStyle,
   cva({
-    base: ['flex shrink-0 items-center justify-center border shadow-inner'],
+    base: ["flex shrink-0 items-center justify-center border shadow-inner"],
     variants: {
       isSelected: {
-        true: 'border-accent-solid-hover bg-accent-solid text-white',
-        false: 'bg-neutral-bg border-neutral-border text-neutral-text',
+        true: "border-accent-solid-hover bg-accent-solid text-white",
+        false: "bg-neutral-bg border-neutral-border text-neutral-text",
       },
       isDisabled: {
-        true: 'border-neutral-line bg-neutral-bg-subtle text-neutral-placeholder shadow-none',
+        true: "border-neutral-line bg-neutral-bg-subtle text-neutral-placeholder shadow-none",
       },
       size: {
-        1: 'size-4 rounded',
-        2: 'size-5 rounded-md',
+        1: "size-4 rounded",
+        2: "size-5 rounded-md",
       },
     },
     compoundVariants: [
@@ -75,7 +75,7 @@ const boxStyles = compose(
         isSelected: true,
         isDisabled: true,
         className:
-          'border-neutral-line bg-neutral-bg-subtle text-neutral-placeholder',
+          "border-neutral-line bg-neutral-bg-subtle text-neutral-placeholder",
       },
     ],
     defaultVariants: {

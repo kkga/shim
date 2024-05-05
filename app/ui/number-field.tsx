@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import {
   Button,
@@ -6,10 +6,10 @@ import {
   type ButtonProps,
   type NumberFieldProps as RACNumberFieldProps,
   type ValidationResult,
-} from 'react-aria-components'
+} from "react-aria-components"
 
-import { compose, cva, cx, cxRenderProps } from '@lib/utils'
-import { CaretDown, CaretUp } from '@phosphor-icons/react'
+import { compose, cva, cx, cxRenderProps } from "@lib/utils"
+import { CaretDown, CaretUp } from "@phosphor-icons/react"
 import {
   Description,
   FieldError,
@@ -17,7 +17,7 @@ import {
   Input,
   Label,
   fieldGroupStyle,
-} from './field'
+} from "./field"
 
 interface NumberFieldProps extends RACNumberFieldProps {
   label?: string
@@ -31,8 +31,8 @@ const groupStyles = compose(
   cva({
     variants: {
       size: {
-        1: 'h-6',
-        2: 'h-8',
+        1: "h-6",
+        2: "h-8",
       },
     },
   }),
@@ -48,7 +48,7 @@ function NumberField({
   return (
     <RACNumberField
       {...props}
-      className={cxRenderProps(props.className, 'group flex flex-col gap-1.5')}
+      className={cxRenderProps(props.className, "group flex flex-col gap-1.5")}
     >
       <Label>{label}</Label>
       <FieldGroup
@@ -58,13 +58,13 @@ function NumberField({
           <>
             <Input
               className={cx(
-                'min-w-0 flex-1 appearance-none self-stretch border-none text-xs text-inherit outline-0 placeholder:text-neutral-placeholder',
-                size === 1 ? 'px-2' : 'px-3',
+                "min-w-0 flex-1 appearance-none self-stretch border-none text-xs text-inherit outline-0 placeholder:text-neutral-placeholder",
+                size === 1 ? "px-2" : "px-3",
               )}
             />
             <div
               className={cx(
-                'flex flex-col self-stretch border-s border-neutral-border group-data-[disabled]:border-neutral-line group-data-[invalid]:border-error-border',
+                "flex flex-col self-stretch border-s border-neutral-border group-data-[disabled]:border-neutral-line group-data-[invalid]:border-error-border",
               )}
             >
               <StepperButton slot="increment">
@@ -89,15 +89,15 @@ function StepperButton({ className, ...props }: ButtonProps) {
     <Button
       {...props}
       className={cx(
-        'flex flex-1 cursor-default items-center justify-center bg-neutral-bg px-1.5 text-neutral-text',
+        "flex flex-1 cursor-default items-center justify-center bg-neutral-bg px-1.5 text-neutral-text",
         // hovered
-        'data-[hovered]:bg-neutral-bg-hover',
+        "data-[hovered]:bg-neutral-bg-hover",
         // pressed
-        'data-[pressed]:bg-neutral-bg-active',
+        "data-[pressed]:bg-neutral-bg-active",
         // group disabled
-        'group-data-[disabled]:text-neutral-placeholder',
+        "group-data-[disabled]:text-neutral-placeholder",
         // group invalid
-        'group-data-[invalid]:text-error-text',
+        "group-data-[invalid]:text-error-text",
         className,
       )}
     />
