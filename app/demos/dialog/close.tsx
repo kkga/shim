@@ -1,27 +1,27 @@
-'use client'
-import { Button } from '@ui/button'
-import { Dialog, DialogTrigger } from '@ui/dialog'
-import { Form } from '@ui/form'
-import { TextField } from '@ui/text-field'
+"use client"
+import { Button } from "@ui/button"
+import { Dialog, DialogTrigger } from "@ui/dialog"
+import { Form } from "@ui/form"
+import { TextField } from "@ui/text-field"
 
 export default () => (
   <DialogTrigger>
-    <Button className='self-start'>Edit profile</Button>
+    <Button className="self-start">Edit profile</Button>
     <Dialog
       isDismissable={false}
-      title='Edit profile'
-      description='Edit your profile information.'
-      className='max-w-sm'
+      title="Edit profile"
+      description="Edit your profile information."
+      className="max-w-sm"
     >
       {({ close }) => (
         <Form>
-          <TextField label='Name' size={2} />
-          <TextField label='Email' size={2} />
-          <div className='flex gap-2 self-end'>
-            <Button onPress={close} size={2} intent='neutral' variant='ghost'>
+          <TextField label="Name" size={2} />
+          <TextField label="Email" size={2} />
+          <div className="flex gap-2 self-end">
+            <Button onPress={close} size={2} intent="neutral" variant="ghost">
               Cancel
             </Button>
-            <Button variant='solid' size={2}>
+            <Button variant="solid" size={2}>
               Save
             </Button>
           </div>

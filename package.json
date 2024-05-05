@@ -37,7 +37,6 @@
   "prettier": {
     "experimentalTernaries": true,
     "semi": false,
-    "singleQuote": true,
     "proseWrap": "always",
     "plugins": [
       "prettier-plugin-tailwindcss"
@@ -51,8 +50,7 @@
       {
         "files": "./app/demos/**/*.tsx",
         "options": {
-          "printWidth": 100,
-          "jsxSingleQuote": true
+          "printWidth": 100
         }
       }
     ]
