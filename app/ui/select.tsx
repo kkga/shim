@@ -1,29 +1,29 @@
-'use client'
+"use client"
 
-import { cx, cxRenderProps } from '@lib/utils'
-import { CaretDown } from '@phosphor-icons/react'
-import { Button } from '@ui/button'
-import { Description, FieldError, Label } from '@ui/field'
+import { cx, cxRenderProps } from "@lib/utils"
+import { CaretDown } from "@phosphor-icons/react"
+import { Button } from "@ui/button"
+import { Description, FieldError, Label } from "@ui/field"
 import {
   ListBox,
   ListBoxItem,
   ListBoxSection,
   ListBoxSectionProps,
-} from '@ui/listbox'
+} from "@ui/listbox"
 import type {
   ListBoxItemProps as RACListBoxItemProps,
   SelectProps as RACSelectProps,
   ValidationResult as RACValidationResult,
-} from 'react-aria-components'
+} from "react-aria-components"
 import {
   Popover as RACPopover,
   Select as RACSelect,
   SelectValue as RACSelectValue,
-} from 'react-aria-components'
-import { popoverStyle } from './popover'
+} from "react-aria-components"
+import { popoverStyle } from "./popover"
 
 interface SelectProps<T extends object>
-  extends Omit<RACSelectProps<T>, 'children'> {
+  extends Omit<RACSelectProps<T>, "children"> {
   label?: string
   description?: string
   errorMessage?: string | ((validation: RACValidationResult) => string)
@@ -42,7 +42,7 @@ function Select<T extends object>({
   return (
     <RACSelect
       {...props}
-      className={cxRenderProps(props.className, 'group flex flex-col gap-1.5')}
+      className={cxRenderProps(props.className, "group flex flex-col gap-1.5")}
     >
       {label && <Label>{label}</Label>}
       <Button className="justify-between" intent="neutral">
@@ -58,7 +58,7 @@ function Select<T extends object>({
       <FieldError>{errorMessage}</FieldError>
       <RACPopover
         offset={4}
-        className={cx(popoverStyle(), 'min-w-[var(--trigger-width)] p-0')}
+        className={cx(popoverStyle(), "min-w-[var(--trigger-width)] p-0")}
       >
         <ListBox
           items={items}

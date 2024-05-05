@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import { Check, Copy } from '@phosphor-icons/react'
-import { Tooltip, TooltipTrigger } from '@ui/Tooltip'
-import { Button } from '@ui/button'
-import { useEffect, useState } from 'react'
-import { useCopyToClipboard } from 'usehooks-ts'
+import { Check, Copy } from "@phosphor-icons/react"
+import { Button } from "@ui/button"
+import { Tooltip, TooltipTrigger } from "@ui/tooltip"
+import { useEffect, useState } from "react"
+import { useCopyToClipboard } from "usehooks-ts"
 
 interface CopyButtonProps {
   text: string
@@ -23,7 +23,7 @@ function CopyButton({ children, text, title, className }: CopyButtonProps) {
         setJustCopied(true)
       })
       .catch((error) => {
-        console.error('Failed to copy!', error)
+        console.error("Failed to copy!", error)
       })
   }
 
@@ -42,7 +42,7 @@ function CopyButton({ children, text, title, className }: CopyButtonProps) {
     <TooltipTrigger delay={500}>
       <Button
         onPress={handleCopy}
-        intent={justCopied ? 'success' : 'neutral'}
+        intent={justCopied ? "success" : "neutral"}
         className={className}
         isSquare
       >
@@ -52,7 +52,7 @@ function CopyButton({ children, text, title, className }: CopyButtonProps) {
           children
         : <Copy weight="duotone" size={16} />}
       </Button>
-      <Tooltip>{title || 'Copy to clipboard'}</Tooltip>
+      <Tooltip>{title || "Copy to clipboard"}</Tooltip>
     </TooltipTrigger>
   )
 }
