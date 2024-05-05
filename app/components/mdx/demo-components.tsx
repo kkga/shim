@@ -116,6 +116,9 @@ export const demoComponents = {
   },
   DialogDemo: {
     Main: dynamic(() => import('@/demos/dialog').then((mod) => mod.Main)),
+    Controlled: dynamic(() =>
+      import('@/demos/dialog').then((mod) => mod.Controlled),
+    ),
     Close: dynamic(() => import('@/demos/dialog').then((mod) => mod.Close)),
   },
 
