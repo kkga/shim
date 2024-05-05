@@ -36,6 +36,12 @@ export const demoComponents = {
     ),
   },
 
+  FormDemo: {
+    Main: dynamic(() => import('@/demos/form').then((mod) => mod.Main)),
+    Validation: dynamic(() =>
+      import('@/demos/form').then((mod) => mod.Validation),
+    ),
+  },
   FieldDemo: {
     Main: dynamic(() => import('@/demos/field').then((mod) => mod.Main)),
   },
