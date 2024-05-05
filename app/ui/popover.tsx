@@ -9,8 +9,6 @@ import {
 
 import { animateMountStyle, compose, cva, cxRenderProps } from '@lib/utils'
 
-const PopoverTrigger = RACDialogTrigger
-
 const popoverStyle = compose(
   animateMountStyle,
   cva({
@@ -36,5 +34,7 @@ const Popover = ({
     <RACDialog className="overflow-auto outline-none">{children}</RACDialog>
   </RACPopover>
 )
+
+const PopoverTrigger = RACDialogTrigger
 
 export { Popover, PopoverTrigger, popoverStyle, type PopoverProps }
