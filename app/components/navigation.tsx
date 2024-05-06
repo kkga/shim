@@ -28,6 +28,17 @@ export interface NavItem {
   category: string
 }
 
+const categoryIcons: Record<string, React.ReactNode> = {
+  Intro: <HouseSimple weight="duotone" size={16} />,
+  Overlays: <Cards weight="duotone" size={16} />,
+  Forms: <Textbox weight="duotone" size={16} />,
+  Status: <WarningDiamond weight="duotone" size={16} />,
+  Buttons: <CursorClick weight="duotone" size={16} />,
+  Pickers: <CheckFat weight="duotone" size={16} />,
+  Navigation: <Path weight="duotone" size={16} />,
+  Collections: <Rows weight="duotone" size={16} />,
+}
+
 const categorizeItems = (items: NavItem[]) => {
   const categories = Array.from(
     new Set(items.map((item) => item.category)),
@@ -55,17 +66,6 @@ const filterItems = (items: NavItem[], filter?: string) => {
       name.toLowerCase().includes(lowerFilter) ||
       category.toLowerCase().includes(lowerFilter),
   )
-}
-
-const categoryIcons: Record<string, React.ReactNode> = {
-  Intro: <HouseSimple weight="duotone" size={16} />,
-  Overlays: <Cards weight="duotone" size={16} />,
-  Forms: <Textbox weight="duotone" size={16} />,
-  Status: <WarningDiamond weight="duotone" size={16} />,
-  Buttons: <CursorClick weight="duotone" size={16} />,
-  Pickers: <CheckFat weight="duotone" size={16} />,
-  Navigation: <Path weight="duotone" size={16} />,
-  Collections: <Rows weight="duotone" size={16} />,
 }
 
 const itemStyle = compose(
@@ -137,7 +137,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
               <Header className="col-span-full flex h-6 items-center gap-1.5 text-xs font-medium text-neutral-10">
                 {categoryIcons[section]}
                 {section}
-                <div className="h-px grow bg-neutral-3"></div>
+                <div className="h-px grow bg-neutral-3" />
               </Header>
               <Collection items={items}>
                 {({ slug, name }) => (
