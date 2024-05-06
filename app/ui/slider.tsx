@@ -28,14 +28,11 @@ const thumbStyles = compose(
   focusStyle,
   cva({
     base: [
-      "size-4 bg-white ring-1 ring-black/10 shadow rounded-full",
+      "size-4 bg-white ring-1 ring-black/10 shadow-md rounded-full",
       // vertical
       "group-data-[orientation=horizontal]:mt-4 group-data-[orientation=vertical]:ml-2",
     ],
     variants: {
-      isDragging: {
-        true: "shadow-lg",
-      },
       isDisabled: {
         true: "bg-neutral-bg ring-neutral-line shadow-none",
       },
