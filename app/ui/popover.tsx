@@ -27,7 +27,7 @@ function Popover({ className, children, offset = 4, ...props }: PopoverProps) {
       className={cxRenderProps(className, popoverStyle())}
       {...props}
     >
-      <RACDialog className="overflow-auto outline-none">{children}</RACDialog>
+      <RACDialog className="outline-none">{children}</RACDialog>
     </RACPopover>
   )
 }
