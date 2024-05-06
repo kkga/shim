@@ -50,8 +50,6 @@ interface SliderProps<T> extends RACSliderProps<T> {
   isFilled?: boolean
 }
 
-;<div className={cx("data-[orientation=horizontal]:grid")} />
-
 function Slider<T extends number | number[]>({
   label,
   description,
