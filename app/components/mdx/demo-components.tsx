@@ -141,6 +141,15 @@ export const demoComponents = {
       import("@/demos/listbox").then((mod) => mod.Content),
     ),
   },
+  MenuDemo: {
+    Main: dynamic(() => import("@/demos/menu").then((mod) => mod.Main)),
+    Content: dynamic(() => import("@/demos/menu").then((mod) => mod.Content)),
+    Selection: dynamic(() =>
+      import("@/demos/menu").then((mod) => mod.Selection),
+    ),
+    Sections: dynamic(() => import("@/demos/menu").then((mod) => mod.Sections)),
+    Submenu: dynamic(() => import("@/demos/menu").then((mod) => mod.Submenu)),
+  },
 
   SelectDemo: {
     Main: dynamic(() => import("@/demos/select").then((mod) => mod.Main)),

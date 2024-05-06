@@ -12,7 +12,7 @@ import { animateMountStyle, compose, cva, cxRenderProps } from "@lib/utils"
 const popoverStyle = compose(
   animateMountStyle,
   cva({
-    base: "z-20 rounded-lg bg-[var(--color-bg-panel)] p-4 text-neutral-text text-sm ring shadow-xl ring-neutral-solid/20 outline-none overflow-auto",
+    base: "z-20 rounded-lg bg-[var(--color-bg-panel)] text-neutral-text text-sm ring shadow-xl ring-neutral-solid/20 outline-none",
   }),
 )
 

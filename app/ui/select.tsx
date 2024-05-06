@@ -58,7 +58,7 @@ function Select<T extends object>({
       <FieldError>{errorMessage}</FieldError>
       <RACPopover
         offset={4}
-        className={cx(popoverStyle(), "min-w-[var(--trigger-width)] p-0")}
+        className={cx(popoverStyle(), "min-w-[var(--trigger-width)]")}
       >
         <ListBox
           items={items}
