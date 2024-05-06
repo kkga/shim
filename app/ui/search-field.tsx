@@ -36,7 +36,7 @@ const groupStyles = compose(
     variants: {
       size: {
         1: "h-6 px-px gap-0.5",
-        2: "h-8 px-[3px] gap-1",
+        2: "h-8 px-[3px] gap-0.5",
       },
     },
   }),

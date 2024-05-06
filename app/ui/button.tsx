@@ -161,18 +161,18 @@ const styles = compose(focusStyle, buttonStyle)
 
 interface ButtonProps extends RACButtonProps, VariantProps<typeof styles> {}
 
-const Button = ({
+function Button({
   className,
   variant,
   intent,
   size,
   isSquare,
   ...props
-}: ButtonProps) => {
-  const children =
+}: ButtonProps) {
+  let children =
     typeof props.children !== "function" && Children.toArray(props.children)
 
-  const hasOnlySvg =
+  let hasOnlySvg =
     children &&
     children.length === 1 &&
     isValidElement(children[0]) &&

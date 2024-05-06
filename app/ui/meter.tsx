@@ -15,7 +15,7 @@ interface MeterProps extends RACMeterProps {
 }
 
 function Meter({ label, description, color, value, ...props }: MeterProps) {
-  const barColor = useMemo(() => {
+  let barColor = useMemo(() => {
     if (color instanceof Function) {
       return color(value ?? 0)
     }
