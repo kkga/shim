@@ -18,7 +18,7 @@ import {
 
 const buttonStyle = cva({
   base: [
-    "font-medium inline-flex items-center justify-center shrink-0",
+    "font-medium inline-flex items-center justify-center shrink-0 truncate",
     // disabled
     "data-[disabled]:text-neutral-placeholder data-[disabled]:cursor-not-allowed data-[disabled]:pointer-events-none data-[disabled]:bg-neutral-bg-subtle",
   ],

@@ -6,22 +6,21 @@ import { cva, cx } from "@lib/utils"
 import { Children, isValidElement } from "react"
 
 const badgeStyles = cva({
-  base: "inline-flex w-min items-center justify-center font-regular",
+  base: "inline-flex w-min items-center justify-center text-xs font-[450]",
   variants: {
     intent: {
       neutral:
-        "border border-neutral-border bg-neutral-bg-subtle text-neutral-text",
-      accent:
-        "border border-accent-border bg-accent-bg-subtle text-accent-text",
+        "border border-neutral-line bg-neutral-bg-subtle text-neutral-text",
+      accent: "border border-accent-line bg-accent-bg-subtle text-accent-text",
       success:
-        "border border-success-border bg-success-bg-subtle text-success-text",
+        "border border-success-line bg-success-bg-subtle text-success-text",
       warning:
-        "border border-warning-border bg-warning-bg-subtle text-warning-text",
-      error: "border border-error-border bg-error-bg-subtle text-error-text",
+        "border border-warning-line bg-warning-bg-subtle text-warning-text",
+      error: "border border-error-line bg-error-bg-subtle text-error-text",
     },
     size: {
-      1: "h-5 px-1 gap-1 text-[12px] rounded",
-      2: "h-6 px-1.5 gap-1.5 text-xs rounded-md",
+      1: "h-5 px-1 gap-1 rounded",
+      2: "h-6 px-1.5 gap-1.5 rounded-md",
     },
     isSquare: {
       true: "",

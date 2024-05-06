@@ -58,7 +58,7 @@ export default async function Doc({ params }) {
     notFound()
   }
 
-  const { srcFilename, composes } = doc.metadata
+  const { srcFilename, composes, category } = doc.metadata
 
   const demos = getComponentDemos(srcFilename)
   const source = getComponentSource(srcFilename)
@@ -115,7 +115,11 @@ export default async function Doc({ params }) {
           />
         </DocHeader>
 
-        <Demo demo={<MainDemo />} code={demos.main} />
+        <Demo
+          className={category === "Buttons" ? "items-start" : ""}
+          demo={<MainDemo />}
+          code={demos.main}
+        />
 
         <InstallInstructions
           dependencies={dependencies.length > 0 ? dependencies : undefined}

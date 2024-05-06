@@ -1,25 +1,25 @@
-import { cx } from 'cva'
-import { Pre } from './pre'
+import { cx } from "cva"
+import { Pre } from "./pre"
 
 interface Props {
   demo: React.ReactNode
   code?: string
   className?: string
-  inline?: boolean
+  stacked?: boolean
 }
 
-function Demo({ demo, code, className, inline = true }: Props) {
+function Demo({ demo, code, className, stacked = false }: Props) {
   return (
     <div
       className={cx(
-        's-box',
-        'my-8 flex overflow-hidden rounded-xl bg-[var(--color-bg-panel)] ring shadow-sm ring-neutral-solid/20',
-        inline ? 'flex-col md:flex-row' : 'flex-col',
+        "s-box",
+        "my-8 flex flex-col overflow-hidden rounded-xl bg-[var(--color-bg-panel)] ring shadow-sm ring-neutral-solid/20",
+        stacked ? "md:flex-col" : "md:flex-row",
       )}
     >
       <div
         className={cx(
-          'flex flex-1 flex-col items-start gap-4 overflow-auto p-4 text-sm text-neutral-text',
+          "flex flex-1 flex-col content-start gap-3 overflow-auto p-4 text-sm text-neutral-text",
           className,
         )}
       >
@@ -29,8 +29,8 @@ function Demo({ demo, code, className, inline = true }: Props) {
       {code && (
         <div
           className={cx(
-            'flex flex-col overflow-auto border-neutral-3',
-            inline ? 'flex-3 border-l' : 'border-t',
+            "flex flex-col overflow-auto border-neutral-3",
+            stacked ? "border-t" : "border-l md:flex-3",
           )}
         >
           <Pre

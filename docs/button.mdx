@@ -1,29 +1,37 @@
 ---
 name: Button
 description: Trigger an action or event.
-category: 'Buttons'
-srcFilename: 'button'
-docUrl: 'https://react-spectrum.adobe.com/react-aria/Button.html'
-aria: 'https://www.w3.org/WAI/ARIA/apg/patterns/button/'
+category: "Buttons"
+srcFilename: "button"
+docUrl: "https://react-spectrum.adobe.com/react-aria/Button.html"
+aria: "https://www.w3.org/WAI/ARIA/apg/patterns/button/"
 ---
 
 ### Size
 
 Use `size` to set the size of the button.
 
-<Demo demo={<ButtonDemo.Size />} code={demos['size']} />
+<Demo className="items-start" demo={<ButtonDemo.Size />} code={demos["size"]} />
 
 ### Intent
 
 Use `intent` to set the semantic color.
 
-<Demo demo={<ButtonDemo.Intent />} code={demos['intent']} />
+<Demo
+  className="items-start"
+  demo={<ButtonDemo.Intent />}
+  code={demos["intent"]}
+/>
 
 ### Variant
 
 Use `variant` to set the visual style.
 
-<Demo demo={<ButtonDemo.Variant />} code={demos['variant']} />
+<Demo
+  className="items-start"
+  demo={<ButtonDemo.Variant />}
+  code={demos["variant"]}
+/>
 
 ### Content
 
@@ -37,4 +45,8 @@ prop.
   accessibility.
 </Note>
 
-<Demo demo={<ButtonDemo.Content />} code={demos['content']} />
+<Demo
+  className="items-start"
+  demo={<ButtonDemo.Content />}
+  code={demos["content"]}
+/>

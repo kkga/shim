@@ -1,20 +1,28 @@
 ---
 name: ToggleButton
 description: Toggle a state between two values.
-category: 'Buttons'
-srcFilename: 'toggle-button'
-docUrl: 'https://react-spectrum.adobe.com/react-aria/ToggleButton.html'
-aria: 'button'
+category: "Buttons"
+srcFilename: "toggle-button"
+docUrl: "https://react-spectrum.adobe.com/react-aria/ToggleButton.html"
+aria: "button"
 ---
 
 ### States
 
 Use `isSelected` and `isDisabled` props to set the button state.
 
-<Demo demo={<ToggleButtonDemo.States />} code={demos['states']} />
+<Demo
+  className="items-start"
+  demo={<ToggleButtonDemo.States />}
+  code={demos["states"]}
+/>
 
 ### Controlled state
 
 Use `isSelected` and `onChange` props to control the state.
 
-<Demo demo={<ToggleButtonDemo.Controlled />} code={demos['controlled']} />
+<Demo
+  className="items-start"
+  demo={<ToggleButtonDemo.Controlled />}
+  code={demos["controlled"]}
+/>
