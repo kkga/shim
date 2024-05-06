@@ -1,19 +1,19 @@
-import { Info } from '@phosphor-icons/react/dist/ssr'
-import { cx } from 'cva'
-import type { MDXRemoteProps } from 'next-mdx-remote'
-import Link from 'next/link'
-import { highlight } from 'sugar-high'
-import { Demo } from './demo'
-import { demoComponents } from './demo-components'
-import { Pre } from './pre'
-import { Step, Steps } from './steps'
+import { Info } from "@phosphor-icons/react/dist/ssr"
+import { cx } from "cva"
+import type { MDXRemoteProps } from "next-mdx-remote"
+import Link from "next/link"
+import { highlight } from "sugar-high"
+import { Demo } from "./demo"
+import { demoComponents } from "./demo-components"
+import { Pre } from "./pre"
+import { Step, Steps } from "./steps"
 
 function CustomLink(props) {
   const href = props.href
   const className =
-    'text-accent-text underline-offset-2 underline decoration-accent-line hover:decoration-accent-border-hover'
+    "text-accent-text underline-offset-2 underline decoration-accent-line hover:decoration-accent-border-hover"
 
-  if (href.startsWith('/')) {
+  if (href.startsWith("/")) {
     return (
       <Link href={href} className={className} {...props}>
         {props.children}
@@ -21,7 +21,7 @@ function CustomLink(props) {
     )
   }
 
-  if (href.startsWith('#')) {
+  if (href.startsWith("#")) {
     return <a className={className} {...props} />
   }
 
@@ -41,7 +41,7 @@ export function Code(props) {
   return (
     <code
       className={cx(
-        'font-mono text-[95%] text-neutral-text-contrast',
+        "font-mono text-[95%] text-neutral-text-contrast",
         props.className,
       )}
       dangerouslySetInnerHTML={{ __html: html }}
@@ -72,14 +72,14 @@ export const H3 = (props) => (
 
 export const H4 = (props) => (
   <h4
-    className="mt-8 mb-4 text-lg font-semibold text-neutral-text-contrast"
+    className="mt-6 mb-2 text-base font-medium leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
 
 export const H5 = (props) => (
   <h5
-    className="mt-8 mb-4 text-base font-semibold text-neutral-text-contrast"
+    className="mt-6 mb-2 text-sm font-semibold text-neutral-text-contrast"
     {...props}
   />
 )
@@ -93,7 +93,7 @@ export const Note = (props) => (
   </div>
 )
 
-export const mdxComponents: MDXRemoteProps['components'] = {
+export const mdxComponents: MDXRemoteProps["components"] = {
   h1: H1,
   h2: H2,
   h3: H3,
