@@ -1,17 +1,17 @@
-import { GithubLogo, XLogo } from '@phosphor-icons/react/dist/ssr'
-import Link from 'next/link'
-import { Navigation, type NavItem } from './navigation'
-import { ThemeSwitch } from './theme-switch'
+import { GithubLogo, XLogo } from "@phosphor-icons/react/dist/ssr"
+import Link from "next/link"
+import { Navigation, type NavItem } from "./navigation"
+import { ThemeSwitch } from "./theme-switch"
 
 export function Sidebar(props: { items: NavItem[] }) {
   return (
     <aside
-      style={{ gridArea: 'sidebar' }}
-      className="sticky top-0 flex max-h-svh flex-col overflow-scroll border-r border-neutral-3 bg-[var(--color-bg-panel)] p-4 text-sm"
+      style={{ gridArea: "sidebar" }}
+      className="sticky top-0 flex max-h-svh flex-col overflow-scroll border-r border-neutral-3 bg-[var(--color-bg-panel)] text-sm"
     >
-      <header className="mb-4 flex items-center justify-between gap-1 pl-2">
+      <header className="flex items-center justify-between gap-1 py-2 px-4">
         <Link className="flex items-center gap-1" href="/">
-          <h1 className="text-sm font-medium text-neutral-text-contrast">
+          <h1 className="ml-2 text-sm font-medium text-neutral-text-contrast">
             Shim
           </h1>
         </Link>
@@ -39,7 +39,9 @@ export function Sidebar(props: { items: NavItem[] }) {
 
       <Navigation items={props.items} />
 
-      <ThemeSwitch />
+      <div className="shrink-0 self-start px-4 pb-4">
+        <ThemeSwitch />
+      </div>
     </aside>
   )
 }

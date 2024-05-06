@@ -28,7 +28,7 @@
   --shiki-token-punctuation: var(--color-neutral-10);
   --shiki-token-link: #ee0000;
 
-  --sidebar-width: 280px;
+  --sidebar-width: 256px;
 
   --color-bg-body: var(--color-neutral-2);
   --color-bg-panel: var(--color-neutral-1);
@@ -74,7 +74,7 @@ html {
   cursor: pointer;
 
   &:after {
-    content: '#';
+    content: "#";
     color: var(--color-neutral-placeholder);
     font-weight: normal;
   }
@@ -94,8 +94,8 @@ pre {
 } */
 
 /* Remove Safari input shadow on mobile */
-input[type='text'],
-input[type='email'] {
+input[type="text"],
+input[type="email"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

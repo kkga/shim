@@ -1,30 +1,30 @@
-import './styles/base.css'
-import './styles/site.css'
+import "./styles/base.css"
+import "./styles/site.css"
 
-import { ClientProviders, ThemeProvider } from '@/components/providers'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import type { Metadata } from 'next'
-import { useMemo } from 'react'
-import { fontMono, fontSans } from './_fonts'
-import { Sidebar } from './components/sidebar'
-import { getComponentDocs, getGuides } from './docs/lib/utils'
-import { baseUrl } from './sitemap'
+import { ClientProviders, ThemeProvider } from "@/components/providers"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import type { Metadata } from "next"
+import { useMemo } from "react"
+import { fontMono, fontSans } from "./_fonts"
+import { Sidebar } from "./components/sidebar"
+import { getComponentDocs, getGuides } from "./docs/lib/utils"
+import { baseUrl } from "./sitemap"
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: "Next.js Portfolio Starter",
+    template: "%s | Next.js Portfolio Starter",
   },
-  description: 'This is my portfolio.',
+  description: "This is my portfolio.",
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: "My Portfolio",
+    description: "This is my portfolio.",
     url: baseUrl,
-    siteName: 'My Portfolio',
-    locale: 'en_US',
-    type: 'website',
+    siteName: "My Portfolio",
+    locale: "en_US",
+    type: "website",
   },
   robots: {
     index: true,
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 }
@@ -44,15 +44,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const docs = getComponentDocs()
-  const guides = getGuides()
+  let docs = getComponentDocs()
+  let guides = getGuides()
 
-  const navItems = useMemo(() => {
+  let navItems = useMemo(() => {
     return [
       ...guides.map((guide) => ({
         slug: `guides/${guide.slug}`,
         name: guide.metadata.title,
-        category: 'Intro',
+        category: "Intro",
       })),
       ...docs.map((doc) => ({
         slug: doc.slug,

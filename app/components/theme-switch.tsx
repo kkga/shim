@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-import { ListBox, ListBoxItem } from 'react-aria-components'
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
+import { ListBox, ListBoxItem } from "react-aria-components"
 
 function ThemeSwitch() {
   const [mounted, setMounted] = useState(false)
@@ -31,7 +31,7 @@ function ThemeSwitch() {
       defaultSelectedKeys={theme ? new Set([theme]) : undefined}
       onSelectionChange={(keys) => handleThemeChange(keys)}
       className={
-        'flex h-6 gap-px self-start rounded-md border border-neutral-line p-px'
+        "flex h-6 gap-px self-start rounded-md border border-neutral-line p-px"
       }
     >
       <Item id="light">Light</Item>
@@ -44,7 +44,7 @@ function ThemeSwitch() {
 function Item({ children, ...props }) {
   return (
     <ListBoxItem
-      className="flex cursor-default items-center rounded px-2 text-xs outline-0 data-[hovered]:bg-neutral-bg-hover data-[selected]:bg-neutral-bg-active data-[selected]:text-neutral-text-contrast"
+      className="flex cursor-default items-center rounded px-1.5 text-xs outline-0 data-[hovered]:bg-neutral-bg-hover data-[selected]:bg-neutral-bg-active data-[selected]:text-neutral-text-contrast"
       {...props}
     >
       {children}
