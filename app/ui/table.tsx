@@ -8,7 +8,12 @@ import {
   focusInsetStyle,
   focusStyle,
 } from "@lib/utils"
-import { ArrowDown, ArrowUp, DotsSixVertical } from "@phosphor-icons/react"
+import {
+  ArrowDown,
+  ArrowUp,
+  DotsSixVertical,
+  Minus,
+} from "@phosphor-icons/react"
 import {
   Button as RACButton,
   Cell as RACCell,
@@ -18,7 +23,6 @@ import {
   Group as RACGroup,
   Row as RACRow,
   Table as RACTable,
-  ResizableTableContainer as RACResizableTableContainer,
   TableBody as RACTableBody,
   TableHeader as RACTableHeader,
   composeRenderProps,
@@ -39,51 +43,76 @@ function Table(props: RACTableProps) {
   )
 }
 
-const columnStyle = compose(
-  focusInsetStyle,
-  cva({
+const columnStyles = () => ({
+  columnStyle: cva({
     base: [
-      "px-3 h-8 flex-1 flex gap-1 items-center border-b border-neutral-line",
+      "group border-b border-neutral-line text-start text-sm font-medium text-neutral-text-contrast",
+      // allows sorting
+      "data-allows-sorting:cursor-default",
     ],
   }),
-)
-
-const resizerStyle = compose(
-  focusInsetStyle,
-  cva({
-    base: [
-      "w-px px-2 translate-x-2 box-content py-1 h-6 bg-clip-content bg-neutral-line cursor-col-resize rounded -outline-offset-2",
-      // resizing
-      "data-resizing:w-[3px] data-resizing:px-[7px] data-resizing:bg-accent-border-hover",
-    ],
-  }),
-)
+  headerGroupStyle: compose(
+    focusInsetStyle,
+    cva({
+      base: [
+        "px-2 flex gap-1 items-center rounded-md h-6",
+        // allows sorting
+        "group-data-hovered:group-data-allows-sorting:bg-neutral-bg-hover",
+      ],
+    }),
+  ),
+  resizerStyle: compose(
+    focusInsetStyle,
+    cva({
+      base: [
+        "w-px px-2 translate-x-2 box-content py-1 h-6 bg-clip-content bg-neutral-line cursor-col-resize rounded -outline-offset-2",
+        // resizing
+        "data-resizing:w-[3px] data-resizing:px-[7px] data-resizing:bg-accent-border-hover",
+      ],
+    }),
+  ),
+})
 
 interface ColumnProps extends RACColumnProps {
   allowsResizing?: boolean
 }
 
 function Column(props: ColumnProps) {
+  let { columnStyle, resizerStyle, headerGroupStyle } = columnStyles()
+
   return (
     <RACColumn
       {...props}
-      className={cxRenderProps(
-        props.className,
-        "text-start text-sm font-medium text-neutral-text-contrast data-allows-sorting:cursor-default",
-      )}
+      className={cxRenderProps(props.className, columnStyle())}
     >
       {composeRenderProps(
         props.children,
         (children, { allowsSorting, sortDirection }) => (
-          <div className="flex items-center">
-            <RACGroup role="presentation" tabIndex={-1} className={columnStyle}>
+          <div className="flex h-8 items-center px-1">
+            <RACGroup
+              role="presentation"
+              tabIndex={-1}
+              className={headerGroupStyle}
+            >
               <span className="truncate">{children}</span>
               {allowsSorting && (
-                <span className="flex size-4 items-center justify-center transition">
-                  {sortDirection &&
-                    (sortDirection === "ascending" ?
-                      <ArrowUp weight="bold" size={12} aria-hidden />
-                    : <ArrowDown weight="bold" size={12} aria-hidden />)}
+                <span
+                  className={cx(
+                    "invisible flex items-center justify-center text-neutral-text group-data-hovered:visible",
+                    sortDirection && "visible",
+                  )}
+                >
+                  {sortDirection ?
+                    sortDirection === "ascending" ?
+                      <ArrowDown weight="regular" size={16} aria-hidden />
+                    : <ArrowUp weight="regular" size={16} aria-hidden />
+                  : <Minus
+                      weight="regular"
+                      size={16}
+                      className="text-neutral-placeholder"
+                      aria-hidden
+                    />
+                  }
                 </span>
               )}
             </RACGroup>
