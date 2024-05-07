@@ -19,8 +19,9 @@ const badgeStyles = cva({
       error: "border border-error-line bg-error-bg-subtle text-error-text",
     },
     size: {
-      1: "h-5 px-1 gap-1 rounded",
-      2: "h-6 px-1.5 gap-1.5 rounded-md",
+      1: "h-4 px-0.5 gap-1 rounded text-[11px]",
+      2: "h-5 px-1 gap-1 rounded",
+      3: "h-6 px-1.5 gap-1.5 rounded-md",
     },
     isSquare: {
       true: "",
@@ -28,17 +29,22 @@ const badgeStyles = cva({
   },
   defaultVariants: {
     intent: "accent",
-    size: 1,
+    size: 2,
   },
   compoundVariants: [
     {
       isSquare: true,
       size: 1,
-      className: "size-5 p-0!",
+      className: "size-4 p-0!",
     },
     {
       isSquare: true,
       size: 2,
+      className: "size-5 p-0!",
+    },
+    {
+      isSquare: true,
+      size: 3,
       className: "size-6 p-0!",
     },
   ],
