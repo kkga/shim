@@ -11,6 +11,7 @@ import {
   Textbox,
   WarningDiamond,
 } from "@phosphor-icons/react"
+import { Badge } from "@ui/badge"
 import { SearchField } from "@ui/search-field"
 import { usePathname } from "next/navigation"
 import { useMemo, useState } from "react"
@@ -19,13 +20,14 @@ import {
   Header,
   ListBox,
   ListBoxItem,
-  Section,
+  Section as RACSection,
 } from "react-aria-components"
 
 export interface NavItem {
   name: string
   slug: string
   category: string
+  status?: string
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -72,11 +74,11 @@ const itemStyle = compose(
   focusInsetStyle,
   cva({
     base: [
-      "flex h-6 items-center rounded-md px-2 text-sm text-neutral-text",
+      "flex h-6 items-center rounded-md pl-2 pr-1 text-sm text-neutral-text",
       // hovered
-      "data-[hovered]:bg-accent-bg-hover",
+      "data-[hovered]:bg-neutral-bg-hover",
       // selected
-      "data-[selected]:bg-accent-bg-active data-[selected]:text-accent-text-contrast",
+      "data-[selected]:bg-neutral-bg-active data-[selected]:text-neutral-text-contrast",
     ],
   }),
 )
@@ -133,14 +135,14 @@ export function Navigation({ items }: { items: NavItem[] }) {
           )}
         >
           {({ section, items }) => (
-            <Section id={section} className="grid grid-cols-2 gap-1">
+            <RACSection id={section} className="grid grid-cols-2 gap-1">
               <Header className="col-span-full flex h-6 items-center gap-1.5 text-xs font-medium text-neutral-10">
                 {categoryIcons[section]}
                 {section}
                 <div className="h-px grow bg-neutral-3" />
               </Header>
               <Collection items={items}>
-                {({ slug, name }) => (
+                {({ slug, name, status }) => (
                   <ListBoxItem
                     textValue={name}
                     id={`/docs/${slug}`}
@@ -148,10 +150,15 @@ export function Navigation({ items }: { items: NavItem[] }) {
                     className={itemStyle}
                   >
                     {name}
+                    {status && (
+                      <Badge size={1} className="ml-auto" intent="neutral">
+                        {status[0].toUpperCase() + status.slice(1)}
+                      </Badge>
+                    )}
                   </ListBoxItem>
                 )}
               </Collection>
-            </Section>
+            </RACSection>
           )}
         </ListBox>
       </nav>

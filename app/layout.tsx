@@ -1,6 +1,7 @@
 import "./styles/base.css"
 import "./styles/site.css"
 
+import { LocalizedStringProvider } from "react-aria-components/i18n"
 import { ClientProviders, ThemeProvider } from "@/components/providers"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
@@ -10,6 +11,7 @@ import { fontMono, fontSans } from "./_fonts"
 import { Sidebar } from "./components/sidebar"
 import { getComponentDocs, getGuides } from "./docs/lib/utils"
 import { baseUrl } from "./sitemap"
+import { stat } from "fs"
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -58,6 +60,7 @@ export default function RootLayout({
         slug: doc.slug,
         name: doc.metadata.name,
         category: doc.metadata.category,
+        status: doc.metadata.status,
       })),
     ]
   }, [docs, guides])
@@ -69,6 +72,7 @@ export default function RootLayout({
       className={`${fontMono.variable} ${fontSans.variable}`}
     >
       <body className="bg-[var(--color-bg-body)] text-neutral-text antialiased">
+        <LocalizedStringProvider locale="en-US" />
         <ClientProviders>
           <ThemeProvider
             attribute="class"
