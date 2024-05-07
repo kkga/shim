@@ -150,6 +150,10 @@ export const demoComponents = {
     Sections: dynamic(() => import("@/demos/menu").then((mod) => mod.Sections)),
     Submenu: dynamic(() => import("@/demos/menu").then((mod) => mod.Submenu)),
   },
+  TableDemo: {
+    Main: dynamic(() => import("@/demos/table").then((mod) => mod.Main)),
+    Sorting: dynamic(() => import("@/demos/table").then((mod) => mod.Sorting)),
+  },
 
   SelectDemo: {
     Main: dynamic(() => import("@/demos/select").then((mod) => mod.Main)),

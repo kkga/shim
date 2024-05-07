@@ -83,31 +83,14 @@ html {
 *:hover > .hash-link {
   visibility: visible;
 }
-/* 
-pre::-webkit-scrollbar {
-  display: none;
-}
-
-pre {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-} */
-
 /* Remove Safari input shadow on mobile */
-input[type="text"],
+/* input[type="text"],
 input[type="email"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
 .title {
   text-wrap: balance;
-}
+} */

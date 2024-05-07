@@ -58,7 +58,7 @@ export default async function Doc({ params }) {
     notFound()
   }
 
-  const { srcFilename, composes, category } = doc.metadata
+  const { name, srcFilename, composes, category } = doc.metadata
 
   const demos = getComponentDemos(srcFilename)
   const source = getComponentSource(srcFilename)
@@ -88,6 +88,7 @@ export default async function Doc({ params }) {
       <script
         type="application/ld+json"
         suppressHydrationWarning
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -117,6 +118,7 @@ export default async function Doc({ params }) {
 
         <Demo
           className={category === "Buttons" ? "items-start" : ""}
+          // stacked={name === "Table"}
           demo={<MainDemo />}
           code={demos.main}
         />
