@@ -1,0 +1,22 @@
+---
+name: TagGroup
+description: Display a group of tags that can be selected and removed.
+srcFilename: taggroup
+category: Collections
+composes: [Field]
+docUrl: https://react-spectrum.adobe.com/react-aria/Table.html
+aria: https://www.w3.org/WAI/ARIA/apg/patterns/grid/
+status: alpha
+---
+
+### Selection
+
+Use `selectionMode` to allow tags to be selected.
+
+<Demo demo={<TagGroupDemo.Selection />} code={demos.selection} />
+
+### Removing
+
+Use `onRemove` to allow tags to be removed.
+
+<Demo demo={<TagGroupDemo.Removing />} code={demos.removing} />

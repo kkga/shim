@@ -154,6 +154,15 @@ export const demoComponents = {
     Main: dynamic(() => import("@/demos/table").then((mod) => mod.Main)),
     Sorting: dynamic(() => import("@/demos/table").then((mod) => mod.Sorting)),
   },
+  TagGroupDemo: {
+    Main: dynamic(() => import("@/demos/taggroup").then((mod) => mod.Main)),
+    Selection: dynamic(() =>
+      import("@/demos/taggroup").then((mod) => mod.Selection),
+    ),
+    Removing: dynamic(() =>
+      import("@/demos/taggroup").then((mod) => mod.Removing),
+    ),
+  },
 
   SelectDemo: {
     Main: dynamic(() => import("@/demos/select").then((mod) => mod.Main)),
