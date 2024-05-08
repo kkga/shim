@@ -118,7 +118,7 @@ export default async function Doc({ params }) {
 
         <Demo
           className={category === "Buttons" ? "items-start" : ""}
-          // stacked={name === "Table"}
+          stacked={name === "Table" || name === "Toolbar"}
           demo={<MainDemo />}
           code={demos.main}
         />

@@ -2,6 +2,7 @@
 
 import { compose, cva, focusInsetStyle } from "@lib/utils"
 import {
+  Article,
   Cards,
   CheckFat,
   CursorClick,
@@ -39,6 +40,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   Pickers: <CheckFat weight="duotone" size={16} />,
   Navigation: <Path weight="duotone" size={16} />,
   Collections: <Rows weight="duotone" size={16} />,
+  Content: <Article weight="duotone" size={16} />,
 }
 
 const categorizeItems = (items: NavItem[]) => {

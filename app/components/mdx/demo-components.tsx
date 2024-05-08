@@ -174,4 +174,8 @@ export const demoComponents = {
     ),
     States: dynamic(() => import("@/demos/select").then((mod) => mod.States)),
   },
+
+  ToolbarDemo: {
+    Main: dynamic(() => import("@/demos/toolbar").then((mod) => mod.Main)),
+  },
 }
