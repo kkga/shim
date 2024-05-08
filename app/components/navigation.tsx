@@ -74,7 +74,7 @@ const itemStyle = compose(
   focusInsetStyle,
   cva({
     base: [
-      "flex h-6 items-center rounded-md pl-2 pr-1 text-sm text-neutral-text",
+      "flex h-6 gap-2 items-center rounded-md pl-2 pr-1 text-sm text-neutral-text",
       // hovered
       "data-[hovered]:bg-neutral-bg-hover",
       // selected
@@ -151,7 +151,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
                   >
                     {name}
                     {status && (
-                      <Badge size={1} className="ml-auto" intent="neutral">
+                      <Badge size={1} intent="neutral">
                         {status[0].toUpperCase() + status.slice(1)}
                       </Badge>
                     )}
