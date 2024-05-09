@@ -80,13 +80,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div
-              style={{ gridTemplateAreas: '"sidebar main"' }}
-              className="grid min-h-screen grid-cols-[minmax(auto,var(--sidebar-width))_1fr]"
-            >
-              <Sidebar items={navItems} />
+            <div className="flex min-h-svh">
+              <div className="w-72 shrink-0">
+                <Sidebar items={navItems} />
+              </div>
 
-              <main className="py-16 px-8">
+              <main className="flex-1 py-16 px-8">
                 <div className="mx-auto max-w-4xl text-[15px] leading-6 [&_.s-box]:-mx-4">
                   {children}
                 </div>

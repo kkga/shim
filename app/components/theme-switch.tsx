@@ -31,7 +31,7 @@ function ThemeSwitch() {
       defaultSelectedKeys={theme ? new Set([theme]) : undefined}
       onSelectionChange={(keys) => handleThemeChange(keys)}
       className={
-        "flex h-6 gap-px self-start rounded-md border border-neutral-line p-px"
+        "flex h-6 gap-0.5 self-start rounded-md bg-neutral-bg p-0.5 ring shadow-sm ring-neutral-solid/30 backdrop-blur"
       }
     >
       <Item id="light">Light</Item>

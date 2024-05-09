@@ -1,45 +1,40 @@
-import { GithubLogo, XLogo } from "@phosphor-icons/react/dist/ssr"
-import Link from "next/link"
+import { Link } from "@ui/link"
 import { Navigation, type NavItem } from "./navigation"
 import { ThemeSwitch } from "./theme-switch"
 
 export function Sidebar(props: { items: NavItem[] }) {
   return (
     <aside
-      style={{ gridArea: "sidebar" }}
-      className="sticky top-0 flex max-h-svh flex-col overflow-scroll border-r border-neutral-3 bg-[var(--color-bg-panel)] text-sm"
+      style={{ scrollbarWidth: "thin" }}
+      className="fixed inset-0 right-auto flex w-[inherit] flex-col overflow-x-hidden overflow-y-scroll border-r border-neutral-3 text-sm"
     >
-      <header className="flex items-center justify-between gap-1 py-2 px-4">
-        <Link className="flex items-center gap-1" href="/">
-          <h1 className="ml-2 text-sm font-medium text-neutral-text-contrast">
-            Shim
-          </h1>
+      <header className="flex items-center justify-between gap-1 bg-[var(--color-bg-body)] pt-3 px-4 pb-1">
+        <Link className="flex items-center gap-1 no-underline" href="/">
+          <h1 className="text-sm font-semibold text-neutral-text">Shim</h1>
         </Link>
 
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <Link
+            intent="neutral"
             target="_blank"
-            className="flex size-6 items-center justify-center rounded-full hover:bg-neutral-bg"
             href="https://twitter.com/kkga_"
-            title="Twitter"
           >
-            <XLogo size={16} weight="duotone" />
+            X
           </Link>
 
           <Link
+            intent="neutral"
             target="_blank"
-            className="flex size-6 items-center justify-center rounded-full hover:bg-neutral-bg"
             href="https://github.com/kkga/shim"
-            title="GitHub"
           >
-            <GithubLogo size={16} weight="duotone" />
+            GitHub
           </Link>
         </div>
       </header>
 
       <Navigation items={props.items} />
 
-      <div className="shrink-0 self-start px-4 pb-4">
+      <div className="sticky bottom-0 shrink-0 self-center p-2 pb-4">
         <ThemeSwitch />
       </div>
     </aside>
