@@ -177,5 +177,8 @@ export const demoComponents = {
 
   ToolbarDemo: {
     Main: dynamic(() => import("@/demos/toolbar").then((mod) => mod.Main)),
+    Orientation: dynamic(() =>
+      import("@/demos/toolbar").then((mod) => mod.Orientation),
+    ),
   },
 }
