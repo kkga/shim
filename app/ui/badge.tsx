@@ -19,7 +19,7 @@ const badgeStyles = cva({
       error: "border border-error-line bg-error-bg-subtle text-error-text",
     },
     size: {
-      1: "h-4 px-0.5 gap-1 rounded text-[11px]",
+      1: "h-4 px-1 gap-1 rounded text-[11px]",
       2: "h-5 px-1 gap-1 rounded",
       3: "h-6 px-1.5 gap-1.5 rounded-md",
     },
