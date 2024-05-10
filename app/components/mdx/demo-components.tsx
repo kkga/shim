@@ -153,6 +153,7 @@ export const demoComponents = {
   TableDemo: {
     Main: dynamic(() => import("@/demos/table").then((mod) => mod.Main)),
     Sorting: dynamic(() => import("@/demos/table").then((mod) => mod.Sorting)),
+    Content: dynamic(() => import("@/demos/table").then((mod) => mod.Content)),
   },
   TagGroupDemo: {
     Main: dynamic(() => import("@/demos/taggroup").then((mod) => mod.Main)),

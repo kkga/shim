@@ -19,6 +19,14 @@ export default () => (
         <Cell>bootmgr</Cell>
         <Cell>System file</Cell>
       </Row>
+      <Row>
+        <Cell>Documents</Cell>
+        <Cell>File folder</Cell>
+      </Row>
+      <Row>
+        <Cell>Downloads</Cell>
+        <Cell>File folder</Cell>
+      </Row>
     </TableBody>
   </Table>
 )
