@@ -8,6 +8,14 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/grid/
 status: alpha
 ---
 
+### Content
+
+To use dynamic content in a table, use the `columns` prop to define the columns
+on the `<TableHeader/>` component and the `items` prop to define the data on the
+`<TableBody/>` component.
+
+<Demo stacked demo={<TableDemo.Content />} code={demos.content} />
+
 ### Sorting
 
 The `Table` component supports sorting by column. To enable sorting, set the
