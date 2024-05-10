@@ -55,7 +55,7 @@ const columnStyles = () => ({
     focusInsetStyle,
     cva({
       base: [
-        "px-2 flex gap-1 items-center rounded-md h-6",
+        "px-2 gap-1 flex items-center rounded-md h-6",
         // allows sorting
         "group-data-hovered:group-data-allows-sorting:bg-neutral-bg-hover",
       ],
@@ -88,7 +88,7 @@ function Column(props: ColumnProps) {
       {composeRenderProps(
         props.children,
         (children, { allowsSorting, sortDirection }) => (
-          <div className="flex h-8 items-center px-1">
+          <div className="flex h-8 flex-col justify-center px-1">
             <RACGroup
               role="presentation"
               tabIndex={-1}
@@ -98,21 +98,14 @@ function Column(props: ColumnProps) {
               {allowsSorting && (
                 <span
                   className={cx(
-                    "invisible flex items-center justify-center text-neutral-text group-data-hovered:visible",
+                    "invisible flex size-4 items-center justify-center text-neutral-text group-data-hovered:visible",
                     sortDirection && "visible",
                   )}
                 >
-                  {sortDirection ?
-                    sortDirection === "ascending" ?
+                  {sortDirection &&
+                    (sortDirection === "ascending" ?
                       <ArrowDown weight="regular" size={16} aria-hidden />
-                    : <ArrowUp weight="regular" size={16} aria-hidden />
-                  : <Minus
-                      weight="regular"
-                      size={16}
-                      className="text-neutral-placeholder"
-                      aria-hidden
-                    />
-                  }
+                    : <ArrowUp weight="regular" size={16} aria-hidden />)}
                 </span>
               )}
             </RACGroup>
