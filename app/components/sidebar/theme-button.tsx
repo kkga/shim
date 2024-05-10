@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 
 function ThemeButton() {
   let [mounted, setMounted] = useState(false)
-  let { theme, systemTheme, setTheme } = useTheme()
+  let { theme, systemTheme, resolvedTheme, setTheme } = useTheme()
 
   let themes
   if (systemTheme === "dark") {
@@ -37,7 +37,7 @@ function ThemeButton() {
       variant="ghost"
       intent="neutral"
     >
-      {theme === "dark" ?
+      {resolvedTheme === "dark" ?
         <MoonStars weight="duotone" size={16} />
       : <Sun weight="duotone" size={16} />}
     </Button>
