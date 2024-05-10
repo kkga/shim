@@ -1,3 +1,3 @@
-import { SearchField } from '@ui/search-field'
+import { SearchField } from "@ui/searchfield"
 
-export default () => <SearchField aria-label='Search docs' />
+export default () => <SearchField aria-label="Search docs" />

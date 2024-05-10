@@ -5,17 +5,16 @@ import { Tab, TabList, TabPanel, Tabs } from "@ui/tabs"
 import { DependenciesWarning } from "./dependencies-warning"
 
 interface Props {
-  srcFilename: string
+  filename: string
   source: string
   dependencies?: { name: string; slug: string }[]
 }
 
-export function InstallInstructions({
-  srcFilename,
-  dependencies,
-  source,
-}: Props) {
-  const curlCommand = `curl -O 'https://raw.githubusercontent.com/kkga/shim/master/app/ui/${srcFilename}.tsx'`
+const GITHUB_RAW_URL =
+  "https://raw.githubusercontent.com/kkga/shim/master/app/ui"
+
+export function InstallInstructions({ filename, dependencies, source }: Props) {
+  let curlCommand = `curl -O '${GITHUB_RAW_URL}/${filename}.tsx'`
 
   return (
     <>

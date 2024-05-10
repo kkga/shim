@@ -13,7 +13,7 @@ import {
   WarningDiamond,
 } from "@phosphor-icons/react"
 import { Badge } from "@ui/badge"
-import { SearchField } from "@ui/search-field"
+import { SearchField } from "@ui/searchfield"
 import { usePathname } from "next/navigation"
 import { useMemo, useState } from "react"
 import {
@@ -115,7 +115,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
         />
       </div>
 
-      <nav className="shrink-0 grow py-4">
+      <nav className="shrink-0 grow pt-4 pb-8">
         <ListBox
           key={`${items.length}-${filter}`}
           selectionMode="single"

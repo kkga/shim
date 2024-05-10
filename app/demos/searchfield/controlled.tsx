@@ -1,9 +1,9 @@
-'use client'
-import { SearchField } from '@ui/search-field'
-import { useState } from 'react'
+"use client"
+import { SearchField } from "@ui/searchfield"
+import { useState } from "react"
 
 export default () => {
-  const [value, setValue] = useState('Get started')
+  const [value, setValue] = useState("Get started")
 
   return (
     <>

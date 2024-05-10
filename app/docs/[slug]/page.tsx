@@ -11,6 +11,7 @@ import { DocHeader } from "../doc-header"
 import { mdxToHtml } from "../lib/mdx"
 import { MetadataRow } from "./component-metadata"
 import { InstallInstructions } from "./install-instructions"
+import { assert } from "console"
 
 export function generateMetadata({ params }) {
   const doc = getComponentDocs().find((doc) => doc.slug === params.slug)
@@ -51,20 +52,24 @@ export async function generateStaticParams() {
 }
 
 export default async function Doc({ params }) {
-  const docs = getComponentDocs()
-  const doc = docs.find((doc) => doc.slug === params.slug)
+  let docs = getComponentDocs()
+  let doc = docs.find((doc) => doc.slug === params.slug)
 
   if (!doc) {
     notFound()
   }
 
-  const { name, srcFilename, composes, category } = doc.metadata
+  let { name, composes, category } = doc.metadata
+  let filename = name.replace(/-/g, "").toLowerCase()
+  let demos = getComponentDemos(filename)
+  let source = getComponentSource(filename)
+  let MainDemo = getMainDemo(filename)
 
-  const demos = getComponentDemos(srcFilename)
-  const source = getComponentSource(srcFilename)
-  const MainDemo = getMainDemo(srcFilename)
+  assert(demos.main, `Main demo not found for ${name}`)
+  assert(source, `Source code not found for ${name}`)
+  assert(MainDemo, `Main demo component not found for ${name}`)
 
-  const dependencies =
+  let dependencies =
     composes ?
       (composes
         .map((name) => {
@@ -74,7 +79,7 @@ export default async function Doc({ params }) {
         .filter((dep) => dep !== null) as { name: string; slug: string }[])
     : []
 
-  const { content } = await mdxToHtml({
+  let { content } = await mdxToHtml({
     source: doc.content,
     scope: {
       ...doc.metadata,
@@ -124,7 +129,7 @@ export default async function Doc({ params }) {
 
         <InstallInstructions
           dependencies={dependencies.length > 0 ? dependencies : undefined}
-          srcFilename={srcFilename}
+          filename={filename}
           source={source}
         />
 

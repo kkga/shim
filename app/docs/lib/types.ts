@@ -2,9 +2,8 @@ export interface ComponentMetadata {
   name: string
   description: string
   category: string
-  srcFilename: string
   docUrl?: string
-  aria?: string
+  ariaUrl?: string
   composes?: string[]
   status?: "stable" | "alpha" | "beta" | "deprecated"
 }

@@ -1,7 +1,9 @@
-import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr'
-import Link from 'next/link'
-import { Fragment } from 'react'
-import { ComponentMetadata } from '../lib/types'
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr"
+import Link from "next/link"
+import { Fragment } from "react"
+import { ComponentMetadata } from "../lib/types"
+
+const GITHUB_FILE_URL = "https://github.com/kkga/shim-ui/blob/master/app/ui"
 
 function MetadataItem({ title, children }) {
   return (
@@ -18,8 +20,8 @@ function MetadataLink({ href, title, external, children }) {
       href={href}
       className="text-sm text-accent-text underline decoration-accent-line underline-offset-2 hover:decoration-accent-border-hover"
       title={title}
-      rel={external ? 'noreferrer' : undefined}
-      target={external ? '_blank' : undefined}
+      rel={external ? "noreferrer" : undefined}
+      target={external ? "_blank" : undefined}
     >
       {children}
       {external && (
@@ -35,11 +37,12 @@ interface MetadataRowProps extends ComponentMetadata {
 
 function MetadataRow({
   docUrl,
-  aria,
-  srcFilename,
+  ariaUrl,
   name,
   dependencies,
 }: MetadataRowProps) {
+  let filename = name.toLowerCase()
+
   return (
     <div className="relative flex gap-12">
       {docUrl && (
@@ -53,25 +56,17 @@ function MetadataRow({
           </MetadataLink>
         </MetadataItem>
       )}
-      {aria && (
+      {ariaUrl && (
         <MetadataItem title="Pattern">
-          <MetadataLink
-            href={
-              aria.startsWith('http') ? aria : (
-                `https://www.w3.org/WAI/ARIA/apg/patterns/${aria}`
-              )
-            }
-            title="View ARIA pattern"
-            external
-          >
+          <MetadataLink href={ariaUrl} title="View ARIA pattern" external>
             W3C ARIA
           </MetadataLink>
         </MetadataItem>
       )}
-      {srcFilename && (
+      {filename && (
         <MetadataItem title="Source code">
           <MetadataLink
-            href={`https://github.com/kkga/shim-ui/blob/master/app/ui/${srcFilename}.tsx`}
+            href={`${GITHUB_FILE_URL}/${filename}.tsx`}
             title="View source code on GitHub"
             external
           >
@@ -84,7 +79,7 @@ function MetadataRow({
           <span className="text-sm">
             {dependencies.map(({ name, slug }, i) => (
               <Fragment key={name}>
-                {i > 0 && ', '}
+                {i > 0 && ", "}
                 <MetadataLink
                   external={false}
                   href={`/docs/${slug}`}
