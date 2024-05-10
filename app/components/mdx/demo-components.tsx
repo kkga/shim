@@ -16,6 +16,12 @@ export const demoComponents = {
     Custom: dynamic(() => import("@/demos/meter").then((mod) => mod.Custom)),
     Color: dynamic(() => import("@/demos/meter").then((mod) => mod.Color)),
   },
+  ProgressBarDemo: {
+    Main: dynamic(() => import("@/demos/progressbar").then((mod) => mod.Main)),
+    Indeterminate: dynamic(() =>
+      import("@/demos/progressbar").then((mod) => mod.Indeterminate),
+    ),
+  },
 
   ButtonDemo: {
     Main: dynamic(() => import("@/demos/button").then((mod) => mod.Main)),

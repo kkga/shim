@@ -1,25 +1,25 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@import '@radix-ui/colors/slate.css';
-@import '@radix-ui/colors/slate-alpha.css';
-@import '@radix-ui/colors/slate-dark.css';
-@import '@radix-ui/colors/slate-dark-alpha.css';
-@import '@radix-ui/colors/iris.css';
-@import '@radix-ui/colors/iris-alpha.css';
-@import '@radix-ui/colors/iris-dark.css';
-@import '@radix-ui/colors/iris-dark-alpha.css';
-@import '@radix-ui/colors/green.css';
-@import '@radix-ui/colors/green-alpha.css';
-@import '@radix-ui/colors/green-dark.css';
-@import '@radix-ui/colors/green-dark-alpha.css';
-@import '@radix-ui/colors/orange.css';
-@import '@radix-ui/colors/orange-alpha.css';
-@import '@radix-ui/colors/orange-dark.css';
-@import '@radix-ui/colors/orange-dark-alpha.css';
-@import '@radix-ui/colors/red.css';
-@import '@radix-ui/colors/red-alpha.css';
-@import '@radix-ui/colors/red-dark.css';
-@import '@radix-ui/colors/red-dark-alpha.css';
+@import "@radix-ui/colors/slate.css";
+@import "@radix-ui/colors/slate-alpha.css";
+@import "@radix-ui/colors/slate-dark.css";
+@import "@radix-ui/colors/slate-dark-alpha.css";
+@import "@radix-ui/colors/iris.css";
+@import "@radix-ui/colors/iris-alpha.css";
+@import "@radix-ui/colors/iris-dark.css";
+@import "@radix-ui/colors/iris-dark-alpha.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/green-alpha.css";
+@import "@radix-ui/colors/green-dark.css";
+@import "@radix-ui/colors/green-dark-alpha.css";
+@import "@radix-ui/colors/orange.css";
+@import "@radix-ui/colors/orange-alpha.css";
+@import "@radix-ui/colors/orange-dark.css";
+@import "@radix-ui/colors/orange-dark-alpha.css";
+@import "@radix-ui/colors/red.css";
+@import "@radix-ui/colors/red-alpha.css";
+@import "@radix-ui/colors/red-dark.css";
+@import "@radix-ui/colors/red-dark-alpha.css";
 
 @theme {
   --color-*: initial; /* Reset Tailwind colors */
@@ -294,5 +294,14 @@
   }
   to {
     transform: translateX(-4px) scale(0.97);
+  }
+}
+
+@keyframes indeterminate {
+  from {
+    left: -50%;
+  }
+  to {
+    left: 100%;
   }
 }
