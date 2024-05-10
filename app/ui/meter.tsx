@@ -25,7 +25,7 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
   return (
     <RACMeter
       {...props}
-      className={cxRenderProps(props.className, "flex w-full flex-col gap-1.5")}
+      className={cxRenderProps(props.className, "flex flex-col gap-1.5")}
     >
       {({ percentage, valueText }) => (
         <>
