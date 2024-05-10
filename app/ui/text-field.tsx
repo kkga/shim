@@ -29,7 +29,7 @@ const inputStyles = compose(
   }),
 )
 
-const TextField = ({
+function TextField({
   label,
   description,
   errorMessage,
@@ -37,7 +37,7 @@ const TextField = ({
   className,
   size = 1,
   ...props
-}: TextFieldProps) => {
+}: TextFieldProps) {
   return (
     <RACTextField
       className={cxRenderProps(className, "group flex flex-col gap-1.5")}
@@ -46,6 +46,7 @@ const TextField = ({
       {label && <Label>{label}</Label>}
       <Input
         placeholder={placeholder}
+        // TODO: replace passing the renderProps with data-selectors on field style
         className={(renderProps) => inputStyles({ size, ...renderProps })}
       />
       {description && <Description>{description}</Description>}

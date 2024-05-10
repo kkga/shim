@@ -20,6 +20,8 @@ import {
 import { animateMountStyle, compose, cva, cx, cxRenderProps } from "@lib/utils"
 import { CaretDown, Check } from "@phosphor-icons/react"
 
+// TODO: simplify the Combobox component
+
 const Combobox = ComboBox
 
 const ComboboxSection = Section

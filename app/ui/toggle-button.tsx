@@ -69,18 +69,17 @@ interface ToggleButtonProps
   extends RACToggleButtonProps,
     VariantProps<typeof styles> {}
 
-const ToggleButton = ({
+function ToggleButton({
   className,
   variant,
   intent,
   size,
   isSquare,
   ...props
-}: ToggleButtonProps) => {
-  const children =
+}: ToggleButtonProps) {
+  let children =
     typeof props.children !== "function" && Children.toArray(props.children)
-
-  const hasOnlySvg =
+  let hasOnlySvg =
     children &&
     children.length === 1 &&
     isValidElement(children[0]) &&

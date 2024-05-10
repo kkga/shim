@@ -42,33 +42,33 @@ const groupStyles = compose(
   }),
 )
 
-const PrefixIcon = ({
-  size,
-  className,
-  icon,
-}: {
+interface PrefixIconProps {
   size: 1 | 2
   icon: "search" | "filter" | React.ReactNode
   className?: string
-}) => (
-  <div
-    aria-hidden
-    className={cx(
-      "flex items-center justify-center",
-      size === 1 && "size-5",
-      size === 2 && "size-6",
-      className,
-    )}
-  >
-    {icon === "search" ?
-      <MagnifyingGlass size={size === 1 ? 14 : 16} weight="regular" />
-    : icon === "filter" ?
-      <FunnelSimple size={size === 1 ? 14 : 16} weight="regular" />
-    : icon}
-  </div>
-)
+}
 
-const SearchField = ({
+function PrefixIcon({ size, className, icon }: PrefixIconProps) {
+  return (
+    <div
+      aria-hidden
+      className={cx(
+        "flex items-center justify-center",
+        size === 1 && "size-5",
+        size === 2 && "size-6",
+        className,
+      )}
+    >
+      {icon === "search" ?
+        <MagnifyingGlass size={size === 1 ? 14 : 16} weight="regular" />
+      : icon === "filter" ?
+        <FunnelSimple size={size === 1 ? 14 : 16} weight="regular" />
+      : icon}
+    </div>
+  )
+}
+
+function SearchField({
   className,
   label,
   description,
@@ -78,7 +78,7 @@ const SearchField = ({
   prefixIcon = "search",
   variant,
   ...props
-}: SearchFieldProps) => {
+}: SearchFieldProps) {
   return (
     <RACSearchField
       {...props}

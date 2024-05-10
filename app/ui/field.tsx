@@ -16,50 +16,57 @@ import {
   type TextProps,
 } from "react-aria-components"
 
-const Label = (props: LabelProps) => (
-  <RACLabel
-    {...props}
-    className={cx(
-      "w-fit cursor-default text-sm font-medium text-neutral-text",
-      // peer/group disabled
-      "group-data-[disabled]:text-neutral-placeholder peer-data-[disabled]:text-neutral-placeholder",
-      props.className,
-    )}
-  />
-)
+function Label(props: LabelProps) {
+  return (
+    <RACLabel
+      {...props}
+      className={cx(
+        "w-fit cursor-default text-sm font-medium text-neutral-text",
+        // peer/group disabled
+        "group-data-[disabled]:text-neutral-placeholder peer-data-[disabled]:text-neutral-placeholder",
+        props.className,
+      )}
+    />
+  )
+}
 
-const Description = (props: TextProps) => (
-  <RACText
-    slot="description"
-    className={cx(
-      "text-xs text-neutral-text",
-      // peer/group disabled
-      "group-data-[disabled]:text-neutral-placeholder peer-data-[disabled]:text-neutral-placeholder",
-      props.className,
-    )}
-    {...props}
-  />
-)
+function Description(props: TextProps) {
+  return (
+    <RACText
+      slot="description"
+      className={cx(
+        "text-xs text-neutral-text",
+        // peer/group disabled
+        "group-data-[disabled]:text-neutral-placeholder peer-data-[disabled]:text-neutral-placeholder",
+        props.className,
+      )}
+      {...props}
+    />
+  )
+}
 
-const FieldError = (props: FieldErrorProps) => (
-  <RACFieldError
-    className={cxRenderProps(props.className, "text-xs text-error-text")}
-    {...props}
-  />
-)
+function FieldError(props: FieldErrorProps) {
+  return (
+    <RACFieldError
+      className={cxRenderProps(props.className, "text-xs text-error-text")}
+      {...props}
+    />
+  )
+}
 
-const FieldGroup = (props: GroupProps) => {
+function FieldGroup(props: GroupProps) {
   return <RACGroup {...props} className={cxRenderProps(props.className)} />
 }
 
-const Input = (props: InputProps) => {
+function Input(props: InputProps) {
   return <RACInput {...props} className={cxRenderProps(props.className)} />
 }
 
-const TextAreaInput = (props: TextAreaInputProps) => {
+function TextAreaInput(props: TextAreaInputProps) {
   return <RACTextArea {...props} className={cxRenderProps(props.className)} />
 }
 
+// TODO: use data-selectors for consistency with other components
 const fieldStyle = cva({
   base: ["rounded-md text-sm"],
   variants: {

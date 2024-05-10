@@ -54,9 +54,9 @@ interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeStyles> {}
 
-const Badge = ({ className, intent, isSquare, size, ...props }: BadgeProps) => {
-  const children = Children.toArray(props.children)
-  const hasOnlySvg =
+function Badge({ className, intent, isSquare, size, ...props }: BadgeProps) {
+  let children = Children.toArray(props.children)
+  let hasOnlySvg =
     children.length === 1 &&
     isValidElement(children[0]) &&
     children[0].type === "svg"

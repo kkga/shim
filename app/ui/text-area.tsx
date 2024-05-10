@@ -35,7 +35,7 @@ const textAreaStyles = compose(
   }),
 )
 
-const TextArea = ({
+function TextArea({
   label,
   description,
   errorMessage,
@@ -43,15 +43,16 @@ const TextArea = ({
   className,
   size = 1,
   ...props
-}: TextAreaProps) => {
+}: TextAreaProps) {
   return (
     <RACTextField
-      className={cxRenderProps(className, "group flex flex-col gap-1.5")}
       {...props}
+      className={cxRenderProps(className, "group flex flex-col gap-1.5")}
     >
       {label && <Label>{label}</Label>}
       <TextAreaInput
         placeholder={placeholder}
+        // TODO: replace passing the renderProps with data-selectors on field style
         className={(renderProps) => textAreaStyles({ size, ...renderProps })}
       />
       {description && <Description>{description}</Description>}
