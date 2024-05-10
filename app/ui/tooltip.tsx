@@ -4,6 +4,7 @@ import {
   Tooltip as RACTooltip,
   TooltipTrigger as RACTooltipTrigger,
   type TooltipProps as RACTooltipProps,
+  type TooltipTriggerComponentProps,
 } from "react-aria-components"
 
 import { animateMountStyle, compose, cva, cxRenderProps } from "@lib/utils"
@@ -25,6 +26,9 @@ function Tooltip({ className, offset = 4, ...props }: RACTooltipProps) {
   )
 }
 
-const TooltipTrigger = RACTooltipTrigger
+function TooltipTrigger(props: TooltipTriggerComponentProps) {
+  let { delay = 500, closeDelay = 0, ...rest } = props
+  return <RACTooltipTrigger delay={delay} closeDelay={closeDelay} {...rest} />
+}
 
 export { Tooltip, TooltipTrigger }
