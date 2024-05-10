@@ -1,17 +1,16 @@
 import "./styles/base.css"
 import "./styles/site.css"
 
-import { LocalizedStringProvider } from "react-aria-components/i18n"
 import { ClientProviders, ThemeProvider } from "@/components/providers"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
 import { useMemo } from "react"
+import { LocalizedStringProvider } from "react-aria-components/i18n"
 import { fontMono, fontSans } from "./_fonts"
 import { Sidebar } from "./components/sidebar"
 import { getComponentDocs, getGuides } from "./docs/lib/utils"
 import { baseUrl } from "./sitemap"
-import { stat } from "fs"
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

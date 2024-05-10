@@ -195,4 +195,4 @@ function Button({
   )
 }
 
-export { Button, type ButtonProps }
+export { Button, type ButtonProps, buttonStyle }
