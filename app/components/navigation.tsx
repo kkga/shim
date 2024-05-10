@@ -102,7 +102,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
 
   return (
     <>
-      <div className="sticky top-0 bg-[var(--color-bg-body)] p-2">
+      <div className="sticky top-10 bg-[var(--color-bg-body)] pb-2">
         <SearchField
           aria-label="Filter navigation items"
           prefixIcon={null}
@@ -115,12 +115,12 @@ export function Navigation({ items }: { items: NavItem[] }) {
         />
       </div>
 
-      <nav className="shrink-0 grow ">
+      <nav className="shrink-0 grow py-4">
         <ListBox
           key={`${items.length}-${filter}`}
           selectionMode="single"
           aria-label="Navigation"
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-6"
           items={sections}
           selectedKeys={[pathname]}
           layout="grid"
@@ -131,11 +131,11 @@ export function Navigation({ items }: { items: NavItem[] }) {
           )}
         >
           {({ section, items }) => (
-            <RACSection id={section} className="grid grid-cols-2 gap-1 p-2">
-              <Header className="col-span-full flex h-6 items-center gap-2 px-2 text-xs font-medium text-neutral-10">
+            <RACSection id={section} className="grid grid-cols-2 gap-1">
+              <Header className="col-span-full flex h-6 items-center gap-2 px-2 text-xs font-medium text-neutral-text-contrast">
                 {categoryIcons[section]}
                 {section}
-                <div className="h-px grow bg-neutral-3" />
+                <div className="h-px grow bg-neutral-4" />
               </Header>
               <Collection items={items}>
                 {({ slug, name, status }) => (
