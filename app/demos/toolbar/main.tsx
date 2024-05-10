@@ -3,7 +3,7 @@ import { Button } from "@ui/button"
 import { Group } from "@ui/group"
 import { Separator } from "@ui/separator"
 import { Switch } from "@ui/switch"
-import { ToggleButton } from "@ui/toggle-button"
+import { ToggleButton } from "@ui/togglebutton"
 import { Toolbar } from "@ui/toolbar"
 
 export default () => (

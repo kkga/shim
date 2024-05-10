@@ -1,4 +1,4 @@
-import { TextArea } from "@ui/text-area";
+import { TextArea } from "@ui/textarea"
 
 export default () => (
   <TextArea label="Comment" />

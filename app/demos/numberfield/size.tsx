@@ -1,4 +1,4 @@
-import { NumberField } from '@ui/number-field'
+import { NumberField } from "@ui/numberfield"
 
 export default () => (
   <>

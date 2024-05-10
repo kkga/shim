@@ -31,14 +31,12 @@ export const demoComponents = {
     Content: dynamic(() => import("@/demos/button").then((mod) => mod.Content)),
   },
   ToggleButtonDemo: {
-    Main: dynamic(() =>
-      import("@/demos/toggle-button").then((mod) => mod.Main),
-    ),
+    Main: dynamic(() => import("@/demos/togglebutton").then((mod) => mod.Main)),
     Controlled: dynamic(() =>
-      import("@/demos/toggle-button").then((mod) => mod.Controlled),
+      import("@/demos/togglebutton").then((mod) => mod.Controlled),
     ),
     States: dynamic(() =>
-      import("@/demos/toggle-button").then((mod) => mod.States),
+      import("@/demos/togglebutton").then((mod) => mod.States),
     ),
   },
 
@@ -57,11 +55,11 @@ export const demoComponents = {
     States: dynamic(() => import("@/demos/checkbox").then((mod) => mod.States)),
   },
   NumberFieldDemo: {
-    Main: dynamic(() => import("@/demos/number-field").then((mod) => mod.Main)),
+    Main: dynamic(() => import("@/demos/numberfield").then((mod) => mod.Main)),
     States: dynamic(() =>
-      import("@/demos/number-field").then((mod) => mod.States),
+      import("@/demos/numberfield").then((mod) => mod.States),
     ),
-    Size: dynamic(() => import("@/demos/number-field").then((mod) => mod.Size)),
+    Size: dynamic(() => import("@/demos/numberfield").then((mod) => mod.Size)),
   },
   RadioGroupDemo: {
     Main: dynamic(() => import("@/demos/radio").then((mod) => mod.Main)),
@@ -70,16 +68,16 @@ export const demoComponents = {
     ),
   },
   SearchFieldDemo: {
-    Main: dynamic(() => import("@/demos/search-field").then((mod) => mod.Main)),
+    Main: dynamic(() => import("@/demos/searchfield").then((mod) => mod.Main)),
     Controlled: dynamic(() =>
-      import("@/demos/search-field").then((mod) => mod.Controlled),
+      import("@/demos/searchfield").then((mod) => mod.Controlled),
     ),
-    Size: dynamic(() => import("@/demos/search-field").then((mod) => mod.Size)),
+    Size: dynamic(() => import("@/demos/searchfield").then((mod) => mod.Size)),
     States: dynamic(() =>
-      import("@/demos/search-field").then((mod) => mod.States),
+      import("@/demos/searchfield").then((mod) => mod.States),
     ),
     PrefixIcon: dynamic(() =>
-      import("@/demos/search-field").then((mod) => mod.PrefixIcon),
+      import("@/demos/searchfield").then((mod) => mod.PrefixIcon),
     ),
   },
   SliderDemo: {
@@ -104,7 +102,7 @@ export const demoComponents = {
     States: dynamic(() => import("@/demos/switch").then((mod) => mod.States)),
   },
   TextFieldDemo: {
-    Main: dynamic(() => import("@/demos/text-field").then((mod) => mod.Main)),
+    Main: dynamic(() => import("@/demos/textfield").then((mod) => mod.Main)),
   },
 
   TabsDemo: {

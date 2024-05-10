@@ -2,7 +2,7 @@
 import { Button } from "@ui/button"
 import { Dialog, DialogTrigger } from "@ui/dialog"
 import { Form } from "@ui/form"
-import { TextField } from "@ui/text-field"
+import { TextField } from "@ui/textfield"
 
 export default () => (
   <DialogTrigger>
