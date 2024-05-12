@@ -1,43 +1,41 @@
 "use client"
 
 import { compose, cva, cx, cxRenderProps } from "@lib/utils"
+import { FunnelSimple, MagnifyingGlass, X } from "@phosphor-icons/react"
 import {
   Button as RACButton,
   SearchField as RACSearchField,
   type SearchFieldProps as RACSearchFieldProps,
-  type ValidationResult,
 } from "react-aria-components"
-
-import { FunnelSimple, MagnifyingGlass, X } from "@phosphor-icons/react"
-import { VariantProps } from "cva"
 import {
   Description,
+  FieldContext,
   FieldError,
   FieldGroup,
+  FieldProps,
   Input,
   Label,
-  fieldGroupStyle,
+  fieldLayoutStyle,
+  inputBaseStyle,
+  useFieldProps,
 } from "./field"
 
-interface SearchFieldProps
-  extends RACSearchFieldProps,
-    VariantProps<typeof fieldGroupStyle> {
-  label?: string
-  description?: string
-  errorMessage?: string | ((validation: ValidationResult) => string)
-  placeholder?: string
+interface SearchFieldProps extends RACSearchFieldProps, FieldProps {
   prefixIcon?: "search" | "filter" | null | React.ReactNode
-  size?: 1 | 2
 }
 
-const groupStyles = compose(
-  fieldGroupStyle,
+const groupStyle = compose(
+  inputBaseStyle,
   cva({
+    base: ["group flex items-center"],
     variants: {
       size: {
-        1: "h-6 px-px gap-0.5",
-        2: "h-8 px-[3px] gap-0.5",
+        1: "h-6 px-0.5 gap-0.5",
+        2: "h-8 px-1 gap-0.5",
       },
+    },
+    defaultVariants: {
+      size: 1,
     },
   }),
 )
@@ -69,36 +67,38 @@ function PrefixIcon({ size, className, icon }: PrefixIconProps) {
 }
 
 function SearchField({
-  className,
   label,
   description,
   errorMessage,
-  size = 1,
   placeholder = "Search",
   prefixIcon = "search",
-  variant,
   ...props
 }: SearchFieldProps) {
+  let { labelPosition, size, variant } = useFieldProps(props)
+
   return (
     <RACSearchField
       {...props}
-      className={cxRenderProps(className, "group flex flex-col gap-1.5")}
+      className={cxRenderProps(
+        props.className,
+        fieldLayoutStyle({ labelPosition }),
+      )}
     >
       {({ isEmpty, isDisabled }) => (
-        <>
+        <FieldContext.Provider value={{ size, variant, labelPosition }}>
           {label && <Label>{label}</Label>}
           <FieldGroup
             className={(renderProps) =>
               cx(
-                groupStyles({ size, variant, ...renderProps }),
-                !prefixIcon && size === 1 && "pl-2",
-                !prefixIcon && size === 2 && "pl-3",
+                groupStyle({ size, variant, ...renderProps }),
+                !prefixIcon && size === 1 && "pl-1.5",
+                !prefixIcon && size === 2 && "pl-2",
               )
             }
           >
             {prefixIcon && (
               <PrefixIcon
-                size={size}
+                size={size ?? 1}
                 icon={prefixIcon}
                 className={
                   isEmpty ? "text-neutral-placeholder" : "text-accent-text"
@@ -108,14 +108,14 @@ function SearchField({
             <Input
               placeholder={placeholder}
               className={cx(
-                "min-w-0 flex-1 appearance-none self-stretch border-none text-sm text-inherit outline-0 placeholder:text-neutral-placeholder autofill:bg-transparent [&::-webkit-search-cancel-button]:hidden",
+                "min-w-0 flex-1 appearance-none self-stretch border-none text-inherit outline-0 placeholder:text-neutral-placeholder autofill:bg-transparent [&::-webkit-search-cancel-button]:hidden",
               )}
             />
             <RACButton
               className={cx(
                 "flex items-center justify-center bg-transparent text-neutral-text hover:bg-neutral-bg-hover active:bg-neutral-bg-active",
                 isEmpty && "invisible",
-                isDisabled && "pointer-events-none text-neutral-placeholder",
+                isDisabled && "text-neutral-placeholder",
                 size === 1 && "size-5 rounded",
                 size === 2 && "size-6 rounded-sm",
               )}
@@ -125,7 +125,7 @@ function SearchField({
           </FieldGroup>
           {description && <Description>{description}</Description>}
           <FieldError>{errorMessage}</FieldError>
-        </>
+        </FieldContext.Provider>
       )}
     </RACSearchField>
   )

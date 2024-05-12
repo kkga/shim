@@ -7,8 +7,8 @@ export default () => {
 
   return (
     <>
-      <SearchField label="Docs" value={value} onChange={setValue} />
-      <span>Value: {value}</span>
+      <SearchField value={value} onChange={setValue} aria-label="Search" />
+      <p>Value: {value}</p>
     </>
   )
 }

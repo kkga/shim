@@ -1,6 +1,5 @@
-'use client'
-import { cxRenderProps } from '@lib/utils'
-import { Description, Input, Label, fieldStyle } from '@ui/field'
+"use client"
+import { Description, Input, Label, fieldLayoutStyle, inputBaseStyle } from "@ui/field"
 
 /**
  * Utility components used in other form fields.
@@ -8,9 +7,9 @@ import { Description, Input, Label, fieldStyle } from '@ui/field'
  */
 
 export default () => (
-  <div className='flex flex-col gap-1.5 self-stretch'>
-    <Label htmlFor='f'>Label</Label>
-    <Input id='f' className={cxRenderProps(fieldStyle, 'h-6 px-2')} />
+  <div className={fieldLayoutStyle()}>
+    <Label htmlFor="f">Label</Label>
+    <Input id="f" className={inputBaseStyle()} />
     <Description>Field description</Description>
   </div>
 )

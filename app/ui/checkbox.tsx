@@ -9,40 +9,53 @@ import {
   CheckboxGroup as RACCheckboxGroup,
   type CheckboxGroupProps as RACCheckboxGroupProps,
   type CheckboxProps as RACCheckboxProps,
-  type ValidationResult,
 } from "react-aria-components"
 
 import { compose, cva, cx, cxRenderProps, focusStyle } from "@lib/utils"
 
-import { Description, FieldError, Label } from "./field"
+import {
+  Description,
+  FieldContext,
+  FieldError,
+  FieldProps,
+  Label,
+  fieldLayoutStyle,
+  useFieldProps,
+} from "./field"
 
-interface CheckboxGroupProps extends Omit<RACCheckboxGroupProps, "children"> {
-  label?: string
+interface CheckboxGroupProps
+  extends Omit<RACCheckboxGroupProps, "children">,
+    FieldProps {
   children?: ReactNode
-  description?: string
-  errorMessage?: string | ((validation: ValidationResult) => string)
 }
 
 function CheckboxGroup(props: CheckboxGroupProps) {
+  let { labelPosition, variant, size } = useFieldProps(props)
+
   return (
     <RACCheckboxGroup
       {...props}
-      className={cxRenderProps(props.className, "flex flex-col gap-2")}
+      className={cxRenderProps(
+        props.className,
+        fieldLayoutStyle({ labelPosition }),
+      )}
     >
-      <Label>{props.label}</Label>
-      {props.children}
-      {props.description && <Description>{props.description}</Description>}
-      <FieldError>{props.errorMessage}</FieldError>
+      <FieldContext.Provider value={{ variant, labelPosition, size }}>
+        <Label>{props.label}</Label>
+        <div className="flex flex-col">{props.children}</div>
+        {props.description && <Description>{props.description}</Description>}
+        <FieldError>{props.errorMessage}</FieldError>
+      </FieldContext.Provider>
     </RACCheckboxGroup>
   )
 }
 
 const checkboxStyles = cva({
-  base: ["group flex items-center gap-2 text-neutral-text outline-none"],
+  base: ["group flex items-center text-neutral-text outline-none"],
   variants: {
     size: {
-      1: "text-sm gap-2",
-      2: "text-sm gap-3",
+      1: "text-xs gap-1.5 h-6",
+      2: "text-[13px] gap-2 h-8",
     },
     isDisabled: {
       true: "text-neutral-placeholder",
@@ -56,30 +69,49 @@ const checkboxStyles = cva({
 const boxStyles = compose(
   focusStyle,
   cva({
-    base: ["flex shrink-0 items-center justify-center border shadow-inner"],
+    base: [
+      "outline-offset-1 flex items-center shrink-0 rounded",
+      // invalid
+      // "group-data-invalid:border-error-border group-data-invalid:bg-error-bg",
+    ],
     variants: {
-      isSelected: {
-        true: "border-accent-solid-hover bg-accent-solid text-white",
-        false: "bg-neutral-bg border-neutral-border text-neutral-text",
-      },
-      isDisabled: {
-        true: "border-neutral-line bg-neutral-bg-subtle text-neutral-placeholder shadow-none",
+      variant: {
+        classic: [
+          "bg-neutral-bg-subtle shadow-inner inset-ring-1 inset-ring-neutral-border text-white",
+          // pressed
+          "group-data-pressed:bg-neutral-bg-active",
+          // selected
+          "group-data-selected:bg-accent-solid",
+          // disabled
+          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line group-data-disabled:shadow-none",
+        ],
+        soft: [
+          "bg-neutral-bg-hover inset-ring-0",
+          // pressed
+          "group-data-pressed:bg-neutral-bg-active",
+          // selected
+          "group-data-selected:bg-accent-bg-active before:bg-accent-solid-hover",
+          // disabled
+          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line",
+        ],
+        outline: [
+          "bg-transparent inset-ring-1 inset-ring-neutral-border text-accent-text",
+          // pressed
+          "group-data-pressed:bg-neutral-bg-active",
+          // selected
+          "group-data-selected:bg-transparent inset-ring-neutral-border-hover",
+          // disabled
+          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line",
+        ],
       },
       size: {
-        1: "size-4 rounded",
-        2: "size-5 rounded-md",
+        1: "size-4 p-px",
+        2: "size-5 p-0.5",
       },
     },
-    compoundVariants: [
-      {
-        isSelected: true,
-        isDisabled: true,
-        className:
-          "border-neutral-line bg-neutral-bg-subtle text-neutral-placeholder",
-      },
-    ],
     defaultVariants: {
       size: 1,
+      variant: "classic",
     },
   }),
 )
@@ -91,20 +123,21 @@ interface CheckboxProps
   children?: React.ReactNode
 }
 
-function Checkbox({ className, size, children, ...props }: CheckboxProps) {
+function Checkbox({ className, children, ...props }: CheckboxProps) {
+  let { size, variant } = useFieldProps(props)
+
   return (
     <RACCheckbox
       {...props}
       className={cxRenderProps(className, checkboxStyles({ size, ...props }))}
     >
-      {({ isSelected, isIndeterminate, ...renderProps }) => (
+      {({ isSelected, isIndeterminate }) => (
         <>
           <div
             className={cx(
               boxStyles({
-                isSelected: isSelected || isIndeterminate,
                 size,
-                ...renderProps,
+                variant,
               }),
             )}
           >

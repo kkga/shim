@@ -20,7 +20,7 @@ const buttonStyle = cva({
   base: [
     "font-medium inline-flex items-center justify-center shrink-0 truncate",
     // disabled
-    "data-[disabled]:text-neutral-placeholder data-[disabled]:cursor-not-allowed data-[disabled]:pointer-events-none data-[disabled]:bg-neutral-bg-subtle",
+    "data-disabled:text-neutral-placeholder data-disabled:bg-neutral-bg-subtle",
   ],
   variants: {
     variant: {
@@ -36,8 +36,8 @@ const buttonStyle = cva({
       {} as Record<Intent, string>,
     ),
     size: {
-      1: "text-sm h-6 px-2 rounded-md gap-1.5",
-      2: "text-sm h-8 px-2.5 rounded-lg gap-2",
+      1: "text-xs h-6 px-2 rounded-md gap-1.5",
+      2: "text-[13px] h-8 px-2.5 rounded-lg gap-2",
     },
     isSquare: {
       true: "",
@@ -195,4 +195,4 @@ function Button({
   )
 }
 
-export { Button, type ButtonProps, buttonStyle }
+export { Button, buttonStyle, type ButtonProps }

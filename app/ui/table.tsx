@@ -8,12 +8,7 @@ import {
   focusInsetStyle,
   focusStyle,
 } from "@lib/utils"
-import {
-  ArrowDown,
-  ArrowUp,
-  DotsSixVertical,
-  Minus,
-} from "@phosphor-icons/react"
+import { ArrowDown, ArrowUp, DotsSixVertical } from "@phosphor-icons/react"
 import {
   Button as RACButton,
   Cell as RACCell,
@@ -46,7 +41,7 @@ function Table(props: RACTableProps) {
 const columnStyles = () => ({
   columnStyle: cva({
     base: [
-      "group border-b border-neutral-line text-start text-sm font-medium text-neutral-text-contrast",
+      "group border-b border-neutral-line text-start text-xs font-medium text-neutral-text-contrast",
       // allows sorting
       "data-allows-sorting:cursor-default",
     ],
@@ -125,7 +120,7 @@ function TableHeader<T extends object>(props: RACTableHeaderProps<T>) {
   return (
     <RACTableHeader
       {...props}
-      className={cx("sticky top-0 z-10 text-sm font-medium", props.className)}
+      className={cx("sticky top-0 z-10 text-xs font-medium", props.className)}
     >
       {/* Add extra columns for drag and drop and selection. */}
       {allowsDragging && <Column />}
@@ -143,7 +138,7 @@ const rowStyles = compose(
   focusInsetStyle,
   cva({
     base: [
-      "group/row peer relative text-neutral-text text-sm",
+      "group/row peer relative text-neutral-text text-xs",
       // selection mode
       "data-[selection-mode]:select-none data-[selection-mode]:cursor-default",
       // selected

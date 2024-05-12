@@ -2,6 +2,8 @@ import "./styles/base.css"
 import "./styles/site.css"
 
 import { ClientProviders, ThemeProvider } from "@/components/providers"
+import DarkIcon from "@/icon-dark.png"
+import LightIcon from "@/icon-light.png"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
@@ -15,8 +17,8 @@ import { baseUrl } from "./sitemap"
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Next.js Portfolio Starter",
-    template: "%s | Next.js Portfolio Starter",
+    default: "Shim",
+    template: "%s — Shim",
   },
   description: "This is my portfolio.",
   openGraph: {
@@ -26,6 +28,22 @@ export const metadata: Metadata = {
     siteName: "My Portfolio",
     locale: "en_US",
     type: "website",
+  },
+  icons: {
+    icon: [
+      {
+        rel: "icon",
+        media: "(prefers-color-scheme: light)",
+        type: "image/png",
+        url: LightIcon.src,
+      },
+      {
+        rel: "icon",
+        media: "(prefers-color-scheme: dark)",
+        type: "image/png",
+        url: DarkIcon.src,
+      },
+    ],
   },
   robots: {
     index: true,
@@ -85,7 +103,7 @@ export default function RootLayout({
               </div>
 
               <main className="flex-1 py-16 px-8">
-                <div className="mx-auto max-w-4xl text-[15px] leading-6 [&_.s-box]:-mx-4">
+                <div className="mx-auto max-w-4xl text-[14px] leading-normal [&_.s-box]:-mx-4">
                   {children}
                 </div>
               </main>

@@ -6,7 +6,7 @@ import { cva, cx } from "@lib/utils"
 import { Children, isValidElement } from "react"
 
 const badgeStyles = cva({
-  base: "inline-flex w-min items-center justify-center text-xs font-[450]",
+  base: "inline-flex w-min items-center justify-center font-book",
   variants: {
     intent: {
       neutral:
@@ -19,9 +19,9 @@ const badgeStyles = cva({
       error: "border border-error-line bg-error-bg-subtle text-error-text",
     },
     size: {
-      1: "h-4 px-1 gap-1 rounded text-[11px]",
-      2: "h-5 px-1 gap-1 rounded",
-      3: "h-6 px-1.5 gap-1.5 rounded-md",
+      1: "h-4 px-[3px] gap-1 rounded text-[11px]",
+      2: "h-5 px-1 gap-1 rounded text-xs",
+      3: "h-6 px-1.5 gap-1.5 rounded-md text-[13px]",
     },
     isSquare: {
       true: "",

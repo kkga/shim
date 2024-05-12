@@ -58,14 +58,14 @@ export const H1 = (props) => (
 
 export const H2 = (props) => (
   <h2
-    className="mt-12 mb-3 text-xl font-semibold leading-tight text-neutral-text-contrast"
+    className="mt-12 mb-3 text-lg font-medium leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
 
 export const H3 = (props) => (
   <h3
-    className="mt-12 mb-2 text-lg font-medium leading-tight text-neutral-text-contrast"
+    className="mt-12 mb-2 text-base font-medium leading-tight text-neutral-text-contrast"
     {...props}
   />
 )

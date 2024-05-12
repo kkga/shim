@@ -39,7 +39,7 @@ const styles = {
 
   tab: cva({
     base: [
-      "border-transparent border-t-2 border-b-2 group inline-flex gap-2 h-10 items-center focus-visible:outline-none text-sm font-medium text-neutral-text cursor-default",
+      "border-transparent border-t-2 border-b-2 group inline-flex gap-1.5 h-10 items-center focus-visible:outline-none text-xs font-medium text-neutral-text cursor-default",
       // hover
       "data-[hovered]:text-neutral-text-contrast",
       // selected

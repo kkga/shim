@@ -19,7 +19,7 @@ function Demo({ demo, code, className, stacked = false }: Props) {
     >
       <div
         className={cx(
-          "flex flex-1 flex-col content-start gap-3 overflow-auto p-4 text-sm text-neutral-text",
+          "flex flex-1 flex-col content-start gap-3 overflow-auto p-4 text-xs text-neutral-text",
           className,
         )}
       >

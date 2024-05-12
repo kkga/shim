@@ -5,35 +5,37 @@ import {
   NumberField as RACNumberField,
   type ButtonProps,
   type NumberFieldProps as RACNumberFieldProps,
-  type ValidationResult,
 } from "react-aria-components"
 
 import { compose, cva, cx, cxRenderProps } from "@lib/utils"
 import { CaretDown, CaretUp } from "@phosphor-icons/react"
 import {
   Description,
+  FieldContext,
   FieldError,
   FieldGroup,
+  FieldProps,
   Input,
   Label,
-  fieldGroupStyle,
+  fieldLayoutStyle,
+  inputBaseStyle,
+  useFieldProps,
 } from "./field"
 
-interface NumberFieldProps extends RACNumberFieldProps {
-  label?: string
-  description?: string
-  errorMessage?: string | ((validation: ValidationResult) => string)
-  size?: 1 | 2
-}
+interface NumberFieldProps extends RACNumberFieldProps, FieldProps {}
 
-const groupStyles = compose(
-  fieldGroupStyle,
+const groupStyle = compose(
+  inputBaseStyle,
   cva({
+    base: ["group flex items-center"],
     variants: {
       size: {
-        1: "h-6",
-        2: "h-8",
+        1: "h-6 p-0",
+        2: "h-8 p-0",
       },
+    },
+    defaultVariants: {
+      size: 1,
     },
   }),
 )
@@ -42,44 +44,68 @@ function NumberField({
   label,
   description,
   errorMessage,
-  size = 1,
+  placeholder,
   ...props
 }: NumberFieldProps) {
+  let { labelPosition, size, variant } = useFieldProps(props)
+
   return (
     <RACNumberField
       {...props}
-      className={cxRenderProps(props.className, "group flex flex-col gap-1.5")}
+      className={cxRenderProps(
+        props.className,
+        fieldLayoutStyle({ labelPosition }),
+      )}
     >
-      <Label>{label}</Label>
-      <FieldGroup
-        className={(renderProps) => groupStyles({ size, ...renderProps })}
-      >
-        {() => (
-          <>
-            <Input
-              className={cx(
-                "min-w-0 flex-1 appearance-none self-stretch border-none text-xs text-inherit outline-0 placeholder:text-neutral-placeholder",
-                size === 1 ? "px-2" : "px-3",
-              )}
-            />
-            <div
-              className={cx(
-                "flex flex-col self-stretch border-s border-neutral-border group-data-[disabled]:border-neutral-line group-data-[invalid]:border-error-border",
-              )}
-            >
-              <StepperButton slot="increment">
-                <CaretUp aria-hidden size={10} weight="bold" />
-              </StepperButton>
-              <div className="h-px bg-neutral-border group-data-[disabled]:bg-neutral-line group-data-[invalid]:bg-error-border" />
-              <StepperButton slot="decrement">
-                <CaretDown aria-hidden size={10} weight="bold" />
-              </StepperButton>
-            </div>
-          </>
-        )}
-      </FieldGroup>
-      {description && <Description>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
+      <FieldContext.Provider value={{ size, variant, labelPosition }}>
+        {label && <Label>{label}</Label>}
+        <FieldGroup
+          className={(renderProps) =>
+            groupStyle({ size, variant, ...renderProps })
+          }
+        >
+          {() => (
+            <>
+              <Input
+                className={cx(
+                  "min-w-0 flex-1 appearance-none self-stretch border-none text-inherit outline-0 placeholder:text-neutral-placeholder",
+                  size === 1 ? "indent-1.5 text-xs" : "text[13px] indent-2",
+                )}
+              />
+              <div className={cx("flex flex-col self-stretch p-px")}>
+                <StepperButton
+                  slot="increment"
+                  className={cx(
+                    "rounded-tr-[5px]",
+                    size === 1 ? "px-1" : "px-1.5",
+                  )}
+                >
+                  <CaretUp
+                    aria-hidden
+                    size={size === 1 ? 10 : 12}
+                    weight="bold"
+                  />
+                </StepperButton>
+                <StepperButton
+                  slot="decrement"
+                  className={cx(
+                    "rounded-br-[5px]",
+                    size === 1 ? "px-1" : "px-1.5",
+                  )}
+                >
+                  <CaretDown
+                    aria-hidden
+                    size={size === 1 ? 10 : 12}
+                    weight="bold"
+                  />
+                </StepperButton>
+              </div>
+            </>
+          )}
+        </FieldGroup>
+        {description && <Description>{description}</Description>}
+        <FieldError>{errorMessage}</FieldError>
+      </FieldContext.Provider>
     </RACNumberField>
   )
 }
@@ -89,15 +115,15 @@ function StepperButton({ className, ...props }: ButtonProps) {
     <Button
       {...props}
       className={cx(
-        "flex flex-1 cursor-default items-center justify-center bg-neutral-bg px-1.5 text-neutral-text",
+        "flex flex-1 cursor-default items-center justify-center rounded-sm bg-transparent text-neutral-text",
         // hovered
-        "data-[hovered]:bg-neutral-bg-hover",
+        "data-hovered:bg-neutral-bg-hover",
         // pressed
-        "data-[pressed]:bg-neutral-bg-active",
+        "data-pressed:bg-neutral-bg-active",
         // group disabled
-        "group-data-[disabled]:text-neutral-placeholder",
+        "group-data-disabled:text-neutral-placeholder",
         // group invalid
-        "group-data-[invalid]:text-error-text",
+        "group-data-invalid:text-error-text",
         className,
       )}
     />

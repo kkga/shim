@@ -1,8 +1,8 @@
-import { Button } from '@/ui/button'
+import { Button } from "@/ui/button"
 
 export default () => (
   <>
-    <Button size={1}>Small</Button>
-    <Button size={2}>Medium</Button>
+    <Button size={1}>Size 1</Button>
+    <Button size={2}>Size 2</Button>
   </>
 )

@@ -1,10 +1,10 @@
-import { GithubLogo, XLogo } from "@phosphor-icons/react/dist/ssr"
+import { GithubLogo, Shapes, XLogo } from "@phosphor-icons/react/dist/ssr"
 import { Link } from "@ui/link"
+import { Separator } from "@ui/separator"
+import { Tooltip, TooltipTrigger } from "@ui/tooltip"
 import { ButtonLink } from "./button-link"
 import { Navigation, type NavItem } from "./navigation"
 import { ThemeButton } from "./theme-button"
-import { Separator } from "@ui/separator"
-import { Tooltip, TooltipTrigger } from "@ui/tooltip"
 
 export function Sidebar(props: { items: NavItem[] }) {
   return (
@@ -12,12 +12,19 @@ export function Sidebar(props: { items: NavItem[] }) {
       style={{ scrollbarWidth: "thin" }}
       className="fixed inset-0 right-auto flex w-[inherit] flex-col overflow-x-hidden overflow-y-scroll px-4 text-sm"
     >
-      <header className="sticky top-0 flex h-10 shrink-0 items-center items-center justify-between gap-1 bg-[var(--color-bg-body)] pl-2">
-        <Link className="flex items-center gap-1 no-underline" href="/">
-          <h1 className="text-sm font-semibold text-neutral-text">Shim</h1>
+      <header className="sticky top-0 flex h-10 shrink-0 items-center items-center justify-between gap-1 bg-[var(--color-bg-body)] pl-1.5">
+        <Link className="flex items-center gap-1.5 no-underline" href="/">
+          <Shapes
+            size={16}
+            weight="fill"
+            className="text-neutral-text-contrast"
+          />
+          <h1 className="text-xs font-semibold text-neutral-text-contrast">
+            Shim
+          </h1>
         </Link>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1.5">
           <TooltipTrigger>
             <ThemeButton />
             <Tooltip>Toggle theme</Tooltip>

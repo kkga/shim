@@ -1,8 +1,27 @@
 ---
 name: TextArea
 description: Enter a multi-line text value.
-category: "Forms"
-docUrl: "https://react-spectrum.adobe.com/react-aria/TextField.html"
-aria: "https://www.w3.org/TR/wai-aria-1.2/#textbox"
-composes: ["Field"]
+category: Forms
+docUrl: https://react-spectrum.adobe.com/react-aria/TextField.html
+aria: https://www.w3.org/TR/wai-aria-1.2/#textbox
+composes:
+  - Field
 ---
+
+### Label position
+
+Use `labelPosition` to set the position of the label.
+
+<Demo demo={<TextAreaDemo.LabelPosition />} code={demos["label-position"]} />
+
+### Size
+
+Use `size` to set the size of the text area.
+
+<Demo demo={<TextAreaDemo.Size />} code={demos["size"]} />
+
+### Variant
+
+Use `variant` to set the variant of the text area.
+
+<Demo demo={<TextAreaDemo.Variant />} code={demos["variant"]} />

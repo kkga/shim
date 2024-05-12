@@ -4,33 +4,33 @@ import { compose, cva, cxRenderProps } from "@lib/utils"
 import {
   TextField as RACTextField,
   type TextFieldProps as RACTextFieldProps,
-  type ValidationResult,
 } from "react-aria-components"
 
 import {
   Description,
+  FieldContext,
   FieldError,
+  FieldProps,
   Label,
   TextAreaInput,
-  fieldStyle,
+  fieldLayoutStyle,
+  inputBaseStyle,
+  useFieldProps,
 } from "./field"
 
-interface TextAreaProps extends RACTextFieldProps {
-  label?: string
-  description?: string
-  errorMessage?: string | ((validation: ValidationResult) => string)
-  placeholder?: string
-  size?: 1 | 2
-}
+interface TextAreaProps extends RACTextFieldProps, FieldProps {}
 
-const textAreaStyles = compose(
-  fieldStyle,
+const textAreaStyle = compose(
+  inputBaseStyle,
   cva({
     variants: {
       size: {
-        1: "min-h-12 px-2 py-1",
-        2: "min-h-16 px-3 py-1.5",
+        1: "min-h-12 indent-0 px-1.5 py-1",
+        2: "min-h-16 indent-0 px-2 py-1.5",
       },
+    },
+    defaultVariants: {
+      size: 1,
     },
   }),
 )
@@ -41,22 +41,24 @@ function TextArea({
   errorMessage,
   placeholder,
   className,
-  size = 1,
   ...props
 }: TextAreaProps) {
+  let { labelPosition, size, variant } = useFieldProps(props)
+
   return (
     <RACTextField
       {...props}
-      className={cxRenderProps(className, "group flex flex-col gap-1.5")}
+      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
-      {label && <Label>{label}</Label>}
-      <TextAreaInput
-        placeholder={placeholder}
-        // TODO: replace passing the renderProps with data-selectors on field style
-        className={(renderProps) => textAreaStyles({ size, ...renderProps })}
-      />
-      {description && <Description>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
+      <FieldContext.Provider value={{ size, variant, labelPosition }}>
+        {label && <Label>{label}</Label>}
+        <TextAreaInput
+          placeholder={placeholder}
+          className={textAreaStyle({ size, variant })}
+        />
+        {description && <Description>{description}</Description>}
+        <FieldError>{errorMessage}</FieldError>
+      </FieldContext.Provider>
     </RACTextField>
   )
 }

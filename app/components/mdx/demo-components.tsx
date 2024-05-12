@@ -48,6 +48,7 @@ export const demoComponents = {
   },
   FieldDemo: {
     Main: dynamic(() => import("@/demos/field").then((mod) => mod.Main)),
+    Context: dynamic(() => import("@/demos/field").then((mod) => mod.Context)),
   },
   CheckboxDemo: {
     Main: dynamic(() => import("@/demos/checkbox").then((mod) => mod.Main)),
@@ -60,11 +61,27 @@ export const demoComponents = {
       import("@/demos/numberfield").then((mod) => mod.States),
     ),
     Size: dynamic(() => import("@/demos/numberfield").then((mod) => mod.Size)),
+    Variant: dynamic(() =>
+      import("@/demos/numberfield").then((mod) => mod.Variant),
+    ),
+    LabelPosition: dynamic(() =>
+      import("@/demos/numberfield").then((mod) => mod.LabelPosition),
+    ),
   },
   RadioGroupDemo: {
-    Main: dynamic(() => import("@/demos/radio").then((mod) => mod.Main)),
+    Main: dynamic(() => import("@/demos/radiogroup").then((mod) => mod.Main)),
     Orientation: dynamic(() =>
-      import("@/demos/radio").then((mod) => mod.Orientation),
+      import("@/demos/radiogroup").then((mod) => mod.Orientation),
+    ),
+    LabelPosition: dynamic(() =>
+      import("@/demos/radiogroup").then((mod) => mod.LabelPosition),
+    ),
+    Size: dynamic(() => import("@/demos/radiogroup").then((mod) => mod.Size)),
+    Variant: dynamic(() =>
+      import("@/demos/radiogroup").then((mod) => mod.Variant),
+    ),
+    RadioDescription: dynamic(() =>
+      import("@/demos/radiogroup").then((mod) => mod.RadioDescription),
     ),
   },
   SearchFieldDemo: {
@@ -73,6 +90,9 @@ export const demoComponents = {
       import("@/demos/searchfield").then((mod) => mod.Controlled),
     ),
     Size: dynamic(() => import("@/demos/searchfield").then((mod) => mod.Size)),
+    Variant: dynamic(() =>
+      import("@/demos/searchfield").then((mod) => mod.Variant),
+    ),
     States: dynamic(() =>
       import("@/demos/searchfield").then((mod) => mod.States),
     ),
@@ -89,10 +109,14 @@ export const demoComponents = {
     ControlledRange: dynamic(() =>
       import("@/demos/slider").then((mod) => mod.ControlledRange),
     ),
-    States: dynamic(() => import("@/demos/slider").then((mod) => mod.States)),
     Orientation: dynamic(() =>
       import("@/demos/slider").then((mod) => mod.Orientation),
     ),
+    LabelPosition: dynamic(() =>
+      import("@/demos/slider").then((mod) => mod.LabelPosition),
+    ),
+    Variant: dynamic(() => import("@/demos/slider").then((mod) => mod.Variant)),
+    Size: dynamic(() => import("@/demos/slider").then((mod) => mod.Size)),
   },
   SwitchDemo: {
     Main: dynamic(() => import("@/demos/switch").then((mod) => mod.Main)),
@@ -100,9 +124,28 @@ export const demoComponents = {
       import("@/demos/switch").then((mod) => mod.Controlled),
     ),
     States: dynamic(() => import("@/demos/switch").then((mod) => mod.States)),
+    Variant: dynamic(() => import("@/demos/switch").then((mod) => mod.Variant)),
+    Size: dynamic(() => import("@/demos/switch").then((mod) => mod.Size)),
   },
   TextFieldDemo: {
     Main: dynamic(() => import("@/demos/textfield").then((mod) => mod.Main)),
+    LabelPosition: dynamic(() =>
+      import("@/demos/textfield").then((mod) => mod.LabelPosition),
+    ),
+    Size: dynamic(() => import("@/demos/textfield").then((mod) => mod.Size)),
+    Variant: dynamic(() =>
+      import("@/demos/textfield").then((mod) => mod.Variant),
+    ),
+  },
+  TextAreaDemo: {
+    Main: dynamic(() => import("@/demos/textarea").then((mod) => mod.Main)),
+    LabelPosition: dynamic(() =>
+      import("@/demos/textarea").then((mod) => mod.LabelPosition),
+    ),
+    Size: dynamic(() => import("@/demos/textarea").then((mod) => mod.Size)),
+    Variant: dynamic(() =>
+      import("@/demos/textarea").then((mod) => mod.Variant),
+    ),
   },
 
   TabsDemo: {

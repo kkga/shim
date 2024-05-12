@@ -1,36 +1,27 @@
 ---
 name: NumberField
-description: Enter a  number, and increment or decrement it with buttons.
-category: "Forms"
-docUrl: "https://react-spectrum.adobe.com/react-aria/NumberField.html"
-aria: "spinbutton"
-composes: ["Field"]
+description: Enter a number, and increment or decrement it with buttons.
+category: Forms
+docUrl: https://react-spectrum.adobe.com/react-aria/NumberField.html
+aria: https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/
+composes:
+  - Field
 ---
 
-## Usage
+### Label position
 
-<Demo
-  className="items-stretch"
-  demo={<NumberFieldDemo.Main />}
-  code={demos["main"]}
-/>
+Use `labelPosition` to set the position of the label.
 
----
-
-## Examples
-
-### States
-
-<Demo
-  className="items-stretch"
-  demo={<NumberFieldDemo.States />}
-  code={demos["states"]}
-/>
+<Demo demo={<NumberFieldDemo.LabelPosition />} code={demos["label-position"]} />
 
 ### Size
 
-<Demo
-  className="items-stretch"
-  demo={<NumberFieldDemo.Size />}
-  code={demos["size"]}
-/>
+Use `size` to set the size of the number field.
+
+<Demo demo={<NumberFieldDemo.Size />} code={demos["size"]} />
+
+### Variant
+
+Use `variant` to set the variant of the number field.
+
+<Demo demo={<NumberFieldDemo.Variant />} code={demos["variant"]} />

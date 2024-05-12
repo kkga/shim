@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr"
-import Link from "next/link"
+import { Link } from "@ui/link"
 import { Fragment } from "react"
 import { ComponentMetadata } from "../lib/types"
 
@@ -18,14 +18,16 @@ function MetadataLink({ href, title, external, children }) {
   return (
     <Link
       href={href}
-      className="text-sm text-accent-text underline decoration-accent-line underline-offset-2 hover:decoration-accent-border-hover"
-      title={title}
+      className="self-start text-xs"
       rel={external ? "noreferrer" : undefined}
       target={external ? "_blank" : undefined}
     >
       {children}
       {external && (
-        <ArrowUpRight className="ml-0.5 inline align-bottom" size={16} />
+        <ArrowUpRight
+          className="ml-0.5 inline align-bottom text-accent-9"
+          size={16}
+        />
       )}
     </Link>
   )
@@ -76,7 +78,7 @@ function MetadataRow({
       )}
       {dependencies && (
         <MetadataItem title="Composes">
-          <span className="text-sm">
+          <span className="text-xs">
             {dependencies.map(({ name, slug }, i) => (
               <Fragment key={name}>
                 {i > 0 && ", "}

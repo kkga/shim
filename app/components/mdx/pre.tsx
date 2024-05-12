@@ -1,7 +1,7 @@
-import { cx } from 'cva'
-import { Collapsible } from './collapsible'
-import { CopyButton } from './copy-button'
-import { Code } from './mdx-components'
+import { cx } from "cva"
+import { Collapsible } from "./collapsible"
+import { CopyButton } from "./copy-button"
+import { Code } from "./mdx-components"
 
 interface Props {
   code?: string
@@ -24,40 +24,40 @@ export async function Pre({
 
   if (code) {
     source = code
-    lang = lang || 'tsx'
-    className = className || ''
+    lang = lang || "tsx"
+    className = className || ""
   } else if (children) {
     source = children?.props.children
-    lang = children?.props.className?.replace('language-', '')
+    lang = children?.props.className?.replace("language-", "")
   }
 
   if (!source) return null
 
-  if (source.split('\n').length > 12 && collapsed === undefined) {
+  if (source.split("\n").length > 12 && collapsed === undefined) {
     collapsed = true
   }
 
-  source = source.replace(/\n+$/, '')
+  source = source.replace(/\n+$/, "")
 
   return (
     <div
       className={cx(
-        'codeblock group relative flex flex-col overflow-auto',
-        'max-h-[calc(100dvh-12rem)]',
-        'rounded-lg border border-neutral-3 bg-[var(--color-bg-panel)]',
-        'font-mono text-[13px] font-[400] leading-5 text-neutral-text',
-        '[&>code]:text-[100%]',
+        "codeblock group relative flex flex-col overflow-auto",
+        "max-h-[calc(100dvh-12rem)]",
+        "rounded-lg border border-neutral-3 bg-[var(--color-bg-panel)]",
+        "font-mono text-[13px] font-normal leading-normal text-neutral-text",
+        "[&>code]:text-[100%]",
         className,
       )}
     >
       {collapsed ?
         <Collapsible defaultCollapsed={collapsed}>
           <pre className="w-full flex-1 overflow-scroll p-4">
-            <Code className="text-sm!">{source}</Code>
+            <Code className="text-[13px]!">{source}</Code>
           </pre>
         </Collapsible>
       : <pre className="w-full flex-1 overflow-scroll p-4">
-          <Code className="text-sm!">{source}</Code>
+          <Code className="text-[13px]!">{source}</Code>
         </pre>
       }
 

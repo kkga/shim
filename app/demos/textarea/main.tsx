@@ -1,5 +1,5 @@
 import { TextArea } from "@ui/textarea"
 
 export default () => (
-  <TextArea label="Comment" />
+  <TextArea label="Note" />
 )

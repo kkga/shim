@@ -32,15 +32,25 @@ export interface NavItem {
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  Intro: <HouseSimple weight="duotone" size={16} />,
-  Overlays: <Cards weight="duotone" size={16} />,
-  Forms: <Textbox weight="duotone" size={16} />,
-  Status: <WarningDiamond weight="duotone" size={16} />,
-  Buttons: <CursorClick weight="duotone" size={16} />,
-  Pickers: <CheckFat weight="duotone" size={16} />,
-  Navigation: <Path weight="duotone" size={16} />,
-  Collections: <Rows weight="duotone" size={16} />,
-  Content: <Article weight="duotone" size={16} />,
+  Intro: (
+    <HouseSimple weight="duotone" className="text-neutral-text" size={16} />
+  ),
+  Overlays: <Cards weight="duotone" className="text-neutral-text" size={16} />,
+  Forms: <Textbox weight="duotone" className="text-neutral-text" size={16} />,
+  Status: (
+    <WarningDiamond weight="duotone" className="text-neutral-text" size={16} />
+  ),
+  Buttons: (
+    <CursorClick weight="duotone" className="text-neutral-text" size={16} />
+  ),
+  Pickers: (
+    <CheckFat weight="duotone" className="text-neutral-text" size={16} />
+  ),
+  Navigation: <Path weight="duotone" className="text-neutral-text" size={16} />,
+  Collections: (
+    <Rows weight="duotone" className="text-neutral-text" size={16} />
+  ),
+  Content: <Article weight="duotone" className="text-neutral-text" size={16} />,
 }
 
 const categorizeItems = (items: NavItem[]) => {
@@ -76,7 +86,7 @@ const itemStyle = compose(
   focusInsetStyle,
   cva({
     base: [
-      "flex h-6 gap-2 items-center rounded-md pl-2 pr-1 text-sm text-neutral-text",
+      "flex h-6 gap-2 items-center rounded-md px-1.5 text-xs font-book text-neutral-text",
       // hovered
       "data-[hovered]:bg-neutral-bg-hover",
       // selected
@@ -111,7 +121,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
           onChange={setFilter}
           onClear={() => setFilter("")}
           className="w-full"
-          variant="soft"
+          variant="outline"
         />
       </div>
 
@@ -132,7 +142,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
         >
           {({ section, items }) => (
             <RACSection id={section} className="grid grid-cols-2 gap-1">
-              <Header className="col-span-full flex h-6 items-center gap-2 px-2 text-xs font-medium text-neutral-text-contrast">
+              <Header className="col-span-full flex h-6 items-center gap-1.5 px-1.5 text-xs font-medium text-neutral-text-contrast">
                 {categoryIcons[section]}
                 {section}
                 <div className="h-px grow bg-neutral-4" />

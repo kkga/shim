@@ -1,15 +1,15 @@
-'use client'
-import { Slider } from '@ui/slider'
-import { useState } from 'react'
+"use client"
+import { Slider } from "@ui/slider"
+import { useState } from "react"
 
 export default () => {
   const [range, setRange] = useState<number | number[]>([17, 73])
 
   return (
     <>
-      <Slider label='Randomness range' value={range} onChange={setRange} />
-      <p>
-        Range: {range[0]}-{range[1]}
+      <Slider label="Range" value={range} onChange={setRange} />
+      <p className="tabular-nums">
+        Range: {range[0]}–{range[1]}
       </p>
     </>
   )

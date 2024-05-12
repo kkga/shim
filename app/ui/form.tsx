@@ -7,7 +7,7 @@ import {
 } from "react-aria-components"
 
 function Form({ className, ...props }: RACFormProps) {
-  return <RACForm {...props} className={cx("flex flex-col gap-4", className)} />
+  return <RACForm {...props} className={cx("flex flex-col gap-3", className)} />
 }
 
 export { Form }

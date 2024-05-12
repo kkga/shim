@@ -1,6 +1,6 @@
 "use client"
 
-import { compose, cva, cx, cxRenderProps, focusStyle } from "@lib/utils"
+import { compose, cva, cxRenderProps, focusStyle } from "@lib/utils"
 import {
   Slider as RACSlider,
   SliderOutput,
@@ -8,41 +8,148 @@ import {
   SliderTrack,
   type SliderProps as RACSliderProps,
 } from "react-aria-components"
-import { Description, Label } from "./field"
+import {
+  Description,
+  FieldContext,
+  FieldProps,
+  Label,
+  fieldLayoutStyle,
+  useFieldProps,
+} from "./field"
 
-const trackStyles = cva({
-  base: "rounded-[2px] ring ring-neutral-solid/20 ring-inset relative overflow-hidden",
-  variants: {
-    orientation: {
-      horizontal: "w-full h-1.5",
-      vertical: "h-full w-1.5 ml-[50%] -translate-x-[50%]",
-    },
-    isDisabled: {
-      false: "bg-neutral-bg shadow-inner",
-      true: "bg-neutral-bg-subtle shadow-none",
-    },
-  },
-})
-
-const thumbStyles = compose(
-  focusStyle,
-  cva({
-    base: [
-      "size-4 bg-white ring-1 ring-black/10 shadow-md rounded-full",
-      // vertical
-      "group-data-[orientation=horizontal]:mt-4 group-data-[orientation=vertical]:ml-2",
-    ],
+const styles = {
+  track: cva({
+    base: ["relative flex grow-1 shrink-0 items-center"],
     variants: {
+      orientation: {
+        horizontal: "min-w-32",
+        vertical: "flex-col-reverse min-h-32",
+      },
+      size: {
+        1: "",
+        2: "",
+      },
+    },
+    compoundVariants: [
+      {
+        size: 1,
+        orientation: "horizontal",
+        className: "mx-2 h-6",
+      },
+      {
+        size: 1,
+        orientation: "vertical",
+        className: "w-6 my-2",
+      },
+      {
+        size: 2,
+        orientation: "horizontal",
+        className: "mx-2.5 h-8",
+      },
+      {
+        size: 2,
+        orientation: "vertical",
+        className: "my-2.5 w-8",
+      },
+    ],
+  }),
+
+  trackInner: cva({
+    base: "absolute rounded-full inset-ring inset-ring-neutral-line overflow-hidden",
+    variants: {
+      size: {
+        1: "",
+        2: "",
+      },
+      variant: {
+        classic: "bg-neutral-bg-subtle shadow-inner",
+        soft: "bg-neutral-bg inset-ring-0",
+        outline: "bg-transparent",
+      },
+      orientation: {
+        horizontal: "",
+        vertical: "",
+      },
       isDisabled: {
-        true: "bg-neutral-bg ring-neutral-line shadow-none",
+        false: "bg-neutral-bg shadow-inner",
+        true: "bg-neutral-bg-subtle shadow-none",
+      },
+    },
+    compoundVariants: [
+      {
+        size: 1,
+        orientation: "horizontal",
+        className: "h-1.5 -inset-x-2 inset-y-auto",
+      },
+      {
+        size: 1,
+        orientation: "vertical",
+        className: "w-1.5 -inset-y-2 inset-x-auto",
+      },
+      {
+        size: 2,
+        orientation: "horizontal",
+        className: "h-2.5 -inset-x-2.5 inset-y-auto",
+      },
+      {
+        size: 2,
+        orientation: "vertical",
+        className: "w-2.5 -inset-y-2.5 inset-x-auto",
+      },
+    ],
+  }),
+
+  trackFill: cva({
+    base: "absolute bg-accent-solid",
+    variants: {
+      variant: {
+        classic: "bg-accent-solid",
+        soft: "bg-accent-bg-active",
+        outline: "bg-accent-solid",
+      },
+      orientation: {
+        horizontal: "top-0 bottom-0",
+        vertical: "right-0 left-0",
       },
     },
   }),
-)
 
-interface SliderProps<T> extends RACSliderProps<T> {
-  label?: string
-  description?: string
+  thumb: compose(
+    focusStyle,
+    cva({
+      base: [
+        "outline-offset-0 bg-white ring-1 ring-black/15 shadow rounded-full",
+        "group-data-disabled:bg-neutral-bg group-data-disabled:ring-neutral-line group-data-disabled:shadow-none",
+      ],
+      variants: {
+        size: {
+          1: "size-4 group-data-[orientation=horizontal]:mt-4 group-data-[orientation=vertical]:ml-4",
+          2: "size-5 group-data-[orientation=horizontal]:mt-5 group-data-[orientation=vertical]:ml-5",
+        },
+        orientation: {
+          horizontal: "left-0",
+          vertical: "top-0",
+        },
+      },
+    }),
+  ),
+
+  output: cva({
+    base: [
+      "text-xs min-w-[3ch] self-center tabular-nums text-end justify-self-end text-neutral-text data-[orientation=vertical]:hidden",
+      // disabled
+      "group-data-disabled:text-neutral-placeholder",
+    ],
+    variants: {
+      size: {
+        1: "text-xs",
+        2: "text-[13px]",
+      },
+    },
+  }),
+}
+
+interface SliderProps<T> extends RACSliderProps<T>, FieldProps {
   thumbLabels?: string[]
   isFilled?: boolean
 }
@@ -54,79 +161,91 @@ function Slider<T extends number | number[]>({
   isFilled,
   ...props
 }: SliderProps<T>) {
+  let { labelPosition, size, variant } = useFieldProps(props)
+
   return (
     <RACSlider
       {...props}
       className={cxRenderProps(
         props.className,
-        "group grid-cols-[1fr_auto] flex-col items-center gap-2 data-[orientation=horizontal]:grid data-[orientation=vertical]:flex",
+        fieldLayoutStyle({ labelPosition }),
       )}
     >
-      <Label>{label}</Label>
-      <SliderOutput className="text-sm tabular-nums text-neutral-text group-data-[disabled]:text-neutral-placeholder data-[orientation=vertical]:hidden">
-        {({ state }) =>
-          state.values.map((_, i) => state.getThumbValueLabel(i)).join("–")
-        }
-      </SliderOutput>
-      <SliderTrack className="group col-span-2 flex items-center data-[orientation=horizontal]:h-4 data-[orientation=vertical]:h-64 data-[orientation=vertical]:w-4">
-        {({ state, ...renderProps }) => (
-          <>
-            <div className={trackStyles(renderProps)}>
-              {isFilled && state.values.length === 2 && (
-                <div
-                  className={cx(
-                    "absolute bg-accent-solid",
-                    renderProps.orientation === "horizontal" ?
-                      "top-0 bottom-0"
-                    : "right-0 left-0",
-                  )}
-                  style={
-                    renderProps.orientation === "horizontal" ?
-                      {
-                        left: `${state.getThumbPercent(0) * 100}%`,
-                        right: `${100 - state.getThumbPercent(1) * 100}%`,
-                      }
-                    : {
-                        bottom: `${state.getThumbPercent(0) * 100}%`,
-                        top: `${100 - state.getThumbPercent(1) * 100}%`,
-                      }
-                  }
-                />
-              )}
-              {isFilled && state.values.length === 1 && (
-                <div
-                  className={cx(
-                    "absolute bg-accent-solid",
-                    renderProps.orientation === "horizontal" ?
-                      "top-0 bottom-0"
-                    : "right-0 left-0",
-                  )}
-                  style={
-                    renderProps.orientation === "horizontal" ?
-                      {
-                        left: 0,
-                        right: `${100 - state.getThumbPercent(0) * 100}%`,
-                      }
-                    : {
-                        bottom: 0,
-                        top: `${100 - state.getThumbPercent(0) * 100}%`,
-                      }
-                  }
-                />
-              )}
-            </div>
-            {state.values.map((_, i) => (
-              <SliderThumb
-                key={i}
-                index={i}
-                aria-label={thumbLabels?.[i]}
-                className={thumbStyles}
-              />
-            ))}
-          </>
+      <FieldContext.Provider value={{ size, variant, labelPosition }}>
+        {label && (
+          <div className="flex justify-between">
+            <Label labelPosition={labelPosition} size={size}>
+              {label}
+            </Label>
+            {labelPosition === "top" && (
+              <SliderOutput className={styles.output({ size })}>
+                {({ state }) =>
+                  state.values
+                    .map((_, i) => state.getThumbValueLabel(i))
+                    .join("–")
+                }
+              </SliderOutput>
+            )}
+          </div>
         )}
-      </SliderTrack>
-      {description && <Description>{description}</Description>}
+
+        <div className="flex gap-1">
+          <SliderTrack
+            className={({ orientation }) => styles.track({ size, orientation })}
+          >
+            {({ state, orientation }) => (
+              <>
+                <div
+                  className={styles.trackInner({ size, variant, orientation })}
+                >
+                  {isFilled && (
+                    <div
+                      className={styles.trackFill({ variant, orientation })}
+                      style={
+                        orientation === "horizontal" ?
+                          {
+                            left:
+                              state.values.length > 1 ?
+                                `${state.getThumbPercent(0) * 100}%`
+                              : 0,
+                            right: `${100 - state.getThumbPercent(state.values.length - 1) * 100}%`,
+                          }
+                        : {
+                            bottom:
+                              state.values.length > 1 ?
+                                `${state.getThumbPercent(0) * 100}%`
+                              : 0,
+                            top: `${100 - state.getThumbPercent(state.values.length - 1) * 100}%`,
+                          }
+                      }
+                    />
+                  )}
+                </div>
+                {state.values.map((_, i) => (
+                  <SliderThumb
+                    key={i}
+                    index={i}
+                    aria-label={thumbLabels?.[i]}
+                    className={styles.thumb({ size, orientation })}
+                  />
+                ))}
+              </>
+            )}
+          </SliderTrack>
+
+          {labelPosition === "side" && (
+            <SliderOutput className={styles.output({ size })}>
+              {({ state }) =>
+                state.values
+                  .map((_, i) => state.getThumbValueLabel(i))
+                  .join("–")
+              }
+            </SliderOutput>
+          )}
+        </div>
+
+        {description && <Description>{description}</Description>}
+      </FieldContext.Provider>
     </RACSlider>
   )
 }

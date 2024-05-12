@@ -1,5 +1,6 @@
-export { default as Controlled } from './controlled'
-export { default as Main } from './main'
-export { default as PrefixIcon } from './prefix-icon'
-export { default as Size } from './size'
-export { default as States } from './states'
+export { default as Controlled } from "./controlled"
+export { default as Main } from "./main"
+export { default as PrefixIcon } from "./prefix-icon"
+export { default as Size } from "./size"
+export { default as States } from "./states"
+export { default as Variant } from "./variant"

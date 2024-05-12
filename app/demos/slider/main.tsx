@@ -1,3 +1,5 @@
-import { Slider } from '@ui/slider'
+import { Slider } from "@ui/slider"
 
-export default () => <Slider defaultValue={37} label='Randomness' />
+export default () => (
+  <Slider defaultValue={37} label="Slope" />
+)

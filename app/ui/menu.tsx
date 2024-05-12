@@ -46,6 +46,7 @@ const menuItemStyle = compose(
   itemBaseStyle,
   cva({
     base: [
+      "text-xs font-book",
       // selection mode
       "data-[selection-mode]:pl-1 data-[selection-mode]:gap-1.5",
     ],
@@ -85,7 +86,7 @@ function MenuItem(props: MenuItemProps) {
                 {isSelected && <Check size={12} aria-hidden weight="bold" />}
               </span>
             )}
-            <span className="flex flex-1 items-center gap-2 truncate font-normal">
+            <span className="flex flex-1 items-center gap-2 truncate">
               {children}
             </span>
             {hasSubmenu && (
@@ -93,7 +94,7 @@ function MenuItem(props: MenuItemProps) {
                 size={12}
                 weight="bold"
                 aria-hidden
-                className="absolute right-2"
+                className="absolute right-1.5"
               />
             )}
           </>
@@ -107,7 +108,7 @@ function MenuSeparator(props: RACSeparatorProps) {
   return (
     <RACSeparator
       {...props}
-      className="mx-2 my-1 border-b border-neutral-line"
+      className="mx-1.5 my-1 border-b border-neutral-line"
     />
   )
 }

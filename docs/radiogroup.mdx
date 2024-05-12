@@ -1,0 +1,43 @@
+---
+name: RadioGroup
+description: Mark one option as selected.
+category: Forms
+docUrl: https://react-spectrum.adobe.com/react-aria/RadioGroup.html
+aria: https://www.w3.org/WAI/ARIA/apg/patterns/radio/
+composes:
+  - "Field"
+---
+
+### Label position
+
+Use `labelPosition` to set the position of the label.
+
+<Demo demo={<RadioGroupDemo.LabelPosition />} code={demos["label-position"]} />
+
+### Size
+
+Use `size` to set the size of the text field.
+
+<Demo demo={<RadioGroupDemo.Size />} code={demos["size"]} />
+
+### Variant
+
+Use `variant` to set the variant of the text field.
+
+<Demo demo={<RadioGroupDemo.Variant />} code={demos["variant"]} />
+
+### Orientation
+
+Use `orientation` prop to change the layout of the radio buttons.
+
+<Demo demo={<RadioGroupDemo.Orientation />} code={demos["orientation"]} />
+
+### Radio descriptions
+
+Wrap the radio buttons in a `<RadioDescription />` to provide descriptions for
+each radio button.
+
+<Demo
+  demo={<RadioGroupDemo.RadioDescription />}
+  code={demos["radio-description"]}
+/>

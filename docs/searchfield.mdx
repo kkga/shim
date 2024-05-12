@@ -1,15 +1,16 @@
 ---
 name: SearchField
 description: Enter and clear a search query.
-category: "Forms"
-docUrl: "https://react-spectrum.adobe.com/react-aria/SearchField.html"
+category: Forms
+docUrl: https://react-spectrum.adobe.com/react-aria/SearchField.html
 aria: https://www.w3.org/TR/wai-aria-1.2/#searchbox
-composes: ["Field"]
+composes:
+  - Field
 ---
 
 ### Controlled value
 
-Use the _value_ and _onChange_ props to control the value of the search field.
+Use `value` and `onChange` to control the value of the search field.
 
 <Demo
   className="items-stretch"
@@ -19,7 +20,7 @@ Use the _value_ and _onChange_ props to control the value of the search field.
 
 ### Size
 
-Use the _size_ prop to set the size of the search field.
+Use `size` to set the size of the search field.
 
 <Demo
   className="items-stretch"
@@ -27,11 +28,20 @@ Use the _size_ prop to set the size of the search field.
   code={demos["size"]}
 />
 
+### Variant
+
+Use `variant` to set the variant of the search field.
+
+<Demo
+  className="items-stretch"
+  demo={<SearchFieldDemo.Variant />}
+  code={demos["variant"]}
+/>
+
 ### Prefix icon
 
-Use the _prefixIcon_ prop to set a prefix icon for the search field. Set to
-_"filter"_ when using the field as a filter input or pass a custom icon
-component.
+Use `prefixIcon` to set the prefix icon for the search field. Set to `"filter"`
+when using the field as a filter input or pass a custom icon component.
 
 <Demo
   className="items-stretch"
@@ -41,8 +51,8 @@ component.
 
 ### States
 
-Use _isDisabled_, _isRequired_, _isInvalid_ and _errorMessage_ props to set the
-state of the search field.
+Use `isDisabled`, `isRequired`, `isInvalid` and `errorMessage` to set the state
+of the search field.
 
 <Demo
   className="items-stretch"
