@@ -54,74 +54,82 @@ function RadioGroup({
   )
 }
 
-const radioStyle = compose(
-  focusStyle,
-  cva({
+const styles = {
+  radio: cva({
     base: [
-      "outline-offset-1 flex items-center shrink-0 rounded-full",
-      "relative before:rounded-full before:absolute before:inset-0 before:m-auto before:invisible",
-      // selected
-      "group-data-selected:before:visible",
-      // invalid
-      // "group-data-invalid:border-error-border group-data-invalid:bg-error-bg",
+      "group flex items-center text-neutral-text outline-none",
+      "data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder",
     ],
     variants: {
-      variant: {
-        classic: [
-          "bg-neutral-bg-subtle shadow-inner inset-ring-1 inset-ring-neutral-border",
-          // pressed
-          "group-data-pressed:bg-neutral-bg-active",
-          // selected
-          "group-data-selected:bg-accent-solid before:bg-white before:shadow",
-          // disabled
-          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line group-data-disabled:shadow-none",
-        ],
-        soft: [
-          "bg-neutral-bg-hover inset-ring-0",
-          // pressed
-          "group-data-pressed:bg-neutral-bg-active",
-          // selected
-          "group-data-selected:bg-accent-bg-active before:bg-accent-solid-hover",
-          // disabled
-          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line",
-        ],
-        outline: [
-          "bg-transparent inset-ring-1 inset-ring-neutral-border",
-          // pressed
-          "group-data-pressed:bg-neutral-bg-active",
-          // selected
-          "group-data-selected:bg-transparent inset-ring-neutral-border-hover before:bg-accent-text",
-          // disabled
-          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line",
-        ],
-      },
       size: {
-        1: "size-4 before:size-2",
-        2: "size-5 before:size-2.5",
+        1: "text-xs gap-1.5 h-6",
+        2: "text-[13px] gap-1.5 h-7",
+        3: "text-sm gap-2 h-8",
       },
     },
     defaultVariants: {
       size: 1,
-      variant: "classic",
     },
   }),
-)
+
+  inner: compose(
+    focusStyle,
+    cva({
+      base: [
+        "outline-offset-1 flex items-center justify-center shrink-0 rounded-full before:rounded-full before:invisible",
+        // disabled
+        "group-data-disabled:bg-neutral-bg-subtle! group-data-disabled:shadow-none! group-data-disabled:inset-ring-1! group-data-disabled:inset-ring-neutral-line! group-data-disabled:text-neutral-placeholder!",
+      ],
+      variants: {
+        variant: {
+          classic: [
+            "bg-neutral-bg-subtle shadow-inner inset-ring-1 inset-ring-neutral-border before:bg-white",
+            // pressed
+            "group-data-pressed:bg-neutral-bg-active",
+            // selected
+            "group-data-selected:bg-accent-solid group-data-selected:before:visible",
+          ],
+          soft: [
+            "bg-neutral-bg-hover inset-ring-0 before:bg-accent-text",
+            // pressed
+            "group-data-pressed:bg-neutral-bg-active",
+            // selected
+            "group-data-selected:bg-accent-bg-active group-data-selected:before:visible",
+          ],
+          outline: [
+            "bg-transparent inset-ring-1 inset-ring-neutral-border before:bg-accent-text",
+            // pressed
+            "group-data-pressed:bg-neutral-bg-active",
+            // selected
+            "group-data-selected:bg-transparent inset-ring-neutral-border-hover group-data-selected:before:visible",
+          ],
+        },
+        size: {
+          1: "size-4 before:size-1.5",
+          2: "size-[18px] before:size-2",
+          3: "size-5 before:size-2.5",
+        },
+      },
+      defaultVariants: {
+        size: 1,
+        variant: "classic",
+      },
+    }),
+  ),
+}
 
 interface RadioProps extends RACRadioProps {}
 
-function Radio(props: RadioProps) {
+function Radio({ className, ...props }: RadioProps) {
   let { size, variant } = useFieldProps({})
+
   return (
     <RACRadio
       {...props}
-      className={cxRenderProps(
-        props.className,
-        "group flex items-center gap-x-1.5 text-neutral-text group-data-disabled:text-neutral-placeholder data-disabled:text-neutral-placeholder",
-        size === 1 ? "h-6 text-xs" : "h-8 text-[13px]",
-      )}
+      className={cxRenderProps(className, styles.radio({ size }))}
     >
       <>
-        <div className={radioStyle({ size, variant })} />
+        <div className={styles.inner({ size, variant })} />
         {props.children}
       </>
     </RACRadio>

@@ -1,5 +1,5 @@
 "use client"
-import { cva, cx, cxRenderProps } from "@lib/utils"
+import { cva, cxRenderProps } from "@lib/utils"
 import { VariantProps } from "cva"
 import { createContext, useContext } from "react"
 
@@ -11,13 +11,22 @@ import {
   Text as RACText,
   TextArea as RACTextArea,
   ValidationResult,
-  type FieldErrorProps,
-  type GroupProps,
-  type InputProps,
+  type FieldErrorProps as RACFieldErrorProps,
+  type GroupProps as RACGroupProps,
+  type InputProps as RACInputProps,
   type LabelProps as RACLabelProps,
-  type TextAreaProps as TextAreaInputProps,
-  type TextProps,
+  type TextAreaProps as RACTextAreaProps,
+  type TextProps as RACTextProps,
 } from "react-aria-components"
+
+interface FieldProps
+  extends VariantProps<typeof fieldLayoutStyle>,
+    VariantProps<typeof inputBaseStyle> {
+  label?: string
+  description?: string
+  errorMessage?: string | ((validation: ValidationResult) => string)
+  placeholder?: string
+}
 
 interface FieldContextProps
   extends Pick<FieldProps, "size" | "variant" | "labelPosition"> {}
@@ -42,14 +51,12 @@ const fieldLayoutStyle = cva({
       side: "grid gap-1 grid-cols-[1fr_3fr]",
     },
   },
-  defaultVariants: {
-    labelPosition: "top",
-  },
+  defaultVariants: { labelPosition: "top" },
 })
 
 const inputBaseStyle = cva({
   base: [
-    "rounded-md text-xs border-none",
+    "border-none",
     // hovered
     "",
     // disabled
@@ -71,8 +78,9 @@ const inputBaseStyle = cva({
       outline: "inset-ring-1 inset-ring-neutral-border bg-transparent",
     },
     size: {
-      1: "h-6 indent-1.5 text-xs",
-      2: "h-8 indent-2 text-[13px]",
+      1: "h-6 rounded indent-1.5 text-xs",
+      2: "h-7 rounded indent-[7px] text-[13px]",
+      3: "h-8 rounded-md indent-2 text-sm",
     },
   },
   defaultVariants: {
@@ -81,15 +89,6 @@ const inputBaseStyle = cva({
   },
 })
 
-interface FieldProps
-  extends VariantProps<typeof fieldLayoutStyle>,
-    VariantProps<typeof inputBaseStyle> {
-  label?: string
-  description?: string
-  errorMessage?: string | ((validation: ValidationResult) => string)
-  placeholder?: string
-}
-
 const labelStyle = cva({
   base: [
     "font-[450] text-neutral-text self-start truncate max-w-fit",
@@ -97,31 +96,18 @@ const labelStyle = cva({
     "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
   ],
   variants: {
-    size: {
-      1: "text-xs",
-      2: "text-[13px]",
-    },
+    size: { 1: "text-xs", 2: "text-[13px]", 3: "text-sm" },
     labelPosition: {
-      top: "col-start-1",
-      side: "col-start-1",
+      top: "",
+      side: "col-start-1 flex items-center self-start",
     },
   },
   compoundVariants: [
-    {
-      size: 1,
-      labelPosition: "side",
-      className: "min-h-6 flex items-center self-start",
-    },
-    {
-      size: 2,
-      labelPosition: "side",
-      className: "min-h-8 flex items-center self-start",
-    },
+    { size: 1, labelPosition: "side", className: "min-h-6" },
+    { size: 2, labelPosition: "side", className: "min-h-7" },
+    { size: 3, labelPosition: "side", className: "min-h-8" },
   ],
-  defaultVariants: {
-    size: 1,
-    labelPosition: "top",
-  },
+  defaultVariants: { size: 1, labelPosition: "top" },
 })
 
 interface LabelProps extends RACLabelProps, VariantProps<typeof labelStyle> {}
@@ -144,48 +130,62 @@ function Label({ className, ...props }: LabelProps) {
   )
 }
 
-function Description({ className, ...props }: TextProps) {
+const descriptionStyle = cva({
+  base: [
+    "col-start-2 text-neutral-text",
+    // peer/group disabled
+    "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
+  ],
+  variants: { size: { 1: "text-[11px]", 2: "text-xs", 3: "text-[13px]" } },
+  defaultVariants: { size: 1 },
+})
+
+interface DescriptionProps
+  extends RACTextProps,
+    VariantProps<typeof descriptionStyle> {}
+
+function Description({ className, ...props }: DescriptionProps) {
   let { size } = useFieldProps({})
 
   return (
     <RACText
       {...props}
       slot="description"
-      className={cx(
-        "col-start-2 text-neutral-text",
-        size === 1 ? "text-[11px]" : "text-xs",
-        // peer/group disabled
-        "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
-        className,
-      )}
+      className={descriptionStyle({ size })}
     />
   )
 }
+
+const fieldErrorStyle = cva({
+  base: ["col-start-2 text-error-text"],
+  variants: { size: { 1: "text-[11px]", 2: "text-xs", 3: "text-[13px]" } },
+  defaultVariants: { size: 1 },
+})
+
+interface FieldErrorProps
+  extends RACFieldErrorProps,
+    VariantProps<typeof fieldErrorStyle> {}
 
 function FieldError({ className, ...props }: FieldErrorProps) {
   let { size } = useFieldProps({})
 
   return (
     <RACFieldError
-      className={cxRenderProps(
-        className,
-        "col-start-2 text-xs text-error-text",
-        size === 1 ? "text-[11px]" : "text-xs",
-      )}
+      className={cxRenderProps(className, fieldErrorStyle({ size }))}
       {...props}
     />
   )
 }
 
-function FieldGroup(props: GroupProps) {
+function FieldGroup(props: RACGroupProps) {
   return <RACGroup {...props} className={cxRenderProps(props.className)} />
 }
 
-function Input(props: InputProps) {
+function Input(props: RACInputProps) {
   return <RACInput {...props} className={cxRenderProps(props.className)} />
 }
 
-function TextAreaInput(props: TextAreaInputProps) {
+function TextAreaInput(props: RACTextAreaProps) {
   return <RACTextArea {...props} className={cxRenderProps(props.className)} />
 }
 

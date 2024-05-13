@@ -54,6 +54,10 @@ export const demoComponents = {
     Main: dynamic(() => import("@/demos/checkbox").then((mod) => mod.Main)),
     Group: dynamic(() => import("@/demos/checkbox").then((mod) => mod.Group)),
     States: dynamic(() => import("@/demos/checkbox").then((mod) => mod.States)),
+    Size: dynamic(() => import("@/demos/checkbox").then((mod) => mod.Size)),
+    Variant: dynamic(() =>
+      import("@/demos/checkbox").then((mod) => mod.Variant),
+    ),
   },
   NumberFieldDemo: {
     Main: dynamic(() => import("@/demos/numberfield").then((mod) => mod.Main)),
