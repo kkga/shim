@@ -86,7 +86,7 @@ const itemStyle = compose(
   focusInsetStyle,
   cva({
     base: [
-      "flex h-6 gap-2 items-center rounded-md px-1.5 text-xs font-book text-neutral-text",
+      "flex h-6 gap-2 items-center rounded px-1.5 text-xs font-book text-neutral-text",
       // hovered
       "data-[hovered]:bg-neutral-bg-hover",
       // selected

@@ -19,7 +19,7 @@ export function Sidebar(props: { items: NavItem[] }) {
             weight="fill"
             className="text-neutral-text-contrast"
           />
-          <h1 className="text-xs font-semibold text-neutral-text-contrast">
+          <h1 className="text-xs font-medium text-neutral-text-contrast">
             Shim
           </h1>
         </Link>

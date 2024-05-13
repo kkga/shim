@@ -63,6 +63,11 @@ html {
   }
 }
 
+strong {
+  font-weight: 500;
+  color: var(--color-neutral-text-contrast);
+}
+
 .hash-link {
   position: absolute;
   visibility: hidden;
@@ -81,14 +86,3 @@ html {
 *:hover > .hash-link {
   visibility: visible;
 }
-/* Remove Safari input shadow on mobile */
-/* input[type="text"],
-input[type="email"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.title {
-  text-wrap: balance;
-} */

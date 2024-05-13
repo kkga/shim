@@ -1,4 +1,4 @@
-import { cx } from 'cva'
+import { cx } from "cva"
 
 export function Steps({ children }) {
   return (
@@ -12,15 +12,15 @@ export function Step({ title, children }) {
   return (
     <div
       className={cx(
-        'group/step relative col-span-full grid grid-cols-subgrid gap-4 text-[14px] leading-normal',
-        'md:grid-rows-[auto_1fr] md:items-start md:gap-y-2 md:*:col-start-2',
-        'md:[&>.codeblock]:col-start-3 md:[&>.codeblock]:col-end-4 md:[&>.codeblock]:row-span-2 md:[&>.codeblock]:row-start-1',
+        "group/step relative col-span-full grid grid-cols-subgrid gap-4 text-[14px] leading-normal",
+        "md:grid-rows-[auto_1fr] md:items-start md:gap-y-2 md:*:col-start-2",
+        "md:[&>.codeblock]:col-start-3 md:[&>.codeblock]:col-end-4 md:[&>.codeblock]:row-span-2 md:[&>.codeblock]:row-start-1",
       )}
-      style={{ counterIncrement: 'step' }}
+      style={{ counterIncrement: "step" }}
     >
       <div className="relative z-10 col-start-1! col-end-3! row-start-1! grid grid-cols-[auto_1fr] items-center gap-2 md:grid-cols-subgrid md:gap-4">
         <div className="flex size-6 items-center justify-center rounded-full bg-neutral-4">
-          <span className="text-[12px] font-semibold text-neutral-text before:[content:counter(step)]" />
+          <span className="text-[12px] font-medium text-neutral-text before:[content:counter(step)]" />
         </div>
         <div className="font-medium leading-5 text-neutral-text-contrast">
           {title}
