@@ -25,77 +25,40 @@ const styles = {
         horizontal: "min-w-32",
         vertical: "flex-col-reverse min-h-32",
       },
-      size: {
-        1: "",
-        2: "",
-      },
+      size: { 1: null, 2: null, 3: null },
     },
     compoundVariants: [
-      {
-        size: 1,
-        orientation: "horizontal",
-        className: "mx-2 h-6",
-      },
-      {
-        size: 1,
-        orientation: "vertical",
-        className: "w-6 my-2",
-      },
-      {
-        size: 2,
-        orientation: "horizontal",
-        className: "mx-2.5 h-8",
-      },
-      {
-        size: 2,
-        orientation: "vertical",
-        className: "my-2.5 w-8",
-      },
+      { size: 1, orientation: "horizontal", className: "mx-2 h-6" },
+      { size: 1, orientation: "vertical", className: "my-2 w-6" },
+      { size: 2, orientation: "horizontal", className: "mx-2 h-7" },
+      { size: 2, orientation: "vertical", className: "my-2 w-7" },
+      { size: 3, orientation: "horizontal", className: "mx-2.5 h-8" },
+      { size: 3, orientation: "vertical", className: "my-2.5 w-8" },
     ],
   }),
 
   trackInner: cva({
     base: "absolute rounded-full inset-ring inset-ring-neutral-line overflow-hidden",
     variants: {
-      size: {
-        1: "",
-        2: "",
-      },
+      size: { 1: null, 2: null, 3: null },
       variant: {
         classic: "bg-neutral-bg-subtle shadow-inner",
         soft: "bg-neutral-bg inset-ring-0",
         outline: "bg-transparent",
       },
-      orientation: {
-        horizontal: "",
-        vertical: "",
-      },
+      orientation: { horizontal: "inset-y-auto", vertical: "inset-x-auto" },
       isDisabled: {
         false: "bg-neutral-bg shadow-inner",
         true: "bg-neutral-bg-subtle shadow-none",
       },
     },
     compoundVariants: [
-      {
-        size: 1,
-        orientation: "horizontal",
-        className: "h-1.5 -inset-x-2 inset-y-auto",
-      },
-      {
-        size: 1,
-        orientation: "vertical",
-        className: "w-1.5 -inset-y-2 inset-x-auto",
-      },
-      {
-        size: 2,
-        orientation: "horizontal",
-        className: "h-2.5 -inset-x-2.5 inset-y-auto",
-      },
-      {
-        size: 2,
-        orientation: "vertical",
-        className: "w-2.5 -inset-y-2.5 inset-x-auto",
-      },
+      { size: 1, orientation: "horizontal", className: "h-1.5 -inset-x-2" },
+      { size: 1, orientation: "vertical", className: "w-1.5 -inset-y-2" },
+      { size: 2, orientation: "horizontal", className: "h-2 -inset-x-2" },
+      { size: 2, orientation: "vertical", className: "w-2 -inset-y-2" },
+      { size: 3, orientation: "horizontal", className: "h-2.5 -inset-x-2.5" },
+      { size: 3, orientation: "vertical", className: "w-2.5 -inset-y-2.5" },
     ],
   }),
 
@@ -107,10 +70,7 @@ const styles = {
         soft: "bg-accent-bg-active",
         outline: "bg-accent-solid",
       },
-      orientation: {
-        horizontal: "top-0 bottom-0",
-        vertical: "right-0 left-0",
-      },
+      orientation: { horizontal: "top-0 bottom-0", vertical: "right-0 left-0" },
     },
   }),
 
@@ -118,18 +78,21 @@ const styles = {
     focusStyle,
     cva({
       base: [
-        "outline-offset-0 bg-white ring-1 ring-black/15 shadow rounded-full",
+        "outline-offset-0 rounded-full",
         "group-data-disabled:bg-neutral-bg group-data-disabled:ring-neutral-line group-data-disabled:shadow-none",
       ],
       variants: {
+        variant: {
+          classic: "bg-white ring-1 ring-black/15 shadow",
+          soft: "bg-accent-solid shadow-none",
+          outline: "bg-white ring-1 ring-neutral-border",
+        },
         size: {
           1: "size-4 group-data-[orientation=horizontal]:mt-4 group-data-[orientation=vertical]:ml-4",
-          2: "size-5 group-data-[orientation=horizontal]:mt-5 group-data-[orientation=vertical]:ml-5",
+          2: "size-[18px] group-data-[orientation=horizontal]:mt-[18px] group-data-[orientation=vertical]:ml-[18px]",
+          3: "size-5 group-data-[orientation=horizontal]:mt-5 group-data-[orientation=vertical]:ml-5",
         },
-        orientation: {
-          horizontal: "left-0",
-          vertical: "top-0",
-        },
+        orientation: { horizontal: "left-0", vertical: "top-0" },
       },
     }),
   ),
@@ -141,10 +104,7 @@ const styles = {
       "group-data-disabled:text-neutral-placeholder",
     ],
     variants: {
-      size: {
-        1: "text-xs",
-        2: "text-[13px]",
-      },
+      size: { 1: "text-xs", 2: "text-[13px]", 3: "text-sm" },
     },
   }),
 }
@@ -189,7 +149,7 @@ function Slider<T extends number | number[]>({
           </div>
         )}
 
-        <div className="flex gap-1">
+        <div className="flex grow-1 gap-1">
           <SliderTrack
             className={({ orientation }) => styles.track({ size, orientation })}
           >
@@ -226,7 +186,7 @@ function Slider<T extends number | number[]>({
                     key={i}
                     index={i}
                     aria-label={thumbLabels?.[i]}
-                    className={styles.thumb({ size, orientation })}
+                    className={styles.thumb({ size, variant, orientation })}
                   />
                 ))}
               </>
