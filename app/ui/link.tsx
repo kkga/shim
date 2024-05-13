@@ -13,7 +13,9 @@ const style = compose(
     base: [
       "underline underline-offset-2",
       // disabled
-      "data-[disabled]:no-underline data-[disabled]:cursor-default data-[disabled]:text-neutral-placeholder",
+      "data-disabled:no-underline data-disabled:cursor-default data-disabled:text-neutral-placeholder",
+      // current
+      "data-current:text-neutral-text",
     ],
     variants: {
       intent: {
