@@ -30,8 +30,9 @@ const groupStyle = compose(
     base: ["group flex items-center"],
     variants: {
       size: {
-        1: "h-6 p-0",
-        2: "h-8 p-0",
+        1: "h-6",
+        2: "h-7",
+        3: "h-8",
       },
     },
     defaultVariants: {
@@ -39,6 +40,22 @@ const groupStyle = compose(
     },
   }),
 )
+
+const inputStyle = cva({
+  base: [
+    "min-w-0 flex-1 appearance-none self-stretch border-none text-inherit outline-0 placeholder:text-neutral-placeholder",
+  ],
+  variants: {
+    size: {
+      1: "indent-1.5 text-xs",
+      2: "indent-[7px] text-[13px]",
+      3: "indent-2 text-sm",
+    },
+  },
+  defaultVariants: {
+    size: 1,
+  },
+})
 
 function NumberField({
   label,
@@ -66,33 +83,16 @@ function NumberField({
         >
           {() => (
             <>
-              <Input
-                className={cx(
-                  "min-w-0 flex-1 appearance-none self-stretch border-none text-inherit outline-0 placeholder:text-neutral-placeholder",
-                  size === 1 ? "indent-1.5 text-xs" : "text[13px] indent-2",
-                )}
-              />
-              <div className={cx("flex flex-col self-stretch p-px")}>
-                <StepperButton
-                  slot="increment"
-                  className={cx(
-                    "rounded-tr-[5px]",
-                    size === 1 ? "px-1" : "px-1.5",
-                  )}
-                >
+              <Input className={inputStyle({ size })} />
+              <div className={cx("flex flex-col self-stretch p-0.5")}>
+                <StepperButton slot="increment">
                   <CaretUp
                     aria-hidden
                     size={size === 1 ? 10 : 12}
                     weight="bold"
                   />
                 </StepperButton>
-                <StepperButton
-                  slot="decrement"
-                  className={cx(
-                    "rounded-br-[5px]",
-                    size === 1 ? "px-1" : "px-1.5",
-                  )}
-                >
+                <StepperButton slot="decrement">
                   <CaretDown
                     aria-hidden
                     size={size === 1 ? 10 : 12}
@@ -111,19 +111,22 @@ function NumberField({
 }
 
 function StepperButton({ className, ...props }: ButtonProps) {
+  let { size } = useFieldProps({})
+
   return (
     <Button
       {...props}
       className={cx(
-        "flex flex-1 cursor-default items-center justify-center rounded-sm bg-transparent text-neutral-text",
+        "flex flex-1 cursor-default items-center justify-center rounded-sm bg-transparent text-neutral-placeholder",
         // hovered
         "data-hovered:bg-neutral-bg-hover",
         // pressed
         "data-pressed:bg-neutral-bg-active",
-        // group disabled
-        "group-data-disabled:text-neutral-placeholder",
         // group invalid
         "group-data-invalid:text-error-text",
+        size === 1 && "px-1",
+        size === 2 && "px-[5px]",
+        size === 3 && "rounded px-1.5",
         className,
       )}
     />
