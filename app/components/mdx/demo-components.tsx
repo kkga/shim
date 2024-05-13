@@ -1,7 +1,18 @@
+import { ProgressBar } from "@ui/progressbar"
 import dynamic from "next/dynamic"
 
-export const getMainDemo = (name) => {
-  return dynamic(() => import(`@/demos/${name}`).then((mod) => mod.Main))
+export const getMainDemo = (name: string) => {
+  return dynamic(() => import(`@/demos/${name}`).then((mod) => mod.Main), {
+    loading: () => (
+      <div className="flex flex-1 self-stretch">
+        <ProgressBar
+          aria-label="Demo loader"
+          className="m-auto w-32"
+          isIndeterminate
+        />
+      </div>
+    ),
+  })
 }
 
 export const demoComponents = {
@@ -38,6 +49,7 @@ export const demoComponents = {
     States: dynamic(() =>
       import("@/demos/togglebutton").then((mod) => mod.States),
     ),
+    Size: dynamic(() => import("@/demos/togglebutton").then((mod) => mod.Size)),
   },
 
   FormDemo: {
@@ -49,6 +61,9 @@ export const demoComponents = {
   FieldDemo: {
     Main: dynamic(() => import("@/demos/field").then((mod) => mod.Main)),
     Context: dynamic(() => import("@/demos/field").then((mod) => mod.Context)),
+    ContextSize: dynamic(() =>
+      import("@/demos/field").then((mod) => mod.ContextSize),
+    ),
   },
   CheckboxDemo: {
     Main: dynamic(() => import("@/demos/checkbox").then((mod) => mod.Main)),
@@ -161,6 +176,9 @@ export const demoComponents = {
   LinkDemo: {
     Main: dynamic(() => import("@/demos/link").then((mod) => mod.Main)),
     Intent: dynamic(() => import("@/demos/link").then((mod) => mod.Intent)),
+  },
+  BreadcrumbsDemo: {
+    Main: dynamic(() => import("@/demos/breadcrumbs").then((mod) => mod.Main)),
   },
 
   PopoverDemo: {
