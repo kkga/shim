@@ -24,7 +24,7 @@ const buttonStyle = cva({
   ],
   variants: {
     variant: {
-      soft: "",
+      soft: null,
       solid: "text-white",
       ghost: "bg-transparent",
     },
@@ -36,25 +36,16 @@ const buttonStyle = cva({
       {} as Record<Intent, string>,
     ),
     size: {
-      1: "text-xs h-6 px-2 rounded-md gap-1.5",
-      2: "text-[13px] h-8 px-2.5 rounded-lg gap-2",
+      1: "text-xs h-6 px-1.5 rounded gap-1.5",
+      2: "text-[13px] h-7 px-2 rounded gap-2",
+      3: "text-sm h-8 px-2.5 rounded-md gap-2",
     },
-    isSquare: {
-      true: "",
-      false: "",
-    },
+    isSquare: { true: null, false: null },
   },
   compoundVariants: [
-    {
-      size: 1,
-      isSquare: [true],
-      className: "size-6 p-0",
-    },
-    {
-      size: 2,
-      isSquare: [true],
-      className: "size-8 p-0",
-    },
+    { size: 1, isSquare: true, className: "size-6 p-0" },
+    { size: 2, isSquare: true, className: "size-7 p-0" },
+    { size: 3, isSquare: true, className: "size-8 p-0" },
     {
       intent: "neutral",
       variant: "soft",
@@ -150,11 +141,7 @@ const buttonStyle = cva({
         "text-white bg-error-solid hover:bg-error-solid-hover active:brightness-90",
     },
   ],
-  defaultVariants: {
-    intent: "accent",
-    variant: "soft",
-    size: 1,
-  },
+  defaultVariants: { intent: "accent", variant: "soft", size: 1 },
 })
 
 const styles = compose(focusStyle, buttonStyle)

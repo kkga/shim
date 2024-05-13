@@ -20,10 +20,7 @@ const styles = compose(
       "data-[disabled]:text-neutral-placeholder data-[disabled]:pointer-events-none data-[disabled]:bg-neutral-bg-subtle",
     ],
     variants: {
-      variant: {
-        soft: "",
-        ghost: "bg-transparent",
-      },
+      variant: { soft: null, ghost: "bg-transparent" },
       intent: {
         neutral:
           "bg-neutral-bg hover:bg-neutral-bg-hover active:bg-neutral-bg-active text-neutral-text data-[selected]:bg-neutral-solid",
@@ -37,25 +34,16 @@ const styles = compose(
           "bg-error-bg hover:bg-error-bg-hover active:bg-error-bg-active text-error-text data-[selected]:bg-error-solid",
       },
       size: {
-        1: "text-sm h-6 px-2 rounded-md gap-1.5",
-        2: "text-sm h-8 px-2.5 rounded-lg gap-2",
+        1: "text-xs h-6 px-1.5 rounded gap-1.5",
+        2: "text-[13px] h-7 px-2 rounded gap-2",
+        3: "text-sm h-8 px-2.5 rounded-md gap-2",
       },
-      isSquare: {
-        true: "",
-        false: "",
-      },
+      isSquare: { true: null, false: null },
     },
     compoundVariants: [
-      {
-        size: 1,
-        isSquare: [true],
-        className: "size-6 p-0",
-      },
-      {
-        size: 2,
-        isSquare: [true],
-        className: "size-8 p-0",
-      },
+      { size: 1, isSquare: [true], className: "size-6 p-0" },
+      { size: 2, isSquare: [true], className: "size-7 p-0" },
+      { size: 3, isSquare: [true], className: "size-8 p-0" },
     ],
     defaultVariants: {
       variant: "soft",
