@@ -31,7 +31,8 @@ const groupStyle = compose(
     variants: {
       size: {
         1: "h-6 px-0.5 gap-0.5",
-        2: "h-8 px-1 gap-0.5",
+        2: "h-7 px-1 gap-0.5",
+        3: "h-8 px-1 gap-0.5",
       },
     },
     defaultVariants: {
@@ -41,7 +42,7 @@ const groupStyle = compose(
 )
 
 interface PrefixIconProps {
-  size: 1 | 2
+  size: FieldProps["size"]
   icon: "search" | "filter" | React.ReactNode
   className?: string
 }
@@ -53,7 +54,8 @@ function PrefixIcon({ size, className, icon }: PrefixIconProps) {
       className={cx(
         "flex items-center justify-center",
         size === 1 && "size-5",
-        size === 2 && "size-6",
+        size === 2 && "size-5",
+        size === 3 && "size-6",
         className,
       )}
     >
@@ -113,11 +115,12 @@ function SearchField({
             />
             <RACButton
               className={cx(
-                "flex items-center justify-center bg-transparent text-neutral-text hover:bg-neutral-bg-hover active:bg-neutral-bg-active",
+                "flex items-center justify-center bg-transparent text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
                 isEmpty && "invisible",
                 isDisabled && "text-neutral-placeholder",
-                size === 1 && "size-5 rounded",
-                size === 2 && "size-6 rounded-sm",
+                size === 1 && "size-5 rounded-sm",
+                size === 2 && "size-5 rounded-sm",
+                size === 3 && "size-6 rounded",
               )}
             >
               <X size={16} aria-hidden />
