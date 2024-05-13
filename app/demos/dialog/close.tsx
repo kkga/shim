@@ -7,16 +7,11 @@ import { TextField } from "@ui/textfield"
 export default () => (
   <DialogTrigger>
     <Button className="self-start">Edit profile</Button>
-    <Dialog
-      isDismissable={false}
-      title="Edit profile"
-      description="Edit your profile information."
-      className="max-w-sm"
-    >
+    <Dialog title="Edit profile" description="Edit your profile information." className="max-w-sm">
       {({ close }) => (
         <Form>
-          <TextField label="Name" size={2} />
-          <TextField label="Email" size={2} />
+          <TextField label="Name" labelPosition="side" size={2} />
+          <TextField label="Email" labelPosition="side" size={2} />
           <div className="flex gap-2 self-end">
             <Button onPress={close} size={2} intent="neutral" variant="ghost">
               Cancel

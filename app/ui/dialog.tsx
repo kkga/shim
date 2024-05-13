@@ -59,13 +59,13 @@ function Dialog({ title, description, ...props }: DialogProps) {
               {title && (
                 <RACHeading
                   slot="title"
-                  className="text-base font-semibold leading-tight text-neutral-text-contrast"
+                  className="text-base font-medium leading-tight text-neutral-text-contrast"
                 >
                   {title}
                 </RACHeading>
               )}
               {description && (
-                <RACText className="text-sm text-neutral-text">
+                <RACText className="text-[13px] text-neutral-text">
                   {description}
                 </RACText>
               )}

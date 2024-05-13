@@ -26,6 +26,6 @@ export default () => (
       <Button>Cut</Button>
     </Group>
     <Separator orientation="vertical" />
-    <Switch>Night mode</Switch>
+    <Switch variant="soft">Night mode</Switch>
   </Toolbar>
 )

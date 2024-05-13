@@ -6,7 +6,7 @@ import {
 } from "react-aria-components"
 
 const styles = cva({
-  base: "bg-neutral-line",
+  base: "bg-neutral-line self-stretch shrink-0 border-none",
   variants: {
     orientation: {
       horizontal: "h-px w-full",

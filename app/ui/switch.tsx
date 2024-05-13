@@ -10,14 +10,14 @@ import { FieldContext, FieldProps, useFieldProps } from "./field"
 const styles = {
   switch: cva({
     base: [
-      "group flex items-center font-medium text-neutral-text truncate",
-      // disabled
-      "data-disabled:text-neutral-placeholder",
+      "group flex items-center text-neutral-text font-medium outline-none",
+      "data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder",
     ],
     variants: {
       size: {
-        1: "text-xs gap-1.5",
-        2: "text-[13px] gap-2",
+        1: "text-xs gap-1.5 h-6",
+        2: "text-[13px] gap-1.5 h-7",
+        3: "text-sm gap-2 h-8",
       },
     },
     defaultVariants: {
@@ -63,7 +63,8 @@ const styles = {
         },
         size: {
           1: "h-4 w-[28px]",
-          2: "h-5 w-[36px]",
+          2: "h-[18px] w-[32px]",
+          3: "h-5 w-[36px]",
         },
       },
       defaultVariants: {
@@ -75,22 +76,20 @@ const styles = {
 
   handle: cva({
     base: [
-      "size-3.5 transform translateX-0 transition-transform rounded-full bg-white shadow ring ring-black/10",
+      "size-3.5 transform translateX-0 transition-transform rounded-full",
       // disabled
       "group-data-disabled:shadow-none",
     ],
     variants: {
+      variant: {
+        classic: "bg-white shadow ring ring-black/15",
+        soft: "bg-neutral-solid border border-transparent bg-clip-content group-data-selected:bg-accent-solid",
+        outline: "bg-white ring ring-neutral-border",
+      },
       size: {
-        1: [
-          "size-3.5",
-          // selected
-          "group-data-selected:translate-x-[12px]",
-        ],
-        2: [
-          "size-[18px]",
-          // selected
-          "group-data-selected:translate-x-[16px]",
-        ],
+        1: ["size-3.5", "group-data-selected:translate-x-[12px]"],
+        2: ["size-4", "group-data-selected:translate-x-[14px]"],
+        3: ["size-[18px]", "group-data-selected:translate-x-[16px]"],
       },
     },
     defaultVariants: {
@@ -118,7 +117,7 @@ function Switch({ className, children, ...props }: SwitchProps) {
         <FieldContext.Provider value={{ size, variant, labelPosition }}>
           <>
             <div className={styles.track({ variant, size })}>
-              <span className={styles.handle({ size })} />
+              <span className={styles.handle({ variant, size })} />
             </div>
             {children}
           </>

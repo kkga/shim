@@ -29,7 +29,7 @@ function ListBox<T extends object>({ children, ...props }: RACListBoxProps<T>) {
 
 const itemBaseStyle = cva({
   base: [
-    "flex h-6 items-center px-1.5 gap-1.5 text-sm rounded-md text-neutral-text cursor-default truncate",
+    "flex h-6 items-center px-1.5 gap-1.5 text-xs rounded text-neutral-text cursor-default truncate",
     // disabled
     "data-[disabled]:text-neutral-placeholder",
   ],
@@ -87,7 +87,7 @@ interface ListBoxSectionProps<T> extends RACSectionProps<T> {
 function ListBoxSection<T extends object>(props: ListBoxSectionProps<T>) {
   return (
     <RACSection className="flex flex-col gap-px not-last:mb-2">
-      <RACHeader className="flex h-6 items-center truncate px-1.5 text-sm font-medium text-neutral-text-contrast backdrop-blur-md">
+      <RACHeader className="flex h-6 items-center truncate px-1.5 text-xs font-medium text-neutral-text-contrast backdrop-blur-md">
         {props.title}
       </RACHeader>
       <RACCollection items={props.items}>{props.children}</RACCollection>

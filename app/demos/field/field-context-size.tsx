@@ -11,10 +11,10 @@ import { TextField } from "@ui/textfield"
 
 export default () => (
   <div className="flex gap-4">
-    <div className="flex grow-1 basis-2xs flex-col gap-3">
-      <strong>Variant: classic</strong>
+    <div className="flex grow-1 basis-3xs flex-col gap-3">
+      <strong>Size: 1</strong>
       <Separator />
-      <FieldContext.Provider value={{}}>
+      <FieldContext.Provider value={{ size: 1 }}>
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />
@@ -34,9 +34,9 @@ export default () => (
     <Separator orientation="vertical" />
 
     <div className="flex grow-1 basis-2xs flex-col gap-3">
-      <strong>Variant: soft</strong>
+      <strong>Size: 2</strong>
       <Separator />
-      <FieldContext.Provider value={{ variant: "soft" }}>
+      <FieldContext.Provider value={{ size: 2 }}>
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />
@@ -55,10 +55,10 @@ export default () => (
 
     <Separator orientation="vertical" />
 
-    <div className="flex grow-1 basis-2xs flex-col gap-3">
-      <strong>Variant: outline</strong>
+    <div className="flex grow-1 basis-xs flex-col gap-3">
+      <strong>Size: 3</strong>
       <Separator />
-      <FieldContext.Provider value={{ variant: "outline" }}>
+      <FieldContext.Provider value={{ size: 3 }}>
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />

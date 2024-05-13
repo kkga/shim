@@ -8,8 +8,8 @@ export default () => (
     <Button className="self-start">Edit profile</Button>
     <Dialog title="Edit profile" description="Edit your profile information." className="max-w-sm">
       <Form>
-        <TextField label="Name" size={2} />
-        <TextField label="Email" size={2} />
+        <TextField label="Name" size={2} labelPosition="side" />
+        <TextField label="Email" size={2} labelPosition="side" />
         <Button variant="solid" className="self-end" size={2}>
           Save
         </Button>
