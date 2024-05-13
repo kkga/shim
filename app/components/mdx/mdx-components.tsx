@@ -51,7 +51,7 @@ export function Code(props) {
 
 export const H1 = (props) => (
   <h1
-    className="text-3xl font-semibold leading-tight text-neutral-text-contrast"
+    className="text-3xl font-medium leading-tight text-neutral-text-contrast"
     {...props}
   />
 )
@@ -79,7 +79,7 @@ export const H4 = (props) => (
 
 export const H5 = (props) => (
   <h5
-    className="mt-6 mb-2 text-sm font-semibold text-neutral-text-contrast"
+    className="mt-6 mb-2 text-sm font-medium text-neutral-text-contrast"
     {...props}
   />
 )
@@ -101,7 +101,7 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   h5: H5,
   h6: (props) => (
     <h6
-      className="mt-8 mb-4 text-sm font-semibold text-neutral-text-contrast"
+      className="mt-8 mb-4 text-sm font-medium text-neutral-text-contrast"
       {...props}
     />
   ),
@@ -117,7 +117,7 @@ export const mdxComponents: MDXRemoteProps["components"] = {
     <em className="italic text-neutral-text-contrast" {...props} />
   ),
   strong: (props) => (
-    <strong className="font-semibold text-neutral-text-contrast" {...props} />
+    <strong className="font-medium text-neutral-text-contrast" {...props} />
   ),
   a: CustomLink,
   code: Code,
