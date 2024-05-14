@@ -1,128 +1,120 @@
+"use client"
+
+import { compose, cva, cx, cxRenderProps } from "@lib/styleUtils"
+import { CaretDown } from "@phosphor-icons/react"
 import {
-  Button,
-  Collection,
-  ComboBox,
-  Group,
-  Header,
+  Description,
+  FieldContext,
+  FieldError,
+  FieldGroup,
+  FieldProps,
   Input,
+  Label,
+  fieldLayoutStyle,
+  inputBaseStyle,
+  inputWithinGroupStyle,
+  useFieldProps,
+} from "@ui/field"
+import {
+  Button as RACButton,
+  ComboBox as RACComboBox,
+  ComboBoxProps as RACComboBoxProps,
+  ListBoxItemProps as RACListBoxItemProps,
+} from "react-aria-components"
+import {
   ListBox,
   ListBoxItem,
-  Popover,
-  Section,
-  Separator,
-  type InputProps,
-  type ListBoxItemProps,
-  type ListBoxProps,
-  type PopoverProps,
-  type SeparatorProps,
-} from "react-aria-components"
+  ListBoxSection,
+  ListBoxSectionProps,
+} from "./listbox"
+import { Popover } from "./popover"
 
-import { animateMountStyle, compose, cva, cx, cxRenderProps } from "@lib/utils"
-import { CaretDown, Check } from "@phosphor-icons/react"
+interface ComboBoxProps<T extends object>
+  extends Omit<RACComboBoxProps<T>, "children">,
+    FieldProps {
+  children: React.ReactNode | ((item: T) => React.ReactNode)
+}
 
-// TODO: simplify the Combobox component
-
-const Combobox = ComboBox
-
-const ComboboxSection = Section
-
-const ComboboxCollection = Collection
-
-const ComboboxInput = ({ className, ...props }: InputProps) => (
-  <Group
-    className={cx(
-      "group flex h-6 items-center justify-between overflow-hidden rounded-md border border-neutral-border text-xs group-data-[disabled]:cursor-not-allowed group-data-[disabled]:opacity-50 data-[focus-within]:outline data-[focus-within]:outline-accent-focus-ring",
-    )}
-  >
-    <Input
-      className={(values) =>
-        cx(
-          "flex w-full border-none px-2 text-xs placeholder:text-neutral-placeholder data-[disabled]:cursor-not-allowed data-[disabled]:opacity-50 data-[focused]:outline-none",
-          typeof className === "function" ? className(values) : className,
-        )
-      }
-      {...props}
-    />
-    <Button className="px-1">
-      <CaretDown aria-hidden="true" />
-    </Button>
-  </Group>
-)
-
-export interface ComboboxHeaderProps
-  extends React.ComponentPropsWithoutRef<typeof Header> {}
-
-const ComboboxHeader = ({ className, ...props }: ComboboxHeaderProps) => (
-  <Header
-    className={cx(
-      "flex h-6 items-center px-2 text-xs font-medium text-neutral-text-contrast",
-      className,
-    )}
-    {...props}
-  />
-)
-
-const ComboboxItem = ({ className, children, ...props }: ListBoxItemProps) => (
-  <ListBoxItem
-    className={(values) =>
-      cx(
-        "relative flex h-6 w-full cursor-default items-center rounded pl-6 text-xs font-medium outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[focused]:bg-neutral-bg-hover data-[selected]:bg-neutral-bg-active",
-        typeof className === "function" ? className(values) : className,
-      )
-    }
-    {...props}
-  >
-    {(values) => (
-      <>
-        {values.isSelected && (
-          <span className="absolute left-1 flex items-center justify-center">
-            <Check />
-          </span>
-        )}
-
-        {typeof children === "function" ? children(values) : children}
-      </>
-    )}
-  </ListBoxItem>
-)
-
-const ComboboxSeparator = ({ className, ...props }: SeparatorProps) => (
-  <Separator className={cx("h-px bg-neutral-solid/20", className)} {...props} />
-)
-
-const popoverStyles = compose(
-  animateMountStyle,
+const groupStyle = compose(
+  inputBaseStyle,
   cva({
-    base: [
-      "relative z-50 w-[var(--trigger-width)] overflow-y-auto rounded-md bg-neutral-bg-subtle text-neutral-text ring shadow-md ring-neutral-solid/20",
-      // placement offset
-      "data-[placement=bottom]:translate-y-1 data-[placement=left]:-translate-x-1 data-[placement=right]:translate-x-1 data-[placement=top]:-translate-y-1",
-    ],
+    base: ["group flex items-center"],
+    variants: {
+      size: {
+        1: "h-6 pr-0.5 gap-0.5",
+        2: "h-7 pr-1 gap-1",
+        3: "h-8 pr-1 gap-1",
+      },
+    },
+    defaultVariants: {
+      size: 1,
+    },
   }),
 )
 
-const ComboboxPopover = ({ className, ...props }: PopoverProps) => (
-  <Popover className={cxRenderProps(className, popoverStyles())} {...props} />
-)
-
-const ComboboxListBox = <T extends object>({
-  className,
+function ComboBox<T extends object>({
+  label,
+  description,
+  errorMessage,
+  children,
+  items,
+  menuTrigger = "focus",
   ...props
-}: ListBoxProps<T>) => (
-  <ListBox
-    className={cxRenderProps(className, "flex flex-col gap-1 p-1")}
-    {...props}
-  />
-)
+}: ComboBoxProps<T>) {
+  let { labelPosition, size, variant } = useFieldProps(props)
 
-export {
-  Combobox,
-  ComboboxCollection,
-  ComboboxHeader,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxListBox,
-  ComboboxPopover,
-  ComboboxSection,
-  ComboboxSeparator,
+  return (
+    <RACComboBox
+      {...props}
+      menuTrigger={menuTrigger}
+      className={cxRenderProps(
+        props.className,
+        fieldLayoutStyle({ labelPosition }),
+      )}
+    >
+      {({ isDisabled }) => (
+        <FieldContext.Provider value={{ size, variant, labelPosition }}>
+          {label && <Label>{label}</Label>}
+          <FieldGroup
+            className={(renderProps) =>
+              groupStyle({ size, variant, ...renderProps })
+            }
+          >
+            <Input className={inputWithinGroupStyle({ size })} />
+            <RACButton
+              className={cx(
+                "flex items-center justify-center bg-transparent text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
+                isDisabled && "text-neutral-placeholder",
+                size === 1 && "size-5 rounded-sm",
+                size === 2 && "size-5 rounded-sm",
+                size === 3 && "size-6 rounded-[3px]",
+              )}
+            >
+              <CaretDown size={size === 1 ? 14 : 16} aria-hidden />
+            </RACButton>
+          </FieldGroup>
+          {description && <Description>{description}</Description>}
+          <FieldError>{errorMessage}</FieldError>
+          <Popover>
+            <ListBox
+              items={items}
+              className="max-h-[inherit] overflow-auto p-1 outline-none"
+            >
+              {children}
+            </ListBox>
+          </Popover>
+        </FieldContext.Provider>
+      )}
+    </RACComboBox>
+  )
 }
+
+function ComboBoxItem(props: RACListBoxItemProps) {
+  return <ListBoxItem {...props} />
+}
+
+function ComboBoxSection<T extends object>(props: ListBoxSectionProps<T>) {
+  return <ListBoxSection {...props} />
+}
+
+export { ComboBox, ComboBoxItem, ComboBoxSection, type ComboBoxProps }
