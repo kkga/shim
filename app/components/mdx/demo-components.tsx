@@ -206,6 +206,7 @@ export const demoComponents = {
     Sections: dynamic(() =>
       import("@/demos/listbox").then((mod) => mod.Sections),
     ),
+    Size: dynamic(() => import("@/demos/listbox").then((mod) => mod.Size)),
     Content: dynamic(() =>
       import("@/demos/listbox").then((mod) => mod.Content),
     ),
@@ -218,6 +219,7 @@ export const demoComponents = {
     ),
     Sections: dynamic(() => import("@/demos/menu").then((mod) => mod.Sections)),
     Submenu: dynamic(() => import("@/demos/menu").then((mod) => mod.Submenu)),
+    Size: dynamic(() => import("@/demos/menu").then((mod) => mod.Size)),
   },
   TableDemo: {
     Main: dynamic(() => import("@/demos/table").then((mod) => mod.Main)),
@@ -243,6 +245,11 @@ export const demoComponents = {
       import("@/demos/select").then((mod) => mod.Sections),
     ),
     States: dynamic(() => import("@/demos/select").then((mod) => mod.States)),
+    Size: dynamic(() => import("@/demos/select").then((mod) => mod.Size)),
+  },
+  ComboBoxDemo: {
+    Main: dynamic(() => import("@/demos/combobox").then((mod) => mod.Main)),
+    Size: dynamic(() => import("@/demos/combobox").then((mod) => mod.Size)),
   },
 
   ToolbarDemo: {
