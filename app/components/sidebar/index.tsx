@@ -1,8 +1,8 @@
 import { GithubLogo, Shapes, XLogo } from "@phosphor-icons/react/dist/ssr"
+import { LinkButton } from "@ui/button"
 import { Link } from "@ui/link"
 import { Separator } from "@ui/separator"
 import { Tooltip, TooltipTrigger } from "@ui/tooltip"
-import { ButtonLink } from "./button-link"
 import { Navigation, type NavItem } from "./navigation"
 import { ThemeButton } from "./theme-button"
 
@@ -33,28 +33,26 @@ export function Sidebar(props: { items: NavItem[] }) {
           <Separator className="my-1" orientation="vertical" />
 
           <TooltipTrigger>
-            <ButtonLink
+            <LinkButton
               intent="neutral"
               target="_blank"
-              isSquare
               variant="ghost"
               href="https://twitter.com/kkga_"
             >
               <XLogo size={16} weight="duotone" />
-            </ButtonLink>
+            </LinkButton>
             <Tooltip>Go to Twitter</Tooltip>
           </TooltipTrigger>
 
           <TooltipTrigger>
-            <ButtonLink
+            <LinkButton
               intent="neutral"
               target="_blank"
-              isSquare
               variant="ghost"
               href="https://github.com/kkga/shim"
             >
               <GithubLogo size={16} weight="duotone" />
-            </ButtonLink>
+            </LinkButton>
             <Tooltip>Go to GitHub</Tooltip>
           </TooltipTrigger>
         </div>

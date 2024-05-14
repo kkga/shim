@@ -1,6 +1,6 @@
 "use client"
 
-import { compose, cva, focusInsetStyle } from "@lib/utils"
+import { compose, cva, focusStyle } from "@lib/styleUtils"
 import {
   Article,
   Cards,
@@ -83,7 +83,7 @@ const filterItems = (items: NavItem[], filter?: string) => {
 }
 
 const itemStyle = compose(
-  focusInsetStyle,
+  focusStyle,
   cva({
     base: [
       "flex h-6 gap-2 items-center rounded px-1.5 text-xs font-book text-neutral-text",
