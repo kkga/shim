@@ -1,4 +1,5 @@
 import { defineConfig } from "cva"
+import { createContext, useContext } from "react"
 import { composeRenderProps } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 
@@ -21,6 +22,13 @@ export const Intents = [
 ] as const
 
 export type Intent = (typeof Intents)[number]
+export type Size = 1 | 2 | 3
+
+export const SizeContext = createContext<Size>(1)
+export function useSize(props: any): Size {
+  let contextValue = useContext(SizeContext)
+  return props.size ?? contextValue
+}
 
 export const animateMountStyle = cva({
   base: [
@@ -34,14 +42,7 @@ export const animateMountStyle = cva({
 
 export const focusStyle = cva({
   base: [
-    "outline-offset-2 outline-accent-focus-ring outline-0",
+    "outline-offset-1 outline-accent-focus-ring outline-0",
     "data-[focus-visible]:outline-2 group-data-[focus-visible]:outline-2",
-  ],
-})
-
-export const focusInsetStyle = cva({
-  base: [
-    "-outline-offset-1 outline-accent-focus-ring outline-0",
-    "data-[focus-visible]:outline-1 group-data-[focus-visible]:outline-1",
   ],
 })

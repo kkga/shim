@@ -1,102 +1,80 @@
 "use client"
 
+import { Size, SizeContext, cx, useSize } from "@lib/styleUtils"
+import { CaretRight, Check } from "@phosphor-icons/react"
+import { VariantProps } from "cva"
 import {
   Menu as RACMenu,
   MenuItem as RACMenuItem,
   MenuItemProps as RACMenuItemProps,
   MenuProps as RACMenuProps,
   MenuTrigger as RACMenuTrigger,
-  Popover as RACPopover,
   PopoverProps as RACPopoverProps,
   Separator as RACSeparator,
   SeparatorProps as RACSeparatorProps,
   SubmenuTrigger as RACSubmenuTrigger,
   composeRenderProps,
 } from "react-aria-components"
-
-import { CaretRight, Check } from "@phosphor-icons/react"
-
-import { compose, cx, focusInsetStyle } from "@lib/utils"
-import { VariantProps, cva } from "cva"
-import { ListBoxSection, ListBoxSectionProps, itemBaseStyle } from "./listbox"
-import { popoverStyle } from "./popover"
+import {
+  ListBoxSection,
+  ListBoxSectionProps,
+  itemStyle as listBoxItemStyle,
+} from "./listbox"
+import { Popover } from "./popover"
 
 interface MenuProps<T> extends RACMenuProps<T> {
   placement?: RACPopoverProps["placement"]
   offset?: RACPopoverProps["offset"]
+  size?: Size
 }
 
 function Menu<T extends object>(props: MenuProps<T>) {
+  let size = useSize(props)
+
   return (
-    <RACPopover
-      placement={props.placement}
-      offset={props.offset ?? 4}
-      className={cx(popoverStyle(), "min-w-32")}
-    >
-      <RACMenu
-        {...props}
-        className="flex max-h-[inherit] flex-col gap-px overflow-auto p-1 outline-0 [clip-path:inset(0_0_0_0_round_.75rem)]"
-      />
-    </RACPopover>
+    <Popover placement={props.placement} className={"min-w-32"}>
+      <SizeContext.Provider value={size}>
+        <RACMenu
+          {...props}
+          className="flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0"
+        />
+      </SizeContext.Provider>
+    </Popover>
   )
 }
 
-const menuItemStyle = compose(
-  focusInsetStyle,
-  itemBaseStyle,
-  cva({
-    base: [
-      "text-xs font-book",
-      // selection mode
-      "data-[selection-mode]:pl-1 data-[selection-mode]:gap-1.5",
-    ],
-    variants: {
-      intent: {
-        neutral:
-          "text-neutral-text data-[hovered]:bg-neutral-bg-hover data-[pressed]:bg-neutral-bg-active data-[open]:bg-neutral-bg-hover data-[selected]:text-neutral-text-contrast",
-        accent:
-          "text-accent-text data-[hovered]:bg-accent-bg-hover data-[pressed]:bg-accent-bg-active data-[open]:bg-accent-bg-hover data-[selected]:text-accent-text-contrast",
-        success:
-          "text-success-text data-[hovered]:bg-success-bg-hover data-[pressed]:bg-success-bg-active data-[open]:bg-success-bg-hover data-[selected]:text-success-text-contrast",
-        warning:
-          "text-warning-text data-[hovered]:bg-warning-bg-hover data-[pressed]:bg-warning-bg-active data-[open]:bg-warning-bg-hover data-[selected]:text-warning-contrast",
-        error:
-          "text-error-text data-[hovered]:bg-error-bg-hover data-[pressed]:bg-error-bg-active data-[open]:bg-error-bg-hover data-[selected]:text-error-text-contrast",
-      },
-    },
-    defaultVariants: {
-      intent: "neutral",
-    },
-  }),
-)
+const menuItemStyle = listBoxItemStyle
 
 interface MenuItemProps
   extends RACMenuItemProps,
     VariantProps<typeof menuItemStyle> {}
 
-function MenuItem(props: MenuItemProps) {
+function MenuItem({ className, intent, ...props }: MenuItemProps) {
+  let size = useSize(props)
+
   return (
-    <RACMenuItem {...props} className={menuItemStyle({ intent: props.intent })}>
+    <RACMenuItem {...props} className={menuItemStyle({ intent, size })}>
       {composeRenderProps(
         props.children,
         (children, { selectionMode, isSelected, hasSubmenu }) => (
           <>
             {selectionMode !== "none" && (
-              <span className="flex w-3 items-center">
-                {isSelected && <Check size={12} aria-hidden weight="bold" />}
+              <span
+                className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
+              >
+                {isSelected && (
+                  <Check
+                    size={size === 1 ? 12 : 16}
+                    aria-hidden
+                    weight="bold"
+                  />
+                )}
               </span>
             )}
-            <span className="flex flex-1 items-center gap-2 truncate">
+            <span className="flex flex-1 items-center gap-1.5 truncate">
               {children}
             </span>
-            {hasSubmenu && (
-              <CaretRight
-                size={12}
-                weight="bold"
-                aria-hidden
-                className="absolute right-1.5"
-              />
-            )}
+            {hasSubmenu && <CaretRight size={12} weight="bold" aria-hidden />}
           </>
         ),
       )}
@@ -105,10 +83,16 @@ function MenuItem(props: MenuItemProps) {
 }
 
 function MenuSeparator(props: RACSeparatorProps) {
+  let size = useSize(props)
   return (
     <RACSeparator
       {...props}
-      className="mx-1.5 my-1 border-b border-neutral-line"
+      className={cx(
+        "my-1 h-px border-none bg-neutral-line",
+        size === 1 && "mx-1.5",
+        size === 2 && "mx-2",
+        size === 3 && "mx-2.5",
+      )}
     />
   )
 }
