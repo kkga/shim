@@ -1,7 +1,7 @@
-'use client'
-import { cx } from '@lib/utils'
-import { Button } from '@ui/button'
-import { useState } from 'react'
+"use client"
+import { cx } from "@lib/styleUtils"
+import { Button } from "@ui/button"
+import { useState } from "react"
 
 export function Collapsible({ children, defaultCollapsed }) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed)
@@ -9,12 +9,12 @@ export function Collapsible({ children, defaultCollapsed }) {
 
   return (
     <div
-      className={cx('flex flex-col overflow-auto', collapsed ? 'max-h-60' : '')}
+      className={cx("flex flex-col overflow-auto", collapsed ? "max-h-60" : "")}
     >
       <div
         className={cx(
-          'flex-1 pb-12',
-          collapsed ? 'overflow-hidden' : 'overflow-auto',
+          "flex-1 pb-12",
+          collapsed ? "overflow-hidden" : "overflow-auto",
         )}
       >
         {children}
@@ -27,7 +27,7 @@ export function Collapsible({ children, defaultCollapsed }) {
           intent="neutral"
           size={2}
         >
-          {collapsed ? 'Expand code' : 'Collapse code'}
+          {collapsed ? "Expand code" : "Collapse code"}
         </Button>
       </div>
     </div>
