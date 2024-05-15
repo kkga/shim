@@ -1,5 +1,5 @@
+"use client"
 import { defineConfig } from "cva"
-import { createContext, useContext } from "react"
 import { composeRenderProps } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 
@@ -20,15 +20,6 @@ export const Intents = [
   "warning",
   "error",
 ] as const
-
-export type Intent = (typeof Intents)[number]
-export type Size = 1 | 2 | 3
-
-export const SizeContext = createContext<Size>(1)
-export function useSize(props: any): Size {
-  let contextValue = useContext(SizeContext)
-  return props.size ?? contextValue
-}
 
 export const animateMountStyle = cva({
   base: [
