@@ -1,6 +1,7 @@
 "use client"
 
-import { Size, SizeContext, cx, useSize } from "@lib/styleUtils"
+import { cx } from "@lib/style"
+import { Size, Theme, useThemeProps } from "@lib/theme"
 import { CaretRight, Check } from "@phosphor-icons/react"
 import { VariantProps } from "cva"
 import {
@@ -15,11 +16,7 @@ import {
   SubmenuTrigger as RACSubmenuTrigger,
   composeRenderProps,
 } from "react-aria-components"
-import {
-  ListBoxSection,
-  ListBoxSectionProps,
-  itemStyle as listBoxItemStyle,
-} from "./listbox"
+import { ListBoxSection, ListBoxSectionProps, listBoxStyles } from "./listbox"
 import { Popover } from "./popover"
 
 interface MenuProps<T> extends RACMenuProps<T> {
@@ -28,34 +25,37 @@ interface MenuProps<T> extends RACMenuProps<T> {
   size?: Size
 }
 
-function Menu<T extends object>(props: MenuProps<T>) {
-  let size = useSize(props)
+function Menu<T extends object>({ placement, offset, ...props }: MenuProps<T>) {
+  let themeProps = useThemeProps(props)
 
   return (
-    <Popover placement={props.placement} className={"min-w-32"}>
-      <SizeContext.Provider value={size}>
+    <Theme {...themeProps}>
+      <Popover offset={offset} placement={placement} className={"min-w-32"}>
         <RACMenu
           {...props}
           className="flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0"
         />
-      </SizeContext.Provider>
-    </Popover>
+      </Popover>
+    </Theme>
   )
 }
 
-const menuItemStyle = listBoxItemStyle
+const menuItemStyle = listBoxStyles.item
 
 interface MenuItemProps
   extends RACMenuItemProps,
     VariantProps<typeof menuItemStyle> {}
 
-function MenuItem({ className, intent, ...props }: MenuItemProps) {
-  let size = useSize(props)
+function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
+  let { size } = useThemeProps({ size: props.size })
 
   return (
-    <RACMenuItem {...props} className={menuItemStyle({ intent, size })}>
+    <RACMenuItem
+      {...props}
+      className={menuItemStyle({ intent, size, className })}
+    >
       {composeRenderProps(
-        props.children,
+        children,
         (children, { selectionMode, isSelected, hasSubmenu }) => (
           <>
             {selectionMode !== "none" && (
@@ -83,7 +83,8 @@ function MenuItem({ className, intent, ...props }: MenuItemProps) {
 }
 
 function MenuSeparator(props: RACSeparatorProps) {
-  let size = useSize(props)
+  let { size } = useThemeProps({})
+
   return (
     <RACSeparator
       {...props}
