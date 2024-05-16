@@ -7,55 +7,20 @@ import {
   type NumberFieldProps as RACNumberFieldProps,
 } from "react-aria-components"
 
-import { compose, cva, cx, cxRenderProps } from "@lib/utils"
+import { cx, cxRenderProps } from "@lib/style"
+import { Theme, useThemeProps } from "@lib/theme"
 import { CaretDown, CaretUp } from "@phosphor-icons/react"
 import {
   Description,
-  FieldContext,
   FieldError,
   FieldGroup,
   FieldProps,
-  Input,
+  GroupInput,
   Label,
   fieldLayoutStyle,
-  inputBaseStyle,
-  useFieldProps,
 } from "./field"
 
 interface NumberFieldProps extends RACNumberFieldProps, FieldProps {}
-
-const groupStyle = compose(
-  inputBaseStyle,
-  cva({
-    base: ["group flex items-center"],
-    variants: {
-      size: {
-        1: "h-6",
-        2: "h-7",
-        3: "h-8",
-      },
-    },
-    defaultVariants: {
-      size: 1,
-    },
-  }),
-)
-
-const inputStyle = cva({
-  base: [
-    "min-w-0 flex-1 appearance-none self-stretch border-none text-inherit outline-0 placeholder:text-neutral-placeholder",
-  ],
-  variants: {
-    size: {
-      1: "indent-1.5 text-xs",
-      2: "indent-[7px] text-[13px]",
-      3: "indent-2 text-sm",
-    },
-  },
-  defaultVariants: {
-    size: 1,
-  },
-})
 
 function NumberField({
   label,
@@ -64,7 +29,8 @@ function NumberField({
   placeholder,
   ...props
 }: NumberFieldProps) {
-  let { labelPosition, size, variant } = useFieldProps(props)
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let { size, labelPosition } = themeProps
 
   return (
     <RACNumberField
@@ -74,25 +40,21 @@ function NumberField({
         fieldLayoutStyle({ labelPosition }),
       )}
     >
-      <FieldContext.Provider value={{ size, variant, labelPosition }}>
+      <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
-        <FieldGroup
-          className={(renderProps) =>
-            groupStyle({ size, variant, ...renderProps })
-          }
-        >
-          {() => (
+        <FieldGroup>
+          {({ isDisabled }) => (
             <>
-              <Input className={inputStyle({ size })} />
+              <GroupInput placeholder={placeholder} />
               <div className={cx("flex flex-col self-stretch p-0.5")}>
-                <StepperButton slot="increment">
+                <StepperButton isDisabled={isDisabled} slot="increment">
                   <CaretUp
                     aria-hidden
                     size={size === 1 ? 10 : 12}
                     weight="bold"
                   />
                 </StepperButton>
-                <StepperButton slot="decrement">
+                <StepperButton isDisabled={isDisabled} slot="decrement">
                   <CaretDown
                     aria-hidden
                     size={size === 1 ? 10 : 12}
@@ -105,13 +67,13 @@ function NumberField({
         </FieldGroup>
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
-      </FieldContext.Provider>
+      </Theme>
     </RACNumberField>
   )
 }
 
 function StepperButton({ className, ...props }: ButtonProps) {
-  let { size } = useFieldProps({})
+  let { size } = useThemeProps({})
 
   return (
     <Button
