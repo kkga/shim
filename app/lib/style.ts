@@ -21,6 +21,8 @@ export const Intents = [
   "error",
 ] as const
 
+export type Intent = (typeof Intents)[number]
+
 export const animateMountStyle = cva({
   base: [
     "data-[exiting]:animate-[fade-out_100ms]",

@@ -30,8 +30,8 @@ export function Theme({ children, ...props }: ThemeProps) {
   )
 }
 
-export function useThemeProps<T extends Partial<ThemeContextProps>>(
-  props: T,
+export function useThemeProps(
+  props: Partial<ThemeContextProps>,
 ): ThemeContextProps {
   let themeProps = useContext(ThemeContext)
 

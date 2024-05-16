@@ -7,16 +7,15 @@ import {
   type RadioProps as RACRadioProps,
 } from "react-aria-components"
 
-import { compose, cva, cxRenderProps, focusStyle } from "@lib/utils"
+import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
 
+import { Theme, useThemeProps } from "@lib/theme"
 import {
   Description,
-  FieldContext,
   FieldError,
   FieldProps,
   Label,
   fieldLayoutStyle,
-  useFieldProps,
 } from "./field"
 
 interface RadioGroupProps
@@ -28,28 +27,27 @@ interface RadioGroupProps
 function RadioGroup({
   label,
   description,
+  className,
   errorMessage,
   children,
   ...props
 }: RadioGroupProps) {
-  let { labelPosition, variant, size } = useFieldProps(props)
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let { labelPosition } = themeProps
 
   return (
     <RACRadioGroup
       {...props}
-      className={cxRenderProps(
-        props.className,
-        fieldLayoutStyle({ labelPosition }),
-      )}
+      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
-      <FieldContext.Provider value={{ variant, labelPosition, size }}>
+      <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
         <div className="flex group-data-[orientation=vertical]:flex-col group-data-[orientation=horizontal]:gap-3">
           {children}
         </div>
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
-      </FieldContext.Provider>
+      </Theme>
     </RACRadioGroup>
   )
 }
@@ -62,9 +60,9 @@ const styles = {
     ],
     variants: {
       size: {
-        1: "text-xs gap-1.5 h-6",
-        2: "text-[13px] gap-1.5 h-7",
-        3: "text-sm gap-2 h-8",
+        1: "text-xs gap-2 h-6",
+        2: "text-[13px] gap-2 h-7",
+        3: "text-sm gap-2.5 h-8",
       },
     },
     defaultVariants: {
@@ -90,24 +88,24 @@ const styles = {
             "group-data-selected:bg-accent-solid group-data-selected:before:visible",
           ],
           soft: [
-            "bg-neutral-bg-hover inset-ring-0 before:bg-accent-text",
+            "bg-neutral-bg-hover inset-ring-0 before:bg-accent-text-contrast",
             // pressed
             "group-data-pressed:bg-neutral-bg-active",
             // selected
             "group-data-selected:bg-accent-bg-active group-data-selected:before:visible",
           ],
           outline: [
-            "bg-transparent inset-ring-1 inset-ring-neutral-border before:bg-accent-text",
+            "bg-transparent inset-ring-1 inset-ring-neutral-border before:bg-accent-text-contrast",
             // pressed
             "group-data-pressed:bg-neutral-bg-active",
             // selected
-            "group-data-selected:bg-transparent inset-ring-neutral-border-hover group-data-selected:before:visible",
+            "group-data-selected:bg-transparent group-data-selected:inset-ring-neutral-border-hover group-data-selected:before:visible",
           ],
         },
         size: {
           1: "size-4 before:size-1.5",
           2: "size-[18px] before:size-2",
-          3: "size-5 before:size-2.5",
+          3: "size-5 before:size-2",
         },
       },
       defaultVariants: {
@@ -120,8 +118,9 @@ const styles = {
 
 interface RadioProps extends RACRadioProps {}
 
-function Radio({ className, ...props }: RadioProps) {
-  let { size, variant } = useFieldProps({})
+function Radio({ className, children, ...props }: RACRadioProps) {
+  let themeProps = useThemeProps({})
+  let { size, fieldVariant: variant } = themeProps
 
   return (
     <RACRadio
@@ -130,7 +129,7 @@ function Radio({ className, ...props }: RadioProps) {
     >
       <>
         <div className={styles.inner({ size, variant })} />
-        {props.children}
+        {children}
       </>
     </RACRadio>
   )

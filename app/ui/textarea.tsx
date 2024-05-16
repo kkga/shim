@@ -1,21 +1,20 @@
 "use client"
 
-import { compose, cva, cxRenderProps } from "@lib/utils"
+import { compose, cva, cxRenderProps } from "@lib/style"
 import {
   TextField as RACTextField,
   type TextFieldProps as RACTextFieldProps,
 } from "react-aria-components"
 
+import { Theme, useThemeProps } from "@lib/theme"
 import {
   Description,
-  FieldContext,
   FieldError,
   FieldProps,
   Label,
   TextAreaInput,
   fieldLayoutStyle,
   inputBaseStyle,
-  useFieldProps,
 } from "./field"
 
 interface TextAreaProps extends RACTextFieldProps, FieldProps {}
@@ -44,14 +43,15 @@ function TextArea({
   className,
   ...props
 }: TextAreaProps) {
-  let { labelPosition, size, variant } = useFieldProps(props)
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let { labelPosition, size, fieldVariant: variant } = themeProps
 
   return (
     <RACTextField
       {...props}
       className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
-      <FieldContext.Provider value={{ size, variant, labelPosition }}>
+      <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
         <TextAreaInput
           placeholder={placeholder}
@@ -59,7 +59,7 @@ function TextArea({
         />
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
-      </FieldContext.Provider>
+      </Theme>
     </RACTextField>
   )
 }

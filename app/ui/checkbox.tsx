@@ -11,16 +11,15 @@ import {
   type CheckboxProps as RACCheckboxProps,
 } from "react-aria-components"
 
-import { compose, cva, cx, cxRenderProps, focusStyle } from "@lib/utils"
+import { compose, cva, cx, cxRenderProps, focusStyle } from "@lib/style"
 
+import { Theme, useThemeProps } from "@lib/theme"
 import {
   Description,
-  FieldContext,
   FieldError,
   FieldProps,
   Label,
   fieldLayoutStyle,
-  useFieldProps,
 } from "./field"
 
 interface CheckboxGroupProps
@@ -29,23 +28,28 @@ interface CheckboxGroupProps
   children?: ReactNode
 }
 
-function CheckboxGroup(props: CheckboxGroupProps) {
-  let { labelPosition, variant, size } = useFieldProps(props)
+function CheckboxGroup({
+  children,
+  className,
+  label,
+  description,
+  errorMessage,
+  ...props
+}: CheckboxGroupProps) {
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let { labelPosition } = themeProps
 
   return (
     <RACCheckboxGroup
       {...props}
-      className={cxRenderProps(
-        props.className,
-        fieldLayoutStyle({ labelPosition }),
-      )}
+      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
-      <FieldContext.Provider value={{ variant, labelPosition, size }}>
-        <Label>{props.label}</Label>
-        <div className="flex flex-col">{props.children}</div>
-        {props.description && <Description>{props.description}</Description>}
-        <FieldError>{props.errorMessage}</FieldError>
-      </FieldContext.Provider>
+      <Theme {...themeProps}>
+        <Label>{label}</Label>
+        <div className="flex flex-col">{children}</div>
+        {description && <Description>{description}</Description>}
+        <FieldError>{errorMessage}</FieldError>
+      </Theme>
     </RACCheckboxGroup>
   )
 }
@@ -58,9 +62,9 @@ const styles = {
     ],
     variants: {
       size: {
-        1: "text-xs gap-1.5 h-6",
-        2: "text-[13px] gap-1.5 h-7",
-        3: "text-sm gap-2 h-8",
+        1: "text-xs gap-2 h-6",
+        2: "text-[13px] gap-2 h-7",
+        3: "text-sm gap-2.5 h-8",
       },
     },
     defaultVariants: {
@@ -84,20 +88,26 @@ const styles = {
             "group-data-pressed:bg-neutral-bg-active",
             // selected
             "group-data-selected:bg-accent-solid",
+            // indeterminate
+            "group-data-indeterminate:bg-accent-solid",
           ],
           soft: [
-            "bg-neutral-bg-hover inset-ring-0 text-accent-text",
+            "bg-neutral-bg-hover inset-ring-0 text-accent-text-contrast",
             // pressed
             "group-data-pressed:bg-neutral-bg-active",
             // selected
             "group-data-selected:bg-accent-bg-active",
+            // indeterminate
+            "group-data-indeterminate:bg-accent-bg-active",
           ],
           outline: [
-            "bg-transparent inset-ring-1 inset-ring-neutral-border text-accent-text",
+            "bg-transparent inset-ring-1 inset-ring-neutral-border text-accent-text-contrast",
             // pressed
             "group-data-pressed:bg-neutral-bg-active",
             // selected
-            "group-data-selected:bg-transparent inset-ring-neutral-border-hover",
+            "group-data-selected:bg-transparent  group-data-selected:inset-ring-neutral-border-hover",
+            // indeterminate
+            "group-data-indeterminate:bg-transparent group-data-indeterminate:inset-ring-neutral-border-hover",
           ],
         },
         size: {
@@ -121,8 +131,9 @@ interface CheckboxProps
   children?: React.ReactNode
 }
 
-function Checkbox({ className, children, ...props }: CheckboxProps) {
-  let { size, variant } = useFieldProps(props)
+function Checkbox({ children, className, ...props }: CheckboxProps) {
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let { size, fieldVariant: variant } = themeProps
 
   return (
     <RACCheckbox

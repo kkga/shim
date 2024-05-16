@@ -1,7 +1,7 @@
 "use client"
-import { cva, cxRenderProps } from "@lib/utils"
+import { compose, cva, cxRenderProps } from "@lib/style"
+import { useThemeProps } from "@lib/theme"
 import { VariantProps } from "cva"
-import { createContext, useContext } from "react"
 
 import {
   FieldError as RACFieldError,
@@ -26,21 +26,6 @@ interface FieldProps
   description?: string
   errorMessage?: string | ((validation: ValidationResult) => string)
   placeholder?: string
-}
-
-interface FieldContextProps
-  extends Pick<FieldProps, "size" | "variant" | "labelPosition"> {}
-
-const FieldContext = createContext<FieldContextProps | null>(null)
-
-function useFieldProps(props: FieldProps): FieldProps {
-  let contextValues = useContext(FieldContext)
-
-  return {
-    labelPosition: props.labelPosition ?? contextValues?.labelPosition ?? "top",
-    size: props.size ?? contextValues?.size ?? 1,
-    variant: props.variant ?? contextValues?.variant ?? "classic",
-  }
 }
 
 const fieldLayoutStyle = cva({
@@ -83,22 +68,36 @@ const inputBaseStyle = cva({
       3: "h-8 rounded-md indent-2 text-sm",
     },
   },
-  defaultVariants: {
-    variant: "classic",
-    size: 1,
-  },
+  defaultVariants: { variant: "classic", size: 1 },
 })
+
+interface InputProps
+  extends Omit<RACInputProps, "size">,
+    VariantProps<typeof inputBaseStyle> {}
+
+function Input({ size, variant, className, ...props }: InputProps) {
+  let theme = useThemeProps({ size, fieldVariant: variant })
+
+  return (
+    <RACInput
+      {...props}
+      className={
+        (cxRenderProps(className),
+        inputBaseStyle({ variant: theme.fieldVariant, size: theme.size }))
+      }
+    />
+  )
+}
 
 const labelStyle = cva({
   base: [
-    "font-[450] text-neutral-text self-start truncate max-w-fit",
-    // peer/group disabled
-    "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
+    "font-book text-neutral-text self-start truncate max-w-fit",
+    "data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
   ],
   variants: {
     size: { 1: "text-xs", 2: "text-[13px]", 3: "text-sm" },
     labelPosition: {
-      top: "",
+      top: null,
       side: "col-start-1 flex items-center self-start",
     },
   },
@@ -112,18 +111,16 @@ const labelStyle = cva({
 
 interface LabelProps extends RACLabelProps, VariantProps<typeof labelStyle> {}
 
-function Label({ className, ...props }: LabelProps) {
-  let { size, labelPosition } = useFieldProps(props)
-  delete props.size
-  delete props.labelPosition
+function Label({ size, labelPosition, className, ...props }: LabelProps) {
+  let themeProps = useThemeProps({ size, labelPosition })
 
   return (
     <RACLabel
       {...props}
       slot="label"
       className={labelStyle({
-        size,
-        labelPosition,
+        size: themeProps.size,
+        labelPosition: themeProps.labelPosition,
         className,
       })}
     />
@@ -133,7 +130,6 @@ function Label({ className, ...props }: LabelProps) {
 const descriptionStyle = cva({
   base: [
     "col-start-2 text-neutral-text",
-    // peer/group disabled
     "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
   ],
   variants: { size: { 1: "text-[11px]", 2: "text-xs", 3: "text-[13px]" } },
@@ -144,14 +140,14 @@ interface DescriptionProps
   extends RACTextProps,
     VariantProps<typeof descriptionStyle> {}
 
-function Description({ className, ...props }: DescriptionProps) {
-  let { size } = useFieldProps({})
+function Description({ size, className, ...props }: DescriptionProps) {
+  let themeProps = useThemeProps({ size })
 
   return (
     <RACText
       {...props}
       slot="description"
-      className={descriptionStyle({ size })}
+      className={descriptionStyle({ size: themeProps.size, className })}
     />
   )
 }
@@ -166,23 +162,82 @@ interface FieldErrorProps
   extends RACFieldErrorProps,
     VariantProps<typeof fieldErrorStyle> {}
 
-function FieldError({ className, ...props }: FieldErrorProps) {
-  let { size } = useFieldProps({})
+function FieldError({ size, className, ...props }: FieldErrorProps) {
+  let themeProps = useThemeProps({ size })
 
   return (
     <RACFieldError
-      className={cxRenderProps(className, fieldErrorStyle({ size }))}
       {...props}
+      className={cxRenderProps(
+        className,
+        fieldErrorStyle({ size: themeProps.size }),
+      )}
     />
   )
 }
 
-function FieldGroup(props: RACGroupProps) {
-  return <RACGroup {...props} className={cxRenderProps(props.className)} />
+const fieldGroupStyle = compose(
+  inputBaseStyle,
+  cva({
+    base: ["group flex items-center"],
+    variants: {
+      size: {
+        1: "h-6",
+        2: "h-7",
+        3: "h-8",
+      },
+    },
+    defaultVariants: {
+      size: 1,
+    },
+  }),
+)
+
+interface FieldGroupProps
+  extends RACGroupProps,
+    VariantProps<typeof fieldGroupStyle> {}
+
+function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
+  let themeProps = useThemeProps({ size, fieldVariant: variant })
+
+  return (
+    <RACGroup
+      {...props}
+      className={cxRenderProps(
+        className,
+        fieldGroupStyle({
+          size: themeProps.size,
+          variant: themeProps.fieldVariant,
+        }),
+      )}
+    />
+  )
 }
 
-function Input(props: RACInputProps) {
-  return <RACInput {...props} className={cxRenderProps(props.className)} />
+const groupInputStyle = cva({
+  base: [
+    "min-w-0 flex-1 appearance-none self-stretch border-none text-inherit outline-0",
+    "placeholder:text-neutral-placeholder autofill:bg-transparent [&::-webkit-search-cancel-button]:hidden",
+  ],
+  variants: {
+    size: {
+      1: "indent-1.5 text-xs",
+      2: "indent-[7px] text-[13px]",
+      3: "indent-2 text-sm",
+    },
+  },
+})
+
+function GroupInput({ className, ...props }: Omit<InputProps, "variant">) {
+  let themeProps = useThemeProps({ ...props })
+  let { size } = themeProps
+
+  return (
+    <RACInput
+      {...props}
+      className={cxRenderProps(className, groupInputStyle({ size }))}
+    />
+  )
 }
 
 function TextAreaInput(props: RACTextAreaProps) {
@@ -191,14 +246,13 @@ function TextAreaInput(props: RACTextAreaProps) {
 
 export {
   Description,
-  FieldContext,
   FieldError,
   FieldGroup,
+  GroupInput,
   Input,
   Label,
   TextAreaInput,
   fieldLayoutStyle,
   inputBaseStyle,
-  useFieldProps,
   type FieldProps,
 }
