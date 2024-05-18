@@ -1,6 +1,6 @@
 "use client"
+import { Theme } from "@lib/theme"
 import { Checkbox, CheckboxGroup } from "@ui/checkbox"
-import { FieldContext } from "@ui/field"
 import { NumberField } from "@ui/numberfield"
 import { Radio, RadioGroup } from "@ui/radiogroup"
 import { SearchField } from "@ui/searchfield"
@@ -11,10 +11,10 @@ import { TextField } from "@ui/textfield"
 
 export default () => (
   <div className="flex gap-4">
-    <div className="flex grow-1 basis-3xs flex-col gap-3">
-      <strong>Size: 1</strong>
+    <div className="flex grow-1 basis-2xs flex-col gap-3">
+      <strong>Variant: classic</strong>
       <Separator />
-      <FieldContext.Provider value={{ size: 1 }}>
+      <Theme fieldVariant="classic">
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />
@@ -28,15 +28,15 @@ export default () => (
           <Checkbox value="1">Option</Checkbox>
           <Checkbox value="2">Option</Checkbox>
         </CheckboxGroup>
-      </FieldContext.Provider>
+      </Theme>
     </div>
 
     <Separator orientation="vertical" />
 
     <div className="flex grow-1 basis-2xs flex-col gap-3">
-      <strong>Size: 2</strong>
+      <strong>Variant: soft</strong>
       <Separator />
-      <FieldContext.Provider value={{ size: 2 }}>
+      <Theme fieldVariant="soft">
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />
@@ -50,15 +50,15 @@ export default () => (
           <Checkbox value="1">Option</Checkbox>
           <Checkbox value="2">Option</Checkbox>
         </CheckboxGroup>
-      </FieldContext.Provider>
+      </Theme>
     </div>
 
     <Separator orientation="vertical" />
 
-    <div className="flex grow-1 basis-xs flex-col gap-3">
-      <strong>Size: 3</strong>
+    <div className="flex grow-1 basis-2xs flex-col gap-3">
+      <strong>Variant: outline</strong>
       <Separator />
-      <FieldContext.Provider value={{ size: 3 }}>
+      <Theme fieldVariant="outline">
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />
@@ -72,7 +72,7 @@ export default () => (
           <Checkbox value="1">Option</Checkbox>
           <Checkbox value="2">Option</Checkbox>
         </CheckboxGroup>
-      </FieldContext.Provider>
+      </Theme>
     </div>
   </div>
 )
