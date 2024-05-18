@@ -20,15 +20,15 @@ const style = cva({
   ],
   variants: {
     size: {
-      1: "size-6 text-[11px]",
-      2: "size-7 text-xs",
+      1: "size-5 text-[11px]",
+      2: "size-6 text-xs",
       3: "size-8 text-[13px]",
     },
     color: colors,
   },
   defaultVariants: {
     color: "gray",
-    size: 1,
+    size: 2,
   },
 })
 
