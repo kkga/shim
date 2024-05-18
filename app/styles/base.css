@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/white-alpha.css";
+@import "@radix-ui/colors/gray.css";
+@import "@radix-ui/colors/gray-alpha.css";
+@import "@radix-ui/colors/gray-dark.css";
+@import "@radix-ui/colors/gray-dark-alpha.css";
 @import "@radix-ui/colors/slate.css";
 @import "@radix-ui/colors/slate-alpha.css";
 @import "@radix-ui/colors/slate-dark.css";
@@ -172,6 +178,14 @@
   --color-error-text: var(--color-error-11);
   --color-error-text-contrast: var(--color-error-12);
 
+  /* Functional colors /
+  /* Base body background color */
+  --color-background: var(--color-neutral-2);
+  /* Panel background color for popovers, menus, etc */
+  --color-panel: var(--color-neutral-1);
+  /* Overlay background color for dialogs */
+  --color-overlay: var(--black-a6);
+
   /* Type scale */
   --font-size-xs: 0.75rem;
   --font-size-xs--line-height: 1rem;
@@ -204,26 +218,100 @@
   --font-weight-book: 450;
 
   /* Shadows */
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-xs: 0 1px rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-  --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 
-  /* Inset shadows */
+  /* prettier-ignore */
+  --shadow-inner:
+    inset 0 0 0 1px var(--slate-a5),
+    inset 0 1.5px 2px 0 var(--slate-a2),
+    inset 0 1.5px 2px 0 var(--black-a2);
+
+  /* prettier-ignore */
+  --shadow-xs:
+    0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%),
+    0 0 0 0.5px var(--black-a1),
+    0 1px 1px 0 var(--slate-a2),
+    0 2px 1px -1px var(--black-a1),
+    0 1px 3px 0 var(--black-a1);
+
+  /* prettier-ignore */
+  --shadow-sm:
+    0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%),
+    0 2px 3px -2px var(--slate-a3),
+    0 3px 12px -4px var(--black-a2),
+    0 4px 16px -8px var(--black-a2);
+
+  /* prettier-ignore */
+  --shadow-md:
+    0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%),
+    0 8px 40px var(--black-a1),
+    0 12px 32px -16px var(--slate-a3);
+
+  /* prettier-ignore */
+  --shadow-lg:
+    0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%),
+    0 12px 60px var(--black-a3),
+    0 12px 32px -16px var(--slate-a5);
+
+  /* prettier-ignore */
+  --shadow-xl:
+    0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%),
+    0 12px 60px var(--black-a3),
+    0 16px 64px var(--slate-a2),
+    0 16px 36px -20px var(--slate-a7);
+
+  /* Inset shadows
   --inset-shadow-xs: inset 0 1px rgb(0 0 0 / 0.05);
   --inset-shadow-sm: inset 0 1px 1px rgb(0 0 0 / 0.05);
-  --inset-shadow: inset 0 2px 4px rgb(0 0 0 / 0.05);
+  --inset-shadow: inset 0 2px 4px rgb(0 0 0 / 0.05); */
 }
 
 .dark,
 .dark-theme {
+  /* prettier-ignore */
+  --shadow-inner:
+    inset 0 -1px 1px 0 var(--slate-a3),
+    inset 0 0 0 1px var(--slate-a3),
+    inset 0 3px 4px 0 var(--black-a5),
+    inset 0 0 0 1px var(--slate-a4);
+
+  /* prettier-ignore */
+  --shadow-xs:
+    0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%),
+    0 0 0 0.5px var(--black-a3),
+    0 1px 1px 0 var(--black-a6),
+    0 2px 1px -1px var(--black-a6),
+    0 1px 3px 0 var(--black-a5);
+
+  /* prettier-ignore */
+  --shadow-sm:
+    0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%),
+    0 2px 3px -2px var(--black-a3),
+    0 3px 8px -2px var(--black-a6),
+    0 4px 12px -4px var(--black-a7);
+
+  /* prettier-ignore */
+  --shadow-md:
+    0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%),
+    0 8px 40px var(--black-a3),
+    0 12px 32px -16px var(--black-a5);
+
+  /* prettier-ignore */
+  --shadow-lg:
+    0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%),
+    0 12px 60px var(--black-a5),
+    0 12px 32px -16px var(--black-a7);
+
+  /* prettier-ignore */
+  --shadow-xl:
+    0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%),
+    0 12px 60px var(--black-a4),
+    0 16px 64px var(--black-a6),
+    0 16px 36px -20px var(--black-a11);
+
   --color-pure: var(--color-black);
+  --color-background: var(--color-neutral-1);
+  --color-panel: var(--color-neutral-2);
+  --color-overlay: var(--black-a8);
 }
 
 @keyframes fade-in {
