@@ -1,19 +1,16 @@
 "use client"
 
-import { compose, cva, cx, cxRenderProps } from "@lib/styleUtils"
+import { cx, cxRenderProps } from "@lib/style"
+import { Theme, useThemeProps } from "@lib/theme"
 import { CaretDown } from "@phosphor-icons/react"
 import {
   Description,
-  FieldContext,
   FieldError,
   FieldGroup,
   FieldProps,
-  Input,
+  GroupInput,
   Label,
   fieldLayoutStyle,
-  inputBaseStyle,
-  inputWithinGroupStyle,
-  useFieldProps,
 } from "@ui/field"
 import {
   Button as RACButton,
@@ -35,23 +32,6 @@ interface ComboBoxProps<T extends object>
   children: React.ReactNode | ((item: T) => React.ReactNode)
 }
 
-const groupStyle = compose(
-  inputBaseStyle,
-  cva({
-    base: ["group flex items-center"],
-    variants: {
-      size: {
-        1: "h-6 pr-0.5 gap-0.5",
-        2: "h-7 pr-1 gap-1",
-        3: "h-8 pr-1 gap-1",
-      },
-    },
-    defaultVariants: {
-      size: 1,
-    },
-  }),
-)
-
 function ComboBox<T extends object>({
   label,
   description,
@@ -59,9 +39,12 @@ function ComboBox<T extends object>({
   children,
   items,
   menuTrigger = "focus",
+  labelPosition,
+  size,
+  variant,
   ...props
 }: ComboBoxProps<T>) {
-  let { labelPosition, size, variant } = useFieldProps(props)
+  let themeProps = useThemeProps({ size, labelPosition, fieldVariant: variant })
 
   return (
     <RACComboBox
@@ -69,42 +52,49 @@ function ComboBox<T extends object>({
       menuTrigger={menuTrigger}
       className={cxRenderProps(
         props.className,
-        fieldLayoutStyle({ labelPosition }),
+        fieldLayoutStyle({ labelPosition: themeProps.labelPosition }),
       )}
     >
-      {({ isDisabled }) => (
-        <FieldContext.Provider value={{ size, variant, labelPosition }}>
-          {label && <Label>{label}</Label>}
-          <FieldGroup
-            className={(renderProps) =>
-              groupStyle({ size, variant, ...renderProps })
-            }
+      <Theme {...themeProps}>
+        {label && <Label>{label}</Label>}
+        <FieldGroup>
+          <GroupInput />
+          <RACButton
+            className={cx(
+              "flex items-center justify-center",
+              themeProps.size === 1 && "size-6",
+              themeProps.size === 2 && "size-7",
+              themeProps.size === 3 && "size-8",
+            )}
           >
-            <Input className={inputWithinGroupStyle({ size })} />
-            <RACButton
-              className={cx(
-                "flex items-center justify-center bg-transparent text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
-                isDisabled && "text-neutral-placeholder",
-                size === 1 && "size-5 rounded-sm",
-                size === 2 && "size-5 rounded-sm",
-                size === 3 && "size-6 rounded-[3px]",
-              )}
-            >
-              <CaretDown size={size === 1 ? 14 : 16} aria-hidden />
-            </RACButton>
-          </FieldGroup>
-          {description && <Description>{description}</Description>}
-          <FieldError>{errorMessage}</FieldError>
-          <Popover>
-            <ListBox
-              items={items}
-              className="max-h-[inherit] overflow-auto p-1 outline-none"
-            >
-              {children}
-            </ListBox>
-          </Popover>
-        </FieldContext.Provider>
-      )}
+            {({ isHovered, isPressed, isDisabled }) => (
+              <div
+                className={cx(
+                  "flex items-center justify-center bg-transparent text-neutral-text",
+                  themeProps.size === 1 && "size-5 rounded-sm",
+                  themeProps.size === 2 && "size-5 rounded-sm",
+                  themeProps.size === 3 && "size-6 rounded-[3px]",
+                  isHovered && "bg-neutral-bg-hover",
+                  isPressed && "bg-neutral-bg-active",
+                  isDisabled && "text-neutral-placeholder",
+                )}
+              >
+                <CaretDown size={themeProps.size === 1 ? 12 : 16} aria-hidden />
+              </div>
+            )}
+          </RACButton>
+        </FieldGroup>
+        {description && <Description>{description}</Description>}
+        <FieldError>{errorMessage}</FieldError>
+        <Popover>
+          <ListBox
+            items={items}
+            className="max-h-[inherit] overflow-auto p-1 outline-none"
+          >
+            {children}
+          </ListBox>
+        </Popover>
+      </Theme>
     </RACComboBox>
   )
 }
