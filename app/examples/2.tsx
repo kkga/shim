@@ -4,23 +4,32 @@ import { Avatar } from "@ui/avatar"
 import { Badge } from "@ui/badge"
 import { Breadcrumb, Breadcrumbs } from "@ui/breadcrumbs"
 import { Button } from "@ui/button"
+import { Kbd } from "@ui/kbd"
 import { ListBox, ListBoxItem, ListBoxSection } from "@ui/listbox"
 import {
   Menu,
   MenuItem,
-  MenuSection,
   MenuSeparator,
   MenuTrigger,
   SubmenuTrigger,
 } from "@ui/menu"
+import { Popover, PopoverTrigger } from "@ui/popover"
+import { Select, SelectItem } from "@ui/select"
+import { Separator } from "@ui/separator"
+import { Switch } from "@ui/switch"
+import { Tag, TagGroup } from "@ui/taggroup"
+import { TextArea } from "@ui/textarea"
 import { ToggleButton } from "@ui/togglebutton"
 import { Tooltip, TooltipTrigger } from "@ui/tooltip"
+import { useMemo, useState } from "react"
+import { Selection } from "react-aria-components"
 
 const items = [
   {
     id: "LIN-5737",
     title: "Update list of predefined values",
-    description: "John mentioned you",
+    description: "Marked as In-progress",
+    text: "The list of predefined values needs to be updated to include the new values that were added to the system.",
     user: "John Doe",
     status: "in-progress",
     age: "2d",
@@ -28,7 +37,8 @@ const items = [
   {
     id: "LIN-2341",
     title: "Add support for custom themes",
-    description: "Jane mentioned you",
+    description: "Marked as In-progress",
+    text: "The app should support custom themes to allow users to customize the look and feel of the app.",
     user: "Amelie Welch",
     status: "in-progress",
     age: "3d",
@@ -36,7 +46,8 @@ const items = [
   {
     id: "LIN-4391",
     title: "Refactor the list component",
-    description: "Issue assigned to you",
+    description: "Assigned to you",
+    text: "The list component needs to be refactored to improve performance and make it easier to maintain.",
     user: "Amelie Welch",
     status: "in-progress",
     age: "3d",
@@ -44,7 +55,8 @@ const items = [
   {
     id: "LIN-5214",
     title: "Improve the performance of the app",
-    description: "Issue assigned to you",
+    description: "Marked as Done",
+    text: "The app is running slow and needs to be optimized to improve performance.",
     user: "John Appleseed",
     status: "done",
     age: "4d",
@@ -52,17 +64,80 @@ const items = [
   {
     id: "LIN-2343",
     title: "Update list component to support drag and drop",
-    description: "Issue assigned to you",
+    description: "Marked as Done",
+    text: "The list component needs to be updated to support drag and drop functionality.",
     user: "John Appleseed",
     status: "done",
     age: "4d",
   },
+  // add more items with some different titles, descriptions, users, statuses, and ages
+  {
+    id: "LIN-2344",
+    title: "Improve initial loading performance",
+    description: "Marked as Done",
+    text: "The app takes too long to load initially and needs to be optimized to improve performance.",
+    user: "Mark Johnson",
+    status: "done",
+    age: "5d",
+  },
+  {
+    id: "LIN-2345",
+    title: "Add support for dark mode",
+    description: "Marked as Done",
+    text: "The app should support dark mode to reduce eye strain and improve user experience.",
+    user: "Dean Smith",
+    status: "done",
+    age: "6d",
+  },
+  {
+    id: "LIN-2346",
+    title: "Add support for light mode",
+    description: "Marked as Done",
+    text: "The app should support light mode to give users more options for customizing the app.",
+    user: "Dean Smith",
+    status: "done",
+    age: "7d",
+  },
+  {
+    id: "LIN-2347",
+    title: "Add support for custom themes",
+    description: "Marked as Done",
+    text: "The app should support custom themes to allow users to customize the look and feel of the app",
+    user: "Dean Smith",
+    status: "done",
+    age: "8d",
+  },
 ]
 
 export function Example2() {
+  let [selectedKeys, setSelectedKeys] = useState<Selection>(
+    new Set(["LIN-5737"]),
+  )
+  let breadcrumbs = useMemo(
+    () => [
+      {
+        id: "mobile-app",
+        text: "Mobile app",
+        href: "#",
+        icon: <Icon.DeviceMobile size={16} className="text-accent-text" />,
+      },
+      {
+        id: [...selectedKeys][0],
+        text: [...selectedKeys][0],
+        href: null,
+        icon: null,
+      },
+    ],
+    [selectedKeys],
+  )
+  let selectedItem = useMemo(
+    () => items.find((item) => item.id === [...selectedKeys][0]),
+    [selectedKeys],
+  )
+
   return (
     <div className="s-box flex h-[600px] rounded-lg bg-background shadow-[var(--shadow-xs)]">
-      <div className="flex min-w-[200px] flex-col gap-2.5 p-3 text-xs">
+      <div className="flex min-w-[180px] flex-col gap-2.5 p-3 text-xs">
         <div className="flex items-center gap-1">
           <MenuTrigger>
             <Button
@@ -74,45 +149,33 @@ export function Example2() {
               Acme Inc.
               <Icon.CaretDown size={12} />
             </Button>
-            <Menu size={1}>
+            <Menu className="min-w-[180px]">
               <MenuItem>
-                <Icon.House size={16} weight="duotone" />
-                Home
-              </MenuItem>
-              <MenuItem>
-                <Icon.CirclesThree size={16} weight="duotone" />
-                Issues
-              </MenuItem>
-              <MenuItem>
-                <Icon.GitPullRequest size={16} weight="duotone" /> Pull requests
-              </MenuItem>
-              <MenuItem>
-                <Icon.Kanban size={16} weight="duotone" />
-                Projects
-              </MenuItem>
-              <MenuItem>
-                <Icon.Chats size={16} weight="duotone" />
-                Discussions
-              </MenuItem>
-              <MenuItem>
-                <Icon.Desktop size={16} weight="duotone" />
-                Codespaces
+                <Icon.SlidersHorizontal size={16} weight="duotone" />
+                Preferences
+                <Kbd variant="plain" className="ml-auto">
+                  G then S
+                </Kbd>
               </MenuItem>
               <MenuSeparator />
-              <MenuSection title="Repositories">
+              <SubmenuTrigger>
                 <MenuItem>
-                  <Icon.Book size={16} weight="duotone" />
-                  kkga/shim
+                  <Icon.UsersThree size={16} weight="duotone" />
+                  Workspace
                 </MenuItem>
-                <MenuItem>
-                  <Icon.Book size={16} weight="duotone" />
-                  kkga/ter
-                </MenuItem>
-                <MenuItem>
-                  <Icon.Book size={16} weight="duotone" />
-                  kkga/config
-                </MenuItem>
-              </MenuSection>
+                <Menu>
+                  <MenuItem>Personal</MenuItem>
+                  <MenuItem>Work</MenuItem>
+                  <MenuItem>Organization</MenuItem>
+                </Menu>
+              </SubmenuTrigger>
+              <MenuItem>
+                <Icon.SignOut size={16} weight="duotone" />
+                Log out
+                <Kbd variant="plain" className="ml-auto">
+                  ⎇⇧Q
+                </Kbd>
+              </MenuItem>
             </Menu>
           </MenuTrigger>
 
@@ -205,28 +268,64 @@ export function Example2() {
             <span className="ml-1 font-medium text-neutral-text-contrast">
               Inbox
             </span>
-            <Button
-              isSquare
-              intent="neutral"
-              variant="ghost"
-              className="ml-auto"
-            >
-              <Icon.FunnelSimple size={16} />
-            </Button>
-            <Button isSquare intent="neutral" variant="ghost">
-              <Icon.SlidersHorizontal size={16} />
-            </Button>
+            <MenuTrigger>
+              <Button
+                isSquare
+                intent="neutral"
+                variant="ghost"
+                className="ml-auto"
+              >
+                <Icon.FunnelSimple size={16} />
+              </Button>
+              <Menu selectionMode="multiple">
+                <MenuItem>Assignments</MenuItem>
+                <MenuItem>Mentions</MenuItem>
+                <MenuItem>Status changes</MenuItem>
+                <MenuItem>Comments</MenuItem>
+              </Menu>
+            </MenuTrigger>
+            <PopoverTrigger>
+              <Button isSquare intent="neutral" variant="ghost">
+                <Icon.SlidersHorizontal size={16} />
+              </Button>
+              <Popover placement="bottom end">
+                <div className="flex w-[200px] flex-col gap-2 p-3">
+                  <Select label="Ordering" defaultSelectedKey={"newest"}>
+                    <SelectItem id="newest">Newest</SelectItem>
+                    <SelectItem id="oldest">Oldest</SelectItem>
+                    <SelectItem id="priorty">Priority</SelectItem>
+                  </Select>
+                  <Separator />
+                  <div className="flex flex-col">
+                    <Switch defaultSelected>Show snoozed</Switch>
+                    <Switch>Show read</Switch>
+                  </div>
+                  <Separator />
+                  <TagGroup
+                    label="Display properties"
+                    selectionMode="multiple"
+                    defaultSelectedKeys={"id"}
+                  >
+                    <Tag>ID</Tag>
+                    <Tag>Assignee</Tag>
+                    <Tag>Priority</Tag>
+                  </TagGroup>
+                </div>
+              </Popover>
+            </PopoverTrigger>
           </div>
           <div>
             <ListBox
+              aria-label="Inbox"
               className="p-1"
               items={items}
               selectionMode="single"
               disallowEmptySelection
-              defaultSelectedKeys={["LIN-5737"]}
+              selectedKeys={selectedKeys}
+              onSelectionChange={setSelectedKeys}
             >
               {({ title, description, user, status, age, id }) => (
-                <ListBoxItem className="h-auto py-1.5 px-2">
+                <ListBoxItem key={id} className="h-auto py-1.5 px-2">
                   <div className="grid flex-1 grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2.5 gap-y-0.5">
                     <Avatar
                       name={user}
@@ -274,19 +373,19 @@ export function Example2() {
 
         <div className="flex flex-1 flex-col">
           <div className="flex items-center gap-1 border-b border-neutral-3 p-1 pl-2 text-xs">
-            <Breadcrumbs>
-              <Breadcrumb href="#">
-                <div className="flex items-center gap-1 font-medium text-neutral-text-contrast">
-                  <Icon.DeviceMobile size={16} className="text-accent-text" />
-                  Mobile app
-                </div>
-              </Breadcrumb>
-              <Breadcrumb>
-                <div className="flex items-center gap-1 font-medium text-neutral-text-contrast">
-                  LIN-5737
-                </div>
-              </Breadcrumb>
+            <Breadcrumbs items={breadcrumbs}>
+              {({ text, href, icon }) => (
+                <Breadcrumb href={href ?? ""} key={text}>
+                  <div className="flex items-center gap-1 font-medium text-neutral-text-contrast">
+                    {icon ?
+                      <span>{icon}</span>
+                    : null}
+                    {text}
+                  </div>
+                </Breadcrumb>
+              )}
             </Breadcrumbs>
+
             <MenuTrigger>
               <Button variant="ghost" intent="neutral" isSquare>
                 <Icon.DotsThree weight="bold" size={16} />
@@ -320,7 +419,10 @@ export function Example2() {
                   />
                 )}
               </ToggleButton>
-              <Tooltip>Favorite</Tooltip>
+              <Tooltip>
+                Favorite
+                <Kbd variant="plain">⎇F</Kbd>
+              </Tooltip>
             </TooltipTrigger>
 
             <TooltipTrigger>
@@ -333,7 +435,10 @@ export function Example2() {
               >
                 <Icon.Archive size={16} />
               </Button>
-              <Tooltip>Archive</Tooltip>
+              <Tooltip>
+                Archive
+                <Kbd variant="plain">⌫</Kbd>
+              </Tooltip>
             </TooltipTrigger>
             <TooltipTrigger>
               <Button
@@ -344,8 +449,78 @@ export function Example2() {
               >
                 <Icon.Clock size={16} />
               </Button>
-              <Tooltip>Snooze</Tooltip>
+              <Tooltip>
+                Snooze
+                <Kbd variant="plain">H</Kbd>
+              </Tooltip>
             </TooltipTrigger>
+          </div>
+
+          <div className="flex flex-col gap-3 p-4 text-sm">
+            <h4 className="text-balance text-base font-medium leading-tight text-neutral-text-contrast">
+              {selectedItem?.title}
+            </h4>
+            <p className="text-neutral-text">{selectedItem?.text}</p>
+            {selectedItem?.status === "in-progress" && (
+              <Badge intent="warning">
+                <Icon.CircleHalf
+                  className="shrink-0"
+                  size={16}
+                  weight="duotone"
+                />
+                In progress
+              </Badge>
+            )}
+            {selectedItem?.status === "done" && (
+              <Badge intent="success">
+                <Icon.CheckCircle
+                  className="shrink-0"
+                  size={16}
+                  weight="duotone"
+                />
+                Done
+              </Badge>
+            )}
+
+            <div className="mt-1 flex flex-col items-start gap-1">
+              <Button intent="neutral" variant="ghost">
+                + Add sub-issues
+              </Button>
+              <Button intent="neutral" variant="ghost">
+                + Add links
+              </Button>
+            </div>
+            <Separator />
+            <h5 className="text-sm font-medium text-neutral-text-contrast">
+              Activity
+            </h5>
+            <div className="flex flex-col text-xs">
+              <div className="flex items-center gap-2">
+                <Avatar
+                  name={selectedItem?.user || "John Doe"}
+                  src={`https://source.unsplash.com/random/100x100/?face$${selectedItem?.id}`}
+                  size={1}
+                />
+                <span>
+                  <span className="font-medium text-neutral-text-contrast">
+                    {selectedItem?.user}
+                  </span>{" "}
+                  {selectedItem?.description}
+                  <span className="px-1.5">&middot;</span>
+                  <span className="text-neutral-text">{selectedItem?.age}</span>
+                </span>
+              </div>
+            </div>
+            <div className="mt-2 flex flex-col gap-2">
+              <TextArea
+                variant="outline"
+                size={1}
+                placeholder="Add a comment..."
+              />
+              <Button intent="accent" variant="ghost" className="ml-auto">
+                Comment
+              </Button>
+            </div>
           </div>
         </div>
       </div>
