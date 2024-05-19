@@ -1,6 +1,6 @@
 "use client"
 
-import { cx } from "@lib/utils"
+import { cx } from "@lib/style"
 import { CaretRight } from "@phosphor-icons/react"
 import { Link, LinkProps } from "@ui/link"
 import {
@@ -16,16 +16,18 @@ function Breadcrumbs<T extends object>(props: BreadcrumbsProps<T>) {
   )
 }
 
-function Breadcrumb(props: BreadcrumbProps & LinkProps) {
+function Breadcrumb({
+  className,
+  href,
+  ...props
+}: BreadcrumbProps & LinkProps) {
   return (
     <RACBreadcrumb
       {...props}
-      className={cx("flex items-center gap-1", props.className)}
+      className={cx("flex items-center gap-1", className)}
     >
       <Link intent="neutral" {...props} />
-      {props.href && (
-        <CaretRight size={12} className="text-neutral-placeholder" />
-      )}
+      {href && <CaretRight size={12} className="text-neutral-placeholder" />}
     </RACBreadcrumb>
   )
 }

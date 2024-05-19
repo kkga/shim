@@ -1,6 +1,6 @@
 "use client"
 
-import { cva, cxRenderProps } from "@lib/utils"
+import { cva, cxRenderProps } from "@lib/style"
 import { useContext } from "react"
 import {
   OverlayTriggerStateContext,
@@ -16,7 +16,7 @@ import {
 
 const overlayStyles = cva({
   base: [
-    "fixed top-0 left-0 w-full h-[var(--visual-viewport-height)] isolate z-20 bg-black/40 flex items-center justify-center p-4 backdrop-grayscale",
+    "fixed top-0 left-0 w-full h-[var(--visual-viewport-height)] isolate z-20 bg-overlay flex items-center justify-center p-4 backdrop-grayscale",
     "data-[entering]:animate-[fade-in_150ms_ease-out]",
     "data-[exiting]:animate-[fade-out_100ms_ease-in]",
   ],
@@ -24,7 +24,7 @@ const overlayStyles = cva({
 
 const modalStyle = cva({
   base: [
-    "z-50 w-md rounded-2xl bg-[var(--color-bg-panel)] p-4 text-neutral-text text-sm ring shadow-2xl ring-neutral-solid/30 outline-none overflow-auto",
+    "z-50 w-md rounded-2xl bg-panel p-4 text-neutral-text text-xs shadow-[var(--shadow-xl)] outline-none overflow-auto",
     "data-[entering]:animate-[fade-in_150ms_ease-out,slide-from-top_150ms]",
     "data-[exiting]:animate-[fade-out_100ms_ease-in,slide-to-top_100ms]",
   ],

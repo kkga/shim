@@ -1,5 +1,5 @@
 "use client"
-import { cva } from "@lib/utils"
+import { cva } from "@lib/style"
 import {
   Separator as RACSeparator,
   SeparatorProps,

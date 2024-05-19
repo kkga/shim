@@ -1,6 +1,6 @@
 "use client"
 
-import { compose, cva, cxRenderProps, focusStyle } from "@lib/utils"
+import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
 import type { VariantProps } from "cva"
 import {
   Link as RACLink,
@@ -11,13 +11,15 @@ const style = compose(
   focusStyle,
   cva({
     base: [
-      "underline underline-offset-2",
       // disabled
       "data-disabled:no-underline data-disabled:cursor-default data-disabled:text-neutral-placeholder",
       // current
       "data-current:text-neutral-text",
     ],
     variants: {
+      variant: {
+        underline: "underline underline-offset-2",
+      },
       intent: {
         neutral:
           "text-neutral-text decoration-neutral-line hover:decoration-neutral-border-hover",

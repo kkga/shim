@@ -1,6 +1,6 @@
 "use client"
 
-import { compose, cva, cx, focusStyle } from "@lib/utils"
+import { compose, cva, cx, focusStyle } from "@lib/style"
 import { X } from "@phosphor-icons/react"
 import { createContext, useContext } from "react"
 import {

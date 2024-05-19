@@ -1,6 +1,6 @@
 "use client"
 
-import { cva } from "@lib/utils"
+import { cva } from "@lib/style"
 import {
   Toolbar as RACToolbar,
   ToolbarProps as RACToolbarProps,

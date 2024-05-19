@@ -57,10 +57,9 @@ const inputBaseStyle = cva({
   ],
   variants: {
     variant: {
-      classic:
-        "inset-ring-1 inset-ring-neutral-border shadow-inner bg-neutral-bg-subtle",
+      classic: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
       soft: "bg-neutral-bg",
-      outline: "inset-ring-1 inset-ring-neutral-border bg-transparent",
+      outline: "inset-ring inset-ring-neutral-border bg-transparent",
     },
     size: {
       1: "h-6 rounded indent-1.5 text-xs",

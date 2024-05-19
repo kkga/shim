@@ -6,7 +6,7 @@ import {
   type ToggleButtonProps as RACToggleButtonProps,
 } from "react-aria-components"
 
-import { compose, cva, cxRenderProps, focusStyle } from "@lib/styleUtils"
+import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
 import { Children, isValidElement } from "react"
 
 const style = compose(
@@ -44,6 +44,11 @@ const style = compose(
       { size: 1, isSquare: [true], className: "size-6 p-0" },
       { size: 2, isSquare: [true], className: "size-7 p-0" },
       { size: 3, isSquare: [true], className: "size-8 p-0" },
+      {
+        intent: ["neutral", "accent", "success", "warning", "error"],
+        variant: "ghost",
+        className: "bg-transparent",
+      },
     ],
     defaultVariants: {
       variant: "soft",

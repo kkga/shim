@@ -1,12 +1,11 @@
 "use client"
 
-import React from "react"
+import { cx, cxRenderProps } from "@lib/style"
+import { Label } from "@ui/field"
 import {
   ProgressBar as RACProgressBar,
   ProgressBarProps as RACProgressBarProps,
 } from "react-aria-components"
-import { Label } from "@ui/field"
-import { cx, cxRenderProps } from "@lib/utils"
 
 export interface ProgressBarProps extends RACProgressBarProps {
   label?: string
@@ -30,7 +29,7 @@ function ProgressBar({ label, ...props }: ProgressBarProps) {
             <div className="relative h-1.5 w-full overflow-hidden rounded-[2px] bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
               <div
                 className={cx(
-                  "absolute top-0 h-full bg-accent-solid",
+                  "absolute top-0 h-full bg-accent-solid transition-[width]",
                   isIndeterminate ?
                     "w-[50%] origin-left animate-[indeterminate_1000ms_linear_infinite]"
                   : "left-0",

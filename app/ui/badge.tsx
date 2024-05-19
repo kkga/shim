@@ -2,11 +2,11 @@
 
 import type { VariantProps } from "cva"
 
-import { cva, cx } from "@lib/utils"
+import { cva, cx } from "@lib/style"
 import { Children, isValidElement } from "react"
 
 const badgeStyles = cva({
-  base: "inline-flex w-min items-center justify-center font-book",
+  base: "inline-flex w-min items-center justify-center font-book leading-none bg-clip-padding",
   variants: {
     intent: {
       neutral:

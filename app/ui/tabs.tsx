@@ -1,6 +1,6 @@
 "use client"
 
-import { cva, cxRenderProps } from "@lib/utils"
+import { cva, cxRenderProps } from "@lib/style"
 
 import {
   Tab as RACTab,
@@ -15,7 +15,7 @@ import {
 
 const styles = {
   tabs: cva({
-    base: "flex gap-4",
+    base: "flex",
     variants: {
       orientation: {
         horizontal: "flex-col",

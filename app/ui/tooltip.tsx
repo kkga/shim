@@ -7,12 +7,12 @@ import {
   type TooltipTriggerComponentProps,
 } from "react-aria-components"
 
-import { animateMountStyle, compose, cva, cxRenderProps } from "@lib/utils"
+import { animateMountStyle, compose, cva, cxRenderProps } from "@lib/style"
 
 const style = compose(
   animateMountStyle,
   cva({
-    base: "overflow-hidden max-w-64 rounded bg-[var(--color-bg-panel)] py-0.5 px-1.5 text-[12px] font-medium text-neutral-text-contrast shadow-md outline-0 ring ring-neutral-solid/20",
+    base: "overflow-hidden max-w-64 rounded bg-panel py-0.5 px-1.5 text-[12px] font-book text-neutral-text-contrast shadow-[var(--shadow-sm)] outline-0",
   }),
 )
 
