@@ -7,7 +7,8 @@ import {
   cxRenderProps,
   focusStyle,
   type Intent,
-} from "@lib/styleUtils"
+} from "@lib/style"
+import { useThemeProps } from "@lib/theme"
 
 import type { VariantProps } from "cva"
 import { Children, isValidElement } from "react"
@@ -22,7 +23,7 @@ const style = compose(
   focusStyle,
   cva({
     base: [
-      "font-medium inline-flex items-center justify-center shrink-0 truncate",
+      "font-medium inline-flex items-center justify-center shrink-0",
       // disabled
       "data-disabled:text-neutral-placeholder data-disabled:bg-neutral-bg-subtle data-disabled:inset-ring data-disabled:inset-ring-neutral-line",
     ],
@@ -151,13 +152,16 @@ const style = compose(
 
 interface ButtonProps extends RACButtonProps, VariantProps<typeof style> {}
 
-function Button({ className, ...props }: ButtonProps) {
+function Button({ className, size, variant, intent, ...props }: ButtonProps) {
+  let themeProps = useThemeProps({ size, buttonVariant: variant })
   return (
     <RACButton
       className={cxRenderProps(
         className,
         style({
-          ...props,
+          variant: themeProps.buttonVariant,
+          intent: intent,
+          size: themeProps.size,
           isSquare:
             typeof props.isSquare === "boolean" ?
               props.isSquare
@@ -171,14 +175,21 @@ function Button({ className, ...props }: ButtonProps) {
 
 function LinkButton({
   className,
+  size,
+  variant,
+  intent,
   ...props
 }: LinkProps & VariantProps<typeof style>) {
+  let themeProps = useThemeProps({ size, buttonVariant: variant })
+
   return (
     <Link
       className={cxRenderProps(
         className,
         style({
-          ...props,
+          variant: themeProps.buttonVariant,
+          intent: intent,
+          size: themeProps.size,
           isSquare:
             typeof props.isSquare === "boolean" ?
               props.isSquare
