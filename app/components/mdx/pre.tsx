@@ -33,7 +33,7 @@ export async function Pre({
 
   if (!source) return null
 
-  if (source.split("\n").length > 12 && collapsed === undefined) {
+  if (source.split("\n").length > 20 && collapsed === undefined) {
     collapsed = true
   }
 
@@ -44,7 +44,7 @@ export async function Pre({
       className={cx(
         "codeblock group relative flex flex-col overflow-auto",
         "max-h-[calc(100dvh-12rem)]",
-        "rounded-lg border border-neutral-3 bg-[var(--color-bg-panel)]",
+        "rounded-lg border border-neutral-3 bg-panel",
         "font-mono text-[13px] font-normal leading-normal text-neutral-text",
         "[&>code]:text-[100%]",
         className,

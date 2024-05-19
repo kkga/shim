@@ -7,7 +7,7 @@ import LightIcon from "@/icon-light.png"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
-import { useMemo } from "react"
+import { StrictMode, useMemo } from "react"
 import { LocalizedStringProvider } from "react-aria-components/i18n"
 import { fontMono, fontSans } from "./_fonts"
 import { Sidebar } from "./components/sidebar"
@@ -83,37 +83,39 @@ export default function RootLayout({
   }, [docs, guides])
 
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${fontMono.variable} ${fontSans.variable}`}
-    >
-      <body className="bg-[var(--color-bg-body)] text-neutral-text antialiased">
-        <LocalizedStringProvider locale="en-US" />
-        <ClientProviders>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <div className="flex min-h-svh">
-              <div className="w-80 shrink-0">
-                <Sidebar items={navItems} />
+    <StrictMode>
+      <html
+        lang="en"
+        suppressHydrationWarning
+        className={`${fontMono.variable} ${fontSans.variable}`}
+      >
+        <body className="bg-background text-neutral-text antialiased">
+          <LocalizedStringProvider locale="en-US" />
+          <ClientProviders>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <div className="flex min-h-svh">
+                <div className="w-80 shrink-0">
+                  <Sidebar items={navItems} />
+                </div>
+
+                <main className="flex-1 py-16 px-8">
+                  <div className="mx-auto max-w-4xl text-[14px] leading-normal [&_.s-box]:-mx-4">
+                    {children}
+                  </div>
+                </main>
               </div>
 
-              <main className="flex-1 py-16 px-8">
-                <div className="mx-auto max-w-4xl text-[14px] leading-normal [&_.s-box]:-mx-4">
-                  {children}
-                </div>
-              </main>
-            </div>
-
-            <Analytics />
-            <SpeedInsights />
-          </ThemeProvider>
-        </ClientProviders>
-      </body>
-    </html>
+              <Analytics />
+              <SpeedInsights />
+            </ThemeProvider>
+          </ClientProviders>
+        </body>
+      </html>
+    </StrictMode>
   )
 }

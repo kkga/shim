@@ -60,9 +60,14 @@ export const demoComponents = {
   },
   FieldDemo: {
     Main: dynamic(() => import("@/demos/field").then((mod) => mod.Main)),
-    Context: dynamic(() => import("@/demos/field").then((mod) => mod.Context)),
-    ContextSize: dynamic(() =>
-      import("@/demos/field").then((mod) => mod.ContextSize),
+    ThemeSize: dynamic(() =>
+      import("@/demos/field").then((mod) => mod.ThemeSize),
+    ),
+    ThemeVariant: dynamic(() =>
+      import("@/demos/field").then((mod) => mod.ThemeVariant),
+    ),
+    ThemeLabelPosition: dynamic(() =>
+      import("@/demos/field").then((mod) => mod.ThemeLabelPosition),
     ),
   },
   CheckboxDemo: {

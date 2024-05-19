@@ -93,6 +93,13 @@ export const Note = (props) => (
   </div>
 )
 
+export const HR = (props) => (
+  <hr
+    {...props}
+    className={cx("my-12 max-w-prose border-neutral-line", props.className)}
+  />
+)
+
 export const mdxComponents: MDXRemoteProps["components"] = {
   h1: H1,
   h2: H2,
@@ -110,9 +117,7 @@ export const mdxComponents: MDXRemoteProps["components"] = {
     <ul className="my-4 max-w-prose list-outside list-disc pl-4" {...props} />
   ),
   li: (props) => <li className="mb-4" {...props} />,
-  hr: (props) => (
-    <hr className="my-12 max-w-prose border-neutral-line" {...props} />
-  ),
+  hr: HR,
   em: (props) => (
     <em className="italic text-neutral-text-contrast" {...props} />
   ),

@@ -10,9 +10,9 @@ export function Sidebar(props: { items: NavItem[] }) {
   return (
     <aside
       style={{ scrollbarWidth: "thin" }}
-      className="fixed inset-0 right-auto flex w-[inherit] flex-col overflow-x-hidden overflow-y-scroll px-4 text-sm"
+      className="fixed inset-0 right-auto flex w-[inherit] flex-col overflow-x-hidden overflow-y-scroll border-r border-neutral-4 bg-panel px-4 text-sm"
     >
-      <header className="sticky top-0 flex h-10 shrink-0 items-center items-center justify-between gap-1 bg-[var(--color-bg-body)] pl-1.5">
+      <header className="sticky top-0 flex h-10 shrink-0 items-center items-center justify-between gap-1 bg-panel pl-1.5">
         <Link className="flex items-center gap-1.5 no-underline" href="/">
           <Shapes
             size={16}

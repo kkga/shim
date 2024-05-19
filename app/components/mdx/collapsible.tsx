@@ -1,5 +1,6 @@
 "use client"
-import { cx } from "@lib/styleUtils"
+import { cx } from "@lib/style"
+import { ArrowLineDown, ArrowLineUp } from "@phosphor-icons/react"
 import { Button } from "@ui/button"
 import { useState } from "react"
 
@@ -9,7 +10,7 @@ export function Collapsible({ children, defaultCollapsed }) {
 
   return (
     <div
-      className={cx("flex flex-col overflow-auto", collapsed ? "max-h-60" : "")}
+      className={cx("flex flex-col overflow-auto", collapsed ? "max-h-72" : "")}
     >
       <div
         className={cx(
@@ -20,14 +21,17 @@ export function Collapsible({ children, defaultCollapsed }) {
         {children}
       </div>
 
-      <div className="via absolute inset-0 top-auto z-10 flex justify-center bg-gradient-to-b from-transparent to-[var(--color-bg-panel)] p-4 pt-8 font-sans">
+      <div className="absolute inset-0 top-auto z-10 flex justify-center bg-gradient-to-b from-transparent to-panel p-4 pt-8 font-sans">
         <Button
           className="backdrop-blur"
           onPress={toggle}
           intent="neutral"
-          size={2}
+          size={1}
         >
-          {collapsed ? "Expand code" : "Collapse code"}
+          {collapsed ?
+            <ArrowLineDown size={16} />
+          : <ArrowLineUp size={16} />}
+          {collapsed ? "Expand" : "Collapse"}
         </Button>
       </div>
     </div>

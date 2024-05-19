@@ -13,7 +13,7 @@ function Demo({ demo, code, className, stacked = false }: Props) {
     <div
       className={cx(
         "s-box",
-        "my-8 flex flex-col overflow-hidden rounded-xl bg-[var(--color-bg-panel)] ring shadow-sm ring-neutral-solid/20",
+        "my-8 flex flex-col overflow-hidden rounded-xl bg-panel shadow-[var(--shadow-xs)]",
         stacked ? "md:flex-col" : "md:flex-row",
       )}
     >

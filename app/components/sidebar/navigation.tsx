@@ -1,6 +1,6 @@
 "use client"
 
-import { compose, cva, focusStyle } from "@lib/styleUtils"
+import { compose, cva, focusStyle } from "@lib/style"
 import {
   Article,
   Cards,
@@ -112,20 +112,22 @@ export function Navigation({ items }: { items: NavItem[] }) {
 
   return (
     <>
-      <div className="sticky top-10 bg-[var(--color-bg-body)] pb-2">
-        <SearchField
-          aria-label="Filter navigation items"
-          prefixIcon={null}
-          placeholder="Filter"
-          value={filter}
-          onChange={setFilter}
-          onClear={() => setFilter("")}
-          className="w-full"
-          variant="outline"
-        />
+      <div className="sticky top-10 flex flex-col">
+        <div className="bg-panel pb-1">
+          <SearchField
+            aria-label="Filter navigation items"
+            prefixIcon={null}
+            placeholder="Filter"
+            value={filter}
+            onChange={setFilter}
+            onClear={() => setFilter("")}
+            className="w-full"
+          />
+        </div>
+        <div className="h-4 bg-gradient-to-b from-panel to-transparent" />
       </div>
 
-      <nav className="shrink-0 grow pt-4 pb-8">
+      <nav className="shrink-0 grow pt-2 pb-8">
         <ListBox
           key={`${items.length}-${filter}`}
           selectionMode="single"

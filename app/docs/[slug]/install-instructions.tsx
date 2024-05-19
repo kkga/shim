@@ -26,13 +26,13 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
 
       {dependencies && <DependenciesWarning deps={dependencies} />}
 
-      <Tabs className="s-box my-8 gap-0 overflow-hidden rounded-xl bg-[var(--color-bg-panel)] p-0 ring shadow-sm ring-neutral-solid/20">
+      <Tabs className="s-box my-8 gap-0 overflow-hidden rounded-xl bg-panel p-0 shadow-[var(--shadow-xs)]">
         <TabList className="gap-4 px-4 shadow-neutral-3">
-          <Tab id="curl" className="border-y-1">
+          <Tab id="curl">
             <Terminal size={16} weight="duotone" />
             cURL
           </Tab>
-          <Tab id="source" className="border-y-1">
+          <Tab id="source">
             <CodeIcon size={16} weight="duotone" />
             Source
           </Tab>
