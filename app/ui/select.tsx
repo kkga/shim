@@ -1,34 +1,37 @@
 "use client"
 
-import { cx, cxRenderProps } from "@lib/utils"
-import { CaretDown } from "@phosphor-icons/react"
-import { Button } from "@ui/button"
-import { Description, FieldError, Label } from "@ui/field"
+import { cx, cxRenderProps } from "@lib/style"
+import { Theme, useThemeProps } from "@lib/theme"
+import { CaretDown, Check } from "@phosphor-icons/react"
+import type { ReactNode } from "react"
+import {
+  Select as RACSelect,
+  SelectValue as RACSelectValue,
+  composeRenderProps,
+  type SelectProps as RACSelectProps,
+} from "react-aria-components"
+import { Button } from "./button"
+import {
+  Description,
+  FieldError,
+  FieldProps,
+  Label,
+  fieldLayoutStyle,
+} from "./field"
 import {
   ListBox,
   ListBoxItem,
+  ListBoxItemProps,
   ListBoxSection,
   ListBoxSectionProps,
-} from "@ui/listbox"
-import type {
-  ListBoxItemProps as RACListBoxItemProps,
-  SelectProps as RACSelectProps,
-  ValidationResult as RACValidationResult,
-} from "react-aria-components"
-import {
-  Popover as RACPopover,
-  Select as RACSelect,
-  SelectValue as RACSelectValue,
-} from "react-aria-components"
-import { popoverStyle } from "./popover"
+} from "./listbox"
+import { Popover } from "./popover"
 
 interface SelectProps<T extends object>
-  extends Omit<RACSelectProps<T>, "children"> {
-  label?: string
-  description?: string
-  errorMessage?: string | ((validation: RACValidationResult) => string)
+  extends Omit<RACSelectProps<T>, "children">,
+    FieldProps {
   items?: Iterable<T>
-  children: React.ReactNode | ((item: T) => React.ReactNode)
+  children: ReactNode | ((item: T) => ReactNode)
 }
 
 function Select<T extends object>({
@@ -37,47 +40,84 @@ function Select<T extends object>({
   errorMessage,
   children,
   items,
+  size,
+  labelPosition,
+  variant,
   ...props
 }: SelectProps<T>) {
+  let themeProps = useThemeProps({ size, labelPosition, fieldVariant: variant })
+
   return (
     <RACSelect
       {...props}
-      className={cxRenderProps(props.className, "group flex flex-col gap-1.5")}
+      className={cxRenderProps(
+        props.className,
+        fieldLayoutStyle({ labelPosition: themeProps.labelPosition }),
+      )}
     >
-      {label && <Label>{label}</Label>}
-      <Button className="justify-between" intent="neutral">
-        <RACSelectValue className="flex-1 truncate text-left text-sm font-normal data-[placeholder]:text-neutral-placeholder" />
-        <CaretDown
-          size={12}
-          weight="bold"
-          aria-hidden
-          className="text-neutral-placeholder"
-        />
-      </Button>
-      {description && <Description>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
-      <RACPopover
-        offset={4}
-        className={cx(popoverStyle(), "min-w-[var(--trigger-width)]")}
-      >
-        <ListBox
-          items={items}
-          className="max-h-[inherit] overflow-auto p-1 outline-none"
-        >
-          {children}
-        </ListBox>
-      </RACPopover>
+      {() => (
+        <Theme {...themeProps}>
+          {label && <Label>{label}</Label>}
+          <Button intent="neutral">
+            <RACSelectValue className="grow-1 truncate text-left font-normal data-placeholder:text-neutral-placeholder" />
+            <CaretDown
+              size={themeProps.size === 1 ? 12 : 16}
+              aria-hidden
+              className="shrink-0 text-current"
+            />
+          </Button>
+          {description && <Description>{description}</Description>}
+          <FieldError>{errorMessage}</FieldError>
+          <Popover>
+            <ListBox
+              items={items}
+              className="max-h-[inherit] overflow-auto p-1 outline-none"
+            >
+              {children}
+            </ListBox>
+          </Popover>
+        </Theme>
+      )}
     </RACSelect>
   )
 }
 
-function SelectItem(props: RACListBoxItemProps) {
-  return <ListBoxItem {...props} />
+function SelectItem({ children, className, href, ...props }: ListBoxItemProps) {
+  let { size } = useThemeProps({ size: props.size })
+
+  return (
+    <ListBoxItem {...props}>
+      {composeRenderProps(
+        children,
+        (children, { selectionMode, isSelected }) => (
+          <>
+            {selectionMode !== "none" && !href && (
+              <span
+                className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
+              >
+                {isSelected && (
+                  <Check
+                    size={size === 1 ? 12 : 16}
+                    aria-hidden
+                    weight="bold"
+                  />
+                )}
+              </span>
+            )}
+            {typeof children === "string" ?
+              <span className="flex items-center gap-2 truncate">
+                {children}
+              </span>
+            : children}
+          </>
+        ),
+      )}
+    </ListBoxItem>
+  )
 }
 
 function SelectSection<T extends object>(props: ListBoxSectionProps<T>) {
   return <ListBoxSection {...props} />
 }
 
-export { Select, SelectItem, SelectSection }
-export type { SelectProps }
+export { Select, SelectItem, SelectSection, type SelectProps }

@@ -2,7 +2,6 @@
 
 import { cva, cx, cxRenderProps } from "@lib/style"
 import { Size, Theme, useThemeProps } from "@lib/theme"
-import { Check } from "@phosphor-icons/react"
 import { VariantProps } from "cva"
 import {
   Collection as RACCollection,
@@ -46,26 +45,26 @@ const styles = {
 
   item: cva({
     base: [
-      "relative flex items-center rounded text-neutral-text font-book cursor-default truncate shrink-0 outline-0",
+      "relative flex items-center rounded text-neutral-text font-book truncate shrink-0 outline-0",
       "data-disabled:text-neutral-placeholder",
     ],
     variants: {
       size: {
-        1: "h-6 text-xs px-1.5 gap-1.5 rounded",
-        2: "h-7 text-[13px] px-2 gap-2 rounded",
-        3: "h-8 text-sm px-2.5 gap-2 rounded-md",
+        1: "h-6 text-xs px-1.5 gap-2 rounded",
+        2: "h-7 text-[13px] px-2 gap-2.5 rounded",
+        3: "h-8 text-sm px-2.5 gap-2.5 rounded-md",
       },
       intent: {
         neutral:
-          "text-neutral-text data-hovered:bg-neutral-bg-hover data-focus-visible:bg-neutral-bg-hover data-open:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active data-selected:text-neutral-text-contrast",
+          "text-neutral-text data-hovered:bg-neutral-bg-hover data-focus-visible:bg-neutral-bg-hover data-open:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active data-selected:text-neutral-text-contrast data-selected:bg-neutral-bg-active",
         accent:
-          "text-accent-text data-hovered:bg-accent-bg-hover data-focus-visible:bg-accent-bg-hover data-open:bg-accent-bg-hover data-pressed:bg-accent-bg-active data-selected:text-accent-text-contrast",
+          "text-accent-text data-hovered:bg-accent-bg-hover data-focus-visible:bg-accent-bg-hover data-open:bg-accent-bg-hover data-pressed:bg-accent-bg-active data-selected:text-accent-text-contrast data-selected:bg-accent-bg-active",
         success:
-          "text-success-text data-hovered:bg-success-bg-hover data-focus-visible:bg-success-bg-hover data-open:bg-success-bg-hover data-pressed:bg-success-bg-active data-selected:text-success-text-contrast",
+          "text-success-text data-hovered:bg-success-bg-hover data-focus-visible:bg-success-bg-hover data-open:bg-success-bg-hover data-pressed:bg-success-bg-active data-selected:text-success-text-contrast data-selected:bg-success-bg-active",
         warning:
-          "text-warning-text data-hovered:bg-warning-bg-hover data-focus-visible:bg-warning-bg-hover data-open:bg-warning-bg-hover data-pressed:bg-warning-bg-active data-selected:text-warning-text-contrast",
+          "text-warning-text data-hovered:bg-warning-bg-hover data-focus-visible:bg-warning-bg-hover data-open:bg-warning-bg-hover data-pressed:bg-warning-bg-active data-selected:text-warning-text-contrast data-selected:bg-warning-bg-active",
         error:
-          "text-error-text data-hovered:bg-error-bg-hover data-focus-visible:bg-error-bg-hover data-open:bg-error-bg-hover data-pressed:bg-error-bg-active data-selected:text-error-text-contrast",
+          "text-error-text data-hovered:bg-error-bg-hover data-focus-visible:bg-error-bg-hover data-open:bg-error-bg-hover data-pressed:bg-error-bg-active data-selected:text-error-text-contrast data-selected:bg-error-bg-active",
       },
     },
     defaultVariants: {
@@ -79,41 +78,36 @@ interface ListBoxItemProps
   extends RACListBoxItemProps,
     VariantProps<typeof styles.item> {}
 
-function ListBoxItem({ intent, className, ...props }: ListBoxItemProps) {
+function ListBoxItem({
+  intent,
+  className,
+  textValue,
+  children,
+  href,
+  ...props
+}: ListBoxItemProps) {
   let { size } = useThemeProps(props)
-
-  let textValue =
-    props.textValue ||
-    (typeof props.children === "string" ? props.children : undefined)
+  textValue ??= typeof children === "string" ? children : undefined
 
   return (
     <RACListBoxItem
       {...props}
       textValue={textValue}
-      className={cxRenderProps(className, styles.item({ intent, size }))}
+      className={cxRenderProps(
+        className,
+        styles.item({
+          intent,
+          size,
+          className: href ? "cursor-pointer" : "cursor-default",
+        }),
+      )}
     >
-      {composeRenderProps(
-        props.children,
-        (children, { selectionMode, isSelected }) => (
-          <>
-            {selectionMode !== "none" && (
-              <span
-                className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
-              >
-                {isSelected && (
-                  <Check
-                    size={size === 1 ? 12 : 16}
-                    aria-hidden
-                    weight="bold"
-                  />
-                )}
-              </span>
-            )}
-            <span className="flex flex-1 items-center gap-1.5 truncate">
-              {children}
-            </span>
-          </>
-        ),
+      {composeRenderProps(children, (children) =>
+        typeof children === "string" ?
+          <span className="flex flex-1 items-center gap-2 truncate">
+            {children}
+          </span>
+        : children,
       )}
     </RACListBoxItem>
   )
@@ -140,7 +134,11 @@ function ListBoxSection<T extends object>({
       {...props}
       className={cx("flex flex-col gap-px not-last:mb-1", className)}
     >
-      <RACHeader className={styles.sectionHeader({ size })}>{title}</RACHeader>
+      {title && (
+        <RACHeader className={styles.sectionHeader({ size })}>
+          {title}
+        </RACHeader>
+      )}
       <RACCollection items={items}>{children}</RACCollection>
     </RACSection>
   )

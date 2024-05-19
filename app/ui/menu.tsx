@@ -1,6 +1,6 @@
 "use client"
 
-import { cx } from "@lib/style"
+import { cx, cxRenderProps } from "@lib/style"
 import { Size, Theme, useThemeProps } from "@lib/theme"
 import { CaretRight, Check } from "@phosphor-icons/react"
 import { VariantProps } from "cva"
@@ -52,7 +52,14 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
   return (
     <RACMenuItem
       {...props}
-      className={menuItemStyle({ intent, size, className })}
+      className={cxRenderProps(
+        className,
+        menuItemStyle({
+          intent,
+          size,
+          className: props.href ? "cursor-pointer" : "cursor-default",
+        }),
+      )}
     >
       {composeRenderProps(
         children,
@@ -71,7 +78,7 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
                 )}
               </span>
             )}
-            <span className="flex flex-1 items-center gap-1.5 truncate">
+            <span className="flex flex-1 items-center gap-1.5 truncate pr-2">
               {children}
             </span>
             {hasSubmenu && <CaretRight size={12} weight="bold" aria-hidden />}
