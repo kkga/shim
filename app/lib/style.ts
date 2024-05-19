@@ -25,20 +25,30 @@ export type Intent = (typeof Intents)[number]
 
 export const animateMountStyle = cva({
   base: [
-    "data-[exiting]:animate-[fade-out_100ms]",
     "data-[placement=bottom]:origin-top data-[placement=bottom]:animate-[fade-in_100ms,slide-from-bottom_100ms]",
     "data-[placement=top]:origin-bottom data-[placement=top]:animate-[fade-in_100ms,slide-from-top_100ms]",
     "data-[placement=right]:origin-left data-[placement=right]:animate-[fade-in_100ms,slide-from-right_100ms]",
     "data-[placement=left]:origin-right data-[placement=left]:animate-[fade-in_100ms,slide-from-left_100ms]",
   ],
   variants: {
-    isExiting: { true: "animate-[fade-out_100ms]" },
     placement: {
       center: "origin-center animate-[fade-in_100ms,slide-from-bottom_100ms]",
       bottom: "origin-top animate-[fade-in_100ms,slide-from-bottom_100ms]",
       top: "origin-bottom animate-[fade-in_100ms,slide-from-top_100ms]",
       right: "origin-left animate-[fade-in_100ms,slide-from-right_100ms]",
       left: "origin-right animate-[fade-in_100ms,slide-from-left_100ms]",
+    },
+  },
+})
+
+export const animateUnmountStyle = cva({
+  variants: {
+    placement: {
+      center: "origin-center animate-[fade-out_150ms,slide-to-bottom_150ms]",
+      bottom: "origin-top animate-[fade-out_150ms,slide-to-bottom_150ms]",
+      top: "origin-bottom animate-[fade-out_150ms,slide-to-top_150ms]",
+      right: "origin-left animate-[fade-out_150ms,slide-to-right_150ms]",
+      left: "origin-right animate-[fade-out_150ms,slide-to-left_150ms]",
     },
   },
 })
