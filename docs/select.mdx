@@ -1,11 +1,21 @@
 ---
 name: Select
 description: Pick an option from a list.
-category: "Pickers"
-docUrl: "https://react-spectrum.adobe.com/react-aria/Select.html"
-aria: "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
-composes: ["Button", "ListBox", "Popover", "Field"]
+category: Pickers
+docUrl: https://react-spectrum.adobe.com/react-aria/Select.html
+ariaUrl: https://www.w3.org/WAI/ARIA/apg/patterns/listbox/
+composes:
+  - Button
+  - ListBox
+  - Popover
+  - Field
 ---
+
+### Size
+
+Use the `size` prop to set the size of the Select.
+
+<Demo demo={<SelectDemo.Size />} code={demos.size} />
 
 ### Controlled selection with dynamic items
 

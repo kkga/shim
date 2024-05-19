@@ -5,16 +5,12 @@ description:
 category: "Forms"
 ---
 
-### Field context
-
-Use `FieldContext` provider to pass down default `size`, `variant` and
-`labelPosition` to all form field components. This is useful when you want to
-set default values for all form fields in a form.
-
-<Demo stacked demo={<FieldDemo.Context />} code={demos["field-context"]} />
+<Demo stacked demo={<FieldDemo.ThemeVariant />} code={demos["theme-variant"]} />
 
 <Demo
   stacked
-  demo={<FieldDemo.ContextSize />}
-  code={demos["field-context-size"]}
+  demo={<FieldDemo.ThemeLabelPosition />}
+  code={demos["theme-label-position"]}
 />
+
+<Demo stacked demo={<FieldDemo.ThemeSize />} code={demos["theme-size"]} />
