@@ -4,7 +4,13 @@ import { Avatar } from "@ui/avatar"
 import { Badge } from "@ui/badge"
 import { Breadcrumb, Breadcrumbs } from "@ui/breadcrumbs"
 import { Button } from "@ui/button"
+import {
+  DescriptionList,
+  DescriptionListLabel,
+  DescriptionListValue,
+} from "@ui/descriptionlist"
 import { Kbd } from "@ui/kbd"
+import { Link } from "@ui/link"
 import { ListBox, ListBoxItem, ListBoxSection } from "@ui/listbox"
 import {
   Menu,
@@ -70,7 +76,6 @@ const items = [
     status: "done",
     age: "4d",
   },
-  // add more items with some different titles, descriptions, users, statuses, and ages
   {
     id: "LIN-2344",
     title: "Improve initial loading performance",
@@ -106,6 +111,60 @@ const items = [
     user: "Dean Smith",
     status: "done",
     age: "8d",
+  },
+  {
+    id: "LIN-2348",
+    title: "Implement localization",
+    description: "Marked as In-progress",
+    text: "The app should support multiple languages to cater to a global audience.",
+    user: "Jane Doe",
+    status: "in-progress",
+    age: "1d",
+  },
+  {
+    id: "LIN-2349",
+    title: "Add a search feature",
+    description: "Marked as Done",
+    text: "A search feature should be added to help users find specific items quickly.",
+    user: "John Appleseed",
+    status: "done",
+    age: "2d",
+  },
+  {
+    id: "LIN-2350",
+    title: "Improve navigation",
+    description: "Assigned to you",
+    text: "The navigation of the app should be improved for better user experience.",
+    user: "Amelie Welch",
+    status: "in-progress",
+    age: "3d",
+  },
+  {
+    id: "LIN-2351",
+    title: "Fix bugs in the login feature",
+    description: "Marked as Done",
+    text: "There are several bugs in the login feature that need to be fixed.",
+    user: "Mark Johnson",
+    status: "done",
+    age: "4d",
+  },
+  {
+    id: "LIN-2352",
+    title: "Update the app's design",
+    description: "Marked as In-progress",
+    text: "The design of the app needs to be updated to make it more modern and appealing.",
+    user: "Dean Smith",
+    status: "in-progress",
+    age: "5d",
+  },
+  {
+    id: "LIN-2353",
+    title: "Add a feedback feature",
+    description: "Marked as Done",
+    text: "A feedback feature should be added to collect user feedback and improve the app.",
+    user: "Jane Doe",
+    status: "done",
+    age: "6d",
   },
 ]
 
@@ -264,10 +323,37 @@ export function Example2() {
 
       <div className="m-2 ml-0 flex flex-1 rounded bg-panel ring shadow-xs ring-neutral-3">
         <div className="flex w-[280px] flex-col border-r border-neutral-3">
-          <div className="flex items-center gap-1 border-b border-neutral-3 p-1 px-2 text-xs">
+          <div className="flex items-center gap-1.5 border-b border-neutral-3 p-1 px-2 text-xs">
             <span className="ml-1 font-medium text-neutral-text-contrast">
               Inbox
             </span>
+            <MenuTrigger>
+              <Button
+                isSquare
+                intent="neutral"
+                variant="ghost"
+                aria-label="Inbox menu"
+              >
+                <Icon.DotsThree weight="bold" size={16} />
+              </Button>
+              <Menu>
+                <MenuItem>
+                  <Icon.Checks size={16} weight="duotone" />
+                  Mark all as read
+                  <Kbd variant="plain" className="ml-auto">
+                    ⎇U
+                  </Kbd>
+                </MenuItem>
+                <MenuItem>
+                  <Icon.XSquare size={16} weight="duotone" />
+                  Empty inbox
+                  <Kbd variant="plain" className="ml-auto">
+                    ⎇⇧D
+                  </Kbd>
+                </MenuItem>
+              </Menu>
+            </MenuTrigger>
+
             <MenuTrigger>
               <Button
                 isSquare
@@ -289,16 +375,22 @@ export function Example2() {
                 <Icon.SlidersHorizontal size={16} />
               </Button>
               <Popover placement="bottom end">
-                <div className="flex w-[200px] flex-col gap-2 p-3">
-                  <Select label="Ordering" defaultSelectedKey={"newest"}>
+                <div className="flex w-[220px] flex-col gap-2 p-3">
+                  <Select
+                    labelPosition="side"
+                    label="Ordering"
+                    defaultSelectedKey={"newest"}
+                  >
                     <SelectItem id="newest">Newest</SelectItem>
                     <SelectItem id="oldest">Oldest</SelectItem>
                     <SelectItem id="priorty">Priority</SelectItem>
                   </Select>
                   <Separator />
                   <div className="flex flex-col">
-                    <Switch defaultSelected>Show snoozed</Switch>
-                    <Switch>Show read</Switch>
+                    <Switch labelPosition="start" defaultSelected>
+                      Show snoozed
+                    </Switch>
+                    <Switch labelPosition="start">Show read</Switch>
                   </div>
                   <Separator />
                   <TagGroup
@@ -314,7 +406,7 @@ export function Example2() {
               </Popover>
             </PopoverTrigger>
           </div>
-          <div>
+          <div className="overflow-auto">
             <ListBox
               aria-label="Inbox"
               className="p-1"
@@ -460,27 +552,40 @@ export function Example2() {
             <h4 className="text-balance text-base font-medium leading-tight text-neutral-text-contrast">
               {selectedItem?.title}
             </h4>
+
             <p className="text-neutral-text">{selectedItem?.text}</p>
-            {selectedItem?.status === "in-progress" && (
-              <Badge intent="warning">
-                <Icon.CircleHalf
-                  className="shrink-0"
-                  size={16}
-                  weight="duotone"
-                />
-                In progress
-              </Badge>
-            )}
-            {selectedItem?.status === "done" && (
-              <Badge intent="success">
-                <Icon.CheckCircle
-                  className="shrink-0"
-                  size={16}
-                  weight="duotone"
-                />
-                Done
-              </Badge>
-            )}
+
+            <DescriptionList orientation="horizontal">
+              <DescriptionListLabel>ID</DescriptionListLabel>
+              <DescriptionListValue>{selectedItem?.id}</DescriptionListValue>
+              <DescriptionListLabel>Assignee</DescriptionListLabel>
+              <DescriptionListValue>
+                <Link href="#">{selectedItem?.user}</Link>
+              </DescriptionListValue>
+              <DescriptionListLabel>Status</DescriptionListLabel>
+              <DescriptionListValue>
+                {selectedItem?.status === "in-progress" && (
+                  <div className="flex items-center gap-1.5 text-warning-text">
+                    <Icon.CircleHalf
+                      className="shrink-0"
+                      size={16}
+                      weight="duotone"
+                    />
+                    In progress
+                  </div>
+                )}
+                {selectedItem?.status === "done" && (
+                  <div className="flex items-center gap-1.5 text-success-text">
+                    <Icon.CheckCircle
+                      className="shrink-0"
+                      size={16}
+                      weight="duotone"
+                    />
+                    Done
+                  </div>
+                )}
+              </DescriptionListValue>
+            </DescriptionList>
 
             <div className="mt-1 flex flex-col items-start gap-1">
               <Button intent="neutral" variant="ghost">
@@ -512,13 +617,9 @@ export function Example2() {
               </div>
             </div>
             <div className="mt-2 flex flex-col gap-2">
-              <TextArea
-                variant="outline"
-                size={1}
-                placeholder="Add a comment..."
-              />
+              <TextArea placeholder="Add a comment..." />
               <Button intent="accent" variant="ghost" className="ml-auto">
-                Comment
+                Post
               </Button>
             </div>
           </div>
