@@ -4,11 +4,7 @@ import { Avatar } from "@ui/avatar"
 import { Badge } from "@ui/badge"
 import { Breadcrumb, Breadcrumbs } from "@ui/breadcrumbs"
 import { Button } from "@ui/button"
-import {
-  DescriptionList,
-  DescriptionListLabel,
-  DescriptionListValue,
-} from "@ui/descriptionlist"
+import { DataList, DataListLabel, DataListValue } from "@ui/datalist"
 import { Kbd } from "@ui/kbd"
 import { Link } from "@ui/link"
 import { ListBox, ListBoxItem, ListBoxSection } from "@ui/listbox"
@@ -363,7 +359,7 @@ export function Example2() {
               >
                 <Icon.FunnelSimple size={16} />
               </Button>
-              <Menu selectionMode="multiple">
+              <Menu selectionMode="multiple" placement="bottom end">
                 <MenuItem>Assignments</MenuItem>
                 <MenuItem>Mentions</MenuItem>
                 <MenuItem>Status changes</MenuItem>
@@ -555,15 +551,15 @@ export function Example2() {
 
             <p className="text-neutral-text">{selectedItem?.text}</p>
 
-            <DescriptionList orientation="horizontal">
-              <DescriptionListLabel>ID</DescriptionListLabel>
-              <DescriptionListValue>{selectedItem?.id}</DescriptionListValue>
-              <DescriptionListLabel>Assignee</DescriptionListLabel>
-              <DescriptionListValue>
+            <DataList orientation="horizontal">
+              <DataListLabel>ID</DataListLabel>
+              <DataListValue>{selectedItem?.id}</DataListValue>
+              <DataListLabel>Assignee</DataListLabel>
+              <DataListValue>
                 <Link href="#">{selectedItem?.user}</Link>
-              </DescriptionListValue>
-              <DescriptionListLabel>Status</DescriptionListLabel>
-              <DescriptionListValue>
+              </DataListValue>
+              <DataListLabel>Status</DataListLabel>
+              <DataListValue>
                 {selectedItem?.status === "in-progress" && (
                   <div className="flex items-center gap-1.5 text-warning-text">
                     <Icon.CircleHalf
@@ -584,8 +580,8 @@ export function Example2() {
                     Done
                   </div>
                 )}
-              </DescriptionListValue>
-            </DescriptionList>
+              </DataListValue>
+            </DataList>
 
             <div className="mt-1 flex flex-col items-start gap-1">
               <Button intent="neutral" variant="ghost">

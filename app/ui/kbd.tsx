@@ -2,9 +2,10 @@
 
 import { cva } from "@lib/style"
 import type { VariantProps } from "cva"
+import { Keyboard as RACKeyboard } from "react-aria-components"
 
 const style = cva({
-  base: "inline-flex w-fit items-center bg-panel font-book text-neutral-10 leading-none bg-clip-padding font-sans",
+  base: "inline-flex w-fit items-center bg-panel font-book text-neutral-text leading-none font-sans",
   variants: {
     variant: {
       plain: "bg-transparent",
@@ -23,11 +24,13 @@ const style = cva({
 })
 
 interface KbdProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof style> {}
 
 function Kbd({ className, size, variant, ...props }: KbdProps) {
-  return <kbd className={style({ size, variant, className })} {...props} />
+  return (
+    <RACKeyboard className={style({ size, variant, className })} {...props} />
+  )
 }
 
 export { Kbd, type KbdProps }

@@ -6,11 +6,7 @@ import { Badge } from "@ui/badge"
 import { Breadcrumb, Breadcrumbs } from "@ui/breadcrumbs"
 import { Button } from "@ui/button"
 import { ComboBox, ComboBoxItem } from "@ui/combobox"
-import {
-  DescriptionList,
-  DescriptionListLabel,
-  DescriptionListValue,
-} from "@ui/descriptionlist"
+import { DataList, DataListLabel, DataListValue } from "@ui/datalist"
 import { Link } from "@ui/link"
 import {
   Menu,
@@ -418,16 +414,16 @@ export function Example1() {
                 v4.
               </p>
 
-              <DescriptionList>
-                <DescriptionListLabel>
+              <DataList>
+                <DataListLabel>
                   <Icon.Link size={16} />
-                </DescriptionListLabel>
-                <DescriptionListValue>
+                </DataListLabel>
+                <DataListValue>
                   <Link className="font-medium" href="#">
                     shim.kkga.me
                   </Link>
-                </DescriptionListValue>
-              </DescriptionList>
+                </DataListValue>
+              </DataList>
               <TagGroup aria-label="Tags" color="green">
                 <Tag>react</Tag>
                 <Tag>react-aria</Tag>
@@ -438,24 +434,24 @@ export function Example1() {
 
               <Separator />
 
-              <DescriptionList>
-                <DescriptionListLabel>
+              <DataList>
+                <DataListLabel>
                   <Icon.Scales size={16} />
-                </DescriptionListLabel>
-                <DescriptionListValue>MIT License</DescriptionListValue>
-                <DescriptionListLabel>
+                </DataListLabel>
+                <DataListValue>MIT License</DataListValue>
+                <DataListLabel>
                   <Icon.Star size={16} />
-                </DescriptionListLabel>
-                <DescriptionListValue>2.1k stars</DescriptionListValue>
-                <DescriptionListLabel>
+                </DataListLabel>
+                <DataListValue>2.1k stars</DataListValue>
+                <DataListLabel>
                   <Icon.Eye size={16} />
-                </DescriptionListLabel>
-                <DescriptionListValue>20 watchers</DescriptionListValue>
-                <DescriptionListLabel>
+                </DataListLabel>
+                <DataListValue>20 watchers</DataListValue>
+                <DataListLabel>
                   <Icon.GitFork size={16} />
-                </DescriptionListLabel>
-                <DescriptionListValue>38 forks</DescriptionListValue>
-              </DescriptionList>
+                </DataListLabel>
+                <DataListValue>38 forks</DataListValue>
+              </DataList>
 
               <Separator />
 
