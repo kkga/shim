@@ -18,7 +18,9 @@ import { useThemeProps } from "@lib/theme"
 const style = compose(
   animateMountStyle,
   cva({
-    base: "z-20 min-w-[var(--trigger-width)] bg-panel text-neutral-text text-xs shadow-[var(--shadow-lg)] outline-none",
+    base: [
+      "z-20 min-w-[var(--trigger-width)] bg-panel text-neutral-text text-xs shadow-[var(--shadow-lg)] outline-none",
+    ],
     variants: {
       size: { 1: "rounded-lg", 2: "rounded-lg", 3: "rounded-[10px]" },
     },
@@ -43,8 +45,11 @@ function Popover({
     <RACPopover
       {...props}
       offset={offset}
-      className={({ isExiting, placement }) =>
-        isExiting ? animateUnmountStyle({ placement }) : ""
+      className={({ placement }) =>
+        animateUnmountStyle({
+          placement,
+          className: "data-[trigger=SubmenuTrigger]:-translate-y-1",
+        })
       }
     >
       {({ placement }) => (
