@@ -59,7 +59,7 @@ function Select<T extends object>({
         <Theme {...themeProps}>
           {label && <Label>{label}</Label>}
           <Button intent="neutral">
-            <RACSelectValue className="grow-1 truncate text-left font-normal data-placeholder:text-neutral-placeholder" />
+            <RACSelectValue className="flex-1 truncate text-left font-normal data-placeholder:text-neutral-placeholder" />
             <CaretDown
               size={themeProps.size === 1 ? 12 : 16}
               aria-hidden
@@ -82,13 +82,16 @@ function Select<T extends object>({
   )
 }
 
-function SelectItem({ children, className, href, ...props }: ListBoxItemProps) {
+function SelectItem({ className, href, ...props }: ListBoxItemProps) {
   let { size } = useThemeProps({ size: props.size })
+  let textValue =
+    props.textValue ||
+    (typeof props.children === "string" ? props.children : undefined)
 
   return (
-    <ListBoxItem {...props}>
+    <ListBoxItem {...props} textValue={textValue}>
       {composeRenderProps(
-        children,
+        props.children,
         (children, { selectionMode, isSelected }) => (
           <>
             {selectionMode !== "none" && !href && (
@@ -104,11 +107,14 @@ function SelectItem({ children, className, href, ...props }: ListBoxItemProps) {
                 )}
               </span>
             )}
-            {typeof children === "string" ?
-              <span className="flex items-center gap-2 truncate">
-                {children}
-              </span>
-            : children}
+            <span
+              className={cx(
+                "flex flex-1 items-center truncate",
+                size === 1 ? "gap-2" : "gap-2.5",
+              )}
+            >
+              {children}
+            </span>
           </>
         ),
       )}

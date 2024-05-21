@@ -2,6 +2,7 @@
 
 import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
+import { VariantProps } from "cva"
 import {
   Switch as RACSwitch,
   type SwitchProps as RACSwitchProps,
@@ -20,9 +21,14 @@ const styles = {
         2: "text-[13px] gap-1.5 h-7",
         3: "text-sm gap-2 h-8",
       },
+      labelPosition: {
+        start: "flex-row-reverse justify-between",
+        end: "",
+      },
     },
     defaultVariants: {
       size: 1,
+      labelPosition: "end",
     },
   }),
 
@@ -35,16 +41,16 @@ const styles = {
       variants: {
         variant: {
           classic: [
-            "bg-neutral-bg-subtle shadow-inner inset-ring-1 inset-ring-neutral-border",
+            "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
             // pressed
             "group-data-pressed:bg-neutral-bg-active",
             // selected
             "group-data-selected:bg-accent-solid",
             // disabled
-            "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line group-data-disabled:shadow-none",
+            "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring group-data-disabled:inset-ring-neutral-5 group-data-disabled:shadow-none",
           ],
           soft: [
-            "bg-neutral-bg-hover inset-ring-1 inset-ring-neutral-line",
+            "bg-neutral-bg-hover inset-ring-1 inset-ring-neutral-3",
             // pressed
             "group-data-pressed:bg-neutral-bg-active",
             // selected
@@ -79,11 +85,11 @@ const styles = {
     base: [
       "size-3.5 transform translateX-0 transition-transform rounded-full",
       // disabled
-      "group-data-disabled:shadow-none",
+      "group-data-disabled:bg-neutral-bg-subtle",
     ],
     variants: {
       variant: {
-        classic: "bg-white shadow ring ring-black/15",
+        classic: "bg-white shadow-[var(--shadow-xs)]",
         soft: "bg-neutral-solid border border-transparent bg-clip-content group-data-selected:bg-accent-text",
         outline:
           "bg-neutral-bg border bg-clip-content border-transparent inset-ring inset-ring-neutral-border group-data-selected:inset-ring-accent-border-hover group-data-selected:bg-accent-bg-active",
@@ -105,16 +111,23 @@ interface SwitchProps
     Omit<
       FieldProps,
       "label" | "description" | "labelPosition" | "errorMessage"
-    > {}
+    >,
+    VariantProps<typeof styles.switch> {}
 
-function Switch({ className, children, ...props }: SwitchProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+function Switch({ className, children, labelPosition, ...props }: SwitchProps) {
+  let themeProps = useThemeProps({
+    size: props.size,
+    fieldVariant: props.variant,
+  })
   let { size, fieldVariant: variant } = themeProps
 
   return (
     <RACSwitch
       {...props}
-      className={cxRenderProps(className, styles.switch({ size }))}
+      className={cxRenderProps(
+        className,
+        styles.switch({ size, labelPosition }),
+      )}
     >
       {() => (
         <Theme>

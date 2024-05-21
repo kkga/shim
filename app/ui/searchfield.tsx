@@ -99,7 +99,7 @@ function PrefixIcon({ size, className, icon }: PrefixIconProps) {
     <div
       aria-hidden
       className={cx(
-        "flex items-center justify-center",
+        "pointer-events-none flex items-center justify-center",
         size === 1 && "size-6",
         size === 2 && "size-7",
         size === 3 && "size-8",

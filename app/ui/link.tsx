@@ -11,6 +11,9 @@ const style = compose(
   focusStyle,
   cva({
     base: [
+      "underline-offset-2",
+      // hovered
+      "data-hovered:underline",
       // disabled
       "data-disabled:no-underline data-disabled:cursor-default data-disabled:text-neutral-placeholder",
       // current
@@ -22,15 +25,15 @@ const style = compose(
       },
       intent: {
         neutral:
-          "text-neutral-text decoration-neutral-line hover:decoration-neutral-border-hover",
+          "text-neutral-text decoration-neutral-line data-hovered:decoration-neutral-border-hover",
         accent:
-          "text-accent-text decoration-accent-line hover:decoration-accent-border-hover",
+          "text-accent-text decoration-accent-line data-hovered:decoration-accent-border-hover",
         warning:
-          "text-warning-text decoration-warning-line hover:decoration-warning-border-hover",
+          "text-warning-text decoration-warning-line data-hovered:decoration-warning-border-hover",
         success:
-          "text-success-text decoration-success-line hover:decoration-success-border-hover",
+          "text-success-text decoration-success-line data-hovered:decoration-success-border-hover",
         error:
-          "text-error-text decoration-error-line hover:decoration-error-border-hover",
+          "text-error-text decoration-error-line data-hovered:decoration-error-border-hover",
       },
     },
     defaultVariants: {

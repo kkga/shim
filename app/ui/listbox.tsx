@@ -45,7 +45,7 @@ const styles = {
 
   item: cva({
     base: [
-      "relative flex items-center rounded text-neutral-text font-book truncate shrink-0 outline-0",
+      "relative flex items-center rounded font-book truncate shrink-0 outline-0",
       "data-disabled:text-neutral-placeholder",
     ],
     variants: {
@@ -78,16 +78,11 @@ interface ListBoxItemProps
   extends RACListBoxItemProps,
     VariantProps<typeof styles.item> {}
 
-function ListBoxItem({
-  intent,
-  className,
-  textValue,
-  children,
-  href,
-  ...props
-}: ListBoxItemProps) {
+function ListBoxItem({ intent, className, href, ...props }: ListBoxItemProps) {
   let { size } = useThemeProps(props)
-  textValue ??= typeof children === "string" ? children : undefined
+  let textValue =
+    props.textValue ||
+    (typeof props.children === "string" ? props.children : undefined)
 
   return (
     <RACListBoxItem
@@ -102,13 +97,9 @@ function ListBoxItem({
         }),
       )}
     >
-      {composeRenderProps(children, (children) =>
-        typeof children === "string" ?
-          <span className="flex flex-1 items-center gap-2 truncate">
-            {children}
-          </span>
-        : children,
-      )}
+      {composeRenderProps(props.children, (children) => (
+        <>{children}</>
+      ))}
     </RACListBoxItem>
   )
 }

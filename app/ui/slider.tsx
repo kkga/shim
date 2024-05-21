@@ -1,6 +1,7 @@
 "use client"
 
-import { compose, cva, cxRenderProps, focusStyle } from "@lib/utils"
+import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
+import { Theme, useThemeProps } from "@lib/theme"
 import {
   Slider as RACSlider,
   SliderOutput,
@@ -8,14 +9,7 @@ import {
   SliderTrack,
   type SliderProps as RACSliderProps,
 } from "react-aria-components"
-import {
-  Description,
-  FieldContext,
-  FieldProps,
-  Label,
-  fieldLayoutStyle,
-  useFieldProps,
-} from "./field"
+import { Description, FieldProps, Label, fieldLayoutStyle } from "./field"
 
 const styles = {
   track: cva({
@@ -38,17 +32,17 @@ const styles = {
   }),
 
   trackInner: cva({
-    base: "absolute rounded-full inset-ring inset-ring-neutral-line overflow-hidden",
+    base: "absolute rounded-full overflow-hidden",
     variants: {
       size: { 1: null, 2: null, 3: null },
       variant: {
-        classic: "bg-neutral-bg-subtle shadow-inner",
+        classic: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
         soft: "bg-neutral-bg inset-ring-0",
-        outline: "bg-transparent",
+        outline:
+          "bg-transparent inset-ring-1 inset-ring-neutral-line shadow-none",
       },
       orientation: { horizontal: "inset-y-auto", vertical: "inset-x-auto" },
       isDisabled: {
-        false: "bg-neutral-bg shadow-inner",
         true: "bg-neutral-bg-subtle shadow-none",
       },
     },
@@ -119,24 +113,21 @@ function Slider<T extends number | number[]>({
   description,
   thumbLabels,
   isFilled,
+  className,
   ...props
 }: SliderProps<T>) {
-  let { labelPosition, size, variant } = useFieldProps(props)
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let { labelPosition, size, fieldVariant: variant } = themeProps
 
   return (
     <RACSlider
       {...props}
-      className={cxRenderProps(
-        props.className,
-        fieldLayoutStyle({ labelPosition }),
-      )}
+      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
-      <FieldContext.Provider value={{ size, variant, labelPosition }}>
+      <Theme {...themeProps}>
         {label && (
           <div className="flex justify-between">
-            <Label labelPosition={labelPosition} size={size}>
-              {label}
-            </Label>
+            <Label>{label}</Label>
             {labelPosition === "top" && (
               <SliderOutput className={styles.output({ size })}>
                 {({ state }) =>
@@ -205,7 +196,7 @@ function Slider<T extends number | number[]>({
         </div>
 
         {description && <Description>{description}</Description>}
-      </FieldContext.Provider>
+      </Theme>
     </RACSlider>
   )
 }

@@ -33,7 +33,7 @@ const fieldLayoutStyle = cva({
   variants: {
     labelPosition: {
       top: "flex flex-col gap-1",
-      side: "grid gap-1 grid-cols-[1fr_3fr]",
+      side: "grid gap-1 grid-cols-[1fr_2fr]",
     },
   },
   defaultVariants: { labelPosition: "top" },

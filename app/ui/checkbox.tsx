@@ -83,7 +83,7 @@ const styles = {
       variants: {
         variant: {
           classic: [
-            "bg-neutral-bg-subtle shadow-inner inset-ring-1 inset-ring-neutral-border text-white",
+            "bg-neutral-bg-subtle shadow-[var(--shadow-inner)] text-white",
             // pressed
             "group-data-pressed:bg-neutral-bg-active",
             // selected

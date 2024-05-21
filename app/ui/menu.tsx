@@ -25,7 +25,12 @@ interface MenuProps<T> extends RACMenuProps<T> {
   size?: Size
 }
 
-function Menu<T extends object>({ placement, offset, ...props }: MenuProps<T>) {
+function Menu<T extends object>({
+  placement,
+  className,
+  offset,
+  ...props
+}: MenuProps<T>) {
   let themeProps = useThemeProps(props)
 
   return (
@@ -33,7 +38,10 @@ function Menu<T extends object>({ placement, offset, ...props }: MenuProps<T>) {
       <Popover offset={offset} placement={placement} className={"min-w-32"}>
         <RACMenu
           {...props}
-          className="flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0"
+          className={cx(
+            "flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0",
+            className,
+          )}
         />
       </Popover>
     </Theme>
@@ -78,7 +86,12 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
                 )}
               </span>
             )}
-            <span className="flex flex-1 items-center gap-1.5 truncate pr-2">
+            <span
+              className={cx(
+                "flex flex-1 items-center gap-1.5",
+                typeof children === "string" ? "truncate" : "",
+              )}
+            >
               {children}
             </span>
             {hasSubmenu && <CaretRight size={12} weight="bold" aria-hidden />}
