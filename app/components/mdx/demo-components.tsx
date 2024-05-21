@@ -263,4 +263,15 @@ export const demoComponents = {
       import("@/demos/toolbar").then((mod) => mod.Orientation),
     ),
   },
+  KbdDemo: {
+    Main: dynamic(() => import("@/demos/kbd").then((mod) => mod.Main)),
+    Variant: dynamic(() => import("@/demos/kbd").then((mod) => mod.Variant)),
+  },
+  DataListDemo: {
+    Main: dynamic(() => import("@/demos/datalist").then((mod) => mod.Main)),
+    Orientation: dynamic(() =>
+      import("@/demos/datalist").then((mod) => mod.Orientation),
+    ),
+    Size: dynamic(() => import("@/demos/datalist").then((mod) => mod.Size)),
+  },
 }

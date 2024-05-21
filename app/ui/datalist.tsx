@@ -3,20 +3,22 @@
 import type { VariantProps } from "cva"
 
 import { cva, cx } from "@lib/style"
+import { Theme, useThemeProps } from "@lib/theme"
+import { createContext, useContext } from "react"
 
 const styles = {
   list: cva({
-    base: "grid items-center place-content-start",
+    base: "items-center place-content-start",
     variants: {
       orientation: {
-        horizontal: "grid-cols-[max-content_auto] gap-y-2 gap-x-6",
-        vertical: "grid-cols-1 gap-y-1",
-        grid: "grid grid-flow-col grid-rows-2 gap-x-6 gap-y-1",
+        horizontal:
+          "grid grid-cols-[max-content_auto] gap-y-2 gap-x-3 auto-rows-fr",
+        vertical: "flex flex-col items-stretch gap-y-3",
       },
       size: {
         1: "text-xs",
-        2: "text-[13ox]",
-        3: "text-sm",
+        2: "text-[13px] gap-x-4 gap-y-3",
+        3: "text-sm gap-x-6 gap-y-3",
       },
     },
     defaultVariants: {
@@ -24,14 +26,12 @@ const styles = {
       size: 1,
     },
   }),
-  // TODO: make this work for grid orientation
   item: cva({
-    base: "grid grid-cols-subgrid grid-rows-subgrid",
+    base: "",
     variants: {
       orientation: {
-        horizontal: "col-span-2",
-        vertical: "grid-cols-1 gap-y-1",
-        grid: "row-span-2",
+        horizontal: "grid grid-cols-subgrid col-span-2 items-center",
+        vertical: "flex flex-col gap-y-1",
       },
     },
   }),
@@ -43,23 +43,41 @@ const styles = {
   }),
 }
 
+type Orientation = "horizontal" | "vertical"
+const OrientationContext = createContext<Orientation>("horizontal")
+
 interface DataListProps
   extends React.HTMLAttributes<HTMLDListElement>,
     VariantProps<typeof styles.list> {}
 
-function DataList({ className, size, orientation, ...props }: DataListProps) {
+function DataList({
+  className,
+  children,
+  orientation = "horizontal",
+  ...props
+}: DataListProps) {
+  let themeProps = useThemeProps({ size: props.size })
+  let { size } = themeProps
+
   return (
     <dl
       className={cx(styles.list({ size, orientation }), className)}
       {...props}
-    />
+    >
+      <Theme {...themeProps}>
+        <OrientationContext.Provider value={orientation}>
+          {children}
+        </OrientationContext.Provider>
+      </Theme>
+    </dl>
   )
 }
 
 interface DataListItemProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 function DataListItem({ className, ...props }: DataListItemProps) {
-  return <div className={styles.item({ className })} {...props} />
+  let orientation = useContext(OrientationContext)
+  return <div className={styles.item({ className, orientation })} {...props} />
 }
 
 interface DataListLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -75,3 +93,9 @@ function DataListValue({ className, ...props }: DataListValueProps) {
 }
 
 export { DataList, DataListItem, DataListLabel, DataListValue }
+export type {
+  DataListItemProps,
+  DataListLabelProps,
+  DataListProps,
+  DataListValueProps,
+}

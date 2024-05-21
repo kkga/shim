@@ -3,7 +3,7 @@ import { DataList, DataListItem, DataListLabel, DataListValue } from "@ui/datali
 import { Link } from "@ui/link"
 
 export default () => (
-  <DataList>
+  <DataList orientation="vertical">
     <DataListItem>
       <DataListLabel>Name</DataListLabel>
       <DataListValue>John Doe</DataListValue>
