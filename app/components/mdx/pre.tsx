@@ -45,19 +45,19 @@ export async function Pre({
         "codeblock group relative flex flex-col overflow-auto",
         "max-h-[calc(100dvh-12rem)]",
         "rounded-lg border border-neutral-3 bg-panel",
-        "font-mono text-[13px] font-normal leading-normal text-neutral-text",
-        "[&>code]:text-[100%]",
+        "font-mono text-[13px] leading-normal text-neutral-text",
+        "[&_code]:text-[100%]!",
         className,
       )}
     >
       {collapsed ?
         <Collapsible defaultCollapsed={collapsed}>
           <pre className="w-full flex-1 overflow-scroll p-4">
-            <Code className="text-[13px]!">{source}</Code>
+            <Code>{source}</Code>
           </pre>
         </Collapsible>
       : <pre className="w-full flex-1 overflow-scroll p-4">
-          <Code className="text-[13px]!">{source}</Code>
+          <Code>{source}</Code>
         </pre>
       }
 
