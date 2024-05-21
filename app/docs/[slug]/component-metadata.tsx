@@ -1,31 +1,27 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr"
+import {
+  DataList,
+  DataListItem,
+  DataListLabel,
+  DataListValue,
+} from "@ui/datalist"
 import { Link } from "@ui/link"
 import { Fragment } from "react"
 import { ComponentMetadata } from "../lib/types"
 
 const GITHUB_FILE_URL = "https://github.com/kkga/shim-ui/blob/master/app/ui"
 
-function MetadataItem({ title, children }) {
-  return (
-    <div className="flex flex-col gap-2">
-      <span className="text-xs font-medium text-neutral-text">{title}</span>
-      {children}
-    </div>
-  )
-}
-
 function MetadataLink({ href, title, external, children }) {
   return (
     <Link
       href={href}
-      className="self-start text-xs"
       rel={external ? "noreferrer" : undefined}
       target={external ? "_blank" : undefined}
     >
       {children}
       {external && (
         <ArrowUpRight
-          className="ml-0.5 inline align-bottom text-accent-9"
+          className="ml-0.5 inline align-text-top text-accent-10"
           size={16}
         />
       )}
@@ -46,39 +42,49 @@ function MetadataRow({
   let filename = name.toLowerCase()
 
   return (
-    <div className="relative flex gap-12">
+    <DataList size={2} orientation="vertical" className="flex-row gap-8">
       {docUrl && (
-        <MetadataItem title="Documentation">
-          <MetadataLink
-            href={docUrl}
-            title={`View ${name} documentation`}
-            external
-          >
-            React Aria {name}
-          </MetadataLink>
-        </MetadataItem>
+        <DataListItem>
+          <DataListLabel>Documentation</DataListLabel>
+          <DataListValue>
+            <MetadataLink
+              href={docUrl}
+              title={`View ${name} documentation`}
+              external
+            >
+              React Aria {name}
+            </MetadataLink>
+          </DataListValue>
+        </DataListItem>
       )}
       {ariaUrl && (
-        <MetadataItem title="Pattern">
-          <MetadataLink href={ariaUrl} title="View ARIA pattern" external>
-            W3C ARIA
-          </MetadataLink>
-        </MetadataItem>
+        <DataListItem>
+          <DataListLabel>Pattern</DataListLabel>
+          <DataListValue>
+            <MetadataLink href={ariaUrl} title="View ARIA pattern" external>
+              W3C ARIA
+            </MetadataLink>
+          </DataListValue>
+        </DataListItem>
       )}
       {filename && (
-        <MetadataItem title="Source code">
-          <MetadataLink
-            href={`${GITHUB_FILE_URL}/${filename}.tsx`}
-            title="View source code on GitHub"
-            external
-          >
-            GitHub
-          </MetadataLink>
-        </MetadataItem>
+        <DataListItem>
+          <DataListLabel>Source</DataListLabel>
+          <DataListValue>
+            <MetadataLink
+              href={`${GITHUB_FILE_URL}/${filename}.tsx`}
+              title="View source code on GitHub"
+              external
+            >
+              GitHub
+            </MetadataLink>
+          </DataListValue>
+        </DataListItem>
       )}
       {dependencies && (
-        <MetadataItem title="Composes">
-          <span className="text-xs">
+        <DataListItem>
+          <DataListLabel>Composes</DataListLabel>
+          <DataListValue>
             {dependencies.map(({ name, slug }, i) => (
               <Fragment key={name}>
                 {i > 0 && ", "}
@@ -91,10 +97,10 @@ function MetadataRow({
                 </MetadataLink>
               </Fragment>
             ))}
-          </span>
-        </MetadataItem>
+          </DataListValue>
+        </DataListItem>
       )}
-    </div>
+    </DataList>
   )
 }
 
