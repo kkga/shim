@@ -3,10 +3,11 @@
 import type { VariantProps } from "cva"
 
 import { cva, cx } from "@lib/style"
+import { useThemeProps } from "@lib/theme"
 import { Children, isValidElement } from "react"
 
 const badgeStyles = cva({
-  base: "inline-flex w-min items-center justify-center font-book leading-none bg-clip-padding",
+  base: "inline-flex w-fit items-center justify-center font-book leading-none bg-clip-padding",
   variants: {
     intent: {
       neutral:
@@ -54,7 +55,8 @@ interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeStyles> {}
 
-function Badge({ className, intent, isSquare, size, ...props }: BadgeProps) {
+function Badge({ className, intent, isSquare, ...props }: BadgeProps) {
+  let { size } = useThemeProps({ size: props.size })
   let children = Children.toArray(props.children)
   let hasOnlySvg =
     children.length === 1 &&
