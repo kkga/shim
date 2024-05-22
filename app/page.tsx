@@ -1,7 +1,7 @@
-import { Link } from "@ui/link"
+import { Link } from "@ui/Link"
+import { Example1 } from "../examples/1"
+import { Example2 } from "../examples/2"
 import { H2, H4, HR, P } from "./components/mdx/mdx-components"
-import { Example1 } from "./examples/1"
-import { Example2 } from "./examples/2"
 
 export default function Page() {
   return (

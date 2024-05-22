@@ -4,12 +4,12 @@ import {
   DataListItem,
   DataListLabel,
   DataListValue,
-} from "@ui/datalist"
-import { Link } from "@ui/link"
+} from "@ui/DataList"
+import { Link } from "@ui/Link"
 import { Fragment } from "react"
 import { ComponentMetadata } from "../lib/types"
 
-const GITHUB_FILE_URL = "https://github.com/kkga/shim-ui/blob/master/app/ui"
+const GITHUB_FILE_URL = "https://github.com/kkga/shim-ui/blob/master/components"
 
 function MetadataLink({ href, title, external, children }) {
   return (
@@ -39,8 +39,6 @@ function MetadataRow({
   name,
   dependencies,
 }: MetadataRowProps) {
-  let filename = name.toLowerCase()
-
   return (
     <DataList size={2} orientation="vertical" className="flex-row gap-8">
       {docUrl && (
@@ -67,20 +65,18 @@ function MetadataRow({
           </DataListValue>
         </DataListItem>
       )}
-      {filename && (
-        <DataListItem>
-          <DataListLabel>Source</DataListLabel>
-          <DataListValue>
-            <MetadataLink
-              href={`${GITHUB_FILE_URL}/${filename}.tsx`}
-              title="View source code on GitHub"
-              external
-            >
-              GitHub
-            </MetadataLink>
-          </DataListValue>
-        </DataListItem>
-      )}
+      <DataListItem>
+        <DataListLabel>Source</DataListLabel>
+        <DataListValue>
+          <MetadataLink
+            href={`${GITHUB_FILE_URL}/${name}.tsx`}
+            title="View source code on GitHub"
+            external
+          >
+            GitHub
+          </MetadataLink>
+        </DataListValue>
+      </DataListItem>
       {dependencies && (
         <DataListItem>
           <DataListLabel>Composes</DataListLabel>

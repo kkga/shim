@@ -1,7 +1,7 @@
 "use client"
 import { cx } from "@lib/style"
 import { ArrowLineDown, ArrowLineUp } from "@phosphor-icons/react"
-import { Button } from "@ui/button"
+import { Button } from "@ui/Button"
 import { useState } from "react"
 
 export function Collapsible({ children, defaultCollapsed }) {

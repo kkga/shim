@@ -1,5 +1,5 @@
-import "./styles/base.css"
-import "./styles/site.css"
+import "../theme/theme.css"
+import "./site.css"
 
 import { ClientProviders, ThemeProvider } from "@/components/providers"
 import DarkIcon from "@/icon-dark.png"
@@ -9,9 +9,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
 import { StrictMode, useMemo } from "react"
 import { LocalizedStringProvider } from "react-aria-components/i18n"
-import { fontMono, fontSans } from "./_fonts"
 import { Sidebar } from "./components/sidebar"
 import { getComponentDocs, getGuides } from "./docs/lib/utils"
+import { fontMono, fontSans } from "./fonts"
 import { baseUrl } from "./sitemap"
 
 export const metadata: Metadata = {
@@ -103,7 +103,7 @@ export default function RootLayout({
                   <Sidebar items={navItems} />
                 </div>
 
-                <main className="flex-1 py-16 px-8">
+                <main className="flex-1 px-8 py-16">
                   <div className="mx-auto max-w-4xl text-[14px] leading-normal [&_.s-box]:-mx-4">
                     {children}
                   </div>

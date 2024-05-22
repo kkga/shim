@@ -1,32 +1,55 @@
 import matter from "gray-matter"
 import fs from "node:fs"
-import path from "node:path"
+import path, { basename } from "node:path"
 import { ComponentMetadata, GuideMetadata } from "./types"
 
 function readMDXFile(filePath: string) {
-  const rawContent = fs.readFileSync(filePath, "utf-8")
-  const { content, data } = matter(rawContent)
+  let rawContent = fs.readFileSync(filePath, "utf-8")
+  let { content, data } = matter(rawContent)
   return { data, content }
 }
 
-function getMDXData(dir: string) {
-  const mdxFiles = fs
-    .readdirSync(dir)
-    .filter((file) => path.extname(file) === ".mdx")
+function getComponentDocs() {
+  let dir = path.join(process.cwd(), "docs")
 
-  return mdxFiles.map((file) => {
-    const { data, content } = readMDXFile(path.join(dir, file))
-    const slug = path.basename(file, path.extname(file))
+  let entries = fs
+    .readdirSync(dir, { recursive: true, withFileTypes: true })
+    .filter((dirent) => dirent.isFile() && path.extname(dirent.name) === ".mdx")
+    .map((dirent) => basename(dirent.parentPath))
 
-    return {
-      data,
-      slug,
-      content,
-    }
+  return entries.map((name) => {
+    let { data, content } = readMDXFile(path.join(dir, name, "doc.mdx"))
+    let slug = name.toLowerCase()
+    return { metadata: data as ComponentMetadata, slug, content }
   })
 }
 
-function getRawDemos(dir: string) {
+function getGuides() {
+  let dir = path.join(process.cwd(), "guides")
+
+  let entries = fs
+    .readdirSync(dir, { recursive: true, withFileTypes: true })
+    .filter((dirent) => dirent.isFile() && path.extname(dirent.name) === ".mdx")
+    .map((dirent) => dirent.name)
+
+  return entries.map((name) => {
+    let { data, content } = readMDXFile(path.join(dir, name))
+    let slug = name.replace(/\.mdx$/, "")
+    return { metadata: data as GuideMetadata, slug, content }
+  })
+}
+
+function getComponentSource(filename: string) {
+  return fs
+    .readFileSync(
+      path.join(process.cwd(), "components", `${filename}.tsx`),
+      "utf-8",
+    )
+    .trim()
+}
+
+function getComponentDemos(componentDir: string) {
+  let dir = path.join(process.cwd(), "docs", componentDir)
   const demoFiles = fs
     .readdirSync(dir)
     .filter((file) => path.extname(file) === ".tsx")
@@ -40,33 +63,6 @@ function getRawDemos(dir: string) {
   }
 
   return demos
-}
-
-function getComponentDocs() {
-  return getMDXData(path.join(process.cwd(), "docs")).map((doc) => ({
-    ...doc,
-    metadata: doc.data as ComponentMetadata,
-  }))
-}
-
-function getGuides() {
-  return getMDXData(path.join(process.cwd(), "docs", "guides")).map((doc) => ({
-    ...doc,
-    metadata: doc.data as GuideMetadata,
-  }))
-}
-
-function getComponentSource(filename: string) {
-  return fs
-    .readFileSync(
-      path.join(process.cwd(), "app", "ui", `${filename}.tsx`),
-      "utf-8",
-    )
-    .trim()
-}
-
-function getComponentDemos(componentDir: string) {
-  return getRawDemos(path.join(process.cwd(), "app", "demos", componentDir))
 }
 
 function getUtilsSource() {

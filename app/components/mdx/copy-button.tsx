@@ -1,8 +1,8 @@
 "use client"
 
 import { Check, Copy } from "@phosphor-icons/react"
-import { Button } from "@ui/button"
-import { Tooltip, TooltipTrigger } from "@ui/tooltip"
+import { Button } from "@ui/Button"
+import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
 import { useEffect, useState } from "react"
 import { useCopyToClipboard } from "usehooks-ts"
 

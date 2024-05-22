@@ -6,12 +6,12 @@ import {
   getComponentSource,
 } from "@/docs/lib/utils"
 import { baseUrl } from "app/sitemap"
+import { assert } from "console"
 import { notFound } from "next/navigation"
 import { DocHeader } from "../doc-header"
 import { mdxToHtml } from "../lib/mdx"
 import { MetadataRow } from "./component-metadata"
 import { InstallInstructions } from "./install-instructions"
-import { assert } from "console"
 
 export function generateMetadata({ params }) {
   const doc = getComponentDocs().find((doc) => doc.slug === params.slug)
@@ -60,10 +60,9 @@ export default async function Doc({ params }) {
   }
 
   let { name, composes, category } = doc.metadata
-  let filename = name.replace(/-/g, "").toLowerCase()
-  let demos = getComponentDemos(filename)
-  let source = getComponentSource(filename)
-  let MainDemo = getMainDemo(filename)
+  let demos = getComponentDemos(name)
+  let source = getComponentSource(name)
+  let MainDemo = getMainDemo(name)
 
   assert(demos.main, `Main demo not found for ${name}`)
   assert(source, `Source code not found for ${name}`)
@@ -129,7 +128,7 @@ export default async function Doc({ params }) {
 
         <InstallInstructions
           dependencies={dependencies.length > 0 ? dependencies : undefined}
-          filename={filename}
+          filename={name}
           source={source}
         />
 

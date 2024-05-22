@@ -1,7 +1,7 @@
 "use client"
 
 import { MoonStars, Sun } from "@phosphor-icons/react"
-import { Button } from "@ui/button"
+import { Button } from "@ui/Button"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 

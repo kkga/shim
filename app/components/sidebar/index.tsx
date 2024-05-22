@@ -1,8 +1,8 @@
 import { GithubLogo, Shapes, XLogo } from "@phosphor-icons/react/dist/ssr"
-import { LinkButton } from "@ui/button"
-import { Link } from "@ui/link"
-import { Separator } from "@ui/separator"
-import { Tooltip, TooltipTrigger } from "@ui/tooltip"
+import { LinkButton } from "@ui/Button"
+import { Link } from "@ui/Link"
+import { Separator } from "@ui/Separator"
+import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
 import { Navigation, type NavItem } from "./navigation"
 import { ThemeButton } from "./theme-button"
 

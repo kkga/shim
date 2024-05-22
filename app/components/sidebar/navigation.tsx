@@ -12,8 +12,8 @@ import {
   Textbox,
   WarningDiamond,
 } from "@phosphor-icons/react"
-import { Badge } from "@ui/badge"
-import { SearchField } from "@ui/searchfield"
+import { Badge } from "@ui/Badge"
+import { SearchField } from "@ui/SearchField"
 import { usePathname } from "next/navigation"
 import { useMemo, useState } from "react"
 import {

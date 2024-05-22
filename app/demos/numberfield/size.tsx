@@ -1,9 +1,0 @@
-import { NumberField } from "@ui/numberfield"
-
-export default () => (
-  <>
-    <NumberField size={1} defaultValue={123000} label="Size 1" />
-    <NumberField size={2} defaultValue={123000} label="Size 2" />
-    <NumberField size={3} defaultValue={123000} label="Size 3" />
-  </>
-)

@@ -1,277 +1,205 @@
-import { ProgressBar } from "@ui/progressbar"
+import { ProgressBar } from "@ui/ProgressBar"
 import dynamic from "next/dynamic"
 
-export const getMainDemo = (name: string) => {
-  return dynamic(() => import(`@/demos/${name}`).then((mod) => mod.Main), {
+export function getMainDemo(name: string) {
+  return dynamic(() => import(`docs/${name}/index`).then((mod) => mod.Main), {
     loading: () => (
       <div className="flex flex-1 self-stretch">
         <ProgressBar
+          isIndeterminate
           aria-label="Demo loader"
           className="m-auto w-32"
-          isIndeterminate
         />
       </div>
     ),
   })
 }
 
+// prettier-ignore
 export const demoComponents = {
+
+  // Status
   BadgeDemo: {
-    Main: dynamic(() => import("@/demos/badge").then((mod) => mod.Main)),
-    Size: dynamic(() => import("@/demos/badge").then((mod) => mod.Size)),
-    Intent: dynamic(() => import("@/demos/badge").then((mod) => mod.Intent)),
-    Content: dynamic(() => import("@/demos/badge").then((mod) => mod.Content)),
+    Main: dynamic(() => import("@docs/Badge").then((mod) => mod.Main)),
+    Size: dynamic(() => import("@docs/Badge").then((mod) => mod.Size)),
+    Intent: dynamic(() => import("@docs/Badge").then((mod) => mod.Intent)),
+    Content: dynamic(() => import("@docs/Badge").then((mod) => mod.Content)),
   },
   MeterDemo: {
-    Main: dynamic(() => import("@/demos/meter").then((mod) => mod.Main)),
-    Custom: dynamic(() => import("@/demos/meter").then((mod) => mod.Custom)),
-    Color: dynamic(() => import("@/demos/meter").then((mod) => mod.Color)),
+    Main: dynamic(() => import("@docs/Meter").then((mod) => mod.Main)),
+    Custom: dynamic(() => import("@docs/Meter").then((mod) => mod.Custom)),
+    Color: dynamic(() => import("@docs/Meter").then((mod) => mod.Color)),
   },
   ProgressBarDemo: {
-    Main: dynamic(() => import("@/demos/progressbar").then((mod) => mod.Main)),
-    Indeterminate: dynamic(() =>
-      import("@/demos/progressbar").then((mod) => mod.Indeterminate),
-    ),
+    Main: dynamic(() => import("@docs/ProgressBar").then((mod) => mod.Main)),
+    Indeterminate: dynamic(() => import("@docs/ProgressBar").then((mod) => mod.Indeterminate)),
   },
 
+  // Buttons
   ButtonDemo: {
-    Main: dynamic(() => import("@/demos/button").then((mod) => mod.Main)),
-    Variant: dynamic(() => import("@/demos/button").then((mod) => mod.Variant)),
-    Size: dynamic(() => import("@/demos/button").then((mod) => mod.Size)),
-    Intent: dynamic(() => import("@/demos/button").then((mod) => mod.Intent)),
-    Content: dynamic(() => import("@/demos/button").then((mod) => mod.Content)),
+    Main: dynamic(() => import("@docs/Button").then((mod) => mod.Main)),
+    Variant: dynamic(() => import("@docs/Button").then((mod) => mod.Variant)),
+    Size: dynamic(() => import("@docs/Button").then((mod) => mod.Size)),
+    Intent: dynamic(() => import("@docs/Button").then((mod) => mod.Intent)),
+    Content: dynamic(() => import("@docs/Button").then((mod) => mod.Content)),
   },
   ToggleButtonDemo: {
-    Main: dynamic(() => import("@/demos/togglebutton").then((mod) => mod.Main)),
-    Controlled: dynamic(() =>
-      import("@/demos/togglebutton").then((mod) => mod.Controlled),
-    ),
-    States: dynamic(() =>
-      import("@/demos/togglebutton").then((mod) => mod.States),
-    ),
-    Size: dynamic(() => import("@/demos/togglebutton").then((mod) => mod.Size)),
+    Main: dynamic(() => import("@docs/ToggleButton").then((mod) => mod.Main)),
+    Controlled: dynamic(() => import("@docs/ToggleButton").then((mod) => mod.Controlled)),
+    States: dynamic(() => import("@docs/ToggleButton").then((mod) => mod.States)),
+    Size: dynamic(() => import("@docs/ToggleButton").then((mod) => mod.Size)),
   },
 
+  // Forms
   FormDemo: {
-    Main: dynamic(() => import("@/demos/form").then((mod) => mod.Main)),
-    Validation: dynamic(() =>
-      import("@/demos/form").then((mod) => mod.Validation),
-    ),
+    Main: dynamic(() => import("@docs/Form").then((mod) => mod.Main)),
+    Validation: dynamic(() => import("@docs/Form").then((mod) => mod.Validation)),
   },
   FieldDemo: {
-    Main: dynamic(() => import("@/demos/field").then((mod) => mod.Main)),
-    ThemeSize: dynamic(() =>
-      import("@/demos/field").then((mod) => mod.ThemeSize),
-    ),
-    ThemeVariant: dynamic(() =>
-      import("@/demos/field").then((mod) => mod.ThemeVariant),
-    ),
-    ThemeLabelPosition: dynamic(() =>
-      import("@/demos/field").then((mod) => mod.ThemeLabelPosition),
-    ),
+    Main: dynamic(() => import("@docs/Field").then((mod) => mod.Main)),
+    ThemeSize: dynamic(() => import("@docs/Field").then((mod) => mod.ThemeSize)),
+    ThemeVariant: dynamic(() => import("@docs/Field").then((mod) => mod.ThemeVariant)),
+    ThemeLabelPosition: dynamic(() => import("@docs/Field").then((mod) => mod.ThemeLabelPosition)),
   },
   CheckboxDemo: {
-    Main: dynamic(() => import("@/demos/checkbox").then((mod) => mod.Main)),
-    Group: dynamic(() => import("@/demos/checkbox").then((mod) => mod.Group)),
-    States: dynamic(() => import("@/demos/checkbox").then((mod) => mod.States)),
-    Size: dynamic(() => import("@/demos/checkbox").then((mod) => mod.Size)),
-    Variant: dynamic(() =>
-      import("@/demos/checkbox").then((mod) => mod.Variant),
-    ),
+    Main: dynamic(() => import("@docs/Checkbox").then((mod) => mod.Main)),
+    Group: dynamic(() => import("@docs/Checkbox").then((mod) => mod.Group)),
+    States: dynamic(() => import("@docs/Checkbox").then((mod) => mod.States)),
+    Size: dynamic(() => import("@docs/Checkbox").then((mod) => mod.Size)),
+    Variant: dynamic(() => import("@docs/Checkbox").then((mod) => mod.Variant)),
   },
   NumberFieldDemo: {
-    Main: dynamic(() => import("@/demos/numberfield").then((mod) => mod.Main)),
-    States: dynamic(() =>
-      import("@/demos/numberfield").then((mod) => mod.States),
-    ),
-    Size: dynamic(() => import("@/demos/numberfield").then((mod) => mod.Size)),
-    Variant: dynamic(() =>
-      import("@/demos/numberfield").then((mod) => mod.Variant),
-    ),
-    LabelPosition: dynamic(() =>
-      import("@/demos/numberfield").then((mod) => mod.LabelPosition),
-    ),
+    Main: dynamic(() => import("@docs/NumberField").then((mod) => mod.Main)),
+    States: dynamic(() => import("@docs/NumberField").then((mod) => mod.States)),
+    Size: dynamic(() => import("@docs/NumberField").then((mod) => mod.Size)),
+    Variant: dynamic(() => import("@docs/NumberField").then((mod) => mod.Variant)),
+    LabelPosition: dynamic(() => import("@docs/NumberField").then((mod) => mod.LabelPosition)),
   },
   RadioGroupDemo: {
-    Main: dynamic(() => import("@/demos/radiogroup").then((mod) => mod.Main)),
-    Orientation: dynamic(() =>
-      import("@/demos/radiogroup").then((mod) => mod.Orientation),
-    ),
-    LabelPosition: dynamic(() =>
-      import("@/demos/radiogroup").then((mod) => mod.LabelPosition),
-    ),
-    Size: dynamic(() => import("@/demos/radiogroup").then((mod) => mod.Size)),
-    Variant: dynamic(() =>
-      import("@/demos/radiogroup").then((mod) => mod.Variant),
-    ),
-    RadioDescription: dynamic(() =>
-      import("@/demos/radiogroup").then((mod) => mod.RadioDescription),
-    ),
+    Main: dynamic(() => import("@docs/RadioGroup").then((mod) => mod.Main)),
+    Orientation: dynamic(() => import("@docs/RadioGroup").then((mod) => mod.Orientation)),
+    LabelPosition: dynamic(() => import("@docs/RadioGroup").then((mod) => mod.LabelPosition)),
+    Size: dynamic(() => import("@docs/RadioGroup").then((mod) => mod.Size)),
+    Variant: dynamic(() => import("@docs/RadioGroup").then((mod) => mod.Variant)),
+    RadioDescription: dynamic(() => import("@docs/RadioGroup").then((mod) => mod.RadioDescription)),
   },
   SearchFieldDemo: {
-    Main: dynamic(() => import("@/demos/searchfield").then((mod) => mod.Main)),
-    Controlled: dynamic(() =>
-      import("@/demos/searchfield").then((mod) => mod.Controlled),
-    ),
-    Size: dynamic(() => import("@/demos/searchfield").then((mod) => mod.Size)),
-    Variant: dynamic(() =>
-      import("@/demos/searchfield").then((mod) => mod.Variant),
-    ),
-    States: dynamic(() =>
-      import("@/demos/searchfield").then((mod) => mod.States),
-    ),
-    PrefixIcon: dynamic(() =>
-      import("@/demos/searchfield").then((mod) => mod.PrefixIcon),
-    ),
+    Main: dynamic(() => import("@docs/SearchField").then((mod) => mod.Main)),
+    Controlled: dynamic(() => import("@docs/SearchField").then((mod) => mod.Controlled)),
+    Size: dynamic(() => import("@docs/SearchField").then((mod) => mod.Size)),
+    Variant: dynamic(() => import("@docs/SearchField").then((mod) => mod.Variant)),
+    States: dynamic(() => import("@docs/SearchField").then((mod) => mod.States)),
+    PrefixIcon: dynamic(() => import("@docs/SearchField").then((mod) => mod.PrefixIcon)),
   },
   SliderDemo: {
-    Main: dynamic(() => import("@/demos/slider").then((mod) => mod.Main)),
-    Filled: dynamic(() => import("@/demos/slider").then((mod) => mod.Filled)),
-    Controlled: dynamic(() =>
-      import("@/demos/slider").then((mod) => mod.Controlled),
-    ),
-    ControlledRange: dynamic(() =>
-      import("@/demos/slider").then((mod) => mod.ControlledRange),
-    ),
-    Orientation: dynamic(() =>
-      import("@/demos/slider").then((mod) => mod.Orientation),
-    ),
-    LabelPosition: dynamic(() =>
-      import("@/demos/slider").then((mod) => mod.LabelPosition),
-    ),
-    Variant: dynamic(() => import("@/demos/slider").then((mod) => mod.Variant)),
-    Size: dynamic(() => import("@/demos/slider").then((mod) => mod.Size)),
+    Main: dynamic(() => import("@docs/Slider").then((mod) => mod.Main)),
+    Filled: dynamic(() => import("@docs/Slider").then((mod) => mod.Filled)),
+    Controlled: dynamic(() => import("@docs/Slider").then((mod) => mod.Controlled)),
+    ControlledRange: dynamic(() => import("@docs/Slider").then((mod) => mod.ControlledRange)),
+    Orientation: dynamic(() => import("@docs/Slider").then((mod) => mod.Orientation)),
+    LabelPosition: dynamic(() => import("@docs/Slider").then((mod) => mod.LabelPosition)),
+    Variant: dynamic(() => import("@docs/Slider").then((mod) => mod.Variant)),
+    Size: dynamic(() => import("@docs/Slider").then((mod) => mod.Size)),
   },
   SwitchDemo: {
-    Main: dynamic(() => import("@/demos/switch").then((mod) => mod.Main)),
-    Controlled: dynamic(() =>
-      import("@/demos/switch").then((mod) => mod.Controlled),
-    ),
-    States: dynamic(() => import("@/demos/switch").then((mod) => mod.States)),
-    Variant: dynamic(() => import("@/demos/switch").then((mod) => mod.Variant)),
-    Size: dynamic(() => import("@/demos/switch").then((mod) => mod.Size)),
+    Main: dynamic(() => import("@docs/Switch").then((mod) => mod.Main)),
+    Controlled: dynamic(() => import("@docs/Switch").then((mod) => mod.Controlled)),
+    States: dynamic(() => import("@docs/Switch").then((mod) => mod.States)),
+    Variant: dynamic(() => import("@docs/Switch").then((mod) => mod.Variant)),
+    Size: dynamic(() => import("@docs/Switch").then((mod) => mod.Size)),
   },
   TextFieldDemo: {
-    Main: dynamic(() => import("@/demos/textfield").then((mod) => mod.Main)),
-    LabelPosition: dynamic(() =>
-      import("@/demos/textfield").then((mod) => mod.LabelPosition),
-    ),
-    Size: dynamic(() => import("@/demos/textfield").then((mod) => mod.Size)),
-    Variant: dynamic(() =>
-      import("@/demos/textfield").then((mod) => mod.Variant),
-    ),
+    Main: dynamic(() => import("@docs/TextField").then((mod) => mod.Main)),
+    LabelPosition: dynamic(() => import("@docs/TextField").then((mod) => mod.LabelPosition)),
+    Size: dynamic(() => import("@docs/TextField").then((mod) => mod.Size)),
+    Variant: dynamic(() => import("@docs/TextField").then((mod) => mod.Variant)),
   },
   TextAreaDemo: {
-    Main: dynamic(() => import("@/demos/textarea").then((mod) => mod.Main)),
-    LabelPosition: dynamic(() =>
-      import("@/demos/textarea").then((mod) => mod.LabelPosition),
-    ),
-    Size: dynamic(() => import("@/demos/textarea").then((mod) => mod.Size)),
-    Variant: dynamic(() =>
-      import("@/demos/textarea").then((mod) => mod.Variant),
-    ),
+    Main: dynamic(() => import("@docs/TextArea").then((mod) => mod.Main)),
+    LabelPosition: dynamic(() => import("@docs/TextArea").then((mod) => mod.LabelPosition)),
+    Size: dynamic(() => import("@docs/TextArea").then((mod) => mod.Size)),
+    Variant: dynamic(() => import("@docs/TextArea").then((mod) => mod.Variant)),
   },
 
+  // Navigation
   TabsDemo: {
-    Main: dynamic(() => import("@/demos/tabs").then((mod) => mod.Main)),
-    Controlled: dynamic(() =>
-      import("@/demos/tabs").then((mod) => mod.Controlled),
-    ),
+    Main: dynamic(() => import("@docs/Tabs").then((mod) => mod.Main)),
+    Controlled: dynamic(() => import("@docs/Tabs").then((mod) => mod.Controlled)),
   },
   LinkDemo: {
-    Main: dynamic(() => import("@/demos/link").then((mod) => mod.Main)),
-    Intent: dynamic(() => import("@/demos/link").then((mod) => mod.Intent)),
+    Main: dynamic(() => import("@docs/Link").then((mod) => mod.Main)),
+    Intent: dynamic(() => import("@docs/Link").then((mod) => mod.Intent)),
   },
   BreadcrumbsDemo: {
-    Main: dynamic(() => import("@/demos/breadcrumbs").then((mod) => mod.Main)),
+    Main: dynamic(() => import("@docs/Breadcrumbs").then((mod) => mod.Main)),
   },
 
+  // Overlays
   PopoverDemo: {
-    Main: dynamic(() => import("@/demos/popover").then((mod) => mod.Main)),
-    Placement: dynamic(() =>
-      import("@/demos/popover").then((mod) => mod.Placement),
-    ),
+    Main: dynamic(() => import("@docs/Popover").then((mod) => mod.Main)),
+    Placement: dynamic(() => import("@docs/Popover").then((mod) => mod.Placement)),
   },
   TooltipDemo: {
-    Main: dynamic(() => import("@/demos/tooltip").then((mod) => mod.Main)),
-    Placement: dynamic(() =>
-      import("@/demos/tooltip").then((mod) => mod.Placement),
-    ),
+    Main: dynamic(() => import("@docs/Tooltip").then((mod) => mod.Main)),
+    Placement: dynamic(() => import("@docs/Tooltip").then((mod) => mod.Placement)),
   },
   DialogDemo: {
-    Main: dynamic(() => import("@/demos/dialog").then((mod) => mod.Main)),
-    Controlled: dynamic(() =>
-      import("@/demos/dialog").then((mod) => mod.Controlled),
-    ),
-    Close: dynamic(() => import("@/demos/dialog").then((mod) => mod.Close)),
+    Main: dynamic(() => import("@docs/Dialog").then((mod) => mod.Main)),
+    Controlled: dynamic(() => import("@docs/Dialog").then((mod) => mod.Controlled)),
+    Close: dynamic(() => import("@docs/Dialog").then((mod) => mod.Close)),
   },
 
+  // Collections
   ListBoxDemo: {
-    Main: dynamic(() => import("@/demos/listbox").then((mod) => mod.Main)),
-    Sections: dynamic(() =>
-      import("@/demos/listbox").then((mod) => mod.Sections),
-    ),
-    Size: dynamic(() => import("@/demos/listbox").then((mod) => mod.Size)),
-    Content: dynamic(() =>
-      import("@/demos/listbox").then((mod) => mod.Content),
-    ),
+    Main: dynamic(() => import("@docs/ListBox").then((mod) => mod.Main)),
+    Sections: dynamic(() => import("@docs/ListBox").then((mod) => mod.Sections)),
+    Size: dynamic(() => import("@docs/ListBox").then((mod) => mod.Size)),
+    Content: dynamic(() => import("@docs/ListBox").then((mod) => mod.Content)),
   },
   MenuDemo: {
-    Main: dynamic(() => import("@/demos/menu").then((mod) => mod.Main)),
-    Content: dynamic(() => import("@/demos/menu").then((mod) => mod.Content)),
-    Selection: dynamic(() =>
-      import("@/demos/menu").then((mod) => mod.Selection),
-    ),
-    Sections: dynamic(() => import("@/demos/menu").then((mod) => mod.Sections)),
-    Submenu: dynamic(() => import("@/demos/menu").then((mod) => mod.Submenu)),
-    Size: dynamic(() => import("@/demos/menu").then((mod) => mod.Size)),
+    Main: dynamic(() => import("@docs/Menu").then((mod) => mod.Main)),
+    Content: dynamic(() => import("@docs/Menu").then((mod) => mod.Content)),
+    Selection: dynamic(() => import("@docs/Menu").then((mod) => mod.Selection)),
+    Sections: dynamic(() => import("@docs/Menu").then((mod) => mod.Sections)),
+    Submenu: dynamic(() => import("@docs/Menu").then((mod) => mod.Submenu)),
+    Size: dynamic(() => import("@docs/Menu").then((mod) => mod.Size)),
   },
   TableDemo: {
-    Main: dynamic(() => import("@/demos/table").then((mod) => mod.Main)),
-    Sorting: dynamic(() => import("@/demos/table").then((mod) => mod.Sorting)),
-    Content: dynamic(() => import("@/demos/table").then((mod) => mod.Content)),
+    Main: dynamic(() => import("@docs/Table").then((mod) => mod.Main)),
+    Sorting: dynamic(() => import("@docs/Table").then((mod) => mod.Sorting)),
+    Content: dynamic(() => import("@docs/Table").then((mod) => mod.Content)),
   },
   TagGroupDemo: {
-    Main: dynamic(() => import("@/demos/taggroup").then((mod) => mod.Main)),
-    Selection: dynamic(() =>
-      import("@/demos/taggroup").then((mod) => mod.Selection),
-    ),
-    Removing: dynamic(() =>
-      import("@/demos/taggroup").then((mod) => mod.Removing),
-    ),
+    Main: dynamic(() => import("@docs/TagGroup").then((mod) => mod.Main)),
+    Selection: dynamic(() => import("@docs/TagGroup").then((mod) => mod.Selection)),
+    Removing: dynamic(() => import("@docs/TagGroup").then((mod) => mod.Removing)),
   },
 
+  // Pickers
   SelectDemo: {
-    Main: dynamic(() => import("@/demos/select").then((mod) => mod.Main)),
-    Controlled: dynamic(() =>
-      import("@/demos/select").then((mod) => mod.Controlled),
-    ),
-    Sections: dynamic(() =>
-      import("@/demos/select").then((mod) => mod.Sections),
-    ),
-    States: dynamic(() => import("@/demos/select").then((mod) => mod.States)),
-    Size: dynamic(() => import("@/demos/select").then((mod) => mod.Size)),
+    Main: dynamic(() => import("@docs/Select").then((mod) => mod.Main)),
+    Controlled: dynamic(() => import("@docs/Select").then((mod) => mod.Controlled)),
+    Sections: dynamic(() => import("@docs/Select").then((mod) => mod.Sections)),
+    States: dynamic(() => import("@docs/Select").then((mod) => mod.States)),
+    Size: dynamic(() => import("@docs/Select").then((mod) => mod.Size)),
   },
   ComboBoxDemo: {
-    Main: dynamic(() => import("@/demos/combobox").then((mod) => mod.Main)),
-    Size: dynamic(() => import("@/demos/combobox").then((mod) => mod.Size)),
+    Main: dynamic(() => import("@docs/ComboBox").then((mod) => mod.Main)),
+    Size: dynamic(() => import("@docs/ComboBox").then((mod) => mod.Size)),
   },
 
+  // Content
   ToolbarDemo: {
-    Main: dynamic(() => import("@/demos/toolbar").then((mod) => mod.Main)),
-    Orientation: dynamic(() =>
-      import("@/demos/toolbar").then((mod) => mod.Orientation),
-    ),
+    Main: dynamic(() => import("@docs/Toolbar").then((mod) => mod.Main)),
+    Orientation: dynamic(() => import("@docs/Toolbar").then((mod) => mod.Orientation)),
   },
   KbdDemo: {
-    Main: dynamic(() => import("@/demos/kbd").then((mod) => mod.Main)),
-    Variant: dynamic(() => import("@/demos/kbd").then((mod) => mod.Variant)),
+    Main: dynamic(() => import("@docs/Kbd").then((mod) => mod.Main)),
+    Variant: dynamic(() => import("@docs/Kbd").then((mod) => mod.Variant)),
   },
   DataListDemo: {
-    Main: dynamic(() => import("@/demos/datalist").then((mod) => mod.Main)),
-    Orientation: dynamic(() =>
-      import("@/demos/datalist").then((mod) => mod.Orientation),
-    ),
-    Size: dynamic(() => import("@/demos/datalist").then((mod) => mod.Size)),
+    Main: dynamic(() => import("@docs/DataList").then((mod) => mod.Main)),
+    Orientation: dynamic(() => import("@docs/DataList").then((mod) => mod.Orientation)),
+    Size: dynamic(() => import("@docs/DataList").then((mod) => mod.Size)),
   },
 }

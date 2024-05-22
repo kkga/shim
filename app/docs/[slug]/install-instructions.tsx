@@ -1,7 +1,7 @@
 import { H3, P } from "@/components/mdx/mdx-components"
 import { Pre } from "@/components/mdx/pre"
 import { Code as CodeIcon, Terminal } from "@phosphor-icons/react/dist/ssr"
-import { Tab, TabList, TabPanel, Tabs } from "@ui/tabs"
+import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
 import { DependenciesWarning } from "./dependencies-warning"
 
 interface Props {
