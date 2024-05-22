@@ -48,17 +48,17 @@ function getComponentSource(filename: string) {
     .trim()
 }
 
-function getComponentDemos(componentDir: string) {
+function getDemosSource(componentDir: string) {
   let dir = path.join(process.cwd(), "docs", componentDir)
-  const demoFiles = fs
+  let demoFiles = fs
     .readdirSync(dir)
     .filter((file) => path.extname(file) === ".tsx")
 
-  const demos: Record<string, string> = {}
+  let demos: Record<string, string> = {}
 
-  for (const file of demoFiles) {
-    const content = fs.readFileSync(path.join(dir, file), "utf-8").trim()
-    const slug = path.basename(file, path.extname(file))
+  for (let file of demoFiles) {
+    let content = fs.readFileSync(path.join(dir, file), "utf-8").trim()
+    let slug = path.basename(file, path.extname(file))
     demos[slug] = content
   }
 
@@ -66,24 +66,21 @@ function getComponentDemos(componentDir: string) {
 }
 
 function getUtilsSource() {
-  return fs.readFileSync(
-    path.join(process.cwd(), "app", "lib", "utils.ts"),
-    "utf-8",
-  )
+  return fs.readFileSync(path.join(process.cwd(), "lib", "style.ts"), "utf-8")
 }
 
-function getBaseCssSource() {
+function getThemeCssSource() {
   return fs.readFileSync(
-    path.join(process.cwd(), "app", "styles", "base.css"),
+    path.join(process.cwd(), "theme", "theme.css"),
     "utf-8",
   )
 }
 
 export {
-  getBaseCssSource,
-  getComponentDemos,
   getComponentDocs,
   getComponentSource,
+  getDemosSource,
   getGuides,
+  getThemeCssSource,
   getUtilsSource,
 }

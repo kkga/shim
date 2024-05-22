@@ -1,8 +1,8 @@
-import { DocHeader } from '@/docs/doc-header'
-import { mdxToHtml } from '@/docs/lib/mdx'
-import { getBaseCssSource, getGuides, getUtilsSource } from '@/docs/lib/utils'
-import { baseUrl } from '@/sitemap'
-import { notFound } from 'next/navigation'
+import { DocHeader } from "@/docs/doc-header"
+import { mdxToHtml } from "@/docs/lib/mdx"
+import { getGuides, getThemeCssSource, getUtilsSource } from "@/docs/lib/utils"
+import { baseUrl } from "@/sitemap"
+import { notFound } from "next/navigation"
 
 export async function generateStaticParams() {
   return getGuides().map((guide) => ({
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 export default async function GuidePage({ params }) {
   const guide = getGuides().find((guide) => guide.slug === params.slug)
   const utilsSource = getUtilsSource()
-  const baseCssSource = getBaseCssSource()
+  const themeCssSource = getThemeCssSource()
 
   if (!guide) {
     notFound()
@@ -23,25 +23,26 @@ export default async function GuidePage({ params }) {
 
   const { content } = await mdxToHtml({
     source: guide.content,
-    scope: { utilsSource, baseCssSource },
+    scope: { utilsSource, themeCssSource },
   })
 
   return (
     <>
+      {/* TODO: figure this out */}
       <script
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
             headline: title,
             description: description,
             image: `/og?title=${encodeURIComponent(title)}`,
             url: `${baseUrl}/docs/${guide.slug}`,
             author: {
-              '@type': 'Person',
-              name: 'My Portfolio',
+              "@type": "Person",
+              name: "My Portfolio",
             },
           }),
         }}

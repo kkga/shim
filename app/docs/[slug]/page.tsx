@@ -1,9 +1,9 @@
 import { Demo } from "@/components/mdx/demo"
 import { getMainDemo } from "@/components/mdx/demo-components"
 import {
-  getComponentDemos,
   getComponentDocs,
   getComponentSource,
+  getDemosSource,
 } from "@/docs/lib/utils"
 import { baseUrl } from "app/sitemap"
 import { assert } from "console"
@@ -60,7 +60,7 @@ export default async function Doc({ params }) {
   }
 
   let { name, composes, category } = doc.metadata
-  let demos = getComponentDemos(name)
+  let demos = getDemosSource(name)
   let source = getComponentSource(name)
   let MainDemo = getMainDemo(name)
 

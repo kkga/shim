@@ -103,7 +103,7 @@ const fileRows = [
 
 export function Example1() {
   return (
-    <div className="s-box flex flex-col overflow-clip rounded-2xl bg-background shadow-[var(--shadow-xs)]">
+    <div className="s-box bg-background flex flex-col overflow-clip rounded-2xl shadow-[var(--shadow-xs)]">
       <div className="flex items-center gap-2 p-4 pb-2 text-[13px]">
         <MenuTrigger>
           <Button intent="neutral" isSquare aria-label="Menu">
@@ -207,7 +207,7 @@ export function Example1() {
 
         <TooltipTrigger>
           <Button intent="neutral" isSquare className="relative">
-            <div className="absolute -top-0.5 -right-0.5 size-2 rounded-full border border-accent-line bg-accent-9 shadow"></div>
+            <div className="border-accent-line bg-accent-9 absolute -right-0.5 -top-0.5 size-2 rounded-full border shadow"></div>
             <Icon.Tray weight="duotone" size={16} />
           </Button>
           <Tooltip>Notifications</Tooltip>
@@ -238,10 +238,10 @@ export function Example1() {
           </Tab>
         </TabList>
 
-        <TabPanel className="flex flex-col gap-4 bg-panel p-4" id="code">
+        <TabPanel className="bg-panel flex flex-col gap-4 p-4" id="code">
           <div className="flex gap-2">
             <div className="flex items-center gap-2">
-              <h2 className="text-sm font-medium leading-none text-neutral-text-contrast">
+              <h2 className="text-neutral-text-contrast text-sm font-medium leading-none">
                 shim
               </h2>
               <Badge size={1} intent="neutral">
@@ -362,7 +362,7 @@ export function Example1() {
                         className={"flex flex-col gap-4 p-4 py-8 text-center"}
                         id="codespaces"
                       >
-                        <span className="text-sm font-medium text-neutral-text-contrast">
+                        <span className="text-neutral-text-contrast text-sm font-medium">
                           No codespaces
                         </span>
                         <p>
@@ -405,7 +405,7 @@ export function Example1() {
             </div>
 
             <div className="flex flex-col gap-3 py-1">
-              <h4 className="text-sm font-medium leading-none text-neutral-text-contrast">
+              <h4 className="text-neutral-text-contrast text-sm font-medium leading-none">
                 About
               </h4>
               <p className="text-[13px]">
@@ -456,7 +456,7 @@ export function Example1() {
               <Separator />
 
               <div className="flex items-center gap-2">
-                <h4 className="text-sm font-medium leading-none text-neutral-text-contrast">
+                <h4 className="text-neutral-text-contrast text-sm font-medium leading-none">
                   Releases
                 </h4>
                 <Badge intent="neutral" size={1}>
@@ -468,10 +468,10 @@ export function Example1() {
                 <div className="flex items-start gap-2">
                   <Icon.Tag size={16} />
                   <div>
-                    <h4 className="text-xs font-medium leading-4 text-neutral-text-contrast">
+                    <h4 className="text-neutral-text-contrast text-xs font-medium leading-4">
                       May 1, 2024 Release
                     </h4>
-                    <p className="text-xs text-neutral-text">2 weeks ago</p>
+                    <p className="text-neutral-text text-xs">2 weeks ago</p>
                   </div>
                   <Badge size={1}>Latest</Badge>
                 </div>
