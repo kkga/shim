@@ -4,7 +4,7 @@ import { Avatar } from "@ui/Avatar"
 import { Badge } from "@ui/Badge"
 import { Breadcrumb, Breadcrumbs } from "@ui/Breadcrumbs"
 import { Button } from "@ui/Button"
-import { DataList, DataListLabel, DataListValue } from "@ui/DataList"
+import { DataList, DataListItem } from "@ui/DataList"
 import { Kbd } from "@ui/Kbd"
 import { Link } from "@ui/Link"
 import { ListBox, ListBoxItem, ListBoxSection } from "@ui/ListBox"
@@ -191,7 +191,7 @@ export function Example2() {
   )
 
   return (
-    <div className="s-box flex h-[600px] rounded-lg bg-background shadow-[var(--shadow-xs)]">
+    <div className="s-box bg-background flex h-[600px] rounded-lg shadow-[var(--shadow-xs)]">
       <div className="flex min-w-[180px] flex-col gap-2.5 p-3 text-xs">
         <div className="flex items-center gap-1">
           <MenuTrigger>
@@ -317,10 +317,10 @@ export function Example2() {
         </ListBox>
       </div>
 
-      <div className="m-2 ml-0 flex flex-1 rounded bg-panel ring shadow-xs ring-neutral-3">
-        <div className="flex w-[280px] flex-col border-r border-neutral-3">
-          <div className="flex items-center gap-1.5 border-b border-neutral-3 p-1 px-2 text-xs">
-            <span className="ml-1 font-medium text-neutral-text-contrast">
+      <div className="bg-panel shadow-xs ring-neutral-3 m-2 ml-0 flex flex-1 rounded ring">
+        <div className="border-neutral-3 flex w-[280px] flex-col border-r">
+          <div className="border-neutral-3 flex items-center gap-1.5 border-b p-1 px-2 text-xs">
+            <span className="text-neutral-text-contrast ml-1 font-medium">
               Inbox
             </span>
             <MenuTrigger>
@@ -413,20 +413,20 @@ export function Example2() {
               onSelectionChange={setSelectedKeys}
             >
               {({ title, description, user, status, age, id }) => (
-                <ListBoxItem key={id} className="h-auto py-1.5 px-2">
+                <ListBoxItem key={id} className="h-auto px-2 py-1.5">
                   <div className="grid flex-1 grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2.5 gap-y-0.5">
                     <Avatar
                       name={user}
                       src={`https://source.unsplash.com/random/100x100/?face$${id}`}
                       className="row-span-2 place-self-center"
                     />
-                    <span className="col-start-2 row-start-1 truncate text-neutral-text-contrast">
+                    <span className="text-neutral-text-contrast col-start-2 row-start-1 truncate">
                       {title}
                     </span>
-                    <span className="col-start-2 row-start-2 text-neutral-text">
+                    <span className="text-neutral-text col-start-2 row-start-2">
                       {description}
                     </span>
-                    <span className="col-start-3 row-start-2 text-right text-neutral-text">
+                    <span className="text-neutral-text col-start-3 row-start-2 text-right">
                       {age}
                     </span>
                     <div className="col-start-3 row-start-1">
@@ -460,11 +460,11 @@ export function Example2() {
         </div>
 
         <div className="flex flex-1 flex-col">
-          <div className="flex items-center gap-1 border-b border-neutral-3 p-1 pl-2 text-xs">
+          <div className="border-neutral-3 flex items-center gap-1 border-b p-1 pl-2 text-xs">
             <Breadcrumbs items={breadcrumbs}>
               {({ text, href, icon }) => (
                 <Breadcrumb href={href ?? ""} key={text}>
-                  <div className="flex items-center gap-1 font-medium text-neutral-text-contrast">
+                  <div className="text-neutral-text-contrast flex items-center gap-1 font-medium">
                     {icon ?
                       <span>{icon}</span>
                     : null}
@@ -545,42 +545,40 @@ export function Example2() {
           </div>
 
           <div className="flex flex-col gap-3 p-4 text-sm">
-            <h4 className="text-balance text-base font-medium leading-tight text-neutral-text-contrast">
+            <h4 className="text-neutral-text-contrast text-balance text-base font-medium leading-tight">
               {selectedItem?.title}
             </h4>
 
             <p className="text-neutral-text">{selectedItem?.text}</p>
 
             <DataList orientation="horizontal">
-              <DataListLabel>ID</DataListLabel>
-              <DataListValue>{selectedItem?.id}</DataListValue>
-              <DataListLabel>Assignee</DataListLabel>
-              <DataListValue>
-                <Link href="#">{selectedItem?.user}</Link>
-              </DataListValue>
-              <DataListLabel>Status</DataListLabel>
-              <DataListValue>
-                {selectedItem?.status === "in-progress" && (
-                  <div className="flex items-center gap-1.5 text-warning-text">
-                    <Icon.CircleHalf
-                      className="shrink-0"
-                      size={16}
-                      weight="duotone"
-                    />
-                    In progress
-                  </div>
-                )}
-                {selectedItem?.status === "done" && (
-                  <div className="flex items-center gap-1.5 text-success-text">
-                    <Icon.CheckCircle
-                      className="shrink-0"
-                      size={16}
-                      weight="duotone"
-                    />
-                    Done
-                  </div>
-                )}
-              </DataListValue>
+              <DataListItem label="ID" value={selectedItem?.id} />
+              <DataListItem
+                label="Assignee"
+                value={<Link href="#">{selectedItem?.user}</Link>}
+              />
+              <DataListItem
+                label="Status"
+                value={
+                  selectedItem?.status === "in-progress" ?
+                    <div className="text-warning-text flex items-center gap-1.5">
+                      <Icon.CircleHalf
+                        className="shrink-0"
+                        size={16}
+                        weight="duotone"
+                      />
+                      In progress
+                    </div>
+                  : <div className="text-success-text flex items-center gap-1.5">
+                      <Icon.CheckCircle
+                        className="shrink-0"
+                        size={16}
+                        weight="duotone"
+                      />
+                      Done
+                    </div>
+                }
+              />
             </DataList>
 
             <div className="mt-1 flex flex-col items-start gap-1">
@@ -592,7 +590,7 @@ export function Example2() {
               </Button>
             </div>
             <Separator />
-            <h5 className="text-sm font-medium text-neutral-text-contrast">
+            <h5 className="text-neutral-text-contrast text-sm font-medium">
               Activity
             </h5>
             <div className="flex flex-col text-xs">
@@ -603,7 +601,7 @@ export function Example2() {
                   size={1}
                 />
                 <span>
-                  <span className="font-medium text-neutral-text-contrast">
+                  <span className="text-neutral-text-contrast font-medium">
                     {selectedItem?.user}
                   </span>{" "}
                   {selectedItem?.description}

@@ -6,7 +6,7 @@ import { Badge } from "@ui/Badge"
 import { Breadcrumb, Breadcrumbs } from "@ui/Breadcrumbs"
 import { Button } from "@ui/Button"
 import { ComboBox, ComboBoxItem } from "@ui/ComboBox"
-import { DataList, DataListLabel, DataListValue } from "@ui/DataList"
+import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
 import {
   Menu,
@@ -415,14 +415,10 @@ export function Example1() {
               </p>
 
               <DataList>
-                <DataListLabel>
-                  <Icon.Link size={16} />
-                </DataListLabel>
-                <DataListValue>
-                  <Link className="font-medium" href="#">
-                    shim.kkga.me
-                  </Link>
-                </DataListValue>
+                <DataListItem
+                  label={<Icon.Link size={16} />}
+                  value="shim.kkga.me"
+                />
               </DataList>
               <TagGroup aria-label="Tags" color="green">
                 <Tag>react</Tag>
@@ -435,22 +431,22 @@ export function Example1() {
               <Separator />
 
               <DataList>
-                <DataListLabel>
-                  <Icon.Scales size={16} />
-                </DataListLabel>
-                <DataListValue>MIT License</DataListValue>
-                <DataListLabel>
-                  <Icon.Star size={16} />
-                </DataListLabel>
-                <DataListValue>2.1k stars</DataListValue>
-                <DataListLabel>
-                  <Icon.Eye size={16} />
-                </DataListLabel>
-                <DataListValue>20 watchers</DataListValue>
-                <DataListLabel>
-                  <Icon.GitFork size={16} />
-                </DataListLabel>
-                <DataListValue>38 forks</DataListValue>
+                <DataListItem
+                  label={<Icon.Scales size={16} />}
+                  value="MIT License"
+                />
+                <DataListItem
+                  label={<Icon.Star size={16} />}
+                  value="2.1k stars"
+                />
+                <DataListItem
+                  label={<Icon.Eye size={16} />}
+                  value="20 watchers"
+                />
+                <DataListItem
+                  label={<Icon.GitFork size={16} />}
+                  value="38 forks"
+                />
               </DataList>
 
               <Separator />

@@ -1,10 +1,5 @@
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr"
-import {
-  DataList,
-  DataListItem,
-  DataListLabel,
-  DataListValue,
-} from "@ui/DataList"
+import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
 import { Fragment } from "react"
 import { ComponentMetadata } from "../lib/types"
@@ -21,7 +16,7 @@ function MetadataLink({ href, title, external, children }) {
       {children}
       {external && (
         <ArrowUpRight
-          className="ml-0.5 inline align-text-top text-accent-10"
+          className="text-accent-10 ml-0.5 inline align-text-top"
           size={16}
         />
       )}
@@ -42,9 +37,9 @@ function MetadataRow({
   return (
     <DataList size={2} orientation="vertical" className="flex-row gap-8">
       {docUrl && (
-        <DataListItem>
-          <DataListLabel>Documentation</DataListLabel>
-          <DataListValue>
+        <DataListItem
+          label="Documentation"
+          value={
             <MetadataLink
               href={docUrl}
               title={`View ${name} documentation`}
@@ -52,22 +47,22 @@ function MetadataRow({
             >
               React Aria {name}
             </MetadataLink>
-          </DataListValue>
-        </DataListItem>
+          }
+        />
       )}
       {ariaUrl && (
-        <DataListItem>
-          <DataListLabel>Pattern</DataListLabel>
-          <DataListValue>
+        <DataListItem
+          label="Pattern"
+          value={
             <MetadataLink href={ariaUrl} title="View ARIA pattern" external>
               W3C ARIA
             </MetadataLink>
-          </DataListValue>
-        </DataListItem>
+          }
+        />
       )}
-      <DataListItem>
-        <DataListLabel>Source</DataListLabel>
-        <DataListValue>
+      <DataListItem
+        label="Type"
+        value={
           <MetadataLink
             href={`${GITHUB_FILE_URL}/${name}.tsx`}
             title="View source code on GitHub"
@@ -75,26 +70,24 @@ function MetadataRow({
           >
             GitHub
           </MetadataLink>
-        </DataListValue>
-      </DataListItem>
+        }
+      />
       {dependencies && (
-        <DataListItem>
-          <DataListLabel>Composes</DataListLabel>
-          <DataListValue>
-            {dependencies.map(({ name, slug }, i) => (
-              <Fragment key={name}>
-                {i > 0 && ", "}
-                <MetadataLink
-                  external={false}
-                  href={`/docs/${slug}`}
-                  title={`View ${name} documentation`}
-                >
-                  {name}
-                </MetadataLink>
-              </Fragment>
-            ))}
-          </DataListValue>
-        </DataListItem>
+        <DataListItem
+          label="Composes"
+          value={dependencies.map(({ name, slug }, i) => (
+            <Fragment key={name}>
+              {i > 0 && ", "}
+              <MetadataLink
+                external={false}
+                href={`/docs/${slug}`}
+                title={`View ${name} documentation`}
+              >
+                {name}
+              </MetadataLink>
+            </Fragment>
+          ))}
+        />
       )}
     </DataList>
   )

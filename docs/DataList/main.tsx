@@ -1,35 +1,19 @@
 import { Badge } from "@ui/Badge"
-import {
-  DataList,
-  DataListItem,
-  DataListLabel,
-  DataListValue,
-} from "@ui/DataList"
+import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
 
 export default () => (
   <DataList>
-    <DataListItem>
-      <DataListLabel>Name</DataListLabel>
-      <DataListValue>John Doe</DataListValue>
-    </DataListItem>
-    <DataListItem>
-      <DataListLabel>Role</DataListLabel>
-      <DataListValue>Designer</DataListValue>
-    </DataListItem>
-    <DataListItem>
-      <DataListLabel>Email</DataListLabel>
-      <DataListValue>
-        <Link href="#">john@doe.com</Link>
-      </DataListValue>
-    </DataListItem>
-    <DataListItem>
-      <DataListLabel>Status</DataListLabel>
-      <DataListValue>
+    <DataListItem label="Name" value="John Doe" />
+    <DataListItem label="Role" value="Designer" />
+    <DataListItem label="Email" value={<Link href="#">john@doe.com</Link>} />
+    <DataListItem
+      label="Status"
+      value={
         <Badge size={1} intent="success">
           Active
         </Badge>
-      </DataListValue>
-    </DataListItem>
+      }
+    />
   </DataList>
 )

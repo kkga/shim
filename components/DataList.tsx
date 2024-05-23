@@ -1,9 +1,8 @@
 "use client"
 
-import type { VariantProps } from "cva"
-
-import { cva, cx } from "@lib/style"
+import { cva } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
+import type { VariantProps } from "cva"
 import { createContext, useContext } from "react"
 
 const styles = {
@@ -60,10 +59,7 @@ function DataList({
   let { size } = themeProps
 
   return (
-    <dl
-      className={cx(styles.list({ size, orientation }), className)}
-      {...props}
-    >
+    <dl className={styles.list({ size, orientation, className })} {...props}>
       <Theme {...themeProps}>
         <OrientationContext.Provider value={orientation}>
           {children}
@@ -73,29 +69,25 @@ function DataList({
   )
 }
 
-interface DataListItemProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface DataListItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  label: React.ReactNode
+  value: React.ReactNode
+}
 
-function DataListItem({ className, ...props }: DataListItemProps) {
+function DataListItem({
+  className,
+  label,
+  value,
+  ...props
+}: DataListItemProps) {
   let orientation = useContext(OrientationContext)
-  return <div className={styles.item({ className, orientation })} {...props} />
+  return (
+    <div className={styles.item({ className, orientation })} {...props}>
+      <dt className={styles.label()}>{label}</dt>
+      <dd className={styles.value()}>{value}</dd>
+    </div>
+  )
 }
 
-interface DataListLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-function DataListLabel({ className, ...props }: DataListLabelProps) {
-  return <dt className={styles.label({ className })} {...props} />
-}
-
-interface DataListValueProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-function DataListValue({ className, ...props }: DataListValueProps) {
-  return <dd className={styles.value({ className })} {...props} />
-}
-
-export { DataList, DataListItem, DataListLabel, DataListValue }
-export type {
-  DataListItemProps,
-  DataListLabelProps,
-  DataListProps,
-  DataListValueProps,
-}
+export { DataList, DataListItem }
+export type { DataListItemProps, DataListProps }
