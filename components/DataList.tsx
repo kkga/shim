@@ -1,8 +1,7 @@
 "use client"
 
-import { cva } from "@lib/style"
+import { VariantProps, cva } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
-import type { VariantProps } from "cva"
 import { createContext, useContext } from "react"
 
 const styles = {

@@ -1,8 +1,9 @@
 "use client"
-import { defineConfig } from "cva"
+import { VariantProps, defineConfig } from "cva"
 import { composeRenderProps } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 
+export type { VariantProps }
 export const { compose, cx, cva } = defineConfig({
   hooks: { onComplete: (className) => twMerge(className) },
 })
