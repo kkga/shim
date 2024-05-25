@@ -3,18 +3,13 @@ import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
 
 export default () => (
-  <DataList orientation="vertical">
+  <DataList labelPosition="side">
     <DataListItem label="Name" value="John Doe" />
     <DataListItem label="Role" value="Designer" />
     <DataListItem label="Email" value={<Link href="#">john@doe.com</Link>} />
     <DataListItem
       label="Status"
-      value={
-        <Badge size={1} intent="success">
-          {" "}
-          Active{" "}
-        </Badge>
-      }
+      value={<Badge intent="success">Active</Badge>}
     />
   </DataList>
 )

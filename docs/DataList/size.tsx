@@ -4,7 +4,7 @@ import { Link } from "@ui/Link"
 
 export default () => (
   <div className="flex items-start gap-8">
-    <DataList size={1}>
+    <DataList size={1} labelPosition="side">
       <DataListItem label="Name" value="John Doe" />
       <DataListItem label="Role" value="Designer" />
       <DataListItem label="Email" value={<Link href="#">john@doe.com</Link>} />
@@ -14,7 +14,7 @@ export default () => (
       />
     </DataList>
 
-    <DataList size={2}>
+    <DataList size={2} labelPosition="side">
       <DataListItem label="Name" value="John Doe" />
       <DataListItem label="Role" value="Designer" />
       <DataListItem label="Email" value={<Link href="#">john@doe.com</Link>} />
@@ -24,7 +24,7 @@ export default () => (
       />
     </DataList>
 
-    <DataList size={3}>
+    <DataList size={3} labelPosition="side">
       <DataListItem label="Name" value="John Doe" />
       <DataListItem label="Role" value="Designer" />
       <DataListItem label="Email" value={<Link href="#">john@doe.com</Link>} />

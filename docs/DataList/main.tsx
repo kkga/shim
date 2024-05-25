@@ -9,11 +9,7 @@ export default () => (
     <DataListItem label="Email" value={<Link href="#">john@doe.com</Link>} />
     <DataListItem
       label="Status"
-      value={
-        <Badge size={1} intent="success">
-          Active
-        </Badge>
-      }
+      value={<Badge intent="success">Active</Badge>}
     />
   </DataList>
 )

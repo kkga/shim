@@ -551,7 +551,7 @@ export function Example2() {
 
             <p className="text-neutral-text">{selectedItem?.text}</p>
 
-            <DataList orientation="horizontal">
+            <DataList labelPosition="side">
               <DataListItem label="ID" value={selectedItem?.id} />
               <DataListItem
                 label="Assignee"

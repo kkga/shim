@@ -199,7 +199,7 @@ export const demoComponents = {
   },
   DataListDemo: {
     Main: dynamic(() => import("@docs/DataList").then((mod) => mod.Main)),
-    Orientation: dynamic(() => import("@docs/DataList").then((mod) => mod.Orientation)),
+    LabelPosition: dynamic(() => import("@docs/DataList").then((mod) => mod.LabelPosition)),
     Size: dynamic(() => import("@docs/DataList").then((mod) => mod.Size)),
   },
 }

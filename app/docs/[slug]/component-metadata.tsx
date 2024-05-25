@@ -35,7 +35,7 @@ function MetadataRow({
   dependencies,
 }: MetadataRowProps) {
   return (
-    <DataList size={2} orientation="vertical" className="flex-row gap-8">
+    <DataList className="flex-row gap-8">
       {docUrl && (
         <DataListItem
           label="Documentation"
@@ -61,7 +61,7 @@ function MetadataRow({
         />
       )}
       <DataListItem
-        label="Type"
+        label="Source"
         value={
           <MetadataLink
             href={`${GITHUB_FILE_URL}/${name}.tsx`}
