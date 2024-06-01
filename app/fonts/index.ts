@@ -1,7 +1,11 @@
 import localFont from "next/font/local"
 
 export const fontMono = localFont({
-  src: "./jbmono-regular.woff2",
+  src: [
+    {
+      path: "./BerkeleyMono-Regular.woff2",
+    },
+  ],
   variable: "--font-mono",
 })
 
