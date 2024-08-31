@@ -24,6 +24,7 @@ export const Intents = [
 
 export type Intent = (typeof Intents)[number]
 
+// TODO: cleanup this
 export const animateMountStyle = cva({
   base: [
     "data-[placement=bottom]:origin-top data-[placement=bottom]:animate-[fade-in_100ms,slide-from-bottom_100ms]",
