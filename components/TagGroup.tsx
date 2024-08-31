@@ -63,7 +63,7 @@ function TagGroup<T extends object>({
       </ColorContext.Provider>
       {description && <Description>{description}</Description>}
       {errorMessage && (
-        <RACText slot="errorMessage" className="text-xs text-error-text">
+        <RACText slot="errorMessage" className="text-error-text text-xs">
           {errorMessage}
         </RACText>
       )}
