@@ -1,8 +1,5 @@
 "use client"
 
-import type { VariantProps } from "cva"
-import type { ReactNode } from "react"
-
 import { Check, Minus } from "@phosphor-icons/react"
 import {
   Checkbox as RACCheckbox,
@@ -11,7 +8,14 @@ import {
   type CheckboxProps as RACCheckboxProps,
 } from "react-aria-components"
 
-import { compose, cva, cx, cxRenderProps, focusStyle } from "@lib/style"
+import {
+  VariantProps,
+  compose,
+  cva,
+  cx,
+  cxRenderProps,
+  focusStyle,
+} from "@lib/style"
 
 import { Theme, useThemeProps } from "@lib/theme"
 import {
@@ -25,7 +29,7 @@ import {
 interface CheckboxGroupProps
   extends Omit<RACCheckboxGroupProps, "children">,
     FieldProps {
-  children?: ReactNode
+  children?: React.ReactNode
 }
 
 function CheckboxGroup({

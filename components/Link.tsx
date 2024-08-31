@@ -1,7 +1,12 @@
 "use client"
 
-import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
-import type { VariantProps } from "cva"
+import {
+  VariantProps,
+  compose,
+  cva,
+  cxRenderProps,
+  focusStyle,
+} from "@lib/style"
 import {
   Link as RACLink,
   type LinkProps as RACLinkProps,

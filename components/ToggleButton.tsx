@@ -1,12 +1,17 @@
 "use client"
 
-import type { VariantProps } from "cva"
 import {
   ToggleButton as RACToggleButton,
   type ToggleButtonProps as RACToggleButtonProps,
 } from "react-aria-components"
 
-import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
+import {
+  VariantProps,
+  compose,
+  cva,
+  cxRenderProps,
+  focusStyle,
+} from "@lib/style"
 import { Children, isValidElement } from "react"
 
 const style = compose(

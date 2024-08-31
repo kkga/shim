@@ -1,6 +1,35 @@
 "use client"
 
-import * as Icon from "@phosphor-icons/react/dist/ssr"
+import {
+  Book,
+  CaretDown,
+  Chats,
+  CirclesThree,
+  Code,
+  CodeSimple,
+  Desktop,
+  DownloadSimple,
+  Eye,
+  File,
+  Folder,
+  Gear,
+  GitBranch,
+  GitFork,
+  GitPullRequest,
+  GithubLogo,
+  House,
+  Kanban,
+  Laptop,
+  Link as LinkIcon,
+  List,
+  Plus,
+  Scales,
+  Star,
+  Tag as TagIcon,
+  Tray,
+  Upload,
+  UploadSimple,
+} from "@phosphor-icons/react"
 import { Avatar } from "@ui/Avatar"
 import { Badge } from "@ui/Badge"
 import { Breadcrumb, Breadcrumbs } from "@ui/Breadcrumbs"
@@ -34,67 +63,67 @@ const fileColumns = [
 
 const fileRows = [
   {
-    icon: <Icon.Folder size={16} weight="duotone" />,
+    icon: <Folder size={16} weight="duotone" />,
     id: ".husky",
     commit: "chore: add commitlint",
     editDate: "2 weeks ago",
   },
   {
-    icon: <Icon.Folder size={16} weight="duotone" />,
+    icon: <Folder size={16} weight="duotone" />,
     id: "app",
     commit: "fix: update searchfield for themeprops",
     editDate: "yesterday",
   },
   {
-    icon: <Icon.Folder size={16} weight="duotone" />,
+    icon: <Folder size={16} weight="duotone" />,
     id: "components",
     commit: "fix: update searchfield for themeprops",
     editDate: "yesterday",
   },
   {
-    icon: <Icon.Folder size={16} weight="duotone" />,
+    icon: <Folder size={16} weight="duotone" />,
     id: "demos",
     commit: "docs: update readme",
     editDate: "3 days ago",
   },
   {
-    icon: <Icon.Folder size={16} weight="duotone" />,
+    icon: <Folder size={16} weight="duotone" />,
     id: "docs",
     commit: "docs: update readme",
     editDate: "3 days ago",
   },
   {
-    icon: <Icon.File size={16} weight="duotone" />,
+    icon: <File size={16} weight="duotone" />,
     id: ".gitignore",
     commit: "docs: update readme",
     editDate: "3 days ago",
   },
   {
-    icon: <Icon.File size={16} weight="duotone" />,
+    icon: <File size={16} weight="duotone" />,
     id: ".eslintrc.json",
     commit: "chore: update eslint",
     editDate: "1 week ago",
   },
   {
-    icon: <Icon.File size={16} weight="duotone" />,
+    icon: <File size={16} weight="duotone" />,
     id: "next.config.js",
     commit: "chore: update next config",
     editDate: "2 weeks ago",
   },
   {
-    icon: <Icon.File size={16} weight="duotone" />,
+    icon: <File size={16} weight="duotone" />,
     id: "package.json",
     commit: "chore: update packages",
     editDate: "2 weeks ago",
   },
   {
-    icon: <Icon.File size={16} weight="duotone" />,
+    icon: <File size={16} weight="duotone" />,
     id: "README.md",
     commit: "docs: update readme",
     editDate: "3 days ago",
   },
   {
-    icon: <Icon.File size={16} weight="duotone" />,
+    icon: <File size={16} weight="duotone" />,
     id: "tsconfig.json",
     commit: "chore: update tsconfig",
     editDate: "2 weeks ago",
@@ -107,44 +136,44 @@ export function Example1() {
       <div className="flex items-center gap-2 p-4 pb-2 text-[13px]">
         <MenuTrigger>
           <Button intent="neutral" isSquare aria-label="Menu">
-            <Icon.List size={16} />
+            <List size={16} />
           </Button>
           <Menu size={1}>
             <MenuItem>
-              <Icon.House size={16} weight="duotone" />
+              <House size={16} weight="duotone" />
               Home
             </MenuItem>
             <MenuItem>
-              <Icon.CirclesThree size={16} weight="duotone" />
+              <CirclesThree size={16} weight="duotone" />
               Issues
             </MenuItem>
             <MenuItem>
-              <Icon.GitPullRequest size={16} weight="duotone" /> Pull requests
+              <GitPullRequest size={16} weight="duotone" /> Pull requests
             </MenuItem>
             <MenuItem>
-              <Icon.Kanban size={16} weight="duotone" />
+              <Kanban size={16} weight="duotone" />
               Projects
             </MenuItem>
             <MenuItem>
-              <Icon.Chats size={16} weight="duotone" />
+              <Chats size={16} weight="duotone" />
               Discussions
             </MenuItem>
             <MenuItem>
-              <Icon.Desktop size={16} weight="duotone" />
+              <Desktop size={16} weight="duotone" />
               Codespaces
             </MenuItem>
             <MenuSeparator />
             <MenuSection title="Repositories">
               <MenuItem>
-                <Icon.Book size={16} weight="duotone" />
+                <Book size={16} weight="duotone" />
                 kkga/shim
               </MenuItem>
               <MenuItem>
-                <Icon.Book size={16} weight="duotone" />
+                <Book size={16} weight="duotone" />
                 kkga/ter
               </MenuItem>
               <MenuItem>
-                <Icon.Book size={16} weight="duotone" />
+                <Book size={16} weight="duotone" />
                 kkga/config
               </MenuItem>
             </MenuSection>
@@ -152,7 +181,7 @@ export function Example1() {
         </MenuTrigger>
 
         <Separator className="my-1" orientation="vertical" />
-        <Icon.GithubLogo size={16} />
+        <GithubLogo size={16} />
 
         <Breadcrumbs>
           <Breadcrumb href="/">kkga</Breadcrumb>
@@ -172,27 +201,27 @@ export function Example1() {
         <MenuTrigger>
           <TooltipTrigger>
             <Button intent="accent">
-              <Icon.Plus size={16} />
-              <Icon.CaretDown size={12} />
+              <Plus size={16} />
+              <CaretDown size={12} />
             </Button>
             <Tooltip>Create new...</Tooltip>
           </TooltipTrigger>
           <Menu>
             <MenuItem>
-              <Icon.Book size={16} weight="duotone" />
+              <Book size={16} weight="duotone" />
               New repository
             </MenuItem>
             <MenuItem>
-              <Icon.Upload size={16} weight="duotone" />
+              <Upload size={16} weight="duotone" />
               Import repository
             </MenuItem>
             <MenuSeparator />
             <MenuItem>
-              <Icon.Laptop size={16} weight="duotone" />
+              <Laptop size={16} weight="duotone" />
               New codespace
             </MenuItem>
             <MenuItem>
-              <Icon.CodeSimple size={16} weight="duotone" />
+              <CodeSimple size={16} weight="duotone" />
               New gist
             </MenuItem>
           </Menu>
@@ -200,7 +229,7 @@ export function Example1() {
 
         <TooltipTrigger>
           <Button intent="neutral" isSquare>
-            <Icon.GitPullRequest weight="duotone" size={16} />
+            <GitPullRequest weight="duotone" size={16} />
           </Button>
           <Tooltip>Pull requests</Tooltip>
         </TooltipTrigger>
@@ -208,7 +237,7 @@ export function Example1() {
         <TooltipTrigger>
           <Button intent="neutral" isSquare className="relative">
             <div className="border-accent-line bg-accent-9 absolute -right-0.5 -top-0.5 size-2 rounded-full border shadow"></div>
-            <Icon.Tray weight="duotone" size={16} />
+            <Tray weight="duotone" size={16} />
           </Button>
           <Tooltip>Notifications</Tooltip>
         </TooltipTrigger>
@@ -225,15 +254,15 @@ export function Example1() {
       <Tabs className="gap-0">
         <TabList className="gap-4 px-4">
           <Tab id="code">
-            <Icon.Code weight="duotone" size={16} />
+            <Code weight="duotone" size={16} />
             Code
           </Tab>
           <Tab id="pr">
-            <Icon.GitPullRequest weight="duotone" size={16} />
+            <GitPullRequest weight="duotone" size={16} />
             Pull requests
           </Tab>
           <Tab id="settings">
-            <Icon.Gear weight="duotone" size={16} />
+            <Gear weight="duotone" size={16} />
             Settings
           </Tab>
         </TabList>
@@ -250,21 +279,21 @@ export function Example1() {
             </div>
             <div className="grow-1"></div>
             <ToggleButton intent="neutral">
-              <Icon.Eye weight="duotone" size={16} />
+              <Eye weight="duotone" size={16} />
               Watch
               <Badge size={1} intent="neutral">
                 20
               </Badge>
             </ToggleButton>
             <Button intent="neutral">
-              <Icon.GitFork weight="duotone" size={16} />
+              <GitFork weight="duotone" size={16} />
               Fork
               <Badge size={1} intent="neutral">
                 38
               </Badge>
             </Button>
             <Button intent="neutral">
-              <Icon.Star weight="duotone" size={16} />
+              <Star weight="duotone" size={16} />
               Star
               <Badge size={1} intent="neutral">
                 2.1k
@@ -279,17 +308,17 @@ export function Example1() {
               <div className="flex gap-2">
                 <Select aria-label="Branch" defaultSelectedKey="master">
                   <SelectItem id="master" textValue="master">
-                    <Icon.GitBranch size={16} />
+                    <GitBranch size={16} />
                     master
                   </SelectItem>
 
                   <SelectItem id="develop" textValue="develop">
-                    <Icon.GitBranch size={16} />
+                    <GitBranch size={16} />
                     develop
                   </SelectItem>
 
                   <SelectItem id="feature" textValue="feature/1">
-                    <Icon.GitBranch size={16} />
+                    <GitBranch size={16} />
                     feature/1
                   </SelectItem>
                 </Select>
@@ -308,16 +337,16 @@ export function Example1() {
                 <MenuTrigger>
                   <Button intent="neutral">
                     Add file
-                    <Icon.CaretDown size={12} />
+                    <CaretDown size={12} />
                   </Button>
                   <Menu>
                     <MenuItem>
-                      <Icon.Plus size={16} />
+                      <Plus size={16} />
                       Create new file
                     </MenuItem>
 
                     <MenuItem>
-                      <Icon.UploadSimple size={16} />
+                      <UploadSimple size={16} />
                       Upload files
                     </MenuItem>
                   </Menu>
@@ -325,9 +354,9 @@ export function Example1() {
 
                 <PopoverTrigger>
                   <Button intent="success">
-                    <Icon.Code size={16} />
+                    <Code size={16} />
                     Code
-                    <Icon.CaretDown size={12} />
+                    <CaretDown size={12} />
                   </Button>
                   <Popover placement="bottom end" className="w-xs">
                     <Tabs>
@@ -348,12 +377,12 @@ export function Example1() {
 
                         <div className="flex gap-2">
                           <Button intent="neutral" className="flex-1">
-                            <Icon.Desktop size={16} />
+                            <Desktop size={16} />
                             Open on desktop
                           </Button>
 
                           <Button intent="neutral" className="flex-1">
-                            <Icon.DownloadSimple size={16} />
+                            <DownloadSimple size={16} />
                             Download ZIP
                           </Button>
                         </div>
@@ -416,7 +445,7 @@ export function Example1() {
 
               <DataList>
                 <DataListItem
-                  label={<Icon.Link size={16} />}
+                  label={<LinkIcon size={16} />}
                   value="shim.kkga.me"
                 />
               </DataList>
@@ -432,21 +461,12 @@ export function Example1() {
 
               <DataList>
                 <DataListItem
-                  label={<Icon.Scales size={16} />}
+                  label={<Scales size={16} />}
                   value="MIT License"
                 />
-                <DataListItem
-                  label={<Icon.Star size={16} />}
-                  value="2.1k stars"
-                />
-                <DataListItem
-                  label={<Icon.Eye size={16} />}
-                  value="20 watchers"
-                />
-                <DataListItem
-                  label={<Icon.GitFork size={16} />}
-                  value="38 forks"
-                />
+                <DataListItem label={<Star size={16} />} value="2.1k stars" />
+                <DataListItem label={<Eye size={16} />} value="20 watchers" />
+                <DataListItem label={<GitFork size={16} />} value="38 forks" />
               </DataList>
 
               <Separator />
@@ -462,7 +482,7 @@ export function Example1() {
 
               <div className="flex flex-col gap-2">
                 <div className="flex items-start gap-2">
-                  <Icon.Tag size={16} />
+                  <TagIcon size={16} />
                   <div>
                     <h4 className="text-neutral-text-contrast text-xs font-medium leading-4">
                       May 1, 2024 Release

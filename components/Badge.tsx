@@ -1,8 +1,6 @@
 "use client"
 
-import type { VariantProps } from "cva"
-
-import { cva, cx } from "@lib/style"
+import { VariantProps, cva, cx } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
 import { Children, isValidElement } from "react"
 

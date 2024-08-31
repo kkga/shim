@@ -1,7 +1,6 @@
 "use client"
 
-import { cva, cx } from "@lib/style"
-import { VariantProps } from "cva"
+import { VariantProps, cva, cx } from "@lib/style"
 import { useEffect, useState } from "react"
 
 const colors = {
@@ -84,7 +83,7 @@ function Avatar({ src, name, size, color, className }: AvatarProps) {
           src={src}
           alt={name}
           className={cx(
-            "size-full object-cover select-none",
+            "size-full select-none object-cover",
             isLoading ? "hidden" : "block",
           )}
         />

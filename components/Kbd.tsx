@@ -1,7 +1,6 @@
 "use client"
 
-import { cva } from "@lib/style"
-import type { VariantProps } from "cva"
+import { VariantProps, cva } from "@lib/style"
 import { Keyboard as RACKeyboard } from "react-aria-components"
 
 const style = cva({

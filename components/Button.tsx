@@ -2,6 +2,7 @@
 
 import {
   Intents,
+  VariantProps,
   compose,
   cva,
   cxRenderProps,
@@ -10,7 +11,6 @@ import {
 } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
 
-import type { VariantProps } from "cva"
 import { Children, isValidElement } from "react"
 import {
   Link,

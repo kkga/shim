@@ -1,5 +1,32 @@
 "use client"
-import * as Icon from "@phosphor-icons/react/dist/ssr"
+
+import {
+  Archive,
+  CaretDown,
+  CheckCircle,
+  Checks,
+  CircleHalf,
+  Clock,
+  DeviceMobile,
+  DotsThree,
+  Folder,
+  FunnelSimple,
+  MagnifyingGlass,
+  MapTrifold,
+  PencilRuler,
+  Plus,
+  RoadHorizon,
+  SignOut,
+  SlidersHorizontal,
+  Stack,
+  Star,
+  Tray,
+  UserFocus,
+  Users,
+  UsersThree,
+  XCircle,
+  XSquare,
+} from "@phosphor-icons/react"
 import { Avatar } from "@ui/Avatar"
 import { Badge } from "@ui/Badge"
 import { Breadcrumb, Breadcrumbs } from "@ui/Breadcrumbs"
@@ -174,7 +201,7 @@ export function Example2() {
         id: "mobile-app",
         text: "Mobile app",
         href: "#",
-        icon: <Icon.DeviceMobile size={16} className="text-accent-text" />,
+        icon: <DeviceMobile size={16} className="text-accent-text" />,
       },
       {
         id: [...selectedKeys][0],
@@ -202,11 +229,11 @@ export function Example2() {
               className="text-neutral-text-contrast"
             >
               Acme Inc.
-              <Icon.CaretDown size={12} />
+              <CaretDown size={12} />
             </Button>
             <Menu className="min-w-[180px]">
               <MenuItem>
-                <Icon.SlidersHorizontal size={16} weight="duotone" />
+                <SlidersHorizontal size={16} weight="duotone" />
                 Preferences
                 <Kbd variant="plain" className="ml-auto">
                   G then S
@@ -215,7 +242,7 @@ export function Example2() {
               <MenuSeparator />
               <SubmenuTrigger>
                 <MenuItem>
-                  <Icon.UsersThree size={16} weight="duotone" />
+                  <UsersThree size={16} weight="duotone" />
                   Workspace
                 </MenuItem>
                 <Menu>
@@ -225,7 +252,7 @@ export function Example2() {
                 </Menu>
               </SubmenuTrigger>
               <MenuItem>
-                <Icon.SignOut size={16} weight="duotone" />
+                <SignOut size={16} weight="duotone" />
                 Log out
                 <Kbd variant="plain" className="ml-auto">
                   ⎇⇧Q
@@ -235,11 +262,11 @@ export function Example2() {
           </MenuTrigger>
 
           <Button isSquare intent="neutral" variant="ghost" className="ml-auto">
-            <Icon.MagnifyingGlass size={16} />
+            <MagnifyingGlass size={16} />
           </Button>
 
           <Button isSquare intent="neutral">
-            <Icon.Plus size={16} />
+            <Plus size={16} />
           </Button>
         </div>
 
@@ -251,36 +278,36 @@ export function Example2() {
         >
           <ListBoxSection>
             <ListBoxItem id="inbox" textValue="inbox">
-              <Icon.Tray size={16} weight="duotone" />
+              <Tray size={16} weight="duotone" />
               Inbox
               <Badge intent="neutral" className="ml-0" size={1}>
                 15
               </Badge>
             </ListBoxItem>
             <ListBoxItem textValue="my-issues">
-              <Icon.UserFocus size={16} weight="duotone" />
+              <UserFocus size={16} weight="duotone" />
               My issues
             </ListBoxItem>
           </ListBoxSection>
 
           <ListBoxSection title="Workspace">
             <ListBoxItem textValue="views">
-              <Icon.Stack size={16} weight="duotone" />
+              <Stack size={16} weight="duotone" />
               Views
             </ListBoxItem>
             <ListBoxItem textValue="roadmaps">
-              <Icon.MapTrifold size={16} weight="duotone" />
+              <MapTrifold size={16} weight="duotone" />
               Roadmaps
             </ListBoxItem>
             <ListBoxItem textValue="teams">
-              <Icon.Users size={16} weight="duotone" />
+              <Users size={16} weight="duotone" />
               Teams
             </ListBoxItem>
           </ListBoxSection>
 
           <ListBoxSection title="Favorites">
             <ListBoxItem textValue="mobile-app">
-              <Icon.DeviceMobile
+              <DeviceMobile
                 size={16}
                 weight="duotone"
                 className="text-accent-text"
@@ -288,7 +315,7 @@ export function Example2() {
               Mobile app
             </ListBoxItem>
             <ListBoxItem textValue="roadmap">
-              <Icon.RoadHorizon
+              <RoadHorizon
                 size={16}
                 weight="duotone"
                 className="text-success-text"
@@ -296,7 +323,7 @@ export function Example2() {
               3Q24 Roadmap
             </ListBoxItem>
             <ListBoxItem textValue="design-system">
-              <Icon.PencilRuler
+              <PencilRuler
                 size={16}
                 weight="duotone"
                 className="text-warning-text"
@@ -305,12 +332,12 @@ export function Example2() {
             </ListBoxItem>
 
             <ListBoxItem textValue="projects">
-              <Icon.Folder size={16} weight="duotone" />
+              <Folder size={16} weight="duotone" />
               Projects
             </ListBoxItem>
 
             <ListBoxItem textValue="docs">
-              <Icon.Folder size={16} weight="duotone" />
+              <Folder size={16} weight="duotone" />
               Docs
             </ListBoxItem>
           </ListBoxSection>
@@ -330,18 +357,18 @@ export function Example2() {
                 variant="ghost"
                 aria-label="Inbox menu"
               >
-                <Icon.DotsThree weight="bold" size={16} />
+                <DotsThree weight="bold" size={16} />
               </Button>
               <Menu>
                 <MenuItem>
-                  <Icon.Checks size={16} weight="duotone" />
+                  <Checks size={16} weight="duotone" />
                   Mark all as read
                   <Kbd variant="plain" className="ml-auto">
                     ⎇U
                   </Kbd>
                 </MenuItem>
                 <MenuItem>
-                  <Icon.XSquare size={16} weight="duotone" />
+                  <XSquare size={16} weight="duotone" />
                   Empty inbox
                   <Kbd variant="plain" className="ml-auto">
                     ⎇⇧D
@@ -357,7 +384,7 @@ export function Example2() {
                 variant="ghost"
                 className="ml-auto"
               >
-                <Icon.FunnelSimple size={16} />
+                <FunnelSimple size={16} />
               </Button>
               <Menu selectionMode="multiple" placement="bottom end">
                 <MenuItem>Assignments</MenuItem>
@@ -368,7 +395,7 @@ export function Example2() {
             </MenuTrigger>
             <PopoverTrigger>
               <Button isSquare intent="neutral" variant="ghost">
-                <Icon.SlidersHorizontal size={16} />
+                <SlidersHorizontal size={16} />
               </Button>
               <Popover placement="bottom end">
                 <div className="flex w-[220px] flex-col gap-2 p-3">
@@ -431,21 +458,21 @@ export function Example2() {
                     </span>
                     <div className="col-start-3 row-start-1">
                       {status === "in-progress" && (
-                        <Icon.CircleHalf
+                        <CircleHalf
                           size={16}
                           weight="duotone"
                           className="text-warning-text"
                         />
                       )}
                       {status === "done" && (
-                        <Icon.CheckCircle
+                        <CheckCircle
                           size={16}
                           weight="duotone"
                           className="text-success-text"
                         />
                       )}
                       {status === "cancelled" && (
-                        <Icon.XCircle
+                        <XCircle
                           size={16}
                           weight="duotone"
                           className="text-neutral-text"
@@ -476,7 +503,7 @@ export function Example2() {
 
             <MenuTrigger>
               <Button variant="ghost" intent="neutral" isSquare>
-                <Icon.DotsThree weight="bold" size={16} />
+                <DotsThree weight="bold" size={16} />
               </Button>
               <Menu>
                 <MenuItem>Copy link</MenuItem>
@@ -501,10 +528,7 @@ export function Example2() {
                 aria-label="Favorite"
               >
                 {({ isSelected }) => (
-                  <Icon.Star
-                    weight={isSelected ? "fill" : "regular"}
-                    size={16}
-                  />
+                  <Star weight={isSelected ? "fill" : "regular"} size={16} />
                 )}
               </ToggleButton>
               <Tooltip>
@@ -521,7 +545,7 @@ export function Example2() {
                 className="ml-auto"
                 aria-label="Archive"
               >
-                <Icon.Archive size={16} />
+                <Archive size={16} />
               </Button>
               <Tooltip>
                 Archive
@@ -535,7 +559,7 @@ export function Example2() {
                 isSquare
                 aria-label="Snooze"
               >
-                <Icon.Clock size={16} />
+                <Clock size={16} />
               </Button>
               <Tooltip>
                 Snooze
@@ -562,7 +586,7 @@ export function Example2() {
                 value={
                   selectedItem?.status === "in-progress" ?
                     <div className="text-warning-text flex items-center gap-1.5">
-                      <Icon.CircleHalf
+                      <CircleHalf
                         className="shrink-0"
                         size={16}
                         weight="duotone"
@@ -570,7 +594,7 @@ export function Example2() {
                       In progress
                     </div>
                   : <div className="text-success-text flex items-center gap-1.5">
-                      <Icon.CheckCircle
+                      <CheckCircle
                         className="shrink-0"
                         size={16}
                         weight="duotone"
