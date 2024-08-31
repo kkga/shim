@@ -3,7 +3,7 @@ import { createContext, useContext } from "react"
 export type Size = 1 | 2 | 3
 
 export interface ThemeContextProps {
-  size: 1 | 2 | 3
+  size: Size
   labelPosition: "top" | "side"
   fieldVariant: "classic" | "soft" | "outline"
   buttonVariant: "soft" | "solid" | "ghost"
