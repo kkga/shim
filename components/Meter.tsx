@@ -43,9 +43,9 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
             </span>
           </div>
           <div className="flex h-4 items-center">
-            <div className="relative h-1.5 w-full overflow-hidden rounded-[2px] bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
+            <div className="bg-neutral-bg ring-neutral-solid/20 relative h-1.5 w-full overflow-hidden rounded-[2px] ring ring-inset">
               <div
-                className="absolute top-0 left-0 h-full bg-accent-solid"
+                className="bg-accent-solid absolute left-0 top-0 h-full"
                 style={{
                   width: `${percentage}%`,
                   backgroundColor: barColor,
