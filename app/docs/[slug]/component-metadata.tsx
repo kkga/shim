@@ -12,6 +12,7 @@ function MetadataLink({ href, title, external, children }) {
       href={href}
       rel={external ? "noreferrer" : undefined}
       target={external ? "_blank" : undefined}
+      aria-label={title}
     >
       {children}
       {external && (
