@@ -2,16 +2,14 @@
 
 import { VariantProps, cva } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
-import { createContext, useContext } from "react"
 
 const styles = {
   list: cva({
     base: "items-center place-content-start",
     variants: {
-      orientation: {
-        horizontal:
-          "grid grid-cols-[max-content_auto] gap-y-2 gap-x-3 auto-rows-fr",
-        vertical: "flex flex-col items-stretch gap-y-3",
+      labelPosition: {
+        side: "grid grid-cols-[max-content_auto] gap-y-2 gap-x-3 auto-rows-fr",
+        top: "flex flex-col items-stretch gap-y-3",
       },
       size: {
         1: "text-xs",
@@ -19,17 +17,13 @@ const styles = {
         3: "text-sm gap-x-6 gap-y-3",
       },
     },
-    defaultVariants: {
-      orientation: "horizontal",
-      size: 1,
-    },
   }),
   item: cva({
     base: "",
     variants: {
-      orientation: {
-        horizontal: "grid grid-cols-subgrid col-span-2 items-center",
-        vertical: "flex flex-col gap-y-1",
+      labelPosition: {
+        side: "grid grid-cols-subgrid col-span-2 items-center",
+        top: "flex flex-col gap-y-1",
       },
     },
   }),
@@ -41,29 +35,29 @@ const styles = {
   }),
 }
 
-type Orientation = "horizontal" | "vertical"
-const OrientationContext = createContext<Orientation>("horizontal")
-
 interface DataListProps
   extends React.HTMLAttributes<HTMLDListElement>,
     VariantProps<typeof styles.list> {}
 
 function DataList({
   className,
+  size,
+  labelPosition,
   children,
-  orientation = "horizontal",
   ...props
 }: DataListProps) {
-  let themeProps = useThemeProps({ size: props.size })
-  let { size } = themeProps
+  let themeProps = useThemeProps({ size, labelPosition })
 
   return (
-    <dl className={styles.list({ size, orientation, className })} {...props}>
-      <Theme {...themeProps}>
-        <OrientationContext.Provider value={orientation}>
-          {children}
-        </OrientationContext.Provider>
-      </Theme>
+    <dl
+      className={styles.list({
+        size: themeProps.size,
+        labelPosition: themeProps.labelPosition,
+        className,
+      })}
+      {...props}
+    >
+      <Theme {...themeProps}>{children}</Theme>
     </dl>
   )
 }
@@ -79,9 +73,10 @@ function DataListItem({
   value,
   ...props
 }: DataListItemProps) {
-  let orientation = useContext(OrientationContext)
+  let { labelPosition } = useThemeProps({})
+
   return (
-    <div className={styles.item({ className, orientation })} {...props}>
+    <div className={styles.item({ className, labelPosition })} {...props}>
       <dt className={styles.label()}>{label}</dt>
       <dd className={styles.value()}>{value}</dd>
     </div>
