@@ -52,6 +52,7 @@ import { ToggleButton } from "@ui/ToggleButton"
 import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
 import { useMemo, useState } from "react"
 import { Selection } from "react-aria-components"
+import { ExampleContainer } from "./ExampleContainer"
 
 const items = [
   {
@@ -218,431 +219,444 @@ export function Example2() {
   )
 
   return (
-    <div className="s-box bg-background flex h-[600px] rounded-lg shadow-[var(--shadow-xs)]">
-      <div className="flex min-w-[180px] flex-col gap-2.5 p-3 text-xs">
-        <div className="flex items-center gap-1">
-          <MenuTrigger>
-            <Button
-              intent="neutral"
-              variant="ghost"
-              aria-label="Menu"
-              className="text-neutral-text-contrast"
-            >
-              Acme Inc.
-              <CaretDown size={12} />
-            </Button>
-            <Menu className="min-w-[180px]">
-              <MenuItem>
-                <SlidersHorizontal size={16} weight="duotone" />
-                Preferences
-                <Kbd variant="plain" className="ml-auto">
-                  G then S
-                </Kbd>
-              </MenuItem>
-              <MenuSeparator />
-              <SubmenuTrigger>
-                <MenuItem>
-                  <UsersThree size={16} weight="duotone" />
-                  Workspace
-                </MenuItem>
-                <Menu>
-                  <MenuItem>Personal</MenuItem>
-                  <MenuItem>Work</MenuItem>
-                  <MenuItem>Organization</MenuItem>
-                </Menu>
-              </SubmenuTrigger>
-              <MenuItem>
-                <SignOut size={16} weight="duotone" />
-                Log out
-                <Kbd variant="plain" className="ml-auto">
-                  ⎇⇧Q
-                </Kbd>
-              </MenuItem>
-            </Menu>
-          </MenuTrigger>
-
-          <Button isSquare intent="neutral" variant="ghost" className="ml-auto">
-            <MagnifyingGlass size={16} />
-          </Button>
-
-          <Button isSquare intent="neutral">
-            <Plus size={16} />
-          </Button>
-        </div>
-
-        <ListBox
-          className="gap-2"
-          defaultSelectedKeys={["inbox"]}
-          selectionMode="single"
-          disallowEmptySelection
-        >
-          <ListBoxSection>
-            <ListBoxItem id="inbox" textValue="inbox">
-              <Tray size={16} weight="duotone" />
-              Inbox
-              <Badge intent="neutral" className="ml-0" size={1}>
-                15
-              </Badge>
-            </ListBoxItem>
-            <ListBoxItem textValue="my-issues">
-              <UserFocus size={16} weight="duotone" />
-              My issues
-            </ListBoxItem>
-          </ListBoxSection>
-
-          <ListBoxSection title="Workspace">
-            <ListBoxItem textValue="views">
-              <Stack size={16} weight="duotone" />
-              Views
-            </ListBoxItem>
-            <ListBoxItem textValue="roadmaps">
-              <MapTrifold size={16} weight="duotone" />
-              Roadmaps
-            </ListBoxItem>
-            <ListBoxItem textValue="teams">
-              <Users size={16} weight="duotone" />
-              Teams
-            </ListBoxItem>
-          </ListBoxSection>
-
-          <ListBoxSection title="Favorites">
-            <ListBoxItem textValue="mobile-app">
-              <DeviceMobile
-                size={16}
-                weight="duotone"
-                className="text-accent-text"
-              />
-              Mobile app
-            </ListBoxItem>
-            <ListBoxItem textValue="roadmap">
-              <RoadHorizon
-                size={16}
-                weight="duotone"
-                className="text-success-text"
-              />
-              3Q24 Roadmap
-            </ListBoxItem>
-            <ListBoxItem textValue="design-system">
-              <PencilRuler
-                size={16}
-                weight="duotone"
-                className="text-warning-text"
-              />
-              Design system
-            </ListBoxItem>
-
-            <ListBoxItem textValue="projects">
-              <Folder size={16} weight="duotone" />
-              Projects
-            </ListBoxItem>
-
-            <ListBoxItem textValue="docs">
-              <Folder size={16} weight="duotone" />
-              Docs
-            </ListBoxItem>
-          </ListBoxSection>
-        </ListBox>
-      </div>
-
-      <div className="bg-panel shadow-xs ring-neutral-3 m-2 ml-0 flex flex-1 rounded ring">
-        <div className="border-neutral-3 flex w-[280px] flex-col border-r">
-          <div className="border-neutral-3 flex items-center gap-1.5 border-b p-1 px-2 text-xs">
-            <span className="text-neutral-text-contrast ml-1 font-medium">
-              Inbox
-            </span>
+    <ExampleContainer>
+      <div className="flex flex-1 flex-row overflow-auto">
+        <div className="flex min-w-[160px] flex-col gap-2.5 p-3 text-xs">
+          <div className="flex items-center gap-1">
             <MenuTrigger>
               <Button
-                isSquare
                 intent="neutral"
                 variant="ghost"
-                aria-label="Inbox menu"
+                aria-label="Menu"
+                className="text-neutral-text-contrast"
               >
-                <DotsThree weight="bold" size={16} />
+                Acme <CaretDown size={12} />
               </Button>
-              <Menu>
+              <Menu className="min-w-[180px]">
                 <MenuItem>
-                  <Checks size={16} weight="duotone" />
-                  Mark all as read
+                  <SlidersHorizontal size={16} weight="duotone" />
+                  Preferences
                   <Kbd variant="plain" className="ml-auto">
-                    ⎇U
+                    G then S
                   </Kbd>
                 </MenuItem>
-                <MenuItem>
-                  <XSquare size={16} weight="duotone" />
-                  Empty inbox
-                  <Kbd variant="plain" className="ml-auto">
-                    ⎇⇧D
-                  </Kbd>
-                </MenuItem>
-              </Menu>
-            </MenuTrigger>
-
-            <MenuTrigger>
-              <Button
-                isSquare
-                intent="neutral"
-                variant="ghost"
-                className="ml-auto"
-              >
-                <FunnelSimple size={16} />
-              </Button>
-              <Menu selectionMode="multiple" placement="bottom end">
-                <MenuItem>Assignments</MenuItem>
-                <MenuItem>Mentions</MenuItem>
-                <MenuItem>Status changes</MenuItem>
-                <MenuItem>Comments</MenuItem>
-              </Menu>
-            </MenuTrigger>
-            <PopoverTrigger>
-              <Button isSquare intent="neutral" variant="ghost">
-                <SlidersHorizontal size={16} />
-              </Button>
-              <Popover placement="bottom end">
-                <div className="flex w-[220px] flex-col gap-2 p-3">
-                  <Select
-                    labelPosition="side"
-                    label="Ordering"
-                    defaultSelectedKey={"newest"}
-                  >
-                    <SelectItem id="newest">Newest</SelectItem>
-                    <SelectItem id="oldest">Oldest</SelectItem>
-                    <SelectItem id="priorty">Priority</SelectItem>
-                  </Select>
-                  <Separator />
-                  <div className="flex flex-col">
-                    <Switch labelPosition="start" defaultSelected>
-                      Show snoozed
-                    </Switch>
-                    <Switch labelPosition="start">Show read</Switch>
-                  </div>
-                  <Separator />
-                  <TagGroup
-                    label="Display properties"
-                    selectionMode="multiple"
-                    defaultSelectedKeys={"id"}
-                  >
-                    <Tag>ID</Tag>
-                    <Tag>Assignee</Tag>
-                    <Tag>Priority</Tag>
-                  </TagGroup>
-                </div>
-              </Popover>
-            </PopoverTrigger>
-          </div>
-          <div className="overflow-auto">
-            <ListBox
-              aria-label="Inbox"
-              className="p-1"
-              items={items}
-              selectionMode="single"
-              disallowEmptySelection
-              selectedKeys={selectedKeys}
-              onSelectionChange={setSelectedKeys}
-            >
-              {({ title, description, user, status, age, id }) => (
-                <ListBoxItem key={id} className="h-auto px-2 py-1.5">
-                  <div className="grid flex-1 grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2.5 gap-y-0.5">
-                    <Avatar
-                      name={user}
-                      src={`https://source.unsplash.com/random/100x100/?face$${id}`}
-                      className="row-span-2 place-self-center"
-                    />
-                    <span className="text-neutral-text-contrast col-start-2 row-start-1 truncate">
-                      {title}
-                    </span>
-                    <span className="text-neutral-text col-start-2 row-start-2">
-                      {description}
-                    </span>
-                    <span className="text-neutral-text col-start-3 row-start-2 text-right">
-                      {age}
-                    </span>
-                    <div className="col-start-3 row-start-1">
-                      {status === "in-progress" && (
-                        <CircleHalf
-                          size={16}
-                          weight="duotone"
-                          className="text-warning-text"
-                        />
-                      )}
-                      {status === "done" && (
-                        <CheckCircle
-                          size={16}
-                          weight="duotone"
-                          className="text-success-text"
-                        />
-                      )}
-                      {status === "cancelled" && (
-                        <XCircle
-                          size={16}
-                          weight="duotone"
-                          className="text-neutral-text"
-                        />
-                      )}
-                    </div>
-                  </div>
-                </ListBoxItem>
-              )}
-            </ListBox>
-          </div>
-        </div>
-
-        <div className="flex flex-1 flex-col">
-          <div className="border-neutral-3 flex items-center gap-1 border-b p-1 pl-2 text-xs">
-            <Breadcrumbs items={breadcrumbs}>
-              {({ text, href, icon }) => (
-                <Breadcrumb href={href ?? ""} key={text}>
-                  <div className="text-neutral-text-contrast flex items-center gap-1 font-medium">
-                    {icon ?
-                      <span>{icon}</span>
-                    : null}
-                    {text}
-                  </div>
-                </Breadcrumb>
-              )}
-            </Breadcrumbs>
-
-            <MenuTrigger>
-              <Button variant="ghost" intent="neutral" isSquare>
-                <DotsThree weight="bold" size={16} />
-              </Button>
-              <Menu>
-                <MenuItem>Copy link</MenuItem>
+                <MenuSeparator />
                 <SubmenuTrigger>
-                  <MenuItem>Move to</MenuItem>
+                  <MenuItem>
+                    <UsersThree size={16} weight="duotone" />
+                    Workspace
+                  </MenuItem>
                   <Menu>
-                    <MenuItem>Project</MenuItem>
-                    <MenuItem>Workspace</MenuItem>
+                    <MenuItem>Personal</MenuItem>
+                    <MenuItem>Work</MenuItem>
                     <MenuItem>Organization</MenuItem>
                   </Menu>
                 </SubmenuTrigger>
-                <MenuSeparator />
-                <MenuItem intent="error">Delete</MenuItem>
+                <MenuItem>
+                  <SignOut size={16} weight="duotone" />
+                  Log out
+                  <Kbd variant="plain" className="ml-auto">
+                    ⎇⇧Q
+                  </Kbd>
+                </MenuItem>
               </Menu>
             </MenuTrigger>
 
-            <TooltipTrigger>
-              <ToggleButton
-                intent="neutral"
-                isSquare
-                variant="ghost"
-                aria-label="Favorite"
-              >
-                {({ isSelected }) => (
-                  <Star weight={isSelected ? "fill" : "regular"} size={16} />
-                )}
-              </ToggleButton>
-              <Tooltip>
-                Favorite
-                <Kbd variant="plain">⎇F</Kbd>
-              </Tooltip>
-            </TooltipTrigger>
+            <Button
+              isSquare
+              intent="neutral"
+              variant="ghost"
+              className="ml-auto"
+            >
+              <MagnifyingGlass size={16} />
+            </Button>
 
-            <TooltipTrigger>
-              <Button
-                intent="neutral"
-                variant="ghost"
-                isSquare
-                className="ml-auto"
-                aria-label="Archive"
-              >
-                <Archive size={16} />
-              </Button>
-              <Tooltip>
-                Archive
-                <Kbd variant="plain">⌫</Kbd>
-              </Tooltip>
-            </TooltipTrigger>
-            <TooltipTrigger>
-              <Button
-                intent="neutral"
-                variant="ghost"
-                isSquare
-                aria-label="Snooze"
-              >
-                <Clock size={16} />
-              </Button>
-              <Tooltip>
-                Snooze
-                <Kbd variant="plain">H</Kbd>
-              </Tooltip>
-            </TooltipTrigger>
+            <Button isSquare intent="neutral">
+              <Plus size={16} />
+            </Button>
           </div>
 
-          <div className="flex flex-col gap-3 p-4 text-sm">
-            <h4 className="text-neutral-text-contrast text-balance text-base font-medium leading-tight">
-              {selectedItem?.title}
-            </h4>
+          <ListBox
+            aria-label="Navigation"
+            className="gap-2"
+            defaultSelectedKeys={["inbox"]}
+            selectionMode="single"
+            disallowEmptySelection
+          >
+            <ListBoxSection>
+              <ListBoxItem id="inbox" textValue="inbox">
+                <Tray size={16} weight="duotone" />
+                Inbox
+                <Badge intent="neutral" className="ml-0" size={1}>
+                  15
+                </Badge>
+              </ListBoxItem>
+              <ListBoxItem textValue="my-issues">
+                <UserFocus size={16} weight="duotone" />
+                My issues
+              </ListBoxItem>
+            </ListBoxSection>
 
-            <p className="text-neutral-text">{selectedItem?.text}</p>
+            <ListBoxSection title="Workspace">
+              <ListBoxItem textValue="views">
+                <Stack size={16} weight="duotone" />
+                Views
+              </ListBoxItem>
+              <ListBoxItem textValue="roadmaps">
+                <MapTrifold size={16} weight="duotone" />
+                Roadmaps
+              </ListBoxItem>
+              <ListBoxItem textValue="teams">
+                <Users size={16} weight="duotone" />
+                Teams
+              </ListBoxItem>
+            </ListBoxSection>
 
-            <DataList labelPosition="side">
-              <DataListItem label="ID" value={selectedItem?.id} />
-              <DataListItem
-                label="Assignee"
-                value={<Link href="#">{selectedItem?.user}</Link>}
-              />
-              <DataListItem
-                label="Status"
-                value={
-                  selectedItem?.status === "in-progress" ?
-                    <div className="text-warning-text flex items-center gap-1.5">
-                      <CircleHalf
-                        className="shrink-0"
-                        size={16}
-                        weight="duotone"
-                      />
-                      In progress
-                    </div>
-                  : <div className="text-success-text flex items-center gap-1.5">
-                      <CheckCircle
-                        className="shrink-0"
-                        size={16}
-                        weight="duotone"
-                      />
-                      Done
-                    </div>
-                }
-              />
-            </DataList>
-
-            <div className="mt-1 flex flex-col items-start gap-1">
-              <Button intent="neutral" variant="ghost">
-                + Add sub-issues
-              </Button>
-              <Button intent="neutral" variant="ghost">
-                + Add links
-              </Button>
-            </div>
-            <Separator />
-            <h5 className="text-neutral-text-contrast text-sm font-medium">
-              Activity
-            </h5>
-            <div className="flex flex-col text-xs">
-              <div className="flex items-center gap-2">
-                <Avatar
-                  name={selectedItem?.user || "John Doe"}
-                  src={`https://source.unsplash.com/random/100x100/?face$${selectedItem?.id}`}
-                  size={1}
+            <ListBoxSection title="Favorites">
+              <ListBoxItem textValue="mobile-app">
+                <DeviceMobile
+                  size={16}
+                  weight="duotone"
+                  className="text-accent-text"
                 />
-                <span>
-                  <span className="text-neutral-text-contrast font-medium">
-                    {selectedItem?.user}
-                  </span>{" "}
-                  {selectedItem?.description}
-                  <span className="px-1.5">&middot;</span>
-                  <span className="text-neutral-text">{selectedItem?.age}</span>
-                </span>
-              </div>
+                Mobile app
+              </ListBoxItem>
+              <ListBoxItem textValue="roadmap">
+                <RoadHorizon
+                  size={16}
+                  weight="duotone"
+                  className="text-success-text"
+                />
+                3Q24 Roadmap
+              </ListBoxItem>
+              <ListBoxItem textValue="design-system">
+                <PencilRuler
+                  size={16}
+                  weight="duotone"
+                  className="text-warning-text"
+                />
+                Design system
+              </ListBoxItem>
+
+              <ListBoxItem textValue="projects">
+                <Folder size={16} weight="duotone" />
+                Projects
+              </ListBoxItem>
+
+              <ListBoxItem textValue="docs">
+                <Folder size={16} weight="duotone" />
+                Docs
+              </ListBoxItem>
+            </ListBoxSection>
+          </ListBox>
+        </div>
+
+        <div className="bg-panel shadow-xs ring-neutral-3 m-2 ml-0 flex flex-1 rounded ring">
+          <div className="border-neutral-3 flex w-[240px] flex-col border-r">
+            <div className="border-neutral-3 flex items-center gap-1.5 border-b p-1 px-2 text-xs">
+              <span className="text-neutral-text-contrast ml-1 font-medium">
+                Inbox
+              </span>
+              <MenuTrigger>
+                <Button
+                  isSquare
+                  intent="neutral"
+                  variant="ghost"
+                  aria-label="Inbox menu"
+                >
+                  <DotsThree weight="bold" size={16} />
+                </Button>
+                <Menu>
+                  <MenuItem>
+                    <Checks size={16} weight="duotone" />
+                    Mark all as read
+                    <Kbd variant="plain" className="ml-auto">
+                      ⎇U
+                    </Kbd>
+                  </MenuItem>
+                  <MenuItem>
+                    <XSquare size={16} weight="duotone" />
+                    Empty inbox
+                    <Kbd variant="plain" className="ml-auto">
+                      ⎇⇧D
+                    </Kbd>
+                  </MenuItem>
+                </Menu>
+              </MenuTrigger>
+
+              <MenuTrigger>
+                <Button
+                  isSquare
+                  intent="neutral"
+                  variant="ghost"
+                  className="ml-auto"
+                >
+                  <FunnelSimple size={16} />
+                </Button>
+                <Menu selectionMode="multiple" placement="bottom end">
+                  <MenuItem>Assignments</MenuItem>
+                  <MenuItem>Mentions</MenuItem>
+                  <MenuItem>Status changes</MenuItem>
+                  <MenuItem>Comments</MenuItem>
+                </Menu>
+              </MenuTrigger>
+              <PopoverTrigger>
+                <Button isSquare intent="neutral" variant="ghost">
+                  <SlidersHorizontal size={16} />
+                </Button>
+                <Popover placement="bottom end">
+                  <div className="flex w-[220px] flex-col gap-2 p-3">
+                    <Select
+                      labelPosition="side"
+                      label="Ordering"
+                      defaultSelectedKey={"newest"}
+                    >
+                      <SelectItem id="newest">Newest</SelectItem>
+                      <SelectItem id="oldest">Oldest</SelectItem>
+                      <SelectItem id="priorty">Priority</SelectItem>
+                    </Select>
+                    <Separator />
+                    <div className="flex flex-col">
+                      <Switch labelPosition="start" defaultSelected>
+                        Show snoozed
+                      </Switch>
+                      <Switch labelPosition="start">Show read</Switch>
+                    </div>
+                    <Separator />
+                    <TagGroup
+                      label="Display properties"
+                      selectionMode="multiple"
+                      defaultSelectedKeys={"id"}
+                    >
+                      <Tag>ID</Tag>
+                      <Tag>Assignee</Tag>
+                      <Tag>Priority</Tag>
+                    </TagGroup>
+                  </div>
+                </Popover>
+              </PopoverTrigger>
             </div>
-            <div className="mt-2 flex flex-col gap-2">
-              <TextArea placeholder="Add a comment..." />
-              <Button intent="accent" variant="ghost" className="ml-auto">
-                Post
-              </Button>
+            <div className="overflow-auto">
+              <ListBox
+                aria-label="Inbox"
+                className="p-1"
+                items={items}
+                selectionMode="single"
+                disallowEmptySelection
+                selectedKeys={selectedKeys}
+                onSelectionChange={setSelectedKeys}
+              >
+                {({ title, description, user, status, age, id }) => (
+                  <ListBoxItem
+                    key={id}
+                    textValue={title}
+                    className="h-auto px-2 py-1.5"
+                  >
+                    <div className="grid flex-1 grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2.5 gap-y-0.5">
+                      <Avatar
+                        name={user}
+                        src={`https://source.unsplash.com/random/100x100/?face$${id}`}
+                        className="row-span-2 place-self-center"
+                      />
+                      <span className="text-neutral-text-contrast col-start-2 row-start-1 truncate">
+                        {title}
+                      </span>
+                      <span className="text-neutral-text col-start-2 row-start-2">
+                        {description}
+                      </span>
+                      <span className="text-neutral-text col-start-3 row-start-2 text-right">
+                        {age}
+                      </span>
+                      <div className="col-start-3 row-start-1">
+                        {status === "in-progress" && (
+                          <CircleHalf
+                            size={16}
+                            weight="duotone"
+                            className="text-warning-text"
+                          />
+                        )}
+                        {status === "done" && (
+                          <CheckCircle
+                            size={16}
+                            weight="duotone"
+                            className="text-success-text"
+                          />
+                        )}
+                        {status === "cancelled" && (
+                          <XCircle
+                            size={16}
+                            weight="duotone"
+                            className="text-neutral-text"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </ListBoxItem>
+                )}
+              </ListBox>
+            </div>
+          </div>
+
+          <div className="flex flex-1 flex-col">
+            <div className="border-neutral-3 flex items-center gap-1 border-b p-1 pl-2 text-xs">
+              <Breadcrumbs items={breadcrumbs}>
+                {({ text, href, icon }) => (
+                  <Breadcrumb href={href ?? ""} key={text}>
+                    <div className="text-neutral-text-contrast flex items-center gap-1 font-medium">
+                      {icon ?
+                        <span>{icon}</span>
+                      : null}
+                      {text}
+                    </div>
+                  </Breadcrumb>
+                )}
+              </Breadcrumbs>
+
+              <MenuTrigger>
+                <Button variant="ghost" intent="neutral" isSquare>
+                  <DotsThree weight="bold" size={16} />
+                </Button>
+                <Menu>
+                  <MenuItem>Copy link</MenuItem>
+                  <SubmenuTrigger>
+                    <MenuItem>Move to</MenuItem>
+                    <Menu>
+                      <MenuItem>Project</MenuItem>
+                      <MenuItem>Workspace</MenuItem>
+                      <MenuItem>Organization</MenuItem>
+                    </Menu>
+                  </SubmenuTrigger>
+                  <MenuSeparator />
+                  <MenuItem intent="error">Delete</MenuItem>
+                </Menu>
+              </MenuTrigger>
+
+              <TooltipTrigger>
+                <ToggleButton
+                  intent="neutral"
+                  isSquare
+                  variant="ghost"
+                  aria-label="Favorite"
+                >
+                  {({ isSelected }) => (
+                    <Star weight={isSelected ? "fill" : "regular"} size={16} />
+                  )}
+                </ToggleButton>
+                <Tooltip>
+                  Favorite
+                  <Kbd variant="plain">⎇F</Kbd>
+                </Tooltip>
+              </TooltipTrigger>
+
+              <TooltipTrigger>
+                <Button
+                  intent="neutral"
+                  variant="ghost"
+                  isSquare
+                  className="ml-auto"
+                  aria-label="Archive"
+                >
+                  <Archive size={16} />
+                </Button>
+                <Tooltip>
+                  Archive
+                  <Kbd variant="plain">⌫</Kbd>
+                </Tooltip>
+              </TooltipTrigger>
+              <TooltipTrigger>
+                <Button
+                  intent="neutral"
+                  variant="ghost"
+                  isSquare
+                  aria-label="Snooze"
+                >
+                  <Clock size={16} />
+                </Button>
+                <Tooltip>
+                  Snooze
+                  <Kbd variant="plain">H</Kbd>
+                </Tooltip>
+              </TooltipTrigger>
+            </div>
+
+            <div className="flex flex-col gap-3 p-4 text-sm">
+              <h4 className="text-neutral-text-contrast text-balance text-base font-medium leading-tight">
+                {selectedItem?.title}
+              </h4>
+
+              <p className="text-neutral-text">{selectedItem?.text}</p>
+
+              <DataList labelPosition="side">
+                <DataListItem label="ID" value={selectedItem?.id} />
+                <DataListItem
+                  label="Assignee"
+                  value={<Link href="#">{selectedItem?.user}</Link>}
+                />
+                <DataListItem
+                  label="Status"
+                  value={
+                    selectedItem?.status === "in-progress" ?
+                      <div className="text-warning-text flex items-center gap-1.5">
+                        <CircleHalf
+                          className="shrink-0"
+                          size={16}
+                          weight="duotone"
+                        />
+                        In progress
+                      </div>
+                    : <div className="text-success-text flex items-center gap-1.5">
+                        <CheckCircle
+                          className="shrink-0"
+                          size={16}
+                          weight="duotone"
+                        />
+                        Done
+                      </div>
+                  }
+                />
+              </DataList>
+
+              <div className="mt-1 flex flex-col items-start gap-1">
+                <Button intent="neutral" variant="ghost">
+                  + Add sub-issues
+                </Button>
+                <Button intent="neutral" variant="ghost">
+                  + Add links
+                </Button>
+              </div>
+              <Separator />
+              <h5 className="text-neutral-text-contrast text-sm font-medium">
+                Activity
+              </h5>
+              <div className="flex flex-col text-xs">
+                <div className="flex items-center gap-2">
+                  <Avatar
+                    name={selectedItem?.user || "John Doe"}
+                    src={`https://source.unsplash.com/random/100x100/?face$${selectedItem?.id}`}
+                    size={1}
+                  />
+                  <span>
+                    <span className="text-neutral-text-contrast font-medium">
+                      {selectedItem?.user}
+                    </span>{" "}
+                    {selectedItem?.description}
+                    <span className="px-1.5">&middot;</span>
+                    <span className="text-neutral-text">
+                      {selectedItem?.age}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div className="mt-2 flex flex-col gap-2">
+                <TextArea aria-label="Comment" placeholder="Add a comment..." />
+                <Button intent="accent" variant="ghost" className="ml-auto">
+                  Post
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </ExampleContainer>
   )
 }

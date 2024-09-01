@@ -54,6 +54,7 @@ import { Tag, TagGroup } from "@ui/TagGroup"
 import { TextField } from "@ui/TextField"
 import { ToggleButton } from "@ui/ToggleButton"
 import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
+import { ExampleContainer } from "./ExampleContainer"
 
 const fileColumns = [
   { id: "file", name: "File", isRowHeader: true },
@@ -132,7 +133,7 @@ const fileRows = [
 
 export function Example1() {
   return (
-    <div className="s-box bg-background flex flex-col overflow-clip rounded-2xl shadow-[var(--shadow-xs)]">
+    <ExampleContainer>
       <div className="flex items-center gap-2 p-4 pb-2 text-[13px]">
         <MenuTrigger>
           <Button intent="neutral" isSquare aria-label="Menu">
@@ -325,7 +326,11 @@ export function Example1() {
 
                 <div className="flex-1"></div>
 
-                <ComboBox defaultItems={fileRows} placeholder="Go to file">
+                <ComboBox
+                  aria-label="Files"
+                  defaultItems={fileRows}
+                  placeholder="Go to file"
+                >
                   {({ id, icon }) => (
                     <ComboBoxItem href="#" textValue={id}>
                       {icon}
@@ -443,12 +448,13 @@ export function Example1() {
                 v4.
               </p>
 
-              <DataList>
+              <DataList labelPosition="side" className="mb-2">
                 <DataListItem
                   label={<LinkIcon size={16} />}
                   value="shim.kkga.me"
                 />
               </DataList>
+
               <TagGroup aria-label="Tags" color="green">
                 <Tag>react</Tag>
                 <Tag>react-aria</Tag>
@@ -459,7 +465,7 @@ export function Example1() {
 
               <Separator />
 
-              <DataList>
+              <DataList labelPosition="side">
                 <DataListItem
                   label={<Scales size={16} />}
                   value="MIT License"
@@ -498,6 +504,6 @@ export function Example1() {
 
         <TabPanel id="pr">Change your settings.</TabPanel>
       </Tabs>
-    </div>
+    </ExampleContainer>
   )
 }
