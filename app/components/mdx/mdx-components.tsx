@@ -41,7 +41,7 @@ export function Code(props) {
   return (
     <code
       className={cx(
-        "font-mono text-[95%] text-neutral-text-contrast",
+        "text-neutral-text-contrast font-mono text-[95%]",
         props.className,
       )}
       dangerouslySetInnerHTML={{ __html: html }}
@@ -51,35 +51,35 @@ export function Code(props) {
 
 export const H1 = (props) => (
   <h1
-    className="text-3xl font-medium leading-tight text-neutral-text-contrast"
+    className="text-neutral-text-contrast text-3xl font-medium leading-tight"
     {...props}
   />
 )
 
 export const H2 = (props) => (
   <h2
-    className="mt-12 mb-3 text-lg font-medium leading-tight text-neutral-text-contrast"
+    className="text-neutral-text-contrast mb-3 mt-12 text-lg font-medium leading-tight"
     {...props}
   />
 )
 
 export const H3 = (props) => (
   <h3
-    className="mt-12 mb-2 text-base font-medium leading-tight text-neutral-text-contrast"
+    className="text-neutral-text-contrast mb-2 mt-12 text-base font-medium leading-tight"
     {...props}
   />
 )
 
 export const H4 = (props) => (
   <h4
-    className="mt-6 mb-2 text-base font-medium leading-tight text-neutral-text-contrast"
+    className="text-neutral-text-contrast mb-2 mt-6 text-base font-medium leading-tight"
     {...props}
   />
 )
 
 export const H5 = (props) => (
   <h5
-    className="mt-6 mb-2 text-sm font-medium text-neutral-text-contrast"
+    className="text-neutral-text-contrast mb-2 mt-6 text-sm font-medium"
     {...props}
   />
 )
@@ -87,17 +87,14 @@ export const H5 = (props) => (
 export const P = (props) => <p className="mb-4 max-w-[72ch]" {...props} />
 
 export const Note = (props) => (
-  <div className="flex items-center gap-2 text-sm text-success-text *:m-0">
+  <div className="text-success-text flex items-center gap-2 text-sm *:m-0">
     <Info size={16} weight="duotone" />
     {props.children}
   </div>
 )
 
 export const HR = (props) => (
-  <hr
-    {...props}
-    className={cx("my-12 max-w-prose border-neutral-line", props.className)}
-  />
+  <hr {...props} className={cx("border-neutral-line my-12", props.className)} />
 )
 
 export const mdxComponents: MDXRemoteProps["components"] = {
@@ -108,7 +105,7 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   h5: H5,
   h6: (props) => (
     <h6
-      className="mt-8 mb-4 text-sm font-medium text-neutral-text-contrast"
+      className="text-neutral-text-contrast mb-4 mt-8 text-sm font-medium"
       {...props}
     />
   ),
@@ -119,10 +116,10 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   li: (props) => <li className="mb-4" {...props} />,
   hr: HR,
   em: (props) => (
-    <em className="italic text-neutral-text-contrast" {...props} />
+    <em className="text-neutral-text-contrast italic" {...props} />
   ),
   strong: (props) => (
-    <strong className="font-medium text-neutral-text-contrast" {...props} />
+    <strong className="text-neutral-text-contrast font-medium" {...props} />
   ),
   a: CustomLink,
   code: Code,
