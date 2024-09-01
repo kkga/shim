@@ -4,10 +4,11 @@ const localesPlugin = require("@react-aria/optimize-locales-plugin")
 const nextConfig = {
   experimental: {
     reactCompiler: true,
+    typedRoutes: true,
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      config.plugins.push(localesPlugin.webpack({ locales: [] }))
+      config.plugins.push(localesPlugin.webpack({ locales: ["en-US"] }))
     }
     return config
   },
