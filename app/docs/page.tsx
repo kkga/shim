@@ -1,10 +1,10 @@
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation"
 
 export const metadata = {
-  title: 'Docs',
-  description: 'docs',
+  title: "Docs",
+  description: "docs",
 }
 
 export default function Page() {
-  redirect('/docs/guides/get-started')
+  redirect("/docs/guides/get-started")
 }
