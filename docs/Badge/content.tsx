@@ -11,10 +11,10 @@ export default () => (
   <>
     <div className="flex flex-wrap gap-2">
       <Badge intent="success">
-        <CheckFat size={14} weight="duotone" aria-label="Approved" />
+        <CheckFat size={12} weight="duotone" aria-label="Approved" />
       </Badge>
       <Badge intent="error">
-        <Lock size={14} weight="duotone" aria-label="Locked" />
+        <Lock size={12} weight="duotone" aria-label="Locked" />
       </Badge>
     </div>
 
@@ -28,7 +28,7 @@ export default () => (
     </div>
 
     <div>
-      <Badge>
+      <Badge size={2}>
         <GitBranch size={14} weight="duotone" />
         kkga/dev
       </Badge>
