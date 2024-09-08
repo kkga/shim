@@ -168,6 +168,7 @@ export const demoComponents = {
     Main: dynamic(() => import("@docs/Table").then((mod) => mod.Main)),
     Sorting: dynamic(() => import("@docs/Table").then((mod) => mod.Sorting)),
     Content: dynamic(() => import("@docs/Table").then((mod) => mod.Content)),
+    Resizable: dynamic(() => import("@docs/Table").then((mod) => mod.Resizable)),
   },
   TagGroupDemo: {
     Main: dynamic(() => import("@docs/TagGroup").then((mod) => mod.Main)),
@@ -196,6 +197,7 @@ export const demoComponents = {
   KbdDemo: {
     Main: dynamic(() => import("@docs/Kbd").then((mod) => mod.Main)),
     Variant: dynamic(() => import("@docs/Kbd").then((mod) => mod.Variant)),
+    Size: dynamic(() => import("@docs/Kbd").then((mod) => mod.Size)),
   },
   DataListDemo: {
     Main: dynamic(() => import("@docs/DataList").then((mod) => mod.Main)),
