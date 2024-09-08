@@ -179,6 +179,7 @@
   --color-error-text-contrast: var(--color-error-12);
 
   /* Functional colors /
+
   /* Base body background color */
   --color-background: var(--color-neutral-2);
   /* Panel background color for popovers, menus, etc */
@@ -187,6 +188,7 @@
   --color-overlay: var(--black-a6);
 
   /* Type scale */
+
   --font-size-xs: 0.75rem;
   --font-size-xs--line-height: 1rem;
   --font-size-sm: 0.875rem;
@@ -215,6 +217,7 @@
   --font-size-9xl--line-height: 1;
 
   /* Font weights */
+
   --font-weight-book: 450;
 
   /* Shadows */
@@ -268,7 +271,7 @@
 .dark,
 .dark-theme {
   /* prettier-ignore */
-  --shadow-inner:
+  --shadow-inner: 
     inset 0 -1px 1px 0 var(--slate-a3),
     inset 0 0 0 1px var(--slate-a3),
     inset 0 3px 4px 0 var(--black-a5),
