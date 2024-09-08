@@ -41,7 +41,7 @@ export function Code(props) {
   return (
     <code
       className={cx(
-        "text-neutral-text-contrast font-mono text-[95%]",
+        "text-neutral-text-contrast font-book font-mono text-[95%]",
         props.className,
       )}
       dangerouslySetInnerHTML={{ __html: html }}
@@ -87,7 +87,7 @@ export const H5 = (props) => (
 export const P = (props) => <p className="mb-4 max-w-[72ch]" {...props} />
 
 export const Note = (props) => (
-  <div className="text-success-text flex items-center gap-2 text-sm *:m-0">
+  <div className="text-accent-text flex items-center gap-2 text-sm *:m-0">
     <Info size={16} weight="duotone" />
     {props.children}
   </div>
