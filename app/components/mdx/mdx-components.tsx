@@ -1,4 +1,4 @@
-import { Info } from "@phosphor-icons/react/dist/ssr"
+import { Info, WarningDiamond } from "@phosphor-icons/react/dist/ssr"
 import { cx } from "cva"
 import type { MDXRemoteProps } from "next-mdx-remote"
 import Link from "next/link"
@@ -84,14 +84,44 @@ export const H5 = (props) => (
   />
 )
 
+export const H6 = (props) => (
+  <h6
+    className="text-neutral-text-contrast mb-4 mt-8 text-sm font-medium"
+    {...props}
+  />
+)
+
 export const P = (props) => <p className="mb-4 max-w-[72ch]" {...props} />
 
-export const Note = (props) => (
-  <div className="text-accent-text flex items-center gap-2 text-sm *:m-0">
-    <Info size={16} weight="duotone" />
-    {props.children}
-  </div>
-)
+export const Note = ({
+  intent = "info",
+  children,
+}: {
+  intent?: "info" | "warning"
+  children: React.ReactNode
+}) => {
+  let colors = {
+    info: "text-accent-text",
+    warning: "text-warning-text",
+  }
+
+  let icons = {
+    info: <Info size={16} weight="duotone" />,
+    warning: <WarningDiamond size={16} weight="duotone" />,
+  }
+
+  return (
+    <div
+      className={cx(
+        "font-book flex items-center gap-2 text-[13px] *:m-0",
+        colors[intent],
+      )}
+    >
+      {icons[intent]}
+      {children}
+    </div>
+  )
+}
 
 export const HR = (props) => (
   <hr {...props} className={cx("border-neutral-line my-12", props.className)} />
@@ -103,12 +133,7 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   h3: H3,
   h4: H4,
   h5: H5,
-  h6: (props) => (
-    <h6
-      className="text-neutral-text-contrast mb-4 mt-8 text-sm font-medium"
-      {...props}
-    />
-  ),
+  h6: H6,
   p: P,
   ul: (props) => (
     <ul className="my-4 max-w-prose list-outside list-disc pl-4" {...props} />

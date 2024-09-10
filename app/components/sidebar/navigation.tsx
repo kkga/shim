@@ -124,10 +124,10 @@ export function Navigation({ items }: { items: NavItem[] }) {
             className="w-full"
           />
         </div>
-        <div className="h-4 bg-gradient-to-b from-panel to-transparent" />
+        <div className="from-panel h-4 bg-gradient-to-b to-transparent" />
       </div>
 
-      <nav className="shrink-0 grow pt-2 pb-8">
+      <nav className="shrink-0 grow pb-8 pt-2">
         <ListBox
           key={`${items.length}-${filter}`}
           selectionMode="single"
@@ -137,17 +137,17 @@ export function Navigation({ items }: { items: NavItem[] }) {
           selectedKeys={[pathname]}
           layout="grid"
           renderEmptyState={() => (
-            <p className="text-center text-sm text-neutral-placeholder">
+            <p className="text-neutral-placeholder text-center text-sm">
               Nothing found
             </p>
           )}
         >
           {({ section, items }) => (
             <RACSection id={section} className="grid grid-cols-2 gap-1">
-              <Header className="col-span-full flex h-6 items-center gap-1.5 px-1.5 text-xs font-medium text-neutral-text-contrast">
+              <Header className="text-neutral-text-contrast col-span-full flex h-6 items-center gap-1.5 px-1.5 text-xs font-medium">
                 {categoryIcons[section]}
                 {section}
-                <div className="h-px grow bg-neutral-4" />
+                <div className="bg-neutral-4 h-px grow" />
               </Header>
               <Collection items={items}>
                 {({ slug, name, status }) => (

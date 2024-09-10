@@ -44,8 +44,8 @@ export async function Pre({
       className={cx(
         "codeblock group relative flex flex-col overflow-auto",
         "max-h-[calc(100dvh-12rem)]",
-        "rounded-lg border border-neutral-3 bg-panel",
-        "font-mono text-[13px] leading-normal text-neutral-text",
+        "border-neutral-3 bg-panel rounded-lg border",
+        "text-neutral-text font-mono text-[13px] leading-normal",
         "[&_code]:text-[100%]!",
         className,
       )}
@@ -61,7 +61,7 @@ export async function Pre({
         </pre>
       }
 
-      <div className="invisible absolute top-4 right-4 ml-auto flex size-5 items-center justify-center group-hover:visible">
+      <div className="invisible absolute right-4 top-4 ml-auto flex size-5 items-center justify-center group-hover:visible">
         <CopyButton
           className="backdrop-blur-sm"
           text={raw || source}

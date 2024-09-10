@@ -54,7 +54,7 @@ import { Tag, TagGroup } from "@ui/TagGroup"
 import { TextField } from "@ui/TextField"
 import { ToggleButton } from "@ui/ToggleButton"
 import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
-import { ExampleContainer } from "./ExampleContainer"
+import { ExampleContainer } from "./container"
 
 const fileColumns = [
   { id: "file", name: "File", isRowHeader: true },
@@ -131,9 +131,9 @@ const fileRows = [
   },
 ]
 
-export function Example1() {
+export function ExampleRepo() {
   return (
-    <ExampleContainer>
+    <ExampleContainer className="min-w-[800px]">
       <div className="flex items-center gap-2 p-4 pb-2 text-[13px]">
         <MenuTrigger>
           <Button intent="neutral" isSquare aria-label="Menu">

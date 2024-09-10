@@ -1,8 +1,8 @@
-import { H3, P } from "@/components/mdx/mdx-components"
+import { H3, Note, P } from "@/components/mdx/mdx-components"
 import { Pre } from "@/components/mdx/pre"
 import { Code as CodeIcon, Terminal } from "@phosphor-icons/react/dist/ssr"
+import { Link } from "@ui/Link"
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
-import { DependenciesWarning } from "./dependencies-warning"
 
 interface Props {
   filename: string
@@ -24,10 +24,28 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
         source code below.
       </P>
 
-      {dependencies && <DependenciesWarning deps={dependencies} />}
+      {dependencies && (
+        <Note intent="warning">
+          <P>
+            Install the dependencies before using this component:{" "}
+            {dependencies.map(({ name, slug }, i) => (
+              <span key={name}>
+                {i > 0 && ", "}
+                <Link
+                  intent="warning"
+                  variant="underline"
+                  href={`/docs/${slug}`}
+                >
+                  {name}
+                </Link>
+              </span>
+            ))}
+          </P>
+        </Note>
+      )}
 
-      <Tabs className="s-box my-8 gap-0 overflow-hidden rounded-xl bg-panel p-0 shadow-[var(--shadow-xs)]">
-        <TabList className="gap-4 px-4 shadow-neutral-3">
+      <Tabs className="s-box bg-panel my-8 gap-0 overflow-hidden rounded-xl p-0 shadow-[var(--shadow-xs)]">
+        <TabList variant="underline" className="shadow-neutral-3 px-4">
           <Tab id="curl">
             <Terminal size={16} weight="duotone" />
             cURL

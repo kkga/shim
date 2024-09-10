@@ -3,7 +3,7 @@ import localFont from "next/font/local"
 export const fontMono = localFont({
   src: [
     {
-      path: "./BerkeleyMono-Regular.woff2",
+      path: "./commit-mono.woff2",
     },
   ],
   variable: "--font-mono",

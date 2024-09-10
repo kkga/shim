@@ -9,7 +9,7 @@ function ThemeButton() {
   let [mounted, setMounted] = useState(false)
   let { theme, systemTheme, resolvedTheme, setTheme } = useTheme()
 
-  let themes
+  let themes: string[]
   if (systemTheme === "dark") {
     themes = ["system", "light"]
   } else {

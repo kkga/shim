@@ -52,7 +52,7 @@ import { ToggleButton } from "@ui/ToggleButton"
 import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
 import { useMemo, useState } from "react"
 import { Selection } from "react-aria-components"
-import { ExampleContainer } from "./ExampleContainer"
+import { ExampleContainer } from "./container"
 
 const items = [
   {
@@ -192,7 +192,7 @@ const items = [
   },
 ]
 
-export function Example2() {
+export function ExampleIssueTracker() {
   let [selectedKeys, setSelectedKeys] = useState<Selection>(
     new Set(["LIN-5737"]),
   )
@@ -219,7 +219,7 @@ export function Example2() {
   )
 
   return (
-    <ExampleContainer>
+    <ExampleContainer className="min-w-[800px]">
       <div className="flex flex-1 flex-row overflow-auto">
         <div className="flex min-w-[160px] flex-col gap-2.5 p-3 text-xs">
           <div className="flex items-center gap-1">
