@@ -17,75 +17,48 @@ import {
   Label,
   fieldLayoutStyle,
 } from "./Field"
-
-interface RadioGroupProps
-  extends Omit<RACRadioGroupProps, "children">,
-    FieldProps {
-  children?: React.ReactNode
-}
-
-function RadioGroup({
-  label,
-  description,
-  className,
-  errorMessage,
-  children,
-  ...props
-}: RadioGroupProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
-  let { labelPosition } = themeProps
-
-  return (
-    <RACRadioGroup
-      {...props}
-      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
-    >
-      <Theme {...themeProps}>
-        {label && <Label>{label}</Label>}
-        <div className="flex group-data-[orientation=vertical]:flex-col group-data-[orientation=horizontal]:gap-3">
-          {children}
-        </div>
-        {description && <Description>{description}</Description>}
-        <FieldError>{errorMessage}</FieldError>
-      </Theme>
-    </RACRadioGroup>
-  )
-}
+import { Children } from "react"
 
 const styles = {
-  radio: cva({
+  container: cva({
     base: [
-      "group flex items-center text-neutral-text outline-none",
+      "group grid grid-flow-col auto-cols-fr text-neutral-text outline-none gap-px",
       "data-disabled:cursor-not-allowed data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder",
     ],
     variants: {
+      variant: {
+        classic: ["bg-neutral-bg"],
+      },
       size: {
-        1: "text-xs gap-2 h-6",
-        2: "text-[13px] gap-2 h-7",
-        3: "text-sm gap-2.5 h-8",
+        1: "rounded text-xs h-6",
+        2: "rounded text-[13px] h-7",
+        3: "rounded-md text-sm h-8",
       },
     },
     defaultVariants: {
+      variant: "classic",
       size: 1,
     },
   }),
 
-  inner: compose(
+  item: compose(
     focusStyle,
     cva({
       base: [
-        "outline-offset-1 flex items-center justify-center shrink-0 rounded-full before:rounded-full before:invisible",
+        "peer relative flex-1 flex items-center justify-center shrink-0 rounded-full",
         // disabled
         "group-data-disabled:bg-neutral-bg-subtle! group-data-disabled:shadow-none! group-data-disabled:inset-ring-1! group-data-disabled:inset-ring-neutral-line! group-data-disabled:text-neutral-placeholder!",
       ],
       variants: {
         variant: {
           classic: [
-            "bg-neutral-bg-subtle shadow-[var(--shadow-inner)] before:bg-white",
+            "",
+            // hovered
+            "data-hovered:bg-neutral-bg-hover",
             // pressed
-            "group-data-pressed:bg-neutral-bg-active",
+            "data-pressed:bg-neutral-bg-active",
             // selected
-            "group-data-selected:bg-accent-solid group-data-selected:before:visible",
+            "data-selected:bg-neutral-bg-active data-selected:text-neutral-text-contrast",
           ],
           soft: [
             "bg-neutral-bg-hover inset-ring-0 before:bg-accent-text-contrast",
@@ -103,37 +76,70 @@ const styles = {
           ],
         },
         size: {
-          1: "size-4 before:size-1.5",
-          2: "size-[18px] before:size-2",
-          3: "size-5 before:size-2",
+          1: "rounded h-6 px-1.5 gap-1.5",
+          2: "rounded h-7 px-2 gap-2",
+          3: "rounded-md h-8 px-2.5 gap-2",
         },
       },
       defaultVariants: {
-        size: 1,
         variant: "classic",
+        size: 1,
       },
     }),
   ),
 }
 
-interface RadioProps extends RACRadioProps {}
+interface SegmentedControlProps
+  extends Omit<RACRadioGroupProps, "children" | "orientation">,
+    FieldProps {
+  children: React.ReactNode
+}
 
-function Radio({ className, children, ...props }: RACRadioProps) {
+function SegmentedControl({
+  label,
+  description,
+  className,
+  errorMessage,
+  children,
+  ...props
+}: SegmentedControlProps) {
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let { labelPosition, size } = themeProps
+
+  return (
+    <RACRadioGroup
+      {...props}
+      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
+    >
+      <Theme {...themeProps}>
+        {label && <Label>{label}</Label>}
+        <div className={styles.container({ size })}>{children}</div>
+        {description && <Description>{description}</Description>}
+        <FieldError>{errorMessage}</FieldError>
+      </Theme>
+    </RACRadioGroup>
+  )
+}
+
+interface SegmentedControlItemProps extends RACRadioProps {}
+
+function SegmentedControlItem({
+  className,
+  children,
+  ...props
+}: SegmentedControlItemProps) {
   let themeProps = useThemeProps()
   let { size, fieldVariant: variant } = themeProps
 
   return (
     <RACRadio
       {...props}
-      className={cxRenderProps(className, styles.radio({ size }))}
+      className={cxRenderProps(className, styles.item({ size, variant }))}
     >
-      <>
-        <div className={styles.inner({ size, variant })} />
-        {children}
-      </>
+      {children}
     </RACRadio>
   )
 }
 
-export { Radio, RadioGroup }
-export type { RadioGroupProps, RadioProps }
+export { SegmentedControl, SegmentedControlItem }
+export type { SegmentedControlProps, SegmentedControlItemProps }

@@ -1,0 +1,27 @@
+---
+name: SegmentedControl
+description: Pick an option from an inline list.
+category: Pickers
+docUrl: https://react-spectrum.adobe.com/react-aria/RadioGroup.html
+aria: https://www.w3.org/WAI/ARIA/apg/patterns/radio/
+composes:
+  - "Field"
+---
+
+### Content
+
+Buttons can contain a label, icon, or both. Use icons by passing an icon
+component as a child. If the only child is an SVG element, the button will be
+sized to a square. This can be controlled manually by setting the `isSquare`
+prop.
+
+<Note>
+  If a visible label isn't specified, an `aria-label` must be provided for
+  accessibility.
+</Note>
+
+<Demo
+  className="items-start"
+  demo={<SegmentedControlDemo.Content />}
+  code={demos["content"]}
+/>
