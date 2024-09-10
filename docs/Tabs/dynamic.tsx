@@ -1,7 +1,8 @@
 "use client"
+
 import { GearSix, User, XSquare } from "@phosphor-icons/react"
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
-import { useState } from "react"
+import { Component, useState } from "react"
 import { Collection, type Key } from "react-aria-components"
 
 export default () => {
@@ -12,7 +13,7 @@ export default () => {
       label: "Profile",
       icon: User,
       content: "Your profile information.",
-      disabed: false,
+      disabled: false,
     },
     {
       id: "settings",
@@ -37,22 +38,17 @@ export default () => {
         .filter((item) => item.disabled)
         .map((item) => item.id)}
       onSelectionChange={setTabId}
-      className="col-span-full w-full"
     >
       <TabList items={items}>
-        {({ id, icon, label }) => {
-          const Icon = icon
-          return (
-            <Tab id={id}>
-              <Icon weight="duotone" size={16} />
-              {label}
-            </Tab>
-          )
-        }}
+        {({ id, icon: Icon, label }) => (
+          <Tab id={id} aria-label={label}>
+            <Icon weight="duotone" size={16} />
+          </Tab>
+        )}
       </TabList>
 
       <Collection items={items}>
-        {({ content }) => <TabPanel>{content}</TabPanel>}
+        {({ content }) => <TabPanel className="py-4">{content}</TabPanel>}
       </Collection>
     </Tabs>
   )

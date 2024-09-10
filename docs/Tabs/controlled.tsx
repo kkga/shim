@@ -15,9 +15,6 @@ export default () => {
           <Tab id="recent">Recent</Tab>
           <Tab id="favorites">Favorites</Tab>
         </TabList>
-
-        <TabPanel id="recent">Recent items.</TabPanel>
-        <TabPanel id="favorites">Favorite items.</TabPanel>
       </Tabs>
     </>
   )
