@@ -1,10 +1,9 @@
-const localesPlugin = require("@react-aria/optimize-locales-plugin")
+import localesPlugin from "@react-aria/optimize-locales-plugin"
+import { NextConfig } from "next"
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
-    typedRoutes: true,
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -15,4 +14,4 @@ const nextConfig = {
   transpilePackages: ["next-mdx-remote"],
 }
 
-module.exports = nextConfig
+export default nextConfig
