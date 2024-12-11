@@ -45,9 +45,9 @@
       "prettier-plugin-tailwindcss"
     ],
     "tailwindFunctions": [
+      "tv",
       "cx",
-      "cxRenderProps",
-      "tv"
+      "cxRenderProps"
     ],
     "tailwindEntryPoint": "./app/styles/base.css",
     "overrides": [
