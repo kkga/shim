@@ -17,6 +17,44 @@
   background-color: var(--color-accent-5);
 }
 
+.site-background {
+  background-image: linear-gradient(
+    20deg,
+    rgb(249, 241, 248),
+    rgb(248, 249, 241),
+    rgb(241, 248, 249)
+  );
+}
+
+.pink-gradient-background {
+  --a: oklch(92% 0.05 200);
+  --a-shape: ellipse 30% 30% at 29% 57%;
+  --b: oklch(96% 0.11 320);
+  --b-shape: ellipse 35% 30% at 66% 47%;
+  --c: oklch(96% 0.14 340);
+  --c-shape: ellipse 40% 25% at 50% 70%;
+  background: radial-gradient(var(--a-shape), var(--a), transparent),
+    radial-gradient(var(--b-shape), var(--b), transparent),
+    radial-gradient(var(--c-shape), var(--c), transparent);
+}
+
+@media (width < 768px) {
+  .pink-gradient-background {
+    --a-shape: circle 400px at 50% 40%;
+    --b-shape: circle 400px at 50% 60%;
+    --c-shape: circle 400px at 50% 80%;
+  }
+}
+
+.dark,
+.dark-theme {
+  .pink-gradient-background {
+    --a: oklch(30% 0.11 300);
+    --b: oklch(30% 0.11 320);
+    --c: oklch(27% 0.1 340);
+  }
+}
+
 html {
   min-width: 360px;
 }

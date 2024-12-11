@@ -47,15 +47,13 @@ export default () => {
       onSortChange={setSortDescriptor}
     >
       <TableHeader>
-        <Column id="name" isRowHeader allowsSorting>
+        <Column id="name" isRowHeader allowsResizing>
           Name
         </Column>
-        <Column id="type" allowsSorting>
+        <Column id="type" allowsResizing>
           Type
         </Column>
-        <Column id="date" allowsSorting>
-          Date Modified
-        </Column>
+        <Column id="date">Date Modified</Column>
       </TableHeader>
       <TableBody items={items}>
         {(row) => (

@@ -1,5 +1,4 @@
-import { H3, Note, P } from "@/components/mdx/mdx-components"
-import { Pre } from "@/components/mdx/pre"
+import { H3, Note, P, Pre } from "@/components/mdx/mdx-components"
 import { Code as CodeIcon, Terminal } from "@phosphor-icons/react/dist/ssr"
 import { Link } from "@ui/Link"
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
@@ -45,7 +44,7 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
       )}
 
       <Tabs className="s-box bg-panel my-8 gap-0 overflow-hidden rounded-xl p-0 shadow-[var(--shadow-xs)]">
-        <TabList variant="underline" className="shadow-neutral-3 px-4">
+        <TabList variant="soft" className="shadow-neutral-3 mt-3 px-4">
           <Tab id="curl">
             <Terminal size={16} weight="duotone" />
             cURL

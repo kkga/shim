@@ -1,15 +1,16 @@
-import { mdxComponents } from '@/components/mdx/mdx-components'
-import { compileMDX } from 'next-mdx-remote/rsc'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeSlug from 'rehype-slug'
-import { postProcess, preProcess } from './rehype-pre-raw'
+import { mdxComponents } from "@/components/mdx/mdx-components"
+import { SerializeOptions } from "next-mdx-remote/dist/types"
+import { compileMDX } from "next-mdx-remote/rsc"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeSlug from "rehype-slug"
+import { postProcess, preProcess } from "./rehype-pre-raw"
 
 export const mdxToHtml = async ({
   source,
   scope,
 }: {
   source: string
-  scope?: Record<string, any>
+  scope?: SerializeOptions["scope"]
 }) =>
   await compileMDX({
     source: source,
@@ -24,11 +25,11 @@ export const mdxToHtml = async ({
           [
             rehypeAutolinkHeadings,
             {
-              behaviour: 'append',
+              behaviour: "append",
               properties: {
                 ariaHidden: true,
                 tabIndex: -1,
-                className: 'hash-link',
+                className: "hash-link",
               },
             },
           ],
