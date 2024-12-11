@@ -1,4 +1,3 @@
-"use client"
 import { Tag, TagGroup } from "@ui/TagGroup"
 
 export default () => (

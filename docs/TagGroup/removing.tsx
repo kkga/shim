@@ -17,7 +17,13 @@ export default () => {
   }
 
   return (
-    <TagGroup items={items} onRemove={onRemove} aria-label="Categories">
+    <TagGroup
+      items={items}
+      onRemove={onRemove}
+      selectionMode="multiple"
+      aria-label="Categories"
+      renderEmptyState={() => <div className="p-2">No items</div>}
+    >
       {(item) => <Tag>{item.name}</Tag>}
     </TagGroup>
   )

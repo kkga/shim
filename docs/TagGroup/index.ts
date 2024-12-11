@@ -1,3 +1,4 @@
+export { default as Color } from "./color"
 export { default as Main } from "./main"
-export { default as Selection } from "./selection"
 export { default as Removing } from "./removing"
+export { default as Selection } from "./selection"
