@@ -17,16 +17,10 @@ import { tv } from "tailwind-variants"
 
 const style = tv({
   slots: {
-    overlay: [
-      "fixed top-0 left-0 w-full h-[var(--visual-viewport-height)] isolate z-20 bg-overlay flex items-center justify-center p-4 backdrop-grayscale",
-      "data-[entering]:animate-[fade-in_150ms_ease-out]",
-      "data-[exiting]:animate-[fade-out_100ms_ease-in]",
-    ],
-    modal: [
-      "z-50 w-md rounded-2xl bg-panel p-4 text-neutral-text text-xs shadow-[var(--shadow-xl)] outline-none overflow-auto",
-      "data-[entering]:animate-[fade-in_150ms_ease-out,slide-from-top_150ms]",
-      "data-[exiting]:animate-[fade-out_100ms_ease-in,slide-to-top_100ms]",
-    ],
+    overlay:
+      "animate-fade bg-overlay fixed left-0 top-0 isolate z-20 flex h-[var(--visual-viewport-height)] w-full items-center justify-center p-4 backdrop-grayscale",
+    modal:
+      "animate-slide w-md bg-panel text-neutral-text z-50 overflow-auto rounded-2xl p-4 text-xs shadow-[var(--shadow-xl)] outline-none",
     headingText:
       "text-neutral-text-contrast text-base font-medium leading-tight",
     descriptionText: "text-neutral-text text-[13px]",
@@ -40,14 +34,16 @@ interface DialogProps extends Omit<RACModalOverlayProps, "children"> {
 }
 
 function Dialog({ title, description, ...props }: DialogProps) {
-  const state = useContext(OverlayTriggerStateContext)
+  let state = useContext(OverlayTriggerStateContext)
   let { children } = props
   let { overlay, modal, headingText, descriptionText } = style()
 
   if (typeof children === "function") {
-    children = children({
-      close: state.close,
-    })
+    if (state) {
+      children = children({ close: state.close })
+    } else {
+      children = children({ close: () => {} })
+    }
   }
 
   return (

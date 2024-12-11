@@ -7,46 +7,43 @@ import {
   type PopoverProps as RACPopoverProps,
 } from "react-aria-components"
 
-import { animateMountStyle, animateUnmountStyle } from "@lib/style"
+import { cxRenderProps } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
 import { tv } from "tailwind-variants"
 
 const style = tv({
-  extend: animateMountStyle,
-  base: [
-    "bg-panel text-neutral-text z-20 min-w-[var(--trigger-width)] text-xs shadow-[var(--shadow-lg)] outline-none",
-  ],
+  base: "animate-slide bg-panel text-neutral-text z-20 min-w-[var(--trigger-width)] text-xs shadow-[var(--shadow-lg)] outline-none",
   variants: {
-    size: { 1: "rounded-lg", 2: "rounded-lg", 3: "rounded-[10px]" },
+    size: {
+      1: "rounded-lg",
+      2: "rounded-lg",
+      3: "rounded-[10px]",
+    },
   },
   defaultVariants: { size: 1 },
 })
 
 interface PopoverProps extends Omit<RACPopoverProps, "children"> {
   children: React.ReactNode
-  withDialog?: boolean
 }
 
-function Popover({
-  className,
-  children,
-  offset = 4,
-  withDialog,
-  ...props
-}: PopoverProps) {
+function Popover({ className, children, offset = 4, ...props }: PopoverProps) {
   let { size } = useThemeProps()
   return (
     <RACPopover
       {...props}
       offset={offset}
-      className={({ placement }) =>
-        animateUnmountStyle({
-          placement: placement ?? "center",
-          className: "data-[trigger=SubmenuTrigger]:-translate-y-1",
-        })
-      }
+      className={cxRenderProps(className, style({ size }))}
+      // className={({ placement }) =>
+      //   animateUnmountStyle({
+      //     placement: placement ?? "center",
+      //     className: "data-[trigger=SubmenuTrigger]:-translate-y-1",
+      //   })
+      // }
     >
-      {({ placement }) => (
+      <RACDialog className="overflow-auto outline-none">{children}</RACDialog>
+
+      {/* {({ placement }) => (
         <div
           className={style({
             size,
@@ -54,13 +51,11 @@ function Popover({
             className,
           })}
         >
-          {withDialog ?
-            <RACDialog className="overflow-auto outline-none">
-              {children}
-            </RACDialog>
-          : children}
+          <RACDialog className="overflow-auto outline-none">
+            {children}
+          </RACDialog>
         </div>
-      )}
+      )} */}
     </RACPopover>
   )
 }
