@@ -1,10 +1,16 @@
 "use client"
+
 import { cx } from "@lib/style"
 import { ArrowLineDown, ArrowLineUp } from "@phosphor-icons/react"
 import { Button } from "@ui/Button"
 import { useState } from "react"
 
-export function Collapsible({ children, defaultCollapsed }) {
+interface Props {
+  children: React.ReactNode
+  collapsed?: boolean
+}
+
+export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed)
   const toggle = () => setCollapsed((prev) => !prev)
 
@@ -21,7 +27,7 @@ export function Collapsible({ children, defaultCollapsed }) {
         {children}
       </div>
 
-      <div className="absolute inset-0 top-auto z-10 flex justify-center bg-gradient-to-b from-transparent to-panel p-4 pt-8 font-sans">
+      <div className="to-panel absolute inset-0 top-auto z-10 flex justify-center bg-gradient-to-b from-transparent p-4 pt-8 font-sans">
         <Button
           className="backdrop-blur"
           onPress={toggle}

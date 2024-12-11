@@ -1,4 +1,4 @@
-import { cx } from "cva"
+import clsx from "clsx"
 
 export function Steps({ children }) {
   return (
@@ -11,25 +11,25 @@ export function Steps({ children }) {
 export function Step({ title, children }) {
   return (
     <div
-      className={cx(
+      className={clsx(
         "group/step relative col-span-full grid grid-cols-subgrid gap-4 text-[14px] leading-normal",
         "md:grid-rows-[auto_1fr] md:items-start md:gap-y-2 md:*:col-start-2",
         "md:[&>.codeblock]:col-start-3 md:[&>.codeblock]:col-end-4 md:[&>.codeblock]:row-span-2 md:[&>.codeblock]:row-start-1",
       )}
       style={{ counterIncrement: "step" }}
     >
-      <div className="relative z-10 col-start-1! col-end-3! row-start-1! grid grid-cols-[auto_1fr] items-center gap-2 md:grid-cols-subgrid md:gap-4">
-        <div className="flex size-6 items-center justify-center rounded-full bg-neutral-4">
-          <span className="text-[12px] font-medium text-neutral-text before:[content:counter(step)]" />
+      <div className="col-start-1! col-end-3! row-start-1! relative z-10 grid grid-cols-[auto_1fr] items-center gap-2 md:grid-cols-subgrid md:gap-4">
+        <div className="bg-neutral-4 flex size-6 items-center justify-center rounded-full">
+          <span className="text-neutral-text text-[12px] font-medium before:[content:counter(step)]" />
         </div>
-        <div className="font-medium leading-5 text-neutral-text-contrast">
+        <div className="text-neutral-text-contrast font-medium leading-5">
           {title}
         </div>
       </div>
 
       <div
         aria-hidden
-        className="line invisible absolute top-7 right-auto -bottom-7 left-3 -z-10 col-start-1! w-px bg-neutral-line group-last/step:hidden md:visible"
+        className="line col-start-1! bg-neutral-line invisible absolute -bottom-7 left-3 right-auto top-7 -z-10 w-px group-last/step:hidden md:visible"
       ></div>
 
       {children}

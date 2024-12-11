@@ -4,21 +4,21 @@ import { Check, Copy } from "@phosphor-icons/react"
 import { Button } from "@ui/Button"
 import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
 import { useEffect, useState } from "react"
-import { useCopyToClipboard } from "usehooks-ts"
+import { useClipboard } from "./useClipboard"
 
-interface CopyButtonProps {
+interface Props {
   text: string
   children?: React.ReactNode
   title?: string
   className?: string
 }
 
-function CopyButton({ children, text, title, className }: CopyButtonProps) {
-  const [, copy] = useCopyToClipboard()
+function CopyButton({ children, text, title, className }: Props) {
+  const { copyToClipboard } = useClipboard()
   const [justCopied, setJustCopied] = useState(false)
 
   const handleCopy = () => {
-    copy(text)
+    copyToClipboard(text)
       .then(() => {
         setJustCopied(true)
       })

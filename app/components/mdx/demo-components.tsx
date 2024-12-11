@@ -1,5 +1,6 @@
 import { ProgressBar } from "@ui/ProgressBar"
 import dynamic from "next/dynamic"
+import { ComponentType } from "react"
 
 export function getMainDemo(name: string) {
   return dynamic(() => import(`docs/${name}/index`).then((mod) => mod.Main), {
@@ -15,7 +16,12 @@ export function getMainDemo(name: string) {
   })
 }
 
-export const demoComponents = {
+interface DemoComponent {
+  Main: ComponentType<object>
+  [key: string]: ComponentType<object>
+}
+
+export const demoComponents: Record<string, DemoComponent> = {
   // Status
   BadgeDemo: {
     Main: dynamic(() => import("@docs/Badge").then((mod) => mod.Main)),
@@ -265,6 +271,7 @@ export const demoComponents = {
     Sections: dynamic(() => import("@docs/Select").then((mod) => mod.Sections)),
     States: dynamic(() => import("@docs/Select").then((mod) => mod.States)),
     Size: dynamic(() => import("@docs/Select").then((mod) => mod.Size)),
+    Links: dynamic(() => import("@docs/Select").then((mod) => mod.Links)),
   },
   ComboBoxDemo: {
     Main: dynamic(() => import("@docs/ComboBox").then((mod) => mod.Main)),
@@ -272,6 +279,10 @@ export const demoComponents = {
   },
 
   // Content
+  AvatarDemo: {
+    Main: dynamic(() => import("@docs/Avatar").then((mod) => mod.Main)),
+    Size: dynamic(() => import("@docs/Avatar").then((mod) => mod.Size)),
+  },
   ToolbarDemo: {
     Main: dynamic(() => import("@docs/Toolbar").then((mod) => mod.Main)),
     Orientation: dynamic(() =>

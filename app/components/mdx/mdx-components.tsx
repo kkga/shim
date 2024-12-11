@@ -1,23 +1,28 @@
 import { Info, WarningDiamond } from "@phosphor-icons/react/dist/ssr"
-import { cx } from "cva"
+import { clsx } from "clsx"
 import type { MDXRemoteProps } from "next-mdx-remote"
-import Link from "next/link"
+import { default as NextLink } from "next/link"
+import { HTMLAttributes } from "react"
 import { highlight } from "sugar-high"
+import { Collapsible } from "./collapsible"
+import { CopyButton } from "./copy-button"
 import { Demo } from "./demo"
 import { demoComponents } from "./demo-components"
-import { Pre } from "./pre"
 import { Step, Steps } from "./steps"
 
-function CustomLink(props) {
-  const href = props.href
-  const className =
-    "text-accent-text underline-offset-2 underline decoration-accent-line hover:decoration-accent-border-hover"
-
+function Link({ className, href, ...props }) {
   if (href.startsWith("/")) {
     return (
-      <Link href={href} className={className} {...props}>
+      <NextLink
+        href={href}
+        className={clsx(
+          "text-accent-text decoration-accent-line hover:decoration-accent-border-hover underline underline-offset-2",
+          className,
+        )}
+        {...props}
+      >
         {props.children}
-      </Link>
+      </NextLink>
     )
   }
 
@@ -35,71 +40,168 @@ function CustomLink(props) {
   )
 }
 
-export function Code(props) {
-  const html = highlight(props.children)
+function Code({ className, ...props }: HTMLAttributes<HTMLElement>) {
+  const html = highlight(props.children as string)
 
   return (
     <code
-      className={cx(
+      className={clsx(
         "text-neutral-text-contrast font-book font-mono text-[95%]",
-        props.className,
+        className,
       )}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )
 }
 
-export const H1 = (props) => (
-  <h1
-    className="text-neutral-text-contrast text-3xl font-medium leading-tight"
-    {...props}
-  />
-)
+interface PreProps {
+  code?: string
+  collapsed?: boolean
+  lang?: string
+  className?: string
+  raw?: string
+  children?: {
+    props: {
+      children: string
+      className: string
+    }
+  }
+}
 
-export const H2 = (props) => (
-  <h2
-    className="text-neutral-text-contrast mb-3 mt-12 text-lg font-medium leading-tight"
-    {...props}
-  />
-)
+function Pre({ code, className, collapsed, raw, ...props }: PreProps) {
+  let source: string | undefined
 
-export const H3 = (props) => (
-  <h3
-    className="text-neutral-text-contrast mb-2 mt-12 text-base font-medium leading-tight"
-    {...props}
-  />
-)
+  if (code) {
+    source = code
+    className = className || ""
+  } else if (props.children) {
+    source = props.children?.props.children
+  }
 
-export const H4 = (props) => (
-  <h4
-    className="text-neutral-text-contrast mb-2 mt-6 text-base font-medium leading-tight"
-    {...props}
-  />
-)
+  if (!source) return null
 
-export const H5 = (props) => (
-  <h5
-    className="text-neutral-text-contrast mb-2 mt-6 text-sm font-medium"
-    {...props}
-  />
-)
+  if (source.split("\n").length > 20 && collapsed === undefined) {
+    collapsed = true
+  }
 
-export const H6 = (props) => (
-  <h6
-    className="text-neutral-text-contrast mb-4 mt-8 text-sm font-medium"
-    {...props}
-  />
-)
+  source = source.replace(/\n+$/, "")
 
-export const P = (props) => <p className="mb-4 max-w-[72ch]" {...props} />
+  return (
+    <div
+      className={clsx(
+        "codeblock group relative flex flex-col overflow-auto",
+        "max-h-[calc(100dvh-12rem)]",
+        "border-neutral-3 bg-panel rounded-lg border",
+        "text-neutral-text font-mono text-[13px] leading-normal",
+        "[&_code]:text-[100%]!",
+        className,
+      )}
+    >
+      {collapsed ?
+        <Collapsible collapsed={collapsed}>
+          <pre className="w-full flex-1 overflow-scroll p-4">
+            <Code>{source}</Code>
+          </pre>
+        </Collapsible>
+      : <pre className="w-full flex-1 overflow-scroll p-4">
+          <Code>{source}</Code>
+        </pre>
+      }
 
-export const Note = ({
+      <div className="invisible absolute right-4 top-4 ml-auto flex size-5 items-center justify-center group-hover:visible">
+        <CopyButton
+          className="backdrop-blur-sm"
+          text={raw || source}
+          title="Copy to clipboard"
+        />
+      </div>
+    </div>
+  )
+}
+
+function H1({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h1
+      className={clsx(
+        "text-neutral-text-contrast text-3xl font-medium leading-tight",
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function H2({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h2
+      className={clsx(
+        "text-neutral-text-contrast mb-3 mt-12 text-lg font-medium leading-tight",
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function H3({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h3
+      className={clsx(
+        "text-neutral-text-contrast mb-2 mt-12 text-base font-medium leading-tight",
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function H4({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h4
+      className={clsx(
+        "text-neutral-text-contrast mb-2 mt-6 text-base font-medium leading-tight",
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function H5({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h5
+      className={clsx(
+        "text-neutral-text-contrast mb-2 mt-6 text-sm font-medium",
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function H6({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) {
+  return (
+    <h6
+      className={clsx(
+        "text-neutral-text-contrast mb-4 mt-8 text-sm font-medium",
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function P({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
+  return <p className={clsx("mb-4 max-w-[72ch]", className)} {...props} />
+}
+
+function Note({
   intent = "info",
   children,
 }: {
   intent?: "info" | "warning"
   children: React.ReactNode
-}) => {
+}) {
   let colors = {
     info: "text-accent-text",
     warning: "text-warning-text",
@@ -112,7 +214,7 @@ export const Note = ({
 
   return (
     <div
-      className={cx(
+      className={clsx(
         "font-book flex items-center gap-2 text-[13px] *:m-0",
         colors[intent],
       )}
@@ -123,11 +225,13 @@ export const Note = ({
   )
 }
 
-export const HR = (props) => (
-  <hr {...props} className={cx("border-neutral-line my-12", props.className)} />
-)
+function HR({ className, ...props }: HTMLAttributes<HTMLHRElement>) {
+  return (
+    <hr {...props} className={clsx("border-neutral-line my-12", className)} />
+  )
+}
 
-export const mdxComponents: MDXRemoteProps["components"] = {
+const mdxComponents: MDXRemoteProps["components"] = {
   h1: H1,
   h2: H2,
   h3: H3,
@@ -146,7 +250,7 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   strong: (props) => (
     <strong className="text-neutral-text-contrast font-medium" {...props} />
   ),
-  a: CustomLink,
+  a: Link,
   code: Code,
   pre: (props) => <Pre {...props} />,
   Demo,
@@ -156,6 +260,8 @@ export const mdxComponents: MDXRemoteProps["components"] = {
   Pre,
   ...demoComponents,
 }
+
+export { Code, H1, H2, H3, H4, H5, H6, HR, mdxComponents, Note, P, Pre }
 
 declare global {
   type MDXProvidedComponents = typeof mdxComponents

@@ -1,5 +1,5 @@
-import { cx } from "cva"
-import { Pre } from "./pre"
+import clsx from "clsx"
+import { Pre } from "./mdx-components"
 
 interface Props {
   demo: React.ReactNode
@@ -11,15 +11,15 @@ interface Props {
 function Demo({ demo, code, className, stacked = false }: Props) {
   return (
     <div
-      className={cx(
+      className={clsx(
         "s-box",
-        "my-8 flex flex-col overflow-hidden rounded-xl bg-panel shadow-[var(--shadow-xs)]",
+        "bg-panel my-8 flex flex-col overflow-hidden rounded-xl shadow-[var(--shadow-xs)]",
         stacked ? "md:flex-col" : "md:flex-row",
       )}
     >
       <div
-        className={cx(
-          "flex flex-1 flex-col content-start gap-3 overflow-auto p-4 text-xs text-neutral-text",
+        className={clsx(
+          "text-neutral-text flex flex-1 flex-col content-start gap-3 overflow-auto p-4 text-xs",
           className,
         )}
       >
@@ -28,15 +28,15 @@ function Demo({ demo, code, className, stacked = false }: Props) {
 
       {code && (
         <div
-          className={cx(
-            "flex flex-col overflow-auto border-neutral-3",
-            stacked ? "border-t" : "border-l md:flex-3",
+          className={clsx(
+            "border-neutral-3 flex flex-col overflow-auto",
+            stacked ? "border-t" : "md:flex-3 border-l",
           )}
         >
           <Pre
             code={code}
             lang="tsx"
-            className="m-0! flex-1 rounded-none! border-none!"
+            className="m-0! rounded-none! border-none! flex-1"
           />
         </div>
       )}
