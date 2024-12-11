@@ -1,20 +1,22 @@
 "use client"
-import { VariantProps, defineConfig } from "cva"
+
+import { clsx, type ClassValue } from "clsx"
 import { composeRenderProps } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
+import { tv } from "tailwind-variants"
 
-export type { VariantProps }
-export const { compose, cx, cva } = defineConfig({
-  hooks: { onComplete: (className) => twMerge(className) },
-})
+export function cx(...args: ClassValue[]) {
+  return twMerge(clsx(args))
+}
 
-export const cxRenderProps = <T>(
+export function cxRenderProps<T>(
   className: string | ((v: T) => string) | undefined,
   ...tw: string[]
-): string | ((v: T) => string) =>
-  composeRenderProps(className, (className) => cx(tw, className))
+): string | ((v: T) => string) {
+  return composeRenderProps(className, (className) => twMerge(tw, className))
+}
 
-export const Intents = [
+export const INTENTS = [
   "neutral",
   "accent",
   "success",
@@ -22,10 +24,10 @@ export const Intents = [
   "error",
 ] as const
 
-export type Intent = (typeof Intents)[number]
+export type Intent = (typeof INTENTS)[number]
 
 // TODO: cleanup this
-export const animateMountStyle = cva({
+export const animateMountStyle = tv({
   base: [
     "data-[placement=bottom]:origin-top data-[placement=bottom]:animate-[fade-in_100ms,slide-from-bottom_100ms]",
     "data-[placement=top]:origin-bottom data-[placement=top]:animate-[fade-in_100ms,slide-from-top_100ms]",
@@ -43,24 +45,24 @@ export const animateMountStyle = cva({
   },
 })
 
-export const animateUnmountStyle = cva({
+export const animateUnmountStyle = tv({
   variants: {
     placement: {
       center:
-        "origin-center data-exiting:animate-[fade-out_150ms,slide-to-bottom_150ms]",
+        "data-exiting:animate-[fade-out_150ms,slide-to-bottom_150ms] origin-center",
       bottom:
-        "origin-top data-exiting:animate-[fade-out_150ms,slide-to-bottom_150ms]",
-      top: "origin-bottom data-exiting:animate-[fade-out_150ms,slide-to-top_150ms]",
+        "data-exiting:animate-[fade-out_150ms,slide-to-bottom_150ms] origin-top",
+      top: "data-exiting:animate-[fade-out_150ms,slide-to-top_150ms] origin-bottom",
       right:
-        "origin-left data-exiting:animate-[fade-out_150ms,slide-to-right_150ms]",
-      left: "origin-right data-exiting:animate-[fade-out_150ms,slide-to-left_150ms]",
+        "data-exiting:animate-[fade-out_150ms,slide-to-right_150ms] origin-left",
+      left: "data-exiting:animate-[fade-out_150ms,slide-to-left_150ms] origin-right",
     },
   },
 })
 
-export const focusStyle = cva({
+export const focusStyle = tv({
   base: [
-    "outline-offset-1 outline-accent-focus-ring outline-0",
+    "outline-accent-focus-ring outline-0 outline-offset-1",
     "data-[focus-visible]:outline-2 group-data-[focus-visible]:outline-2",
   ],
 })
