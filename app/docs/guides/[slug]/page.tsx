@@ -10,7 +10,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function GuidePage({ params }) {
+export default async function GuidePage(props) {
+  const params = await props.params;
   const guide = getGuides().find((guide) => guide.slug === params.slug)
   const utilsSource = getUtilsSource()
   const themeCssSource = getThemeCssSource()

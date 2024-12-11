@@ -13,7 +13,8 @@ import { mdxToHtml } from "../lib/mdx"
 import { MetadataRow } from "./component-metadata"
 import { InstallInstructions } from "./install-instructions"
 
-export function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   const doc = getComponentDocs().find((doc) => doc.slug === params.slug)
   if (!doc) {
     return
@@ -51,7 +52,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function Doc({ params }) {
+export default async function Doc(props) {
+  const params = await props.params;
   let docs = getComponentDocs()
   let doc = docs.find((doc) => doc.slug === params.slug)
 
