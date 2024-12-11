@@ -5,21 +5,21 @@ import { tv, VariantProps } from "tailwind-variants"
 
 const style = tv({
   slots: {
-    list: "items-center place-content-start",
+    list: "place-content-start items-center",
     item: "",
-    label: "font-medium text-neutral-text",
+    label: "text-neutral-text font-medium",
     value: "text-neutral-text-contrast",
   },
   variants: {
     size: {
       1: { list: "text-xs" },
-      2: { list: "text-[13px] gap-x-4 gap-y-3" },
-      3: { list: "text-sm gap-x-6 gap-y-3" },
+      2: { list: "gap-x-4 gap-y-3 text-[13px]" },
+      3: { list: "gap-x-6 gap-y-3 text-sm" },
     },
     labelPosition: {
       side: {
-        list: "grid grid-cols-[max-content_auto] gap-y-2 gap-x-3 auto-rows-fr",
-        item: "grid grid-cols-subgrid col-span-2 items-center",
+        list: "grid auto-rows-fr grid-cols-[max-content_auto] gap-x-3 gap-y-2",
+        item: "col-span-2 grid grid-cols-subgrid items-center",
       },
       top: {
         list: "flex flex-col items-stretch gap-y-3",
@@ -33,10 +33,22 @@ interface DataListProps
   extends React.HTMLAttributes<HTMLDListElement>,
     VariantProps<typeof style> {}
 
-function DataList({ className, children, ...props }: DataListProps) {
-  let themeProps = useThemeProps({ ...props })
-  let { labelPosition, size } = themeProps
-  let { list } = style({ labelPosition, size })
+function DataList({
+  className,
+  children,
+  labelPosition,
+  size,
+  ...props
+}: DataListProps) {
+  let themeProps = useThemeProps({
+    labelPosition,
+    size,
+  })
+
+  let { list } = style({
+    labelPosition: themeProps.labelPosition,
+    size: themeProps.size,
+  })
 
   return (
     <dl {...props} className={list({ className })}>

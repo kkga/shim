@@ -127,16 +127,12 @@ function Switch({ className, children, labelPosition, ...props }: SwitchProps) {
         styles.switch({ size, labelPosition }),
       )}
     >
-      {() => (
-        <Theme>
-          <>
-            <div className={styles.track({ variant, size })}>
-              <span className={styles.handle({ variant, size })} />
-            </div>
-            {children}
-          </>
-        </Theme>
-      )}
+      <Theme>
+        <div className={styles.track({ variant, size })}>
+          <span className={styles.handle({ variant, size })} />
+        </div>
+        {children as React.ReactNode}
+      </Theme>
     </RACSwitch>
   )
 }
