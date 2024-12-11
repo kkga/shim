@@ -335,7 +335,7 @@
   }
 }
 
-@keyframes slide-from-top {
+@keyframes slide-in-top {
   from {
     transform: translateY(4px) scale(0.97);
   }
@@ -344,7 +344,7 @@
   }
 }
 
-@keyframes slide-to-top {
+@keyframes slide-out-top {
   from {
     transform: translateY(0) scale(1);
   }
@@ -353,7 +353,7 @@
   }
 }
 
-@keyframes slide-from-bottom {
+@keyframes slide-in-bottom {
   from {
     transform: translateY(-4px) scale(0.97);
   }
@@ -362,7 +362,7 @@
   }
 }
 
-@keyframes slide-to-bottom {
+@keyframes slide-out-bottom {
   from {
     transform: translateY(0) scale(1);
   }
@@ -371,7 +371,7 @@
   }
 }
 
-@keyframes slide-from-left {
+@keyframes slide-in-left {
   from {
     transform: translateX(4px) scale(0.97);
   }
@@ -380,7 +380,7 @@
   }
 }
 
-@keyframes slide-to-left {
+@keyframes slide-out-left {
   from {
     transform: translateX(0) scale(1);
   }
@@ -389,7 +389,7 @@
   }
 }
 
-@keyframes slide-from-right {
+@keyframes slide-in-right {
   from {
     transform: translateX(-4px) scale(0.97);
   }
@@ -398,7 +398,7 @@
   }
 }
 
-@keyframes slide-to-right {
+@keyframes slide-out-right {
   from {
     transform: translateX(0) scale(1);
   }
@@ -413,5 +413,65 @@
   }
   to {
     left: 100%;
+  }
+}
+
+@utility animate-fade {
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:where([data-entering]) {
+    animation-duration: 160ms;
+    animation-name: fade-in;
+  }
+
+  &:where([data-exiting]) {
+    animation-duration: 100ms;
+    animation-name: fade-out;
+  }
+}
+
+@utility animate-slide {
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:where([data-entering]) {
+    animation-duration: 160ms;
+    animation-name: slide-in-top, fade-in;
+
+    &:where([data-placement="top"]) {
+      animation-name: slide-in-top, fade-in;
+    }
+
+    &:where([data-placement="bottom"]) {
+      animation-name: slide-in-bottom, fade-in;
+    }
+
+    &:where([data-placement="left"]) {
+      animation-name: slide-in-left, fade-in;
+    }
+
+    &:where([data-placement="right"]) {
+      animation-name: slide-in-right, fade-in;
+    }
+  }
+
+  &:where([data-exiting]) {
+    animation-duration: 100ms;
+    animation-name: slide-out-top, fade-out;
+
+    &:where([data-placement="top"]) {
+      animation-name: slide-out-top, fade-out;
+    }
+
+    &:where([data-placement="bottom"]) {
+      animation-name: slide-out-bottom, fade-out;
+    }
+
+    &:where([data-placement="left"]) {
+      animation-name: slide-out-left, fade-out;
+    }
+
+    &:where([data-placement="right"]) {
+      animation-name: slide-out-right, fade-out;
+    }
   }
 }
