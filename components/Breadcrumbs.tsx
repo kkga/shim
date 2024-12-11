@@ -27,7 +27,7 @@ function Breadcrumb({
       {...props}
       className={cx("flex items-center gap-1", className)}
     >
-      <Link intent="neutral" {...props} />
+      <Link intent="neutral" href={href} {...props} />
       {href && <CaretRight size={12} className="text-neutral-placeholder" />}
     </RACBreadcrumb>
   )
