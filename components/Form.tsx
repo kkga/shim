@@ -10,9 +10,19 @@ import {
 function Form({
   className,
   children,
+  labelPosition,
+  fieldVariant,
+  buttonVariant,
+  size,
   ...props
 }: RACFormProps & Partial<ThemeContextProps>) {
-  let themeProps = useThemeProps(props)
+  let themeProps = useThemeProps({
+    labelPosition,
+    fieldVariant,
+    buttonVariant,
+    size,
+  })
+
   return (
     <RACForm {...props} className={cx("flex flex-col gap-3", className)}>
       <Theme {...themeProps}>{children}</Theme>
