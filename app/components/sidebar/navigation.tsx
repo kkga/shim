@@ -1,6 +1,6 @@
 "use client"
 
-import { compose, cva, focusStyle } from "@lib/style"
+import { focusStyle } from "@lib/style"
 import {
   Article,
   Cards,
@@ -21,8 +21,9 @@ import {
   Header,
   ListBox,
   ListBoxItem,
-  Section as RACSection,
+  ListBoxSection as RACListBoxSection,
 } from "react-aria-components"
+import { tv } from "tailwind-variants"
 
 export interface NavItem {
   name: string
@@ -82,18 +83,16 @@ const filterItems = (items: NavItem[], filter?: string) => {
   )
 }
 
-const itemStyle = compose(
-  focusStyle,
-  cva({
-    base: [
-      "flex h-6 gap-2 items-center rounded px-1.5 text-xs font-book text-neutral-text",
-      // hovered
-      "data-[hovered]:bg-neutral-bg-hover",
-      // selected
-      "data-[selected]:bg-neutral-bg-active data-[selected]:text-neutral-text-contrast",
-    ],
-  }),
-)
+const itemStyle = tv({
+  extend: focusStyle,
+  base: [
+    "font-book text-neutral-text flex h-6 items-center gap-2 rounded px-1.5 text-xs",
+    // hovered
+    "data-[hovered]:bg-neutral-bg-hover",
+    // selected
+    "data-[selected]:bg-neutral-bg-active data-[selected]:text-neutral-text-contrast",
+  ],
+})
 
 export function Navigation({ items }: { items: NavItem[] }) {
   let pathname = usePathname()
@@ -143,7 +142,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
           )}
         >
           {({ section, items }) => (
-            <RACSection id={section} className="grid grid-cols-2 gap-1">
+            <RACListBoxSection id={section} className="grid grid-cols-2 gap-1">
               <Header className="text-neutral-text-contrast col-span-full flex h-6 items-center gap-1.5 px-1.5 text-xs font-medium">
                 {categoryIcons[section]}
                 {section}
@@ -166,7 +165,7 @@ export function Navigation({ items }: { items: NavItem[] }) {
                   </ListBoxItem>
                 )}
               </Collection>
-            </RACSection>
+            </RACListBoxSection>
           )}
         </ListBox>
       </nav>

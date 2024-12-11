@@ -455,7 +455,7 @@ export function ExampleIssueTracker() {
                     <div className="grid flex-1 grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2.5 gap-y-0.5">
                       <Avatar
                         name={user}
-                        src={`https://source.unsplash.com/random/100x100/?face$${id}`}
+                        size={2}
                         className="row-span-2 place-self-center"
                       />
                       <span className="text-neutral-text-contrast col-start-2 row-start-1 truncate">
@@ -618,10 +618,12 @@ export function ExampleIssueTracker() {
 
               <div className="mt-1 flex flex-col items-start gap-1">
                 <Button intent="neutral" variant="ghost">
-                  + Add sub-issues
+                  <Plus size={12} />
+                  Add sub-issues
                 </Button>
                 <Button intent="neutral" variant="ghost">
-                  + Add links
+                  <Plus size={12} />
+                  Add links
                 </Button>
               </div>
               <Separator />
@@ -630,11 +632,7 @@ export function ExampleIssueTracker() {
               </h5>
               <div className="flex flex-col text-xs">
                 <div className="flex items-center gap-2">
-                  <Avatar
-                    name={selectedItem?.user || "John Doe"}
-                    src={`https://source.unsplash.com/random/100x100/?face$${selectedItem?.id}`}
-                    size={1}
-                  />
+                  <Avatar name={selectedItem?.user || "John Doe"} size={1} />
                   <span>
                     <span className="text-neutral-text-contrast font-medium">
                       {selectedItem?.user}

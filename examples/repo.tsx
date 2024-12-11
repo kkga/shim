@@ -252,7 +252,7 @@ export function ExampleRepo() {
         </TooltipTrigger>
       </div>
 
-      <Tabs className="gap-0">
+      <Tabs className="flex-1 gap-0 overflow-auto">
         <TabList className="gap-4 px-4">
           <Tab id="code">
             <Code weight="duotone" size={16} />
@@ -268,7 +268,10 @@ export function ExampleRepo() {
           </Tab>
         </TabList>
 
-        <TabPanel className="bg-panel flex flex-col gap-4 p-4" id="code">
+        <TabPanel
+          className="bg-panel flex flex-1 flex-col gap-4 overflow-y-scroll p-4"
+          id="code"
+        >
           <div className="flex gap-2">
             <div className="flex items-center gap-2">
               <h2 className="text-neutral-text-contrast text-sm font-medium leading-none">

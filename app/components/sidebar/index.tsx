@@ -10,18 +10,16 @@ export function Sidebar(props: { items: NavItem[] }) {
   return (
     <aside
       style={{ scrollbarWidth: "thin" }}
-      className="fixed inset-0 right-auto flex w-[inherit] flex-col overflow-x-hidden overflow-y-scroll border-r border-neutral-4 bg-panel px-4 text-sm"
+      className="border-neutral-4 bg-panel fixed inset-0 right-auto flex w-[inherit] flex-col overflow-x-hidden overflow-y-scroll border-r px-4 text-sm"
     >
-      <header className="sticky top-0 flex h-10 shrink-0 items-center items-center justify-between gap-1 bg-panel pl-1.5">
-        <Link className="flex items-center gap-1.5 no-underline" href="/">
+      <header className="bg-panel sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1 pl-1.5">
+        <Link className="flex items-center gap-1 no-underline" href="/">
           <Shapes
             size={16}
             weight="fill"
             className="text-neutral-text-contrast"
           />
-          <h1 className="text-xs font-medium text-neutral-text-contrast">
-            Shim
-          </h1>
+          <h1 className="text-neutral-text-contrast text-xs font-bold">Shim</h1>
         </Link>
 
         <div className="flex gap-1.5">
