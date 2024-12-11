@@ -260,6 +260,7 @@ export const demoComponents: Record<string, DemoComponent> = {
     Removing: dynamic(() =>
       import("@docs/TagGroup").then((mod) => mod.Removing),
     ),
+    Color: dynamic(() => import("@docs/TagGroup").then((mod) => mod.Color)),
   },
 
   // Pickers
