@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -12,15 +12,14 @@
     "@phosphor-icons/react": "^2.1.7",
     "@radix-ui/colors": "^3.0.0",
     "@react-aria/optimize-locales-plugin": "^1.1.3",
-    "@tailwindcss/postcss": "4.0.0-beta.6",
+    "@tailwindcss/postcss": "^4.0.0-beta.6",
     "@types/react": "19.0.1",
-    "@types/react-dom": "19.0.1",
+    "@types/react-dom": "19.0.2",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
-    "babel-plugin-react-compiler": "19.0.0-beta-df7b47d-20241124",
+    "babel-plugin-react-compiler": "19.0.0-beta-37ed2a7-20241206",
     "clsx": "^2.1.1",
-    "cva": "1.0.0-beta.1",
-    "framer-motion": "12.0.0-alpha.0",
+    "framer-motion": "11.13.3",
     "gray-matter": "^4.0.3",
     "next": "15.0.4",
     "next-mdx-remote": "^5.0.0",
@@ -34,9 +33,8 @@
     "sugar-high": "^0.7.5",
     "tailwind-merge": "^2.5.5",
     "tailwind-variants": "^0.3.0",
-    "tailwindcss": "4.0.0-beta.6",
-    "unist-util-visit": "^5.0.0",
-    "usehooks-ts": "^3.1.0"
+    "tailwindcss": "^4.0.0-beta.6",
+    "unist-util-visit": "^5.0.0"
   },
   "prettier": {
     "experimentalTernaries": true,
@@ -48,7 +46,8 @@
     ],
     "tailwindFunctions": [
       "cx",
-      "cxRenderProps"
+      "cxRenderProps",
+      "tv"
     ],
     "tailwindEntryPoint": "./app/styles/base.css",
     "overrides": [
@@ -75,8 +74,8 @@
     "eslint-config-next": "15.0.4",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.7",
-    "knip": "^5.39.2",
-    "lint-staged": "^15.2.10",
+    "knip": "^5.39.4",
+    "lint-staged": "^15.2.11",
     "prettier": "^3.4.2",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.9",
