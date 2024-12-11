@@ -12,7 +12,7 @@ export async function GET(request: Request) {
           "Content-Type": "text/plain",
         },
       })
-    } catch (error) {
+    } catch {
       return new Response("Component not found", { status: 404 })
     }
   } else {
