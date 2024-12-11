@@ -1,10 +1,10 @@
 "use client"
 
-import { compose, cva, cx, cxRenderProps, focusStyle } from "@lib/style"
+import { cx, cxRenderProps, focusStyle } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
 import { ArrowDown, ArrowUp, DotsSixVertical } from "@phosphor-icons/react"
-import { VariantProps } from "cva"
 import {
+  composeRenderProps,
   Button as RACButton,
   Cell as RACCell,
   Collection as RACCollection,
@@ -15,7 +15,6 @@ import {
   Table as RACTable,
   TableBody as RACTableBody,
   TableHeader as RACTableHeader,
-  composeRenderProps,
   useTableOptions,
   type CellProps as RACCellProps,
   type ColumnProps as RACColumnProps,
@@ -23,97 +22,89 @@ import {
   type TableHeaderProps as RACTableHeaderProps,
   type TableProps as RACTableProps,
 } from "react-aria-components"
+import { tv, VariantProps } from "tailwind-variants"
 import { Checkbox } from "./Checkbox"
 
 const styles = {
   // TODO: add size variants
-  table: cva({
+  table: tv({
     base: "overflow-hidden",
     variants: {
       variant: {
         ghost: "border-transparent",
         surface:
-          "bg-background border border-separate border-spacing-0 border-neutral-line rounded-lg",
+          "bg-background border-neutral-line border-separate border-spacing-0 rounded-lg border",
       },
     },
     defaultVariants: {
       variant: "surface",
     },
   }),
-  column: cva({
+  column: tv({
     base: [
-      "group text-xs font-medium text-neutral-text-contrast",
+      "text-neutral-text-contrast group text-xs font-medium",
       // allows sorting
       "data-allows-sorting:cursor-default",
     ],
   }),
 
-  header: cva({
-    base: "sticky top-0 z-10 text-xs font-medium inset-shadow-[0_-1px_0_var(--color-neutral-line)] bg-panel",
+  header: tv({
+    base: "inset-shadow-[0_-1px_0_var(--color-neutral-line)] bg-panel sticky top-0 z-10 text-xs font-medium",
   }),
 
-  headerGroup: compose(
-    focusStyle,
-    cva({
-      base: [
-        "px-1 gap-1 flex items-center rounded-md h-6",
-        // allows sorting
-        "group-data-hovered:group-data-allows-sorting:bg-neutral-bg-hover",
-      ],
-    }),
-  ),
-  resizer: compose(
-    focusStyle,
-    cva({
-      base: [
-        "w-px px-2 translate-x-2 box-content py-1 h-6 bg-clip-content bg-neutral-line cursor-col-resize rounded -outline-offset-2",
-        // resizing
-        "data-resizing:w-[3px] data-resizing:px-[7px] data-resizing:bg-accent-border-hover",
-      ],
-    }),
-  ),
+  headerGroup: tv({
+    extend: focusStyle,
+    base: [
+      "flex h-6 flex-1 items-center gap-1 overflow-auto rounded px-2",
+      // allows sorting
+      "group-data-hovered:group-data-allows-sorting:bg-neutral-bg-hover",
+    ],
+  }),
+  resizer: tv({
+    base: [
+      "bg-neutral-line box-content h-6 w-px translate-x-2 cursor-col-resize rounded bg-clip-content px-2 py-1 -outline-offset-2",
+      // resizing
+      "data-resizing:w-[3px] data-resizing:px-[7px] data-resizing:bg-accent-border-hover",
+    ],
+  }),
 
-  row: compose(
-    focusStyle,
-    cva({
-      base: [
-        "group/row peer relative text-neutral-text text-xs -outline-offset-2 inset-shadow-[0_-1px_0_var(--color-neutral-line)] last:inset-shadow-none",
-        // selection mode
-        "data-[selection-mode]:select-none data-[selection-mode]:cursor-default",
-        // hovered (in selection mode)
-        "data-[hovered]:bg-neutral-bg-hover",
-        // selected
-        "data-[selected]:bg-accent-bg-hover",
-        // hovered+selected (in selection mode)
-        "data-[selected]:data-[hovered]:bg-accent-bg-active",
-        // disabled
-        "data-[disabled]:text-neutral-placeholder",
-      ],
-    }),
-  ),
+  row: tv({
+    extend: focusStyle,
+    base: [
+      "group/row text-neutral-text inset-shadow-[0_-1px_0_var(--color-neutral-line)] last:inset-shadow-none peer relative text-xs -outline-offset-2",
+      // selection mode
+      "data-[selection-mode]:cursor-default data-[selection-mode]:select-none",
+      // hovered (in selection mode)
+      "data-[hovered]:bg-neutral-bg-hover",
+      // selected
+      "data-[selected]:bg-accent-bg-hover",
+      // hovered+selected (in selection mode)
+      "data-[selected]:data-[hovered]:bg-accent-bg-active",
+      // disabled
+      "data-[disabled]:text-neutral-placeholder",
+    ],
+  }),
 
-  cell: compose(
-    focusStyle,
-    cva({
-      base: ["px-2.5 h-8 truncate -outline-offset-2"],
-    }),
-  ),
+  cell: tv({
+    extend: focusStyle,
+    base: ["h-8 truncate px-3 -outline-offset-2"],
+  }),
 }
 
 interface TableProps extends RACTableProps, VariantProps<typeof styles.table> {}
 
 function Table({ className, ...props }: TableProps) {
-  let themeProps = useThemeProps({})
+  let themeProps = useThemeProps()
 
   return (
     <Theme {...themeProps}>
+      {/* <RACResizableTableContainer> */}
       <RACTable
         {...props}
         className={cxRenderProps(className, styles.table())}
       />
+      {/* </RACResizableTableContainer> */}
     </Theme>
-    // <RACResizableTableContainer className="relative max-h-80 overflow-auto rounded-lg border border-neutral-line">
-    // </RACResizableTableContainer>
   )
 }
 
@@ -130,7 +121,7 @@ function Column(props: ColumnProps) {
       {composeRenderProps(
         props.children,
         (children, { allowsSorting, sortDirection }) => (
-          <div className="flex h-8 flex-col justify-center px-1">
+          <div className="peer flex h-8 items-center justify-between px-1">
             <RACGroup
               role="presentation"
               tabIndex={-1}
@@ -140,7 +131,7 @@ function Column(props: ColumnProps) {
               {allowsSorting && (
                 <span
                   className={cx(
-                    "invisible flex size-4 items-center justify-center text-neutral-text group-data-hovered:visible",
+                    "text-neutral-text group-data-hovered:visible invisible flex size-4 items-center justify-center",
                     sortDirection && "visible",
                   )}
                 >
@@ -167,7 +158,7 @@ function TableHeader<T extends object>(props: RACTableHeaderProps<T>) {
   return (
     <RACTableHeader
       {...props}
-      className={styles.header({ className: props.className })}
+      className={cxRenderProps(props.className, styles.header())}
     >
       {/* Add extra columns for drag and drop and selection. */}
       {allowsDragging && <Column />}

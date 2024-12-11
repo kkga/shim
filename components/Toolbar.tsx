@@ -1,13 +1,13 @@
 "use client"
 
-import { cva } from "@lib/style"
 import {
   Toolbar as RACToolbar,
   ToolbarProps as RACToolbarProps,
   composeRenderProps,
 } from "react-aria-components"
+import { tv } from "tailwind-variants"
 
-const style = cva({
+const style = tv({
   base: "flex gap-2",
   variants: {
     orientation: {

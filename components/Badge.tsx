@@ -1,10 +1,10 @@
 "use client"
 
-import { VariantProps, cva, cx } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
 import { Children, isValidElement } from "react"
+import { tv, VariantProps } from "tailwind-variants"
 
-const badgeStyles = cva({
+const style = tv({
   base: "inline-flex w-fit items-center justify-center font-book leading-none bg-clip-padding",
   variants: {
     intent: {
@@ -28,7 +28,7 @@ const badgeStyles = cva({
   },
   defaultVariants: {
     intent: "accent",
-    size: 2,
+    size: 1,
   },
   compoundVariants: [
     {
@@ -51,7 +51,7 @@ const badgeStyles = cva({
 
 interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeStyles> {}
+    VariantProps<typeof style> {}
 
 function Badge({ className, intent, isSquare, ...props }: BadgeProps) {
   let { size } = useThemeProps({ size: props.size })
@@ -63,14 +63,12 @@ function Badge({ className, intent, isSquare, ...props }: BadgeProps) {
 
   return (
     <div
-      className={cx(
-        badgeStyles({
-          intent,
-          size,
-          isSquare: typeof isSquare === "boolean" ? isSquare : hasOnlySvg,
-        }),
+      className={style({
+        intent,
+        size,
+        isSquare: typeof isSquare === "boolean" ? isSquare : hasOnlySvg,
         className,
-      )}
+      })}
       {...props}
     />
   )

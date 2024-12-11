@@ -1,6 +1,6 @@
 "use client"
 
-import { cva, cxRenderProps, VariantProps } from "@lib/style"
+import { cxRenderProps } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
 import { createContext, useContext } from "react"
 
@@ -14,9 +14,10 @@ import {
   type TabProps as RACTabProps,
   type TabsProps as RACTabsProps,
 } from "react-aria-components"
+import { tv, VariantProps } from "tailwind-variants"
 
 const styles = {
-  tabs: cva({
+  tabs: tv({
     base: "flex",
     variants: {
       orientation: {
@@ -29,7 +30,7 @@ const styles = {
     },
   }),
 
-  tabList: cva({
+  tabList: tv({
     base: [
       "group inline-flex items-stretch justify-start",
       // horizontal
@@ -57,15 +58,15 @@ const styles = {
     },
   }),
 
-  tab: cva({
+  tab: tv({
     base: [
-      "relative inline-flex gap-1.5 items-center focus-visible:outline-none font-medium text-neutral-text cursor-default",
+      "text-neutral-text relative inline-flex cursor-default items-center gap-1.5 font-medium focus-visible:outline-none",
       // indicator
       "before:absolute after:absolute after:inset-x-0 after:inset-y-1",
       // horizontal
-      "group-data-[orientation=horizontal]:before:h-0.5 group-data-[orientation=horizontal]:before:inset-x-0 group-data-[orientation=horizontal]:before:bottom-0",
+      "group-data-[orientation=horizontal]:before:inset-x-0 group-data-[orientation=horizontal]:before:bottom-0 group-data-[orientation=horizontal]:before:h-0.5",
       // vertical
-      "group-data-[orientation=vertical]:before:w-0.5 group-data-[orientation=vertical]:before:inset-y-1 group-data-[orientation=vertical]:before:-right-1",
+      "group-data-[orientation=vertical]:before:inset-y-1 group-data-[orientation=vertical]:before:-right-1 group-data-[orientation=vertical]:before:w-0.5",
       // hover
       "data-hovered:text-neutral-text-contrast data-hovered:after:bg-neutral-bg-hover data-active:after:bg-neutral-bg-active",
       // selected
@@ -86,7 +87,7 @@ const styles = {
     },
   }),
 
-  tabPanel: cva({
+  tabPanel: tv({
     base: "flex-1",
   }),
 }
@@ -165,4 +166,4 @@ function TabPanel(props: RACTabPanelProps) {
 }
 
 export { Tab, TabList, TabPanel, Tabs }
-export type { TabsProps, TabListProps }
+export type { TabListProps, TabsProps }

@@ -27,6 +27,7 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
       {...props}
       className={cxRenderProps(props.className, "flex flex-col gap-1.5")}
     >
+      {/* TODO: these values dont work */}
       {({ percentage, valueText }) => (
         <>
           <div className="flex justify-between gap-2">

@@ -1,12 +1,13 @@
 "use client"
 
-import { compose, cva, cxRenderProps } from "@lib/style"
+import { cxRenderProps } from "@lib/style"
 import {
   TextField as RACTextField,
   type TextFieldProps as RACTextFieldProps,
 } from "react-aria-components"
 
 import { Theme, useThemeProps } from "@lib/theme"
+import { tv } from "tailwind-variants"
 import {
   Description,
   FieldError,
@@ -19,21 +20,20 @@ import {
 
 interface TextAreaProps extends RACTextFieldProps, FieldProps {}
 
-const textAreaStyle = compose(
-  inputBaseStyle,
-  cva({
-    variants: {
-      size: {
-        1: "min-h-12 indent-0 px-1.5 py-1",
-        2: "min-h-16 indent-0 px-2 py-1.5",
-        3: "min-h-20 indent-0 px-2 py-1.5",
-      },
+const textAreaStyle = tv({
+  extend: inputBaseStyle,
+  base: "h-auto",
+  variants: {
+    size: {
+      1: "min-h-12 indent-0 px-1.5 py-1",
+      2: "min-h-16 indent-0 px-2 py-1.5",
+      3: "min-h-20 indent-0 px-2 py-1.5",
     },
-    defaultVariants: {
-      size: 1,
-    },
-  }),
-)
+  },
+  defaultVariants: {
+    size: 1,
+  },
+})
 
 function TextArea({
   label,

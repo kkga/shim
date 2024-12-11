@@ -7,7 +7,7 @@ import {
   ProgressBarProps as RACProgressBarProps,
 } from "react-aria-components"
 
-export interface ProgressBarProps extends RACProgressBarProps {
+interface ProgressBarProps extends RACProgressBarProps {
   label?: string
 }
 
@@ -22,14 +22,14 @@ function ProgressBar({ label, ...props }: ProgressBarProps) {
           {label || valueText ?
             <div className="flex justify-between gap-2">
               <Label>{label}</Label>
-              <span className="text-xs text-neutral-text">{valueText}</span>
+              <span className="text-neutral-text text-xs">{valueText}</span>
             </div>
           : null}
           <div className="flex h-4 items-center">
-            <div className="relative h-1.5 w-full overflow-hidden rounded-[2px] bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
+            <div className="bg-neutral-bg ring-neutral-solid/20 relative h-1.5 w-full overflow-hidden rounded-[2px] ring ring-inset">
               <div
                 className={cx(
-                  "absolute top-0 h-full bg-accent-solid transition-[width]",
+                  "bg-accent-solid absolute top-0 h-full transition-[width]",
                   isIndeterminate ?
                     "w-[50%] origin-left animate-[indeterminate_1000ms_linear_infinite]"
                   : "left-0",
@@ -44,4 +44,4 @@ function ProgressBar({ label, ...props }: ProgressBarProps) {
   )
 }
 
-export { ProgressBar }
+export { ProgressBar, type ProgressBarProps }

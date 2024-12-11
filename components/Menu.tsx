@@ -3,7 +3,6 @@
 import { cx, cxRenderProps } from "@lib/style"
 import { Size, Theme, useThemeProps } from "@lib/theme"
 import { CaretRight, Check } from "@phosphor-icons/react"
-import { VariantProps } from "cva"
 import {
   Menu as RACMenu,
   MenuItem as RACMenuItem,
@@ -16,7 +15,8 @@ import {
   SubmenuTrigger as RACSubmenuTrigger,
   composeRenderProps,
 } from "react-aria-components"
-import { ListBoxSection, ListBoxSectionProps, listBoxStyles } from "./ListBox"
+import { VariantProps } from "tailwind-variants"
+import { ListBoxSection, ListBoxSectionProps, itemStyle } from "./ListBox"
 import { Popover } from "./Popover"
 
 interface MenuProps<T> extends RACMenuProps<T> {
@@ -48,7 +48,7 @@ function Menu<T extends object>({
   )
 }
 
-const menuItemStyle = listBoxStyles.item
+const menuItemStyle = itemStyle
 
 interface MenuItemProps
   extends RACMenuItemProps,
@@ -103,13 +103,13 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
 }
 
 function MenuSeparator(props: RACSeparatorProps) {
-  let { size } = useThemeProps({})
+  let { size } = useThemeProps()
 
   return (
     <RACSeparator
       {...props}
       className={cx(
-        "my-1 h-px border-none bg-neutral-line",
+        "bg-neutral-line my-1 h-px border-none",
         size === 1 && "mx-1.5",
         size === 2 && "mx-2",
         size === 3 && "mx-2.5",
@@ -133,3 +133,5 @@ export {
   MenuTrigger,
   SubmenuTrigger,
 }
+
+export type { MenuItemProps, MenuProps }

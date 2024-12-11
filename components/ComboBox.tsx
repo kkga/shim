@@ -1,6 +1,6 @@
 "use client"
 
-import { cx, cxRenderProps } from "@lib/style"
+import { cxRenderProps } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
 import { CaretDown } from "@phosphor-icons/react"
 import {
@@ -18,6 +18,7 @@ import {
   ComboBoxProps as RACComboBoxProps,
   ListBoxItemProps as RACListBoxItemProps,
 } from "react-aria-components"
+import { tv } from "tailwind-variants"
 import {
   ListBox,
   ListBoxItem,
@@ -25,6 +26,43 @@ import {
   ListBoxSectionProps,
 } from "./ListBox"
 import { Popover } from "./Popover"
+
+const style = tv({
+  slots: {
+    triggerButton: "flex items-center justify-center",
+    triggerButtonContents:
+      "text-neutral-text flex items-center justify-center bg-transparent",
+    listBox: "max-h-[inherit] overflow-auto p-1 outline-none",
+  },
+  variants: {
+    size: {
+      1: {
+        triggerButton: "size-6",
+        triggerButtonContents: "size-5 rounded-sm",
+      },
+      2: {
+        triggerButton: "size-7",
+        triggerButtonContents: "size-5 rounded-sm",
+      },
+      3: {
+        triggerButton: "size-8",
+        triggerButtonContents: "size-6 rounded-[3px]",
+      },
+    },
+    isHovered: {
+      true: { triggerButtonContents: "bg-neutral-bg-hover" },
+    },
+    isPressed: {
+      true: { triggerButtonContents: "bg-neutral-bg-active" },
+    },
+    isDisabled: {
+      true: { triggerButtonContents: "text-neutral-placeholder" },
+    },
+  },
+  defaultVariants: {
+    size: 1,
+  },
+})
 
 interface ComboBoxProps<T extends object>
   extends Omit<RACComboBoxProps<T>, "children">,
@@ -39,12 +77,11 @@ function ComboBox<T extends object>({
   children,
   items,
   menuTrigger = "focus",
-  labelPosition,
-  size,
-  variant,
   ...props
 }: ComboBoxProps<T>) {
-  let themeProps = useThemeProps({ size, labelPosition, fieldVariant: variant })
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let { labelPosition, size } = themeProps
+  let { triggerButton, triggerButtonContents, listBox } = style({ size })
 
   return (
     <RACComboBox
@@ -52,34 +89,23 @@ function ComboBox<T extends object>({
       menuTrigger={menuTrigger}
       className={cxRenderProps(
         props.className,
-        fieldLayoutStyle({ labelPosition: themeProps.labelPosition }),
+        fieldLayoutStyle({ labelPosition }),
       )}
     >
       <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
         <FieldGroup>
           <GroupInput />
-          <RACButton
-            className={cx(
-              "flex items-center justify-center",
-              themeProps.size === 1 && "size-6",
-              themeProps.size === 2 && "size-7",
-              themeProps.size === 3 && "size-8",
-            )}
-          >
+          <RACButton className={triggerButton()}>
             {({ isHovered, isPressed, isDisabled }) => (
               <div
-                className={cx(
-                  "flex items-center justify-center bg-transparent text-neutral-text",
-                  themeProps.size === 1 && "size-5 rounded-sm",
-                  themeProps.size === 2 && "size-5 rounded-sm",
-                  themeProps.size === 3 && "size-6 rounded-[3px]",
-                  isHovered && "bg-neutral-bg-hover",
-                  isPressed && "bg-neutral-bg-active",
-                  isDisabled && "text-neutral-placeholder",
-                )}
+                className={triggerButtonContents({
+                  isHovered,
+                  isDisabled,
+                  isPressed,
+                })}
               >
-                <CaretDown size={themeProps.size === 1 ? 12 : 16} aria-hidden />
+                <CaretDown size={size === 1 ? 12 : 16} aria-hidden />
               </div>
             )}
           </RACButton>
@@ -87,10 +113,7 @@ function ComboBox<T extends object>({
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
         <Popover>
-          <ListBox
-            items={items}
-            className="max-h-[inherit] overflow-auto p-1 outline-none"
-          >
+          <ListBox items={items} className={listBox()}>
             {children}
           </ListBox>
         </Popover>

@@ -1,7 +1,7 @@
 "use client"
-import { compose, cva, cxRenderProps } from "@lib/style"
+
+import { cxRenderProps } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
-import { VariantProps } from "cva"
 
 import {
   FieldError as RACFieldError,
@@ -18,6 +18,7 @@ import {
   type TextAreaProps as RACTextAreaProps,
   type TextProps as RACTextProps,
 } from "react-aria-components"
+import { tv, VariantProps } from "tailwind-variants"
 
 interface FieldProps
   extends VariantProps<typeof fieldLayoutStyle>,
@@ -28,7 +29,7 @@ interface FieldProps
   placeholder?: string
 }
 
-const fieldLayoutStyle = cva({
+const fieldLayoutStyle = tv({
   base: ["group"],
   variants: {
     labelPosition: {
@@ -39,15 +40,15 @@ const fieldLayoutStyle = cva({
   defaultVariants: { labelPosition: "top" },
 })
 
-const inputBaseStyle = cva({
+const inputBaseStyle = tv({
   base: [
     "border-none",
     // hovered
     "",
     // disabled
-    "data-disabled:inset-ring-neutral-line data-disabled:bg-neutral-bg-subtle data-disabled:text-neutral-placeholder data-disabled:shadow-none",
+    "data-disabled:cursor-not-allowed data-disabled:inset-ring data-disabled:inset-ring-neutral-line data-disabled:bg-neutral-bg-subtle data-disabled:text-neutral-placeholder data-disabled:shadow-none",
     // invalid
-    "data-invalid:inset-ring-error-border data-invalid:bg-error-bg-subtle",
+    "data-invalid:inset-ring data-invalid:inset-ring-error-border data-invalid:bg-error-bg-subtle",
     // focused
     "data-focused:outline-2 data-focused:-outline-offset-1 data-focused:outline-accent-focus-ring",
     // focus-visible
@@ -88,7 +89,7 @@ function Input({ size, variant, className, ...props }: InputProps) {
   )
 }
 
-const labelStyle = cva({
+const labelStyle = tv({
   base: [
     "font-book text-neutral-text self-start truncate max-w-fit",
     "data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
@@ -96,7 +97,7 @@ const labelStyle = cva({
   variants: {
     size: { 1: "text-xs", 2: "text-[13px]", 3: "text-sm" },
     labelPosition: {
-      top: null,
+      top: "",
       side: "col-start-1 flex items-center self-start",
     },
   },
@@ -126,7 +127,7 @@ function Label({ size, labelPosition, className, ...props }: LabelProps) {
   )
 }
 
-const descriptionStyle = cva({
+const descriptionStyle = tv({
   base: [
     "col-start-2 text-neutral-text",
     "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
@@ -151,7 +152,7 @@ function Description({ size, className, ...props }: DescriptionProps) {
   )
 }
 
-const fieldErrorStyle = cva({
+const fieldErrorStyle = tv({
   base: ["col-start-2 text-error-text"],
   variants: { size: { 1: "text-[11px]", 2: "text-xs", 3: "text-[13px]" } },
   defaultVariants: { size: 1 },
@@ -175,22 +176,20 @@ function FieldError({ size, className, ...props }: FieldErrorProps) {
   )
 }
 
-const fieldGroupStyle = compose(
-  inputBaseStyle,
-  cva({
-    base: ["group flex items-center"],
-    variants: {
-      size: {
-        1: "h-6",
-        2: "h-7",
-        3: "h-8",
-      },
+const fieldGroupStyle = tv({
+  extend: inputBaseStyle,
+  base: ["group flex items-center"],
+  variants: {
+    size: {
+      1: "h-6",
+      2: "h-7",
+      3: "h-8",
     },
-    defaultVariants: {
-      size: 1,
-    },
-  }),
-)
+  },
+  defaultVariants: {
+    size: 1,
+  },
+})
 
 interface FieldGroupProps
   extends RACGroupProps,
@@ -213,10 +212,11 @@ function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
   )
 }
 
-const groupInputStyle = cva({
+const groupInputStyle = tv({
   base: [
     "min-w-0 flex-1 appearance-none self-stretch border-none text-inherit outline-0",
     "placeholder:text-neutral-placeholder autofill:bg-transparent [&::-webkit-search-cancel-button]:hidden",
+    "data-disabled:cursor-not-allowed group-data-disabled:cursor-not-allowed",
   ],
   variants: {
     size: {
@@ -225,6 +225,7 @@ const groupInputStyle = cva({
       3: "indent-2 text-sm",
     },
   },
+  defaultVariants: { size: 1 },
 })
 
 function GroupInput({ className, ...props }: Omit<InputProps, "variant">) {
@@ -247,11 +248,11 @@ export {
   Description,
   FieldError,
   FieldGroup,
+  fieldLayoutStyle,
   GroupInput,
   Input,
+  inputBaseStyle,
   Label,
   TextAreaInput,
-  fieldLayoutStyle,
-  inputBaseStyle,
   type FieldProps,
 }

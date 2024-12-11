@@ -16,6 +16,7 @@ function Breadcrumbs<T extends object>(props: BreadcrumbsProps<T>) {
   )
 }
 
+// TODO: add support for render props
 function Breadcrumb({
   className,
   href,

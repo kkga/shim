@@ -1,6 +1,6 @@
 "use client"
 
-import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
+import { cxRenderProps, focusStyle } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
 import {
   Slider as RACSlider,
@@ -9,15 +9,16 @@ import {
   SliderTrack,
   type SliderProps as RACSliderProps,
 } from "react-aria-components"
+import { tv } from "tailwind-variants"
 import { Description, FieldProps, Label, fieldLayoutStyle } from "./Field"
 
 const styles = {
-  track: cva({
-    base: ["relative flex grow-1 shrink-0 items-center"],
+  track: tv({
+    base: ["grow-1 relative flex shrink-0 items-center"],
     variants: {
       orientation: {
         horizontal: "min-w-32",
-        vertical: "flex-col-reverse min-h-32",
+        vertical: "min-h-32 flex-col-reverse",
       },
       size: { 1: null, 2: null, 3: null },
     },
@@ -31,15 +32,15 @@ const styles = {
     ],
   }),
 
-  trackInner: cva({
-    base: "absolute rounded-full overflow-hidden",
+  trackInner: tv({
+    base: "absolute overflow-hidden rounded-full",
     variants: {
       size: { 1: null, 2: null, 3: null },
       variant: {
         classic: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
         soft: "bg-neutral-bg inset-ring-0",
         outline:
-          "bg-transparent inset-ring-1 inset-ring-neutral-line shadow-none",
+          "inset-ring-1 inset-ring-neutral-line bg-transparent shadow-none",
       },
       orientation: { horizontal: "inset-y-auto", vertical: "inset-x-auto" },
       isDisabled: {
@@ -47,53 +48,51 @@ const styles = {
       },
     },
     compoundVariants: [
-      { size: 1, orientation: "horizontal", className: "h-1.5 -inset-x-2" },
-      { size: 1, orientation: "vertical", className: "w-1.5 -inset-y-2" },
-      { size: 2, orientation: "horizontal", className: "h-2 -inset-x-2" },
-      { size: 2, orientation: "vertical", className: "w-2 -inset-y-2" },
-      { size: 3, orientation: "horizontal", className: "h-2.5 -inset-x-2.5" },
-      { size: 3, orientation: "vertical", className: "w-2.5 -inset-y-2.5" },
+      { size: 1, orientation: "horizontal", className: "-inset-x-2 h-1.5" },
+      { size: 1, orientation: "vertical", className: "-inset-y-2 w-1.5" },
+      { size: 2, orientation: "horizontal", className: "-inset-x-2 h-2" },
+      { size: 2, orientation: "vertical", className: "-inset-y-2 w-2" },
+      { size: 3, orientation: "horizontal", className: "-inset-x-2.5 h-2.5" },
+      { size: 3, orientation: "vertical", className: "-inset-y-2.5 w-2.5" },
     ],
   }),
 
-  trackFill: cva({
-    base: "absolute bg-accent-solid",
+  trackFill: tv({
+    base: "bg-accent-solid absolute",
     variants: {
       variant: {
         classic: "bg-accent-solid",
         soft: "bg-accent-bg-active",
         outline: "bg-accent-solid",
       },
-      orientation: { horizontal: "top-0 bottom-0", vertical: "right-0 left-0" },
+      orientation: { horizontal: "bottom-0 top-0", vertical: "left-0 right-0" },
     },
   }),
 
-  thumb: compose(
-    focusStyle,
-    cva({
-      base: [
-        "outline-offset-0 rounded-full",
-        "group-data-disabled:bg-neutral-bg group-data-disabled:ring-neutral-line group-data-disabled:shadow-none",
-      ],
-      variants: {
-        variant: {
-          classic: "bg-white ring-1 ring-black/15 shadow",
-          soft: "bg-accent-solid shadow-none",
-          outline: "bg-white ring-1 ring-neutral-border",
-        },
-        size: {
-          1: "size-4 group-data-[orientation=horizontal]:mt-4 group-data-[orientation=vertical]:ml-4",
-          2: "size-[18px] group-data-[orientation=horizontal]:mt-[18px] group-data-[orientation=vertical]:ml-[18px]",
-          3: "size-5 group-data-[orientation=horizontal]:mt-5 group-data-[orientation=vertical]:ml-5",
-        },
-        orientation: { horizontal: "left-0", vertical: "top-0" },
-      },
-    }),
-  ),
-
-  output: cva({
+  thumb: tv({
+    extend: focusStyle,
     base: [
-      "text-xs min-w-[3ch] self-center tabular-nums text-end justify-self-end text-neutral-text data-[orientation=vertical]:hidden",
+      "rounded-full outline-offset-0",
+      "group-data-disabled:bg-neutral-bg group-data-disabled:ring-neutral-line group-data-disabled:shadow-none",
+    ],
+    variants: {
+      variant: {
+        classic: "bg-white shadow ring-1 ring-black/15",
+        soft: "bg-accent-solid shadow-none",
+        outline: "ring-neutral-border bg-white ring-1",
+      },
+      size: {
+        1: "size-4 group-data-[orientation=horizontal]:mt-4 group-data-[orientation=vertical]:ml-4",
+        2: "size-[18px] group-data-[orientation=horizontal]:mt-[18px] group-data-[orientation=vertical]:ml-[18px]",
+        3: "size-5 group-data-[orientation=horizontal]:mt-5 group-data-[orientation=vertical]:ml-5",
+      },
+      orientation: { horizontal: "left-0", vertical: "top-0" },
+    },
+  }),
+
+  output: tv({
+    base: [
+      "text-neutral-text min-w-[3ch] self-center justify-self-end text-end text-xs tabular-nums data-[orientation=vertical]:hidden",
       // disabled
       "group-data-disabled:text-neutral-placeholder",
     ],
@@ -140,7 +139,7 @@ function Slider<T extends number | number[]>({
           </div>
         )}
 
-        <div className="flex grow-1 gap-1">
+        <div className="grow-1 flex gap-1">
           <SliderTrack
             className={({ orientation }) => styles.track({ size, orientation })}
           >

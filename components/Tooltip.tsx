@@ -7,14 +7,13 @@ import {
   type TooltipTriggerComponentProps,
 } from "react-aria-components"
 
-import { animateMountStyle, compose, cva, cxRenderProps } from "@lib/style"
+import { animateMountStyle, cxRenderProps } from "@lib/style"
+import { tv } from "tailwind-variants"
 
-const style = compose(
-  animateMountStyle,
-  cva({
-    base: "flex items-center gap-1 overflow-hidden max-w-64 rounded bg-panel py-0.5 px-1.5 text-[12px] font-book text-neutral-text-contrast shadow-[var(--shadow-sm)] outline-0",
-  }),
-)
+const style = tv({
+  extend: animateMountStyle,
+  base: "bg-panel font-book text-neutral-text-contrast flex max-w-64 items-center gap-1 overflow-hidden rounded px-1.5 py-0.5 text-[12px] shadow-[var(--shadow-sm)] outline-0",
+})
 
 function Tooltip({ className, offset = 4, ...props }: RACTooltipProps) {
   return (

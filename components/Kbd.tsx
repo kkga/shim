@@ -1,9 +1,9 @@
 "use client"
 
-import { VariantProps, cva } from "@lib/style"
 import { Keyboard as RACKeyboard } from "react-aria-components"
+import { tv, VariantProps } from "tailwind-variants"
 
-const style = cva({
+const style = tv({
   base: "inline-flex w-fit items-center bg-panel font-book text-neutral-text leading-none font-sans",
   variants: {
     variant: {

@@ -7,26 +7,20 @@ import {
   type PopoverProps as RACPopoverProps,
 } from "react-aria-components"
 
-import {
-  animateMountStyle,
-  animateUnmountStyle,
-  compose,
-  cva,
-} from "@lib/style"
+import { animateMountStyle, animateUnmountStyle } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
+import { tv } from "tailwind-variants"
 
-const style = compose(
-  animateMountStyle,
-  cva({
-    base: [
-      "z-20 min-w-[var(--trigger-width)] bg-panel text-neutral-text text-xs shadow-[var(--shadow-lg)] outline-none",
-    ],
-    variants: {
-      size: { 1: "rounded-lg", 2: "rounded-lg", 3: "rounded-[10px]" },
-    },
-    defaultVariants: { size: 1 },
-  }),
-)
+const style = tv({
+  extend: animateMountStyle,
+  base: [
+    "bg-panel text-neutral-text z-20 min-w-[var(--trigger-width)] text-xs shadow-[var(--shadow-lg)] outline-none",
+  ],
+  variants: {
+    size: { 1: "rounded-lg", 2: "rounded-lg", 3: "rounded-[10px]" },
+  },
+  defaultVariants: { size: 1 },
+})
 
 interface PopoverProps extends Omit<RACPopoverProps, "children"> {
   children: React.ReactNode
@@ -40,20 +34,26 @@ function Popover({
   withDialog,
   ...props
 }: PopoverProps) {
-  let { size } = useThemeProps({})
+  let { size } = useThemeProps()
   return (
     <RACPopover
       {...props}
       offset={offset}
       className={({ placement }) =>
         animateUnmountStyle({
-          placement,
+          placement: placement ?? "center",
           className: "data-[trigger=SubmenuTrigger]:-translate-y-1",
         })
       }
     >
       {({ placement }) => (
-        <div className={style({ size, placement, className })}>
+        <div
+          className={style({
+            size,
+            placement: placement ?? undefined,
+            className,
+          })}
+        >
           {withDialog ?
             <RACDialog className="overflow-auto outline-none">
               {children}

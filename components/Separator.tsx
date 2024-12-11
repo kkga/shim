@@ -1,12 +1,13 @@
 "use client"
-import { cva } from "@lib/style"
+
 import {
   Separator as RACSeparator,
   SeparatorProps,
 } from "react-aria-components"
+import { tv } from "tailwind-variants"
 
-const styles = cva({
-  base: "bg-neutral-line self-stretch shrink-0 border-none",
+const styles = tv({
+  base: "bg-neutral-line shrink-0 self-stretch border-none",
   variants: {
     orientation: {
       horizontal: "h-px w-full",

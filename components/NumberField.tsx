@@ -73,13 +73,13 @@ function NumberField({
 }
 
 function StepperButton({ className, ...props }: ButtonProps) {
-  let { size } = useThemeProps({})
+  let { size } = useThemeProps()
 
   return (
     <Button
       {...props}
       className={cx(
-        "flex flex-1 cursor-default items-center justify-center rounded-sm bg-transparent text-neutral-placeholder",
+        "text-neutral-placeholder flex flex-1 cursor-default items-center justify-center rounded-sm bg-transparent",
         // hovered
         "data-hovered:bg-neutral-bg-hover",
         // pressed

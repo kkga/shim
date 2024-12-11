@@ -1,6 +1,6 @@
 "use client"
 
-import { compose, cva, cx, focusStyle } from "@lib/style"
+import { cx, focusStyle } from "@lib/style"
 import { X } from "@phosphor-icons/react"
 import { createContext, useContext } from "react"
 import {
@@ -14,6 +14,7 @@ import {
   Text as RACText,
   composeRenderProps,
 } from "react-aria-components"
+import { tv } from "tailwind-variants"
 import { Description, Label } from "./Field"
 
 const colors = {
@@ -71,36 +72,31 @@ function TagGroup<T extends object>({
   )
 }
 
-const tagStyles = {
-  tagStyle: compose(
-    focusStyle,
-    cva({
-      base: [
-        "cursor-default text-xs rounded-full border px-2 h-5 flex items-center max-w-fit gap-1 overflow-clip",
-        // allows removing
-        "data-allows-removing:pr-0",
-        // selected
-        "data-selected:text-white data-selected:border-transparent!",
-        // disabled
-        "data-disabled:bg-neutral-bg-subtle border-neutral-line text-neutral-placeholder",
-      ],
-      variants: {
-        color: colors,
-      },
-    }),
-  ),
+const tagStyle = tv({
+  extend: focusStyle,
+  base: [
+    "flex h-5 max-w-fit cursor-default items-center gap-1 overflow-clip rounded-full border px-2 text-xs",
+    // allows removing
+    "data-allows-removing:pr-0",
+    // selected
+    "data-selected:text-white data-selected:border-transparent!",
+    // disabled
+    "data-disabled:bg-neutral-bg-subtle border-neutral-line text-neutral-placeholder",
+  ],
 
-  removeButtonStyle: compose(
-    focusStyle,
-    cva({
-      base: [
-        "-mr-px ml-1 cursor-default rounded-r-full h-5 w-[22px] pr-0.5 flex items-center justify-center border-l border-current/30",
-        // hover
-        "data-hovered:bg-neutral-bg-hover",
-      ],
-    }),
-  ),
-}
+  variants: {
+    color: colors,
+  },
+})
+
+const removeButtonStyle = tv({
+  extend: focusStyle,
+  base: [
+    "border-current/30 -mr-px ml-1 flex h-5 w-[22px] cursor-default items-center justify-center rounded-r-full border-l pr-0.5",
+    // hover
+    "data-hovered:bg-neutral-bg-hover",
+  ],
+})
 
 interface TagProps extends RACTagProps {
   color?: Color
@@ -109,7 +105,7 @@ interface TagProps extends RACTagProps {
 function Tag({ children, color, ...props }: TagProps) {
   let textValue = typeof children === "string" ? children : undefined
   let groupColor = useContext(ColorContext)
-  let { tagStyle, removeButtonStyle } = tagStyles
+  // let { tagStyle, removeButtonStyle } = tagStyles
 
   return (
     <RACTag

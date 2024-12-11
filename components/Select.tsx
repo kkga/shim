@@ -59,7 +59,7 @@ function Select<T extends object>({
         <Theme {...themeProps}>
           {label && <Label>{label}</Label>}
           <Button intent="neutral">
-            <RACSelectValue className="flex-1 truncate text-left font-normal data-placeholder:text-neutral-placeholder" />
+            <RACSelectValue className="data-placeholder:text-neutral-placeholder flex-1 truncate text-left font-normal" />
             <CaretDown
               size={themeProps.size === 1 ? 12 : 16}
               aria-hidden
@@ -82,7 +82,7 @@ function Select<T extends object>({
   )
 }
 
-function SelectItem({ className, href, ...props }: ListBoxItemProps) {
+function SelectItem(props: ListBoxItemProps) {
   let { size } = useThemeProps({ size: props.size })
   let textValue =
     props.textValue ||
@@ -94,7 +94,7 @@ function SelectItem({ className, href, ...props }: ListBoxItemProps) {
         props.children,
         (children, { selectionMode, isSelected }) => (
           <>
-            {selectionMode !== "none" && !href && (
+            {selectionMode !== "none" && (
               <span
                 className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
               >
@@ -126,4 +126,5 @@ function SelectSection<T extends object>(props: ListBoxSectionProps<T>) {
   return <ListBoxSection {...props} />
 }
 
-export { Select, SelectItem, SelectSection, type SelectProps }
+export { Select, SelectItem, SelectSection }
+export type { SelectProps }

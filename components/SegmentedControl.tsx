@@ -7,9 +7,10 @@ import {
   type RadioProps as RACRadioProps,
 } from "react-aria-components"
 
-import { compose, cva, cxRenderProps, focusStyle } from "@lib/style"
+import { cxRenderProps, focusStyle } from "@lib/style"
 
 import { Theme, useThemeProps } from "@lib/theme"
+import { tv } from "tailwind-variants"
 import {
   Description,
   FieldError,
@@ -17,12 +18,11 @@ import {
   Label,
   fieldLayoutStyle,
 } from "./Field"
-import { Children } from "react"
 
 const styles = {
-  container: cva({
+  container: tv({
     base: [
-      "group grid grid-flow-col auto-cols-fr text-neutral-text outline-none gap-px",
+      "text-neutral-text group grid auto-cols-fr grid-flow-col gap-px outline-none",
       "data-disabled:cursor-not-allowed data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder",
     ],
     variants: {
@@ -30,9 +30,9 @@ const styles = {
         classic: ["bg-neutral-bg"],
       },
       size: {
-        1: "rounded text-xs h-6",
-        2: "rounded text-[13px] h-7",
-        3: "rounded-md text-sm h-8",
+        1: "h-6 rounded text-xs",
+        2: "h-7 rounded text-[13px]",
+        3: "h-8 rounded-md text-sm",
       },
     },
     defaultVariants: {
@@ -41,52 +41,50 @@ const styles = {
     },
   }),
 
-  item: compose(
-    focusStyle,
-    cva({
-      base: [
-        "peer relative flex-1 flex items-center justify-center shrink-0 rounded-full",
-        // disabled
-        "group-data-disabled:bg-neutral-bg-subtle! group-data-disabled:shadow-none! group-data-disabled:inset-ring-1! group-data-disabled:inset-ring-neutral-line! group-data-disabled:text-neutral-placeholder!",
-      ],
-      variants: {
-        variant: {
-          classic: [
-            "",
-            // hovered
-            "data-hovered:bg-neutral-bg-hover",
-            // pressed
-            "data-pressed:bg-neutral-bg-active",
-            // selected
-            "data-selected:bg-neutral-bg-active data-selected:text-neutral-text-contrast",
-          ],
-          soft: [
-            "bg-neutral-bg-hover inset-ring-0 before:bg-accent-text-contrast",
-            // pressed
-            "group-data-pressed:bg-neutral-bg-active",
-            // selected
-            "group-data-selected:bg-accent-bg-active group-data-selected:before:visible",
-          ],
-          outline: [
-            "bg-transparent inset-ring-1 inset-ring-neutral-border before:bg-accent-text-contrast",
-            // pressed
-            "group-data-pressed:bg-neutral-bg-active",
-            // selected
-            "group-data-selected:bg-transparent group-data-selected:inset-ring-neutral-border-hover group-data-selected:before:visible",
-          ],
-        },
-        size: {
-          1: "rounded h-6 px-1.5 gap-1.5",
-          2: "rounded h-7 px-2 gap-2",
-          3: "rounded-md h-8 px-2.5 gap-2",
-        },
+  item: tv({
+    extend: focusStyle,
+    base: [
+      "peer relative flex flex-1 shrink-0 items-center justify-center rounded-full",
+      // disabled
+      "group-data-disabled:bg-neutral-bg-subtle! group-data-disabled:shadow-none! group-data-disabled:inset-ring-1! group-data-disabled:inset-ring-neutral-line! group-data-disabled:text-neutral-placeholder!",
+    ],
+    variants: {
+      variant: {
+        classic: [
+          "",
+          // hovered
+          "data-hovered:bg-neutral-bg-hover",
+          // pressed
+          "data-pressed:bg-neutral-bg-active",
+          // selected
+          "data-selected:bg-neutral-bg-active data-selected:text-neutral-text-contrast",
+        ],
+        soft: [
+          "bg-neutral-bg-hover inset-ring-0 before:bg-accent-text-contrast",
+          // pressed
+          "group-data-pressed:bg-neutral-bg-active",
+          // selected
+          "group-data-selected:bg-accent-bg-active group-data-selected:before:visible",
+        ],
+        outline: [
+          "inset-ring-1 inset-ring-neutral-border before:bg-accent-text-contrast bg-transparent",
+          // pressed
+          "group-data-pressed:bg-neutral-bg-active",
+          // selected
+          "group-data-selected:bg-transparent group-data-selected:inset-ring-neutral-border-hover group-data-selected:before:visible",
+        ],
       },
-      defaultVariants: {
-        variant: "classic",
-        size: 1,
+      size: {
+        1: "h-6 gap-1.5 rounded px-1.5",
+        2: "h-7 gap-2 rounded px-2",
+        3: "h-8 gap-2 rounded-md px-2.5",
       },
-    }),
-  ),
+    },
+    defaultVariants: {
+      variant: "classic",
+      size: 1,
+    },
+  }),
 }
 
 interface SegmentedControlProps
@@ -121,7 +119,7 @@ function SegmentedControl({
   )
 }
 
-interface SegmentedControlItemProps extends RACRadioProps {}
+type SegmentedControlItemProps = RACRadioProps
 
 function SegmentedControlItem({
   className,
@@ -142,4 +140,4 @@ function SegmentedControlItem({
 }
 
 export { SegmentedControl, SegmentedControlItem }
-export type { SegmentedControlProps, SegmentedControlItemProps }
+export type { SegmentedControlItemProps, SegmentedControlProps }

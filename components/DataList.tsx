@@ -1,62 +1,45 @@
 "use client"
 
-import { VariantProps, cva } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
+import { tv, VariantProps } from "tailwind-variants"
 
-const styles = {
-  list: cva({
-    base: "items-center place-content-start",
-    variants: {
-      labelPosition: {
-        side: "grid grid-cols-[max-content_auto] gap-y-2 gap-x-3 auto-rows-fr",
-        top: "flex flex-col items-stretch gap-y-3",
+const style = tv({
+  slots: {
+    list: "items-center place-content-start",
+    item: "",
+    label: "font-medium text-neutral-text",
+    value: "text-neutral-text-contrast",
+  },
+  variants: {
+    size: {
+      1: { list: "text-xs" },
+      2: { list: "text-[13px] gap-x-4 gap-y-3" },
+      3: { list: "text-sm gap-x-6 gap-y-3" },
+    },
+    labelPosition: {
+      side: {
+        list: "grid grid-cols-[max-content_auto] gap-y-2 gap-x-3 auto-rows-fr",
+        item: "grid grid-cols-subgrid col-span-2 items-center",
       },
-      size: {
-        1: "text-xs",
-        2: "text-[13px] gap-x-4 gap-y-3",
-        3: "text-sm gap-x-6 gap-y-3",
+      top: {
+        list: "flex flex-col items-stretch gap-y-3",
+        item: "flex flex-col gap-y-1",
       },
     },
-  }),
-  item: cva({
-    base: "",
-    variants: {
-      labelPosition: {
-        side: "grid grid-cols-subgrid col-span-2 items-center",
-        top: "flex flex-col gap-y-1",
-      },
-    },
-  }),
-  label: cva({
-    base: "font-medium text-neutral-text",
-  }),
-  value: cva({
-    base: "text-neutral-text-contrast",
-  }),
-}
+  },
+})
 
 interface DataListProps
   extends React.HTMLAttributes<HTMLDListElement>,
-    VariantProps<typeof styles.list> {}
+    VariantProps<typeof style> {}
 
-function DataList({
-  className,
-  size,
-  labelPosition,
-  children,
-  ...props
-}: DataListProps) {
-  let themeProps = useThemeProps({ size, labelPosition })
+function DataList({ className, children, ...props }: DataListProps) {
+  let themeProps = useThemeProps({ ...props })
+  let { labelPosition, size } = themeProps
+  let { list } = style({ labelPosition, size })
 
   return (
-    <dl
-      className={styles.list({
-        size: themeProps.size,
-        labelPosition: themeProps.labelPosition,
-        className,
-      })}
-      {...props}
-    >
+    <dl {...props} className={list({ className })}>
       <Theme {...themeProps}>{children}</Theme>
     </dl>
   )
@@ -73,12 +56,17 @@ function DataListItem({
   value,
   ...props
 }: DataListItemProps) {
-  let { labelPosition } = useThemeProps({})
+  let { labelPosition } = useThemeProps()
+  let {
+    item: itemStyle,
+    label: labelStyle,
+    value: valueStyle,
+  } = style({ labelPosition })
 
   return (
-    <div className={styles.item({ className, labelPosition })} {...props}>
-      <dt className={styles.label()}>{label}</dt>
-      <dd className={styles.value()}>{value}</dd>
+    <div className={itemStyle({ className })} {...props}>
+      <dt className={labelStyle()}>{label}</dt>
+      <dd className={valueStyle()}>{value}</dd>
     </div>
   )
 }
