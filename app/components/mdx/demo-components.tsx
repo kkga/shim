@@ -205,6 +205,11 @@ export const demoComponents: Record<string, DemoComponent> = {
   BreadcrumbsDemo: {
     Main: dynamic(() => import("@docs/Breadcrumbs").then((mod) => mod.Main)),
   },
+  DisclosureDemo: {
+    Main: dynamic(() => import("@docs/Disclosure").then((mod) => mod.Main)),
+    Size: dynamic(() => import("@docs/Disclosure").then((mod) => mod.Size)),
+    Group: dynamic(() => import("@docs/Disclosure").then((mod) => mod.Group)),
+  },
 
   // Overlays
   PopoverDemo: {
