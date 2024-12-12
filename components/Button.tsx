@@ -5,17 +5,20 @@ import { useThemeProps } from "@lib/theme"
 
 import { Children, isValidElement } from "react"
 import {
-  Link,
-  LinkProps,
+  composeRenderProps,
   Button as RACButton,
+  Link as RACLink,
+  LinkProps as RACLinkProps,
+  ProgressBar as RACProgressBar,
   type ButtonProps as RACButtonProps,
+  type ProgressBarProps as RACProgressBarProps,
 } from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+import { ClassValue, tv, VariantProps } from "tailwind-variants"
 
 const style = tv({
   extend: focusStyle,
   base: [
-    "inline-flex shrink-0 items-center justify-center font-medium",
+    "relative inline-flex shrink-0 items-center justify-center font-medium",
     // disabled
     "data-disabled:text-neutral-placeholder data-disabled:bg-neutral-bg-subtle data-disabled:inset-ring data-disabled:inset-ring-neutral-line",
   ],
@@ -30,7 +33,7 @@ const style = tv({
         acc[intent] = ""
         return acc
       },
-      {} as Record<Intent, string>,
+      {} as Record<Intent, ClassValue>,
     ),
     size: {
       1: "h-6 gap-1.5 rounded px-1.5 text-xs",
@@ -38,6 +41,9 @@ const style = tv({
       3: "h-8 gap-2 rounded-md px-2.5 text-sm",
     },
     isSquare: { true: null, false: null },
+    isPending: {
+      true: "*:not-data-progress:invisible",
+    },
   },
   compoundVariants: [
     { size: 1, isSquare: true, className: "size-6 p-0" },
@@ -141,18 +147,46 @@ const style = tv({
   defaultVariants: { intent: "accent", variant: "soft", size: 1 },
 })
 
-interface ButtonProps extends RACButtonProps, VariantProps<typeof style> {}
+const progressStyle = tv({
+  slots: {
+    base: "absolute inset-0 flex items-center justify-center",
+    circle: "",
+  },
+  variants: {
+    size: {
+      1: { circle: "size-4" },
+      2: { circle: "size-5" },
+      3: { circle: "size-6" },
+    },
+  },
+})
 
-function Button({ className, size, variant, intent, ...props }: ButtonProps) {
-  let themeProps = useThemeProps({ size, buttonVariant: variant })
+interface ButtonProps
+  extends RACButtonProps,
+    Omit<VariantProps<typeof style>, "isPending"> {}
+
+function Button({
+  className,
+  size: _size,
+  variant: _variant,
+  intent,
+  ...props
+}: ButtonProps) {
+  let { buttonVariant, size } = useThemeProps({
+    size: _size,
+    buttonVariant: _variant,
+  })
+  let { base, circle } = progressStyle({ size })
+
   return (
     <RACButton
       className={cxRenderProps(
         className,
         style({
-          variant: themeProps.buttonVariant,
+          variant: buttonVariant,
           intent: intent,
-          size: themeProps.size,
+          size: size,
+          isPending: props.isPending,
           isSquare:
             typeof props.isSquare === "boolean" ?
               props.isSquare
@@ -160,7 +194,48 @@ function Button({ className, size, variant, intent, ...props }: ButtonProps) {
         }),
       )}
       {...props}
-    />
+    >
+      {composeRenderProps(props.children, (children, { isPending }) => (
+        <>
+          {isPending && (
+            <div data-progress className={base()}>
+              <ProgressCircle className={circle()} />
+            </div>
+          )}
+          <span className="contents">{children}</span>
+        </>
+      ))}
+    </RACButton>
+  )
+}
+
+interface ProgressCircleProps extends Omit<RACProgressBarProps, "className"> {
+  className?: string
+}
+
+function ProgressCircle({ className, ...props }: ProgressCircleProps) {
+  return (
+    <RACProgressBar {...props} aria-label="Loading">
+      <svg viewBox="0 0 24 24" className={className}>
+        <path
+          fill="currentColor"
+          d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+          opacity=".25"
+        />
+        <path
+          fill="currentColor"
+          d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+        >
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            dur="0.75s"
+            values="0 12 12;360 12 12"
+            repeatCount="indefinite"
+          />
+        </path>
+      </svg>
+    </RACProgressBar>
   )
 }
 
@@ -170,11 +245,11 @@ function LinkButton({
   variant,
   intent,
   ...props
-}: LinkProps & VariantProps<typeof style>) {
+}: RACLinkProps & VariantProps<typeof style>) {
   let themeProps = useThemeProps({ size, buttonVariant: variant })
 
   return (
-    <Link
+    <RACLink
       {...props}
       className={cxRenderProps(
         className,
@@ -192,7 +267,7 @@ function LinkButton({
   )
 }
 
-function hasOnlySvgChild(props: Partial<LinkProps> | Partial<ButtonProps>) {
+function hasOnlySvgChild(props: Partial<RACLinkProps> | Partial<ButtonProps>) {
   let children =
     typeof props.children !== "function" && Children.toArray(props.children)
 

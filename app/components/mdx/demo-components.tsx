@@ -48,6 +48,7 @@ export const demoComponents: Record<string, DemoComponent> = {
     Size: dynamic(() => import("@docs/Button").then((mod) => mod.Size)),
     Intent: dynamic(() => import("@docs/Button").then((mod) => mod.Intent)),
     Content: dynamic(() => import("@docs/Button").then((mod) => mod.Content)),
+    Pending: dynamic(() => import("@docs/Button").then((mod) => mod.Pending)),
   },
   ToggleButtonDemo: {
     Main: dynamic(() => import("@docs/ToggleButton").then((mod) => mod.Main)),
