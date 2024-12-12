@@ -6,8 +6,8 @@ import {
 } from "@ui/Disclosure"
 
 export default () => (
-  <DisclosureGroup>
-    <Disclosure>
+  <DisclosureGroup defaultExpandedKeys={["refund"]}>
+    <Disclosure id="refund">
       <DisclosureHeader>What is your refund policy?</DisclosureHeader>
       <DisclosurePanel>
         We offer a 30-day no-questions-asked refund policy.
