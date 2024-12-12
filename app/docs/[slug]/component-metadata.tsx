@@ -5,6 +5,7 @@ import { Fragment } from "react"
 import { ComponentMetadata } from "../lib/types"
 
 const GITHUB_FILE_URL = "https://github.com/kkga/shim-ui/blob/master/components"
+const GITHUB_ISSUES_URL = "https://github.com/kkga/shim-ui/issues"
 
 function MetadataLink({ href, title, external, children }) {
   return (
@@ -70,6 +71,18 @@ function MetadataRow({
             external
           >
             GitHub
+          </MetadataLink>
+        }
+      />
+      <DataListItem
+        label="Issues"
+        value={
+          <MetadataLink
+            href={`${GITHUB_ISSUES_URL}/new?title=[${name}] Issue`}
+            title="New issue on GitHub"
+            external
+          >
+            Report issue
           </MetadataLink>
         }
       />
