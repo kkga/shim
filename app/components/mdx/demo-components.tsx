@@ -40,6 +40,13 @@ export const demoComponents: Record<string, DemoComponent> = {
       import("@docs/ProgressBar").then((mod) => mod.Indeterminate),
     ),
   },
+  ProgressCircleDemo: {
+    Main: dynamic(() => import("@docs/ProgressCircle").then((mod) => mod.Main)),
+    Indeterminate: dynamic(() =>
+      import("@docs/ProgressCircle").then((mod) => mod.Indeterminate),
+    ),
+    Size: dynamic(() => import("@docs/ProgressCircle").then((mod) => mod.Size)),
+  },
 
   // Buttons
   ButtonDemo: {
