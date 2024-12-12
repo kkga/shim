@@ -11,30 +11,28 @@ import { demoComponents } from "./demo-components"
 import { Step, Steps } from "./steps"
 
 function Link({ className, href, ...props }) {
+  let classNames = clsx(
+    "text-accent-text decoration-accent-line hover:decoration-accent-border-hover underline underline-offset-2",
+    className,
+  )
   if (href.startsWith("/")) {
     return (
-      <NextLink
-        href={href}
-        className={clsx(
-          "text-accent-text decoration-accent-line hover:decoration-accent-border-hover underline underline-offset-2",
-          className,
-        )}
-        {...props}
-      >
+      <NextLink href={href} className={classNames} {...props}>
         {props.children}
       </NextLink>
     )
   }
 
   if (href.startsWith("#")) {
-    return <a className={className} {...props} />
+    return <a href={href} className={classNames} {...props} />
   }
 
   return (
     <a
-      className={className}
+      className={classNames}
       target="_blank"
       rel="noopener noreferrer"
+      href={href}
       {...props}
     />
   )
