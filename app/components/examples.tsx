@@ -6,7 +6,7 @@ import { ExampleIssueTracker, ExampleRepo } from "../../examples"
 import { H4, P } from "./mdx/mdx-components"
 import { ThemeButton } from "./sidebar/theme-button"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 let items = [
   {
