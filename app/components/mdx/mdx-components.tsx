@@ -240,7 +240,7 @@ const mdxComponents: MDXRemoteProps["components"] = {
   ul: (props) => (
     <ul className="my-4 max-w-prose list-outside list-disc pl-4" {...props} />
   ),
-  li: (props) => <li className="mb-4" {...props} />,
+  li: (props) => <li className="mb-2" {...props} />,
   hr: HR,
   em: (props) => (
     <em className="text-neutral-text-contrast italic" {...props} />
