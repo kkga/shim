@@ -19,7 +19,7 @@
 		"@vercel/speed-insights": "^1.1.0",
 		"babel-plugin-react-compiler": "19.0.0-beta-37ed2a7-20241206",
 		"clsx": "^2.1.1",
-		"framer-motion": "11.14.4",
+		"framer-motion": "11.15.0",
 		"gray-matter": "^4.0.3",
 		"next": "15.1.0",
 		"next-mdx-remote": "^5.0.0",
@@ -64,7 +64,7 @@
 			"@commitlint/config-conventional"
 		]
 	},
-	"packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019",
+	"packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
 	"devDependencies": {
 		"@commitlint/cli": "^19.6.1",
 		"@commitlint/config-conventional": "^19.6.0",
