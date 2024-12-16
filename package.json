@@ -19,7 +19,7 @@
 		"@vercel/speed-insights": "^1.1.0",
 		"babel-plugin-react-compiler": "19.0.0-beta-37ed2a7-20241206",
 		"clsx": "^2.1.1",
-		"framer-motion": "11.13.5",
+		"framer-motion": "11.14.4",
 		"gray-matter": "^4.0.3",
 		"next": "15.1.0",
 		"next-mdx-remote": "^5.0.0",
@@ -44,7 +44,11 @@
 			"prettier-plugin-organize-imports",
 			"prettier-plugin-tailwindcss"
 		],
-		"tailwindFunctions": ["tv", "cx", "cxRenderProps"],
+		"tailwindFunctions": [
+			"tv",
+			"cx",
+			"cxRenderProps"
+		],
 		"tailwindEntryPoint": "./app/styles/base.css",
 		"overrides": [
 			{
@@ -56,19 +60,21 @@
 		]
 	},
 	"commitlint": {
-		"extends": ["@commitlint/config-conventional"]
+		"extends": [
+			"@commitlint/config-conventional"
+		]
 	},
 	"packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019",
 	"devDependencies": {
-		"@commitlint/cli": "^19.6.0",
+		"@commitlint/cli": "^19.6.1",
 		"@commitlint/config-conventional": "^19.6.0",
 		"@eslint/eslintrc": "^3.2.0",
 		"@types/node": "22.10.2",
-		"eslint": "^9.16.0",
+		"eslint": "^9.17.0",
 		"eslint-config-next": "15.1.0",
 		"eslint-config-prettier": "^9.1.0",
 		"husky": "^9.1.7",
-		"knip": "^5.39.4",
+		"knip": "^5.40.0",
 		"lint-staged": "^15.2.11",
 		"prettier": "^3.4.2",
 		"prettier-plugin-organize-imports": "^4.1.0",

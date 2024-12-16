@@ -4,6 +4,7 @@ import { cxRenderProps, focusStyle } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
 import { Check, Minus } from "@phosphor-icons/react"
 import {
+  composeRenderProps,
   Checkbox as RACCheckbox,
   CheckboxGroup as RACCheckboxGroup,
   type CheckboxGroupProps as RACCheckboxGroupProps,
@@ -18,14 +19,9 @@ import {
   Label,
 } from "./Field"
 
-interface CheckboxGroupProps
-  extends Omit<RACCheckboxGroupProps, "children">,
-    FieldProps {
-  children?: React.ReactNode
-}
+interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}
 
 function CheckboxGroup({
-  children,
   className,
   label,
   description,
@@ -40,112 +36,137 @@ function CheckboxGroup({
       {...props}
       className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
-      <Theme {...themeProps}>
-        <Label>{label}</Label>
-        <div className="flex flex-col">{children}</div>
-        {description && <Description>{description}</Description>}
-        <FieldError>{errorMessage}</FieldError>
-      </Theme>
+      {composeRenderProps(props.children, (children, {}) => (
+        <Theme {...themeProps}>
+          {label && <Label>{label}</Label>}
+          <div className="flex flex-col">{children}</div>
+          {description && <Description>{description}</Description>}
+          <FieldError>{errorMessage}</FieldError>
+        </Theme>
+      ))}
     </RACCheckboxGroup>
   )
 }
 
-const containerStyle = tv({
-  base: [
-    "group flex items-center text-neutral-text outline-none",
-    "data-disabled:cursor-not-allowed data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder",
-  ],
-  variants: {
-    size: {
-      1: "text-xs gap-2 h-6",
-      2: "text-[13px] gap-2 h-7",
-      3: "text-sm gap-2.5 h-8",
-    },
-  },
-  defaultVariants: {
-    size: 1,
-  },
-})
-
 const checkboxStyle = tv({
-  extend: focusStyle,
-  base: [
-    "outline-offset-1 flex items-center justify-center shrink-0",
-    // disabled
-    "group-data-disabled:bg-neutral-bg-subtle! group-data-disabled:shadow-none! group-data-disabled:inset-ring-1! group-data-disabled:inset-ring-neutral-line! group-data-disabled:text-neutral-placeholder!",
-  ],
+  slots: {
+    container: ["text-neutral-text group flex outline-none"],
+    checkbox: [
+      focusStyle(),
+      "flex shrink-0 items-center justify-center outline-offset-1",
+    ],
+  },
   variants: {
-    variant: {
-      classic: [
-        "bg-neutral-bg-subtle shadow-[var(--shadow-inner)] text-white",
-        // pressed
-        "group-data-pressed:bg-neutral-bg-active",
-        // selected
-        "group-data-selected:bg-accent-solid",
-        // indeterminate
-        "group-data-indeterminate:bg-accent-solid",
-      ],
-      soft: [
-        "bg-neutral-bg-hover inset-ring-0 text-accent-text-contrast",
-        // pressed
-        "group-data-pressed:bg-neutral-bg-active",
-        // selected
-        "group-data-selected:bg-accent-bg-active",
-        // indeterminate
-        "group-data-indeterminate:bg-accent-bg-active",
-      ],
-      outline: [
-        "bg-transparent inset-ring-1 inset-ring-neutral-border text-accent-text-contrast",
-        // pressed
-        "group-data-pressed:bg-neutral-bg-active",
-        // selected
-        "group-data-selected:bg-transparent  group-data-selected:inset-ring-neutral-border-hover",
-        // indeterminate
-        "group-data-indeterminate:bg-transparent group-data-indeterminate:inset-ring-neutral-border-hover",
-      ],
+    isDisabled: {
+      true: {
+        container: "text-neutral-placeholder cursor-not-allowed",
+        checkbox:
+          "bg-neutral-bg-subtle! shadow-none! inset-ring-1! inset-ring-neutral-line! text-neutral-placeholder!",
+      },
     },
     size: {
-      1: "rounded-sm size-4 p-px",
-      2: "rounded-[3px] size-[18px]",
-      3: "rounded size-5",
+      1: {
+        container: "gap-2 py-1 text-xs",
+        checkbox: "size-4 rounded-[3px] p-px",
+      },
+      2: {
+        container: "gap-2 py-[5px] text-[13px]",
+        checkbox: "size-[18px] rounded-[3px]",
+      },
+      3: {
+        container: "gap-2 py-1.5 text-sm",
+        checkbox: "size-5 rounded",
+      },
+      4: {
+        container: "gap-2.5 py-2 text-base",
+        checkbox: "size-6 rounded-md",
+      },
     },
-  },
-  defaultVariants: {
-    size: 1,
-    variant: "classic",
+    variant: {
+      classic: {
+        checkbox: [
+          "bg-neutral-bg-subtle text-white shadow-[var(--shadow-inner)]",
+          // pressed
+          "group-data-pressed:bg-neutral-bg-active",
+          // selected
+          "group-data-selected:bg-accent-solid",
+          // indeterminate
+          "group-data-indeterminate:bg-accent-solid",
+        ],
+      },
+      soft: {
+        checkbox: [
+          "bg-neutral-bg-hover inset-ring-0 text-accent-text-contrast",
+          // pressed
+          "group-data-pressed:bg-neutral-bg-active",
+          // selected
+          "group-data-selected:bg-accent-bg-active",
+          // indeterminate
+          "group-data-indeterminate:bg-accent-bg-active",
+        ],
+      },
+      outline: {
+        checkbox: [
+          "inset-ring-1 inset-ring-neutral-border text-accent-text-contrast bg-transparent",
+          // pressed
+          "group-data-pressed:bg-neutral-bg-active",
+          // selected
+          "group-data-selected:bg-transparent group-data-selected:inset-ring-neutral-border-hover",
+          // indeterminate
+          "group-data-indeterminate:bg-transparent group-data-indeterminate:inset-ring-neutral-border-hover",
+        ],
+      },
+    },
   },
 })
 
 interface CheckboxProps
   extends RACCheckboxProps,
-    VariantProps<typeof containerStyle>,
     VariantProps<typeof checkboxStyle> {
-  children?: React.ReactNode
+  description?: string
 }
 
-function Checkbox({ children, className, ...props }: CheckboxProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
-  let { size, fieldVariant: variant } = themeProps
+function Checkbox({
+  size: _size,
+  variant: _variant,
+  className,
+  description,
+  ...props
+}: CheckboxProps) {
+  let themeProps = useThemeProps({
+    ...props,
+    fieldVariant: _variant,
+    size: _size,
+  })
+  let { size, fieldVariant } = themeProps
+  let { container, checkbox } = checkboxStyle({ size, variant: fieldVariant })
 
   return (
     <RACCheckbox
       {...props}
-      className={cxRenderProps(className, containerStyle({ size }))}
+      className={cxRenderProps(className, container({ isDisabled: true }))}
     >
-      {({ isSelected, isIndeterminate }) => (
-        <>
-          <div className={checkboxStyle({ size, variant })}>
-            {isIndeterminate ?
-              <Minus size={16} />
-            : isSelected ?
-              <Check size={16} weight="bold" />
-            : null}
-          </div>
-          {children}
-        </>
+      {composeRenderProps(
+        props.children,
+        (children, { isDisabled, isSelected, isIndeterminate }) => (
+          <>
+            <div className={checkbox({ isDisabled })}>
+              {isIndeterminate ?
+                <Minus size={16} />
+              : isSelected ?
+                <Check size={16} weight="bold" />
+              : null}
+            </div>
+            <div className="flex flex-col gap-1">
+              {children}
+              {description && <Description>{description}</Description>}
+            </div>
+          </>
+        ),
       )}
     </RACCheckbox>
   )
 }
 
-export { Checkbox, CheckboxGroup, type CheckboxGroupProps, type CheckboxProps }
+export { Checkbox, CheckboxGroup }
+export type { CheckboxGroupProps, CheckboxProps }

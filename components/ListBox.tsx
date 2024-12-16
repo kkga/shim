@@ -1,6 +1,6 @@
 "use client"
 
-import { cx, cxRenderProps } from "@lib/style"
+import { cx, cxRenderProps, focusStyle } from "@lib/style"
 import { Size, Theme, useThemeProps } from "@lib/theme"
 import type {
   ListBoxItemProps as RACListBoxItemProps,
@@ -8,7 +8,6 @@ import type {
   SectionProps as RACSectionProps,
 } from "react-aria-components"
 import {
-  composeRenderProps,
   Collection as RACCollection,
   Header as RACHeader,
   ListBox as RACListBox,
@@ -35,6 +34,7 @@ function ListBox<T extends object>({ size, ...props }: ListBoxProps<T>) {
 }
 
 const itemStyle = tv({
+  extend: focusStyle(),
   base: [
     "font-book relative flex shrink-0 items-center truncate rounded outline-0",
     "data-disabled:text-neutral-placeholder",
@@ -44,6 +44,7 @@ const itemStyle = tv({
       1: "h-6 gap-2 rounded px-1.5 text-xs",
       2: "h-7 gap-2.5 rounded px-2 text-[13px]",
       3: "h-8 gap-2.5 rounded-md px-2.5 text-sm",
+      4: "h-10 gap-2.5 rounded-lg px-3 text-base",
     },
     intent: {
       neutral:
@@ -87,11 +88,7 @@ function ListBoxItem({ intent, className, href, ...props }: ListBoxItemProps) {
           className: href ? "cursor-pointer" : "cursor-default",
         }),
       )}
-    >
-      {composeRenderProps(props.children, (children) => (
-        <>{children}</>
-      ))}
-    </RACListBoxItem>
+    />
   )
 }
 
@@ -102,6 +99,7 @@ const sectionHeaderStyle = tv({
       1: "h-6 px-1.5 text-xs",
       2: "h-7 px-2 text-[13px]",
       3: "h-8 px-2 text-sm",
+      4: "h-10 px-3 text-base",
     },
   },
 })

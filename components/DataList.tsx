@@ -12,13 +12,14 @@ const style = tv({
   },
   variants: {
     size: {
-      1: { list: "text-xs" },
-      2: { list: "gap-x-4 gap-y-3 text-[13px]" },
-      3: { list: "gap-x-6 gap-y-3 text-sm" },
+      1: { list: "gap-x-3 gap-y-2 text-xs leading-4" },
+      2: { list: "gap-x-4 gap-y-2 text-[13px] leading-5" },
+      3: { list: "gap-x-5 gap-y-2 text-sm leading-6" },
+      4: { list: "gap-x-6 gap-y-2 text-base leading-7" },
     },
     labelPosition: {
       side: {
-        list: "grid auto-rows-fr grid-cols-[max-content_auto] gap-x-3 gap-y-2",
+        list: "grid auto-rows-fr grid-cols-[max-content_auto]",
         item: "col-span-2 grid grid-cols-subgrid items-center",
       },
       top: {

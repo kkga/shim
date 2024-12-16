@@ -15,7 +15,7 @@ import {
   SubmenuTrigger as RACSubmenuTrigger,
   composeRenderProps,
 } from "react-aria-components"
-import { VariantProps } from "tailwind-variants"
+import { VariantProps, tv } from "tailwind-variants"
 import { ListBoxSection, ListBoxSectionProps, itemStyle } from "./ListBox"
 import { Popover } from "./Popover"
 
@@ -29,13 +29,14 @@ function Menu<T extends object>({
   placement,
   className,
   offset,
+  size,
   ...props
 }: MenuProps<T>) {
-  let themeProps = useThemeProps(props)
+  let themeProps = useThemeProps({ size })
 
   return (
     <Theme {...themeProps}>
-      <Popover offset={offset} placement={placement} className={"min-w-32"}>
+      <Popover offset={offset} placement={placement} className="min-w-32">
         <RACMenu
           {...props}
           className={cx(
@@ -102,20 +103,22 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
   )
 }
 
+const separatorStyle = tv({
+  base: "bg-neutral-line my-1 h-px border-none",
+  variants: {
+    size: {
+      1: "mx-1.5",
+      2: "mx-2",
+      3: "mx-2.5",
+      4: "mx-3",
+    },
+  },
+})
+
 function MenuSeparator(props: RACSeparatorProps) {
   let { size } = useThemeProps()
 
-  return (
-    <RACSeparator
-      {...props}
-      className={cx(
-        "bg-neutral-line my-1 h-px border-none",
-        size === 1 && "mx-1.5",
-        size === 2 && "mx-2",
-        size === 3 && "mx-2.5",
-      )}
-    />
-  )
+  return <RACSeparator {...props} className={separatorStyle({ size })} />
 }
 
 function MenuSection<T extends object>(props: ListBoxSectionProps<T>) {

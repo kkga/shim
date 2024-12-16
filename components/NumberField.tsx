@@ -1,32 +1,37 @@
 "use client"
 
 import {
-  Button,
+  composeRenderProps,
+  Button as RACButton,
   NumberField as RACNumberField,
-  type ButtonProps,
+  type ButtonProps as RACButtonProps,
   type NumberFieldProps as RACNumberFieldProps,
 } from "react-aria-components"
 
 import { cx, cxRenderProps } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
-import { CaretDown, CaretUp } from "@phosphor-icons/react"
+import { CaretDown, CaretUp, Minus, Plus } from "@phosphor-icons/react"
+import { tv, VariantProps } from "tailwind-variants"
 import {
   Description,
   FieldError,
   FieldGroup,
+  fieldLayoutStyle,
   FieldProps,
   GroupInput,
   Label,
-  fieldLayoutStyle,
 } from "./Field"
 
-interface NumberFieldProps extends RACNumberFieldProps, FieldProps {}
+interface NumberFieldProps extends RACNumberFieldProps, FieldProps {
+  stepperLayout?: "inline" | "stacked"
+}
 
 function NumberField({
   label,
   description,
   errorMessage,
   placeholder,
+  stepperLayout = "inline",
   ...props
 }: NumberFieldProps) {
   let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
@@ -43,27 +48,45 @@ function NumberField({
       <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
         <FieldGroup>
-          {({ isDisabled }) => (
-            <>
-              <GroupInput placeholder={placeholder} />
-              <div className={cx("flex flex-col self-stretch p-0.5")}>
-                <StepperButton isDisabled={isDisabled} slot="increment">
-                  <CaretUp
-                    aria-hidden
-                    size={size === 1 ? 10 : 12}
-                    weight="bold"
-                  />
+          {({ isDisabled }) =>
+            stepperLayout === "stacked" ?
+              <>
+                <GroupInput
+                  className="tabular-nums"
+                  placeholder={placeholder}
+                />
+                <div className={cx("flex flex-col self-stretch p-0.5")}>
+                  <StepperButton isDisabled={isDisabled} slot="increment">
+                    <CaretUp aria-hidden size={size > 3 ? 20 : 16} />
+                  </StepperButton>
+                  <StepperButton isDisabled={isDisabled} slot="decrement">
+                    <CaretDown aria-hidden size={size > 3 ? 20 : 16} />
+                  </StepperButton>
+                </div>
+              </>
+            : <>
+                <StepperButton
+                  isInline
+                  size={size}
+                  isDisabled={isDisabled}
+                  slot="decrement"
+                >
+                  <Minus aria-hidden size={size > 3 ? 20 : 16} />
                 </StepperButton>
-                <StepperButton isDisabled={isDisabled} slot="decrement">
-                  <CaretDown
-                    aria-hidden
-                    size={size === 1 ? 10 : 12}
-                    weight="bold"
-                  />
+                <GroupInput
+                  className="text-center indent-0 tabular-nums"
+                  placeholder={placeholder}
+                />
+                <StepperButton
+                  isInline
+                  size={size}
+                  isDisabled={isDisabled}
+                  slot="increment"
+                >
+                  <Plus aria-hidden size={size > 3 ? 20 : 16} />
                 </StepperButton>
-              </div>
-            </>
-          )}
+              </>
+          }
         </FieldGroup>
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
@@ -72,24 +95,48 @@ function NumberField({
   )
 }
 
-function StepperButton({ className, ...props }: ButtonProps) {
-  let { size } = useThemeProps()
+const stepperButtonStyle = tv({
+  base: [
+    "text-neutral-placeholder flex cursor-default items-center justify-center bg-transparent",
+  ],
+  variants: {
+    size: {
+      1: "rounded-xs mx-0.5 size-5",
+      2: "rounded-xs mx-0.5 size-6",
+      3: "rounded-xs mx-1 size-6",
+      4: "mx-1.5 size-7 rounded-[3px]",
+    },
+    isInline: { true: "grow-0" },
+    isStacked: { true: "flex-col self-stretch p-0.5" },
+    isHovered: { true: "bg-neutral-bg-hover" },
+    isPressed: { true: "bg-neutral-bg-active" },
+    isDisabled: { true: "cursor-not-allowed" },
+    isInvalid: { true: "text-error-text" },
+  },
+  defaultVariants: { size: 1 },
+})
 
+interface StepperButtonProps
+  extends RACButtonProps,
+    VariantProps<typeof stepperButtonStyle> {}
+
+function StepperButton({
+  isInline,
+  isStacked,
+  size,
+  ...props
+}: StepperButtonProps) {
   return (
-    <Button
+    <RACButton
       {...props}
-      className={cx(
-        "text-neutral-placeholder flex flex-1 cursor-default items-center justify-center rounded-sm bg-transparent",
-        // hovered
-        "data-hovered:bg-neutral-bg-hover",
-        // pressed
-        "data-pressed:bg-neutral-bg-active",
-        // group invalid
-        "group-data-invalid:text-error-text",
-        size === 1 && "px-1",
-        size === 2 && "px-[5px]",
-        size === 3 && "rounded px-1.5",
-        className,
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        stepperButtonStyle({
+          ...renderProps,
+          isInline,
+          isStacked,
+          size,
+          className,
+        }),
       )}
     />
   )

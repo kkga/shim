@@ -1,7 +1,7 @@
 import { ComboBox, ComboBoxItem } from "@ui/ComboBox"
 
 export default () => (
-  <ComboBox label="Ice cream flavor">
+  <ComboBox label="Ice cream" placeholder="Pick a flavor">
     <ComboBoxItem>Chocolate</ComboBoxItem>
     <ComboBoxItem>Mint</ComboBoxItem>
     <ComboBoxItem>Strawberry</ComboBoxItem>

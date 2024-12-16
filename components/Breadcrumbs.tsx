@@ -1,6 +1,6 @@
 "use client"
 
-import { cx } from "@lib/style"
+import { cx, cxRenderProps } from "@lib/style"
 import { CaretRight } from "@phosphor-icons/react"
 import { Link, LinkProps } from "@ui/Link"
 import {
@@ -10,10 +10,11 @@ import {
   Breadcrumbs as RACBreadcrumbs,
 } from "react-aria-components"
 
-function Breadcrumbs<T extends object>(props: BreadcrumbsProps<T>) {
-  return (
-    <RACBreadcrumbs {...props} className={cx("flex gap-1", props.className)} />
-  )
+function Breadcrumbs<T extends object>({
+  className,
+  ...props
+}: BreadcrumbsProps<T>) {
+  return <RACBreadcrumbs {...props} className={cx("flex gap-1", className)} />
 }
 
 // TODO: add support for render props
@@ -25,7 +26,7 @@ function Breadcrumb({
   return (
     <RACBreadcrumb
       {...props}
-      className={cx("flex items-center gap-1", className)}
+      className={cxRenderProps(className, "flex items-center gap-1")}
     >
       <Link intent="neutral" href={href} {...props} />
       {href && <CaretRight size={12} className="text-neutral-placeholder" />}

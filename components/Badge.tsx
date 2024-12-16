@@ -18,9 +18,10 @@ const style = tv({
       error: "border-error-line bg-error-bg-subtle text-error-text border",
     },
     size: {
-      1: "h-4 gap-1 rounded px-[3px] text-[11px]",
-      2: "h-5 gap-1 rounded px-1 text-xs",
-      3: "h-6 gap-1.5 rounded-md px-1.5 text-[13px]",
+      1: "rounded-xs h-4 gap-1 px-[3px] text-[11px]",
+      2: "h-5 gap-1 rounded-[3px] px-1 text-xs",
+      3: "h-6 gap-1.5 rounded-sm px-1.5 text-[13px]",
+      4: "h-7 gap-2 rounded-md px-2 text-sm",
     },
     isSquare: {
       true: "",
@@ -46,6 +47,11 @@ const style = tv({
       size: 3,
       className: "p-0! size-6",
     },
+    {
+      isSquare: true,
+      size: 4,
+      className: "p-0! size-8",
+    },
   ],
 })
 
@@ -53,8 +59,14 @@ interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof style> {}
 
-function Badge({ className, intent, isSquare, ...props }: BadgeProps) {
-  let { size } = useThemeProps({ size: props.size })
+function Badge({
+  className,
+  intent,
+  isSquare,
+  size: _size,
+  ...props
+}: BadgeProps) {
+  let { size } = useThemeProps({ size: _size })
   let children = Children.toArray(props.children)
   let hasOnlySvg =
     children.length === 1 &&
@@ -65,7 +77,7 @@ function Badge({ className, intent, isSquare, ...props }: BadgeProps) {
     <div
       className={style({
         intent,
-        size,
+        size: size,
         isSquare: typeof isSquare === "boolean" ? isSquare : hasOnlySvg,
         className,
       })}

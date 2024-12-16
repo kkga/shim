@@ -1,9 +1,5 @@
-import {
-  Disclosure,
-  DisclosureGroup,
-  DisclosureHeader,
-  DisclosurePanel,
-} from "@ui/Disclosure"
+import { Disclosure, DisclosureHeader, DisclosurePanel } from "@ui/Disclosure"
+import { DisclosureGroup } from "@ui/DisclosureGroup"
 
 export default () => (
   <DisclosureGroup defaultExpandedKeys={["refund"]}>

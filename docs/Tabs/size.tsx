@@ -1,4 +1,4 @@
-import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
+import { Tab, TabList, Tabs } from "@ui/Tabs"
 
 export default () => (
   <>
@@ -8,16 +8,20 @@ export default () => (
         <Tab id="settings">Settings</Tab>
       </TabList>
     </Tabs>
-
     <Tabs>
       <TabList size={2}>
         <Tab id="profile">Profile</Tab>
         <Tab id="settings">Settings</Tab>
       </TabList>
     </Tabs>
-
     <Tabs>
       <TabList size={3}>
+        <Tab id="profile">Profile</Tab>
+        <Tab id="settings">Settings</Tab>
+      </TabList>
+    </Tabs>
+    <Tabs>
+      <TabList size={4}>
         <Tab id="profile">Profile</Tab>
         <Tab id="settings">Settings</Tab>
       </TabList>

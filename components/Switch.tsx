@@ -1,108 +1,127 @@
 "use client"
 
-import { cxRenderProps, focusStyle } from "@lib/style"
+import { focusStyle } from "@lib/style"
 import { Theme, useThemeProps } from "@lib/theme"
 import {
+  composeRenderProps,
   Switch as RACSwitch,
   type SwitchProps as RACSwitchProps,
 } from "react-aria-components"
 import { tv, VariantProps } from "tailwind-variants"
 import { FieldProps } from "./Field"
 
-const styles = {
-  switch: tv({
-    base: [
+const style = tv({
+  slots: {
+    container:
       "text-neutral-text group flex items-center font-medium outline-none",
-      "data-disabled:cursor-not-allowed data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder",
-    ],
-    variants: {
-      size: {
-        1: "h-6 gap-1.5 text-xs",
-        2: "h-7 gap-1.5 text-[13px]",
-        3: "h-8 gap-2 text-sm",
-      },
-      labelPosition: {
-        start: "flex-row-reverse justify-between",
-        end: "",
-      },
-    },
-    defaultVariants: {
-      size: 1,
-      labelPosition: "end",
-    },
-  }),
-
-  track: tv({
-    extend: focusStyle,
-    base: [
+    track: [
+      focusStyle(),
       "flex shrink-0 items-center rounded-full px-px outline-offset-1 transition-colors",
     ],
-    variants: {
-      variant: {
-        classic: [
-          "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
-          // pressed
-          "group-data-pressed:bg-neutral-bg-active",
-          // selected
-          "group-data-selected:bg-accent-solid",
-          // disabled
-          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring group-data-disabled:inset-ring-neutral-5 group-data-disabled:shadow-none",
-        ],
-        soft: [
-          "bg-neutral-bg-hover inset-ring-1 inset-ring-neutral-3",
-          // pressed
-          "group-data-pressed:bg-neutral-bg-active",
-          // selected
-          "group-data-selected:bg-accent-bg-active",
-          // disabled
-          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line",
-        ],
-        outline: [
-          "inset-ring-1 inset-ring-neutral-border bg-transparent",
-          // pressed
-          "group-data-pressed:bg-neutral-bg-active",
-          // selected
-          "group-data-selected:inset-ring-neutral-border-hover",
-          // disabled
-          "group-data-disabled:bg-neutral-bg-subtle group-data-disabled:inset-ring-neutral-line",
-        ],
+    handle:
+      "translateX-0 transform rounded-full bg-clip-content transition-all",
+  },
+  variants: {
+    variant: {
+      classic: {
+        track: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
+        handle: "bg-white shadow-[var(--shadow-xs)]",
       },
-      size: {
-        1: "h-4 w-[28px]",
-        2: "h-[18px] w-[32px]",
-        3: "h-5 w-[36px]",
+      soft: {
+        track: "bg-neutral-bg-hover inset-ring-1 inset-ring-neutral-3",
+        handle: "bg-neutral-solid border border-transparent",
+      },
+      outline: {
+        track: "inset-ring-1 inset-ring-neutral-border bg-transparent",
+        handle:
+          "bg-neutral-bg inset-ring inset-ring-neutral-border border border-transparent",
       },
     },
-    defaultVariants: {
+    isPressed: { true: "" },
+    isSelected: { true: "" },
+    isDisabled: {
+      true: {
+        container: "text-neutral-placeholder cursor-not-allowed",
+        handle: "bg-neutral-bg-subtle",
+      },
+    },
+    size: {
+      1: {
+        container: "h-6 gap-1.5 text-xs",
+        track: "h-4 w-[28px]",
+        handle: "size-3.5",
+      },
+      2: {
+        container: "h-7 gap-1.5 text-[13px]",
+        track: "h-[18px] w-[32px]",
+        handle: "size-4",
+      },
+      3: {
+        container: "h-8 gap-2 text-sm",
+        track: "h-5 w-[36px]",
+        handle: "size-[18px]",
+      },
+      4: {
+        container: "h-10 gap-2.5 text-base",
+        track: "h-6 w-[42px]",
+        handle: "size-5.5",
+      },
+    },
+    labelPosition: {
+      start: { container: "flex-row-reverse justify-between" },
+      end: { container: "" },
+    },
+  },
+  compoundVariants: [
+    { size: 1, isSelected: true, class: { handle: "translate-x-[12px]" } },
+    { size: 2, isSelected: true, class: { handle: "translate-x-[14px]" } },
+    { size: 3, isSelected: true, class: { handle: "translate-x-[16px]" } },
+    { size: 4, isSelected: true, class: { handle: "translate-x-[18px]" } },
+    {
+      isPressed: true,
+      isDisabled: false,
+      variant: ["classic", "soft", "outline"],
+      class: {
+        track: "bg-neutral-bg-active",
+      },
+    },
+    {
       variant: "classic",
-      size: 1,
-    },
-  }),
-
-  handle: tv({
-    base: [
-      "translateX-0 size-3.5 transform rounded-full transition-transform",
-      // disabled
-      "group-data-disabled:bg-neutral-bg-subtle",
-    ],
-    variants: {
-      variant: {
-        classic: "bg-white shadow-[var(--shadow-xs)]",
-        soft: "bg-neutral-solid group-data-selected:bg-accent-text border border-transparent bg-clip-content",
-        outline:
-          "bg-neutral-bg inset-ring inset-ring-neutral-border group-data-selected:inset-ring-accent-border-hover group-data-selected:bg-accent-bg-active border border-transparent bg-clip-content",
-      },
-      size: {
-        1: ["size-3.5", "group-data-selected:translate-x-[12px]"],
-        2: ["size-4", "group-data-selected:translate-x-[14px]"],
-        3: ["size-[18px]", "group-data-selected:translate-x-[16px]"],
+      isSelected: true,
+      isDisabled: false,
+      class: {
+        track: "bg-accent-solid",
+        handle: "shadow-xs shadow-black/5",
       },
     },
-    defaultVariants: {
-      size: 1,
+    {
+      variant: "soft",
+      isSelected: true,
+      isDisabled: false,
+      class: {
+        track: "bg-accent-bg-active",
+        handle: "bg-accent-solid",
+      },
     },
-  }),
-}
+    {
+      variant: "outline",
+      isSelected: true,
+      isDisabled: false,
+      class: {
+        track: "inset-ring-accent-border",
+        handle: "inset-ring-transparent bg-accent-solid",
+      },
+    },
+    {
+      isDisabled: true,
+      variant: ["classic", "soft", "outline"],
+      class: {
+        track:
+          "bg-neutral-bg-subtle inset-ring inset-ring-neutral-line shadow-none",
+      },
+    },
+  ],
+})
 
 interface SwitchProps
   extends RACSwitchProps,
@@ -110,29 +129,31 @@ interface SwitchProps
       FieldProps,
       "label" | "description" | "labelPosition" | "errorMessage"
     >,
-    VariantProps<typeof styles.switch> {}
+    VariantProps<typeof style> {}
 
-function Switch({ className, children, labelPosition, ...props }: SwitchProps) {
+function Switch({ labelPosition, ...props }: SwitchProps) {
   let themeProps = useThemeProps({
     size: props.size,
     fieldVariant: props.variant,
   })
   let { size, fieldVariant: variant } = themeProps
+  let { container, track, handle } = style({ size, variant, labelPosition })
 
   return (
     <RACSwitch
       {...props}
-      className={cxRenderProps(
-        className,
-        styles.switch({ size, labelPosition }),
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        container({ ...renderProps, className }),
       )}
     >
-      <Theme>
-        <div className={styles.track({ variant, size })}>
-          <span className={styles.handle({ variant, size })} />
-        </div>
-        {children as React.ReactNode}
-      </Theme>
+      {composeRenderProps(props.children, (children, renderProps) => (
+        <Theme {...themeProps}>
+          <div className={track(renderProps)}>
+            <span className={handle(renderProps)} />
+          </div>
+          {children}
+        </Theme>
+      ))}
     </RACSwitch>
   )
 }

@@ -35,7 +35,7 @@ function TextField({
       className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
       <Theme {...themeProps}>
-        {label && <Label>{label}</Label>}
+        {label && <Label isRequired={props.isRequired}>{label}</Label>}
         <Input placeholder={placeholder} />
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>

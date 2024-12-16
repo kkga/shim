@@ -8,25 +8,35 @@ aria: "https://www.w3.org/WAI/ARIA/apg/patterns/switch/"
 
 ### States
 
-Use `defaultSelected` to set the initial state of the switch. Use `isDisabled`
-to disable the switch.
+Use `defaultSelected` prop to set the initial state of the switch. Use
+`isDisabled` to disable the switch.
 
 <Demo demo={<SwitchDemo.States />} code={demos.states} />
 
 ### Variant
 
-Use `variant` to set the appearance of the switch.
+Use `variant` prop to set the appearance of the switch.
 
 <Demo demo={<SwitchDemo.Variant />} code={demos.variant} />
 
+### Label position
+
+Use `labelPosition` prop to set the position of the label.
+
+<Demo
+  className="items-start"
+  demo={<SwitchDemo.LabelPosition />}
+  code={demos["label-position"]}
+/>
+
 ### Size
 
-Use `size` to set the size of the switch.
+Use `size` prop to set the size of the switch.
 
 <Demo demo={<SwitchDemo.Size />} code={demos.size} />
 
 ### Controlled
 
-Use `isSelected` and `onChange` to control the state of the switch.
+Use `isSelected` and `onChange` props to control the state of the switch.
 
 <Demo demo={<SwitchDemo.Controlled />} code={demos.controlled} />

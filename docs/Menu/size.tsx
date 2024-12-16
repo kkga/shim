@@ -39,5 +39,17 @@ export default () => (
         <MenuItem intent="error">Delete</MenuItem>
       </Menu>
     </MenuTrigger>
+
+    <MenuTrigger>
+      <Button size={4} aria-label="Menu">
+        <DotsThreeVertical size={24} weight="bold" />
+      </Button>
+      <Menu size={4}>
+        <MenuItem>Edit</MenuItem>
+        <MenuItem>Duplicate</MenuItem>
+        <MenuSeparator />
+        <MenuItem intent="error">Delete</MenuItem>
+      </Menu>
+    </MenuTrigger>
   </>
 )

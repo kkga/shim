@@ -2,7 +2,6 @@
 
 import { cxRenderProps } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
-
 import {
   FieldError as RACFieldError,
   Group as RACGroup,
@@ -34,7 +33,7 @@ const fieldLayoutStyle = tv({
   variants: {
     labelPosition: {
       top: "flex flex-col gap-1",
-      side: "grid gap-1 grid-cols-[1fr_2fr]",
+      side: "grid grid-cols-[1fr_2fr] gap-1",
     },
   },
   defaultVariants: { labelPosition: "top" },
@@ -66,6 +65,7 @@ const inputBaseStyle = tv({
       1: "h-6 rounded indent-1.5 text-xs",
       2: "h-7 rounded indent-[7px] text-[13px]",
       3: "h-8 rounded-md indent-2 text-sm",
+      4: "h-10 rounded-lg indent-3 text-base",
     },
   },
   defaultVariants: { variant: "classic", size: 1 },
@@ -91,11 +91,16 @@ function Input({ size, variant, className, ...props }: InputProps) {
 
 const labelStyle = tv({
   base: [
-    "font-book text-neutral-text self-start truncate max-w-fit",
+    "font-book text-neutral-text max-w-fit self-start truncate",
     "data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
   ],
   variants: {
-    size: { 1: "text-xs", 2: "text-[13px]", 3: "text-sm" },
+    size: {
+      1: "text-xs",
+      2: "text-[13px]",
+      3: "text-sm",
+      4: "text-base",
+    },
     labelPosition: {
       top: "",
       side: "col-start-1 flex items-center self-start",
@@ -105,13 +110,23 @@ const labelStyle = tv({
     { size: 1, labelPosition: "side", className: "min-h-6" },
     { size: 2, labelPosition: "side", className: "min-h-7" },
     { size: 3, labelPosition: "side", className: "min-h-8" },
+    { size: 4, labelPosition: "side", className: "min-h-10" },
   ],
   defaultVariants: { size: 1, labelPosition: "top" },
 })
 
-interface LabelProps extends RACLabelProps, VariantProps<typeof labelStyle> {}
+interface LabelProps extends RACLabelProps, VariantProps<typeof labelStyle> {
+  isRequired?: boolean
+}
 
-function Label({ size, labelPosition, className, ...props }: LabelProps) {
+function Label({
+  size,
+  labelPosition,
+  children,
+  isRequired,
+  className,
+  ...props
+}: LabelProps) {
   let themeProps = useThemeProps({ size, labelPosition })
 
   return (
@@ -123,16 +138,26 @@ function Label({ size, labelPosition, className, ...props }: LabelProps) {
         labelPosition: themeProps.labelPosition,
         className,
       })}
-    />
+    >
+      {children}
+      {isRequired && <span> *</span>}
+    </RACLabel>
   )
 }
 
 const descriptionStyle = tv({
   base: [
-    "col-start-2 text-neutral-text",
+    "text-neutral-text col-start-2",
     "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
   ],
-  variants: { size: { 1: "text-[11px]", 2: "text-xs", 3: "text-[13px]" } },
+  variants: {
+    size: {
+      1: "text-[11px]",
+      2: "text-xs",
+      3: "text-[13px]",
+      4: "text-sm",
+    },
+  },
   defaultVariants: { size: 1 },
 })
 
@@ -153,8 +178,15 @@ function Description({ size, className, ...props }: DescriptionProps) {
 }
 
 const fieldErrorStyle = tv({
-  base: ["col-start-2 text-error-text"],
-  variants: { size: { 1: "text-[11px]", 2: "text-xs", 3: "text-[13px]" } },
+  base: ["text-error-text col-start-2"],
+  variants: {
+    size: {
+      1: "text-[11px]",
+      2: "text-xs",
+      3: "text-[13px]",
+      4: "text-sm",
+    },
+  },
   defaultVariants: { size: 1 },
 })
 
@@ -184,6 +216,7 @@ const fieldGroupStyle = tv({
       1: "h-6",
       2: "h-7",
       3: "h-8",
+      4: "h-10",
     },
   },
   defaultVariants: {
@@ -223,11 +256,13 @@ const groupInputStyle = tv({
       1: "indent-1.5 text-xs",
       2: "indent-[7px] text-[13px]",
       3: "indent-2 text-sm",
+      4: "indent-3 text-base",
     },
   },
   defaultVariants: { size: 1 },
 })
 
+// TODO: fix the width of the input in number field
 function GroupInput({ className, ...props }: Omit<InputProps, "variant">) {
   let themeProps = useThemeProps({ ...props })
   let { size } = themeProps

@@ -11,8 +11,6 @@ import {
   DisclosureStateContext,
   Heading,
   Disclosure as RACDisclosure,
-  DisclosureGroup as RACDisclosureGroup,
-  DisclosureGroupProps as RACDisclosureGroupProps,
   DisclosurePanel as RACDisclosurePanel,
   DisclosurePanelProps as RACDisclosurePanelProps,
   DisclosureProps as RACDisclosureProps,
@@ -21,38 +19,46 @@ import { tv } from "tailwind-variants"
 
 const style = tv({
   slots: {
-    group: "border-neutral-line border",
     disclosure: "border-neutral-line text-neutral-text group border",
     button: [
       focusStyle(),
       "bg-neutral-bg-subtle flex w-full cursor-default items-center gap-2 text-start",
-      // hovered
-      "data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
     ],
     heading: "text-neutral-text-contrast font-medium leading-tight",
-    chevron:
-      "text-neutral-text ml-auto transition-transform duration-100 ease-in-out",
+    chevron: "text-neutral-text ml-auto",
     panel: "",
   },
   variants: {
     size: {
       1: {
-        group: "rounded-md",
         disclosure: "rounded-md text-xs",
         button: "rounded-[5px] px-2.5 py-2",
         panel: "group-data-[expanded]:px-2.5 group-data-[expanded]:py-2",
       },
       2: {
-        group: "rounded-[7px]",
         disclosure: "rounded-[7px] text-[13px]",
         button: "rounded-[6px] px-3 py-2.5",
         panel: "group-data-[expanded]:px-3 group-data-[expanded]:py-2.5",
       },
       3: {
-        group: "rounded-lg",
         disclosure: "rounded-lg text-sm",
         button: "rounded-[7px] px-3.5 py-3",
         panel: "group-data-[expanded]:px-3.5 group-data-[expanded]:py-3",
+      },
+      4: {
+        disclosure: "rounded-xl text-base",
+        button: "rounded-[11px] px-4 py-3.5",
+        panel: "group-data-[expanded]:px-4 group-data-[expanded]:py-3.5",
+      },
+    },
+    isHovered: {
+      true: {
+        button: "bg-neutral-bg-hover",
+      },
+    },
+    isPressed: {
+      true: {
+        button: "bg-neutral-bg-active",
       },
     },
     isInGroup: {
@@ -75,13 +81,9 @@ const style = tv({
       },
     },
   },
-  defaultVariants: {
-    size: 1,
-  },
 })
 
 interface DisclosureProps extends RACDisclosureProps {
-  children: React.ReactNode
   size?: Size
 }
 
@@ -96,7 +98,9 @@ function Disclosure({ children, size: _size, ...props }: DisclosureProps) {
         disclosure({ ...renderProps, isInGroup, className }),
       )}
     >
-      <Theme size={size}>{children}</Theme>
+      {composeRenderProps(children, (children, {}) => (
+        <Theme size={size}>{children}</Theme>
+      ))}
     </RACDisclosure>
   )
 }
@@ -121,7 +125,7 @@ function DisclosureHeader({ children }: DisclosureHeaderProps) {
             {children}
             <CaretDown
               aria-hidden
-              size={size === 3 ? 16 : 12}
+              size={size >= 3 ? 16 : 12}
               weight="bold"
               className={chevron({ isExpanded, isDisabled })}
             />
@@ -132,55 +136,17 @@ function DisclosureHeader({ children }: DisclosureHeaderProps) {
   )
 }
 
-interface DisclosurePanelProps extends RACDisclosurePanelProps {
-  children: React.ReactNode
-}
-
-function DisclosurePanel({
-  children,
-  className,
-  ...props
-}: DisclosurePanelProps) {
+type DisclosurePanelProps = RACDisclosurePanelProps
+function DisclosurePanel({ className, ...props }: DisclosurePanelProps) {
   let { size } = useThemeProps()
   let { panel } = style({ size })
   return (
     <RACDisclosurePanel
       {...props}
       className={cxRenderProps(className, panel())}
-    >
-      {children}
-    </RACDisclosurePanel>
+    />
   )
 }
 
-interface DisclosureGroupProps extends RACDisclosureGroupProps {
-  children: React.ReactNode
-  size?: Size
-}
-
-function DisclosureGroup({
-  children,
-  className,
-  size: _size,
-  ...props
-}: DisclosureGroupProps) {
-  let { size } = useThemeProps({ size: _size })
-  let { group } = style({ size })
-
-  return (
-    <RACDisclosureGroup
-      {...props}
-      className={cxRenderProps(className, group())}
-    >
-      <Theme size={size}>{children}</Theme>
-    </RACDisclosureGroup>
-  )
-}
-
-export { Disclosure, DisclosureGroup, DisclosureHeader, DisclosurePanel }
-export type {
-  DisclosureGroupProps,
-  DisclosureHeaderProps,
-  DisclosurePanelProps,
-  DisclosureProps,
-}
+export { Disclosure, DisclosureHeader, DisclosurePanel }
+export type { DisclosureHeaderProps, DisclosurePanelProps, DisclosureProps }

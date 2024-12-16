@@ -12,95 +12,138 @@ import {
 import { tv } from "tailwind-variants"
 import { Description, FieldProps, Label, fieldLayoutStyle } from "./Field"
 
-const styles = {
-  track: tv({
-    base: ["grow-1 relative flex shrink-0 items-center"],
-    variants: {
-      orientation: {
-        horizontal: "min-w-32",
-        vertical: "min-h-32 flex-col-reverse",
-      },
-      size: { 1: null, 2: null, 3: null },
+const style = tv({
+  slots: {
+    track: "grow-1 relative flex shrink-0 items-center",
+    indicator: "absolute overflow-hidden rounded-full",
+    fill: "absolute",
+    thumb: [focusStyle(), "rounded-full outline-offset-0"],
+    output:
+      "text-neutral-text min-w-[3ch] self-center justify-self-end text-end text-xs tabular-nums",
+  },
+  variants: {
+    size: {
+      1: { output: "text-xs", thumb: "size-4" },
+      2: { output: "text-[13px]", thumb: "size-[18px]" },
+      3: { output: "text-sm", thumb: "size-5" },
+      4: { output: "text-base", thumb: "size-6" },
     },
-    compoundVariants: [
-      { size: 1, orientation: "horizontal", className: "mx-2 h-6" },
-      { size: 1, orientation: "vertical", className: "my-2 w-6" },
-      { size: 2, orientation: "horizontal", className: "mx-2 h-7" },
-      { size: 2, orientation: "vertical", className: "my-2 w-7" },
-      { size: 3, orientation: "horizontal", className: "mx-2.5 h-8" },
-      { size: 3, orientation: "vertical", className: "my-2.5 w-8" },
-    ],
-  }),
-
-  trackInner: tv({
-    base: "absolute overflow-hidden rounded-full",
-    variants: {
-      size: { 1: null, 2: null, 3: null },
-      variant: {
-        classic: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
-        soft: "bg-neutral-bg inset-ring-0",
-        outline:
+    orientation: {
+      horizontal: {
+        track: "min-w-32",
+        indicator: "inset-y-auto",
+        fill: "inset-y-0",
+        thumb: "left-0",
+      },
+      vertical: {
+        track: "min-h-32 flex-col-reverse",
+        indicator: "inset-x-auto",
+        fill: "inset-x-0",
+        thumb: "top-0",
+        output: "hidden",
+      },
+    },
+    variant: {
+      classic: {
+        indicator: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
+        fill: "bg-accent-solid",
+        thumb: "bg-white shadow ring-1 ring-black/15",
+      },
+      soft: {
+        indicator: "bg-neutral-bg inset-ring-0",
+        fill: "bg-accent-bg-active",
+        thumb: "bg-accent-solid shadow-none",
+      },
+      outline: {
+        indicator:
           "inset-ring-1 inset-ring-neutral-line bg-transparent shadow-none",
-      },
-      orientation: { horizontal: "inset-y-auto", vertical: "inset-x-auto" },
-      isDisabled: {
-        true: "bg-neutral-bg-subtle shadow-none",
+        fill: "bg-accent-bg-solid",
+        thumb: "ring-neutral-border bg-white ring-1",
       },
     },
-    compoundVariants: [
-      { size: 1, orientation: "horizontal", className: "-inset-x-2 h-1.5" },
-      { size: 1, orientation: "vertical", className: "-inset-y-2 w-1.5" },
-      { size: 2, orientation: "horizontal", className: "-inset-x-2 h-2" },
-      { size: 2, orientation: "vertical", className: "-inset-y-2 w-2" },
-      { size: 3, orientation: "horizontal", className: "-inset-x-2.5 h-2.5" },
-      { size: 3, orientation: "vertical", className: "-inset-y-2.5 w-2.5" },
-    ],
-  }),
-
-  trackFill: tv({
-    base: "bg-accent-solid absolute",
-    variants: {
-      variant: {
-        classic: "bg-accent-solid",
-        soft: "bg-accent-bg-active",
-        outline: "bg-accent-solid",
+    isDisabled: {
+      true: {
+        indicator: "bg-neutral-bg-subtle shadow-none",
+        thumb: "bg-neutral-bg ring-neutral-line shadow-none",
+        output: "text-neutral-placeholder",
       },
-      orientation: { horizontal: "bottom-0 top-0", vertical: "left-0 right-0" },
     },
-  }),
-
-  thumb: tv({
-    extend: focusStyle,
-    base: [
-      "rounded-full outline-offset-0",
-      "group-data-disabled:bg-neutral-bg group-data-disabled:ring-neutral-line group-data-disabled:shadow-none",
-    ],
-    variants: {
-      variant: {
-        classic: "bg-white shadow ring-1 ring-black/15",
-        soft: "bg-accent-solid shadow-none",
-        outline: "ring-neutral-border bg-white ring-1",
+  },
+  compoundVariants: [
+    {
+      size: 1,
+      orientation: "horizontal",
+      class: {
+        track: "mx-2 h-6",
+        indicator: "-inset-x-2 h-1.5",
+        thumb: "mt-4",
       },
-      size: {
-        1: "size-4 group-data-[orientation=horizontal]:mt-4 group-data-[orientation=vertical]:ml-4",
-        2: "size-[18px] group-data-[orientation=horizontal]:mt-[18px] group-data-[orientation=vertical]:ml-[18px]",
-        3: "size-5 group-data-[orientation=horizontal]:mt-5 group-data-[orientation=vertical]:ml-5",
+    },
+    {
+      size: 1,
+      orientation: "vertical",
+      class: {
+        track: "my-2 w-6",
+        indicator: "-inset-y-2 w-1.5",
+        thumb: "ml-4",
       },
-      orientation: { horizontal: "left-0", vertical: "top-0" },
     },
-  }),
-
-  output: tv({
-    base: [
-      "text-neutral-text min-w-[3ch] self-center justify-self-end text-end text-xs tabular-nums data-[orientation=vertical]:hidden",
-      // disabled
-      "group-data-disabled:text-neutral-placeholder",
-    ],
-    variants: {
-      size: { 1: "text-xs", 2: "text-[13px]", 3: "text-sm" },
+    {
+      size: 2,
+      orientation: "horizontal",
+      class: {
+        track: "mx-2 h-7",
+        indicator: "-inset-x-2 h-2",
+        thumb: "mt-[18px]",
+      },
     },
-  }),
-}
+    {
+      size: 2,
+      orientation: "vertical",
+      class: {
+        track: "my-2 w-7",
+        indicator: "-inset-y-2 w-2",
+        thumb: "ml-[18px]",
+      },
+    },
+    {
+      size: 3,
+      orientation: "horizontal",
+      class: {
+        track: "mx-2.5 h-8",
+        indicator: "-inset-x-2.5 h-2.5",
+        thumb: "mt-5",
+      },
+    },
+    {
+      size: 3,
+      orientation: "vertical",
+      class: {
+        track: "my-2.5 w-8",
+        indicator: "-inset-y-2.5 w-2.5",
+        thumb: "ml-5",
+      },
+    },
+    {
+      size: 4,
+      orientation: "horizontal",
+      class: {
+        track: "mx-3 h-10",
+        indicator: "-inset-x-3 h-3",
+        thumb: "mt-6",
+      },
+    },
+    {
+      size: 4,
+      orientation: "vertical",
+      class: {
+        track: "my-3 w-10",
+        indicator: "-inset-y-3 w-3",
+        thumb: "ml-6",
+      },
+    },
+  ],
+})
 
 interface SliderProps<T> extends RACSliderProps<T>, FieldProps {
   thumbLabels?: string[]
@@ -117,6 +160,7 @@ function Slider<T extends number | number[]>({
 }: SliderProps<T>) {
   let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
   let { labelPosition, size, fieldVariant: variant } = themeProps
+  let { track, indicator, fill, output, thumb } = style({ size, variant })
 
   return (
     <RACSlider
@@ -128,7 +172,7 @@ function Slider<T extends number | number[]>({
           <div className="flex justify-between">
             <Label>{label}</Label>
             {labelPosition === "top" && (
-              <SliderOutput className={styles.output({ size })}>
+              <SliderOutput className={output()}>
                 {({ state }) =>
                   state.values
                     .map((_, i) => state.getThumbValueLabel(i))
@@ -140,17 +184,13 @@ function Slider<T extends number | number[]>({
         )}
 
         <div className="grow-1 flex gap-1">
-          <SliderTrack
-            className={({ orientation }) => styles.track({ size, orientation })}
-          >
+          <SliderTrack className={({ orientation }) => track({ orientation })}>
             {({ state, orientation }) => (
               <>
-                <div
-                  className={styles.trackInner({ size, variant, orientation })}
-                >
+                <div className={indicator({ orientation })}>
                   {isFilled && (
                     <div
-                      className={styles.trackFill({ variant, orientation })}
+                      className={fill({ orientation })}
                       style={
                         orientation === "horizontal" ?
                           {
@@ -176,7 +216,7 @@ function Slider<T extends number | number[]>({
                     key={i}
                     index={i}
                     aria-label={thumbLabels?.[i]}
-                    className={styles.thumb({ size, variant, orientation })}
+                    className={thumb({ orientation })}
                   />
                 ))}
               </>
@@ -184,7 +224,7 @@ function Slider<T extends number | number[]>({
           </SliderTrack>
 
           {labelPosition === "side" && (
-            <SliderOutput className={styles.output({ size })}>
+            <SliderOutput className={output({ size })}>
               {({ state }) =>
                 state.values
                   .map((_, i) => state.getThumbValueLabel(i))

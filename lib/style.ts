@@ -1,5 +1,3 @@
-"use client"
-
 import { clsx, type ClassValue } from "clsx"
 import { composeRenderProps } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
@@ -30,7 +28,6 @@ export const INTENTS = [
   "warning",
   "error",
 ] as const
-
 export type Intent = (typeof INTENTS)[number]
 
 export const focusStyle = tv({

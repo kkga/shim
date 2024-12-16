@@ -63,6 +63,8 @@ function ProgressCircle(props: ProgressCircleProps) {
             transform={isIndeterminate ? undefined : "rotate(-90)"}
             className={cx(
               "origin-center",
+              !isIndeterminate &&
+                "transition-[stroke-dashoffset] duration-500 ease-in-out",
               isIndeterminate && "animate-[spin_700ms_linear_infinite]",
             )}
           />

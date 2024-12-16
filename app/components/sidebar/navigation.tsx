@@ -3,9 +3,11 @@
 import { focusStyle } from "@lib/style"
 import {
   Article,
+  Calendar,
   Cards,
   CheckFat,
   CursorClick,
+  HandGrabbing,
   HouseSimple,
   Path,
   Rows,
@@ -52,6 +54,12 @@ const categoryIcons: Record<string, React.ReactNode> = {
     <Rows weight="duotone" className="text-neutral-text" size={16} />
   ),
   Content: <Article weight="duotone" className="text-neutral-text" size={16} />,
+  "Date and time": (
+    <Calendar weight="duotone" className="text-neutral-text" size={16} />
+  ),
+  "Drag and drop": (
+    <HandGrabbing weight="duotone" className="text-neutral-text" size={16} />
+  ),
 }
 
 const categorizeItems = (items: NavItem[]) => {
@@ -86,7 +94,7 @@ const filterItems = (items: NavItem[], filter?: string) => {
 const itemStyle = tv({
   extend: focusStyle,
   base: [
-    "font-book text-neutral-text flex h-6 items-center gap-2 rounded px-1.5 text-xs",
+    "font-book text-neutral-text flex h-6 items-center gap-1.5 rounded px-1.5 text-xs",
     // hovered
     "data-[hovered]:bg-neutral-bg-hover",
     // selected
@@ -142,7 +150,10 @@ export function Navigation({ items }: { items: NavItem[] }) {
           )}
         >
           {({ section, items }) => (
-            <RACListBoxSection id={section} className="grid grid-cols-2 gap-1">
+            <RACListBoxSection
+              id={section}
+              className="grid grid-cols-2 gap-0.5"
+            >
               <Header className="text-neutral-text-contrast col-span-full flex h-6 items-center gap-1.5 px-1.5 text-xs font-medium">
                 {categoryIcons[section]}
                 {section}
@@ -153,12 +164,16 @@ export function Navigation({ items }: { items: NavItem[] }) {
                   <ListBoxItem
                     textValue={name}
                     id={`/docs/${slug}`}
-                    href={`/docs/${slug}`}
-                    className={itemStyle}
+                    href={status !== "planned" ? `/docs/${slug}` : undefined}
+                    className={itemStyle({
+                      class:
+                        status === "planned" ? "text-neutral-placeholder!" : "",
+                    })}
+                    isDisabled={status === "planned"}
                   >
                     {name}
                     {status && (
-                      <Badge size={1} intent="neutral">
+                      <Badge size={1} intent="neutral" className="text-current">
                         {status[0].toUpperCase() + status.slice(1)}
                       </Badge>
                     )}

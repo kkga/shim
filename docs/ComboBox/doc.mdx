@@ -15,3 +15,15 @@ composes:
 Use the `size` prop to set the size of the ComboBox.
 
 <Demo demo={<ComboBoxDemo.Size />} code={demos.size} />
+
+### Content
+
+ComboBox follows the
+[React Aria Collections API](https://react-spectrum.adobe.com/react-aria/collections.html)
+and accepts both static and dynamic items.
+
+To use dynamic items, pass an `items` prop to the ComboBox component and a
+render function as children. The render function will be called with each item
+in the `items` iterable and should return a React element.
+
+<Demo demo={<ComboBoxDemo.Content />} code={demos.content} />

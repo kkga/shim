@@ -21,7 +21,8 @@ import {
 
 const style = tv({
   slots: {
-    prefixIconContainer: "pointer-events-none flex items-center justify-center",
+    iconContainer: "pointer-events-none flex items-center justify-center",
+    icon: "",
     clearButtonContainer: "flex items-center justify-center",
     clearButton:
       "text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active flex items-center justify-center bg-transparent",
@@ -29,29 +30,47 @@ const style = tv({
   variants: {
     size: {
       1: {
-        prefixIconContainer: "size-6",
+        iconContainer: "size-6",
+        icon: "size-4",
         clearButtonContainer: "size-6",
-        clearButton: "size-5 rounded-sm",
+        clearButton: "rounded-xs size-5",
       },
       2: {
-        prefixIconContainer: "size-7",
+        iconContainer: "size-7",
+        icon: "size-4",
         clearButtonContainer: "size-7",
-        clearButton: "size-5 rounded-sm",
+        clearButton: "rounded-xs size-5",
       },
       3: {
-        prefixIconContainer: "size-8",
+        iconContainer: "size-8",
+        icon: "size-4",
         clearButtonContainer: "size-8",
-        clearButton: "size-6 rounded-[3px]",
+        clearButton: "rounded-xs size-6",
+      },
+      4: {
+        iconContainer: "size-10",
+        icon: "size-5",
+        clearButtonContainer: "size-10",
+        clearButton: "size-7 rounded-[3px]",
       },
     },
-  },
-  defaultVariants: {
-    size: 1,
+    isEmpty: {
+      true: {
+        iconContainer: "text-neutral-placeholder",
+        clearButtonContainer: "hidden",
+      },
+      false: { iconContainer: "text-neutral-text" },
+    },
+    isDisabled: {
+      true: {
+        clearButton: "text-neutral-placeholder",
+      },
+    },
   },
 })
 
 interface SearchFieldProps extends RACSearchFieldProps, FieldProps {
-  prefixIcon?: "search" | "filter" | null | React.ReactNode
+  prefixIcon?: "search" | "filter" | React.ReactNode | null
 }
 
 function SearchField({
@@ -64,7 +83,7 @@ function SearchField({
 }: SearchFieldProps) {
   let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
   let { labelPosition, size } = themeProps
-  let { clearButtonContainer, clearButton, prefixIconContainer } = style({
+  let { clearButtonContainer, clearButton, iconContainer, icon } = style({
     size,
   })
 
@@ -81,20 +100,11 @@ function SearchField({
           {label && <Label>{label}</Label>}
           <FieldGroup>
             {prefixIcon && (
-              <div
-                aria-hidden
-                className={prefixIconContainer({
-                  className:
-                    isEmpty ? "text-neutral-placeholder" : "text-accent-text",
-                })}
-              >
+              <div aria-hidden className={iconContainer({ isEmpty })}>
                 {prefixIcon === "search" ?
-                  <MagnifyingGlass
-                    size={size === 1 ? 14 : 16}
-                    weight="regular"
-                  />
+                  <MagnifyingGlass className={icon()} />
                 : prefixIcon === "filter" ?
-                  <FunnelSimple size={size === 1 ? 14 : 16} weight="regular" />
+                  <FunnelSimple className={icon()} />
                 : prefixIcon}
               </div>
             )}
@@ -102,17 +112,8 @@ function SearchField({
               placeholder={placeholder}
               className={prefixIcon ? "indent-0" : undefined}
             />
-            <div
-              className={clearButtonContainer({
-                className: isEmpty ? "hidden" : undefined,
-              })}
-            >
-              <RACButton
-                className={clearButton({
-                  className:
-                    isDisabled ? "text-neutral-placeholder" : undefined,
-                })}
-              >
+            <div className={clearButtonContainer({ isEmpty })}>
+              <RACButton className={clearButton({ isDisabled })}>
                 <X size={16} aria-hidden />
               </RACButton>
             </div>

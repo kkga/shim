@@ -44,7 +44,7 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
       )}
 
       <Tabs className="s-box bg-panel my-8 gap-0 overflow-hidden rounded-xl p-0 shadow-[var(--shadow-xs)]">
-        <TabList variant="soft" className="shadow-neutral-3 mt-3 px-4">
+        <TabList variant="underline" className="mt-0 px-4">
           <Tab id="curl">
             <Terminal size={16} weight="duotone" />
             cURL

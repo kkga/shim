@@ -1,18 +1,11 @@
+"use client"
+import { SIZES } from "@lib/theme"
 import { Radio, RadioGroup } from "@ui/RadioGroup"
 
-export default () => (
-  <>
-    <RadioGroup defaultValue={"react"} size={1} label="Framework">
+export default () =>
+  SIZES.map((size) => (
+    <RadioGroup defaultValue={"react"} size={size} label="Framework" key={size}>
       <Radio value="react">React</Radio>
       <Radio value="svelte">Svelte</Radio>
     </RadioGroup>
-    <RadioGroup defaultValue={"react"} size={2} label="Framework">
-      <Radio value="react">React</Radio>
-      <Radio value="svelte">Svelte</Radio>
-    </RadioGroup>
-    <RadioGroup defaultValue={"react"} size={3} label="Framework">
-      <Radio value="react">React</Radio>
-      <Radio value="svelte">Svelte</Radio>
-    </RadioGroup>
-  </>
-)
+  ))

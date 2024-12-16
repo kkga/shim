@@ -24,7 +24,7 @@ const style = tv({
   ],
   variants: {
     variant: {
-      soft: null,
+      soft: "",
       solid: "text-white",
       ghost: "bg-transparent",
     },
@@ -39,6 +39,7 @@ const style = tv({
       1: "h-6 gap-1.5 rounded px-1.5 text-xs",
       2: "h-7 gap-2 rounded px-2 text-[13px]",
       3: "h-8 gap-2 rounded-md px-2.5 text-sm",
+      4: "h-10 gap-2 rounded-lg px-3 text-base",
     },
     isSquare: { true: null, false: null },
     isPending: {
@@ -49,6 +50,7 @@ const style = tv({
     { size: 1, isSquare: true, className: "size-6 p-0" },
     { size: 2, isSquare: true, className: "size-7 p-0" },
     { size: 3, isSquare: true, className: "size-8 p-0" },
+    { size: 4, isSquare: true, className: "size-10 p-0" },
     {
       intent: "neutral",
       variant: "soft",
@@ -144,7 +146,11 @@ const style = tv({
         "bg-error-solid data-hovered:bg-error-solid-hover data-pressed:brightness-90 text-white",
     },
   ],
-  defaultVariants: { intent: "accent", variant: "soft", size: 1 },
+  defaultVariants: {
+    intent: "neutral",
+    variant: "soft",
+    size: 1,
+  },
 })
 
 const progressStyle = tv({
@@ -157,6 +163,7 @@ const progressStyle = tv({
       1: { circle: "size-4" },
       2: { circle: "size-5" },
       3: { circle: "size-6" },
+      4: { circle: "size-7" },
     },
   },
 })

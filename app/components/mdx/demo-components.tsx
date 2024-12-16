@@ -66,6 +66,20 @@ export const demoComponents: Record<string, DemoComponent> = {
       import("@docs/ToggleButton").then((mod) => mod.States),
     ),
     Size: dynamic(() => import("@docs/ToggleButton").then((mod) => mod.Size)),
+    Intent: dynamic(() =>
+      import("@docs/ToggleButton").then((mod) => mod.Intent),
+    ),
+  },
+  ToggleButtonGroupDemo: {
+    Main: dynamic(() =>
+      import("@docs/ToggleButtonGroup").then((mod) => mod.Main),
+    ),
+    States: dynamic(() =>
+      import("@docs/ToggleButtonGroup").then((mod) => mod.States),
+    ),
+    Size: dynamic(() =>
+      import("@docs/ToggleButtonGroup").then((mod) => mod.Size),
+    ),
   },
 
   // Forms
@@ -93,6 +107,9 @@ export const demoComponents: Record<string, DemoComponent> = {
     States: dynamic(() => import("@docs/Checkbox").then((mod) => mod.States)),
     Size: dynamic(() => import("@docs/Checkbox").then((mod) => mod.Size)),
     Variant: dynamic(() => import("@docs/Checkbox").then((mod) => mod.Variant)),
+    Description: dynamic(() =>
+      import("@docs/Checkbox").then((mod) => mod.CheckboxDescription),
+    ),
   },
   NumberFieldDemo: {
     Main: dynamic(() => import("@docs/NumberField").then((mod) => mod.Main)),
@@ -121,14 +138,6 @@ export const demoComponents: Record<string, DemoComponent> = {
     ),
     RadioDescription: dynamic(() =>
       import("@docs/RadioGroup").then((mod) => mod.RadioDescription),
-    ),
-  },
-  SegmentedControlDemo: {
-    Main: dynamic(() =>
-      import("@docs/SegmentedControl").then((mod) => mod.Main),
-    ),
-    Content: dynamic(() =>
-      import("@docs/SegmentedControl").then((mod) => mod.Content),
     ),
   },
   SearchFieldDemo: {
@@ -173,6 +182,9 @@ export const demoComponents: Record<string, DemoComponent> = {
     States: dynamic(() => import("@docs/Switch").then((mod) => mod.States)),
     Variant: dynamic(() => import("@docs/Switch").then((mod) => mod.Variant)),
     Size: dynamic(() => import("@docs/Switch").then((mod) => mod.Size)),
+    LabelPosition: dynamic(() =>
+      import("@docs/Switch").then((mod) => mod.LabelPosition),
+    ),
   },
   TextFieldDemo: {
     Main: dynamic(() => import("@docs/TextField").then((mod) => mod.Main)),
@@ -216,7 +228,14 @@ export const demoComponents: Record<string, DemoComponent> = {
   DisclosureDemo: {
     Main: dynamic(() => import("@docs/Disclosure").then((mod) => mod.Main)),
     Size: dynamic(() => import("@docs/Disclosure").then((mod) => mod.Size)),
-    Group: dynamic(() => import("@docs/Disclosure").then((mod) => mod.Group)),
+  },
+  DisclosureGroupDemo: {
+    Main: dynamic(() =>
+      import("@docs/DisclosureGroup").then((mod) => mod.Main),
+    ),
+    Size: dynamic(() =>
+      import("@docs/DisclosureGroup").then((mod) => mod.Size),
+    ),
   },
 
   // Overlays
@@ -290,12 +309,14 @@ export const demoComponents: Record<string, DemoComponent> = {
   ComboBoxDemo: {
     Main: dynamic(() => import("@docs/ComboBox").then((mod) => mod.Main)),
     Size: dynamic(() => import("@docs/ComboBox").then((mod) => mod.Size)),
+    Content: dynamic(() => import("@docs/ComboBox").then((mod) => mod.Content)),
   },
 
   // Content
   AvatarDemo: {
     Main: dynamic(() => import("@docs/Avatar").then((mod) => mod.Main)),
     Size: dynamic(() => import("@docs/Avatar").then((mod) => mod.Size)),
+    Radius: dynamic(() => import("@docs/Avatar").then((mod) => mod.Radius)),
   },
   ToolbarDemo: {
     Main: dynamic(() => import("@docs/Toolbar").then((mod) => mod.Main)),

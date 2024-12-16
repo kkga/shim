@@ -3,7 +3,6 @@
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
 import { Collection } from "react-aria-components"
 import { ExampleIssueTracker, ExampleRepo } from "../../examples"
-import { H4, P } from "./mdx/mdx-components"
 import { ThemeButton } from "./sidebar/theme-button"
 
 import { AnimatePresence, motion } from "framer-motion"
@@ -37,7 +36,7 @@ export function Examples() {
 
       <AnimatePresence>
         <Collection items={items}>
-          {({ component: Component, name, description }) => (
+          {({ component: Component, name }) => (
             <TabPanel>
               <motion.div
                 key={name}
@@ -47,8 +46,6 @@ export function Examples() {
                 transition={{ duration: 0.5 }}
               >
                 <Component />
-                <H4>Example: {name}</H4>
-                <P className="text-sm">{description}</P>
               </motion.div>
             </TabPanel>
           )}

@@ -5,5 +5,6 @@ export default () => (
     <NumberField size={1} defaultValue={123000} label="Size 1" />
     <NumberField size={2} defaultValue={123000} label="Size 2" />
     <NumberField size={3} defaultValue={123000} label="Size 3" />
+    <NumberField size={4} defaultValue={123000} label="Size 4" />
   </>
 )

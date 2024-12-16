@@ -38,15 +38,19 @@ const style = tv({
     size: {
       1: {
         triggerButton: "size-6",
-        triggerButtonContents: "size-5 rounded-sm",
+        triggerButtonContents: "rounded-xs size-5",
       },
       2: {
         triggerButton: "size-7",
-        triggerButtonContents: "size-5 rounded-sm",
+        triggerButtonContents: "rounded-xs size-5",
       },
       3: {
         triggerButton: "size-8",
-        triggerButtonContents: "size-6 rounded-[3px]",
+        triggerButtonContents: "rounded-xs size-6",
+      },
+      4: {
+        triggerButton: "size-10",
+        triggerButtonContents: "size-7 rounded-[3px]",
       },
     },
     isHovered: {
@@ -58,9 +62,6 @@ const style = tv({
     isDisabled: {
       true: { triggerButtonContents: "text-neutral-placeholder" },
     },
-  },
-  defaultVariants: {
-    size: 1,
   },
 })
 
@@ -79,7 +80,7 @@ function ComboBox<T extends object>({
   menuTrigger = "focus",
   ...props
 }: ComboBoxProps<T>) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
+  let themeProps = useThemeProps(props)
   let { labelPosition, size } = themeProps
   let { triggerButton, triggerButtonContents, listBox } = style({ size })
 
@@ -112,7 +113,7 @@ function ComboBox<T extends object>({
         </FieldGroup>
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
-        <Popover>
+        <Popover isNonModal>
           <ListBox items={items} className={listBox()}>
             {children}
           </ListBox>
@@ -122,12 +123,15 @@ function ComboBox<T extends object>({
   )
 }
 
-function ComboBoxItem(props: RACListBoxItemProps) {
+type ComboBoxItemProps = RACListBoxItemProps
+function ComboBoxItem(props: ComboBoxItemProps) {
   return <ListBoxItem {...props} />
 }
 
-function ComboBoxSection<T extends object>(props: ListBoxSectionProps<T>) {
+type ComboBoxSectionProps<T extends object> = ListBoxSectionProps<T>
+function ComboBoxSection<T extends object>(props: ComboBoxSectionProps<T>) {
   return <ListBoxSection {...props} />
 }
 
-export { ComboBox, ComboBoxItem, ComboBoxSection, type ComboBoxProps }
+export { ComboBox, ComboBoxItem, ComboBoxSection }
+export type { ComboBoxItemProps, ComboBoxProps, ComboBoxSectionProps }

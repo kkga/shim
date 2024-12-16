@@ -1,10 +1,10 @@
 "use client"
 
-import { cxRenderProps } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
+import { focusStyle } from "@lib/style"
+import { Size, Theme, useThemeProps } from "@lib/theme"
 import { createContext, useContext } from "react"
-
 import {
+  composeRenderProps,
   Tab as RACTab,
   TabList as RACTabList,
   TabPanel as RACTabPanel,
@@ -14,123 +14,146 @@ import {
   type TabProps as RACTabProps,
   type TabsProps as RACTabsProps,
 } from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+import { tv } from "tailwind-variants"
 
-const styles = {
-  tabs: tv({
-    base: "flex",
-    variants: {
-      orientation: {
-        horizontal: "flex-col",
-        vertical: "flex-row",
-      },
-    },
-    defaultVariants: {
-      orientation: "horizontal",
-    },
-  }),
-
-  tabList: tv({
-    base: [
-      "group inline-flex items-stretch justify-start",
-      // horizontal
-      "data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:gap-1",
-      // vertical
-      "data-[orientation=vertical]:flex-col data-[orientation=vertical]:gap-0 data-[orientation=vertical]:px-1",
-    ],
-    variants: {
-      variant: {
-        underline: [
-          "data-[orientation=horizontal]:shadow-[inset_0_-1px_0_0_var(--color-neutral-line)]",
-          "data-[orientation=vertical]:shadow-[inset_-1px_0_0_0_var(--color-neutral-line)]",
-        ],
-        soft: "",
-      },
-      size: {
-        1: "text-xs",
-        2: "text-[13px]",
-        3: "text-sm",
-      },
-    },
-    defaultVariants: {
-      variant: "underline",
-      size: 1,
-    },
-  }),
-
-  tab: tv({
-    base: [
-      "text-neutral-text relative inline-flex cursor-default items-center gap-1.5 font-medium focus-visible:outline-none",
+const style = tv({
+  slots: {
+    tabs: "flex",
+    tabList: "group inline-flex items-stretch justify-start",
+    tab: [
+      focusStyle(),
+      "text-neutral-text relative inline-flex cursor-default items-center gap-1.5 font-medium",
       // indicator
-      "before:absolute after:absolute after:inset-x-0 after:inset-y-1",
-      // horizontal
+      "before:absolute after:absolute after:inset-x-0",
       "group-data-[orientation=horizontal]:before:inset-x-0 group-data-[orientation=horizontal]:before:bottom-0 group-data-[orientation=horizontal]:before:h-0.5",
-      // vertical
       "group-data-[orientation=vertical]:before:inset-y-1 group-data-[orientation=vertical]:before:-right-1 group-data-[orientation=vertical]:before:w-0.5",
-      // hover
-      "data-hovered:text-neutral-text-contrast data-hovered:after:bg-neutral-bg-hover data-active:after:bg-neutral-bg-active",
-      // selected
-      "data-selected:text-neutral-text-contrast data-selected:border-b-neutral-text-contrast",
-      // disabled
-      "data-disabled:text-neutral-placeholder data-disabled:cursor-not-allowed",
     ],
-    variants: {
-      size: {
-        1: "h-8 px-1.5 text-xs after:rounded",
-        2: "h-9 px-2 text-[13px] after:rounded",
-        3: "h-10 px-2.5 text-sm after:rounded-md",
+    tabPanel: "grow-1",
+  },
+  defaultVariants: {
+    variant: "underline",
+    size: 1,
+    orientation: "horizontal",
+  },
+  variants: {
+    variant: {
+      underline: {},
+      soft: {},
+    },
+    size: {
+      1: {
+        tabList: "text-xs",
+        tab: "h-8 px-1.5 text-xs after:inset-y-1 after:rounded",
       },
-      variant: {
-        soft: "data-selected:after:bg-neutral-bg-active",
-        underline: "data-selected:before:bg-neutral-text-contrast",
+      2: {
+        tabList: "text-[13px]",
+        tab: "h-9 px-2 text-[13px] after:inset-y-[5px] after:rounded",
+      },
+      3: {
+        tabList: "text-sm",
+        tab: "h-10 px-2.5 text-sm after:inset-y-1.5 after:rounded-md",
+      },
+      4: {
+        tabList: "text-base",
+        tab: "h-12 px-3 text-base after:inset-y-2 after:rounded-lg",
       },
     },
-  }),
-
-  tabPanel: tv({
-    base: "flex-1",
-  }),
-}
+    orientation: {
+      horizontal: {
+        tabs: "flex-col",
+        tabList: "flex-row gap-1",
+      },
+      vertical: {
+        tabs: "flex-row",
+        tabList: "flex-col gap-0 px-1",
+      },
+    },
+    isHovered: {
+      true: {
+        tab: "text-neutral-text-contrast after:bg-neutral-bg-hover data-active:",
+      },
+    },
+    isPressed: {
+      true: {
+        tab: "after:bg-neutral-bg-active",
+      },
+    },
+    isSelected: {
+      true: {
+        tab: "text-neutral-text-contrast border-b-neutral-text-contrast",
+      },
+    },
+    isDisabled: {
+      true: {
+        tab: "text-neutral-placeholder cursor-not-allowed",
+      },
+    },
+  },
+  compoundVariants: [
+    {
+      orientation: "horizontal",
+      variant: "underline",
+      class: {
+        tabList: "shadow-[inset_0_-1px_0_0_var(--color-neutral-line)]",
+      },
+    },
+    {
+      orientation: "vertical",
+      variant: "underline",
+      class: {
+        tabList: "shadow-[inset_-1px_0_0_0_var(--color-neutral-line)]",
+      },
+    },
+    {
+      variant: "soft",
+      isSelected: true,
+      class: {
+        tab: "after:bg-neutral-bg-active",
+      },
+    },
+    {
+      variant: "underline",
+      isSelected: true,
+      class: {
+        tab: "before:bg-neutral-text-contrast",
+      },
+    },
+  ],
+})
 
 type TabListVariant = "soft" | "underline"
 const TabListVariantContext = createContext<TabListVariant>("underline")
 
-interface TabsProps extends RACTabsProps, VariantProps<typeof styles.tabs> {}
-
+type TabsProps = RACTabsProps
 function Tabs(props: TabsProps) {
+  let { tabs } = style()
   return (
     <RACTabs
       {...props}
-      className={cxRenderProps(
-        props.className,
-        styles.tabs({
-          orientation: props.orientation,
-        }),
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        tabs({ ...renderProps, className }),
       )}
     />
   )
 }
 
-interface TabListProps<T extends object>
-  extends RACTabListProps<T>,
-    VariantProps<typeof styles.tabList> {}
+interface TabListProps<T extends object> extends RACTabListProps<T> {
+  variant?: TabListVariant
+  size?: Size
+}
 
 function TabList<T extends object>(props: TabListProps<T>) {
-  let themeProps = useThemeProps({
-    size: props.size,
-  })
+  let themeProps = useThemeProps({ size: props.size })
+  let { tabList } = style({ variant: props.variant, size: themeProps.size })
 
   return (
     <Theme {...themeProps}>
       <TabListVariantContext.Provider value={props.variant || "underline"}>
         <RACTabList
           {...props}
-          className={cxRenderProps(
+          className={composeRenderProps(
             props.className,
-            styles.tabList({
-              variant: props.variant,
-              size: themeProps.size,
-            }),
+            (className, renderProps) => tabList({ ...renderProps, className }),
           )}
         />
       </TabListVariantContext.Provider>
@@ -141,26 +164,26 @@ function TabList<T extends object>(props: TabListProps<T>) {
 function Tab(props: RACTabProps) {
   let variant = useContext(TabListVariantContext)
   let { size } = useThemeProps()
+  let { tab } = style({ variant, size })
 
   return (
     <RACTab
       {...props}
-      className={cxRenderProps(
-        props.className,
-        styles.tab({
-          variant,
-          size,
-        }),
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        tab({ ...renderProps, className }),
       )}
     />
   )
 }
 
 function TabPanel(props: RACTabPanelProps) {
+  let { tabPanel } = style()
   return (
     <RACTabPanel
       {...props}
-      className={cxRenderProps(props.className, styles.tabPanel())}
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        tabPanel({ ...renderProps, className }),
+      )}
     />
   )
 }

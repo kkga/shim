@@ -1,5 +1,19 @@
+"use client"
 import { ProgressCircle } from "@ui/ProgressCircle"
+import { useEffect, useState } from "react"
 
-export default () => (
-  <ProgressCircle value={70} aria-label="Loading…" />
-)
+export default () => {
+  let [value, setValue] = useState(0)
+
+  // Simulate loading
+  useEffect(() => {
+    if (value >= 100) return
+    let interval = setInterval(
+      () => setValue((v) => Math.min(v + Math.random() * 25 + 1, 100)),
+      1000,
+    )
+    return () => clearInterval(interval)
+  }, [value])
+
+  return <ProgressCircle size={2} value={value} aria-label="Loading…" />
+}

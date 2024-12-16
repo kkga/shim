@@ -2,7 +2,7 @@
 
 import {
   Separator as RACSeparator,
-  SeparatorProps,
+  SeparatorProps as RACSeparatorProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
@@ -19,7 +19,7 @@ const styles = tv({
   },
 })
 
-function Separator(props: SeparatorProps) {
+function Separator(props: RACSeparatorProps) {
   return (
     <RACSeparator
       {...props}
@@ -31,4 +31,7 @@ function Separator(props: SeparatorProps) {
   )
 }
 
+type SeparatorProps = RACSeparatorProps
+
 export { Separator }
+export type { SeparatorProps }

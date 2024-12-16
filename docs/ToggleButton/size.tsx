@@ -14,5 +14,9 @@ export default () => (
     <ToggleButton size={3}>
       <PushPin size={16} weight="duotone" />
     </ToggleButton>
+
+    <ToggleButton size={4}>
+      <PushPin size={20} weight="duotone" />
+    </ToggleButton>
   </>
 )

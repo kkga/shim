@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react"
 
-export type Size = 1 | 2 | 3
+export const SIZES = [1, 2, 3, 4] as const
+export type Size = (typeof SIZES)[number]
 
 export interface ThemeContextProps {
   size: Size

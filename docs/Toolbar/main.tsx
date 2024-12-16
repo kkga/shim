@@ -8,11 +8,12 @@ import { Group } from "@ui/Group"
 import { Separator } from "@ui/Separator"
 import { Switch } from "@ui/Switch"
 import { ToggleButton } from "@ui/ToggleButton"
+import { ToggleButtonGroup } from "@ui/ToggleButtonGroup"
 import { Toolbar } from "@ui/Toolbar"
 
 export default () => (
   <Toolbar aria-label="Text formatting">
-    <Group aria-label="Style" className="contents">
+    <ToggleButtonGroup aria-label="Style">
       <ToggleButton aria-label="Bold">
         <TextB size={16} weight="duotone" />
       </ToggleButton>
@@ -22,7 +23,7 @@ export default () => (
       <ToggleButton aria-label="Underline">
         <TextUnderline size={16} weight="duotone" />
       </ToggleButton>
-    </Group>
+    </ToggleButtonGroup>
     <Separator orientation="vertical" />
     <Group aria-label="Clipboard" className="contents">
       <Button>Copy</Button>

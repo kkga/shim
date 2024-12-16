@@ -7,13 +7,6 @@ docUrl: "https://react-spectrum.adobe.com/react-aria/Checkbox.html"
 aria: "https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/"
 ---
 
-### States
-
-Use `isSelected`, `isDisabled` and `isIndeterminate` props to set the state of
-the checkbox.
-
-<Demo demo={<CheckboxDemo.States />} code={demos["states"]} />
-
 ### Group
 
 Use the `CheckboxGroup` component to group checkboxes together with an
@@ -22,14 +15,30 @@ the group.
 
 <Demo demo={<CheckboxDemo.Group />} code={demos["group"]} />
 
+### States
+
+Use `isSelected`, `isDisabled` and `isIndeterminate` props to set the state of
+the checkbox.
+
+<Demo demo={<CheckboxDemo.States />} code={demos["states"]} />
+
 ### Size
 
 Use `size` prop to set the size of the group or individual checkboxes.
 
-<Demo demo={<CheckboxDemo.Size />} code={demos["size"]} />
+<Demo stacked demo={<CheckboxDemo.Size />} code={demos["size"]} />
 
 ### Variant
 
 Use `variant` prop to set the variant of the group or individual checkboxes.
 
 <Demo demo={<CheckboxDemo.Variant />} code={demos["variant"]} />
+
+### Checkbox description
+
+Use `description` prop to provide additional context for the checkbox.
+
+<Demo
+  demo={<CheckboxDemo.Description />}
+  code={demos["checkbox-description"]}
+/>
