@@ -1,4 +1,9 @@
-import { ArrowRight, Shapes } from "@phosphor-icons/react/dist/ssr"
+import {
+  ArrowRight,
+  ArrowSquareOut,
+  Shapes,
+} from "@phosphor-icons/react/dist/ssr"
+import { Badge } from "@ui/Badge"
 import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
 import { Separator } from "@ui/Separator"
@@ -8,7 +13,7 @@ import { H1, P } from "./components/mdx/mdx-components"
 export default function Page() {
   return (
     <main className="bg-neutral-bg-subtle flex min-h-svh flex-col px-8 py-16">
-      <div className="mx-auto grid max-w-7xl grid-cols-3 gap-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-3 gap-12 text-sm">
         <div className="col-span-1">
           <div className="flex h-8 items-center gap-1">
             <Shapes
@@ -19,12 +24,16 @@ export default function Page() {
             <H1 className="text-neutral-text-contrast text-[13px] font-bold">
               Shim
             </H1>
+
+            <Badge size={2} className="ml-4" intent="warning">
+              Early Alpha
+            </Badge>
           </div>
 
           <P className="text-neutral-text-contrast mb-4 mt-4 text-balance text-4xl font-medium leading-10 tracking-tight">
             Toolkit for refined interfaces.
           </P>
-          <P className="text-neutral-text text-md m-0 text-balance leading-6">
+          <P className="text-neutral-text m-0 text-balance">
             A collection of React Aria-based components, carefully styled and
             ready to go.
           </P>
@@ -33,7 +42,7 @@ export default function Page() {
             <Link
               href="/docs"
               intent="accent"
-              className="flex items-center gap-1"
+              className="flex items-center gap-1 font-medium"
             >
               Documentation
               <ArrowRight size={16} />
@@ -42,8 +51,10 @@ export default function Page() {
               href="https://github.com/kkga/shim"
               intent="accent"
               target="_blank"
+              className="flex items-center gap-1 font-medium"
             >
               GitHub
+              <ArrowSquareOut size={16} />
             </Link>
           </div>
 
@@ -57,7 +68,7 @@ export default function Page() {
 
             <DataListItem
               label="How so?"
-              value="It is what it is. Built on top of RAC—the best primitives out there, styled with refined taste and ready to go."
+              value="It is what it is. Built on top of RAC—the best primitives out there, styled with care and attention to detail."
             />
 
             <DataListItem

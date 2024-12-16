@@ -245,6 +245,8 @@ export function ExampleRepo() {
 
         <TooltipTrigger>
           <Avatar
+            size={2}
+            radius="full"
             src="https://avatars.githubusercontent.com/u/1460122?v=4"
             name="Gadzhi Kharkharov"
           />

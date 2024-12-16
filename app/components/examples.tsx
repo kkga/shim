@@ -27,7 +27,7 @@ let items = [
 export function Examples() {
   return (
     <Tabs>
-      <div className="mb-2 flex justify-between">
+      <div className="mb-2 flex items-center justify-between">
         <TabList variant="soft" items={items}>
           {({ name }) => <Tab aria-label={name}>{name}</Tab>}
         </TabList>
