@@ -8,7 +8,7 @@ export function getMainDemo(name: string) {
       <div className="flex flex-1 self-stretch">
         <ProgressBar
           isIndeterminate
-          aria-label="Demo loader"
+          aria-label="Loading demo"
           className="m-auto w-32"
         />
       </div>
