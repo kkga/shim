@@ -3,7 +3,7 @@ import dynamic from "next/dynamic"
 import { ComponentType } from "react"
 
 export function getMainDemo(name: string) {
-  return dynamic(() => import(`docs/${name}/index`).then((mod) => mod.Main), {
+  return dynamic(() => import(`@/docs/${name}/index`).then((mod) => mod.Main), {
     loading: () => (
       <div className="flex flex-1 self-stretch">
         <ProgressBar

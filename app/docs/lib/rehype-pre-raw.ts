@@ -1,6 +1,7 @@
 import { visit } from "unist-util-visit"
 
-export const preProcess = () => (tree) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const preProcess = () => (tree: any) => {
   visit(tree, (node) => {
     if (node?.type === "element" && node?.tagName === "pre") {
       const [codeEl] = node.children
@@ -10,7 +11,8 @@ export const preProcess = () => (tree) => {
   })
 }
 
-export const postProcess = () => (tree) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const postProcess = () => (tree: any) => {
   visit(tree, "element", (node) => {
     if (node?.type === "element" && node?.tagName === "pre") {
       node.properties.raw = node.raw.replace(/\n+$/, "")

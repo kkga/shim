@@ -22,7 +22,7 @@ function Breadcrumb({
   className,
   href,
   ...props
-}: BreadcrumbProps & LinkProps) {
+}: BreadcrumbProps & Omit<LinkProps, "className">) {
   return (
     <RACBreadcrumb
       {...props}

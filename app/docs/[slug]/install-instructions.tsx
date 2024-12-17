@@ -1,4 +1,4 @@
-import { H3, Note, P, Pre } from "@/components/mdx/mdx-components"
+import { H3, Note, P, Pre } from "@/app/components/mdx/mdx-components"
 import { Code as CodeIcon, Terminal } from "@phosphor-icons/react/dist/ssr"
 import { Link } from "@ui/Link"
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"

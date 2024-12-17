@@ -94,8 +94,8 @@ const style = tv({
   variants: {
     color: Object.keys(COLORS).reduce(
       (acc, key) => {
-        acc[key] = {
-          tag: COLORS[key],
+        acc[key as Color] = {
+          tag: COLORS[key as Color],
         }
         return acc
       },

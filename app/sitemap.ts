@@ -1,6 +1,6 @@
-import { getComponentDocs, getGuides } from '@/docs/lib/utils'
+import { getComponentDocs, getGuides } from "@/app/docs/lib/utils"
 
-export const baseUrl = 'https://portfolio-blog-starter.vercel.app'
+export const baseUrl = "https://shim.kkga.me"
 
 export default async function sitemap() {
   let docs = getComponentDocs().map((doc) => ({
@@ -10,9 +10,9 @@ export default async function sitemap() {
     url: `${baseUrl}/guides/${guide.slug}`,
   }))
 
-  let routes = ['', '/docs', '/guides'].map((route) => ({
+  let routes = ["", "/docs", "/guides"].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
+    lastModified: new Date().toISOString().split("T")[0],
   }))
 
   return [...routes, ...docs, ...guides]

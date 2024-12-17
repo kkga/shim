@@ -1,15 +1,15 @@
 import "../theme/theme.css"
 import "./site.css"
 
-import { ClientProviders, ThemeProvider } from "@/components/providers"
-import DarkIcon from "@/icon-dark.png"
-import LightIcon from "@/icon-light.png"
+import { ClientProviders, ThemeProvider } from "@/app/components/providers"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
 import { StrictMode } from "react"
 import { LocalizedStringProvider } from "react-aria-components/i18n"
 import { fontMono, fontSans } from "./fonts"
+import DarkIcon from "./icon-dark.png"
+import LightIcon from "./icon-light.png"
 import { baseUrl } from "./sitemap"
 
 export const metadata: Metadata = {
@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     default: "Shim",
     template: "%s — Shim",
   },
-  description: "This is my portfolio.",
+  description: "Toolkit for refined interfaces.",
   openGraph: {
-    title: "My Portfolio",
-    description: "This is my portfolio.",
+    title: "Shim",
+    description: "Toolkit for refined interfaces.",
     url: baseUrl,
-    siteName: "My Portfolio",
+    siteName: "Shim",
     locale: "en_US",
     type: "website",
   },

@@ -5,8 +5,6 @@ import { Collection } from "react-aria-components"
 import { ExampleIssueTracker, ExampleRepo } from "../../examples"
 import { ThemeButton } from "./sidebar/theme-button"
 
-import { AnimatePresence, motion } from "framer-motion"
-
 let items = [
   {
     id: "issue-tracker",
@@ -34,23 +32,13 @@ export function Examples() {
         <ThemeButton />
       </div>
 
-      <AnimatePresence>
-        <Collection items={items}>
-          {({ component: Component, name }) => (
-            <TabPanel>
-              <motion.div
-                key={name}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <Component />
-              </motion.div>
-            </TabPanel>
-          )}
-        </Collection>
-      </AnimatePresence>
+      <Collection items={items}>
+        {({ component: Component }) => (
+          <TabPanel>
+            <Component />
+          </TabPanel>
+        )}
+      </Collection>
     </Tabs>
   )
 }

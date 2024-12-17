@@ -1,5 +1,4 @@
-import { mdxComponents } from "@/components/mdx/mdx-components"
-import { SerializeOptions } from "next-mdx-remote/dist/types"
+import { mdxComponents } from "@/app/components/mdx/mdx-components"
 import { compileMDX } from "next-mdx-remote/rsc"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
 import rehypeSlug from "rehype-slug"
@@ -10,7 +9,7 @@ export const mdxToHtml = async ({
   scope,
 }: {
   source: string
-  scope?: SerializeOptions["scope"]
+  scope?: Record<string, unknown>
 }) =>
   await compileMDX({
     source: source,

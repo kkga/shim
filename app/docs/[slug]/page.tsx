@@ -1,23 +1,35 @@
-import { Demo } from "@/components/mdx/demo"
-import { getMainDemo } from "@/components/mdx/demo-components"
+import { Demo } from "@/app/components/mdx/demo"
+import { getMainDemo } from "@/app/components/mdx/demo-components"
 import {
   getComponentDocs,
   getComponentSource,
   getDemosSource,
-} from "@/docs/lib/utils"
-import { baseUrl } from "app/sitemap"
+} from "@/app/docs/lib/utils"
+import { baseUrl } from "@/app/sitemap"
 import { assert } from "console"
+import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { DocHeader } from "../doc-header"
 import { mdxToHtml } from "../lib/mdx"
 import { MetadataRow } from "./component-metadata"
 import { InstallInstructions } from "./install-instructions"
 
-export async function generateMetadata(props) {
-  const params = await props.params;
-  const doc = getComponentDocs().find((doc) => doc.slug === params.slug)
+export async function generateStaticParams() {
+  return getComponentDocs().map((doc) => ({
+    params: { slug: doc.slug },
+  }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const slug = (await params).slug
+  const doc = getComponentDocs().find((doc) => doc.slug === slug)
+
   if (!doc) {
-    return
+    notFound()
   }
 
   const { name, description } = doc.metadata
@@ -31,11 +43,7 @@ export async function generateMetadata(props) {
       description,
       type: "article",
       url: `${baseUrl}/docs/${doc.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
+      images: [{ url: ogImage }],
     },
     twitter: {
       card: "summary_large_image",
@@ -46,16 +54,14 @@ export async function generateMetadata(props) {
   }
 }
 
-export async function generateStaticParams() {
-  return getComponentDocs().map((doc) => ({
-    params: { slug: doc.slug },
-  }))
-}
-
-export default async function Doc(props) {
-  const params = await props.params;
+export default async function Doc({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const slug = (await params).slug
   let docs = getComponentDocs()
-  let doc = docs.find((doc) => doc.slug === params.slug)
+  let doc = docs.find((doc) => doc.slug === slug)
 
   if (!doc) {
     notFound()

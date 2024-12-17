@@ -60,8 +60,6 @@ const checkboxStyle = tv({
     isDisabled: {
       true: {
         container: "text-neutral-placeholder cursor-not-allowed",
-        checkbox:
-          "bg-neutral-bg-subtle! shadow-none! inset-ring-1! inset-ring-neutral-line! text-neutral-placeholder!",
       },
     },
     size: {
@@ -118,6 +116,16 @@ const checkboxStyle = tv({
       },
     },
   },
+  compoundVariants: [
+    {
+      isDisabled: true,
+      variant: ["classic", "soft", "outline"],
+      class: {
+        checkbox:
+          "bg-neutral-bg-subtle! shadow-none! inset-ring-1! inset-ring-neutral-line! text-neutral-placeholder!",
+      },
+    },
+  ],
 })
 
 interface CheckboxProps
@@ -129,7 +137,6 @@ interface CheckboxProps
 function Checkbox({
   size: _size,
   variant: _variant,
-  className,
   description,
   ...props
 }: CheckboxProps) {
@@ -144,7 +151,10 @@ function Checkbox({
   return (
     <RACCheckbox
       {...props}
-      className={cxRenderProps(className, container({ isDisabled: true }))}
+      className={composeRenderProps(
+        props.className,
+        (className, { isDisabled }) => container({ isDisabled, className }),
+      )}
     >
       {composeRenderProps(
         props.children,

@@ -1,5 +1,5 @@
-import { Sidebar } from "@/components/sidebar"
-import { getComponentDocs, getGuides } from "@/docs/lib/utils"
+import { Sidebar } from "@/app/components/sidebar"
+import { getComponentDocs, getGuides } from "@/app/docs/lib/utils"
 import { useMemo } from "react"
 
 export default function DocsLayout({

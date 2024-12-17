@@ -4,10 +4,17 @@ import { Link } from "@ui/Link"
 import { Fragment } from "react"
 import { ComponentMetadata } from "../lib/types"
 
-const GITHUB_FILE_URL = "https://github.com/kkga/shim-ui/blob/master/components"
-const GITHUB_ISSUES_URL = "https://github.com/kkga/shim-ui/issues"
+const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components"
+const GITHUB_ISSUES_URL = "https://github.com/kkga/shim/issues"
 
-function MetadataLink({ href, title, external, children }) {
+interface MetadataLinkProps {
+  href: string
+  title: string
+  external: boolean
+  children: React.ReactNode
+}
+
+function MetadataLink({ href, title, external, children }: MetadataLinkProps) {
   return (
     <Link
       href={href}

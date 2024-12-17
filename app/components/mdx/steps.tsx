@@ -1,6 +1,6 @@
 import clsx from "clsx"
 
-export function Steps({ children }) {
+export function Steps({ children }: { children: React.ReactNode }) {
   return (
     <div className="my-8 grid gap-x-4 gap-y-8 md:grid-cols-[auto_2fr_3fr]">
       {children}
@@ -8,7 +8,13 @@ export function Steps({ children }) {
   )
 }
 
-export function Step({ title, children }) {
+export function Step({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) {
   return (
     <div
       className={clsx(
