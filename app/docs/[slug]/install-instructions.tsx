@@ -10,7 +10,7 @@ interface Props {
 }
 
 const GITHUB_RAW_URL =
-  "https://raw.githubusercontent.com/kkga/shim/master/app/ui"
+  "https://raw.githubusercontent.com/kkga/shim/master/components"
 
 export function InstallInstructions({ filename, dependencies, source }: Props) {
   let curlCommand = `curl -O '${GITHUB_RAW_URL}/${filename}.tsx'`
@@ -44,7 +44,7 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
       )}
 
       <Tabs className="s-box bg-panel my-8 gap-0 overflow-hidden rounded-xl p-0 shadow-[var(--shadow-xs)]">
-        <TabList variant="underline" className="mt-0 px-4">
+        <TabList variant="soft" size={1} className="mt-1 pl-2">
           <Tab id="curl">
             <Terminal size={16} weight="duotone" />
             cURL

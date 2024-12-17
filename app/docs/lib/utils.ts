@@ -9,6 +9,14 @@ function readMDXFile(filePath: string) {
   return { data, content }
 }
 
+const slugify = (str: string) =>
+  str
+    .trim()
+    .replace(/([a-z])([A-Z])/g, "$1-$2")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-zA-Z0-9-]/g, "")
+    .toLowerCase()
+
 function getComponentDocs() {
   let dir = path.join(process.cwd(), "docs")
 
@@ -19,7 +27,7 @@ function getComponentDocs() {
 
   return entries.map((name) => {
     let { data, content } = readMDXFile(path.join(dir, name, "doc.mdx"))
-    let slug = name.toLowerCase()
+    let slug = slugify(name)
     return { metadata: data as ComponentMetadata, slug, content }
   })
 }
@@ -34,7 +42,7 @@ function getGuides() {
 
   return entries.map((name) => {
     let { data, content } = readMDXFile(path.join(dir, name))
-    let slug = name.replace(/\.mdx$/, "")
+    let slug = slugify(name.replace(/\.mdx$/, ""))
     return { metadata: data as GuideMetadata, slug, content }
   })
 }
@@ -65,8 +73,12 @@ function getDemosSource(componentDir: string) {
   return demos
 }
 
-function getUtilsSource() {
+function getStyleUtilsSource() {
   return fs.readFileSync(path.join(process.cwd(), "lib", "style.ts"), "utf-8")
+}
+
+function getThemeUtilsSource() {
+  return fs.readFileSync(path.join(process.cwd(), "lib", "theme.tsx"), "utf-8")
 }
 
 function getThemeCssSource() {
@@ -81,6 +93,7 @@ export {
   getComponentSource,
   getDemosSource,
   getGuides,
+  getStyleUtilsSource,
   getThemeCssSource,
-  getUtilsSource,
+  getThemeUtilsSource,
 }

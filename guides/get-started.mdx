@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: What this is and how to use it in your project.
+description: Setup the components in your project.
 ---
 
 ## What is this?
@@ -10,13 +10,6 @@ It's a collection of components built on top of
 install the core dependencies and copy-paste (or download) the components you
 need into your project. This way, you own the code and can customize it to your
 liking.
-
-## Why should I use it instead of x/y/z?
-
-x/y/z are great, but there are a few reasons why you might want to use this:
-
-- **React Aria:** It's built on top of React Aria, which is a set of
-  high-quality components and hooks for building accessible UIs.
 
 ---
 
@@ -38,9 +31,9 @@ assumes you have a React project set up with TypeScript.
   <Step title="Add Tailwind CSS v4">
 
     <div>
-    This project uses the alpha version of Tailwind CSS v4, which makes it much easier to customize without creating a config file.
+    This project uses Tailwind CSS v4 Beta, which has some major changes from the previous version.
 
-    Refer to their alpha release [blog post](https://tailwindcss.com/blog/tailwindcss-v4-alpha#try-out-the-alpha) on how to install it in your project.
+    Refer to the [docs](https://tailwindcss.com/docs/v4-beta) on how to install it in your project.
     </div>
 
 
@@ -57,32 +50,40 @@ assumes you have a React project set up with TypeScript.
   <Step title="Add dependencies">
   
   <div>
-    [cva@beta](https://beta.cva.style/getting-started/installation) and [tailwind-merge](https://github.com/dcastil/tailwind-merge) are used to generate style variants and work well with React Aria. 
-    [Radix Colors](https://www.radix-ui.com/colors) and [Phosphor Icons](https://phosphoricons.com/) are used in the components. Both are great.<br/>
+    [tailwind-variants](https://www.tailwind-variants.org/) is used for styling and its variant API works well with React Aria.
+    
+    [clsx](https://github.com/lukeed/clsx) and [tailwind-merge](https://github.com/dcastil/tailwind-merge) are small styling utilities that help with class names and merging Tailwind classes.
 
-    It's possible to replace the icons and colors with other choices, but the components and the Tailwind theme will need to be updated accordingly. See the [theming guide](/docs/guides/theming) for more details.
+    [Radix Colors](https://www.radix-ui.com/colors) and [Phosphor Icons](https://phosphoricons.com/) are used in the components.
+    While the components are designed to work with these specific icons and colors, they can be replaced with other choices. See the [theming guide](/docs/guides/theming) for more details.
 
   </div>
 
 ```sh
-pnpm add cva@beta\
+pnpm add\
+  tailwind-variants\
+  clsx\
   tailwind-merge\
-  @phosphor-icons/react\
-  @radix-ui/colors
+  @radix-ui/colors\
+  @phosphor-icons/react
 ```
 
   </Step>
 
-  <Step title="Setup styling utils">
+  <Step title="Setup styling and theming utils">
 
     <div>
-    Add the styling utilities into your project.
+    The components use a few utility functions for styling and theming.
+    You can copy-paste them into your project or download them from the [GitHub repo](https://github.com/kkga/shim/tree/master/lib).
 
-    A good place to put them is in a `lib/utils.ts` file, but
+    A good place to put these might be `lib/style.ts` and `lib/theme.tsx`, but
     you can customize the path alias to your preference at the last step.
     </div>
 
-    <Pre collapsed code={utilsSource} />
+    <div className="codeblock flex flex-col gap-4 overflow-auto">
+      <Pre title="style.ts" collapsed code={styleUtilsSource} />
+      <Pre title="theme.tsx" collapsed code={themeUtilsSource} />
+    </div>
 
   </Step>
 
@@ -95,7 +96,7 @@ pnpm add cva@beta\
     </div>
 
 
-    <Pre collapsed code={themeCssSource} />
+    <Pre title="base.css" collapsed code={themeCssSource} />
 
   </Step>
 
@@ -115,8 +116,8 @@ pnpm add cva@beta\
       "compilerOptions": {
         "baseUrl": "./",
         "paths": {
-          "@lib/utils": ["./lib/utils"], // path to the utils file
           "@ui/*": ["./components/ui/*"], // path to the components
+          "@lib/*": ["./lib/*"], // path to the utils file
         }
       }
     }
