@@ -54,6 +54,7 @@ export async function generateMetadata({
   }
 }
 
+export const dynamicParams = false
 export default async function Doc({
   params,
 }: {
