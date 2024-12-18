@@ -36,7 +36,7 @@ function Pre({ code, children, className, title, collapsed, raw }: PreProps) {
       className={clsx(
         "codeblock group relative flex flex-col overflow-auto",
         "max-h-[calc(100dvh-12rem)]",
-        "border-neutral-3 bg-panel rounded-lg border",
+        "bg-panel rounded-lg shadow-[var(--shadow-xs)]",
         "text-neutral-text font-mono text-[13px] leading-normal",
         "[&_code]:text-[100%]!",
         className,

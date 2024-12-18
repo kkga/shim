@@ -43,8 +43,12 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
         </Note>
       )}
 
-      <Tabs className="s-box bg-panel my-8 gap-0 overflow-hidden rounded-xl p-0 shadow-[var(--shadow-xs)]">
-        <TabList variant="soft" size={1} className="mt-1 pl-2">
+      <Tabs className="s-box my-8 gap-0">
+        <TabList
+          variant="underline"
+          size={1}
+          className="border-none pl-4 shadow-none"
+        >
           <Tab id="curl">
             <Terminal size={16} weight="duotone" />
             cURL
@@ -56,10 +60,17 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
         </TabList>
 
         <TabPanel id="curl" className="p-0">
-          <Pre code={curlCommand} className="border-none bg-transparent" />
+          <Pre
+            code={curlCommand}
+            className="rounded-lg border-none shadow-[var(--shadow-xs)]"
+          />
         </TabPanel>
         <TabPanel id="source" className="p-0">
-          <Pre collapsed code={source} className="border-none bg-transparent" />
+          <Pre
+            collapsed
+            code={source}
+            className="rounded-lg border-none shadow-[var(--shadow-xs)]"
+          />
         </TabPanel>
       </Tabs>
     </>
