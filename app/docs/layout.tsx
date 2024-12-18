@@ -28,7 +28,7 @@ export default function DocsLayout({
 
   return (
     <div className="flex min-h-svh">
-      <div className="w-72 shrink-0">
+      <div className="w-80 shrink-0">
         <Sidebar items={navItems} />
       </div>
 

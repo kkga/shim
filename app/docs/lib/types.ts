@@ -5,7 +5,7 @@ export interface ComponentMetadata {
   docUrl?: string
   ariaUrl?: string
   composes?: string[]
-  status?: "stable" | "alpha" | "beta" | "deprecated"
+  status?: "stable" | "alpha" | "beta" | "deprecated" | "unlisted"
 }
 
 export interface GuideMetadata {

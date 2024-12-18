@@ -9,7 +9,6 @@ export default async function sitemap() {
   let guides = getGuides().map((guide) => ({
     url: `${baseUrl}/guides/${guide.slug}`,
   }))
-
   let routes = ["", "/docs", "/guides"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split("T")[0],

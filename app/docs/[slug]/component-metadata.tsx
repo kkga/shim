@@ -1,8 +1,8 @@
+import type { ComponentMetadata } from "@/app/docs/lib/types"
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr"
 import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
 import { Fragment } from "react"
-import { ComponentMetadata } from "../lib/types"
 
 const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components"
 const GITHUB_ISSUES_URL = "https://github.com/kkga/shim/issues"
