@@ -3,7 +3,7 @@ import { getComponentDocs, getGuides } from "@/app/docs/lib/utils"
 export const baseUrl = "https://shim.kkga.me"
 
 export default async function sitemap() {
-  let docs = getComponentDocs().map((doc) => ({
+  let docs = getComponentDocs({ exclude: ["unlisted"] }).map((doc) => ({
     url: `${baseUrl}/docs/${doc.slug}`,
   }))
   let guides = getGuides().map((guide) => ({

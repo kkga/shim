@@ -17,7 +17,11 @@ const slugify = (str: string) =>
     .replace(/[^a-zA-Z0-9-]/g, "")
     .toLowerCase()
 
-function getComponentDocs() {
+function getComponentDocs(
+  { exclude }: { exclude: ComponentMetadata["status"][] } = {
+    exclude: [],
+  },
+) {
   let dir = path.join(process.cwd(), "docs")
 
   let entries = fs
@@ -25,11 +29,13 @@ function getComponentDocs() {
     .filter((dirent) => dirent.isFile() && path.extname(dirent.name) === ".mdx")
     .map((dirent) => basename(dirent.parentPath))
 
-  return entries.map((name) => {
-    let { data, content } = readMDXFile(path.join(dir, name, "doc.mdx"))
-    let slug = slugify(name)
-    return { metadata: data as ComponentMetadata, slug, content }
-  })
+  return entries
+    .map((name) => {
+      let { data, content } = readMDXFile(path.join(dir, name, "doc.mdx"))
+      let slug = slugify(name)
+      return { metadata: data as ComponentMetadata, slug, content }
+    })
+    .filter((component) => !exclude.includes(component.metadata.status))
 }
 
 function getGuides() {
@@ -40,11 +46,13 @@ function getGuides() {
     .filter((dirent) => dirent.isFile() && path.extname(dirent.name) === ".mdx")
     .map((dirent) => dirent.name)
 
-  return entries.map((name) => {
-    let { data, content } = readMDXFile(path.join(dir, name))
-    let slug = slugify(name.replace(/\.mdx$/, ""))
-    return { metadata: data as GuideMetadata, slug, content }
-  })
+  return entries
+    .map((name) => {
+      let { data, content } = readMDXFile(path.join(dir, name))
+      let slug = slugify(name.replace(/\.mdx$/, ""))
+      return { metadata: data as GuideMetadata, slug, content }
+    })
+    .sort((a, b) => a.metadata.order - b.metadata.order)
 }
 
 function getComponentSource(filename: string) {
@@ -73,27 +81,16 @@ function getDemosSource(componentDir: string) {
   return demos
 }
 
-function getStyleUtilsSource() {
-  return fs.readFileSync(path.join(process.cwd(), "lib", "style.ts"), "utf-8")
-}
-
-function getThemeUtilsSource() {
-  return fs.readFileSync(path.join(process.cwd(), "lib", "theme.tsx"), "utf-8")
-}
-
-function getThemeCssSource() {
-  return fs.readFileSync(
-    path.join(process.cwd(), "theme", "theme.css"),
-    "utf-8",
-  )
+function getFileSource(filePath: string) {
+  filePath = path.join(process.cwd(), filePath)
+  console.log(filePath)
+  return fs.readFileSync(filePath, "utf-8").trim()
 }
 
 export {
   getComponentDocs,
   getComponentSource,
   getDemosSource,
+  getFileSource,
   getGuides,
-  getStyleUtilsSource,
-  getThemeCssSource,
-  getThemeUtilsSource,
 }

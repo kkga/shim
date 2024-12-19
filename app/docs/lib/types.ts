@@ -11,4 +11,5 @@ export interface ComponentMetadata {
 export interface GuideMetadata {
   title: string
   description: string
+  order?: number
 }

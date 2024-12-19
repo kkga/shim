@@ -7,10 +7,13 @@ import {
   Cards,
   CheckFat,
   CursorClick,
+  FlagBanner,
   HandGrabbing,
   HouseSimple,
+  Lightning,
   Path,
   Rows,
+  Swatches,
   Textbox,
   WarningDiamond,
 } from "@phosphor-icons/react"
@@ -23,7 +26,7 @@ import {
   Header,
   ListBox,
   ListBoxItem,
-  ListBoxSection as RACListBoxSection,
+  ListBoxSection,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
 
@@ -46,6 +49,12 @@ const categoryIcons: Record<string, React.ReactNode> = {
   Content: <Article weight="duotone" size={16} />,
   "Date and time": <Calendar weight="duotone" size={16} />,
   "Drag and drop": <HandGrabbing weight="duotone" size={16} />,
+}
+
+const guideIcons: Record<string, React.ReactNode> = {
+  "Get started": <FlagBanner weight="duotone" size={16} />,
+  Theming: <Swatches weight="duotone" size={16} />,
+  Changelog: <Lightning weight="duotone" size={16} />,
 }
 
 const categorizeItems = (items: NavItem[]) => {
@@ -80,24 +89,24 @@ const filterItems = (items: NavItem[], filter?: string) => {
 const style = tv({
   slots: {
     header:
-      "text-neutral-text-contrast col-span-full flex items-center font-medium",
-    headerIcon: "text-neutral-text-contrast flex items-center justify-center",
+      "text-neutral-text col-span-full flex items-center font-medium leading-none",
+    headerIcon: "text-neutral-text flex items-center justify-center",
     item: [
       focusStyle(),
-      "font-book text-neutral-text flex items-center rounded",
+      "font-book text-neutral-text-contrast flex items-center rounded",
     ],
   },
   variants: {
     size: {
       1: {
-        header: "h-6 gap-1 text-xs",
+        header: "h-6 gap-2 px-1.5 text-xs leading-6",
         headerIcon: "size-6",
-        item: "h-6 gap-1.5 px-1.5 text-xs",
+        item: "h-6 gap-2 px-1.5 text-[13px] leading-6",
       },
       2: {
-        header: "h-8 text-sm",
+        header: "h-8 gap-2.5 px-2 text-[13px] leading-8",
         headerIcon: "size-8",
-        item: "h-8 gap-2 px-2 text-sm",
+        item: "h-8 gap-2.5 px-2 text-sm leading-8",
       },
     },
     isDisabled: {
@@ -129,11 +138,7 @@ export function Navigation({
 }) {
   let pathname = usePathname()
   let [filter, setFilter] = useState("")
-  let {
-    header: headerStyle,
-    headerIcon: headerIconStyle,
-    item: itemStyle,
-  } = style({ size })
+  let { header: headerStyle, item: itemStyle } = style({ size })
 
   let sections = useMemo(() => {
     let filteredItems = filterItems(items, filter)
@@ -167,7 +172,7 @@ export function Navigation({
           key={`${items.length}-${filter}`}
           selectionMode="single"
           aria-label="Navigation"
-          className="flex flex-col gap-6"
+          className="grid auto-cols-fr gap-1"
           items={sections}
           selectedKeys={[pathname]}
           onSelectionChange={() => {
@@ -181,15 +186,13 @@ export function Navigation({
           )}
         >
           {({ section, items }) => (
-            <RACListBoxSection
+            <ListBoxSection
               id={section}
-              className="grid grid-cols-2 gap-0.5"
+              className="col-span-full mb-4 grid grid-cols-subgrid gap-y-1"
             >
               {section !== "Intro" && (
                 <Header className={headerStyle()} key={section}>
-                  <div className={headerIconStyle()}>
-                    {categoryIcons[section]}
-                  </div>
+                  {categoryIcons[section]}
                   {section}
                   <div className="bg-neutral-4 h-px grow" />
                 </Header>
@@ -210,6 +213,7 @@ export function Navigation({
                     }
                     isDisabled={status === "planned"}
                   >
+                    {section === "Intro" ? guideIcons[name] : null}
                     {name}
                     {status && (
                       <Badge
@@ -223,7 +227,7 @@ export function Navigation({
                   </ListBoxItem>
                 )}
               </Collection>
-            </RACListBoxSection>
+            </ListBoxSection>
           )}
         </ListBox>
       </nav>

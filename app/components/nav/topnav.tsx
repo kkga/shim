@@ -54,7 +54,7 @@ export function TopNav(props: { items: NavItem[] }) {
             isOpen={isOpen}
             isDismissable
             onOpenChange={setOpen}
-            className="h-full gap-0 p-0"
+            className="h-full max-w-lg gap-0 p-0"
           >
             <div className="flex gap-1.5 p-3">
               <TooltipTrigger>

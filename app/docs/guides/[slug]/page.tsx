@@ -1,16 +1,10 @@
 import { DocHeader } from "@/app/docs/doc-header"
 import { mdxToHtml } from "@/app/docs/lib/mdx"
-import {
-  getGuides,
-  getStyleUtilsSource,
-  getThemeCssSource,
-  getThemeUtilsSource,
-} from "@/app/docs/lib/utils"
+import { getFileSource, getGuides } from "@/app/docs/lib/utils"
 
 export const dynamicParams = false
 export async function generateStaticParams() {
-  let guides = getGuides()
-  let params = guides.map((guide) => ({ slug: guide.slug }))
+  let params = getGuides().map((guide) => ({ slug: guide.slug }))
   return params
 }
 
@@ -21,18 +15,19 @@ export default async function GuidePage({
 }) {
   let { slug } = await params
 
-  let guides = getGuides()
-  let guide = guides.find((guide) => guide.slug === slug)
+  let guide = getGuides().find((guide) => guide.slug === slug)
   let { metadata, content } = guide
   let { title, description } = metadata
 
-  let styleUtilsSource = getStyleUtilsSource()
-  let themeUtilsSource = getThemeUtilsSource()
-  let themeCssSource = getThemeCssSource()
+  let [styleUtilsSrc, themeUtilsSrc, themeCssSrc] = [
+    getFileSource("lib/style.ts"),
+    getFileSource("lib/theme.tsx"),
+    getFileSource("theme/theme.css"),
+  ]
 
   let { content: html } = await mdxToHtml({
     source: content,
-    scope: { styleUtilsSource, themeUtilsSource, themeCssSource },
+    scope: { styleUtilsSrc, themeUtilsSrc, themeCssSrc },
   })
 
   return (

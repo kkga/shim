@@ -29,8 +29,10 @@ function Demo({ demo, code, className, stacked = false }: Props) {
       {code && (
         <div
           className={clsx(
-            "border-neutral-3 flex flex-col overflow-auto",
-            stacked ? "border-t" : "lg:flex-3 border-t lg:border-l",
+            "border-neutral-3 flex flex-col overflow-auto border-t",
+            stacked ?
+              "lg:border-l-0 lg:border-t"
+            : "lg:flex-3 lg:border-l lg:border-t-0",
           )}
         >
           <Pre

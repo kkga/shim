@@ -44,7 +44,7 @@ function Pre({ code, children, className, title, collapsed, raw }: PreProps) {
     >
       {title ?
         <div className="bg-neutral-base border-neutral-3 flex justify-between border-b p-2 pl-4">
-          <span className="text-neutral-text-contrast font-semibold">
+          <span className="text-neutral-text-contrast font-sans text-sm font-medium">
             {title}
           </span>
 

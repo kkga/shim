@@ -20,10 +20,10 @@ export function SideNav(props: { items: NavItem[] }) {
       <header className="bg-panel sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1 px-3">
         <Link
           intent="neutral"
-          className="flex items-center gap-1 no-underline"
+          className="flex items-center gap-1 pl-1 no-underline"
           href="/"
         >
-          <Logo />
+          <Logo withText={false} />
         </Link>
 
         <div className="flex gap-1.5">

@@ -13,7 +13,7 @@ import { InstallInstructions } from "./install-instructions"
 
 export const dynamicParams = false
 export async function generateStaticParams() {
-  let docs = getComponentDocs()
+  let docs = getComponentDocs({ exclude: ["unlisted"] })
   let params = docs
     .filter((doc) => doc.metadata.status !== "unlisted")
     .map((doc) => ({ slug: doc.slug }))
@@ -61,7 +61,7 @@ export default async function DocPage({
 }) {
   let { slug } = await params
 
-  let docs = getComponentDocs()
+  let docs = getComponentDocs({ exclude: ["unlisted"] })
   let doc = docs.find((doc) => doc.slug === slug)
   let { metadata, content } = doc
   let { name, description, category, composes } = metadata
