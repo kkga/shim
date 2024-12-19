@@ -44,7 +44,7 @@ function MetadataRow({
   dependencies,
 }: MetadataRowProps) {
   return (
-    <DataList className="flex-row gap-8">
+    <DataList className="grid grid-cols-2 gap-4 md:flex md:flex-row md:gap-6">
       {docUrl && (
         <DataListItem
           label="Documentation"

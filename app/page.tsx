@@ -1,32 +1,21 @@
-import {
-  ArrowRight,
-  ArrowSquareOut,
-  Shapes,
-} from "@phosphor-icons/react/dist/ssr"
+import { ArrowRight, ArrowSquareOut } from "@phosphor-icons/react/dist/ssr"
 import { Badge } from "@ui/Badge"
 import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
 import { Separator } from "@ui/Separator"
 import { Examples } from "./components/examples"
-import { H1, P } from "./components/mdx/mdx-components"
+import { Logo } from "./components/logo"
+import { P } from "./components/mdx/mdx-components"
 
 export default function Page() {
   return (
-    <main className="bg-neutral-bg-subtle flex min-h-svh flex-col px-8 py-16">
-      <div className="mx-auto grid max-w-7xl grid-cols-3 gap-12 text-sm">
-        <div className="col-span-1">
-          <div className="flex h-8 items-center gap-1">
-            <Shapes
-              size={16}
-              weight="fill"
-              className="text-neutral-text-contrast"
-            />
-            <H1 className="text-neutral-text-contrast text-[13px] font-bold">
-              Shim
-            </H1>
-
-            <Badge size={2} className="ml-4" intent="warning">
-              Early Alpha
+    <main className="bg-neutral-bg-subtle flex min-h-svh flex-col">
+      <div className="mx-auto flex w-full max-w-7xl flex-col text-sm lg:grid lg:grid-cols-3 lg:gap-12">
+        <div className="col-span-1 p-8 lg:p-12">
+          <div className="flex items-center gap-4">
+            <Logo />
+            <Badge size={2} intent="warning">
+              Early alpha
             </Badge>
           </div>
 
@@ -83,7 +72,7 @@ export default function Page() {
           </DataList>
         </div>
 
-        <div className="col-span-2">
+        <div className="col-span-2 hidden pt-12 lg:block">
           <Examples />
         </div>
       </div>

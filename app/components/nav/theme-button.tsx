@@ -1,11 +1,12 @@
 "use client"
 
+import { Size } from "@/lib/theme"
 import { MoonStars, Sun } from "@phosphor-icons/react"
 import { Button } from "@ui/Button"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
-function ThemeButton() {
+function ThemeButton({ size }: { size?: Size }) {
   let [mounted, setMounted] = useState(false)
   let { theme, systemTheme, resolvedTheme, setTheme } = useTheme()
 
@@ -36,6 +37,7 @@ function ThemeButton() {
       isSquare
       variant="ghost"
       intent="neutral"
+      size={size}
     >
       {resolvedTheme === "dark" ?
         <MoonStars weight="duotone" size={16} />

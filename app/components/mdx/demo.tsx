@@ -13,8 +13,8 @@ function Demo({ demo, code, className, stacked = false }: Props) {
     <div
       className={clsx(
         "s-box",
-        "bg-panel my-8 flex flex-col overflow-hidden rounded-lg shadow-[var(--shadow-xs)]",
-        stacked ? "md:flex-col" : "md:flex-row",
+        "bg-panel my-8 flex flex-col overflow-hidden shadow-[var(--shadow-xs)] lg:rounded-lg",
+        stacked ? "lg:flex-col" : "lg:flex-row",
       )}
     >
       <div
@@ -30,7 +30,7 @@ function Demo({ demo, code, className, stacked = false }: Props) {
         <div
           className={clsx(
             "border-neutral-3 flex flex-col overflow-auto",
-            stacked ? "border-t" : "md:flex-3 border-l",
+            stacked ? "border-t" : "lg:flex-3 border-t lg:border-l",
           )}
         >
           <Pre

@@ -2,6 +2,8 @@
   --font-family-mono: var(--font-mono);
   --font-family-sans: var(--font-sans);
 
+  --sidebar-width: 280px;
+
   --sh-class: var(--color-neutral-12);
   --sh-identifier: var(--color-neutral-12);
   --sh-sign: var(--color-neutral-10);

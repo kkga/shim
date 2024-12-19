@@ -1,4 +1,4 @@
-import { H3, Note, P, Pre } from "@/app/components/mdx/mdx-components"
+import { H2, Note, P, Pre } from "@/app/components/mdx/mdx-components"
 import { Code as CodeIcon, Terminal } from "@phosphor-icons/react/dist/ssr"
 import { Link } from "@ui/Link"
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
@@ -17,7 +17,7 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
 
   return (
     <>
-      <H3>Install</H3>
+      <H2>Install</H2>
       <P>
         Run cURL command to download the file into your project or copy the
         source code below.
@@ -62,14 +62,14 @@ export function InstallInstructions({ filename, dependencies, source }: Props) {
         <TabPanel id="curl" className="p-0">
           <Pre
             code={curlCommand}
-            className="rounded-lg border-none shadow-[var(--shadow-xs)]"
+            className="rounded-none border-none shadow-[var(--shadow-xs)] lg:rounded-lg"
           />
         </TabPanel>
         <TabPanel id="source" className="p-0">
           <Pre
             collapsed
             code={source}
-            className="rounded-lg border-none shadow-[var(--shadow-xs)]"
+            className="rounded-none border-none shadow-[var(--shadow-xs)] lg:rounded-lg"
           />
         </TabPanel>
       </Tabs>

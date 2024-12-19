@@ -1,15 +1,20 @@
 import { Link } from "@/components/Link"
+import { Logo } from "./components/logo"
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-svh flex-row items-center justify-center gap-4 p-12">
-      <h1 className="text-neutral-text-contrast m-0 text-2xl font-semibold">
-        404
-      </h1>
-      <div className="border-neutral-line h-12 border border-l"></div>
-      <p className="m-0 text-sm">
-        Page not found. <Link href="/">Go home</Link>.
-      </p>
+    <section className="flex min-h-svh flex-row gap-4 p-12 text-sm">
+      <div className="w-2xs flex flex-col items-start gap-4">
+        <Logo className="text-neutral-text" />
+        <h1 className="text-neutral-text-contrast m-0 text-lg font-semibold">
+          404
+        </h1>
+        <p>
+          The page you were looking for does not exist. You may have mistyped
+          the address or the page may have moved.
+        </p>
+        <Link href="/">Go home</Link>
+      </div>
     </section>
   )
 }

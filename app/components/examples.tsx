@@ -3,7 +3,7 @@
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
 import { Collection } from "react-aria-components"
 import { ExampleIssueTracker, ExampleRepo } from "../../examples"
-import { ThemeButton } from "./sidebar/theme-button"
+import { ThemeButton } from "./nav/theme-button"
 
 let items = [
   {

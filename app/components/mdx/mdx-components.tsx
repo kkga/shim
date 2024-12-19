@@ -132,11 +132,13 @@ function Note({
   return (
     <div
       className={clsx(
-        "font-book flex items-center gap-2 text-[13px] *:m-0",
+        "font-book flex items-start gap-2 text-[13px] leading-5 *:m-0",
         colors[intent],
       )}
     >
-      {icons[intent]}
+      <div className="flex size-5 shrink-0 items-center justify-center">
+        {icons[intent]}
+      </div>
       {children}
     </div>
   )

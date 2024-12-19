@@ -1,25 +1,29 @@
-import { GithubLogo, Shapes, XLogo } from "@phosphor-icons/react/dist/ssr"
+import { GithubLogo, XLogo } from "@phosphor-icons/react/dist/ssr"
 import { LinkButton } from "@ui/Button"
 import { Link } from "@ui/Link"
 import { Separator } from "@ui/Separator"
 import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
+import clsx from "clsx"
+import { Logo } from "../logo"
 import { Navigation, type NavItem } from "./navigation"
 import { ThemeButton } from "./theme-button"
 
-export function Sidebar(props: { items: NavItem[] }) {
+export function SideNav(props: { items: NavItem[] }) {
   return (
     <aside
+      className={clsx(
+        "sticky top-0 z-20 hidden h-svh lg:flex",
+        "border-neutral-4 bg-panel shrink-0 flex-col overflow-x-hidden overflow-y-scroll border-r text-sm",
+      )}
       style={{ scrollbarWidth: "thin" }}
-      className="border-neutral-4 bg-panel fixed inset-0 right-auto flex w-[inherit] flex-col overflow-x-hidden overflow-y-scroll border-r px-4 text-sm"
     >
-      <header className="bg-panel sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1 pl-1.5">
-        <Link className="flex items-center gap-1 no-underline" href="/">
-          <Shapes
-            size={16}
-            weight="fill"
-            className="text-neutral-text-contrast"
-          />
-          <h1 className="text-neutral-text-contrast text-xs font-bold">Shim</h1>
+      <header className="bg-panel sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1 px-3">
+        <Link
+          intent="neutral"
+          className="flex items-center gap-1 no-underline"
+          href="/"
+        >
+          <Logo />
         </Link>
 
         <div className="flex gap-1.5">
@@ -56,7 +60,9 @@ export function Sidebar(props: { items: NavItem[] }) {
         </div>
       </header>
 
-      <Navigation items={props.items} />
+      <div className="grow overflow-auto">
+        <Navigation items={props.items} />
+      </div>
     </aside>
   )
 }

@@ -20,7 +20,10 @@ export const metadata: Metadata = {
   },
   description: "Toolkit for refined interfaces.",
   openGraph: {
-    title: "Shim",
+    title: {
+      default: "Shim",
+      template: "%s — Shim",
+    },
     description: "Toolkit for refined interfaces.",
     url: baseUrl,
     siteName: "Shim",
@@ -42,17 +45,6 @@ export const metadata: Metadata = {
         url: DarkIcon.src,
       },
     ],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 }
 

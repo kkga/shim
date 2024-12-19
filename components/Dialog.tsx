@@ -18,12 +18,13 @@ import { tv } from "tailwind-variants"
 const style = tv({
   slots: {
     overlay:
-      "animate-fade bg-overlay fixed left-0 top-0 isolate z-20 flex h-[var(--visual-viewport-height)] w-full items-center justify-center p-4 backdrop-grayscale",
+      "animate-fade bg-overlay fixed left-0 top-0 isolate z-20 flex h-[var(--visual-viewport-height)] w-full flex-col items-center justify-center p-4 backdrop-grayscale",
     modal:
-      "animate-slide w-md bg-panel text-neutral-text z-50 overflow-auto rounded-2xl p-4 text-xs shadow-[var(--shadow-xl)] outline-none",
+      "animate-slide bg-panel text-neutral-text z-50 w-full max-w-md overflow-auto rounded-2xl p-4 text-xs shadow-[var(--shadow-xl)] outline-none",
     headingText:
       "text-neutral-text-contrast text-base font-medium leading-tight",
     descriptionText: "text-neutral-text text-[13px]",
+    dialog: "flex h-full flex-col overflow-auto outline-0",
   },
 })
 
@@ -36,7 +37,7 @@ interface DialogProps extends Omit<RACModalOverlayProps, "children"> {
 function Dialog({ title, description, ...props }: DialogProps) {
   let state = useContext(OverlayTriggerStateContext)
   let { children } = props
-  let { overlay, modal, headingText, descriptionText } = style()
+  let { overlay, modal, dialog, headingText, descriptionText } = style()
 
   if (typeof children === "function") {
     if (state) {
@@ -53,9 +54,9 @@ function Dialog({ title, description, ...props }: DialogProps) {
         {...props}
         className={cxRenderProps(props.className, modal())}
       >
-        <RACDialog className="flex flex-col gap-4 outline-0">
+        <RACDialog aria-label={title} className={dialog()}>
           {title || description ?
-            <div className="flex flex-col gap-1.5">
+            <div className="mb-4 flex flex-col gap-1.5">
               {title && (
                 <RACHeading slot="title" className={headingText()}>
                   {title}
