@@ -9,59 +9,52 @@ composes:
   - Popover
 ---
 
-### Content
-
-Menu follows the
-[React Aria Collections API](https://react-spectrum.adobe.com/react-aria/collections.html)
-and accepts both static and dynamic items.
-
-To use dynamic items, pass an `items` prop to the Menu component and a render
-function as children. The render function will be called with each item in the
-`items` iterable and should return a React element.
-
 <Demo
   className="items-start"
+  title="Content"
   demo={<MenuDemo.Content />}
   code={demos.content}
-/>
+>
+  Menu follows the [React Aria Collections
+  API](https://react-spectrum.adobe.com/react-aria/collections.html) and accepts
+  both static and dynamic items. To use dynamic items, pass an `items` prop to
+  the Menu component and a render function as children. The render function will
+  be called with each item in the `items` iterable and should return a React
+  element.
+</Demo>
 
-### Selection
-
-Menu supports single selection, multiple selection, and no selection. To enable
-selection, pass a `selectionMode` prop to the Menu component. The default is
-`none`.
-
-<Demo
-  className="items-start"
-  demo={<MenuDemo.Selection />}
-  code={demos.selection}
-/>
-
-### Size
-
-To change the size of the menu, pass a `size` prop to the Menu component.
-
-<Demo className="items-start" demo={<MenuDemo.Size />} code={demos.size} />
-
-### Sections
-
-To group items in a menu, use the `<MenuSection>` component. It accepts a
-`title` prop to provide a heading for the section.
+<Demo title="Selection" demo={<MenuDemo.Selection />} code={demos.selection}>
+  Menu supports single selection, multiple selection, and no selection. To
+  enable selection, pass a `selectionMode` prop to the Menu component. The
+  default is `none`.
+</Demo>
 
 <Demo
+  title="Size"
+  className="flex-row"
+  demo={<MenuDemo.Size />}
+  code={demos.size}
+>
+  To change the size of the menu, pass a `size` prop to the Menu component.
+</Demo>
+
+<Demo
+title="Sections"
   className="items-start"
   demo={<MenuDemo.Sections />}
   code={demos.sections}
-/>
-
-### Submenus
-
-To create a submenu, use the `<SubmenuTrigger>` component. It accepts two
-children: a trigger element and a submenu element. The submenu element should be
-a `<Menu>` component.
+>
+To group items in a menu, use the `<MenuSection>` component. It accepts a
+`title` prop to provide a heading for the section.
+</Demo>
 
 <Demo
+  title="Submenu"
   className="items-start"
   demo={<MenuDemo.Submenu />}
   code={demos.submenu}
-/>
+>
+To create a submenu, use the `<SubmenuTrigger>` component. It accepts two
+children: a trigger element and a submenu element. The submenu element should be
+a `<Menu>` component.
+</Demo>

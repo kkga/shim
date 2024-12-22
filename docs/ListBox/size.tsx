@@ -1,7 +1,7 @@
 import { ListBox, ListBoxItem } from "@ui/ListBox"
 
 export default () => (
-  <div className="grid grid-cols-4 gap-4">
+  <>
     <ListBox size={1} selectionMode="single" aria-label="Favorite animal">
       <ListBoxItem>Cat</ListBoxItem>
       <ListBoxItem>Dog</ListBoxItem>
@@ -22,5 +22,5 @@ export default () => (
       <ListBoxItem>Dog</ListBoxItem>
       <ListBoxItem>Kangaroo</ListBoxItem>
     </ListBox>
-  </div>
+  </>
 )

@@ -9,7 +9,7 @@ export function getMainDemo(name: string) {
         <ProgressBar
           isIndeterminate
           aria-label="Loading demo"
-          className="m-auto w-32"
+          className="w-32"
         />
       </div>
     ),
@@ -68,6 +68,9 @@ export const demoComponents: Record<string, DemoComponent> = {
     Size: dynamic(() => import("@docs/ToggleButton").then((mod) => mod.Size)),
     Intent: dynamic(() =>
       import("@docs/ToggleButton").then((mod) => mod.Intent),
+    ),
+    Variant: dynamic(() =>
+      import("@docs/ToggleButton").then((mod) => mod.Variant),
     ),
   },
   ToggleButtonGroupDemo: {

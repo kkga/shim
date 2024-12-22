@@ -175,9 +175,6 @@ export function Navigation({
           className="grid auto-cols-fr gap-1"
           items={sections}
           selectedKeys={[pathname]}
-          onSelectionChange={() => {
-            console.log("onSelectionChange")
-          }}
           layout="grid"
           renderEmptyState={() => (
             <p className="text-neutral-placeholder p-4 text-center text-sm font-medium">

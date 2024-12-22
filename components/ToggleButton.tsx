@@ -13,7 +13,7 @@ import { tv, VariantProps } from "tailwind-variants"
 
 const style = tv({
   extend: focusStyle,
-  base: ["inline-flex items-center justify-center text-xs font-medium"],
+  base: "inline-flex items-center justify-center text-xs font-medium",
   variants: {
     variant: {
       soft: "",
@@ -45,6 +45,7 @@ const style = tv({
       true: "text-neutral-placeholder! bg-neutral-bg-subtle! inset-ring inset-ring-neutral-line cursor-not-allowed",
     },
     isSquare: { true: null, false: null },
+    // TODO improve the group styling
     isInGroup: {
       true: [
         "peer -ml-px flex-1 shrink-0",
@@ -72,11 +73,14 @@ const style = tv({
 
 interface ToggleButtonProps
   extends RACToggleButtonProps,
-    Omit<VariantProps<typeof style>, "isInGroup"> {}
+    Omit<VariantProps<typeof style>, "isInGroup"> {
+  variant?: "soft" | "ghost"
+}
 
 function ToggleButton({
   variant: _variant,
   size: _size,
+  intent,
   ...props
 }: ToggleButtonProps) {
   let isInGroup = useContext(ToggleGroupStateContext) !== null
@@ -96,6 +100,7 @@ function ToggleButton({
             isSelected,
             isDisabled,
             size,
+            intent,
             variant: buttonVariant,
             isSquare:
               typeof props.isSquare === "boolean" ?

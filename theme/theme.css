@@ -36,18 +36,18 @@
 
   /* Semantic aliases: https://www.radix-ui.com/colors/docs/overview/aliasing#semantic-aliases */
 
-  --color-neutral-1: var(--slate-1);
-  --color-neutral-2: var(--slate-2);
-  --color-neutral-3: var(--slate-a3);
-  --color-neutral-4: var(--slate-a4);
-  --color-neutral-5: var(--slate-a5);
-  --color-neutral-6: var(--slate-a6);
-  --color-neutral-7: var(--slate-a7);
-  --color-neutral-8: var(--slate-a8);
-  --color-neutral-9: var(--slate-9);
-  --color-neutral-10: var(--slate-10);
-  --color-neutral-11: var(--slate-a11);
-  --color-neutral-12: var(--slate-a12);
+  --color-neutral-1: var(--gray-1);
+  --color-neutral-2: var(--gray-2);
+  --color-neutral-3: var(--gray-a3);
+  --color-neutral-4: var(--gray-a4);
+  --color-neutral-5: var(--gray-a5);
+  --color-neutral-6: var(--gray-a6);
+  --color-neutral-7: var(--gray-a7);
+  --color-neutral-8: var(--gray-a8);
+  --color-neutral-9: var(--gray-9);
+  --color-neutral-10: var(--gray-10);
+  --color-neutral-11: var(--gray-a11);
+  --color-neutral-12: var(--gray-a12);
 
   --color-accent-1: var(--iris-a1);
   --color-accent-2: var(--iris-a2);
@@ -181,9 +181,11 @@
   /* Functional colors /
 
   /* Base body background color */
-  --color-background: var(--color-neutral-2);
-  /* Panel background color for popovers, menus, etc */
-  --color-panel: var(--color-neutral-1);
+  --color-background: var(--color-neutral-1);
+  /* Panel background color */
+  --color-panel: var(--color-neutral-2);
+  /* Popover background color for menus and dialogs */
+  --color-popover: var(--color-white);
   /* Overlay background color for dialogs */
   --color-overlay: var(--black-a6);
 
@@ -270,6 +272,12 @@
 
 .dark,
 .dark-theme {
+  --color-pure: var(--color-black);
+  --color-background: var(--color-neutral-1);
+  --color-panel: var(--color-neutral-2);
+  --color-popover: var(--color-neutral-2);
+  --color-overlay: var(--black-a8);
+
   /* prettier-ignore */
   --shadow-inner: 
     inset 0 -1px 1px 0 var(--slate-a3),
@@ -310,11 +318,6 @@
     0 12px 60px var(--black-a4),
     0 16px 64px var(--black-a6),
     0 16px 36px -20px var(--black-a11);
-
-  --color-pure: var(--color-black);
-  --color-background: var(--color-neutral-1);
-  --color-panel: var(--color-neutral-2);
-  --color-overlay: var(--black-a8);
 }
 
 @keyframes fade-in {

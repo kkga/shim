@@ -8,20 +8,18 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/grid/
 status: alpha
 ---
 
-### Selection
+<Demo
+  title="Selection"
+  demo={<TagGroupDemo.Selection />}
+  code={demos.selection}
+>
+  Use `selectionMode` to allow tags to be selected.
+</Demo>
 
-Use `selectionMode` to allow tags to be selected.
+<Demo title="Removing" demo={<TagGroupDemo.Removing />} code={demos.removing}>
+  Use `onRemove` to allow tags to be removed.
+</Demo>
 
-<Demo demo={<TagGroupDemo.Selection />} code={demos.selection} />
-
-### Removing
-
-Use `onRemove` to allow tags to be removed.
-
-<Demo demo={<TagGroupDemo.Removing />} code={demos.removing} />
-
-### Color
-
-Use `color` to change the color of the tags.
-
-<Demo demo={<TagGroupDemo.Color />} code={demos.color} />
+<Demo title="Color" demo={<TagGroupDemo.Color />} code={demos.color}>
+  Use `color` to change the color of the tags.
+</Demo>

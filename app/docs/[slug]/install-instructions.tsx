@@ -1,78 +1,86 @@
-import { H2, Note, P, Pre } from "@/app/components/mdx/mdx-components"
-import { Code as CodeIcon, Terminal } from "@phosphor-icons/react/dist/ssr"
+"use client"
+
+import { CopyButton } from "@/app/components/mdx/copy-button"
+import { CodeBlock, H2, Note, P } from "@/app/components/mdx/mdx-components"
+import { Tab, TabList, TabPanel, Tabs } from "@/components/Tabs"
 import { Link } from "@ui/Link"
-import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
+import { useState } from "react"
+import { Key } from "react-aria-components"
 
 interface Props {
-  filename: string
+  name: string
   source: string
   dependencies?: { name: string; slug: string }[]
 }
 
-const GITHUB_RAW_URL =
-  "https://raw.githubusercontent.com/kkga/shim/master/components"
+const URL = "https://shim.kkga.me/api"
 
-export function InstallInstructions({ filename, dependencies, source }: Props) {
-  let curlCommand = `curl -O '${GITHUB_RAW_URL}/${filename}.tsx'`
+export function InstallInstructions({ name, dependencies, source }: Props) {
+  let curlCommand = `curl -o ${name}.tsx '${URL}?c=${name}'`
+  let [tab, setTab] = useState<Key>("command")
 
   return (
-    <>
-      <H2>Install</H2>
-      <P>
-        Run cURL command to download the file into your project or copy the
-        source code below.
-      </P>
+    <section className="col-span-full grid grid-cols-subgrid">
+      <div className="py-3 *:last:mb-0">
+        <H2>Installation</H2>
+        <P>
+          Run cURL command to download the file into your project or copy the
+          source code manually.
+        </P>
 
-      {dependencies && (
-        <Note intent="warning">
-          <P>
-            Install the dependencies before using this component:{" "}
-            {dependencies.map(({ name, slug }, i) => (
-              <span key={name}>
-                {i > 0 && ", "}
-                <Link
-                  intent="warning"
-                  variant="underline"
-                  href={`/docs/${slug}`}
-                >
-                  {name}
-                </Link>
-              </span>
-            ))}
-          </P>
-        </Note>
-      )}
+        {dependencies && (
+          <Note intent="warning">
+            <P>
+              Install the dependencies before using this component:{" "}
+              {dependencies.map(({ name, slug }, i) => (
+                <span key={name}>
+                  {i > 0 && ", "}
+                  <Link
+                    intent="warning"
+                    variant="underline"
+                    href={`/docs/${slug}`}
+                  >
+                    {name}
+                  </Link>
+                </span>
+              ))}
+            </P>
+          </Note>
+        )}
+      </div>
 
-      <Tabs className="s-box my-8 gap-0">
-        <TabList
-          variant="underline"
-          size={1}
-          className="border-none pl-4 shadow-none"
-        >
-          <Tab id="curl">
-            <Terminal size={16} weight="duotone" />
-            cURL
-          </Tab>
-          <Tab id="source">
-            <CodeIcon size={16} weight="duotone" />
-            Source
-          </Tab>
+      <Tabs
+        onSelectionChange={(tab) => setTab(tab)}
+        defaultSelectedKey={tab}
+        className="bg-panel relative overflow-auto rounded-lg"
+      >
+        <TabList variant="underline" size={1} className="shadow-neutral-4 pl-4">
+          <Tab id="command">Command</Tab>
+          <Tab id="source">Source</Tab>
         </TabList>
+        <div className="absolute right-1 top-1 z-10">
+          <CopyButton
+            className="backdrop-blur-sm"
+            text={tab === "command" ? curlCommand : source}
+            title="Copy to clipboard"
+          />
+        </div>
 
-        <TabPanel id="curl" className="p-0">
-          <Pre
+        <TabPanel id="command" className="overflow-auto">
+          <CodeBlock
+            clickToCopy={false}
             code={curlCommand}
-            className="rounded-none border-none shadow-[var(--shadow-xs)] lg:rounded-lg"
+            className="bg-transparent"
           />
         </TabPanel>
-        <TabPanel id="source" className="p-0">
-          <Pre
-            collapsed
+        <TabPanel id="source" className="overflow-auto">
+          <CodeBlock
+            clickToCopy={false}
             code={source}
-            className="rounded-none border-none shadow-[var(--shadow-xs)] lg:rounded-lg"
+            className="bg-transparent"
           />
         </TabPanel>
       </Tabs>
-    </>
+    </section>
   )
 }

@@ -1,23 +1,38 @@
+import clsx from "clsx"
+import { H1, P } from "../components/mdx/mdx-components"
+
 interface DocHeaderProps {
   title: string
-  subtitle: string
+  subtitle?: string
   children?: React.ReactNode
+  className?: string
 }
 
-export function DocHeader({ title, subtitle, children }: DocHeaderProps) {
+export function DocHeader({
+  title,
+  subtitle,
+  children,
+  className,
+}: DocHeaderProps) {
   return (
-    <header className="relative mb-16 flex flex-col gap-6">
+    <header
+      className={clsx(
+        "border-neutral-4 relative col-span-full flex flex-col gap-6 border-b pb-6",
+        className,
+      )}
+    >
       <div>
-        <h1 className="text-neutral-text-contrast text-lg font-medium leading-tight lg:text-2xl">
-          {title}
-        </h1>
-        <p className="text-neutral-text mt-2 text-sm lg:text-base">
-          {subtitle}
-        </p>
+        <H1 className="">{title}</H1>
+        {subtitle && (
+          <P className="mb-0! mt-2! text-base font-medium">{subtitle}</P>
+        )}
       </div>
-      <div className="bg-neutral-line h-px w-16"></div>
-
-      {children}
+      {children && (
+        <>
+          <div aria-hidden className="bg-neutral-4 h-px w-16"></div>
+          {children}
+        </>
+      )}
     </header>
   )
 }

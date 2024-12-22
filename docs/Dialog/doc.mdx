@@ -6,18 +6,22 @@ docUrl: https://react-spectrum.adobe.com/react-aria/Modal.html
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
 ---
 
-### Controlled open state
+<Demo
+  title="Controlled open state"
+  demo={<DialogDemo.Controlled />}
+  code={demos.controlled}
+>
+  The example above wraps the Dialog in a `<DialogTrigger>` component, which
+  handles opening. To control the open state of the Dialog programmatically, use
+  `isOpen` and `onOpenChange` props.
+</Demo>
 
-The above example wraps the Dialog in a `<DialogTrigger>` component, which
-handles opening. To control the open state of the Dialog programmatically, use
-`isOpen` and `onOpenChange` props.
-
-<Demo demo={<DialogDemo.Controlled />} code={demos.controlled} />
-
-### Accessing uncontrolled state
-
-To programmatically close an uncontrolled dialog, wrap the children into a
-function that receives a `close` function as a parameter. This function can be
-called to close the dialog.
-
-<Demo demo={<DialogDemo.Close />} code={demos.close} />
+<Demo
+  title="Accessing uncontrolled state"
+  demo={<DialogDemo.Close />}
+  code={demos.close}
+>
+  To programmatically close an uncontrolled dialog, wrap the children into a
+  function that receives a `close` function as a parameter. This function can be
+  called to close the dialog.
+</Demo>

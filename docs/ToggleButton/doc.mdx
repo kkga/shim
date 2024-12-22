@@ -6,42 +6,47 @@ docUrl: https://react-spectrum.adobe.com/react-aria/ToggleButton.html
 ariaUrl: https://www.w3.org/WAI/ARIA/apg/patterns/button/
 ---
 
-### States
-
-Use `isSelected` and `isDisabled` props to set the button state.
-
 <Demo
-  className="items-start"
+  title="States"
+  className="flex-row items-start"
   demo={<ToggleButtonDemo.States />}
   code={demos["states"]}
-/>
-
-### Size
-
-Use `size` prop to set the button size.
+>
+  Use `isSelected` and `isDisabled` props to control the button state.
+</Demo>
 
 <Demo
-  className="items-start"
+  title="Size"
+  className="flex-row items-start"
   demo={<ToggleButtonDemo.Size />}
   code={demos["size"]}
-/>
-
-### Intent
-
-Use `intent` prop to set the semantic color.
+>
+  Use `size` prop to set the button size.
+</Demo>
 
 <Demo
-  className="items-start"
+  title="Intent"
+  className="flex-row items-start"
   demo={<ToggleButtonDemo.Intent />}
   code={demos["intent"]}
-/>
-
-### Controlled state
-
-Use `isSelected` and `onChange` props to control the state.
+>
+  Use `intent` prop to set the semantic color.
+</Demo>
 
 <Demo
+  title="Variant"
+  className="flex-row items-start"
+  demo={<ToggleButtonDemo.Variant />}
+  code={demos["variant"]}
+>
+  Use `variant` prop to set the visual style.
+</Demo>
+
+<Demo
+  title="Controlled"
   className="items-start"
   demo={<ToggleButtonDemo.Controlled />}
   code={demos["controlled"]}
-/>
+>
+  Use `isSelected` and `onChange` props to control the state.
+</Demo>

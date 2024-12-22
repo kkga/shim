@@ -13,7 +13,7 @@ export function SideNav(props: { items: NavItem[] }) {
     <aside
       className={clsx(
         "sticky top-0 z-20 hidden h-svh lg:flex",
-        "border-neutral-4 bg-panel shrink-0 flex-col overflow-x-hidden overflow-y-scroll border-r text-sm",
+        "bg-panel shrink-0 flex-col overflow-x-hidden overflow-y-scroll text-sm",
       )}
       style={{ scrollbarWidth: "thin" }}
     >

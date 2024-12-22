@@ -29,6 +29,16 @@ const style = tv({
     panel: "",
   },
   variants: {
+    // TODO: Add support for `soft` variant
+    variant: {
+      soft: {
+        disclosure: "bg-transparent",
+        button: "bg-neutral-bg-subtle",
+      },
+      surface: {
+        disclosure: "bg-neutral-bg text-neutral-text group",
+      },
+    },
     size: {
       1: {
         disclosure: "rounded-md text-xs",

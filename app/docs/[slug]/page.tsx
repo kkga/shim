@@ -1,4 +1,4 @@
-import { Demo } from "@/app/components/mdx/demo"
+import { Demo } from "@/app/components/demo"
 import { getMainDemo } from "@/app/components/mdx/demo-components"
 import {
   getComponentDocs,
@@ -13,10 +13,8 @@ import { InstallInstructions } from "./install-instructions"
 
 export const dynamicParams = false
 export async function generateStaticParams() {
-  let docs = getComponentDocs({ exclude: ["unlisted"] })
-  let params = docs
-    .filter((doc) => doc.metadata.status !== "unlisted")
-    .map((doc) => ({ slug: doc.slug }))
+  let docs = getComponentDocs({ exclude: ["planned"] })
+  let params = docs.map((doc) => ({ slug: doc.slug }))
   return params
 }
 
@@ -61,7 +59,7 @@ export default async function DocPage({
 }) {
   let { slug } = await params
 
-  let docs = getComponentDocs({ exclude: ["unlisted"] })
+  let docs = getComponentDocs({ exclude: ["planned"] })
   let doc = docs.find((doc) => doc.slug === slug)
   let { metadata, content } = doc
   let { name, description, category, composes } = metadata
@@ -93,7 +91,7 @@ export default async function DocPage({
   })
 
   return (
-    <article>
+    <article className="bg-background container grid min-h-screen max-w-6xl grid-cols-1 gap-6 p-6 md:grid-cols-[2fr_3fr] lg:gap-8 lg:p-8">
       <DocHeader title={name} subtitle={description}>
         <MetadataRow
           dependencies={dependencies.length > 0 ? dependencies : undefined}
@@ -102,15 +100,14 @@ export default async function DocPage({
       </DocHeader>
 
       <Demo
-        className={category === "Buttons" ? "items-start" : ""}
-        stacked={name === "Toolbar"}
         demo={<MainDemo />}
         code={demos.main}
+        className={category === "Buttons" ? "items-start" : ""}
       />
 
       <InstallInstructions
         dependencies={dependencies.length > 0 ? dependencies : undefined}
-        filename={name}
+        name={name}
         source={source}
       />
 

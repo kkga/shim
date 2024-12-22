@@ -60,7 +60,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${fontMono.variable} ${fontSans.variable}`}
       >
-        <body className="bg-background text-neutral-text antialiased">
+        <body className="text-neutral-text bg-panel antialiased">
           <LocalizedStringProvider locale="en-US" />
           <ClientProviders>
             <ThemeProvider

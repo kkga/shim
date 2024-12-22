@@ -83,7 +83,6 @@ function getDemosSource(componentDir: string) {
 
 function getFileSource(filePath: string) {
   filePath = path.join(process.cwd(), filePath)
-  console.log(filePath)
   return fs.readFileSync(filePath, "utf-8").trim()
 }
 

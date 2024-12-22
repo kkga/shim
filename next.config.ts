@@ -1,9 +1,9 @@
 import { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  // experimental: {
-  //   typedRoutes: true,
-  // },
+  experimental: {
+    reactCompiler: true,
+  },
   // transpilePackages: ["next-mdx-remote"],
 }
 

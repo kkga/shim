@@ -16,11 +16,14 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
 
   return (
     <div
-      className={cx("flex flex-col overflow-auto", collapsed ? "max-h-72" : "")}
+      className={cx(
+        "flex flex-col overflow-auto",
+        collapsed ? "max-h-[20rem]" : "",
+      )}
     >
       <div
         className={cx(
-          "flex-1 pb-12",
+          "grow-1 pb-12",
           collapsed ? "overflow-hidden" : "overflow-auto",
         )}
       >
@@ -32,7 +35,7 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
           className="backdrop-blur"
           onPress={toggle}
           intent="neutral"
-          size={1}
+          size={2}
         >
           {collapsed ?
             <ArrowLineDown size={16} />

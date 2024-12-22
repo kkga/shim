@@ -42,6 +42,7 @@ function CopyButton({ children, text, title, className }: Props) {
     <TooltipTrigger delay={500}>
       <Button
         variant="ghost"
+        size={1}
         onPress={handleCopy}
         intent={justCopied ? "success" : "neutral"}
         className={className}

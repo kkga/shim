@@ -1,6 +1,5 @@
 "use client"
 
-import { focusStyle } from "@lib/style"
 import { Size, Theme, useThemeProps } from "@lib/theme"
 import { createContext, useContext } from "react"
 import {
@@ -21,8 +20,8 @@ const style = tv({
     tabs: "flex",
     tabList: "group inline-flex items-stretch justify-start",
     tab: [
-      focusStyle(),
       "text-neutral-text relative inline-flex cursor-default items-center gap-1.5 font-medium",
+      "outline-0",
       // indicator
       "before:absolute after:absolute after:inset-x-0",
       "group-data-[orientation=horizontal]:before:inset-x-0 group-data-[orientation=horizontal]:before:bottom-0 group-data-[orientation=horizontal]:before:h-0.5",
@@ -31,7 +30,7 @@ const style = tv({
     tabPanel: "grow-1",
   },
   defaultVariants: {
-    variant: "underline",
+    variant: "soft",
     size: 1,
     orientation: "horizontal",
   },
@@ -88,6 +87,11 @@ const style = tv({
         tab: "text-neutral-placeholder cursor-not-allowed",
       },
     },
+    isFocusVisible: {
+      true: {
+        tab: "after:outline-accent-focus-ring after:outline-2 after:-outline-offset-2",
+      },
+    },
   },
   compoundVariants: [
     {
@@ -122,7 +126,7 @@ const style = tv({
 })
 
 type TabListVariant = "soft" | "underline"
-const TabListVariantContext = createContext<TabListVariant>("underline")
+const TabListVariantContext = createContext<TabListVariant>("soft")
 
 type TabsProps = RACTabsProps
 function Tabs(props: TabsProps) {
@@ -148,7 +152,7 @@ function TabList<T extends object>(props: TabListProps<T>) {
 
   return (
     <Theme {...themeProps}>
-      <TabListVariantContext.Provider value={props.variant || "underline"}>
+      <TabListVariantContext.Provider value={props.variant || "soft"}>
         <RACTabList
           {...props}
           className={composeRenderProps(

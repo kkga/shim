@@ -1,10 +1,15 @@
+import {
+  Disclosure,
+  DisclosureHeader,
+  DisclosurePanel,
+} from "@/components/Disclosure"
 import { Info, WarningDiamond } from "@phosphor-icons/react/dist/ssr"
 import { clsx } from "clsx"
 import type { MDXRemoteProps } from "next-mdx-remote"
 import { default as NextLink } from "next/link"
 import { ComponentPropsWithoutRef } from "react"
-import { Code, Pre } from "./codeblock"
-import { Demo } from "./demo"
+import { Demo } from "../demo"
+import { Code, CodeBlock } from "./code-block"
 import { demoComponents } from "./demo-components"
 import { Step, Steps } from "./steps"
 
@@ -40,7 +45,7 @@ function H1({ className, ...props }: ComponentPropsWithoutRef<"h1">) {
   return (
     <h1
       className={clsx(
-        "text-neutral-text-contrast text-3xl font-medium leading-tight",
+        "text-neutral-text-contrast scroll-mt-6 text-balance text-2xl font-semibold leading-tight tracking-tight",
         className,
       )}
       {...props}
@@ -52,7 +57,7 @@ function H2({ className, ...props }: ComponentPropsWithoutRef<"h2">) {
   return (
     <h2
       className={clsx(
-        "text-neutral-text-contrast mb-3 mt-12 text-lg font-medium leading-tight",
+        "text-neutral-text-contrast not-first:mt-12 mb-3 scroll-mt-6 text-balance text-base font-medium leading-tight",
         className,
       )}
       {...props}
@@ -64,7 +69,7 @@ function H3({ className, ...props }: ComponentPropsWithoutRef<"h3">) {
   return (
     <h3
       className={clsx(
-        "text-neutral-text-contrast mb-2 mt-12 text-base font-medium leading-tight",
+        "text-neutral-text-contrast not-first:mt-12 mb-2 scroll-mt-6 text-balance text-base font-medium leading-tight",
         className,
       )}
       {...props}
@@ -76,7 +81,7 @@ function H4({ className, ...props }: ComponentPropsWithoutRef<"h4">) {
   return (
     <h4
       className={clsx(
-        "text-neutral-text-contrast mb-2 mt-6 text-base font-medium leading-tight",
+        "text-neutral-text-contrast not-first::mt-6 mb-2 scroll-mt-6 text-balance text-base font-medium leading-tight",
         className,
       )}
       {...props}
@@ -88,7 +93,7 @@ function H5({ className, ...props }: ComponentPropsWithoutRef<"h5">) {
   return (
     <h5
       className={clsx(
-        "text-neutral-text-contrast mb-2 mt-6 text-sm font-medium",
+        "text-neutral-text-contrast not-first:mt-6 mb-2 scroll-mt-6 text-balance text-sm font-medium",
         className,
       )}
       {...props}
@@ -100,7 +105,7 @@ function H6({ className, ...props }: ComponentPropsWithoutRef<"h6">) {
   return (
     <h6
       className={clsx(
-        "text-neutral-text-contrast mb-4 mt-8 text-sm font-medium",
+        "text-neutral-text-contrast not-first::mt-8 mb-4 scroll-mt-6 text-balance text-sm font-medium",
         className,
       )}
       {...props}
@@ -109,7 +114,7 @@ function H6({ className, ...props }: ComponentPropsWithoutRef<"h6">) {
 }
 
 function P({ className, ...props }: ComponentPropsWithoutRef<"p">) {
-  return <p className={clsx("mb-4 max-w-[72ch]", className)} {...props} />
+  return <p className={clsx("mb-4 max-w-prose", className)} {...props} />
 }
 
 function Note({
@@ -132,7 +137,7 @@ function Note({
   return (
     <div
       className={clsx(
-        "font-book flex items-start gap-2 text-[13px] leading-5 *:m-0",
+        "font-book flex items-start gap-2 rounded-md text-[13px] leading-5 *:m-0 [&_code]:text-current",
         colors[intent],
       )}
     >
@@ -159,7 +164,7 @@ const mdxComponents: MDXRemoteProps["components"] = {
   h6: H6,
   p: P,
   ul: (props: ComponentPropsWithoutRef<"ul">) => (
-    <ul className="my-4 max-w-prose list-outside list-disc pl-4" {...props} />
+    <ul className="my-4 list-outside list-disc pl-4" {...props} />
   ),
   li: (props: ComponentPropsWithoutRef<"li">) => (
     <li className="mb-2" {...props} />
@@ -173,16 +178,23 @@ const mdxComponents: MDXRemoteProps["components"] = {
   ),
   a: Link,
   code: Code,
-  pre: Pre,
+  pre: (props) => {
+    console.log(props)
+    return <CodeBlock {...props} />
+  },
   Demo,
+  Section: Demo,
   Note,
   Steps,
   Step,
-  Pre,
+  CodeBlock,
+  Disclosure,
+  DisclosureHeader,
+  DisclosurePanel,
   ...demoComponents,
 }
 
-export { Code, H1, H2, H3, H4, H5, H6, HR, mdxComponents, Note, P, Pre }
+export { Code, CodeBlock, H1, H2, H3, H4, H5, H6, HR, mdxComponents, Note, P }
 
 declare global {
   type MDXProvidedComponents = typeof mdxComponents

@@ -18,8 +18,8 @@ export function TopNav(props: { items: NavItem[] }) {
   return (
     <aside
       className={clsx(
-        "fixed top-0 z-20 w-full lg:hidden",
-        "border-neutral-4 bg-panel flex shrink-0 flex-col overflow-x-hidden overflow-y-scroll border-b px-1 text-sm",
+        "sticky top-0 z-20 lg:hidden",
+        "border-neutral-4 bg-panel flex shrink-0 flex-col border-b px-1 text-sm",
       )}
     >
       <header className="bg-panel sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1">

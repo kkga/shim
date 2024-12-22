@@ -8,7 +8,7 @@ export default function DocsLayout({
 }: {
   children: React.ReactNode
 }) {
-  let docs = getComponentDocs({ exclude: ["unlisted"] })
+  let docs = getComponentDocs()
   let guides = getGuides()
 
   let navItems = useMemo(() => {
@@ -32,11 +32,7 @@ export default function DocsLayout({
       <SideNav items={navItems} />
       <TopNav items={navItems} />
 
-      <main className="mt-10 flex-1 px-4 py-8 lg:mt-0 lg:px-12 lg:py-16">
-        <div className="mx-auto max-w-5xl text-[14px] leading-normal [&_.s-box]:-mx-4">
-          {children}
-        </div>
-      </main>
+      <main className="overflow-auto text-sm leading-normal">{children}</main>
     </div>
   )
 }

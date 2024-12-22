@@ -4,6 +4,8 @@
 
   --sidebar-width: 240px;
 
+  --color-background: var(--color-pure);
+
   --sh-class: var(--color-neutral-12);
   --sh-identifier: var(--color-neutral-12);
   --sh-sign: var(--color-neutral-10);
@@ -13,6 +15,11 @@
   --sh-jsxliterals: var(--color-neutral-11);
   --sh-property: var(--color-neutral-11);
   --sh-entity: var(--color-neutral-12);
+}
+
+.dark,
+.dark-theme {
+  --color-background: var(--color-neutral-1);
 }
 
 ::selection {
@@ -35,6 +42,10 @@ html {
     margin-top: var(--spacing-4);
     margin-bottom: var(--spacing-4);
   }
+}
+
+hr {
+  border-color: var(--color-neutral-4);
 }
 
 strong {

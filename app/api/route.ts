@@ -3,6 +3,8 @@ import { getComponentSource } from "@/app/docs/lib/utils"
 export async function GET(request: Request) {
   let { searchParams } = new URL(request.url)
   let component = searchParams.get("component")
+  let c = searchParams.get("c")
+  component = component || c
 
   if (component) {
     try {
@@ -16,6 +18,9 @@ export async function GET(request: Request) {
       return new Response("Component not found", { status: 404 })
     }
   } else {
-    return new Response("Please provide a component name", { status: 400 })
+    return new Response(
+      "Provide a component name. Example: shim.kkga.me/api?c=Button",
+      { status: 400 },
+    )
   }
 }

@@ -11,9 +11,6 @@ export default () => (
       <MenuItem>Edit</MenuItem>
       <MenuItem>Duplicate</MenuItem>
       <MenuSeparator />
-      <MenuItem>Share...</MenuItem>
-      <MenuItem>Move...</MenuItem>
-      <MenuSeparator />
       <MenuItem intent="error">Delete</MenuItem>
     </Menu>
   </MenuTrigger>

@@ -2,8 +2,8 @@ import { GearSix, User } from "@phosphor-icons/react/dist/ssr"
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
 
 export default () => (
-  <Tabs className="h-full" orientation="vertical">
-    <TabList>
+  <Tabs orientation="vertical">
+    <TabList className="w-[120px]">
       <Tab id="profile">
         <User weight="duotone" size={16} />
         Profile

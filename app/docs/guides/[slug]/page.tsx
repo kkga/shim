@@ -31,7 +31,7 @@ export default async function GuidePage({
   })
 
   return (
-    <article>
+    <article className="bg-background container min-h-screen max-w-4xl p-6 lg:p-8">
       <DocHeader title={title} subtitle={description} />
       {html}
     </article>

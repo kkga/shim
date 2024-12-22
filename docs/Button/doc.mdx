@@ -6,57 +6,55 @@ docUrl: https://react-spectrum.adobe.com/react-aria/Button.html
 ariaUrl: https://www.w3.org/WAI/ARIA/apg/patterns/button/
 ---
 
-## Size
-
-Use `size` to set the size of the button.
-
-<Demo className="items-start" demo={<ButtonDemo.Size />} code={demos["size"]} />
-
-## Intent
-
-Use `intent` to set the semantic color.
+<Demo
+  title="Size"
+  demo={<ButtonDemo.Size />}
+  code={demos["size"]}
+  className="flex-row items-start"
+>
+  Use `size` prop to set the size of the button.
+</Demo>
 
 <Demo
-  className="items-start"
+  title="Intent"
   demo={<ButtonDemo.Intent />}
   code={demos["intent"]}
-/>
-
-## Variant
-
-Use `variant` to set the visual style.
+  className="flex-row items-start"
+>
+  Use `intent` prop to set the semantic color.
+</Demo>
 
 <Demo
-  className="items-start"
+  title="Variant"
   demo={<ButtonDemo.Variant />}
   code={demos["variant"]}
-/>
-
-## Content
-
-Buttons can contain a label, icon, or both. Use icons by passing an icon
-component as a child. If the only child is an SVG element, the button will be
-sized to a square. This can be controlled manually by setting the `isSquare`
-prop.
-
-<Note>
-  If a visible label isn't specified, an `aria-label` must be provided for
-  accessibility.
-</Note>
+  className="flex-row items-start"
+>
+  Use `variant` prop to set the visual style.
+</Demo>
 
 <Demo
-  className="items-start"
+  title="Content"
   demo={<ButtonDemo.Content />}
   code={demos["content"]}
-/>
-
-## Pending
-
-Use `isPending` to display a loading spinner in place of content, preserving the
-button's original width. The button will be disabled while pending.
+  className="flex-row items-start"
+>
+  Buttons can contain a label, icon, or both. Use icons by passing an icon
+  component as a child. If the only child is an SVG element, the button will be
+  sized to a square. This can be controlled manually by setting the `isSquare`
+  prop.
+  <Note>
+    If a visible label isn't specified, an `aria-label` must be provided for
+    accessibility.
+  </Note>
+</Demo>
 
 <Demo
+  title="Pending"
   className="items-start"
   demo={<ButtonDemo.Pending />}
   code={demos["pending"]}
-/>
+>
+  Use `isPending` to display a loading spinner in place of content, preserving
+  the button's original width. The button will be disabled while pending.
+</Demo>
