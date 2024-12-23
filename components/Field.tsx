@@ -247,7 +247,7 @@ function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
 
 const groupInputStyle = tv({
   base: [
-    "min-w-0 flex-1 appearance-none self-stretch border-none text-inherit outline-0",
+    "field-sizing-content min-w-8 flex-1 appearance-none self-stretch border-none text-inherit outline-0",
     "placeholder:text-neutral-placeholder autofill:bg-transparent [&::-webkit-search-cancel-button]:hidden",
     "data-disabled:cursor-not-allowed group-data-disabled:cursor-not-allowed",
   ],

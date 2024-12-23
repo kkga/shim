@@ -5,7 +5,7 @@ import { ClientProviders, ThemeProvider } from "@/app/components/providers"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
-import { StrictMode } from "react"
+import { StrictMode, type ReactNode } from "react"
 import { LocalizedStringProvider } from "react-aria-components/i18n"
 import { fontMono, fontSans } from "./fonts"
 import DarkIcon from "./icon-dark.png"
@@ -48,11 +48,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <StrictMode>
       <html

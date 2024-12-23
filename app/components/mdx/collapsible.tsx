@@ -8,9 +8,14 @@ import { useState } from "react"
 interface Props {
   children: React.ReactNode
   collapsed?: boolean
+  compact?: boolean
 }
 
-export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
+export function Collapsible({
+  children,
+  compact,
+  collapsed: defaultCollapsed,
+}: Props) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed)
   const toggle = () => setCollapsed((prev) => !prev)
 
@@ -18,31 +23,43 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
     <div
       className={cx(
         "flex flex-col overflow-auto",
-        collapsed ? "max-h-[20rem]" : "",
+        collapsed ?
+          compact ? "max-h-40"
+          : "max-h-[20rem]"
+        : "max-h-[40rem]",
       )}
     >
       <div
         className={cx(
-          "grow-1 pb-12",
-          collapsed ? "overflow-hidden" : "overflow-auto",
+          "grow-1 pb-8",
+          collapsed ? "overflow-hidden *:overflow-hidden" : "overflow-auto",
         )}
+        style={
+          collapsed ?
+            {
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent, black 20px, black calc(100% - 120px), transparent)",
+            }
+          : {
+              WebkitMaskImage:
+                "linear-gradient(to bottom, transparent, black 20px, black calc(100% - 20px), transparent)",
+            }
+        }
       >
         {children}
       </div>
 
-      <div className="to-panel absolute inset-0 top-auto z-10 flex justify-center bg-gradient-to-b from-transparent p-4 pt-8 font-sans">
-        <Button
-          className="backdrop-blur"
-          onPress={toggle}
-          intent="neutral"
-          size={2}
-        >
-          {collapsed ?
-            <ArrowLineDown size={16} />
-          : <ArrowLineUp size={16} />}
-          {collapsed ? "Expand" : "Collapse"}
-        </Button>
-      </div>
+      <Button
+        className="absolute inset-0 bottom-4 top-auto z-10 m-auto w-fit backdrop-blur"
+        onPress={toggle}
+        intent="neutral"
+        size={1}
+      >
+        {collapsed ?
+          <ArrowLineDown size={16} />
+        : <ArrowLineUp size={16} />}
+        {collapsed ? "Expand" : "Collapse"}
+      </Button>
     </div>
   )
 }

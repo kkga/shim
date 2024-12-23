@@ -1,3 +1,4 @@
+import { Separator } from "@/components/Separator"
 import clsx from "clsx"
 import { H1, P } from "../components/mdx/mdx-components"
 
@@ -15,12 +16,7 @@ export function DocHeader({
   className,
 }: DocHeaderProps) {
   return (
-    <header
-      className={clsx(
-        "border-neutral-4 relative col-span-full flex flex-col gap-6 border-b pb-6",
-        className,
-      )}
-    >
+    <header className={clsx("col-span-full flex flex-col gap-6", className)}>
       <div>
         <H1 className="">{title}</H1>
         {subtitle && (
@@ -29,7 +25,7 @@ export function DocHeader({
       </div>
       {children && (
         <>
-          <div aria-hidden className="bg-neutral-4 h-px w-16"></div>
+          <Separator className="bg-neutral-4 max-w-16" />
           {children}
         </>
       )}

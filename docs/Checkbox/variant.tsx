@@ -2,7 +2,7 @@ import { Checkbox, CheckboxGroup } from "@ui/Checkbox"
 
 export default () => (
   <>
-    <CheckboxGroup variant="classic" label="Views" defaultValue={["sidebar"]}>
+    <CheckboxGroup variant="classic" label="Classic" defaultValue={["sidebar"]}>
       <Checkbox value="sidebar">Sidebar</Checkbox>
       <Checkbox value="panel">Panel</Checkbox>
       <Checkbox isDisabled value="toolbar">
@@ -10,7 +10,7 @@ export default () => (
       </Checkbox>
     </CheckboxGroup>
 
-    <CheckboxGroup variant="soft" label="Views" defaultValue={["sidebar"]}>
+    <CheckboxGroup variant="soft" label="Soft" defaultValue={["sidebar"]}>
       <Checkbox value="sidebar">Sidebar</Checkbox>
       <Checkbox value="panel">Panel</Checkbox>
       <Checkbox isDisabled value="toolbar">
@@ -18,7 +18,7 @@ export default () => (
       </Checkbox>
     </CheckboxGroup>
 
-    <CheckboxGroup variant="outline" label="Views" defaultValue={["sidebar"]}>
+    <CheckboxGroup variant="outline" label="Outline" defaultValue={["sidebar"]}>
       <Checkbox value="sidebar">Sidebar</Checkbox>
       <Checkbox value="panel">Panel</Checkbox>
       <Checkbox isDisabled value="toolbar">

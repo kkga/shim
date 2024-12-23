@@ -8,6 +8,7 @@ interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
   code?: string
   title?: string
   collapsed?: boolean
+  compact?: boolean
   children?: string | { props: { children: string } }
   raw?: string
   highlight?: boolean
@@ -19,6 +20,7 @@ function CodeBlock({
   code,
   title,
   collapsed,
+  compact,
   children,
   raw,
   highlight = true,
@@ -57,7 +59,7 @@ function CodeBlock({
       )}
 
       {clickToCopy && (
-        <div className="absolute right-1 top-1 z-10">
+        <div className="not-group-hover:invisible absolute right-1 top-1 z-10">
           <CopyButton
             className="backdrop-blur-sm"
             text={raw || source}
@@ -67,7 +69,7 @@ function CodeBlock({
       )}
 
       {collapsed ?
-        <Collapsible collapsed={collapsed}>
+        <Collapsible compact={compact} collapsed={collapsed}>
           <pre className="grow overflow-scroll">
             <Code highlight={highlight}>{source}</Code>
           </pre>
@@ -87,7 +89,7 @@ function Code({
 }: ComponentPropsWithoutRef<"code"> & {
   highlight?: boolean
 }) {
-  let code = props.children.toString()
+  let code = String(props.children).trim()
   let html = highlight ? sugar(code) : code
 
   return (

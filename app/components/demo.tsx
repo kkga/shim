@@ -11,13 +11,13 @@ interface Props {
 
 function Demo({ title, demo, code, className, children }: Props) {
   return (
-    <section
-      className={clsx("col-span-full grid grid-cols-subgrid items-stretch")}
-    >
-      <div className="flex flex-col gap-4 py-3 lg:gap-8">
+    <section className="col-span-full grid grid-cols-subgrid items-stretch gap-y-6 md:gap-y-0">
+      <div className="border-neutral-4 flex flex-col gap-4 border-t pt-6 lg:gap-6">
         {(title || children) && (
           <div className="*:last:mb-0">
-            {title && <H2>{title}</H2>}
+            {title && (
+              <H2 className="mb-2! leading-normal! text-sm">{title}</H2>
+            )}
             {children}
           </div>
         )}
@@ -33,13 +33,7 @@ function Demo({ title, demo, code, className, children }: Props) {
         )}
       </div>
 
-      {code && (
-        <CodeBlock
-          code={code}
-          lang="tsx"
-          className={clsx("place-self-stretch", "bg-panel rounded-lg")}
-        />
-      )}
+      {code && <CodeBlock code={code} lang="tsx" className="bg-panel" />}
     </section>
   )
 }

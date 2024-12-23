@@ -45,7 +45,7 @@ function H1({ className, ...props }: ComponentPropsWithoutRef<"h1">) {
   return (
     <h1
       className={clsx(
-        "text-neutral-text-contrast scroll-mt-6 text-balance text-2xl font-semibold leading-tight tracking-tight",
+        "text-neutral-text-contrast scroll-mt-6 text-balance text-2xl font-semibold leading-tight",
         className,
       )}
       {...props}
@@ -178,10 +178,7 @@ const mdxComponents: MDXRemoteProps["components"] = {
   ),
   a: Link,
   code: Code,
-  pre: (props) => {
-    console.log(props)
-    return <CodeBlock {...props} />
-  },
+  pre: CodeBlock,
   Demo,
   Section: Demo,
   Note,

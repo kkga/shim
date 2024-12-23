@@ -7,38 +7,40 @@ docUrl: "https://react-spectrum.adobe.com/react-aria/Checkbox.html"
 aria: "https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/"
 ---
 
-### Group
+<Demo title="Group" demo={<CheckboxDemo.Group />} code={demos["group"]}>
+  Use the `CheckboxGroup` component to group checkboxes together with an
+  accessible label. The `label` prop is required to provide an accessible name
+  for the group.
+</Demo>
 
-Use the `CheckboxGroup` component to group checkboxes together with an
-accessible label. The `label` prop is required to provide an accessible name for
-the group.
-
-<Demo demo={<CheckboxDemo.Group />} code={demos["group"]} />
-
-### States
-
-Use `isSelected`, `isDisabled` and `isIndeterminate` props to set the state of
-the checkbox.
-
-<Demo demo={<CheckboxDemo.States />} code={demos["states"]} />
-
-### Size
-
-Use `size` prop to set the size of the group or individual checkboxes.
-
-<Demo stacked demo={<CheckboxDemo.Size />} code={demos["size"]} />
-
-### Variant
-
-Use `variant` prop to set the variant of the group or individual checkboxes.
-
-<Demo demo={<CheckboxDemo.Variant />} code={demos["variant"]} />
-
-### Checkbox description
-
-Use `description` prop to provide additional context for the checkbox.
+<Demo title="States" demo={<CheckboxDemo.States />} code={demos["states"]}>
+  Use `isSelected`, `isDisabled` and `isIndeterminate` props to set the state of
+  the checkbox.
+</Demo>
 
 <Demo
+  title="Size"
+  stacked
+  demo={<CheckboxDemo.Size />}
+  code={demos["size"]}
+  className="flex-row gap-6"
+>
+  Use `size` prop to set the size of the group or individual checkboxes.
+</Demo>
+
+<Demo
+  title="Variant"
+  demo={<CheckboxDemo.Variant />}
+  code={demos["variant"]}
+  className="flex-row gap-6"
+>
+  Use `variant` prop to set the variant of the group or individual checkboxes.
+</Demo>
+
+<Demo
+  title="Checkbox description"
   demo={<CheckboxDemo.Description />}
   code={demos["checkbox-description"]}
-/>
+>
+  Use `description` prop to provide additional context for the checkbox.
+</Demo>

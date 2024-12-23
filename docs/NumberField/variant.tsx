@@ -1,9 +1,11 @@
+"use client"
+import { Theme } from "@/lib/theme"
 import { NumberField } from "@ui/NumberField"
 
 export default () => (
-  <>
-    <NumberField variant="classic" label="Cookies" />
-    <NumberField variant="soft" label="Cookies" />
-    <NumberField variant="outline" label="Cookies" />
-  </>
+  <Theme labelPosition="side">
+    <NumberField variant="classic" label="Classic" />
+    <NumberField variant="soft" label="Soft" />
+    <NumberField variant="outline" label="Outline" />
+  </Theme>
 )

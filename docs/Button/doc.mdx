@@ -41,9 +41,8 @@ ariaUrl: https://www.w3.org/WAI/ARIA/apg/patterns/button/
 >
   Buttons can contain a label, icon, or both. Use icons by passing an icon
   component as a child. If the only child is an SVG element, the button will be
-  sized to a square. This can be controlled manually by setting the `isSquare`
-  prop.
-  <Note>
+  sized to a square. This can be controlled manually with the `isSquare` prop.
+  <Note intent="info">
     If a visible label isn't specified, an `aria-label` must be provided for
     accessibility.
   </Note>
@@ -55,6 +54,7 @@ ariaUrl: https://www.w3.org/WAI/ARIA/apg/patterns/button/
   demo={<ButtonDemo.Pending />}
   code={demos["pending"]}
 >
-  Use `isPending` to display a loading spinner in place of content, preserving
-  the button's original width. The button will be disabled while pending.
+  Use the `isPending` prop to display a loading spinner in place of content,
+  preserving the button's original width. The button will be disabled while
+  pending.
 </Demo>

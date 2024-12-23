@@ -18,7 +18,7 @@ import { ClassValue, tv, VariantProps } from "tailwind-variants"
 const style = tv({
   extend: focusStyle,
   base: [
-    "leading-none! relative inline-flex shrink-0 items-center justify-center font-medium",
+    "leading-none! relative inline-flex shrink-0 items-center justify-center font-sans font-medium",
     // disabled
     "data-disabled:text-neutral-placeholder data-disabled:bg-neutral-bg-subtle data-disabled:inset-ring data-disabled:inset-ring-neutral-line",
   ],

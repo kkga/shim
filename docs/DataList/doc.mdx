@@ -4,15 +4,15 @@ description: Display key-value pairs in a list.
 category: Content
 ---
 
-### Orientation
+<Demo
+  title="Orientation"
+  demo={<DataListDemo.LabelPosition />}
+  code={demos["label-position"]}
+>
+  Use the `labelPosition` prop to set the position of the labels.
+</Demo>
 
-Use the `labelPosition` prop to set the position of the labels.
-
-<Demo demo={<DataListDemo.LabelPosition />} code={demos["label-position"]} />
-
-### Size
-
-Use the `size` prop to set the size of the DataList. Child components that
-support the `size` prop will inherit the size from the parent DataList.
-
-<Demo stacked demo={<DataListDemo.Size />} code={demos.size} />
+<Demo title="Size" demo={<DataListDemo.Size />} code={demos.size}>
+  Use the `size` prop to set the size of the DataList. Child components that
+  support the `size` prop will inherit the size from the parent DataList.
+</Demo>

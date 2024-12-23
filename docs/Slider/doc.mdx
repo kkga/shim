@@ -7,73 +7,66 @@ aria: "slider"
 composes: ["Field"]
 ---
 
-### Controlled value
-
-Use `value` and `onChange` props to control the value of the slider.
-
 <Demo
+  title="Controlled value"
   className="items-stretch"
   demo={<SliderDemo.Controlled />}
   code={demos["controlled"]}
-/>
-
-### Controlled range
-
-Use an array of numbers for `value` to control a range.
+>
+  Use `value` and `onChange` props to control the value of the slider.
+</Demo>
 
 <Demo
+  title="Controlled range"
   className="items-stretch"
   demo={<SliderDemo.ControlledRange />}
   code={demos["controlled-range"]}
-/>
-
-### Label position
-
-Use `labelPosition` to change the position of the label.
+>
+  Use an array of numbers for `value` to control a range.
+</Demo>
 
 <Demo
+  title="Label position"
   className="items-stretch"
   demo={<SliderDemo.LabelPosition />}
   code={demos["label-position"]}
-/>
-
-### Filled track
-
-Use `isFilled` prop to fill the track between the start and the current value.
+>
+  Use `labelPosition` to change the position of the label.
+</Demo>
 
 <Demo
+  title="Filled track"
   className="items-stretch"
   demo={<SliderDemo.Filled />}
   code={demos["filled"]}
-/>
-
-### Variant
-
-Use `variant` prop to change the appearance of the slider.
+>
+  Use `isFilled` prop to fill the track between the start and the current value.
+</Demo>
 
 <Demo
+  title="Variant"
   className="items-stretch"
   demo={<SliderDemo.Variant />}
   code={demos["variant"]}
-/>
-
-### Size
-
-Use `size` prop to change the size of the slider.
+>
+  Use `variant` prop to change the appearance of the slider.
+</Demo>
 
 <Demo
+  title="Size"
   className="items-stretch"
   demo={<SliderDemo.Size />}
   code={demos["size"]}
-/>
-
-### Orientation
-
-Use `orientation` prop to change the orientation of the slider.
+>
+  Use `size` prop to change the size of the slider.
+</Demo>
 
 <Demo
+  title="Orientation"
   stacked
   className="items-stretch"
   demo={<SliderDemo.Orientation />}
   code={demos["orientation"]}
-/>
+>
+  Use `orientation` prop to change the orientation of the slider.
+</Demo>

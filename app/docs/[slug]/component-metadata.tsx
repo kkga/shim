@@ -46,7 +46,7 @@ function MetadataRow({
   return (
     <DataList
       size={2}
-      className="grid grid-cols-2 gap-4 md:flex md:flex-row md:gap-6"
+      className="grid grid-cols-2 gap-x-6 gap-y-3 md:grid-flow-col md:grid-cols-none"
     >
       {docUrl && (
         <DataListItem

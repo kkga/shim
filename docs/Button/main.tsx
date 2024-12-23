@@ -3,7 +3,6 @@ import { Button } from "@ui/Button"
 
 export default () => (
   <Button>
-    Next
-    <ArrowRight size={16} weight="duotone" />
+    Next <ArrowRight size={16} />
   </Button>
 )
