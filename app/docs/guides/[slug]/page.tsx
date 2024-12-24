@@ -8,6 +8,8 @@ export async function generateStaticParams() {
   return params
 }
 
+const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master"
+
 export default async function GuidePage({
   params,
 }: {
@@ -25,13 +27,26 @@ export default async function GuidePage({
     getFileSource("theme/theme.css"),
   ]
 
+  let [styleUtilsUrl, themeUtilsUrl, themeCssUrl] = [
+    `${GITHUB_FILE_URL}/lib/style.ts`,
+    `${GITHUB_FILE_URL}/lib/theme.tsx`,
+    `${GITHUB_FILE_URL}/theme/theme.css`,
+  ]
+
   let { content: html } = await mdxToHtml({
     source: content,
-    scope: { styleUtilsSrc, themeUtilsSrc, themeCssSrc },
+    scope: {
+      styleUtilsSrc,
+      themeUtilsSrc,
+      themeCssSrc,
+      styleUtilsUrl,
+      themeUtilsUrl,
+      themeCssUrl,
+    },
   })
 
   return (
-    <article className="bg-background container min-h-screen max-w-4xl p-6 lg:p-8">
+    <article className="bg-background container min-h-screen max-w-4xl p-6 text-base lg:p-8">
       <DocHeader title={title} subtitle={description} />
       {html}
     </article>

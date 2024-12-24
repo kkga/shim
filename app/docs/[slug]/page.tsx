@@ -62,7 +62,7 @@ export default async function DocPage({
   let docs = getComponentDocs({ exclude: ["planned"] })
   let doc = docs.find((doc) => doc.slug === slug)
   let { metadata, content } = doc
-  let { name, description, category, composes } = metadata
+  let { name, description, composes } = metadata
   let demos = getDemosSource(name)
   let source = getComponentSource(name)
   let MainDemo = getMainDemo(name)
@@ -99,11 +99,7 @@ export default async function DocPage({
         />
       </DocHeader>
 
-      <Demo
-        demo={<MainDemo />}
-        code={demos.main}
-        className={category === "Buttons" ? "items-start" : ""}
-      />
+      <Demo demo={<MainDemo />} code={demos.main} />
 
       <InstallInstructions
         dependencies={dependencies.length > 0 ? dependencies : undefined}

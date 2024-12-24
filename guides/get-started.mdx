@@ -52,20 +52,19 @@ assumes you have a React project set up with TypeScript.
 
 <Step>
 **Add style and theme utilities.** The components use a few utility functions for styling and theming.
-Copy-paste into your project or download from the [GitHub repo](https://github.com/kkga/shim/tree/master/lib).
+Copy-paste these into your project or download from the [GitHub repo](https://github.com/kkga/shim/tree/master/lib).
+A good place to put these files might be `lib/style.ts` and `lib/theme.tsx`, but
+the path alias can be customized (see the last step).
 
-A good place to put these might be `lib/style.ts` and `lib/theme.tsx`, but you
-can customize the path alias to your preference at the last step.
-
-<CodeBlock title="style.ts" collapsed code={styleUtilsSrc} />
-<CodeBlock title="theme.tsx" collapsed code={themeUtilsSrc} />
+<CodeBlock title="style.ts" collapsed code={styleUtilsSrc} sourceUrl={styleUtilsUrl} />
+<CodeBlock title="theme.tsx" collapsed code={themeUtilsSrc} sourceUrl={themeUtilsUrl} />
 </Step>
 
 <Step>
-**Add theme CSS.** It's a single file with the Tailwind v4 configuration and colors.<br/>
+**Add theme CSS.** A single file containing [Tailwind v4 configuration](https://tailwindcss.com/docs/v4-beta#css-configuration-in-depth) and theme colors.
 This file needs to be imported in your app entry file.
 
-<CodeBlock title="theme.css" collapsed code={themeCssSrc} />
+<CodeBlock title="theme.css" collapsed code={themeCssSrc} sourceUrl={themeCssUrl}/>
 </Step>
 
 <Step>

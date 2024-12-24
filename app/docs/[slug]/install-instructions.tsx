@@ -7,15 +7,19 @@ interface Props {
   dependencies?: { name: string; slug: string }[]
 }
 
-const URL = "https://shim.kkga.me/api"
+const API_URL = "https://shim.kkga.me/api"
+const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components"
 
 export function InstallInstructions({ name, dependencies, source }: Props) {
-  let curlCommand = `curl -o ${name}.tsx '${URL}?c=${name}'`
+  let curlCommand = `curl -o ${name}.tsx '${API_URL}?c=${name}'`
+  let sourceUrl = `${GITHUB_FILE_URL}/${name}.tsx`
 
   return (
-    <section className="col-span-full grid grid-cols-subgrid items-stretch gap-y-8">
+    <section className="col-span-full grid grid-cols-subgrid items-stretch gap-y-4">
       <div className="border-neutral-4 row-span-2 flex flex-col border-t pt-6 *:last:mb-0">
-        <H2 className="mb-2! leading-normal! text-sm">How to install</H2>
+        <H2 className="mb-2! leading-normal! text-sm after:hidden">
+          How to install
+        </H2>
         <P>
           Run cURL command to download the file into your project or copy the
           source code manually.
@@ -55,6 +59,7 @@ export function InstallInstructions({ name, dependencies, source }: Props) {
         title="Source code"
         className="bg-accent-2! col-start-2"
         code={source}
+        sourceUrl={sourceUrl}
       />
     </section>
   )

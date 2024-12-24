@@ -12,7 +12,7 @@ export function Step({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={clsx(
-        "group/step relative col-span-full grid grid-cols-subgrid gap-x-3 gap-y-4 text-sm leading-normal",
+        "group/step relative col-span-full grid grid-cols-subgrid gap-x-3 gap-y-4",
         "md:items-start md:*:col-start-2",
         "*:m-0!",
       )}

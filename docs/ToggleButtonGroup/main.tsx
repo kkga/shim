@@ -3,7 +3,7 @@ import { ToggleButton } from "@ui/ToggleButton"
 import { ToggleButtonGroup } from "@ui/ToggleButtonGroup"
 
 export default () => (
-  <ToggleButtonGroup selectionMode="multiple" aria-label="Style">
+  <ToggleButtonGroup selectionMode="multiple" aria-label="Style" className="self-start">
     <ToggleButton id="bold" aria-label="Bold">
       <TextB size={16} />
     </ToggleButton>

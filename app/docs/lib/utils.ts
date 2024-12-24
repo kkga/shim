@@ -1,7 +1,10 @@
 import matter from "gray-matter"
 import fs from "node:fs"
-import path, { basename } from "node:path"
+import { basename, extname, join } from "node:path"
 import { ComponentMetadata, GuideMetadata } from "./types"
+
+const DOCS_DIR = join(process.cwd(), "docs")
+const GUIDES_DIR = join(process.cwd(), "guides")
 
 function readMDXFile(filePath: string) {
   let rawContent = fs.readFileSync(filePath, "utf-8")
@@ -22,16 +25,14 @@ function getComponentDocs(
     exclude: [],
   },
 ) {
-  let dir = path.join(process.cwd(), "docs")
-
   let entries = fs
-    .readdirSync(dir, { recursive: true, withFileTypes: true })
-    .filter((dirent) => dirent.isFile() && path.extname(dirent.name) === ".mdx")
+    .readdirSync(DOCS_DIR, { recursive: true, withFileTypes: true })
+    .filter((dirent) => dirent.isFile() && extname(dirent.name) === ".mdx")
     .map((dirent) => basename(dirent.parentPath))
 
   return entries
     .map((name) => {
-      let { data, content } = readMDXFile(path.join(dir, name, "doc.mdx"))
+      let { data, content } = readMDXFile(join(DOCS_DIR, name, "doc.mdx"))
       let slug = slugify(name)
       return { metadata: data as ComponentMetadata, slug, content }
     })
@@ -39,16 +40,14 @@ function getComponentDocs(
 }
 
 function getGuides() {
-  let dir = path.join(process.cwd(), "guides")
-
   let entries = fs
-    .readdirSync(dir, { recursive: true, withFileTypes: true })
-    .filter((dirent) => dirent.isFile() && path.extname(dirent.name) === ".mdx")
+    .readdirSync(GUIDES_DIR, { withFileTypes: true })
+    .filter((dirent) => dirent.isFile() && extname(dirent.name) === ".mdx")
     .map((dirent) => dirent.name)
 
   return entries
     .map((name) => {
-      let { data, content } = readMDXFile(path.join(dir, name))
+      let { data, content } = readMDXFile(join(GUIDES_DIR, name))
       let slug = slugify(name.replace(/\.mdx$/, ""))
       return { metadata: data as GuideMetadata, slug, content }
     })
@@ -57,24 +56,19 @@ function getGuides() {
 
 function getComponentSource(filename: string) {
   return fs
-    .readFileSync(
-      path.join(process.cwd(), "components", `${filename}.tsx`),
-      "utf-8",
-    )
+    .readFileSync(join(process.cwd(), "components", `${filename}.tsx`), "utf-8")
     .trim()
 }
 
 function getDemosSource(componentDir: string) {
-  let dir = path.join(process.cwd(), "docs", componentDir)
-  let demoFiles = fs
-    .readdirSync(dir)
-    .filter((file) => path.extname(file) === ".tsx")
+  let dir = join(DOCS_DIR, componentDir)
+  let demoFiles = fs.readdirSync(dir).filter((file) => extname(file) === ".tsx")
 
   let demos: Record<string, string> = {}
 
   for (let file of demoFiles) {
-    let content = fs.readFileSync(path.join(dir, file), "utf-8").trim()
-    let slug = path.basename(file, path.extname(file))
+    let content = fs.readFileSync(join(dir, file), "utf-8").trim()
+    let slug = basename(file, extname(file))
     demos[slug] = content
   }
 
@@ -82,7 +76,7 @@ function getDemosSource(componentDir: string) {
 }
 
 function getFileSource(filePath: string) {
-  filePath = path.join(process.cwd(), filePath)
+  filePath = join(process.cwd(), filePath)
   return fs.readFileSync(filePath, "utf-8").trim()
 }
 

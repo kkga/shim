@@ -1,3 +1,5 @@
+import { LinkButton } from "@/components/Button"
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr"
 import clsx from "clsx"
 import { ComponentPropsWithoutRef } from "react"
 import { highlight as sugar } from "sugar-high"
@@ -14,6 +16,7 @@ interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
   highlight?: boolean
   className?: string
   clickToCopy?: boolean
+  sourceUrl?: string
 }
 
 function CodeBlock({
@@ -26,6 +29,7 @@ function CodeBlock({
   highlight = true,
   className,
   clickToCopy = true,
+  sourceUrl,
 }: Props) {
   let source: string
 
@@ -51,22 +55,28 @@ function CodeBlock({
       )}
     >
       {title && (
-        <div className="border-neutral-4 mx-4 flex h-9 shrink-0 items-center self-start border-b">
-          <span className="text-neutral-text font-sans text-[13px] font-medium leading-5">
+        <div className="border-neutral-4 ml-4 h-8 shrink-0 self-start border-b py-1">
+          <span className="text-neutral-text font-sans text-xs font-medium leading-6">
             {title}
           </span>
         </div>
       )}
 
-      {clickToCopy && (
-        <div className="not-group-hover:invisible absolute right-1 top-1 z-10">
-          <CopyButton
+      <div className="not-group-hover:invisible absolute right-0 top-0 z-10 flex gap-1 p-1">
+        {sourceUrl && (
+          <LinkButton
+            target="_blank"
             className="backdrop-blur-sm"
-            text={raw || source}
-            title="Copy to clipboard"
-          />
-        </div>
-      )}
+            href={sourceUrl}
+          >
+            GitHub
+            <ArrowUpRight size={16} />
+          </LinkButton>
+        )}
+        {clickToCopy && (
+          <CopyButton className="backdrop-blur-sm" text={raw || source} />
+        )}
+      </div>
 
       {collapsed ?
         <Collapsible compact={compact} collapsed={collapsed}>

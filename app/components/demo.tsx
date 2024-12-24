@@ -16,7 +16,9 @@ function Demo({ title, demo, code, className, children }: Props) {
         {(title || children) && (
           <div className="*:last:mb-0">
             {title && (
-              <H2 className="mb-2! leading-normal! text-sm">{title}</H2>
+              <H2 className="mb-2! leading-normal! text-sm after:hidden">
+                {title}
+              </H2>
             )}
             {children}
           </div>

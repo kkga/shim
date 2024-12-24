@@ -2,18 +2,16 @@
 
 import { Check, Copy } from "@phosphor-icons/react"
 import { Button } from "@ui/Button"
-import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
 import { useEffect, useState } from "react"
 import { useClipboard } from "./useClipboard"
 
 interface Props {
   text: string
   children?: React.ReactNode
-  title?: string
   className?: string
 }
 
-function CopyButton({ children, text, title, className }: Props) {
+function CopyButton({ children, text, className }: Props) {
   const { copyToClipboard } = useClipboard()
   const [justCopied, setJustCopied] = useState(false)
 
@@ -39,23 +37,18 @@ function CopyButton({ children, text, title, className }: Props) {
   }, [justCopied])
 
   return (
-    <TooltipTrigger delay={500}>
-      <Button
-        variant="ghost"
-        size={1}
-        onPress={handleCopy}
-        intent={justCopied ? "success" : "neutral"}
-        className={className}
-        isSquare
-      >
-        {justCopied ?
-          <Check size={16} weight="bold" />
-        : children ?
-          children
-        : <Copy weight="duotone" size={16} />}
-      </Button>
-      <Tooltip>{title || "Copy to clipboard"}</Tooltip>
-    </TooltipTrigger>
+    <Button
+      onPress={handleCopy}
+      intent={justCopied ? "success" : "neutral"}
+      className={className}
+    >
+      Copy
+      {justCopied ?
+        <Check size={16} weight="bold" />
+      : children ?
+        children
+      : <Copy weight="duotone" size={16} />}
+    </Button>
   )
 }
 
