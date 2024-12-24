@@ -1,5 +1,5 @@
 import { Link } from "@/components/Link"
-import { Logo } from "./components/logo"
+import { Logo } from "./_components/logo"
 
 export default function NotFound() {
   return (

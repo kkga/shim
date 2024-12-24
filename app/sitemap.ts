@@ -1,4 +1,4 @@
-import { getComponentDocs, getGuides } from "@/app/docs/lib/utils"
+import { getComponentDocs, getGuides } from "@/app/_lib/utils"
 
 export const baseUrl = "https://shim.kkga.me"
 

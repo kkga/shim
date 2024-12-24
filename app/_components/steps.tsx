@@ -19,7 +19,7 @@ export function Step({ children }: { children: React.ReactNode }) {
       style={{ counterIncrement: "step" }}
     >
       <div className="col-start-1! col-end-2! row-start-1! relative z-10 grid grid-cols-[auto_1fr] items-center gap-3 md:grid-cols-subgrid">
-        <div className="bg-neutral-4 flex size-[21px] items-center justify-center rounded-full">
+        <div className="bg-neutral-4 flex size-6 items-center justify-center rounded-full">
           <span className="text-neutral-text-contrast text-[12px] font-medium before:[content:counter(step)]" />
         </div>
       </div>

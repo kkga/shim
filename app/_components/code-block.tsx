@@ -80,11 +80,11 @@ function CodeBlock({
 
       {collapsed ?
         <Collapsible compact={compact} collapsed={collapsed}>
-          <pre className="grow overflow-scroll">
+          <pre className="**:[code]:text-[100%] grow overflow-scroll">
             <Code highlight={highlight}>{source}</Code>
           </pre>
         </Collapsible>
-      : <pre className="grow overflow-scroll">
+      : <pre className="**:[code]:text-[100%] grow overflow-scroll">
           <Code highlight={highlight}>{source}</Code>
         </pre>
       }
@@ -105,7 +105,7 @@ function Code({
   return (
     <code
       className={clsx(
-        "text-neutral-text-contrast font-book min-w-min font-mono",
+        "text-neutral-text-contrast font-book min-w-min font-mono text-[97%]",
         className,
       )}
       dangerouslySetInnerHTML={highlight ? { __html: html } : undefined}

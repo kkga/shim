@@ -1,7 +1,7 @@
-import { SideNav } from "@/app/components/nav/sidenav"
-import { getComponentDocs, getGuides } from "@/app/docs/lib/utils"
+import { SideNav } from "@/app/_components/nav/sidenav"
+import { TopNav } from "@/app/_components/nav/topnav"
+import { getComponentDocs, getGuides } from "@/app/_lib/utils"
 import { useMemo } from "react"
-import { TopNav } from "../components/nav/topnav"
 
 export default function DocsLayout({
   children,
@@ -19,7 +19,7 @@ export default function DocsLayout({
         category: "Intro",
       })),
       ...docs.map((doc) => ({
-        slug: doc.slug,
+        slug: `components/${doc.slug}`,
         name: doc.metadata.name,
         category: doc.metadata.category,
         status: doc.metadata.status,
@@ -32,7 +32,9 @@ export default function DocsLayout({
       <SideNav items={navItems} />
       <TopNav items={navItems} />
 
-      <main className="overflow-auto text-sm leading-normal">{children}</main>
+      <main className="font-book overflow-auto text-sm leading-normal">
+        {children}
+      </main>
     </div>
   )
 }

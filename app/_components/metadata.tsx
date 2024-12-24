@@ -1,4 +1,4 @@
-import type { ComponentMetadata } from "@/app/docs/lib/types"
+import type { ComponentMetadata } from "@/app/_lib/types"
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr"
 import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
@@ -33,16 +33,16 @@ function MetadataLink({ href, title, external, children }: MetadataLinkProps) {
   )
 }
 
-interface MetadataRowProps extends ComponentMetadata {
+interface MetadataProps extends ComponentMetadata {
   dependencies?: { name: string; slug: string }[]
 }
 
-function MetadataRow({
+export function Metadata({
   docUrl,
   ariaUrl,
   name,
   dependencies,
-}: MetadataRowProps) {
+}: MetadataProps) {
   return (
     <DataList
       size={2}
@@ -116,5 +116,3 @@ function MetadataRow({
     </DataList>
   )
 }
-
-export { MetadataRow }

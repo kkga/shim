@@ -1,6 +1,6 @@
 import { Separator } from "@/components/Separator"
 import clsx from "clsx"
-import { H1, P } from "../components/mdx/mdx-components"
+import { H1, P } from "./mdx-components"
 
 interface DocHeaderProps {
   title: string
@@ -18,9 +18,11 @@ export function DocHeader({
   return (
     <header className={clsx("col-span-full flex flex-col gap-6", className)}>
       <div>
-        <H1 className="">{title}</H1>
+        <H1>{title}</H1>
         {subtitle && (
-          <P className="mb-0! mt-2! text-base font-medium">{subtitle}</P>
+          <P className="mb-0! mt-2! text-neutral-text text-base font-medium">
+            {subtitle}
+          </P>
         )}
       </div>
       {children && (

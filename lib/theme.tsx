@@ -1,3 +1,4 @@
+"use client"
 import { createContext, useContext } from "react"
 
 export const SIZES = [1, 2, 3, 4] as const

@@ -3,9 +3,9 @@ import { Badge } from "@ui/Badge"
 import { DataList, DataListItem } from "@ui/DataList"
 import { Link } from "@ui/Link"
 import { Separator } from "@ui/Separator"
-import { Examples } from "./components/examples"
-import { Logo } from "./components/logo"
-import { P } from "./components/mdx/mdx-components"
+import { Examples } from "./_components/examples"
+import { Logo } from "./_components/logo"
+import { P } from "./_components/mdx-components"
 
 export default function Page() {
   return (

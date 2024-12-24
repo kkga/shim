@@ -3,15 +3,46 @@
 import { Check, Copy } from "@phosphor-icons/react"
 import { Button } from "@ui/Button"
 import { useEffect, useState } from "react"
-import { useClipboard } from "./useClipboard"
 
-interface Props {
+const useClipboard = () => {
+  const [copiedText, setCopiedText] = useState<string | null>("")
+
+  const copyToClipboard = (value: string) => {
+    return new Promise<string>((resolve, reject) => {
+      try {
+        if (navigator?.clipboard?.writeText) {
+          navigator.clipboard
+            .writeText(value)
+            .then(() => {
+              setCopiedText(value)
+              resolve(value)
+            })
+            .catch((e) => {
+              setCopiedText(null)
+              reject(e)
+            })
+        } else {
+          setCopiedText(null)
+          throw new Error("Clipboard not supported")
+        }
+      } catch (e) {
+        reject(e)
+      }
+    })
+  }
+
+  return { copiedText, copyToClipboard }
+}
+
+function CopyButton({
+  children,
+  text,
+  className,
+}: {
   text: string
   children?: React.ReactNode
   className?: string
-}
-
-function CopyButton({ children, text, className }: Props) {
+}) {
   const { copyToClipboard } = useClipboard()
   const [justCopied, setJustCopied] = useState(false)
 

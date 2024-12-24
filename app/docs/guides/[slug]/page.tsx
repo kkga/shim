@@ -1,6 +1,6 @@
-import { DocHeader } from "@/app/docs/doc-header"
-import { mdxToHtml } from "@/app/docs/lib/mdx"
-import { getFileSource, getGuides } from "@/app/docs/lib/utils"
+import { DocHeader } from "@/app/_components/doc-header"
+import { mdxToHtml } from "@/app/_lib/mdx"
+import { getFileSource, getGuides } from "@/app/_lib/utils"
 
 export const dynamicParams = false
 export async function generateStaticParams() {
@@ -46,7 +46,7 @@ export default async function GuidePage({
   })
 
   return (
-    <article className="bg-background container min-h-screen max-w-4xl p-6 text-base lg:p-8">
+    <article className="bg-background text-neutral-text-contrast container min-h-screen max-w-4xl p-6 text-[15px] leading-6 lg:p-8">
       <DocHeader title={title} subtitle={description} />
       {html}
     </article>

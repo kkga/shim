@@ -1,5 +1,6 @@
+import { Theme } from "@/lib/theme"
 import clsx from "clsx"
-import { CodeBlock, H2 } from "./mdx/mdx-components"
+import { CodeBlock } from "./mdx-components"
 
 interface Props {
   title?: string
@@ -11,14 +12,14 @@ interface Props {
 
 function Demo({ title, demo, code, className, children }: Props) {
   return (
-    <section className="col-span-full grid grid-cols-subgrid items-stretch gap-y-6 md:gap-y-0">
-      <div className="border-neutral-4 flex flex-col gap-4 border-t pt-6 lg:gap-6">
+    <section className="col-span-full grid grid-cols-subgrid items-start gap-y-6 md:gap-y-0">
+      <div className="border-neutral-4 flex flex-col gap-4 border-t pt-4 lg:gap-6">
         {(title || children) && (
           <div className="*:last:mb-0">
             {title && (
-              <H2 className="mb-2! leading-normal! text-sm after:hidden">
+              <h2 className="text-neutral-text-contrast mb-2 text-balance text-base font-medium">
                 {title}
-              </H2>
+              </h2>
             )}
             {children}
           </div>
@@ -26,11 +27,13 @@ function Demo({ title, demo, code, className, children }: Props) {
         {demo && (
           <div
             className={clsx(
-              "text-neutral-text flex flex-col flex-wrap gap-2 text-xs",
+              "text-neutral-text flex flex-col flex-wrap gap-2 text-xs leading-normal",
               className,
             )}
           >
-            {demo}
+            <Theme labelPosition="side" size={2}>
+              {demo}
+            </Theme>
           </div>
         )}
       </div>

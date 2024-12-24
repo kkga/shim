@@ -1,4 +1,4 @@
-import { getComponentSource } from "@/app/docs/lib/utils"
+import { getComponentSource } from "@/app/_lib/utils"
 
 export async function GET(request: Request) {
   let { searchParams } = new URL(request.url)

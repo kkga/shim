@@ -8,8 +8,8 @@ import { clsx } from "clsx"
 import type { MDXRemoteProps } from "next-mdx-remote"
 import { default as NextLink } from "next/link"
 import { ComponentPropsWithoutRef } from "react"
-import { Demo } from "../demo"
 import { Code, CodeBlock } from "./code-block"
+import { Demo } from "./demo"
 import { demoComponents } from "./demo-components"
 import { Step, Steps } from "./steps"
 
@@ -120,9 +120,11 @@ function P({ className, ...props }: ComponentPropsWithoutRef<"p">) {
 
 function Note({
   intent = "info",
+  title,
   children,
 }: {
   intent?: "info" | "warning"
+  title?: string
   children: React.ReactNode
 }) {
   let colors = {
@@ -138,14 +140,15 @@ function Note({
   return (
     <div
       className={clsx(
-        "font-book flex items-start gap-2 rounded-md text-[13px] leading-5 *:m-0 [&_code]:text-current",
+        "font-book grid grid-cols-[min-content_auto] gap-1 rounded-md text-sm leading-5 *:m-0 [&_code]:text-current",
         colors[intent],
       )}
     >
       <div className="flex size-5 shrink-0 items-center justify-center">
         {icons[intent]}
       </div>
-      {children}
+      <h4 className="font-medium">{title}</h4>
+      <div className="col-span-full *:last:mb-0">{children}</div>
     </div>
   )
 }
