@@ -4,11 +4,11 @@ import { ToggleButton } from "@ui/ToggleButton"
 export default () => (
   <>
     <ToggleButton isSelected>
-      <PushPin size={16} weight="duotone" />
+      <PushPin size={16} weight="fill" />
       Selected
     </ToggleButton>
     <ToggleButton isDisabled>
-      <PushPin size={16} weight="duotone" />
+      <PushPin size={16} />
       Disabled
     </ToggleButton>
   </>

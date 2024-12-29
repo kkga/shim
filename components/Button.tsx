@@ -1,8 +1,7 @@
 "use client"
 
-import { cxRenderProps, focusStyle, INTENTS, type Intent } from "@lib/style"
+import { focusStyle, INTENTS, type Intent } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
-
 import { Children, isValidElement } from "react"
 import {
   composeRenderProps,
@@ -17,17 +16,9 @@ import { ClassValue, tv, VariantProps } from "tailwind-variants"
 
 const style = tv({
   extend: focusStyle,
-  base: [
-    "leading-none! relative inline-flex shrink-0 items-center justify-center font-sans font-medium",
-    // disabled
-    "data-disabled:text-neutral-placeholder data-disabled:bg-neutral-bg-subtle data-disabled:inset-ring data-disabled:inset-ring-neutral-line",
-  ],
+  base: "leading-none! inline-flex shrink-0 items-center justify-center font-sans font-medium",
   variants: {
-    variant: {
-      soft: "",
-      solid: "text-white",
-      ghost: "bg-transparent",
-    },
+    variant: { soft: "", solid: "text-white", ghost: "bg-transparent" },
     intent: INTENTS.reduce(
       (acc, intent) => {
         acc[intent] = ""
@@ -36,21 +27,22 @@ const style = tv({
       {} as Record<Intent, ClassValue>,
     ),
     size: {
-      1: "h-6 gap-1.5 rounded px-1.5 text-xs",
-      2: "h-7 gap-2 rounded px-2 text-[13px]",
-      3: "h-8 gap-2 rounded-md px-2.5 text-sm",
-      4: "h-10 gap-2 rounded-lg px-3 text-base",
+      1: "h-6 gap-2 rounded-sm px-2 text-xs",
+      2: "h-7 gap-2 rounded-sm px-2 text-sm",
+      3: "h-8 gap-2 rounded-md px-2.5 text-base",
+      4: "h-10 gap-2.5 rounded-lg px-3 text-base",
     },
-    isSquare: { true: null, false: null },
-    isPending: {
-      true: "*:not-data-progress:invisible",
+    isDisabled: {
+      true: "cursor-not-allowed",
     },
+    isIconOnly: { true: "" },
+    isPending: { true: "*:not-data-progress:invisible relative" },
   },
   compoundVariants: [
-    { size: 1, isSquare: true, className: "size-6 p-0" },
-    { size: 2, isSquare: true, className: "size-7 p-0" },
-    { size: 3, isSquare: true, className: "size-8 p-0" },
-    { size: 4, isSquare: true, className: "size-10 p-0" },
+    { size: 1, isIconOnly: true, className: "size-6 p-0" },
+    { size: 2, isIconOnly: true, className: "size-7 p-0" },
+    { size: 3, isIconOnly: true, className: "size-8 p-0" },
+    { size: 4, isIconOnly: true, className: "size-10 p-0" },
     {
       intent: "neutral",
       variant: "soft",
@@ -88,7 +80,6 @@ const style = tv({
       className:
         "bg-accent-solid data-hovered:bg-accent-solid-hover data-pressed:brightness-90 text-white",
     },
-
     {
       intent: "success",
       variant: "soft",
@@ -107,7 +98,6 @@ const style = tv({
       className:
         "bg-success-solid data-hovered:bg-success-solid-hover data-pressed:brightness-90 text-white",
     },
-
     {
       intent: "warning",
       variant: "soft",
@@ -126,24 +116,35 @@ const style = tv({
       className:
         "bg-warning-solid data-hovered:bg-warning-solid-hover data-pressed:brightness-90 text-white",
     },
-
     {
-      intent: "error",
+      intent: "danger",
       variant: "soft",
       className:
-        "text-error-text bg-error-bg data-hovered:bg-error-bg-hover data-pressed:bg-error-bg-active",
+        "text-danger-text bg-danger-bg data-hovered:bg-danger-bg-hover data-pressed:bg-danger-bg-active",
     },
     {
-      intent: "error",
+      intent: "danger",
       variant: "ghost",
       className:
-        "text-error-text data-hovered:bg-error-bg-hover data-pressed:bg-error-bg-active bg-transparent",
+        "text-danger-text data-hovered:bg-danger-bg-hover data-pressed:bg-danger-bg-active bg-transparent",
     },
     {
-      intent: "error",
+      intent: "danger",
       variant: "solid",
       className:
-        "bg-error-solid data-hovered:bg-error-solid-hover data-pressed:brightness-90 text-white",
+        "bg-danger-solid data-hovered:bg-danger-solid-hover data-pressed:brightness-90 text-white",
+    },
+    {
+      isDisabled: true,
+      variant: ["soft", "solid"],
+      intent: ["accent", "success", "warning", "danger", "neutral"],
+      class: "text-neutral-text-subtle bg-neutral-bg!",
+    },
+    {
+      isDisabled: true,
+      variant: "ghost",
+      intent: ["accent", "success", "warning", "danger", "neutral"],
+      className: "text-neutral-text-subtle bg-transparent!",
     },
   ],
   defaultVariants: {
@@ -155,7 +156,7 @@ const style = tv({
 
 const progressStyle = tv({
   slots: {
-    base: "absolute inset-0 flex items-center justify-center",
+    container: "absolute inset-0 m-auto size-fit",
     circle: "",
   },
   variants: {
@@ -168,44 +169,42 @@ const progressStyle = tv({
   },
 })
 
-interface ButtonProps
-  extends RACButtonProps,
-    Omit<VariantProps<typeof style>, "isPending"> {}
+interface ButtonProps extends RACButtonProps, VariantProps<typeof style> {}
 
 function Button({
-  className,
   size: _size,
   variant: _variant,
   intent,
+  isIconOnly,
   ...props
 }: ButtonProps) {
   let { buttonVariant, size } = useThemeProps({
     size: _size,
     buttonVariant: _variant,
   })
-  let { base, circle } = progressStyle({ size })
+  let { container, circle } = progressStyle({ size })
 
   return (
     <RACButton
-      className={cxRenderProps(
-        className,
+      {...props}
+      className={composeRenderProps(props.className, (className, renderProps) =>
         style({
+          ...renderProps,
           variant: buttonVariant,
-          intent: intent,
-          size: size,
-          isPending: props.isPending,
-          isSquare:
-            typeof props.isSquare === "boolean" ?
-              props.isSquare
-            : hasOnlySvgChild(props),
+          intent,
+          size,
+          isIconOnly:
+            typeof isIconOnly === "boolean" ? isIconOnly : (
+              hasOnlySvgChild(props)
+            ),
+          className,
         }),
       )}
-      {...props}
     >
       {composeRenderProps(props.children, (children, { isPending }) => (
         <>
           {isPending && (
-            <div data-progress className={base()}>
+            <div data-progress className={container()}>
               <ProgressCircle className={circle()} />
             </div>
           )}
@@ -221,65 +220,79 @@ interface ProgressCircleProps extends Omit<RACProgressBarProps, "className"> {
 }
 
 function ProgressCircle({ className, ...props }: ProgressCircleProps) {
+  let [c, r] = ["50%", "calc(50% - 2px)"]
+
   return (
     <RACProgressBar {...props} aria-label="Loading">
-      <svg viewBox="0 0 24 24" className={className}>
-        <path
-          fill="currentColor"
-          d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-          opacity=".25"
+      <svg viewBox="0 0 16 16" className={className} fill="none">
+        <circle
+          cx={c}
+          cy={c}
+          r={r}
+          strokeWidth={1.5}
+          stroke="currentColor"
+          strokeOpacity={0.25}
         />
-        <path
-          fill="currentColor"
-          d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
-        >
-          <animateTransform
-            attributeName="transform"
-            type="rotate"
-            dur="0.75s"
-            values="0 12 12;360 12 12"
-            repeatCount="indefinite"
-          />
-        </path>
+        <circle
+          cx={c}
+          cy={c}
+          r={r}
+          strokeWidth={1.5}
+          stroke="currentColor"
+          pathLength={100}
+          strokeDasharray="100 200"
+          strokeDashoffset={100 - 25}
+          strokeLinecap="round"
+          className="origin-center animate-[spin_700ms_linear_infinite]"
+        />
       </svg>
     </RACProgressBar>
   )
 }
 
 function LinkButton({
-  className,
-  size,
-  variant,
+  size: _size,
+  variant: _variant,
   intent,
+  isIconOnly,
   ...props
 }: RACLinkProps & VariantProps<typeof style>) {
-  let themeProps = useThemeProps({ size, buttonVariant: variant })
+  let { buttonVariant, size } = useThemeProps({
+    size: _size,
+    buttonVariant: _variant,
+  })
 
   return (
     <RACLink
       {...props}
-      className={cxRenderProps(
-        className,
-        style({
-          variant: themeProps.buttonVariant,
-          intent: intent,
-          size: themeProps.size,
-          isSquare:
-            typeof props.isSquare === "boolean" ?
-              props.isSquare
-            : hasOnlySvgChild(props),
-        }),
+      className={composeRenderProps(
+        props.className,
+        (className, { isDisabled, ...renderProps }) =>
+          style({
+            ...renderProps,
+            variant: buttonVariant,
+            intent,
+            isDisabled,
+            size,
+            isIconOnly:
+              typeof isIconOnly === "boolean" ? isIconOnly : (
+                hasOnlySvgChild(props)
+              ),
+            className,
+          }),
       )}
     />
   )
 }
 
 function hasOnlySvgChild(props: Partial<RACLinkProps> | Partial<ButtonProps>) {
-  let children =
-    typeof props.children !== "function" && Children.toArray(props.children)
+  const children =
+    typeof props.children !== "function" ?
+      Children.toArray(props.children)
+    : null
 
   return (
-    children &&
+    Array.isArray(children) &&
     children.length === 1 &&
     isValidElement(children[0]) &&
     children[0].type === "svg"

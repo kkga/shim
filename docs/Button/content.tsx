@@ -1,4 +1,9 @@
-import { ArrowsClockwise, CalendarPlus, Link, Trash } from "@phosphor-icons/react/dist/ssr"
+import {
+  ArrowsClockwise,
+  CalendarPlus,
+  Link,
+  Trash,
+} from "@phosphor-icons/react/dist/ssr"
 import { Button } from "@ui/Button"
 
 export default () => (
@@ -7,7 +12,7 @@ export default () => (
       <ArrowsClockwise size={16} />
     </Button>
 
-    <Button intent="error" aria-label="Delete">
+    <Button intent="danger" aria-label="Delete">
       <Trash size={16} />
     </Button>
 

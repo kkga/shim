@@ -34,7 +34,7 @@ function ThemeButton({ size }: { size?: Size }) {
   return (
     <Button
       onPress={handleThemeChange}
-      isSquare
+      isIconOnly
       variant="ghost"
       intent="neutral"
       size={size}

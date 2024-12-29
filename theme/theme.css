@@ -88,18 +88,18 @@
   --color-warning-11: var(--orange-a11);
   --color-warning-12: var(--orange-a12);
 
-  --color-error-1: var(--red-a1);
-  --color-error-2: var(--red-a2);
-  --color-error-3: var(--red-a3);
-  --color-error-4: var(--red-a4);
-  --color-error-5: var(--red-a5);
-  --color-error-6: var(--red-a6);
-  --color-error-7: var(--red-a7);
-  --color-error-8: var(--red-a8);
-  --color-error-9: var(--red-9);
-  --color-error-10: var(--red-10);
-  --color-error-11: var(--red-a11);
-  --color-error-12: var(--red-a12);
+  --color-danger-1: var(--red-a1);
+  --color-danger-2: var(--red-a2);
+  --color-danger-3: var(--red-a3);
+  --color-danger-4: var(--red-a4);
+  --color-danger-5: var(--red-a5);
+  --color-danger-6: var(--red-a6);
+  --color-danger-7: var(--red-a7);
+  --color-danger-8: var(--red-a8);
+  --color-danger-9: var(--red-9);
+  --color-danger-10: var(--red-10);
+  --color-danger-11: var(--red-a11);
+  --color-danger-12: var(--red-a12);
 
   /* Use case aliases: https://www.radix-ui.com/colors/docs/overview/aliasing#use-case-aliases */
 
@@ -114,7 +114,7 @@
   --color-neutral-focus-ring: var(--color-neutral-8);
   --color-neutral-solid: var(--color-neutral-9);
   --color-neutral-solid-hover: var(--color-neutral-10);
-  --color-neutral-placeholder: var(--color-neutral-9);
+  --color-neutral-text-subtle: var(--color-neutral-8);
   --color-neutral-text: var(--color-neutral-11);
   --color-neutral-text-contrast: var(--color-neutral-12);
 
@@ -129,7 +129,7 @@
   --color-accent-focus-ring: var(--color-accent-8);
   --color-accent-solid: var(--color-accent-9);
   --color-accent-solid-hover: var(--color-accent-10);
-  --color-accent-placeholder: var(--color-accent-9);
+  --color-accent-text-subtle: var(--color-accent-8);
   --color-accent-text: var(--color-accent-11);
   --color-accent-text-contrast: var(--color-accent-12);
 
@@ -144,7 +144,7 @@
   --color-success-focus-ring: var(--color-success-8);
   --color-success-solid: var(--color-success-9);
   --color-success-solid-hover: var(--color-success-10);
-  --color-success-placeholder: var(--color-success-9);
+  --color-success-text-subtle: var(--color-success-8);
   --color-success-text: var(--color-success-11);
   --color-success-text-contrast: var(--color-success-12);
 
@@ -159,24 +159,24 @@
   --color-warning-focus-ring: var(--color-warning-8);
   --color-warning-solid: var(--color-warning-9);
   --color-warning-solid-hover: var(--color-warning-10);
-  --color-warning-placeholder: var(--color-warning-9);
+  --color-warning-text-subtle: var(--color-warning-8);
   --color-warning-text: var(--color-warning-11);
   --color-warning-text-contrast: var(--color-warning-12);
 
-  --color-error-base: var(--color-error-1);
-  --color-error-bg-subtle: var(--color-error-2);
-  --color-error-bg: var(--color-error-3);
-  --color-error-bg-hover: var(--color-error-4);
-  --color-error-bg-active: var(--color-error-5);
-  --color-error-line: var(--color-error-6);
-  --color-error-border: var(--color-error-7);
-  --color-error-border-hover: var(--color-error-8);
-  --color-error-focus-ring: var(--color-error-8);
-  --color-error-solid: var(--color-error-9);
-  --color-error-solid-hover: var(--color-error-10);
-  --color-error-placeholder: var(--color-error-9);
-  --color-error-text: var(--color-error-11);
-  --color-error-text-contrast: var(--color-error-12);
+  --color-danger-base: var(--color-danger-1);
+  --color-danger-bg-subtle: var(--color-danger-2);
+  --color-danger-bg: var(--color-danger-3);
+  --color-danger-bg-hover: var(--color-danger-4);
+  --color-danger-bg-active: var(--color-danger-5);
+  --color-danger-line: var(--color-danger-6);
+  --color-danger-border: var(--color-danger-7);
+  --color-danger-border-hover: var(--color-danger-8);
+  --color-danger-focus-ring: var(--color-danger-8);
+  --color-danger-solid: var(--color-danger-9);
+  --color-danger-solid-hover: var(--color-danger-10);
+  --color-danger-text-subtle: var(--color-danger-8);
+  --color-danger-text: var(--color-danger-11);
+  --color-danger-text-contrast: var(--color-danger-12);
 
   /* Functional colors /
 

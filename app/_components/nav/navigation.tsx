@@ -93,7 +93,7 @@ const style = tv({
     headerIcon: "text-neutral-text flex items-center justify-center",
     item: [
       focusStyle(),
-      "font-book text-neutral-text-contrast flex items-center rounded",
+      "font-book text-neutral-text-contrast flex items-center rounded leading-none",
     ],
   },
   variants: {
@@ -110,19 +110,13 @@ const style = tv({
       },
     },
     isDisabled: {
-      true: {
-        item: "text-neutral-placeholder",
-      },
+      true: { item: "text-neutral-placeholder" },
     },
     isHovered: {
-      true: {
-        item: "bg-neutral-bg-hover",
-      },
+      true: { item: "bg-neutral-bg-hover" },
     },
     isSelected: {
-      true: {
-        item: "bg-neutral-bg-active text-neutral-text-contrast",
-      },
+      true: { item: "bg-neutral-bg-active text-neutral-text-contrast" },
     },
   },
 })
@@ -153,7 +147,7 @@ export function Navigation({
 
   return (
     <div className="relative flex h-full flex-col overflow-auto">
-      <div className="bg-panel border-neutral-4 border-b p-3 pt-0.5">
+      <div className="px-3 py-0.5">
         <SearchField
           size={size > 1 ? 3 : 1}
           variant="soft"
@@ -163,11 +157,15 @@ export function Navigation({
           value={filter}
           onChange={setFilter}
           onClear={() => setFilter("")}
-          className="w-full"
         />
       </div>
 
-      <nav className="grow overflow-y-scroll p-3 pb-4">
+      <nav
+        className="grow overflow-y-scroll px-3 py-4"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent, black 16px )",
+        }}
+      >
         <ListBox
           key={`${items.length}-${filter}`}
           selectionMode="single"

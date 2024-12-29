@@ -13,14 +13,14 @@ export function SideNav(props: { items: NavItem[] }) {
     <aside
       className={clsx(
         "sticky top-0 z-20 hidden h-svh lg:flex",
-        "bg-panel shrink-0 flex-col overflow-x-hidden overflow-y-scroll text-sm",
+        "bg-panel shrink-0 flex-col overflow-auto text-sm",
       )}
       style={{ scrollbarWidth: "thin" }}
     >
-      <header className="bg-panel sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1 px-3">
+      <header className="bg-panel sticky top-0 flex shrink-0 items-center justify-between gap-1 px-3 py-2">
         <Link
           intent="neutral"
-          className="flex items-center gap-1 pl-1 no-underline"
+          className="flex size-6 items-center justify-center no-underline"
           href="/"
         >
           <Logo withText={false} />
@@ -29,7 +29,7 @@ export function SideNav(props: { items: NavItem[] }) {
         <div className="flex gap-1.5">
           <TooltipTrigger>
             <ThemeButton />
-            <Tooltip>Toggle theme</Tooltip>
+            <Tooltip>Toggle appearance</Tooltip>
           </TooltipTrigger>
 
           <Separator className="my-1" orientation="vertical" />

@@ -7,20 +7,18 @@ aria: "https://www.w3.org/TR/wai-aria-1.2/#textbox"
 composes: ["Field"]
 ---
 
-### Label position
+<Demo
+  title="Label position"
+  demo={<TextFieldDemo.LabelPosition />}
+  code={demos["label-position"]}
+>
+  Use `labelPosition` prop to set the position of the label.
+</Demo>
 
-Use `labelPosition` to set the position of the label.
+<Demo title="Size" demo={<TextFieldDemo.Size />} code={demos["size"]}>
+  Use `size` prop to set the size of the text field.
+</Demo>
 
-<Demo demo={<TextFieldDemo.LabelPosition />} code={demos["label-position"]} />
-
-### Size
-
-Use `size` to set the size of the text field.
-
-<Demo demo={<TextFieldDemo.Size />} code={demos["size"]} />
-
-### Variant
-
-Use `variant` to set the variant of the text field.
-
-<Demo demo={<TextFieldDemo.Variant />} code={demos["variant"]} />
+<Demo title="Variant" demo={<TextFieldDemo.Variant />} code={demos["variant"]}>
+  Use `variant` prop to set the visual appearance of the text field.
+</Demo>

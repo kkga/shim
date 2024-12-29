@@ -1,6 +1,6 @@
 import { Theme } from "@/lib/theme"
 import clsx from "clsx"
-import { CodeBlock } from "./mdx-components"
+import { CodeBlock } from "./code-block"
 
 interface Props {
   title?: string

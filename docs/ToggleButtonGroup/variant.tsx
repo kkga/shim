@@ -3,18 +3,16 @@ import { ToggleButtonGroup } from "@ui/ToggleButtonGroup"
 
 export default () => (
   <>
-    <ToggleButtonGroup isDisabled aria-label="View">
+    <ToggleButtonGroup variant="soft" aria-label="View">
       <ToggleButton id="grid">Grid</ToggleButton>
       <ToggleButton id="list">List</ToggleButton>
       <ToggleButton id="gallery">Gallery</ToggleButton>
     </ToggleButtonGroup>
 
-    <ToggleButtonGroup aria-label="View">
+    <ToggleButtonGroup variant="ghost" aria-label="View">
       <ToggleButton id="grid">Grid</ToggleButton>
       <ToggleButton id="list">List</ToggleButton>
-      <ToggleButton isDisabled id="gallery">
-        Gallery
-      </ToggleButton>
+      <ToggleButton id="gallery">Gallery</ToggleButton>
     </ToggleButtonGroup>
   </>
 )

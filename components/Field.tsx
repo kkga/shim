@@ -29,11 +29,11 @@ interface FieldProps
 }
 
 const fieldLayoutStyle = tv({
-  base: ["group"],
+  base: ["group flex flex-col gap-1"],
   variants: {
     labelPosition: {
-      top: "flex flex-col gap-1",
-      side: "grid grid-cols-[1fr_2fr] gap-1",
+      top: "",
+      side: "has-[label]:grid has-[label]:grid-cols-[1fr_2fr]",
     },
   },
   defaultVariants: { labelPosition: "top" },
@@ -47,7 +47,7 @@ const inputBaseStyle = tv({
     // disabled
     "data-disabled:cursor-not-allowed data-disabled:inset-ring data-disabled:inset-ring-neutral-line data-disabled:bg-neutral-bg-subtle data-disabled:text-neutral-placeholder data-disabled:shadow-none",
     // invalid
-    "data-invalid:inset-ring data-invalid:inset-ring-error-border data-invalid:bg-error-bg-subtle",
+    "data-invalid:inset-ring data-invalid:inset-ring-danger-border data-invalid:bg-danger-bg-subtle",
     // focused
     "data-focused:outline-2 data-focused:-outline-offset-1 data-focused:outline-accent-focus-ring",
     // focus-visible
@@ -91,14 +91,14 @@ function Input({ size, variant, className, ...props }: InputProps) {
 
 const labelStyle = tv({
   base: [
-    "font-book text-neutral-text max-w-fit self-start truncate",
+    "text-neutral-text font-book max-w-fit self-start truncate",
     "data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
   ],
   variants: {
     size: {
       1: "text-xs",
-      2: "text-[13px]",
-      3: "text-sm",
+      2: "text-sm",
+      3: "text-base",
       4: "text-base",
     },
     labelPosition: {
@@ -150,6 +150,7 @@ const descriptionStyle = tv({
     "text-neutral-text col-start-2",
     "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
   ],
+  // TODO: size 2 doesn't look good in labelPosition side
   variants: {
     size: {
       1: "text-[11px]",
@@ -178,7 +179,7 @@ function Description({ size, className, ...props }: DescriptionProps) {
 }
 
 const fieldErrorStyle = tv({
-  base: ["text-error-text col-start-2"],
+  base: ["text-danger-text col-start-2"],
   variants: {
     size: {
       1: "text-[11px]",
@@ -262,7 +263,6 @@ const groupInputStyle = tv({
   defaultVariants: { size: 1 },
 })
 
-// TODO: fix the width of the input in number field
 function GroupInput({ className, ...props }: Omit<InputProps, "variant">) {
   let themeProps = useThemeProps({ ...props })
   let { size } = themeProps

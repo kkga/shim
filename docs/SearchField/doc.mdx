@@ -8,54 +8,50 @@ composes:
   - Field
 ---
 
-### Controlled value
-
-Use `value` and `onChange` to control the value of the search field.
-
 <Demo
+  title="Controlled value"
   className="items-stretch"
   demo={<SearchFieldDemo.Controlled />}
   code={demos["controlled"]}
-/>
-
-### Size
-
-Use `size` to set the size of the search field.
+>
+  Use `value` and `onChange` to control the value of the search field.
+</Demo>
 
 <Demo
+  title="Size"
   className="items-stretch"
   demo={<SearchFieldDemo.Size />}
   code={demos["size"]}
-/>
-
-### Variant
-
-Use `variant` to set the variant of the search field.
+>
+  Use `size` to set the size of the search field.
+</Demo>
 
 <Demo
+  title="Variant"
   className="items-stretch"
   demo={<SearchFieldDemo.Variant />}
   code={demos["variant"]}
-/>
-
-### Prefix icon
-
-Use `prefixIcon` to set the prefix icon for the search field. Set to `"filter"`
-when using the field as a filter input or pass a custom icon component.
+>
+  Use `variant` to set the variant of the search field.
+</Demo>
 
 <Demo
+  title="Prefix icon"
   className="items-stretch"
   demo={<SearchFieldDemo.PrefixIcon />}
   code={demos["prefix-icon"]}
-/>
-
-### States
-
-Use `isDisabled`, `isRequired`, `isInvalid` and `errorMessage` to set the state
-of the search field.
+>
+  Use `prefixIcon` to set the prefix icon for the search field. Set to
+  `"filter"` when using the field as a filter input or pass a custom icon
+  component.
+</Demo>
 
 <Demo
+  title="States"
   className="items-stretch"
   demo={<SearchFieldDemo.States />}
   code={demos["states"]}
-/>
+>
+  Use `isDisabled`, `isRequired`, `isInvalid` and `errorMessage` to set the
+  state of the search field.
+</Demo>

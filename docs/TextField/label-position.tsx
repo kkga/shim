@@ -1,5 +1,16 @@
 import { TextField } from "@ui/TextField"
 
 export default () => (
-  <TextField labelPosition="side" label="Name" description="Enter your name" />
+  <>
+    <TextField
+      label="First name"
+      labelPosition="side"
+      description="Visible to others"
+    />
+    <TextField
+      label="First name"
+      labelPosition="top"
+      description="Visible to others"
+    />
+  </>
 )

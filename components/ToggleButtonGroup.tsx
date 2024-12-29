@@ -17,15 +17,30 @@ import {
 } from "./Field"
 
 const style = tv({
-  slots: {
-    buttonsContainer: "group grid auto-cols-fr grid-flow-col",
+  base: "group grid auto-cols-fr grid-flow-col",
+  variants: {
+    variant: { soft: "", ghost: "" },
+    intent: { neutral: "", accent: "", success: "", warning: "", error: "" },
+    size: {
+      1: "rounded-sm",
+      2: "rounded-sm",
+      3: "rounded-md",
+      4: "rounded-lg",
+    },
+  },
+  defaultVariants: {
+    size: 1,
+    variant: "soft",
+    intent: "neutral",
   },
 })
 
 interface ToggleButtonGroupProps
   extends RACToggleButtonGroupProps,
-    FieldProps,
-    VariantProps<typeof style> {}
+    Omit<FieldProps, "variant">,
+    VariantProps<typeof style> {
+  variant?: "soft" | "ghost"
+}
 
 function ToggleButtonGroup({
   label,
@@ -34,8 +49,7 @@ function ToggleButtonGroup({
   errorMessage,
   ...props
 }: ToggleButtonGroupProps) {
-  let themeProps = useThemeProps({ ...props })
-  let { buttonsContainer } = style()
+  let themeProps = useThemeProps({ ...props, buttonVariant: props.variant })
 
   return (
     <RACToggleButtonGroup
@@ -48,7 +62,7 @@ function ToggleButtonGroup({
       {composeRenderProps(props.children, (children) => (
         <Theme {...themeProps}>
           {label && <Label>{label}</Label>}
-          <div className={buttonsContainer()}>{children}</div>
+          <div className={style()}>{children}</div>
           {description && <Description>{description}</Description>}
           <FieldError>{errorMessage}</FieldError>
         </Theme>

@@ -3,7 +3,6 @@ import {
   DisclosureHeader,
   DisclosurePanel,
 } from "@/components/Disclosure"
-import { Info, WarningDiamond } from "@phosphor-icons/react/dist/ssr"
 import { clsx } from "clsx"
 import type { MDXRemoteProps } from "next-mdx-remote"
 import { default as NextLink } from "next/link"
@@ -11,6 +10,7 @@ import { ComponentPropsWithoutRef } from "react"
 import { Code, CodeBlock } from "./code-block"
 import { Demo } from "./demo"
 import { demoComponents } from "./demo-components"
+import { Note } from "./note"
 import { Step, Steps } from "./steps"
 
 function Link({ className, href, ...props }: ComponentPropsWithoutRef<"a">) {
@@ -118,47 +118,6 @@ function P({ className, ...props }: ComponentPropsWithoutRef<"p">) {
   return <p className={clsx("mb-3", className)} {...props} />
 }
 
-function Note({
-  intent = "info",
-  title,
-  children,
-}: {
-  intent?: "info" | "warning"
-  title?: string
-  children: React.ReactNode
-}) {
-  let colors = {
-    info: "text-accent-text",
-    warning: "text-warning-text",
-  }
-
-  let icons = {
-    info: <Info size={16} weight="duotone" />,
-    warning: <WarningDiamond size={16} weight="duotone" />,
-  }
-
-  return (
-    <div
-      className={clsx(
-        "font-book grid grid-cols-[min-content_auto] gap-1 rounded-md text-sm leading-5 *:m-0 [&_code]:text-current",
-        colors[intent],
-      )}
-    >
-      <div className="flex size-5 shrink-0 items-center justify-center">
-        {icons[intent]}
-      </div>
-      <h4 className="font-medium">{title}</h4>
-      <div className="col-span-full *:last:mb-0">{children}</div>
-    </div>
-  )
-}
-
-function HR({ className, ...props }: ComponentPropsWithoutRef<"hr">) {
-  return (
-    <hr {...props} className={clsx("border-neutral-line my-12", className)} />
-  )
-}
-
 const mdxComponents: MDXRemoteProps["components"] = {
   h1: H1,
   h2: H2,
@@ -167,18 +126,29 @@ const mdxComponents: MDXRemoteProps["components"] = {
   h5: H5,
   h6: H6,
   p: P,
-  ul: (props: ComponentPropsWithoutRef<"ul">) => (
-    <ul className="my-4 list-outside list-disc pl-4" {...props} />
+  ul: ({ className, ...props }: ComponentPropsWithoutRef<"ul">) => (
+    <ul
+      className={clsx("my-4 list-outside list-disc pl-4", className)}
+      {...props}
+    />
   ),
-  li: (props: ComponentPropsWithoutRef<"li">) => (
-    <li className="mb-2" {...props} />
+  li: ({ className, ...props }: ComponentPropsWithoutRef<"li">) => (
+    <li className={clsx("mb-2", className)} {...props} />
   ),
-  hr: HR,
-  em: (props: ComponentPropsWithoutRef<"em">) => (
-    <em className="text-neutral-text-contrast italic" {...props} />
+  hr: ({ className, ...props }: ComponentPropsWithoutRef<"hr">) => (
+    <hr className={clsx("border-neutral-line my-12", className)} {...props} />
   ),
-  strong: (props: ComponentPropsWithoutRef<"strong">) => (
-    <strong className="text-neutral-text-contrast font-medium" {...props} />
+  em: ({ className, ...props }: ComponentPropsWithoutRef<"em">) => (
+    <em
+      className={clsx("text-neutral-text-contrast italic", className)}
+      {...props}
+    />
+  ),
+  strong: ({ className, ...props }: ComponentPropsWithoutRef<"strong">) => (
+    <strong
+      className={clsx("text-neutral-text-contrast font-medium", className)}
+      {...props}
+    />
   ),
   a: Link,
   code: Code,
@@ -195,7 +165,7 @@ const mdxComponents: MDXRemoteProps["components"] = {
   ...demoComponents,
 }
 
-export { Code, CodeBlock, H1, H2, H3, H4, H5, H6, HR, mdxComponents, Note, P }
+export { H1, H2, H3, H4, H5, H6, mdxComponents, P }
 
 declare global {
   type MDXProvidedComponents = typeof mdxComponents

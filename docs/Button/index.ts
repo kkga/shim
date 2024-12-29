@@ -1,4 +1,5 @@
 export { default as Content } from "./content"
+export { default as Disabled } from "./disabled"
 export { default as Intent } from "./intent"
 export { default as Main } from "./main"
 export { default as Pending } from "./pending"

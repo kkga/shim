@@ -16,6 +16,10 @@ export function getMainDemo(name: string) {
   })
 }
 
+export function getDemos(name: string) {
+  return dynamic(() => import(`@/docs/${name}/index`))
+}
+
 interface DemoComponent {
   Main: ComponentType<object>
   [key: string]: ComponentType<object>
@@ -50,12 +54,13 @@ export const demoComponents: Record<string, DemoComponent> = {
 
   // Buttons
   ButtonDemo: {
-    Main: dynamic(() => import("@docs/Button").then((mod) => mod.Main)),
+    Main: dynamic(() => import("@docs/Button/index").then((mod) => mod.Main)),
     Variant: dynamic(() => import("@docs/Button").then((mod) => mod.Variant)),
     Size: dynamic(() => import("@docs/Button").then((mod) => mod.Size)),
     Intent: dynamic(() => import("@docs/Button").then((mod) => mod.Intent)),
     Content: dynamic(() => import("@docs/Button").then((mod) => mod.Content)),
     Pending: dynamic(() => import("@docs/Button").then((mod) => mod.Pending)),
+    Disabled: dynamic(() => import("@docs/Button").then((mod) => mod.Disabled)),
   },
   ToggleButtonDemo: {
     Main: dynamic(() => import("@docs/ToggleButton").then((mod) => mod.Main)),
@@ -77,11 +82,17 @@ export const demoComponents: Record<string, DemoComponent> = {
     Main: dynamic(() =>
       import("@docs/ToggleButtonGroup").then((mod) => mod.Main),
     ),
+    SelectionMode: dynamic(() =>
+      import("@docs/ToggleButtonGroup").then((mod) => mod.SelectionMode),
+    ),
     States: dynamic(() =>
       import("@docs/ToggleButtonGroup").then((mod) => mod.States),
     ),
     Size: dynamic(() =>
       import("@docs/ToggleButtonGroup").then((mod) => mod.Size),
+    ),
+    Variant: dynamic(() =>
+      import("@docs/ToggleButtonGroup").then((mod) => mod.Variant),
     ),
   },
 
@@ -296,6 +307,7 @@ export const demoComponents: Record<string, DemoComponent> = {
       import("@docs/TagGroup").then((mod) => mod.Removing),
     ),
     Color: dynamic(() => import("@docs/TagGroup").then((mod) => mod.Color)),
+    Size: dynamic(() => import("@docs/TagGroup").then((mod) => mod.Size)),
   },
 
   // Pickers

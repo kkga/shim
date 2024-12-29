@@ -6,37 +6,32 @@ docUrl: "https://react-spectrum.adobe.com/react-aria/Switch.html"
 aria: "https://www.w3.org/WAI/ARIA/apg/patterns/switch/"
 ---
 
-### States
+<Demo title="States" demo={<SwitchDemo.States />} code={demos.states}>
+  Use `defaultSelected` prop to set the initial state of the switch. Use
+  `isDisabled` prop to disable the switch.
+</Demo>
 
-Use `defaultSelected` prop to set the initial state of the switch. Use
-`isDisabled` to disable the switch.
-
-<Demo demo={<SwitchDemo.States />} code={demos.states} />
-
-### Variant
-
-Use `variant` prop to set the appearance of the switch.
-
-<Demo demo={<SwitchDemo.Variant />} code={demos.variant} />
-
-### Label position
-
-Use `labelPosition` prop to set the position of the label.
+<Demo title="Variant" demo={<SwitchDemo.Variant />} code={demos.variant}>
+  Use `variant` prop to set the appearance of the switch.
+</Demo>
 
 <Demo
+  title="Label position"
   className="items-start"
   demo={<SwitchDemo.LabelPosition />}
   code={demos["label-position"]}
-/>
+>
+  Use `labelPosition` prop to set the position of the label.
+</Demo>
 
-### Size
+<Demo title="Size" demo={<SwitchDemo.Size />} code={demos.size}>
+  Use `size` prop to set the size of the switch.
+</Demo>
 
-Use `size` prop to set the size of the switch.
-
-<Demo demo={<SwitchDemo.Size />} code={demos.size} />
-
-### Controlled
-
-Use `isSelected` and `onChange` props to control the state of the switch.
-
-<Demo demo={<SwitchDemo.Controlled />} code={demos.controlled} />
+<Demo
+  title="Controlled"
+  demo={<SwitchDemo.Controlled />}
+  code={demos.controlled}
+>
+  Use `isSelected` and `onChange` props to control the state of the switch.
+</Demo>

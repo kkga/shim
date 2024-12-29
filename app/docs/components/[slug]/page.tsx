@@ -1,8 +1,9 @@
+import { CodeBlock } from "@/app/_components/code-block"
 import { Demo } from "@/app/_components/demo"
 import { getMainDemo } from "@/app/_components/demo-components"
 import { DocHeader } from "@/app/_components/doc-header"
-import { CodeBlock, Note } from "@/app/_components/mdx-components"
 import { Metadata } from "@/app/_components/metadata"
+import { Note } from "@/app/_components/note"
 import { mdxToHtml } from "@/app/_lib/mdx"
 import {
   getComponentDocs,
@@ -19,40 +20,6 @@ export async function generateStaticParams() {
   }))
   return params
 }
-
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ slug: string }>
-// }): Promise<Metadata> {
-//   const slug = (await params).slug
-//   const doc = getComponentDocs().find((doc) => doc.slug === slug)
-
-//   if (!doc) {
-//     notFound()
-//   }
-
-//   const { name, description } = doc.metadata
-//   const ogImage = `${baseUrl}/og?title=${encodeURIComponent(name)}`
-
-//   return {
-//     title: name,
-//     description,
-//     openGraph: {
-//       title: name,
-//       description,
-//       type: "article",
-//       url: `${baseUrl}/docs/${doc.slug}`,
-//       images: [{ url: ogImage }],
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: name,
-//       description,
-//       images: [ogImage],
-//     },
-//   }
-// }
 
 const API_URL = "https://shim.kkga.me/api"
 const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components"
@@ -99,7 +66,7 @@ export default async function DocPage({
   })
 
   return (
-    <article className="bg-background container grid min-h-screen max-w-6xl grid-cols-1 gap-6 p-6 md:grid-cols-[2fr_3fr] lg:gap-8 lg:p-8">
+    <article className="bg-background container grid min-h-screen max-w-7xl grid-cols-1 gap-6 p-6 md:grid-cols-[2fr_3fr] lg:gap-8 lg:p-8">
       <DocHeader title={name} subtitle={description}>
         <Metadata
           dependencies={dependencies.length > 0 ? dependencies : undefined}
@@ -108,7 +75,6 @@ export default async function DocPage({
       </DocHeader>
 
       <Demo demo={<MainDemo />} code={demos.main} />
-
       <section className="col-span-full grid grid-cols-subgrid items-start gap-y-4">
         <div className="border-neutral-4 row-span-2 flex flex-col border-t pt-4 *:last:mb-0">
           <h2 className="text-neutral-text-contrast mb-2 text-balance text-base font-medium">
@@ -122,7 +88,7 @@ export default async function DocPage({
           {dependencies && dependencies.length > 0 && (
             <Note intent="warning" title="Dependencies">
               <p>
-                This component depends on{" "}
+                {name} depends on{" "}
                 {dependencies.map(({ name, slug }, i) => (
                   <span key={name}>
                     {i > 0 ?
@@ -130,16 +96,13 @@ export default async function DocPage({
                         " and "
                       : ", "
                     : ""}
-                    <Link
-                      intent="warning"
-                      variant="underline"
-                      href={`/docs/components/${slug}`}
-                    >
+                    <Link variant="underline" href={`/docs/components/${slug}`}>
                       {name}
                     </Link>
                     {i === dependencies.length - 1 ? "." : ""}
                   </span>
-                ))}
+                ))}{" "}
+                Make sure to install the dependencies before using.
               </p>
             </Note>
           )}
@@ -161,8 +124,41 @@ export default async function DocPage({
           sourceUrl={sourceUrl}
         />
       </section>
-
       {html}
     </article>
   )
 }
+
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: Promise<{ slug: string }>
+// }): Promise<Metadata> {
+//   const slug = (await params).slug
+//   const doc = getComponentDocs().find((doc) => doc.slug === slug)
+
+//   if (!doc) {
+//     notFound()
+//   }
+
+//   const { name, description } = doc.metadata
+//   const ogImage = `${baseUrl}/og?title=${encodeURIComponent(name)}`
+
+//   return {
+//     title: name,
+//     description,
+//     openGraph: {
+//       title: name,
+//       description,
+//       type: "article",
+//       url: `${baseUrl}/docs/${doc.slug}`,
+//       images: [{ url: ogImage }],
+//     },
+//     twitter: {
+//       card: "summary_large_image",
+//       title: name,
+//       description,
+//       images: [ogImage],
+//     },
+//   }
+// }

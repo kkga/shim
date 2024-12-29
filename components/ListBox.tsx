@@ -1,18 +1,17 @@
 "use client"
 
-import { cx, cxRenderProps, focusStyle } from "@lib/style"
+import { cxRenderProps, focusStyle } from "@lib/style"
 import { Size, Theme, useThemeProps } from "@lib/theme"
-import type {
-  ListBoxItemProps as RACListBoxItemProps,
-  ListBoxProps as RACListBoxProps,
-  SectionProps as RACSectionProps,
-} from "react-aria-components"
 import {
+  composeRenderProps,
   Collection as RACCollection,
   Header as RACHeader,
   ListBox as RACListBox,
   ListBoxItem as RACListBoxItem,
+  ListBoxItemProps as RACListBoxItemProps,
+  ListBoxProps as RACListBoxProps,
   ListBoxSection as RACListBoxSection,
+  ListBoxSectionProps as RACListBoxSectionProps,
 } from "react-aria-components"
 
 import { tv, VariantProps } from "tailwind-variants"
@@ -21,13 +20,17 @@ interface ListBoxProps<T> extends RACListBoxProps<T> {
   size?: Size
 }
 
-function ListBox<T extends object>({ size, ...props }: ListBoxProps<T>) {
+function ListBox<T extends object>({
+  size,
+  className,
+  ...props
+}: ListBoxProps<T>) {
   let themeProps = useThemeProps({ size })
   return (
     <Theme {...themeProps}>
       <RACListBox
         {...props}
-        className={cxRenderProps(props.className, "flex flex-col gap-px")}
+        className={cxRenderProps(className, "flex flex-col gap-px")}
       />
     </Theme>
   )
@@ -35,15 +38,12 @@ function ListBox<T extends object>({ size, ...props }: ListBoxProps<T>) {
 
 const itemStyle = tv({
   extend: focusStyle(),
-  base: [
-    "font-book relative flex shrink-0 items-center truncate rounded outline-0",
-    "data-disabled:text-neutral-placeholder",
-  ],
+  base: "font-book relative flex shrink-0 cursor-default items-center truncate outline-0",
   variants: {
     size: {
-      1: "h-6 gap-2 rounded px-1.5 text-xs",
-      2: "h-7 gap-2.5 rounded px-2 text-[13px]",
-      3: "h-8 gap-2.5 rounded-md px-2.5 text-sm",
+      1: "h-6 gap-2 rounded-sm px-2 text-xs",
+      2: "h-7 gap-2.5 rounded-sm px-2 text-sm",
+      3: "h-8 gap-2.5 rounded-md px-2.5 text-base",
       4: "h-10 gap-2.5 rounded-lg px-3 text-base",
     },
     intent: {
@@ -58,6 +58,9 @@ const itemStyle = tv({
       error:
         "text-error-text data-hovered:bg-error-bg-hover data-focus-visible:bg-error-bg-hover data-open:bg-error-bg-hover data-pressed:bg-error-bg-active data-selected:text-error-text-contrast data-selected:bg-error-bg-active",
     },
+    isDisabled: {
+      true: "text-neutral-placeholder",
+    },
   },
   defaultVariants: {
     intent: "neutral",
@@ -69,7 +72,7 @@ interface ListBoxItemProps
   extends RACListBoxItemProps,
     VariantProps<typeof itemStyle> {}
 
-function ListBoxItem({ intent, className, href, ...props }: ListBoxItemProps) {
+function ListBoxItem({ intent, href, ...props }: ListBoxItemProps) {
   let { size } = useThemeProps(props)
   let textValue =
     props.textValue ||
@@ -80,33 +83,39 @@ function ListBoxItem({ intent, className, href, ...props }: ListBoxItemProps) {
       {...props}
       href={href}
       textValue={textValue}
-      className={cxRenderProps(
-        className,
-        itemStyle({
-          intent,
-          size,
-          className: href ? "cursor-pointer" : "cursor-default",
-        }),
+      className={composeRenderProps(
+        props.className,
+        (className, { isDisabled }) =>
+          itemStyle({
+            intent,
+            size,
+            isDisabled,
+            className,
+          }),
       )}
     />
   )
 }
 
-const sectionHeaderStyle = tv({
-  base: ["text-neutral-text-contrast flex items-center truncate font-medium"],
+const sectionStyle = tv({
+  slots: {
+    section: "not-last:mb-1 flex flex-col gap-px",
+    header:
+      "text-neutral-text-contrast leading-none! flex items-center truncate font-medium",
+  },
   variants: {
     size: {
-      1: "h-6 px-1.5 text-xs",
-      2: "h-7 px-2 text-[13px]",
-      3: "h-8 px-2 text-sm",
-      4: "h-10 px-3 text-base",
+      1: { header: "h-6 px-1.5 text-xs" },
+      2: { header: "h-7 px-2 text-sm" },
+      3: { header: "h-8 px-2 text-base" },
+      4: { header: "h-10 px-3 text-base" },
     },
   },
 })
 
 interface ListBoxSectionProps<T>
-  extends RACSectionProps<T>,
-    VariantProps<typeof sectionHeaderStyle> {
+  extends RACListBoxSectionProps<T>,
+    VariantProps<typeof sectionStyle> {
   title?: string
 }
 
@@ -119,19 +128,15 @@ function ListBoxSection<T extends object>({
 }: ListBoxSectionProps<T>) {
   let themeProps = useThemeProps(props)
   let { size } = themeProps
+  let { header, section } = sectionStyle({ size })
 
   return (
-    <RACListBoxSection
-      {...props}
-      className={cx("not-last:mb-1 flex flex-col gap-px", className)}
-    >
-      {title && (
-        <RACHeader className={sectionHeaderStyle({ size })}>{title}</RACHeader>
-      )}
+    <RACListBoxSection {...props} className={section({ className })}>
+      {title && <RACHeader className={header()}>{title}</RACHeader>}
       <RACCollection items={items}>{children}</RACCollection>
     </RACListBoxSection>
   )
 }
 
-export { itemStyle, ListBox, ListBoxItem, ListBoxSection }
+export { itemStyle, ListBox, ListBoxItem, ListBoxSection, sectionStyle }
 export type { ListBoxItemProps, ListBoxProps, ListBoxSectionProps }

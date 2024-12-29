@@ -12,7 +12,10 @@ import {
 import { tv } from "tailwind-variants"
 
 const style = tv({
-  base: "animate-slide bg-panel text-neutral-text z-20 min-w-[var(--trigger-width)] text-xs shadow-[var(--shadow-lg)] outline-none",
+  base: [
+    "animate-slide bg-panel text-neutral-text z-20 min-w-[var(--trigger-width)] overflow-auto text-xs shadow-[var(--shadow-lg)] outline-none",
+    "data-[trigger=SubmenuTrigger]:-mt-1 data-[trigger=SubmenuTrigger]:data-[placement=left]:-mr-1 data-[trigger=SubmenuTrigger]:data-[placement=right]:-ml-1",
+  ],
   variants: {
     size: {
       1: "rounded-lg",
@@ -22,8 +25,6 @@ const style = tv({
     },
   },
 })
-
-// TODO: add `withDialog` prop
 
 type PopoverProps = RACPopoverProps
 

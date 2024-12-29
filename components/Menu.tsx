@@ -4,10 +4,14 @@ import { cx, cxRenderProps } from "@lib/style"
 import { Size, Theme, useThemeProps } from "@lib/theme"
 import { CaretRight, Check } from "@phosphor-icons/react"
 import {
+  Collection as RACCollection,
+  Header as RACHeader,
   Menu as RACMenu,
   MenuItem as RACMenuItem,
   MenuItemProps as RACMenuItemProps,
   MenuProps as RACMenuProps,
+  MenuSection as RACMenuSection,
+  MenuSectionProps as RACMenuSectionProps,
   MenuTrigger as RACMenuTrigger,
   PopoverProps as RACPopoverProps,
   Separator as RACSeparator,
@@ -16,7 +20,7 @@ import {
   composeRenderProps,
 } from "react-aria-components"
 import { VariantProps, tv } from "tailwind-variants"
-import { ListBoxSection, ListBoxSectionProps, itemStyle } from "./ListBox"
+import { itemStyle, sectionStyle } from "./ListBox"
 import { Popover } from "./Popover"
 
 interface MenuProps<T> extends RACMenuProps<T> {
@@ -117,12 +121,32 @@ const separatorStyle = tv({
 
 function MenuSeparator(props: RACSeparatorProps) {
   let { size } = useThemeProps()
-
   return <RACSeparator {...props} className={separatorStyle({ size })} />
 }
 
-function MenuSection<T extends object>(props: ListBoxSectionProps<T>) {
-  return <ListBoxSection {...props} />
+interface MenuSectionProps<T>
+  extends RACMenuSectionProps<T>,
+    VariantProps<typeof sectionStyle> {
+  title?: string
+}
+
+function MenuSection<T extends object>({
+  title,
+  children,
+  items,
+  className,
+  ...props
+}: MenuSectionProps<T>) {
+  let themeProps = useThemeProps(props)
+  let { size } = themeProps
+  let { header, section } = sectionStyle({ size })
+
+  return (
+    <RACMenuSection {...props} className={section({ className })}>
+      {title && <RACHeader className={header()}>{title}</RACHeader>}
+      <RACCollection items={items}>{children}</RACCollection>
+    </RACMenuSection>
+  )
 }
 
 const MenuTrigger = RACMenuTrigger
@@ -137,4 +161,4 @@ export {
   SubmenuTrigger,
 }
 
-export type { MenuItemProps, MenuProps }
+export type { MenuItemProps, MenuProps, MenuSectionProps }

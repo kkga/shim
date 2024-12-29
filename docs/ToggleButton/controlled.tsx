@@ -8,7 +8,7 @@ export default () => {
 
   return (
     <ToggleButton
-      isSquare
+      isIconOnly
       isSelected={isSelected}
       onChange={setSelected}
       aria-label="pin"

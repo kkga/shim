@@ -5,7 +5,7 @@ import { ToggleButtonGroup } from "@ui/ToggleButtonGroup"
 export default () => {
   return (
     <>
-      <ToggleButtonGroup size={1} label="Size 1" labelPosition="side">
+      <ToggleButtonGroup size={1} aria-label="View">
         <ToggleButton id="Grid" aria-label="Grid">
           <GridFour size={16} />
           Grid
@@ -15,7 +15,7 @@ export default () => {
           List
         </ToggleButton>
       </ToggleButtonGroup>
-      <ToggleButtonGroup size={2} label="Size 2" labelPosition="side">
+      <ToggleButtonGroup size={2} aria-label="View">
         <ToggleButton id="Grid" aria-label="Grid">
           <GridFour size={16} />
           Grid
@@ -25,7 +25,7 @@ export default () => {
           List
         </ToggleButton>
       </ToggleButtonGroup>
-      <ToggleButtonGroup size={3} label="Size 3" labelPosition="side">
+      <ToggleButtonGroup size={3} aria-label="View">
         <ToggleButton id="Grid" aria-label="Grid">
           <GridFour size={16} />
           Grid
@@ -35,7 +35,7 @@ export default () => {
           List
         </ToggleButton>
       </ToggleButtonGroup>
-      <ToggleButtonGroup size={4} label="Size 4" labelPosition="side">
+      <ToggleButtonGroup size={4} aria-label="View">
         <ToggleButton id="Grid" aria-label="Grid">
           <GridFour size={20} />
           Grid

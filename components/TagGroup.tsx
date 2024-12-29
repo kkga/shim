@@ -1,9 +1,11 @@
 "use client"
 
-import { cx, cxRenderProps, focusStyle } from "@lib/style"
+import { Size, Theme, useThemeProps } from "@/lib/theme"
+import { focusStyle } from "@lib/style"
 import { X } from "@phosphor-icons/react"
 import { createContext, useContext } from "react"
 import {
+  composeRenderProps,
   Button as RACButton,
   Tag as RACTag,
   TagGroup as RACTagGroup,
@@ -13,8 +15,8 @@ import {
   TagProps as RACTagProps,
   Text as RACText,
 } from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
-import { Description, Label } from "./Field"
+import { tv } from "tailwind-variants"
+import { Description, fieldLayoutStyle, Label } from "./Field"
 
 const COLORS = {
   gray: "text-[var(--slate-11)] border-[var(--slate-7)] data-selection-mode:data-hovered:border-[var(--slate-8)] data-selected:bg-[var(--slate-10)]",
@@ -33,6 +35,7 @@ interface TagGroupProps<T>
   extends Omit<RACTagGroupProps, "children">,
     Pick<RACTagListProps<T>, "items" | "children" | "renderEmptyState"> {
   color?: Color
+  size?: Size
   label?: string
   description?: string
   errorMessage?: string
@@ -47,27 +50,37 @@ function TagGroup<T extends object>({
   renderEmptyState,
   ...props
 }: TagGroupProps<T>) {
+  let themeProps = useThemeProps({ ...props })
+  let { labelPosition } = themeProps
+
   return (
     <RACTagGroup
       {...props}
-      className={cx("group flex flex-col gap-1.5", props.className)}
+      className={fieldLayoutStyle({
+        labelPosition,
+        className: props.className,
+      })}
+
+      // className={cx("group flex flex-col gap-1.5", props.className)}
     >
-      {label && <Label>{label}</Label>}
-      <ColorContext.Provider value={props.color || "gray"}>
-        <RACTagList
-          items={items}
-          renderEmptyState={renderEmptyState}
-          className="flex flex-wrap gap-1.5"
-        >
-          {children}
-        </RACTagList>
-      </ColorContext.Provider>
-      {description && <Description>{description}</Description>}
-      {errorMessage && (
-        <RACText slot="errorMessage" className="text-error-text text-xs">
-          {errorMessage}
-        </RACText>
-      )}
+      <Theme {...themeProps}>
+        {label && <Label>{label}</Label>}
+        <ColorContext.Provider value={props.color || "gray"}>
+          <RACTagList
+            items={items}
+            renderEmptyState={renderEmptyState}
+            className="flex flex-wrap gap-1.5"
+          >
+            {children}
+          </RACTagList>
+        </ColorContext.Provider>
+        {description && <Description>{description}</Description>}
+        {errorMessage && (
+          <RACText slot="errorMessage" className="text-error-text text-xs">
+            {errorMessage}
+          </RACText>
+        )}
+      </Theme>
     </RACTagGroup>
   )
 }
@@ -76,22 +89,40 @@ const style = tv({
   slots: {
     tag: [
       focusStyle(),
-      "flex h-5 max-w-fit cursor-default items-center gap-1 overflow-clip rounded-full border px-2 text-xs",
-      // allows removing
-      "data-allows-removing:pr-0",
+      "flex max-w-fit cursor-default items-center gap-1 overflow-clip rounded-full border leading-none",
       // selected
       "data-selected:text-white data-selected:border-transparent!",
       // disabled
       "data-disabled:bg-neutral-bg-subtle border-neutral-line text-neutral-placeholder",
     ],
     removeButton: [
-      focusStyle(),
-      "border-current/30 -mr-px ml-1 flex h-5 w-[22px] cursor-default items-center justify-center rounded-r-full border-l pr-0.5",
+      "border-current/30 -mr-px ml-1 flex h-5 cursor-default items-center justify-center rounded-r-full border-l",
       // hover
       "data-hovered:bg-current/10 data-pressed:bg-current/20",
     ],
   },
   variants: {
+    allowsRemoving: {
+      true: { tag: "pr-0!" },
+    },
+    size: {
+      1: {
+        tag: "h-5 px-2 text-xs",
+        removeButton: "h-5 w-[22px] pr-0.5",
+      },
+      2: {
+        tag: "h-6 px-2.5 text-[13px]",
+        removeButton: "h-6 w-[26px] pr-1",
+      },
+      3: {
+        tag: "h-7 px-3 text-sm",
+        removeButton: "h-7 w-[30px] pr-1",
+      },
+      4: {
+        tag: "h-9 px-3.5 text-base",
+        removeButton: "h-9 w-[38px] pr-1.5",
+      },
+    },
     color: Object.keys(COLORS).reduce(
       (acc, key) => {
         acc[key as Color] = {
@@ -104,25 +135,32 @@ const style = tv({
   },
 })
 
-interface TagProps extends RACTagProps, VariantProps<typeof style> {}
+interface TagProps extends RACTagProps {
+  color?: Color
+  size?: Size
+}
 
-function Tag({ children, color, ...props }: TagProps) {
+function Tag({ children, color, size: _size, ...props }: TagProps) {
   let textValue = typeof children === "string" ? children : undefined
   let groupColor = useContext(ColorContext)
-  let { tag, removeButton } = style({ color: color || groupColor })
+  let { size } = useThemeProps({ size: _size })
+  let { tag, removeButton } = style({ size, color: color || groupColor })
 
   return (
     <RACTag
       textValue={textValue}
       {...props}
-      className={cxRenderProps(props.className, tag())}
+      className={composeRenderProps(
+        props.className,
+        (className, { allowsRemoving }) => tag({ allowsRemoving, className }),
+      )}
     >
       {({ allowsRemoving }) => (
         <>
           {children as React.ReactNode}
           {allowsRemoving && (
             <RACButton slot="remove" className={removeButton()}>
-              <X aria-hidden size={12} weight="bold" />
+              <X aria-hidden size={size >= 3 ? 16 : 12} />
             </RACButton>
           )}
         </>

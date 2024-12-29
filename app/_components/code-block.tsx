@@ -105,7 +105,7 @@ function Code({
   return (
     <code
       className={clsx(
-        "text-neutral-text-contrast font-book min-w-min font-mono text-[97%]",
+        "text-accent-text font-book min-w-min font-mono",
         className,
       )}
       dangerouslySetInnerHTML={highlight ? { __html: html } : undefined}

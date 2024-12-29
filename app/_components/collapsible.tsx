@@ -37,11 +37,11 @@ export function Collapsible({
         style={
           collapsed ?
             {
-              WebkitMaskImage:
+              maskImage:
                 "linear-gradient(to bottom, transparent, black 20px, black calc(100% - 120px), transparent)",
             }
           : {
-              WebkitMaskImage:
+              maskImage:
                 "linear-gradient(to bottom, transparent, black 20px, black calc(100% - 20px), transparent)",
             }
         }

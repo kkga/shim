@@ -1,33 +1,11 @@
 import localFont from "next/font/local"
 
 export const fontMono = localFont({
-  src: [
-    {
-      path: "./commit-mono.woff2",
-    },
-  ],
+  src: [{ path: "./commit-mono.woff2" }],
   variable: "--font-mono",
 })
 
 export const fontSans = localFont({
-  src: [
-    {
-      path: "./Mona-Sans.woff2",
-    },
-  ],
+  src: [{ path: "./Mona-Sans.woff2" }],
   variable: "--font-sans",
 })
-
-// export const fontSans = localFont({
-//   src: [
-//     {
-//       path: "./inter.woff2",
-//       style: "normal",
-//     },
-//     {
-//       path: "./inter-italic.woff2",
-//       style: "italic",
-//     },
-//   ],
-//   variable: "--font-sans",
-// })

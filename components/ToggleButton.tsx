@@ -1,6 +1,6 @@
 "use client"
 
-import { focusStyle } from "@lib/style"
+import { focusStyle, Intent, INTENTS } from "@lib/style"
 import { useThemeProps } from "@lib/theme"
 import { Children, isValidElement, useContext } from "react"
 import {
@@ -9,59 +9,105 @@ import {
   ToggleGroupStateContext,
   type ToggleButtonProps as RACToggleButtonProps,
 } from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+import { ClassValue, tv, VariantProps } from "tailwind-variants"
 
 const style = tv({
   extend: focusStyle,
-  base: "inline-flex items-center justify-center text-xs font-medium",
+  base: [
+    "leading-none! font-book inline-flex shrink-0 items-center justify-center font-sans",
+  ],
   variants: {
-    variant: {
-      soft: "",
-      solid: "",
-      ghost: "bg-transparent",
-    },
-    intent: {
-      neutral:
-        "bg-neutral-bg data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active text-neutral-text data-selected:bg-neutral-solid",
-      accent:
-        "bg-accent-bg data-hovered:bg-accent-bg-hover data-pressed:bg-accent-bg-active text-accent-text data-selected:bg-accent-solid",
-      success:
-        "bg-success-bg data-hovered:bg-success-bg-hover data-pressed:bg-success-bg-active text-success-text data-selected:bg-success-solid",
-      warning:
-        "bg-warning-bg data-hovered:bg-warning-bg-hover data-pressed:bg-warning-bg-active text-warning-text data-selected:bg-warning-solid",
-      error:
-        "bg-error-bg data-hovered:bg-error-bg-hover data-pressed:bg-error-bg-active text-error-text data-selected:bg-error-solid",
-    },
+    variant: { soft: "", ghost: "bg-transparent" },
+    intent: INTENTS.reduce(
+      (acc, intent) => {
+        acc[intent] = ""
+        return acc
+      },
+      {} as Record<Intent, ClassValue>,
+    ),
     size: {
-      1: "h-6 gap-1.5 rounded px-1.5 text-xs",
-      2: "h-7 gap-2 rounded px-2 text-[13px]",
+      1: "h-6 gap-1.5 rounded-sm px-1.5 text-xs",
+      2: "h-7 gap-2 rounded-sm px-2 text-sm",
       3: "h-8 gap-2 rounded-md px-2.5 text-sm",
-      4: "h-10 gap-2 rounded-lg px-3 text-base",
+      4: "h-10 gap-2.5 rounded-lg px-3 text-base",
     },
-    isSelected: {
-      true: "text-white",
-    },
-    isDisabled: {
-      true: "text-neutral-placeholder! bg-neutral-bg-subtle! inset-ring inset-ring-neutral-line cursor-not-allowed",
-    },
-    isSquare: { true: null, false: null },
-    // TODO improve the group styling
+    isFocusVisible: { true: "relative" },
+    isDisabled: { true: "cursor-not-allowed" },
+    isIconOnly: { true: "" },
     isInGroup: {
       true: [
-        "peer -ml-px flex-1 shrink-0",
-        "not-first:not-last:rounded-none first:rounded-r-none last:rounded-l-none",
+        "peer relative flex-1 shrink-0",
+        "after:bg-neutral-4 after:absolute after:-right-[0.5px] after:w-px last:after:hidden",
+        "data-selected:after:hidden not-data-selected:has-[+[data-selected]]:after:hidden data-selected:has-[+[data-selected]]:after:block! has-[+[data-selected]]:after:bg-white",
       ],
     },
   },
   compoundVariants: [
-    { size: 1, isSquare: [true], isInGroup: [false], className: "size-6 p-0" },
-    { size: 2, isSquare: [true], isInGroup: [false], className: "size-7 p-0" },
-    { size: 3, isSquare: [true], isInGroup: [false], className: "size-8 p-0" },
-    { size: 4, isSquare: [true], isInGroup: [false], className: "size-10 p-0" },
     {
-      intent: ["neutral", "accent", "success", "warning", "error"],
+      isInGroup: true,
+      variant: "soft",
+      class:
+        "not-first:not-last:rounded-none first:rounded-r-none last:rounded-l-none",
+    },
+    { size: 1, isInGroup: true, class: "after:inset-y-0.75" },
+    { size: 2, isInGroup: true, class: "after:inset-y-1" },
+    { size: 3, isInGroup: true, class: "after:inset-y-1.25" },
+    { size: 4, isInGroup: true, class: "after:inset-y-1.5" },
+    { size: 1, isIconOnly: true, isInGroup: false, class: "size-6 p-0" },
+    { size: 2, isIconOnly: true, isInGroup: false, class: "size-7 p-0" },
+    { size: 3, isIconOnly: true, isInGroup: false, class: "size-8 p-0" },
+    { size: 4, isIconOnly: true, isInGroup: false, class: "size-10 p-0" },
+    {
+      intent: "neutral",
+      variant: ["soft", "ghost"],
+      class:
+        "text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active data-selected:bg-neutral-solid data-selected:text-white",
+    },
+    { intent: "neutral", variant: "soft", class: "bg-neutral-bg" },
+    { intent: "neutral", variant: "ghost", class: "bg-transparent" },
+    {
+      intent: "accent",
+      variant: ["soft", "ghost"],
+      class:
+        "text-accent-text data-hovered:bg-accent-bg-hover data-pressed:bg-accent-bg-active data-selected:bg-accent-solid data-selected:text-white",
+    },
+    { intent: "accent", variant: "soft", class: "bg-accent-bg" },
+    { intent: "accent", variant: "ghost", class: "bg-transparent" },
+    {
+      intent: "success",
+      variant: ["soft", "ghost"],
+      class:
+        "text-success-text data-hovered:bg-success-bg-hover data-pressed:bg-success-bg-active data-selected:bg-success-solid data-selected:text-white",
+    },
+    { intent: "success", variant: "soft", class: "bg-success-bg" },
+    { intent: "success", variant: "ghost", class: "bg-transparent" },
+    {
+      intent: "warning",
+      variant: ["soft", "ghost"],
+      class:
+        "text-warning-text data-hovered:bg-warning-bg-hover data-pressed:bg-warning-bg-active data-selected:bg-warning-solid data-selected:text-white",
+    },
+    { intent: "warning", variant: "soft", class: "bg-warning-bg" },
+    { intent: "warning", variant: "ghost", class: "bg-transparent" },
+    {
+      intent: "danger",
+      variant: ["soft", "ghost"],
+      class:
+        "text-danger-text data-hovered:bg-danger-bg-hover data-pressed:bg-danger-bg-active data-selected:bg-danger-solid data-selected:text-white",
+    },
+    { intent: "danger", variant: "soft", class: "bg-danger-bg" },
+    { intent: "danger", variant: "ghost", class: "bg-transparent" },
+    {
+      isDisabled: true,
+      variant: ["soft"],
+      intent: ["neutral", "accent", "success", "warning", "danger"],
+      class: "text-neutral-text-subtle bg-neutral-bg!",
+    },
+    {
+      isDisabled: true,
       variant: "ghost",
-      className: "bg-transparent",
+      intent: ["neutral", "accent", "success", "warning", "danger"],
+      class: "text-neutral-text-subtle bg-transparent!",
     },
   ],
   defaultVariants: {
@@ -81,6 +127,7 @@ function ToggleButton({
   variant: _variant,
   size: _size,
   intent,
+  isIconOnly,
   ...props
 }: ToggleButtonProps) {
   let isInGroup = useContext(ToggleGroupStateContext) !== null
@@ -92,33 +139,32 @@ function ToggleButton({
   return (
     <RACToggleButton
       {...props}
-      className={composeRenderProps(
-        props.className,
-        (className, { isSelected, isDisabled }) =>
-          style({
-            isInGroup,
-            isSelected,
-            isDisabled,
-            size,
-            intent,
-            variant: buttonVariant,
-            isSquare:
-              typeof props.isSquare === "boolean" ?
-                props.isSquare
-              : hasOnlySvgChild(props),
-            className,
-          }),
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        style({
+          ...renderProps,
+          isInGroup,
+          size,
+          intent,
+          variant: buttonVariant as "soft" | "ghost",
+          isIconOnly:
+            typeof isIconOnly === "boolean" ? isIconOnly : (
+              hasOnlySvgChild(props)
+            ),
+          className,
+        }),
       )}
     />
   )
 }
 
 function hasOnlySvgChild(props: Partial<ToggleButtonProps>): boolean {
-  let children =
-    typeof props.children !== "function" && Children.toArray(props.children)
+  const children =
+    typeof props.children !== "function" ?
+      Children.toArray(props.children)
+    : null
 
   return (
-    children &&
+    Array.isArray(children) &&
     children.length === 1 &&
     isValidElement(children[0]) &&
     children[0].type === "svg"

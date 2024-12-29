@@ -1,7 +1,8 @@
 import { getComponentSource } from "@/app/_lib/utils"
+import { NextRequest } from "next/server"
 
-export async function GET(request: Request) {
-  let { searchParams } = new URL(request.url)
+export function GET(request: NextRequest) {
+  let searchParams = request.nextUrl.searchParams
   let component = searchParams.get("component")
   let c = searchParams.get("c")
   component = component || c

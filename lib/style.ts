@@ -26,7 +26,7 @@ export const INTENTS = [
   "accent",
   "success",
   "warning",
-  "error",
+  "danger",
 ] as const
 export type Intent = (typeof INTENTS)[number]
 
