@@ -1,7 +1,10 @@
 "use client"
 import { Cell, Column, Row, Table, TableBody, TableHeader } from "@ui/Table"
 import { useMemo, useState } from "react"
-import type { SortDescriptor } from "react-aria-components"
+import {
+  ResizableTableContainer,
+  type SortDescriptor,
+} from "react-aria-components"
 
 let rows = [
   { id: 1, name: "Games", date: "6/7/2020", type: "File folder" },
@@ -40,30 +43,32 @@ export default () => {
   }, [sortDescriptor])
 
   return (
-    <Table
-      selectionMode="multiple"
-      aria-label="Files"
-      sortDescriptor={sortDescriptor}
-      onSortChange={setSortDescriptor}
-    >
-      <TableHeader>
-        <Column id="name" isRowHeader allowsResizing>
-          Name
-        </Column>
-        <Column id="type" allowsResizing>
-          Type
-        </Column>
-        <Column id="date">Date Modified</Column>
-      </TableHeader>
-      <TableBody items={items}>
-        {(row) => (
-          <Row>
-            <Cell>{row.name}</Cell>
-            <Cell>{row.type}</Cell>
-            <Cell>{row.date}</Cell>
-          </Row>
-        )}
-      </TableBody>
-    </Table>
+    <ResizableTableContainer>
+      <Table
+        selectionMode="multiple"
+        aria-label="Files"
+        sortDescriptor={sortDescriptor}
+        onSortChange={setSortDescriptor}
+      >
+        <TableHeader>
+          <Column id="name" isRowHeader allowsResizing>
+            Name
+          </Column>
+          <Column id="type" allowsResizing>
+            Type
+          </Column>
+          <Column id="date">Date Modified</Column>
+        </TableHeader>
+        <TableBody items={items}>
+          {(row) => (
+            <Row>
+              <Cell>{row.name}</Cell>
+              <Cell>{row.type}</Cell>
+              <Cell>{row.date}</Cell>
+            </Row>
+          )}
+        </TableBody>
+      </Table>
+    </ResizableTableContainer>
   )
 }
