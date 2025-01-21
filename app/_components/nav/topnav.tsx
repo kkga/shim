@@ -42,7 +42,7 @@ export function TopNav(props: { items: NavItem[] }) {
           <Button
             size={3}
             onPress={() => setOpen(true)}
-            isSquare
+            isIconOnly
             variant="ghost"
             intent="neutral"
           >
@@ -59,7 +59,7 @@ export function TopNav(props: { items: NavItem[] }) {
             <div className="flex gap-1.5 p-3">
               <TooltipTrigger>
                 <LinkButton
-                  isSquare
+                  isIconOnly
                   size={3}
                   intent="neutral"
                   target="_blank"
@@ -73,7 +73,7 @@ export function TopNav(props: { items: NavItem[] }) {
 
               <TooltipTrigger>
                 <LinkButton
-                  isSquare
+                  isIconOnly
                   size={3}
                   intent="neutral"
                   target="_blank"
@@ -88,7 +88,7 @@ export function TopNav(props: { items: NavItem[] }) {
               <Button
                 className="ml-auto"
                 onPress={() => setOpen(false)}
-                isSquare
+                isIconOnly
                 size={3}
                 variant="soft"
                 intent="neutral"

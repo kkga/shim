@@ -136,7 +136,7 @@ export function ExampleRepo() {
     <ExampleContainer className="min-w-[800px]">
       <div className="flex items-center gap-2 p-4 pb-2 text-[13px]">
         <MenuTrigger>
-          <Button intent="neutral" isSquare aria-label="Menu">
+          <Button intent="neutral" isIconOnly aria-label="Menu">
             <List size={16} />
           </Button>
           <Menu size={1}>
@@ -229,14 +229,14 @@ export function ExampleRepo() {
         </MenuTrigger>
 
         <TooltipTrigger>
-          <Button intent="neutral" isSquare>
+          <Button intent="neutral" isIconOnly>
             <GitPullRequest weight="duotone" size={16} />
           </Button>
           <Tooltip>Pull requests</Tooltip>
         </TooltipTrigger>
 
         <TooltipTrigger>
-          <Button intent="neutral" isSquare className="relative">
+          <Button intent="neutral" isIconOnly className="relative">
             <div className="border-accent-line bg-accent-9 absolute -right-0.5 -top-0.5 size-2 rounded-full border shadow"></div>
             <Tray weight="duotone" size={16} />
           </Button>
@@ -255,7 +255,7 @@ export function ExampleRepo() {
       </div>
 
       <Tabs className="flex-1 gap-0 overflow-auto">
-        <TabList className="gap-4 px-4">
+        <TabList variant="underline" className="gap-4 px-4">
           <Tab id="code">
             <Code weight="duotone" size={16} />
             Code

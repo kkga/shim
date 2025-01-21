@@ -263,7 +263,7 @@ export function ExampleIssueTracker() {
             </MenuTrigger>
 
             <Button
-              isSquare
+              isIconOnly
               intent="neutral"
               variant="ghost"
               className="ml-auto"
@@ -271,7 +271,7 @@ export function ExampleIssueTracker() {
               <MagnifyingGlass size={16} />
             </Button>
 
-            <Button isSquare intent="neutral">
+            <Button isIconOnly intent="neutral">
               <Plus size={16} />
             </Button>
           </div>
@@ -359,7 +359,7 @@ export function ExampleIssueTracker() {
               </span>
               <MenuTrigger>
                 <Button
-                  isSquare
+                  isIconOnly
                   intent="neutral"
                   variant="ghost"
                   aria-label="Inbox menu"
@@ -386,7 +386,7 @@ export function ExampleIssueTracker() {
 
               <MenuTrigger>
                 <Button
-                  isSquare
+                  isIconOnly
                   intent="neutral"
                   variant="ghost"
                   className="ml-auto"
@@ -401,7 +401,7 @@ export function ExampleIssueTracker() {
                 </Menu>
               </MenuTrigger>
               <PopoverTrigger>
-                <Button isSquare intent="neutral" variant="ghost">
+                <Button isIconOnly intent="neutral" variant="ghost">
                   <SlidersHorizontal size={16} />
                 </Button>
                 <Popover placement="bottom end">
@@ -513,7 +513,7 @@ export function ExampleIssueTracker() {
               </Breadcrumbs>
 
               <MenuTrigger>
-                <Button variant="ghost" intent="neutral" isSquare>
+                <Button variant="ghost" intent="neutral" isIconOnly>
                   <DotsThree weight="bold" size={16} />
                 </Button>
                 <Menu>
@@ -534,7 +534,7 @@ export function ExampleIssueTracker() {
               <TooltipTrigger>
                 <ToggleButton
                   intent="neutral"
-                  isSquare
+                  isIconOnly
                   variant="ghost"
                   aria-label="Favorite"
                 >
@@ -552,7 +552,7 @@ export function ExampleIssueTracker() {
                 <Button
                   intent="neutral"
                   variant="ghost"
-                  isSquare
+                  isIconOnly
                   className="ml-auto"
                   aria-label="Archive"
                 >
@@ -567,7 +567,7 @@ export function ExampleIssueTracker() {
                 <Button
                   intent="neutral"
                   variant="ghost"
-                  isSquare
+                  isIconOnly
                   aria-label="Snooze"
                 >
                   <Clock size={16} />
