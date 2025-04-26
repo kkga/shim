@@ -27,7 +27,7 @@ function Demo({ title, demo, code, className, children }: Props) {
         {demo && (
           <div
             className={clsx(
-              "text-neutral-text flex flex-col flex-wrap gap-2 text-[13px]",
+              "text-neutral-text flex flex-col flex-wrap gap-4 text-[13px]",
               className,
             )}
           >

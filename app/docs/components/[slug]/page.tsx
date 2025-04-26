@@ -66,7 +66,7 @@ export default async function DocPage({
   })
 
   return (
-    <article className="bg-background container grid min-h-screen max-w-7xl grid-cols-1 gap-6 p-6 md:grid-cols-[2fr_3fr] lg:gap-8 lg:p-8">
+    <article className="bg-background container grid min-h-screen max-w-7xl grid-cols-1 place-content-start gap-6 p-6 md:grid-cols-[2fr_3fr] lg:gap-8 lg:p-8">
       <DocHeader title={name} subtitle={description}>
         <Metadata
           dependencies={dependencies.length > 0 ? dependencies : undefined}

@@ -11,6 +11,7 @@ import {
   HandGrabbing,
   HouseSimple,
   Lightning,
+  Palette,
   Path,
   Rows,
   Swatches,
@@ -49,6 +50,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
   Content: <Article weight="duotone" size={16} />,
   "Date and time": <Calendar weight="duotone" size={16} />,
   "Drag and drop": <HandGrabbing weight="duotone" size={16} />,
+  Color: <Palette weight="duotone" size={16} />,
 }
 
 const guideIcons: Record<string, React.ReactNode> = {
@@ -99,14 +101,14 @@ const style = tv({
   variants: {
     size: {
       1: {
-        header: "h-6 gap-2 px-1.5 text-xs leading-6",
+        header: "h-6 gap-1.5 px-1.5 text-xs leading-6",
         headerIcon: "size-6",
-        item: "h-6 gap-2 px-1.5 text-[13px] leading-6",
+        item: "h-6 gap-1.5 px-1.5 text-[13px] leading-6",
       },
       2: {
-        header: "h-8 gap-2.5 px-2 text-[13px] leading-8",
+        header: "h-8 gap-2 px-2 text-[13px] leading-8",
         headerIcon: "size-8",
-        item: "h-8 gap-2.5 px-2 text-sm leading-8",
+        item: "h-8 gap-2 px-2 text-sm leading-8",
       },
     },
     isDisabled: {
