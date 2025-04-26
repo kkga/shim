@@ -240,4 +240,4 @@ function Slider<T extends number | number[]>({
   )
 }
 
-export { Slider, type SliderProps }
+export { Slider, style, type SliderProps }

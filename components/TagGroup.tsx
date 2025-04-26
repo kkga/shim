@@ -96,7 +96,7 @@ const style = tv({
       "data-disabled:bg-neutral-bg-subtle border-neutral-line text-neutral-placeholder",
     ],
     removeButton: [
-      "border-current/30 -mr-px ml-1 flex h-5 cursor-default items-center justify-center rounded-r-full border-l",
+      "border-current/30 -mr-px ml-1 flex h-5 cursor-default items-center justify-center rounded-r-full border-l outline-0",
       // hover
       "data-hovered:bg-current/10 data-pressed:bg-current/20",
     ],

@@ -41,7 +41,7 @@ const fieldLayoutStyle = tv({
 
 const inputBaseStyle = tv({
   base: [
-    "border-none",
+    "field-sizing-content border-none",
     // hovered
     "",
     // disabled
@@ -81,10 +81,10 @@ function Input({ size, variant, className, ...props }: InputProps) {
   return (
     <RACInput
       {...props}
-      className={
-        (cxRenderProps(className),
-        inputBaseStyle({ variant: theme.fieldVariant, size: theme.size }))
-      }
+      className={cxRenderProps(
+        className,
+        inputBaseStyle({ variant: theme.fieldVariant, size: theme.size }),
+      )}
     />
   )
 }
