@@ -10,7 +10,7 @@ export function ExampleContainer({
   return (
     <div
       className={cx(
-        "bg-background flex h-[560px] flex-col overflow-clip rounded-lg shadow-md",
+        "flex h-[600px] flex-col overflow-clip rounded-lg shadow-md",
         className,
       )}
     >

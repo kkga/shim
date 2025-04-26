@@ -220,7 +220,7 @@ export function ExampleIssueTracker() {
 
   return (
     <ExampleContainer className="min-w-[800px]">
-      <div className="flex flex-1 flex-row overflow-auto">
+      <div className="bg-panel flex flex-1 flex-row overflow-auto">
         <div className="flex min-w-[160px] flex-col gap-2.5 p-3 text-xs">
           <div className="flex items-center gap-1">
             <MenuTrigger>
@@ -351,7 +351,7 @@ export function ExampleIssueTracker() {
           </ListBox>
         </div>
 
-        <div className="bg-panel shadow-xs ring-neutral-3 m-2 ml-0 flex flex-1 rounded ring">
+        <div className="bg-background shadow-xs ring-neutral-3 m-2 ml-0 flex flex-1 rounded ring">
           <div className="border-neutral-3 flex w-[240px] flex-col border-r">
             <div className="border-neutral-3 flex items-center gap-1.5 border-b p-1 px-2 text-xs">
               <span className="text-neutral-text-contrast ml-1 font-medium">

@@ -133,7 +133,7 @@ const fileRows = [
 
 export function ExampleRepo() {
   return (
-    <ExampleContainer className="min-w-[800px]">
+    <ExampleContainer className="bg-panel min-w-[800px]">
       <div className="flex items-center gap-2 p-4 pb-2 text-[13px]">
         <MenuTrigger>
           <Button intent="neutral" isIconOnly aria-label="Menu">
@@ -255,7 +255,7 @@ export function ExampleRepo() {
       </div>
 
       <Tabs className="flex-1 gap-0 overflow-auto">
-        <TabList variant="underline" className="gap-4 px-4">
+        <TabList variant="underline" className="shadow-neutral-3 gap-4 px-4">
           <Tab id="code">
             <Code weight="duotone" size={16} />
             Code
@@ -271,7 +271,7 @@ export function ExampleRepo() {
         </TabList>
 
         <TabPanel
-          className="bg-panel flex flex-1 flex-col gap-4 overflow-y-scroll p-4"
+          className="bg-background flex flex-1 flex-col gap-4 overflow-y-scroll p-4"
           id="code"
         >
           <div className="flex gap-2">
@@ -332,6 +332,7 @@ export function ExampleRepo() {
                 <div className="flex-1"></div>
 
                 <ComboBox
+                  className="min-w-32"
                   aria-label="Files"
                   defaultItems={fileRows}
                   placeholder="Go to file"
@@ -370,7 +371,7 @@ export function ExampleRepo() {
                   </Button>
                   <Popover placement="bottom end" className="w-xs">
                     <Tabs>
-                      <TabList className="gap-4 px-4">
+                      <TabList variant="underline" className="gap-4 px-4">
                         <Tab id="local">Local</Tab>
                         <Tab id="codespaces">Codespaces</Tab>
                       </TabList>
@@ -507,7 +508,23 @@ export function ExampleRepo() {
           </div>
         </TabPanel>
 
-        <TabPanel id="pr">Change your settings.</TabPanel>
+        <TabPanel
+          className="bg-background flex flex-1 flex-col gap-4 overflow-y-scroll p-4"
+          id="pr"
+        >
+          <h2 className="text-neutral-text-contrast text-sm font-medium leading-none">
+            Pull requests
+          </h2>
+        </TabPanel>
+
+        <TabPanel
+          className="bg-background flex flex-1 flex-col gap-4 overflow-y-scroll p-4"
+          id="settings"
+        >
+          <h2 className="text-neutral-text-contrast text-sm font-medium leading-none">
+            Settings
+          </h2>
+        </TabPanel>
       </Tabs>
     </ExampleContainer>
   )
