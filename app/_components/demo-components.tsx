@@ -351,4 +351,13 @@ export const demoComponents: Record<string, DemoComponent> = {
     ),
     Size: dynamic(() => import("@docs/DataList").then((mod) => mod.Size)),
   },
+
+  // Color
+  ColorSliderDemo: {
+    Main: dynamic(() => import("@docs/ColorSlider").then((mod) => mod.Main)),
+    Size: dynamic(() => import("@docs/ColorSlider").then((mod) => mod.Size)),
+    Orientation: dynamic(() =>
+      import("@docs/ColorSlider").then((mod) => mod.Orientation),
+    ),
+  },
 }
