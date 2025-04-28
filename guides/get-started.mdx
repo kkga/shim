@@ -20,12 +20,28 @@ assumes you have a React project set up with TypeScript.
 
 <Step>
   **Install React Aria Components** using your package manager of choice.
-  <CodeBlock highlight={false} title="Terminal">
-    pnpm add react-aria-components
-  </CodeBlock>
+
+<CodeBlock
+  code={[
+    {
+      title: "PNPM",
+      content: `pnpm add @react-aria/components @react-aria/utils @react-stately/utils`,
+    },
+    {
+      title: "NPM",
+      content: `npm install @react-aria/components @react-aria/utils @react-stately/utils`,
+    },
+    {
+      title: "Yarn",
+      content: `yarn add @react-aria/components @react-aria/utils @react-stately/utils`,
+    },
+  ]}
+/>
+
 </Step>
 
 <Step>
+  {/* TODO: update instructions to use Tailwind v4 */}
   **Install Tailwind CSS v4 Beta.** Refer to the [v4
   docs](https://tailwindcss.com/docs/v4-beta) on how to install it for your
   project.
@@ -44,9 +60,23 @@ assumes you have a React project set up with TypeScript.
 - [Phosphor Icons](https://phosphoricons.com/) are used within the components.
   They're great.
 
-<CodeBlock highlight={false} title="Terminal">
-  pnpm add tailwind-variants clsx tailwind-merge @radix-ui/colors @phosphor-icons/react
-</CodeBlock>
+<CodeBlock
+  code={[
+    {
+      title: "PNPM",
+      content: `pnpm add tailwind-variants clsx tailwind-merge @radix-ui/colors @phosphor-icons/react`,
+    },
+    {
+      title: "NPM",
+      content: `npm install tailwind-variants clsx tailwind-merge @radix-ui/colors @phosphor-icons/react`,
+    },
+    {
+      title: "Yarn",
+      content: `yarn add tailwind-variants clsx tailwind-merge @radix-ui/colors @phosphor-icons/react`,
+    },
+  ]}
+/>
+
 </Step>
 
 <Step>
@@ -55,15 +85,34 @@ Copy-paste these into your project or download from the [GitHub repo](https://gi
 A good place to put these files might be `lib/style.ts` and `lib/theme.tsx`, but
 the path alias can be customized (see the last step).
 
-<CodeBlock title="style.ts" collapsed code={styleUtilsSrc} sourceUrl={styleUtilsUrl} />
-<CodeBlock title="theme.tsx" collapsed code={themeUtilsSrc} sourceUrl={themeUtilsUrl} />
+<CodeBlock
+  collapsed
+  code={[{
+    content: styleUtilsSrc,
+    title: 'style.ts',
+    sourceUrl: styleUtilsUrl
+  },
+ {
+    content: themeUtilsSrc,
+    title: 'theme.tsx',
+    sourceUrl: themeUtilsUrl
+  } 
+  ]}
+/>
 </Step>
 
 <Step>
 **Add theme CSS.** A single file containing [Tailwind v4 configuration](https://tailwindcss.com/docs/v4-beta#css-configuration-in-depth) and theme colors.
 This file needs to be imported in your app entry file.
 
-<CodeBlock title="theme.css" collapsed code={themeCssSrc} sourceUrl={themeCssUrl}/>
+<CodeBlock
+  collapsed
+  code={[{ 
+    title: 'theme.css',
+    content: themeCssSrc, 
+    sourceUrl: themeCssUrl }
+  ]}
+/>
 </Step>
 
 <Step>
@@ -71,7 +120,12 @@ This file needs to be imported in your app entry file.
 This will allow importing components and utils with `@ui/*` and `@lib/*` aliases.
 If you'll use different aliases, make sure to update the imports in components.
 
-<CodeBlock title="tsconfig.json" code={`{
+<CodeBlock
+  title="tsconfig.json"
+  code={[
+    {
+      title: "tsconfig.json",
+      content: `{
     "compilerOptions": {
       "baseUrl": "./",
       "paths": {
@@ -79,7 +133,11 @@ If you'll use different aliases, make sure to update the imports in components.
         "@lib/*": ["./lib/*"], // path to the utilities (style.ts, theme.tsx)
       }
     }
-  }`}/>
- </Step>
+  }`,
+    },
+  ]}
+/>
+
+</Step>
 
 </Steps>

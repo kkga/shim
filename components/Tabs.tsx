@@ -84,7 +84,7 @@ const style = tv({
     },
     isDisabled: {
       true: {
-        tab: "text-neutral-placeholder cursor-not-allowed",
+        tab: "text-neutral-text-subtle cursor-not-allowed",
       },
     },
     isFocusVisible: {

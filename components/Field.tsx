@@ -45,7 +45,7 @@ const inputBaseStyle = tv({
     // hovered
     "",
     // disabled
-    "data-disabled:cursor-not-allowed data-disabled:inset-ring data-disabled:inset-ring-neutral-line data-disabled:bg-neutral-bg-subtle data-disabled:text-neutral-placeholder data-disabled:shadow-none",
+    "data-disabled:cursor-not-allowed data-disabled:inset-ring data-disabled:inset-ring-neutral-line data-disabled:bg-neutral-bg-subtle data-disabled:text-neutral-text-subtle data-disabled:shadow-none",
     // invalid
     "data-invalid:inset-ring data-invalid:inset-ring-danger-border data-invalid:bg-danger-bg-subtle",
     // focused
@@ -92,7 +92,7 @@ function Input({ size, variant, className, ...props }: InputProps) {
 const labelStyle = tv({
   base: [
     "text-neutral-text font-book max-w-fit self-start truncate",
-    "data-disabled:text-neutral-placeholder group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
+    "data-disabled:text-neutral-text-subtle group-data-disabled:text-neutral-text-subtle peer-data-disabled:text-neutral-text-subtle",
   ],
   variants: {
     size: {
@@ -148,7 +148,7 @@ function Label({
 const descriptionStyle = tv({
   base: [
     "text-neutral-text col-start-2",
-    "group-data-disabled:text-neutral-placeholder peer-data-disabled:text-neutral-placeholder",
+    "group-data-disabled:text-neutral-text-subtle peer-data-disabled:text-neutral-text-subtle",
   ],
   // TODO: size 2 doesn't look good in labelPosition side
   variants: {
@@ -249,7 +249,7 @@ function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
 const groupInputStyle = tv({
   base: [
     "field-sizing-content min-w-8 flex-1 appearance-none self-stretch border-none text-inherit outline-0",
-    "placeholder:text-neutral-placeholder autofill:bg-transparent [&::-webkit-search-cancel-button]:hidden",
+    "placeholder:text-neutral-text-subtle autofill:bg-transparent [&::-webkit-search-cancel-button]:hidden",
     "data-disabled:cursor-not-allowed group-data-disabled:cursor-not-allowed",
   ],
   variants: {

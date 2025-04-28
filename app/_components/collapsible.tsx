@@ -1,9 +1,8 @@
 "use client"
 
 import { cx } from "@lib/style"
-import { ArrowLineDown, ArrowLineUp } from "@phosphor-icons/react"
 import { Button } from "@ui/Button"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface Props {
   children: React.ReactNode
@@ -16,8 +15,18 @@ export function Collapsible({
   compact,
   collapsed: defaultCollapsed,
 }: Props) {
-  const [collapsed, setCollapsed] = useState(defaultCollapsed)
-  const toggle = () => setCollapsed((prev) => !prev)
+  let [collapsed, setCollapsed] = useState(defaultCollapsed)
+  let toggle = () => setCollapsed((prev) => !prev)
+  let ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (collapsed) {
+      let { current } = ref
+      if (current) {
+        current.scrollTop = 0
+      }
+    }
+  }, [collapsed])
 
   return (
     <div
@@ -34,6 +43,7 @@ export function Collapsible({
           "grow-1 pb-8",
           collapsed ? "overflow-hidden *:overflow-hidden" : "overflow-auto",
         )}
+        ref={ref}
         style={
           collapsed ?
             {
@@ -50,14 +60,11 @@ export function Collapsible({
       </div>
 
       <Button
-        className="absolute inset-0 bottom-4 top-auto z-10 m-auto w-fit backdrop-blur"
+        className="absolute inset-1 top-auto z-10 m-auto backdrop-blur"
         onPress={toggle}
         intent="neutral"
         size={1}
       >
-        {collapsed ?
-          <ArrowLineDown size={16} />
-        : <ArrowLineUp size={16} />}
         {collapsed ? "Expand" : "Collapse"}
       </Button>
     </div>

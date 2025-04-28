@@ -4,26 +4,25 @@ import { CodeBlock } from "./code-block"
 
 interface Props {
   title?: string
+  hideTitle?: boolean
   children?: React.ReactNode
   demo: React.ReactNode
   code?: string
   className?: string
 }
 
-function Demo({ title, demo, code, className, children }: Props) {
+function Demo({ title, hideTitle, demo, code, className, children }: Props) {
   return (
-    <section className="col-span-full grid grid-cols-subgrid items-stretch gap-y-6 md:gap-y-0">
-      <div className="border-neutral-4 flex flex-col gap-4 border-t pt-4 lg:gap-6">
-        {(title || children) && (
-          <div className="*:last:mb-0">
-            {title && (
-              <h2 className="text-neutral-text-contrast mb-2 text-balance text-base font-medium">
-                {title}
-              </h2>
-            )}
-            {children}
-          </div>
+    <section className="col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-start py-12">
+      <div className="col-start-1 flex flex-col gap-2">
+        {title && !hideTitle && (
+          <h2 className="text-neutral-text-contrast inline text-base font-semibold leading-8">
+            {title}
+          </h2>
         )}
+
+        {children && <div className="*:last:mb-4">{children}</div>}
+
         {demo && (
           <div
             className={clsx(
@@ -36,7 +35,12 @@ function Demo({ title, demo, code, className, children }: Props) {
         )}
       </div>
 
-      {code && <CodeBlock code={code} lang="tsx" className="bg-panel" />}
+      {code && (
+        <CodeBlock
+          code={[{ title: `${title} example`, content: code }]}
+          lang="tsx"
+        />
+      )}
     </section>
   )
 }

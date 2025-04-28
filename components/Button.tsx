@@ -27,7 +27,7 @@ const style = tv({
       {} as Record<Intent, ClassValue>,
     ),
     size: {
-      1: "h-6 gap-2 rounded-sm px-2 text-xs",
+      1: "h-6 gap-1 rounded-sm px-2 text-xs",
       2: "h-7 gap-2 rounded-sm px-2 text-sm",
       3: "h-8 gap-2 rounded-md px-2.5 text-base",
       4: "h-10 gap-2.5 rounded-lg px-3 text-base",

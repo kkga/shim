@@ -70,9 +70,9 @@ const style = tv({
     },
     isDisabled: {
       true: {
-        item: "text-neutral-placeholder cursor-not-allowed",
+        item: "text-neutral-text-subtle cursor-not-allowed",
         itemInput:
-          "bg-neutral-bg-subtle inset-ring-1 inset-ring-neutral-line text-neutral-placeholder shadow-none",
+          "bg-neutral-bg-subtle inset-ring-1 inset-ring-neutral-line text-neutral-text-subtle shadow-none",
       },
     },
     isSelected: { true: { itemInput: "before:visible" } },

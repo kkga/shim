@@ -65,7 +65,7 @@ const style = tv({
       true: {
         indicator: "bg-neutral-bg-subtle shadow-none",
         thumb: "bg-neutral-bg ring-neutral-line shadow-none",
-        output: "text-neutral-placeholder",
+        output: "text-neutral-text-subtle",
       },
     },
   },

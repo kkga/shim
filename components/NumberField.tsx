@@ -97,7 +97,7 @@ function NumberField({
 
 const stepperButtonStyle = tv({
   base: [
-    "text-neutral-placeholder flex cursor-default items-center justify-center bg-transparent",
+    "text-neutral-text-subtle flex cursor-default items-center justify-center bg-transparent",
   ],
   variants: {
     size: {

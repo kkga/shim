@@ -80,8 +80,8 @@ const style = tv({
     },
     isDisabled: {
       true: {
-        button: "text-neutral-placeholder",
-        chevron: "text-neutral-placeholder",
+        button: "text-neutral-text-subtle",
+        chevron: "text-neutral-text-subtle",
       },
     },
     isExpanded: {

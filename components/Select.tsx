@@ -59,7 +59,7 @@ function Select<T extends object>({
         <Theme {...themeProps}>
           {label && <Label>{label}</Label>}
           <Button intent="neutral">
-            <RACSelectValue className="data-placeholder:text-neutral-placeholder flex-1 truncate text-left font-normal" />
+            <RACSelectValue className="data-placeholder:text-neutral-text-subtle flex-1 truncate text-left font-normal" />
             <CaretDown
               size={themeProps.size === 1 ? 12 : 16}
               aria-hidden

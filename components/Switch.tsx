@@ -41,7 +41,7 @@ const style = tv({
     isSelected: { true: "" },
     isDisabled: {
       true: {
-        container: "text-neutral-placeholder cursor-not-allowed",
+        container: "text-neutral-text-subtle cursor-not-allowed",
         handle: "bg-neutral-bg-subtle",
       },
     },

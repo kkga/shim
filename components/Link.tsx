@@ -14,7 +14,7 @@ const style = tv({
     // hovered
     "data-hovered:underline",
     // disabled
-    "data-disabled:no-underline data-disabled:cursor-default data-disabled:text-neutral-placeholder",
+    "data-disabled:no-underline data-disabled:cursor-default data-disabled:text-neutral-text-subtle",
     // current
     "data-current:text-neutral-text",
   ],

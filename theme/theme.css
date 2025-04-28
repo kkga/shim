@@ -114,7 +114,7 @@
   --color-neutral-focus-ring: var(--color-neutral-8);
   --color-neutral-solid: var(--color-neutral-9);
   --color-neutral-solid-hover: var(--color-neutral-10);
-  --color-neutral-text-subtle: var(--color-neutral-8);
+  --color-neutral-text-subtle: var(--color-neutral-9);
   --color-neutral-text: var(--color-neutral-11);
   --color-neutral-text-contrast: var(--color-neutral-12);
 
@@ -129,7 +129,7 @@
   --color-accent-focus-ring: var(--color-accent-8);
   --color-accent-solid: var(--color-accent-9);
   --color-accent-solid-hover: var(--color-accent-10);
-  --color-accent-text-subtle: var(--color-accent-8);
+  --color-accent-text-subtle: var(--color-accent-9);
   --color-accent-text: var(--color-accent-11);
   --color-accent-text-contrast: var(--color-accent-12);
 
@@ -144,7 +144,7 @@
   --color-success-focus-ring: var(--color-success-8);
   --color-success-solid: var(--color-success-9);
   --color-success-solid-hover: var(--color-success-10);
-  --color-success-text-subtle: var(--color-success-8);
+  --color-success-text-subtle: var(--color-success-9);
   --color-success-text: var(--color-success-11);
   --color-success-text-contrast: var(--color-success-12);
 
@@ -159,7 +159,7 @@
   --color-warning-focus-ring: var(--color-warning-8);
   --color-warning-solid: var(--color-warning-9);
   --color-warning-solid-hover: var(--color-warning-10);
-  --color-warning-text-subtle: var(--color-warning-8);
+  --color-warning-text-subtle: var(--color-warning-9);
   --color-warning-text: var(--color-warning-11);
   --color-warning-text-contrast: var(--color-warning-12);
 
@@ -174,7 +174,7 @@
   --color-danger-focus-ring: var(--color-danger-8);
   --color-danger-solid: var(--color-danger-9);
   --color-danger-solid-hover: var(--color-danger-10);
-  --color-danger-text-subtle: var(--color-danger-8);
+  --color-danger-text-subtle: var(--color-danger-9);
   --color-danger-text: var(--color-danger-11);
   --color-danger-text-contrast: var(--color-danger-12);
 

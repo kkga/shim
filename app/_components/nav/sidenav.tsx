@@ -12,12 +12,11 @@ export function SideNav(props: { items: NavItem[] }) {
   return (
     <aside
       className={clsx(
-        "sticky top-0 z-20 hidden h-svh lg:flex",
-        "bg-panel shrink-0 flex-col overflow-auto text-sm",
+        "border-neutral-3 sticky top-0 z-20 hidden h-svh shrink-0 flex-col overflow-auto border-r text-sm lg:flex",
       )}
       style={{ scrollbarWidth: "thin" }}
     >
-      <header className="bg-panel sticky top-0 flex shrink-0 items-center justify-between gap-1 px-3 py-2">
+      <header className="sticky top-0 flex shrink-0 items-center justify-between gap-1 px-3 py-2">
         <Link
           intent="neutral"
           className="flex size-6 items-center justify-center no-underline"

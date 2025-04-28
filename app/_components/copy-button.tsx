@@ -69,6 +69,7 @@ function CopyButton({
 
   return (
     <Button
+      variant="ghost"
       onPress={handleCopy}
       intent={justCopied ? "success" : "neutral"}
       className={className}

@@ -101,9 +101,9 @@ const style = tv({
   variants: {
     size: {
       1: {
-        header: "h-6 gap-1.5 px-1.5 text-xs leading-6",
-        headerIcon: "size-6",
-        item: "h-6 gap-1.5 px-1.5 text-[13px] leading-6",
+        header: "h-7 gap-2 px-2 text-xs leading-7",
+        headerIcon: "size-7",
+        item: "h-7 gap-2 px-2 text-sm leading-7",
       },
       2: {
         header: "h-8 gap-2 px-2 text-[13px] leading-8",
@@ -112,7 +112,7 @@ const style = tv({
       },
     },
     isDisabled: {
-      true: { item: "text-neutral-placeholder" },
+      true: { item: "text-neutral-text-subtle" },
     },
     isHovered: {
       true: { item: "bg-neutral-bg-hover" },
@@ -151,8 +151,7 @@ export function Navigation({
     <div className="relative flex h-full flex-col overflow-auto">
       <div className="px-3 py-0.5">
         <SearchField
-          size={size > 1 ? 3 : 1}
-          variant="soft"
+          size={size > 1 ? 3 : 2}
           aria-label="Filter navigation items"
           prefixIcon={null}
           placeholder="Filter"
@@ -177,7 +176,7 @@ export function Navigation({
           selectedKeys={[pathname]}
           layout="grid"
           renderEmptyState={() => (
-            <p className="text-neutral-placeholder p-4 text-center text-sm font-medium">
+            <p className="text-neutral-text-subtle p-4 text-center text-sm font-medium">
               Nothing found
             </p>
           )}
@@ -185,7 +184,7 @@ export function Navigation({
           {({ section, items }) => (
             <ListBoxSection
               id={section}
-              className="col-span-full mb-4 grid grid-cols-subgrid gap-y-1"
+              className="col-span-full mb-4 grid grid-cols-subgrid gap-y-0.5"
             >
               {section !== "Intro" && (
                 <Header className={headerStyle()} key={section}>

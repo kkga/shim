@@ -29,7 +29,7 @@ function Breadcrumb({
       className={cxRenderProps(className, "flex items-center gap-1")}
     >
       <Link intent="neutral" href={href} {...props} />
-      {href && <CaretRight size={12} className="text-neutral-placeholder" />}
+      {href && <CaretRight size={12} className="text-neutral-text-subtle" />}
     </RACBreadcrumb>
   )
 }

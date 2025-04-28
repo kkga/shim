@@ -16,7 +16,9 @@ export function DocHeader({
   className,
 }: DocHeaderProps) {
   return (
-    <header className={clsx("col-span-full flex flex-col gap-6", className)}>
+    <header
+      className={clsx("col-span-full flex flex-col gap-6 pb-12", className)}
+    >
       <div>
         <H1>{title}</H1>
         {subtitle && (

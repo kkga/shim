@@ -28,11 +28,11 @@ export default function DocsLayout({
   }, [docs, guides])
 
   return (
-    <div className="flex min-h-svh flex-col lg:grid lg:grid-cols-[var(--sidebar-width)_1fr]">
+    <div className="bg-background flex min-h-svh flex-col lg:grid lg:grid-cols-[var(--sidebar-width)_1fr]">
       <SideNav items={navItems} />
       <TopNav items={navItems} />
 
-      <main className="font-book overflow-auto text-sm leading-normal">
+      <main className="font-book overflow-auto p-12 text-sm leading-normal">
         {children}
       </main>
     </div>

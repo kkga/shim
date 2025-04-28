@@ -4,9 +4,10 @@ import { tv } from "tailwind-variants"
 const noteStyle = tv({
   slots: {
     container:
-      "text-neutral-text grid grid-cols-[min-content_auto] gap-x-1.5 rounded-lg p-2 pl-2.5 text-[13px] leading-normal *:m-0 [&_code]:text-current",
-    title: "text-neutral-text-contrast col-start-2 col-end-3 font-medium",
-    icon: "col-start-1 col-end-2 row-start-1 flex size-5 shrink-0 items-center justify-center",
+      "text-neutral-text grid grid-cols-[min-content_auto] gap-x-1.5 rounded-lg py-2 pl-2.5 pr-4 text-sm leading-normal *:m-0 [&_code]:text-current",
+    title:
+      "text-neutral-text-contrast col-start-2 col-end-3 text-sm font-medium leading-6",
+    icon: "col-start-1 col-end-2 row-start-1 flex size-6 shrink-0 items-center justify-center",
     content: "col-start-2 *:last:mb-0",
   },
   variants: {
@@ -21,10 +22,12 @@ function Note({
   intent = "info",
   title,
   children,
+  className,
 }: {
   intent?: "info" | "warning"
   title?: string
   children: React.ReactNode
+  className?: string
 }) {
   let icons = {
     info: <Info size={16} />,
@@ -33,7 +36,7 @@ function Note({
   let { icon, container, title: titleStyle, content } = noteStyle({ intent })
 
   return (
-    <div className={container()}>
+    <div className={container({ className })}>
       <h4 className={titleStyle()}>{title}</h4>
       <div className={icon()}>{icons[intent]}</div>
       <div className={content()}>{children}</div>

@@ -59,7 +59,7 @@ const itemStyle = tv({
         "text-error-text data-hovered:bg-error-bg-hover data-focus-visible:bg-error-bg-hover data-open:bg-error-bg-hover data-pressed:bg-error-bg-active data-selected:text-error-text-contrast data-selected:bg-error-bg-active",
     },
     isDisabled: {
-      true: "text-neutral-placeholder",
+      true: "text-neutral-text-subtle",
     },
   },
   defaultVariants: {

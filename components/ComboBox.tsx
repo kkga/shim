@@ -60,7 +60,7 @@ const style = tv({
       true: { triggerButtonContents: "bg-neutral-bg-active" },
     },
     isDisabled: {
-      true: { triggerButtonContents: "text-neutral-placeholder" },
+      true: { triggerButtonContents: "text-neutral-text-subtle" },
     },
   },
 })

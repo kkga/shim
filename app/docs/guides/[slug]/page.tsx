@@ -46,9 +46,9 @@ export default async function GuidePage({
   })
 
   return (
-    <article className="bg-background text-neutral-text container min-h-screen max-w-4xl p-6 text-[15px] leading-6 lg:p-8">
+    <article className="text-neutral-text container mx-auto min-h-screen max-w-3xl text-base leading-normal">
       <DocHeader title={title} subtitle={description} />
-      {html}
+      <section>{html}</section>
     </article>
   )
 }

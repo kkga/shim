@@ -7,7 +7,8 @@ import { clsx } from "clsx"
 import type { MDXRemoteProps } from "next-mdx-remote"
 import { default as NextLink } from "next/link"
 import { ComponentPropsWithoutRef } from "react"
-import { Code, CodeBlock } from "./code-block"
+import { Code } from "./code"
+import { CodeBlock } from "./code-block"
 import { Demo } from "./demo"
 import { demoComponents } from "./demo-components"
 import { Note } from "./note"
@@ -115,7 +116,7 @@ function H6({ className, ...props }: ComponentPropsWithoutRef<"h6">) {
 }
 
 function P({ className, ...props }: ComponentPropsWithoutRef<"p">) {
-  return <p className={clsx("mb-3", className)} {...props} />
+  return <p className={clsx("mb-2", className)} {...props} />
 }
 
 const mdxComponents: MDXRemoteProps["components"] = {

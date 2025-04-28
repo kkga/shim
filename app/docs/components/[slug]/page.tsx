@@ -66,7 +66,7 @@ export default async function DocPage({
   })
 
   return (
-    <article className="bg-background container grid min-h-screen max-w-7xl grid-cols-1 place-content-start gap-6 p-6 md:grid-cols-[2fr_3fr] lg:gap-8 lg:p-8">
+    <article className="divide-neutral-3 container mx-auto grid min-h-screen max-w-[var(--content-width)] grid-cols-1 place-content-start gap-x-8 divide-y overflow-clip md:grid-cols-[2fr_3fr]">
       <DocHeader title={name} subtitle={description}>
         <Metadata
           dependencies={dependencies.length > 0 ? dependencies : undefined}
@@ -74,17 +74,25 @@ export default async function DocPage({
         />
       </DocHeader>
 
-      <Demo demo={<MainDemo />} code={demos.main} />
-      <section className="col-span-full grid grid-cols-subgrid items-start gap-y-4">
-        <div className="border-neutral-4 row-span-2 flex flex-col border-t pt-4 *:last:mb-0">
-          <h2 className="text-neutral-text-contrast mb-2 text-balance text-base font-medium">
+      <Demo
+        demo={<MainDemo />}
+        hideTitle
+        code={demos.main}
+        title={`${doc.metadata.name}`}
+      />
+
+      <section className="col-span-full grid grid-cols-subgrid items-start py-12">
+        <div className="col-start-1 flex flex-col gap-2">
+          <h2 className="text-neutral-text-contrast text-base font-semibold leading-8">
             How to install
           </h2>
-          <p className="mb-4">
+          <p>
             Run cURL command to download the file into your project or copy the
             source code manually.
           </p>
+        </div>
 
+        <div className="col-start-2 flex flex-col gap-4 overflow-auto">
           {dependencies && dependencies.length > 0 && (
             <Note intent="warning" title="Dependencies">
               <p>
@@ -106,23 +114,22 @@ export default async function DocPage({
               </p>
             </Note>
           )}
+
+          <CodeBlock
+            className="bg-accent-2!"
+            code={[
+              {
+                title: "Command",
+                content: curlCommand,
+              },
+              {
+                title: "Source code",
+                content: source,
+                sourceUrl: sourceUrl,
+              },
+            ]}
+          />
         </div>
-
-        <CodeBlock
-          className="bg-accent-2!"
-          title="Terminal"
-          highlight={false}
-          code={curlCommand}
-        />
-
-        <CodeBlock
-          collapsed
-          compact
-          title="Source code"
-          className="bg-accent-2! col-start-2"
-          code={source}
-          sourceUrl={sourceUrl}
-        />
       </section>
       {html}
     </article>

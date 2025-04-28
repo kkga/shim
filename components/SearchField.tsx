@@ -56,14 +56,14 @@ const style = tv({
     },
     isEmpty: {
       true: {
-        iconContainer: "text-neutral-placeholder",
+        iconContainer: "text-neutral-text-subtle",
         clearButtonContainer: "hidden",
       },
       false: { iconContainer: "text-neutral-text" },
     },
     isDisabled: {
       true: {
-        clearButton: "text-neutral-placeholder",
+        clearButton: "text-neutral-text-subtle",
       },
     },
   },

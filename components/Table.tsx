@@ -81,7 +81,7 @@ const styles = {
       // hovered+selected (in selection mode)
       "data-[selected]:data-[hovered]:bg-accent-bg-active",
       // disabled
-      "data-[disabled]:text-neutral-placeholder",
+      "data-[disabled]:text-neutral-text-subtle",
     ],
   }),
 

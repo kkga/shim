@@ -59,7 +59,7 @@ const checkboxStyle = tv({
   variants: {
     isDisabled: {
       true: {
-        container: "text-neutral-placeholder cursor-not-allowed",
+        container: "text-neutral-text-subtle cursor-not-allowed",
       },
     },
     size: {
@@ -122,7 +122,7 @@ const checkboxStyle = tv({
       variant: ["classic", "soft", "outline"],
       class: {
         checkbox:
-          "bg-neutral-bg-subtle! shadow-none! inset-ring-1! inset-ring-neutral-line! text-neutral-placeholder!",
+          "bg-neutral-bg-subtle! shadow-none! inset-ring-1! inset-ring-neutral-line! text-neutral-text-subtle!",
       },
     },
   ],

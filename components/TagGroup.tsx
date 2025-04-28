@@ -93,7 +93,7 @@ const style = tv({
       // selected
       "data-selected:text-white data-selected:border-transparent!",
       // disabled
-      "data-disabled:bg-neutral-bg-subtle border-neutral-line text-neutral-placeholder",
+      "data-disabled:bg-neutral-bg-subtle border-neutral-line text-neutral-text-subtle",
     ],
     removeButton: [
       "border-current/30 -mr-px ml-1 flex h-5 cursor-default items-center justify-center rounded-r-full border-l outline-0",
