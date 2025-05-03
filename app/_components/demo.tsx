@@ -16,7 +16,7 @@ function Demo({ title, hideTitle, demo, code, className, children }: Props) {
     <section className="col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-start py-12">
       <div className="col-start-1 flex flex-col gap-2">
         {title && !hideTitle && (
-          <h2 className="text-neutral-text-contrast inline text-base font-semibold leading-8">
+          <h2 className="text-neutral-text-contrast text-base font-semibold leading-8">
             {title}
           </h2>
         )}

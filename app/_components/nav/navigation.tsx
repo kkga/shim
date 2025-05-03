@@ -196,7 +196,7 @@ export function Navigation({
                 <Header className={headerStyle()} key={section}>
                   {categoryIcons[section]}
                   {section}
-                  <div className="bg-neutral-4 h-px grow" />
+                  <div className="bg-neutral-3 h-px grow" />
                 </Header>
               )}
               <Collection items={items}>

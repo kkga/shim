@@ -56,7 +56,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         suppressHydrationWarning
         className={`${fontMono.variable} ${fontSans.variable}`}
       >
-        <body className="text-neutral-text bg-panel antialiased">
+        <body
+          className="text-neutral-text antialiased"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(to bottom, transparent 0px 3px, var(--gray-3) 3px 4px )",
+          }}
+        >
           <LocalizedStringProvider locale="en-US" />
           <ClientProviders>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

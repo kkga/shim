@@ -3,7 +3,8 @@
   --font-family-sans: var(--font-sans);
 
   --sidebar-width: 240px;
-  --content-width: 1152px;
+  --content-width-min: 360px;
+  --content-width-max: 1152px;
 
   --color-background: var(--color-pure);
   --color-background-subtle: var(--color-neutral-1);

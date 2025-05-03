@@ -46,7 +46,7 @@ function H1({ className, ...props }: ComponentPropsWithoutRef<"h1">) {
   return (
     <h1
       className={clsx(
-        "text-neutral-text-contrast scroll-mt-6 text-balance text-2xl font-semibold leading-tight",
+        "text-neutral-text-contrast scroll-mt-6 text-balance text-xl font-semibold leading-tight lg:text-2xl",
         className,
       )}
       {...props}
@@ -58,8 +58,7 @@ function H2({ className, ...props }: ComponentPropsWithoutRef<"h2">) {
   return (
     <h2
       className={clsx(
-        "text-neutral-text-contrast not-first:mt-12 mb-3 scroll-mt-6 text-balance text-lg font-medium leading-tight",
-        "after:border-neutral-4 after:mt-3 after:block after:border-b",
+        "text-neutral-text-contrast not-first:mt-12 mb-3 scroll-mt-6 text-balance text-base font-semibold leading-tight",
         className,
       )}
       {...props}

@@ -9,7 +9,7 @@ import { ThemeToggle } from "./theme-toggle"
 export function SideNav(props: { items: NavItem[] }) {
   return (
     <aside
-      className="border-neutral-3 sticky top-0 z-20 hidden h-svh shrink-0 flex-col overflow-auto border-r text-sm lg:flex"
+      className="bg-background border-neutral-3 sticky top-0 z-20 hidden h-svh shrink-0 flex-col overflow-auto border-r text-sm lg:flex"
       style={{ scrollbarWidth: "thin" }}
     >
       <header className="sticky top-0 flex shrink-0 items-center gap-1 py-2 pl-3 pr-3">

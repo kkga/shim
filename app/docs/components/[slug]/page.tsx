@@ -66,7 +66,7 @@ export default async function DocPage({
   })
 
   return (
-    <article className="divide-neutral-3 container mx-auto grid min-h-screen max-w-[var(--content-width)] grid-cols-1 place-content-start gap-x-8 divide-y md:grid-cols-[2fr_3fr]">
+    <article className="divide-neutral-3 grid grid-cols-1 place-content-start gap-x-8 divide-y md:grid-cols-[2fr_3fr]">
       <DocHeader title={name} subtitle={description}>
         <Metadata
           dependencies={dependencies.length > 0 ? dependencies : undefined}
