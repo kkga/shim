@@ -3,7 +3,7 @@
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
 import { Collection } from "react-aria-components"
 import { ExampleIssueTracker, ExampleRepo } from "../../examples"
-import { ThemeButton } from "./nav/theme-button"
+import { ThemeToggle } from "./nav/theme-toggle"
 
 let items = [
   {
@@ -29,7 +29,7 @@ export function Examples() {
         <TabList variant="soft" items={items}>
           {({ name }) => <Tab aria-label={name}>{name}</Tab>}
         </TabList>
-        <ThemeButton />
+        <ThemeToggle />
       </div>
 
       <Collection items={items}>

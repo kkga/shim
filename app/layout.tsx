@@ -59,12 +59,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <body className="text-neutral-text bg-panel antialiased">
           <LocalizedStringProvider locale="en-US" />
           <ClientProviders>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
               {children}
               <Analytics />
               <SpeedInsights />

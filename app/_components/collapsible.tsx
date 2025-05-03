@@ -7,14 +7,9 @@ import { useEffect, useRef, useState } from "react"
 interface Props {
   children: React.ReactNode
   collapsed?: boolean
-  compact?: boolean
 }
 
-export function Collapsible({
-  children,
-  compact,
-  collapsed: defaultCollapsed,
-}: Props) {
+export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
   let [collapsed, setCollapsed] = useState(defaultCollapsed)
   let toggle = () => setCollapsed((prev) => !prev)
   let ref = useRef<HTMLDivElement>(null)
@@ -32,10 +27,7 @@ export function Collapsible({
     <div
       className={cx(
         "flex flex-col overflow-auto",
-        collapsed ?
-          compact ? "max-h-40"
-          : "max-h-[20rem]"
-        : "max-h-[40rem]",
+        collapsed ? "max-h-[20rem]" : "max-h-[40rem]",
       )}
     >
       <div

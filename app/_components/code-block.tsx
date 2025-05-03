@@ -20,7 +20,6 @@ interface CodeItem {
 interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
   code?: Array<CodeItem> | string
   collapsed?: boolean
-  compact?: boolean
   children?: string | { props: { children: string } }
   highlight?: boolean
   className?: string
@@ -30,35 +29,30 @@ interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
 export function CodeBlock({
   code,
   collapsed,
-  compact,
   children,
   highlight = true,
   className,
   clickToCopy = true,
 }: Props) {
-  let [tab, setTab] = useState<Key | null>(
-    typeof code === "string" || !code ? null : code[0].title,
-  )
+  let [tab, setTab] = useState<Key | null>(() => {
+    if (Array.isArray(code) && code.length > 0) {
+      return code[0].title || null
+    }
+    return null
+  })
 
-  if (!code && typeof children === "object" && "props" in children) {
-    code = [
-      {
-        content: children.props.children,
-      },
-    ]
+  if (!code) {
+    code =
+      typeof children === "object" && "props" in children ?
+        [{ content: children.props.children }]
+      : [{ content: children as string }]
+  } else if (typeof code === "string") {
+    code = [{ content: code }]
   }
 
-  if (typeof code === "string") {
-    code = [
-      {
-        content: code,
-      },
-    ]
-  }
-
-  if (code[0]?.content.split("\n").length > 24) {
-    collapsed = true
-  }
+  let selectedCode = code.find((c) => c.title === tab) || code[0]
+  let isContentLong = selectedCode.content.split("\n").length > 24
+  let shouldCollapse = collapsed ?? isContentLong
 
   return (
     <div
@@ -85,12 +79,12 @@ export function CodeBlock({
           }
 
           <div className="ml-auto flex gap-1">
-            {code.find((c) => c.title === tab).sourceUrl && (
+            {selectedCode.sourceUrl && (
               <LinkButton
                 target="_blank"
                 variant="ghost"
                 className="backdrop-blur-sm"
-                href={code.find((c) => c.title === tab).sourceUrl}
+                href={selectedCode.sourceUrl}
               >
                 GitHub
                 <ArrowUpRight size={16} />
@@ -99,51 +93,32 @@ export function CodeBlock({
             {clickToCopy && (
               <CopyButton
                 className="backdrop-blur-sm"
-                text={
-                  code.find((c) => c.title === tab).raw ||
-                  code.find((c) => c.title === tab).content
-                }
+                text={selectedCode.raw || selectedCode.content}
               />
             )}
           </div>
         </div>
 
         {Array.isArray(code) &&
-          code?.map((c) => (
+          code.map((c) => (
             <TabPanel key={c.title} id={c.title}>
-              {(
-                collapsed ||
-                code.find((c) => c.title === tab).content.split("\n").length >
-                  24
-              ) ?
-                <Collapsible compact={compact} collapsed={collapsed}>
+              {shouldCollapse ?
+                <Collapsible collapsed={shouldCollapse}>
                   <pre className="**:[code]:text-[100%] grow overflow-scroll">
                     <Code highlight={highlight}>
-                      {code
-                        .find((c) => c.title === tab)
-                        .content.replace(/\n+$/, "")}
+                      {selectedCode.content.replace(/\n+$/, "")}
                     </Code>
                   </pre>
                 </Collapsible>
               : <pre className="**:[code]:text-[100%] grow overflow-scroll">
                   <Code highlight={highlight}>
-                    {code
-                      .find((c) => c.title === tab)
-                      .content.replace(/\n+$/, "")}
+                    {selectedCode.content.replace(/\n+$/, "")}
                   </Code>
                 </pre>
               }
             </TabPanel>
           ))}
       </Tabs>
-
-      {/* {title && (
-        <div className="border-neutral-4 ml-4 h-8 shrink-0 self-start border-b py-1">
-          <span className="text-neutral-text font-sans text-xs font-medium leading-6">
-            {title}
-          </span>
-        </div>
-      )} */}
     </div>
   )
 }

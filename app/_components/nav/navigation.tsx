@@ -2,12 +2,14 @@
 
 import { focusStyle } from "@lib/style"
 import {
+  ArrowSquareOut,
   Article,
   Calendar,
   Cards,
   CheckFat,
   CursorClick,
   FlagBanner,
+  GithubLogo,
   HandGrabbing,
   HouseSimple,
   Lightning,
@@ -17,6 +19,7 @@ import {
   Swatches,
   Textbox,
   WarningDiamond,
+  XLogo,
 } from "@phosphor-icons/react"
 import { Badge } from "@ui/Badge"
 import { SearchField } from "@ui/SearchField"
@@ -33,7 +36,7 @@ import { tv } from "tailwind-variants"
 
 export interface NavItem {
   name: string
-  slug: string
+  src: string
   category: string
   status?: string
 }
@@ -57,6 +60,8 @@ const guideIcons: Record<string, React.ReactNode> = {
   "Get started": <FlagBanner weight="duotone" size={16} />,
   Theming: <Swatches weight="duotone" size={16} />,
   Changelog: <Lightning weight="duotone" size={16} />,
+  GitHub: <GithubLogo weight="duotone" size={16} />,
+  Twitter: <XLogo weight="duotone" size={16} />,
 }
 
 const categorizeItems = (items: NavItem[]) => {
@@ -151,6 +156,7 @@ export function Navigation({
     <div className="relative flex h-full flex-col overflow-auto">
       <div className="px-3 py-0.5">
         <SearchField
+          variant="outline"
           size={size > 1 ? 3 : 2}
           aria-label="Filter navigation items"
           prefixIcon={null}
@@ -194,12 +200,20 @@ export function Navigation({
                 </Header>
               )}
               <Collection items={items}>
-                {({ slug, name, status }) => (
+                {({ src, name, status }) => (
                   <ListBoxItem
                     onAction={onAction}
                     textValue={name}
-                    id={`/docs/${slug}`}
-                    href={status !== "planned" ? `/docs/${slug}` : undefined}
+                    id={src.startsWith("http") ? src : `/docs/${src}`}
+                    key={src.startsWith("http") ? src : `/docs/${src}`}
+                    href={
+                      status !== "planned" ?
+                        src.startsWith("http") ?
+                          src
+                        : `/docs/${src}`
+                      : undefined
+                    }
+                    target={src.startsWith("http") ? "_blank" : undefined}
                     className={({ isHovered, isSelected, isDisabled }) =>
                       itemStyle({
                         isHovered,
@@ -209,16 +223,27 @@ export function Navigation({
                     }
                     isDisabled={status === "planned"}
                   >
-                    {section === "Intro" ? guideIcons[name] : null}
-                    {name}
-                    {status && (
-                      <Badge
-                        size={size}
-                        intent="neutral"
-                        className="text-current"
-                      >
-                        {status[0].toUpperCase() + status.slice(1)}
-                      </Badge>
+                    {({ isHovered }) => (
+                      <>
+                        {section === "Intro" ? guideIcons[name] : null}
+                        {name}
+                        {status && (
+                          <Badge
+                            size={size}
+                            intent="neutral"
+                            className="text-current"
+                          >
+                            {status[0].toUpperCase() + status.slice(1)}
+                          </Badge>
+                        )}
+
+                        {isHovered && src.startsWith("http") && (
+                          <ArrowSquareOut
+                            className="text-neutral-text ml-auto"
+                            size={16}
+                          />
+                        )}
+                      </>
                     )}
                   </ListBoxItem>
                 )}

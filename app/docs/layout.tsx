@@ -14,12 +14,22 @@ export default function DocsLayout({
   let navItems = useMemo(() => {
     return [
       ...guides.map((guide) => ({
-        slug: `guides/${guide.slug}`,
+        src: `guides/${guide.slug}`,
         name: guide.metadata.title,
         category: "Intro",
       })),
+      {
+        src: "https://github.com/kkga/shim",
+        name: "GitHub",
+        category: "Intro",
+      },
+      {
+        src: "https://twitter.com/kkga_",
+        name: "Twitter",
+        category: "Intro",
+      },
       ...docs.map((doc) => ({
-        slug: `components/${doc.slug}`,
+        src: `components/${doc.slug}`,
         name: doc.metadata.name,
         category: doc.metadata.category,
         status: doc.metadata.status,
@@ -32,7 +42,7 @@ export default function DocsLayout({
       <SideNav items={navItems} />
       <TopNav items={navItems} />
 
-      <main className="font-book overflow-auto p-12 text-sm leading-normal">
+      <main className="font-book p-6 text-sm leading-normal lg:p-12">
         {children}
       </main>
     </div>

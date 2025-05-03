@@ -10,7 +10,7 @@ import clsx from "clsx"
 import { useState } from "react"
 import { Logo } from "../logo"
 import { Navigation, type NavItem } from "./navigation"
-import { ThemeButton } from "./theme-button"
+import { ThemeToggle } from "./theme-toggle"
 
 export function TopNav(props: { items: NavItem[] }) {
   let [isOpen, setOpen] = useState(false)
@@ -32,10 +32,9 @@ export function TopNav(props: { items: NavItem[] }) {
         </Link>
 
         <div className="flex gap-1.5">
-          <TooltipTrigger>
-            <ThemeButton size={3} />
-            <Tooltip>Toggle theme</Tooltip>
-          </TooltipTrigger>
+          <div className="flex items-stretch px-2">
+            <ThemeToggle size={3} />
+          </div>
 
           <Separator className="my-1" orientation="vertical" />
 

@@ -1,62 +1,49 @@
 import { GithubLogo, XLogo } from "@phosphor-icons/react/dist/ssr"
 import { LinkButton } from "@ui/Button"
 import { Link } from "@ui/Link"
-import { Separator } from "@ui/Separator"
 import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
-import clsx from "clsx"
 import { Logo } from "../logo"
 import { Navigation, type NavItem } from "./navigation"
-import { ThemeButton } from "./theme-button"
+import { ThemeToggle } from "./theme-toggle"
 
 export function SideNav(props: { items: NavItem[] }) {
   return (
     <aside
-      className={clsx(
-        "border-neutral-3 sticky top-0 z-20 hidden h-svh shrink-0 flex-col overflow-auto border-r text-sm lg:flex",
-      )}
+      className="border-neutral-3 sticky top-0 z-20 hidden h-svh shrink-0 flex-col overflow-auto border-r text-sm lg:flex"
       style={{ scrollbarWidth: "thin" }}
     >
-      <header className="sticky top-0 flex shrink-0 items-center justify-between gap-1 px-3 py-2">
-        <Link
-          intent="neutral"
-          className="flex size-6 items-center justify-center no-underline"
-          href="/"
-        >
-          <Logo withText={false} />
+      <header className="sticky top-0 flex shrink-0 items-center gap-1 py-2 pl-3 pr-3">
+        <Link intent="neutral" className="px-2" href="/">
+          <Logo className="text-neutral-text-contrast" />
         </Link>
 
-        <div className="flex gap-1.5">
-          <TooltipTrigger>
-            <ThemeButton />
-            <Tooltip>Toggle appearance</Tooltip>
-          </TooltipTrigger>
-
-          <Separator className="my-1" orientation="vertical" />
-
-          <TooltipTrigger>
-            <LinkButton
-              intent="neutral"
-              target="_blank"
-              variant="ghost"
-              href="https://twitter.com/kkga_"
-            >
-              <XLogo size={16} weight="duotone" />
-            </LinkButton>
-            <Tooltip>Go to Twitter</Tooltip>
-          </TooltipTrigger>
-
-          <TooltipTrigger>
-            <LinkButton
-              intent="neutral"
-              target="_blank"
-              variant="ghost"
-              href="https://github.com/kkga/shim"
-            >
-              <GithubLogo size={16} weight="duotone" />
-            </LinkButton>
-            <Tooltip>Go to GitHub</Tooltip>
-          </TooltipTrigger>
+        <div className="ml-auto px-1">
+          <ThemeToggle />
         </div>
+
+        <TooltipTrigger>
+          <LinkButton
+            intent="neutral"
+            target="_blank"
+            variant="ghost"
+            href="https://twitter.com/kkga_"
+          >
+            <XLogo size={16} weight="duotone" />
+          </LinkButton>
+          <Tooltip>Go to Twitter</Tooltip>
+        </TooltipTrigger>
+
+        <TooltipTrigger>
+          <LinkButton
+            intent="neutral"
+            target="_blank"
+            variant="ghost"
+            href="https://github.com/kkga/shim"
+          >
+            <GithubLogo size={16} weight="duotone" />
+          </LinkButton>
+          <Tooltip>Go to GitHub</Tooltip>
+        </TooltipTrigger>
       </header>
 
       <div className="grow overflow-auto">
