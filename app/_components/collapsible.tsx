@@ -1,6 +1,7 @@
 "use client"
 
 import { cx } from "@lib/style"
+import { ArrowLineDown, ArrowLineUp } from "@phosphor-icons/react"
 import { Button } from "@ui/Button"
 import { useEffect, useRef, useState } from "react"
 
@@ -26,38 +27,39 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
   return (
     <div
       className={cx(
-        "flex flex-col overflow-auto",
-        collapsed ? "max-h-[20rem]" : "max-h-[40rem]",
+        "relative flex w-full flex-col",
+        collapsed && "max-h-[24rem] overflow-hidden",
       )}
     >
       <div
-        className={cx(
-          "grow-1 pb-8",
-          collapsed ? "overflow-hidden *:overflow-hidden" : "overflow-auto",
-        )}
+        className={cx("grow-1", collapsed && "overflow-hidden")}
         ref={ref}
         style={
           collapsed ?
             {
               maskImage:
-                "linear-gradient(to bottom, transparent, black 20px, black calc(100% - 120px), transparent)",
+                "linear-gradient(black calc(100% - 120px), transparent)",
             }
-          : {
-              maskImage:
-                "linear-gradient(to bottom, transparent, black 20px, black calc(100% - 20px), transparent)",
-            }
+          : {}
         }
       >
         {children}
       </div>
 
       <Button
-        className="absolute inset-1 top-auto z-10 m-auto backdrop-blur"
+        className={cx(
+          "z-10 h-7 backdrop-blur",
+          collapsed ?
+            "absolute inset-1 top-auto"
+          : "sticky bottom-1 m-1 self-stretch",
+        )}
         onPress={toggle}
         intent="neutral"
         size={1}
       >
-        {collapsed ? "Expand" : "Collapse"}
+        {collapsed ?
+          <ArrowLineDown size={16} />
+        : <ArrowLineUp size={16} />}
       </Button>
     </div>
   )

@@ -19,21 +19,13 @@ interface CodeItem {
 
 interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
   code?: Array<CodeItem> | string
-  collapsed?: boolean
   children?: string | { props: { children: string } }
   highlight?: boolean
   className?: string
   clickToCopy?: boolean
 }
 
-export function CodeBlock({
-  code,
-  collapsed,
-  children,
-  highlight = true,
-  className,
-  clickToCopy = true,
-}: Props) {
+export function CodeBlock({ code, children, highlight, className }: Props) {
   let [tab, setTab] = useState<Key | null>(() => {
     if (Array.isArray(code) && code.length > 0) {
       return code[0].title || null
@@ -51,21 +43,18 @@ export function CodeBlock({
   }
 
   let selectedCode = code.find((c) => c.title === tab) || code[0]
-  let isContentLong = selectedCode.content.split("\n").length > 24
-  let shouldCollapse = collapsed ?? isContentLong
 
   return (
     <div
       className={clsx(
-        "codeblock group relative flex flex-col overflow-auto",
+        "codeblock group isolate min-w-0",
         "bg-panel border-neutral-3 text-neutral-text rounded-lg border text-[13px]",
-        "**:[pre]:py-2 **:[pre]:px-3",
         className,
       )}
     >
-      <Tabs selectedKey={tab} onSelectionChange={(key) => setTab(key)}>
-        <div className="border-neutral-3 z-10 flex min-h-8 items-center border-b px-1 py-0">
-          {code.length > 1 ?
+      {code.length > 1 ?
+        <Tabs selectedKey={tab} onSelectionChange={(key) => setTab(key)}>
+          <div className="border-neutral-3 z-10 flex min-h-8 items-center border-b px-1 py-0">
             <TabList size={1}>
               {code.map((c) => (
                 <Tab key={c.title} id={c.title} className="px-2">
@@ -73,52 +62,77 @@ export function CodeBlock({
                 </Tab>
               ))}
             </TabList>
-          : <span className="text-neutral-text px-2 font-sans text-xs font-medium leading-6">
-              {code[0].title}
-            </span>
-          }
-
-          <div className="ml-auto flex gap-1">
-            {selectedCode.sourceUrl && (
-              <LinkButton
-                target="_blank"
-                variant="ghost"
-                className="backdrop-blur-sm"
-                href={selectedCode.sourceUrl}
-              >
-                GitHub
-                <ArrowUpRight size={16} />
-              </LinkButton>
-            )}
-            {clickToCopy && (
-              <CopyButton
-                className="backdrop-blur-sm"
-                text={selectedCode.raw || selectedCode.content}
-              />
-            )}
+            <CodeActions
+              sourceUrl={selectedCode.sourceUrl}
+              content={selectedCode.raw || selectedCode.content}
+            />
           </div>
-        </div>
 
-        {Array.isArray(code) &&
-          code.map((c) => (
+          {code.map((c) => (
             <TabPanel key={c.title} id={c.title}>
-              {shouldCollapse ?
-                <Collapsible collapsed={shouldCollapse}>
-                  <pre className="**:[code]:text-[100%] grow overflow-scroll">
-                    <Code highlight={highlight}>
-                      {selectedCode.content.replace(/\n+$/, "")}
-                    </Code>
-                  </pre>
-                </Collapsible>
-              : <pre className="**:[code]:text-[100%] grow overflow-scroll">
-                  <Code highlight={highlight}>
-                    {selectedCode.content.replace(/\n+$/, "")}
-                  </Code>
-                </pre>
-              }
+              <CodeContent highlight={highlight} code={c} />
             </TabPanel>
           ))}
-      </Tabs>
+        </Tabs>
+      : <>
+          <div className="border-neutral-3 z-10 flex min-h-8 items-center border-b px-1 py-0">
+            <span className="text-neutral-text px-2 font-sans text-xs font-medium leading-6">
+              {code[0].title}
+            </span>
+            <CodeActions
+              sourceUrl={selectedCode.sourceUrl}
+              content={selectedCode.raw || selectedCode.content}
+            />
+          </div>
+          <CodeContent highlight={highlight} code={selectedCode} />
+        </>
+      }
     </div>
   )
+}
+
+function CodeActions({
+  sourceUrl,
+  content,
+}: {
+  sourceUrl?: string
+  content?: string
+}) {
+  return (
+    <div className="ml-auto flex gap-1">
+      {sourceUrl && (
+        <LinkButton
+          target="_blank"
+          variant="ghost"
+          className="backdrop-blur-sm"
+          href={sourceUrl}
+        >
+          GitHub
+          <ArrowUpRight size={16} />
+        </LinkButton>
+      )}
+      <CopyButton className="backdrop-blur-sm" text={content} />
+    </div>
+  )
+}
+
+function CodeContent({
+  code,
+  highlight = true,
+}: {
+  code: CodeItem
+  highlight?: boolean
+}) {
+  let { content } = code
+  let isContentLong = content.split("\n").length > 24
+
+  return isContentLong ?
+      <Collapsible collapsed>
+        <pre className="**:[code]:text-[100%] w-full overflow-x-scroll whitespace-pre px-3 py-2">
+          <Code highlight={highlight}>{content.replace(/\n+$/, "")}</Code>
+        </pre>
+      </Collapsible>
+    : <pre className="**:[code]:text-[100%] w-full overflow-x-scroll whitespace-pre px-3 py-2">
+        <Code highlight={highlight}>{content.replace(/\n+$/, "")}</Code>
+      </pre>
 }
