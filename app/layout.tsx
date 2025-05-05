@@ -55,14 +55,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         lang="en"
         suppressHydrationWarning
         className={`${fontMono.variable} ${fontSans.variable}`}
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(to bottom, transparent 0px 3px, var(--gray-3) 3px 4px )",
+        }}
       >
-        <body
-          className="text-neutral-text antialiased"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(to bottom, transparent 0px 3px, var(--gray-3) 3px 4px )",
-          }}
-        >
+        <body className="text-neutral-text antialiased">
           <LocalizedStringProvider locale="en-US" />
           <ClientProviders>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

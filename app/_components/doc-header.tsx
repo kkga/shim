@@ -18,7 +18,7 @@ export function DocHeader({
   return (
     <header
       className={clsx(
-        "col-span-full flex flex-col gap-6 pb-4 lg:pb-8",
+        "doc-section col-span-full flex flex-col gap-6",
         className,
       )}
     >

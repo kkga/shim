@@ -1,4 +1,3 @@
-import { CodeBlock } from "@/app/_components/code-block"
 import { Demo } from "@/app/_components/demo"
 import { getMainDemo } from "@/app/_components/demo-components"
 import { DocHeader } from "@/app/_components/doc-header"
@@ -66,7 +65,7 @@ export default async function DocPage({
   })
 
   return (
-    <article className="divide-neutral-3 grid grid-cols-1 place-content-start gap-x-8 divide-y md:grid-cols-[2fr_3fr]">
+    <article className="divide-neutral-3 grid grid-cols-1 place-content-start gap-x-8 divide-y md:grid-cols-[2fr_3fr] md:gap-x-12">
       <DocHeader title={name} subtitle={description}>
         <Metadata
           dependencies={dependencies.length > 0 ? dependencies : undefined}
@@ -77,65 +76,57 @@ export default async function DocPage({
       <Demo
         demo={<MainDemo />}
         hideTitle
-        code={demos.main}
-        title={`${doc.metadata.name}`}
+        code={[{ content: demos.main, title: `${name} example` }]}
       />
 
-      <section className="col-span-full grid grid-cols-subgrid items-start py-12">
-        <div className="col-start-1 flex flex-col gap-2">
-          <h2 className="text-neutral-text-contrast text-base font-semibold leading-8">
-            How to install
-          </h2>
-          <p>
-            Run cURL command to download the file into your project or copy the
-            source code manually.
-          </p>
-        </div>
+      <Demo
+        title="Install"
+        code={[
+          {
+            title: "Command",
+            content: curlCommand,
+          },
+          {
+            title: "Source code",
+            content: source,
+            sourceUrl: sourceUrl,
+          },
+        ]}
+      >
+        <p>
+          To install the component, run the command in your terminal or copy the
+          source code into your project.
+        </p>
 
-        <div className="col-start-2 flex flex-col gap-4 overflow-auto">
-          {dependencies && dependencies.length > 0 && (
-            <Note intent="warning" title="Dependencies">
-              <p>
-                {name} depends on{" "}
-                {dependencies.map(({ name, slug }, i) => (
-                  <span key={name}>
-                    {i > 0 ?
-                      i === dependencies.length - 1 ?
-                        " and "
-                      : ", "
-                    : ""}
-                    <Link variant="underline" href={`/docs/components/${slug}`}>
-                      {name}
-                    </Link>
-                    {i === dependencies.length - 1 ? "." : ""}
-                  </span>
-                ))}{" "}
-                Make sure to install the dependencies before using.
-              </p>
-            </Note>
-          )}
+        {dependencies && dependencies.length > 0 && (
+          <Note intent="warning" title="Dependencies" className="mt-4">
+            <p>
+              {name} depends on{" "}
+              {dependencies.map(({ name, slug }, i) => (
+                <span key={name}>
+                  {i > 0 ?
+                    i === dependencies.length - 1 ?
+                      " and "
+                    : ", "
+                  : ""}
+                  <Link variant="underline" href={`/docs/components/${slug}`}>
+                    {name}
+                  </Link>
+                  {i === dependencies.length - 1 ? "." : ""}
+                </span>
+              ))}{" "}
+              Install the dependencies before using the component.
+            </p>
+          </Note>
+        )}
+      </Demo>
 
-          <CodeBlock
-            className="bg-accent-2!"
-            code={[
-              {
-                title: "Command",
-                content: curlCommand,
-              },
-              {
-                title: "Source code",
-                content: source,
-                sourceUrl: sourceUrl,
-              },
-            ]}
-          />
-        </div>
-      </section>
       {html}
     </article>
   )
 }
 
+// TODO: Uncomment this when the metadata is ready
 // export async function generateMetadata({
 //   params,
 // }: {

@@ -42,7 +42,7 @@ export default function DocsLayout({
       <SideNav items={navItems} />
       <TopNav items={navItems} />
 
-      <main className="lg:col-3 lg:border-neutral-3 font-book bg-background min-h-screen w-full p-6 text-sm leading-normal lg:justify-self-center lg:border-x lg:px-12 lg:py-8">
+      <main className="lg:col-3 lg:border-neutral-3 font-book bg-background min-h-screen w-full text-sm leading-normal lg:justify-self-center lg:border-x">
         {children}
       </main>
     </div>

@@ -1,3 +1,5 @@
+@reference "../theme/theme.css";
+
 :root {
   --font-family-mono: var(--font-mono);
   --font-family-sans: var(--font-sans);
@@ -34,6 +36,19 @@ html {
   min-width: 360px;
 }
 
+hr {
+  border-color: var(--color-neutral-4);
+}
+
+strong {
+  font-weight: 500;
+  color: var(--color-neutral-text-contrast);
+}
+
+*:hover > .hash-link {
+  visibility: visible;
+}
+
 .prose {
   pre,
   ul,
@@ -46,15 +61,6 @@ html {
     margin-top: var(--spacing-4);
     margin-bottom: var(--spacing-4);
   }
-}
-
-hr {
-  border-color: var(--color-neutral-4);
-}
-
-strong {
-  font-weight: 500;
-  color: var(--color-neutral-text-contrast);
 }
 
 .hash-link {
@@ -72,6 +78,6 @@ strong {
   }
 }
 
-*:hover > .hash-link {
-  visibility: visible;
+.doc-section {
+  @apply px-6 py-6 lg:px-8 lg:py-6;
 }

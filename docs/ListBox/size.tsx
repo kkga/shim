@@ -1,7 +1,7 @@
 import { ListBox, ListBoxItem } from "@ui/ListBox"
 
 export default () => (
-  <div className="grid grid-flow-col gap-3">
+  <div className="grid grid-cols-2 gap-3">
     <ListBox size={1} selectionMode="single" aria-label="Favorite animal">
       <ListBoxItem>Cat</ListBoxItem>
       <ListBoxItem>Dog</ListBoxItem>

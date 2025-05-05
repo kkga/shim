@@ -10,7 +10,7 @@ import { Code } from "./code"
 import { Collapsible } from "./collapsible"
 import { CopyButton } from "./copy-button"
 
-interface CodeItem {
+export interface CodeItem {
   content: string
   title?: string
   sourceUrl?: string
@@ -47,14 +47,14 @@ export function CodeBlock({ code, children, highlight, className }: Props) {
   return (
     <div
       className={clsx(
-        "codeblock group isolate min-w-0",
+        "codeblock group isolate min-w-0 overflow-clip",
         "bg-panel border-neutral-3 text-neutral-text rounded-lg border text-[13px]",
         className,
       )}
     >
       {code.length > 1 ?
         <Tabs selectedKey={tab} onSelectionChange={(key) => setTab(key)}>
-          <div className="border-neutral-3 z-10 flex min-h-8 items-center border-b px-1 py-0">
+          <div className="border-neutral-3 bg-panel sticky top-0 z-20 flex min-h-8 items-center border-b px-1 py-0">
             <TabList size={1}>
               {code.map((c) => (
                 <Tab key={c.title} id={c.title} className="px-2">
@@ -62,6 +62,7 @@ export function CodeBlock({ code, children, highlight, className }: Props) {
                 </Tab>
               ))}
             </TabList>
+
             <CodeActions
               sourceUrl={selectedCode.sourceUrl}
               content={selectedCode.raw || selectedCode.content}
@@ -75,7 +76,7 @@ export function CodeBlock({ code, children, highlight, className }: Props) {
           ))}
         </Tabs>
       : <>
-          <div className="border-neutral-3 z-10 flex min-h-8 items-center border-b px-1 py-0">
+          <div className="border-neutral-3 bg-panel sticky top-0 z-20 flex min-h-8 items-center border-b px-1 py-0">
             <span className="text-neutral-text px-2 font-sans text-xs font-medium leading-6">
               {code[0].title}
             </span>
