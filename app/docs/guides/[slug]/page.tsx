@@ -20,7 +20,7 @@ export default async function GuidePage({
   let { slug } = await params
 
   let guide = getGuides().find((guide) => guide.slug === slug)
-  let { metadata, content } = guide
+  let { metadata, source } = guide
   let { title, description } = metadata
 
   let [styleUtilsSrc, themeUtilsSrc, themeCssSrc] = [
@@ -35,8 +35,8 @@ export default async function GuidePage({
     `${GITHUB_FILE_URL}/theme/theme.css`,
   ]
 
-  let { content: html, scope } = await mdxToHtml({
-    source: content,
+  let { content, scope } = await mdxToHtml({
+    source,
     scope: {
       styleUtilsSrc,
       themeUtilsSrc,
@@ -51,7 +51,7 @@ export default async function GuidePage({
     <article className="text-neutral-text grid grid-cols-1 text-[15px] leading-normal md:grid-cols-[3fr_1fr]">
       <DocHeader title={title} subtitle={description} />
       <section className="doc-section">
-        <Suspense fallback={<p>Loading...</p>}>{html}</Suspense>
+        <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>
       </section>
       <aside className="border-neutral-3 hidden min-w-[16rem] border-l px-6 py-6 md:block">
         <nav className="sticky top-6">

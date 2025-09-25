@@ -33,8 +33,7 @@ export default async function DocPage({
 
   let docs = getComponentDocs({ exclude: ["planned"] })
   let doc = docs.find((doc) => doc.slug === slug)
-  let { metadata, content } = doc
-  let { name, description, composes } = metadata
+  let { name, description, composes } = doc.metadata
   let demos = getDemosSource(name)
   let source = getComponentSource(name)
   let MainDemo = getMainDemo(name)
@@ -57,10 +56,10 @@ export default async function DocPage({
         .filter((dep) => dep !== null)
     : []
 
-  let { content: html } = await mdxToHtml({
-    source: content,
+  let { content } = await mdxToHtml({
+    source: doc.source,
     scope: {
-      ...metadata,
+      ...doc.metadata,
       demos,
       source,
     },
@@ -71,7 +70,7 @@ export default async function DocPage({
       <DocHeader title={name} subtitle={description}>
         <Metadata
           dependencies={dependencies.length > 0 ? dependencies : undefined}
-          {...metadata}
+          {...doc.metadata}
         />
       </DocHeader>
 
@@ -123,7 +122,7 @@ export default async function DocPage({
         )}
       </Demo>
 
-      <Suspense fallback={<p>Loading...</p>}>{html}</Suspense>
+      <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>
     </article>
   )
 }

@@ -6,10 +6,12 @@ export interface ComponentMetadata {
   ariaUrl?: string
   composes?: string[]
   status?: "stable" | "alpha" | "beta" | "deprecated" | "planned"
+  [key: string]: unknown
 }
 
 export interface GuideMetadata {
   title: string
   description: string
   order?: number
+  [key: string]: unknown
 }

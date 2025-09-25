@@ -1,16 +1,10 @@
-import matter from "gray-matter"
+import { getFrontmatter } from "next-mdx-remote-client/utils"
 import fs from "node:fs"
 import { basename, extname, join } from "node:path"
 import { ComponentMetadata, GuideMetadata } from "./types"
 
 const DOCS_DIR = join(process.cwd(), "docs")
 const GUIDES_DIR = join(process.cwd(), "guides")
-
-function readMDXFile(filePath: string) {
-  let rawContent = fs.readFileSync(filePath, "utf-8")
-  let { content, data } = matter(rawContent)
-  return { data, content }
-}
 
 const slugify = (str: string) =>
   str
@@ -32,9 +26,11 @@ function getComponentDocs(
 
   return entries
     .map((name) => {
-      let { data, content } = readMDXFile(join(DOCS_DIR, name, "doc.mdx"))
+      let rawContent = fs.readFileSync(join(DOCS_DIR, name, "doc.mdx"), "utf-8")
+      let { frontmatter, strippedSource } =
+        getFrontmatter<ComponentMetadata>(rawContent)
       let slug = slugify(name)
-      return { metadata: data as ComponentMetadata, slug, content }
+      return { metadata: frontmatter, slug, source: strippedSource }
     })
     .filter((component) => !exclude.includes(component.metadata.status))
 }
@@ -47,9 +43,11 @@ function getGuides() {
 
   return entries
     .map((name) => {
-      let { data, content } = readMDXFile(join(GUIDES_DIR, name))
+      let rawContent = fs.readFileSync(join(GUIDES_DIR, name), "utf-8")
+      let { frontmatter, strippedSource } =
+        getFrontmatter<GuideMetadata>(rawContent)
       let slug = slugify(name.replace(/\.mdx$/, ""))
-      return { metadata: data as GuideMetadata, slug, content }
+      return { metadata: frontmatter, slug, source: strippedSource }
     })
     .sort((a, b) => a.metadata.order - b.metadata.order)
 }
