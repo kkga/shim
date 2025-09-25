@@ -4,7 +4,7 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "prepare": "husky",
     "knip": "knip"
   },
@@ -47,7 +47,6 @@
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
     "knip": "^5.64.0",
-    "lint-staged": "^16.2.0",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-tailwindcss": "^0.6.14",
