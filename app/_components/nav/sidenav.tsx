@@ -1,4 +1,4 @@
-import { GithubLogo, XLogo } from "@phosphor-icons/react/dist/ssr"
+import { GithubLogoIcon, XLogoIcon } from "@phosphor-icons/react/dist/ssr"
 import { LinkButton } from "@ui/Button"
 import { Link } from "@ui/Link"
 import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
@@ -28,7 +28,7 @@ export function SideNav(props: { items: NavItem[] }) {
             variant="ghost"
             href="https://twitter.com/kkga_"
           >
-            <XLogo size={16} weight="duotone" />
+            <XLogoIcon size={16} weight="duotone" />
           </LinkButton>
           <Tooltip>Go to Twitter</Tooltip>
         </TooltipTrigger>
@@ -40,7 +40,7 @@ export function SideNav(props: { items: NavItem[] }) {
             variant="ghost"
             href="https://github.com/kkga/shim"
           >
-            <GithubLogo size={16} weight="duotone" />
+            <GithubLogoIcon size={16} weight="duotone" />
           </LinkButton>
           <Tooltip>Go to GitHub</Tooltip>
         </TooltipTrigger>

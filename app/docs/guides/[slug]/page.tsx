@@ -46,9 +46,10 @@ export default async function GuidePage({
   })
 
   return (
-    <article className="text-neutral-text divide-neutral-3 space-y-8 divide-y text-base leading-normal">
+    <article className="text-neutral-text grid grid-cols-1 text-base leading-normal md:grid-cols-[3fr_1fr]">
       <DocHeader title={title} subtitle={description} />
-      <section>{html}</section>
+      <section className="doc-section">{html}</section>
+      <nav className="border-neutral-3 sticky top-6 hidden min-w-[16rem] overflow-y-auto border-l px-6 py-6 md:block"></nav>
     </article>
   )
 }

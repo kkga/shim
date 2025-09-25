@@ -43,9 +43,9 @@ function Menu<T extends object>({
       <Popover offset={offset} placement={placement} className="min-w-32">
         <RACMenu
           {...props}
-          className={cx(
-            "flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0",
+          className={cxRenderProps(
             className,
+            "flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0",
           )}
         />
       </Popover>

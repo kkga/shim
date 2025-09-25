@@ -3,10 +3,14 @@
 import { Dialog } from "@/components/Dialog"
 import { Separator } from "@/components/Separator"
 import { Tooltip, TooltipTrigger } from "@/components/Tooltip"
-import { GithubLogo, List, X, XLogo } from "@phosphor-icons/react"
+import {
+  GithubLogoIcon,
+  ListIcon,
+  XIcon,
+  XLogoIcon,
+} from "@phosphor-icons/react"
 import { Button, LinkButton } from "@ui/Button"
 import { Link } from "@ui/Link"
-import clsx from "clsx"
 import { useState } from "react"
 import { Logo } from "../logo"
 import { Navigation, type NavItem } from "./navigation"
@@ -16,12 +20,7 @@ export function TopNav(props: { items: NavItem[] }) {
   let [isOpen, setOpen] = useState(false)
 
   return (
-    <aside
-      className={clsx(
-        "sticky top-0 z-20 lg:hidden",
-        "border-neutral-4 bg-panel flex shrink-0 flex-col border-b px-1 text-sm",
-      )}
-    >
+    <aside className="border-neutral-4 bg-panel sticky top-0 z-20 flex shrink-0 flex-col border-b px-1 text-sm lg:hidden">
       <header className="bg-panel sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1">
         <Link
           intent="neutral"
@@ -45,7 +44,7 @@ export function TopNav(props: { items: NavItem[] }) {
             variant="ghost"
             intent="neutral"
           >
-            <List size={16} />
+            <ListIcon size={16} />
           </Button>
 
           <Dialog
@@ -65,7 +64,7 @@ export function TopNav(props: { items: NavItem[] }) {
                   variant="ghost"
                   href="https://twitter.com/kkga_"
                 >
-                  <XLogo size={16} weight="duotone" />
+                  <XLogoIcon size={16} weight="duotone" />
                 </LinkButton>
                 <Tooltip>Go to Twitter</Tooltip>
               </TooltipTrigger>
@@ -79,7 +78,7 @@ export function TopNav(props: { items: NavItem[] }) {
                   variant="ghost"
                   href="https://github.com/kkga/shim"
                 >
-                  <GithubLogo size={16} weight="duotone" />
+                  <GithubLogoIcon size={16} weight="duotone" />
                 </LinkButton>
                 <Tooltip>Go to GitHub</Tooltip>
               </TooltipTrigger>
@@ -92,7 +91,7 @@ export function TopNav(props: { items: NavItem[] }) {
                 variant="soft"
                 intent="neutral"
               >
-                <X weight="bold" size={16} />
+                <XIcon weight="bold" size={16} />
               </Button>
             </div>
 

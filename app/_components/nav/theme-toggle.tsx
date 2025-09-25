@@ -2,7 +2,7 @@
 
 import { focusStyle } from "@/lib/style"
 import { Size } from "@/lib/theme"
-import { CircleHalf } from "@phosphor-icons/react"
+import { CircleHalfIcon } from "@phosphor-icons/react"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 import { Switch } from "react-aria-components"
@@ -88,7 +88,7 @@ function ThemeToggle({}: { size?: Size }) {
               light: resolvedTheme === "light",
             })}
           >
-            <CircleHalf size={16} weight="fill" />
+            <CircleHalfIcon size={16} weight="fill" />
           </div>
         </div>
       )}

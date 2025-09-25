@@ -1,9 +1,7 @@
-import clsx from "clsx"
 import { ComponentPropsWithoutRef } from "react"
 import { highlight as sugar } from "sugar-high"
 
 export function Code({
-  className,
   highlight = false,
   ...props
 }: ComponentPropsWithoutRef<"code"> & {
@@ -14,10 +12,7 @@ export function Code({
 
   return (
     <code
-      className={clsx(
-        "text-accent-text font-book min-w-min font-mono",
-        className,
-      )}
+      className="text-accent-text font-book min-w-min font-mono"
       dangerouslySetInnerHTML={highlight ? { __html: html } : undefined}
     >
       {!highlight ? html : null}

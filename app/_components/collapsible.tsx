@@ -1,9 +1,9 @@
 "use client"
 
-import { cx } from "@lib/style"
-import { ArrowLineDown, ArrowLineUp } from "@phosphor-icons/react"
+import { ArrowLineDownIcon, ArrowLineUpIcon } from "@phosphor-icons/react"
 import { Button } from "@ui/Button"
 import { useEffect, useRef, useState } from "react"
+import { twJoin } from "tailwind-merge"
 
 interface Props {
   children: React.ReactNode
@@ -26,13 +26,13 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
 
   return (
     <div
-      className={cx(
+      className={twJoin(
         "relative flex w-full flex-col",
         collapsed && "max-h-[24rem] overflow-hidden",
       )}
     >
       <div
-        className={cx("grow-1", collapsed && "overflow-hidden")}
+        className={twJoin("grow-1", collapsed && "overflow-hidden")}
         ref={ref}
         style={
           collapsed ?
@@ -47,7 +47,7 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
       </div>
 
       <Button
-        className={cx(
+        className={twJoin(
           "z-10 h-7 backdrop-blur",
           collapsed ?
             "absolute inset-1 top-auto"
@@ -58,8 +58,8 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
         size={1}
       >
         {collapsed ?
-          <ArrowLineDown size={16} />
-        : <ArrowLineUp size={16} />}
+          <ArrowLineDownIcon size={16} />
+        : <ArrowLineUpIcon size={16} />}
       </Button>
     </div>
   )

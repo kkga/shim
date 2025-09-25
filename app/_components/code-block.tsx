@@ -1,9 +1,8 @@
 "use client"
 
 import { LinkButton } from "@/components/Button"
-import { ArrowUpRight } from "@phosphor-icons/react"
+import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
-import clsx from "clsx"
 import { ComponentPropsWithoutRef, useState } from "react"
 import { Key } from "react-aria-components"
 import { Code } from "./code"
@@ -21,11 +20,10 @@ interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
   code?: Array<CodeItem> | string
   children?: string | { props: { children: string } }
   highlight?: boolean
-  className?: string
   clickToCopy?: boolean
 }
 
-export function CodeBlock({ code, children, highlight, className }: Props) {
+export function CodeBlock({ code, children, highlight }: Props) {
   let [tab, setTab] = useState<Key | null>(() => {
     if (Array.isArray(code) && code.length > 0) {
       return code[0].title || null
@@ -45,13 +43,7 @@ export function CodeBlock({ code, children, highlight, className }: Props) {
   let selectedCode = code.find((c) => c.title === tab) || code[0]
 
   return (
-    <div
-      className={clsx(
-        "codeblock group isolate min-w-0 overflow-clip",
-        "bg-panel border-neutral-3 text-neutral-text rounded-lg border text-[13px]",
-        className,
-      )}
-    >
+    <div className="codeblock bg-panel border-neutral-3 text-neutral-text group isolate min-w-0 overflow-clip rounded-lg border text-[13px]">
       {code.length > 1 ?
         <Tabs selectedKey={tab} onSelectionChange={(key) => setTab(key)}>
           <div className="border-neutral-3 bg-panel sticky top-0 z-20 flex min-h-8 items-center border-b px-1 py-0">
@@ -109,7 +101,7 @@ function CodeActions({
           href={sourceUrl}
         >
           GitHub
-          <ArrowUpRight size={16} />
+          <ArrowUpRightIcon size={16} />
         </LinkButton>
       )}
       <CopyButton className="backdrop-blur-sm" text={content} />

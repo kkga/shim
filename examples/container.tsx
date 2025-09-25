@@ -1,4 +1,4 @@
-import { cx } from "@lib/style"
+import { twJoin } from "tailwind-merge"
 
 export function ExampleContainer({
   children,
@@ -9,7 +9,7 @@ export function ExampleContainer({
 }) {
   return (
     <div
-      className={cx(
+      className={twJoin(
         "flex h-[600px] flex-col overflow-clip rounded-lg shadow-md",
         className,
       )}

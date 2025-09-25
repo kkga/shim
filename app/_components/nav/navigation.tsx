@@ -2,24 +2,24 @@
 
 import { focusStyle } from "@lib/style"
 import {
-  ArrowSquareOut,
-  Article,
-  Calendar,
-  Cards,
-  CheckFat,
-  CursorClick,
-  FlagBanner,
-  GithubLogo,
-  HandGrabbing,
-  HouseSimple,
-  Lightning,
-  Palette,
-  Path,
-  Rows,
-  Swatches,
-  Textbox,
-  WarningDiamond,
-  XLogo,
+  ArrowSquareOutIcon,
+  ArticleIcon,
+  CalendarIcon,
+  CardsIcon,
+  CheckFatIcon,
+  CursorClickIcon,
+  FlagBannerIcon,
+  GithubLogoIcon,
+  HandGrabbingIcon,
+  HouseSimpleIcon,
+  LightningIcon,
+  PaletteIcon,
+  PathIcon,
+  RowsIcon,
+  SwatchesIcon,
+  TextboxIcon,
+  WarningDiamondIcon,
+  XLogoIcon,
 } from "@phosphor-icons/react"
 import { Badge } from "@ui/Badge"
 import { SearchField } from "@ui/SearchField"
@@ -42,26 +42,26 @@ export interface NavItem {
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  Intro: <HouseSimple weight="duotone" size={16} />,
-  Overlays: <Cards weight="duotone" size={16} />,
-  Forms: <Textbox weight="duotone" size={16} />,
-  Status: <WarningDiamond weight="duotone" size={16} />,
-  Buttons: <CursorClick weight="duotone" size={16} />,
-  Pickers: <CheckFat weight="duotone" size={16} />,
-  Navigation: <Path weight="duotone" size={16} />,
-  Collections: <Rows weight="duotone" size={16} />,
-  Content: <Article weight="duotone" size={16} />,
-  "Date and time": <Calendar weight="duotone" size={16} />,
-  "Drag and drop": <HandGrabbing weight="duotone" size={16} />,
-  Color: <Palette weight="duotone" size={16} />,
+  Intro: <HouseSimpleIcon weight="duotone" size={16} />,
+  Overlays: <CardsIcon weight="duotone" size={16} />,
+  Forms: <TextboxIcon weight="duotone" size={16} />,
+  Status: <WarningDiamondIcon weight="duotone" size={16} />,
+  Buttons: <CursorClickIcon weight="duotone" size={16} />,
+  Pickers: <CheckFatIcon weight="duotone" size={16} />,
+  Navigation: <PathIcon weight="duotone" size={16} />,
+  Collections: <RowsIcon weight="duotone" size={16} />,
+  Content: <ArticleIcon weight="duotone" size={16} />,
+  "Date and time": <CalendarIcon weight="duotone" size={16} />,
+  "Drag and drop": <HandGrabbingIcon weight="duotone" size={16} />,
+  Color: <PaletteIcon weight="duotone" size={16} />,
 }
 
 const guideIcons: Record<string, React.ReactNode> = {
-  "Get started": <FlagBanner weight="duotone" size={16} />,
-  Theming: <Swatches weight="duotone" size={16} />,
-  Changelog: <Lightning weight="duotone" size={16} />,
-  GitHub: <GithubLogo weight="duotone" size={16} />,
-  Twitter: <XLogo weight="duotone" size={16} />,
+  "Get started": <FlagBannerIcon weight="duotone" size={16} />,
+  Theming: <SwatchesIcon weight="duotone" size={16} />,
+  Changelog: <LightningIcon weight="duotone" size={16} />,
+  GitHub: <GithubLogoIcon weight="duotone" size={16} />,
+  Twitter: <XLogoIcon weight="duotone" size={16} />,
 }
 
 const categorizeItems = (items: NavItem[]) => {
@@ -238,7 +238,7 @@ export function Navigation({
                         )}
 
                         {isHovered && src.startsWith("http") && (
-                          <ArrowSquareOut
+                          <ArrowSquareOutIcon
                             className="text-neutral-text ml-auto"
                             size={16}
                           />

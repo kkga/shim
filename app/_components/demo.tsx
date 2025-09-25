@@ -1,5 +1,5 @@
 import { Theme } from "@/lib/theme"
-import clsx from "clsx"
+import { twMerge } from "tailwind-merge"
 import { CodeBlock, CodeItem } from "./code-block"
 
 interface Props {
@@ -25,7 +25,7 @@ function Demo({ title, hideTitle, demo, code, className, children }: Props) {
 
         {demo && (
           <div
-            className={clsx(
+            className={twMerge(
               "text-neutral-text not-first:mt-6 sticky top-6 flex flex-col flex-wrap gap-2 text-[13px]",
               className,
             )}

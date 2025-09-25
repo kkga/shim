@@ -2,7 +2,7 @@
 
 import { GearSix, User, XSquare } from "@phosphor-icons/react"
 import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
-import { Component, useState } from "react"
+import { useState } from "react"
 import { Collection, type Key } from "react-aria-components"
 
 export default () => {
