@@ -1,6 +1,8 @@
 import { DocHeader } from "@/app/_components/doc-header"
+import Toc from "@/app/_components/toc"
 import { mdxToHtml } from "@/app/_lib/mdx"
 import { getFileSource, getGuides } from "@/app/_lib/utils"
+import { Suspense } from "react"
 
 export const dynamicParams = false
 export async function generateStaticParams() {
@@ -33,7 +35,7 @@ export default async function GuidePage({
     `${GITHUB_FILE_URL}/theme/theme.css`,
   ]
 
-  let { content: html } = await mdxToHtml({
+  let { content: html, scope } = await mdxToHtml({
     source: content,
     scope: {
       styleUtilsSrc,
@@ -46,10 +48,16 @@ export default async function GuidePage({
   })
 
   return (
-    <article className="text-neutral-text grid grid-cols-1 text-base leading-normal md:grid-cols-[3fr_1fr]">
+    <article className="text-neutral-text grid grid-cols-1 text-[15px] leading-normal md:grid-cols-[3fr_1fr]">
       <DocHeader title={title} subtitle={description} />
-      <section className="doc-section">{html}</section>
-      <nav className="border-neutral-3 sticky top-6 hidden min-w-[16rem] overflow-y-auto border-l px-6 py-6 md:block"></nav>
+      <section className="doc-section">
+        <Suspense fallback={<p>Loading...</p>}>{html}</Suspense>
+      </section>
+      <aside className="border-neutral-3 hidden min-w-[16rem] border-l px-6 py-6 md:block">
+        <nav className="sticky top-6">
+          <Toc toc={scope.toc} />
+        </nav>
+      </aside>
     </article>
   )
 }

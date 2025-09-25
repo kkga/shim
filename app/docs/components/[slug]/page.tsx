@@ -11,6 +11,7 @@ import {
 } from "@/app/_lib/utils"
 import { Link } from "@/components/Link"
 import { assert } from "console"
+import { Suspense } from "react"
 
 export const dynamicParams = false
 export async function generateStaticParams() {
@@ -41,6 +42,7 @@ export default async function DocPage({
   let curlCommand = `curl -o ${name}.tsx '${API_URL}?c=${name}'`
   let sourceUrl = `${GITHUB_FILE_URL}/${name}.tsx`
 
+  // TODO: add error boundary
   assert(demos.main, `Main demo not found for ${name}`)
   assert(source, `Source code not found for ${name}`)
   assert(MainDemo, `Main demo component not found for ${name}`)
@@ -121,7 +123,7 @@ export default async function DocPage({
         )}
       </Demo>
 
-      {html}
+      <Suspense fallback={<p>Loading...</p>}>{html}</Suspense>
     </article>
   )
 }

@@ -4,7 +4,7 @@ import {
   DisclosurePanel,
 } from "@/components/Disclosure"
 import { clsx } from "clsx"
-import type { MDXRemoteProps } from "next-mdx-remote"
+import type { MDXComponents } from "next-mdx-remote-client"
 import { default as NextLink } from "next/link"
 import { ComponentPropsWithoutRef } from "react"
 import { Code } from "./code"
@@ -118,7 +118,7 @@ function P({ className, ...props }: ComponentPropsWithoutRef<"p">) {
   return <p className={clsx("mb-2", className)} {...props} />
 }
 
-const mdxComponents: MDXRemoteProps["components"] = {
+const mdxComponents: MDXComponents = {
   h1: H1,
   h2: H2,
   h3: H3,
@@ -165,7 +165,7 @@ const mdxComponents: MDXRemoteProps["components"] = {
   ...demoComponents,
 }
 
-export { H1, H2, H3, H4, H5, H6, mdxComponents, P }
+export { H1, H2, H3, H4, H5, H6, Link, mdxComponents, P }
 
 declare global {
   type MDXProvidedComponents = typeof mdxComponents
