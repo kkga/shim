@@ -50,7 +50,7 @@ export default async function GuidePage({
   return (
     <article className="text-neutral-text grid grid-cols-1 text-[15px] leading-normal md:grid-cols-[3fr_1fr]">
       <DocHeader title={title} subtitle={description} />
-      <section className="doc-section">
+      <section className="p-6 lg:p-8">
         <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>
       </section>
       <aside className="border-neutral-3 hidden min-w-[16rem] border-l px-6 py-6 md:block">

@@ -8,7 +8,7 @@ const Toc = ({ toc }: Props) => {
   if (!toc) return null
 
   return (
-    <ul className="space-y-2 text-[15px]">
+    <ul className="space-y-2.5 text-sm">
       {toc.map((heading) => (
         <li key={heading.value} className="">
           <a
