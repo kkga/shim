@@ -128,7 +128,7 @@ const style = tv({
 type TabListVariant = "soft" | "underline";
 const TabListVariantContext = createContext<TabListVariant>("soft");
 
-type TabsProps = RacTabsProps;
+interface TabsProps extends RacTabsProps {}
 function Tabs(props: TabsProps) {
   let { tabs } = style();
   return (

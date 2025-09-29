@@ -31,7 +31,7 @@ function Separator(props: RacSeparatorProps) {
   );
 }
 
-type SeparatorProps = RacSeparatorProps;
+interface SeparatorProps extends RacSeparatorProps {}
 
 export { Separator };
 export type { SeparatorProps };

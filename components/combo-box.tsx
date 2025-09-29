@@ -123,12 +123,13 @@ function ComboBox<T extends object>({
   );
 }
 
-type ComboBoxItemProps = RacListBoxItemProps;
+interface ComboBoxItemProps extends RacListBoxItemProps {}
 function ComboBoxItem(props: ComboBoxItemProps) {
   return <ListBoxItem {...props} />;
 }
 
-type ComboBoxSectionProps<T extends object> = ListBoxSectionProps<T>;
+interface ComboBoxSectionProps<T extends object>
+  extends ListBoxSectionProps<T> {}
 function ComboBoxSection<T extends object>(props: ComboBoxSectionProps<T>) {
   return <ListBoxSection {...props} />;
 }

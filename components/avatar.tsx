@@ -9,7 +9,6 @@ const COLORS = {
   green: "text-[var(--green-2)] bg-[var(--green-9)]",
   orange: "text-[var(--orange-2)] bg-[var(--orange-9)]",
 };
-
 type Color = keyof typeof COLORS;
 
 const style = tv({

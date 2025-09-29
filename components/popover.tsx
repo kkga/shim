@@ -26,7 +26,7 @@ const style = tv({
   },
 });
 
-type PopoverProps = RacPopoverProps;
+interface PopoverProps extends RacPopoverProps {}
 
 function Popover({ className, children, offset = 4, ...props }: PopoverProps) {
   let { size } = useThemeProps();
