@@ -1,9 +1,9 @@
-import { NextConfig } from "next"
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: true,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

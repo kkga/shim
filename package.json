@@ -2,9 +2,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "next build",
+    "build": "next build --turbo",
     "start": "next start",
-    "lint": "eslint .",
+    "check": "pnpx ultracite check",
+    "registry:build": "shadcn build",
     "prepare": "husky",
     "knip": "knip"
   },
@@ -12,7 +13,7 @@
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/colors": "^3.0.0",
     "@tailwindcss/postcss": "4.1.13",
-    "@types/react": "19.1.13",
+    "@types/react": "19.1.14",
     "@types/react-dom": "19.1.9",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
@@ -28,49 +29,21 @@
     "rehype-autolink-headings": "^7.1.0",
     "rehype-slug": "^6.0.0",
     "remark-flexible-toc": "^1.2.1",
+    "shadcn": "3.3.1",
     "sugar-high": "^0.9.3",
     "tailwind-merge": "^3.3.1",
     "tailwind-variants": "^3.1.1",
     "tailwindcss": "4.1.13",
+    "ts-pattern": "^5.8.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
+    "@biomejs/biome": "2.2.4",
     "@types/node": "24.5.2",
-    "eslint": "^9.36.0",
-    "eslint-config-next": "15.5.4",
-    "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
-    "knip": "^5.64.0",
-    "prettier": "^3.6.2",
-    "prettier-plugin-organize-imports": "^4.3.0",
-    "prettier-plugin-tailwindcss": "^0.6.14",
-    "typescript": "5.9.2"
+    "knip": "^5.64.1",
+    "typescript": "5.9.2",
+    "ultracite": "5.4.5"
   },
-  "prettier": {
-    "experimentalTernaries": true,
-    "semi": false,
-    "proseWrap": "always",
-    "plugins": [
-      "prettier-plugin-organize-imports",
-      "prettier-plugin-tailwindcss"
-    ],
-    "tailwindFunctions": [
-      "tv",
-      "twJoin",
-      "twMerge",
-      "cx",
-      "cxRenderProps"
-    ],
-    "tailwindEntryPoint": "./app/styles/base.css",
-    "overrides": [
-      {
-        "files": "./app/demos/**/*.tsx",
-        "options": {
-          "printWidth": 100
-        }
-      }
-    ]
-  },
-  "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
 }
