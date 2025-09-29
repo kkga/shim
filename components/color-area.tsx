@@ -6,7 +6,7 @@ import {
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cxRenderProps } from "@/lib/style";
-import { ColorThumb } from "./ColorThumb";
+import { ColorThumb } from "./color-thumb";
 
 const style = tv({
   base: "size-56 rounded-sm bg-neutral-bg-subtle shadow-inner",

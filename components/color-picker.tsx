@@ -1,44 +1,44 @@
-"use client"
+"use client";
 
-import { focusStyle } from "@/lib/style"
-import { useEffect, useState } from "react"
-import type { ColorSpace } from "react-aria-components"
+import { useEffect, useState } from "react";
+import type { ColorSpace } from "react-aria-components";
 import {
   getColorChannels,
-  Button as RACButton,
-  ColorPicker as RACColorPicker,
-  ColorPickerProps as RACColorPickerProps,
-  DialogTrigger as RACDialogTrigger,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
-import { ColorArea } from "./ColorArea"
-import { ColorField } from "./ColorField"
-import { ColorSlider } from "./ColorSlider"
-import { ColorSwatch } from "./ColorSwatch"
-import { Popover } from "./Popover"
-import { Select, SelectItem } from "./Select"
-import { Separator } from "./Separator"
+  Button as RacButton,
+  ColorPicker as RacColorPicker,
+  type ColorPickerProps as RacColorPickerProps,
+  DialogTrigger as RacDialogTrigger,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
+import { focusStyle } from "@/lib/style";
+import { ColorArea } from "./color-area";
+import { ColorField } from "./color-field";
+import { ColorSlider } from "./color-slider";
+import { ColorSwatch } from "./color-swatch";
+import { Popover } from "./popover";
+import { Select, SelectItem } from "./select";
+import { Separator } from "./separator";
 
 const buttonStyles = tv({
   extend: focusStyle,
-  base: "flex cursor-default items-center gap-2 rounded text-sm text-gray-800 dark:text-gray-200",
-})
+  base: "flex cursor-default items-center gap-2 rounded text-gray-800 text-sm dark:text-gray-200",
+});
 
-interface ColorPickerProps extends RACColorPickerProps {
-  children?: React.ReactNode
+interface ColorPickerProps extends RacColorPickerProps {
+  children?: React.ReactNode;
 }
 
 function ColorEditor() {
-  let [mode, setMode] = useState<ColorSpace | "hex">("hsb")
-  let [space, setSpace] = useState<ColorSpace>("hsb")
+  let [mode, setMode] = useState<ColorSpace | "hex">("hsb");
+  let [space, setSpace] = useState<ColorSpace>("hsb");
 
   useEffect(() => {
     if (mode === "hex") {
-      setSpace("rgb")
+      setSpace("rgb");
     } else {
-      setSpace(mode)
+      setSpace(mode);
     }
-  }, [mode, space])
+  }, [mode]);
 
   return (
     <div className="flex flex-col gap-3 p-3">
@@ -49,22 +49,22 @@ function ColorEditor() {
           yChannel={space === "hsl" ? "lightness" : "brightness"}
         />
         <ColorSlider
-          orientation="vertical"
-          colorSpace="hsb"
           channel="hue"
+          colorSpace="hsb"
+          orientation="vertical"
           size={1}
         />
-        <ColorSlider orientation="vertical" channel="alpha" size={1} />
+        <ColorSlider channel="alpha" orientation="vertical" size={1} />
       </div>
 
       <Separator />
 
       <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-2">
         <Select
-          size={1}
           aria-label="Color mode"
-          selectedKey={mode}
           onSelectionChange={(key) => setMode(key as ColorSpace)}
+          selectedKey={mode}
+          size={1}
         >
           <SelectItem id="hsb">HSB</SelectItem>
           <SelectItem id="hsl">HSL</SelectItem>
@@ -72,36 +72,37 @@ function ColorEditor() {
           <SelectItem id="hex">HEX</SelectItem>
         </Select>
 
-        {mode === "hex" ?
-          <ColorField size={1} className="col-span-3" />
-        : getColorChannels(space).map((channel) => (
+        {mode === "hex" ? (
+          <ColorField className="col-span-3" size={1} />
+        ) : (
+          getColorChannels(space).map((channel) => (
             <ColorField
-              size={1}
-              colorSpace={space}
               channel={channel}
+              colorSpace={space}
               key={channel}
+              size={1}
             />
           ))
-        }
-        <ColorField size={1} colorSpace={space} channel="alpha" />
+        )}
+        <ColorField channel="alpha" colorSpace={space} size={1} />
       </div>
     </div>
-  )
+  );
 }
 
 function ColorPicker({ children, ...props }: ColorPickerProps) {
   return (
-    <RACColorPicker {...props}>
-      <RACDialogTrigger>
-        <RACButton className={buttonStyles}>
+    <RacColorPicker {...props}>
+      <RacDialogTrigger>
+        <RacButton className={buttonStyles}>
           <ColorSwatch />
-        </RACButton>
+        </RacButton>
         <Popover placement="bottom start">
           {children || <ColorEditor />}
         </Popover>
-      </RACDialogTrigger>
-    </RACColorPicker>
-  )
+      </RacDialogTrigger>
+    </RacColorPicker>
+  );
 }
 
-export { ColorPicker, type ColorPickerProps }
+export { ColorPicker, type ColorPickerProps };

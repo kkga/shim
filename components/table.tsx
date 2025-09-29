@@ -2,7 +2,11 @@
 
 import { cx, cxRenderProps, focusStyle } from "@lib/style";
 import { Theme, useThemeProps } from "@lib/theme";
-import { ArrowDown, ArrowUp, DotsSixVertical } from "@phosphor-icons/react";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  DotsSixVerticalIcon,
+} from "@phosphor-icons/react";
 import {
   composeRenderProps,
   Button as RacButton,
@@ -137,9 +141,9 @@ function Column(props: ColumnProps) {
                 >
                   {sortDirection &&
                     (sortDirection === "ascending" ? (
-                      <ArrowDown aria-hidden size={16} weight="regular" />
+                      <ArrowDownIcon aria-hidden size={16} weight="regular" />
                     ) : (
-                      <ArrowUp aria-hidden size={16} weight="regular" />
+                      <ArrowUpIcon aria-hidden size={16} weight="regular" />
                     ))}
                 </span>
               )}
@@ -187,7 +191,7 @@ function Row<T extends object>({
       {allowsDragging && (
         <Cell className="max-w-8 px-2">
           <RacButton slot="drag">
-            <DotsSixVertical size={16} weight="bold" />
+            <DotsSixVerticalIcon size={16} weight="bold" />
           </RacButton>
         </Cell>
       )}

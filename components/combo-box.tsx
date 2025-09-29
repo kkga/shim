@@ -1,52 +1,52 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
-import { CaretDown } from "@phosphor-icons/react"
+import { cxRenderProps } from "@lib/style";
+import { ICON_SIZE_MAP, Theme, useThemeProps } from "@lib/theme";
+import { CaretDownIcon } from "@phosphor-icons/react";
+import {
+  Button as RacButton,
+  ComboBox as RacComboBox,
+  type ComboBoxProps as RacComboBoxProps,
+  type ListBoxItemProps as RacListBoxItemProps,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
   FieldGroup,
-  FieldProps,
+  type FieldProps,
+  fieldLayoutStyle,
   GroupInput,
   Label,
-  fieldLayoutStyle,
-} from "@ui/Field"
-import {
-  Button as RACButton,
-  ComboBox as RACComboBox,
-  ComboBoxProps as RACComboBoxProps,
-  ListBoxItemProps as RACListBoxItemProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
+} from "./field";
 import {
   ListBox,
   ListBoxItem,
   ListBoxSection,
-  ListBoxSectionProps,
-} from "./ListBox"
-import { Popover } from "./Popover"
+  type ListBoxSectionProps,
+} from "./list-box";
+import { Popover } from "./popover";
 
 const style = tv({
   slots: {
     triggerButton: "flex items-center justify-center",
     triggerButtonContents:
-      "text-neutral-text flex items-center justify-center bg-transparent",
+      "flex items-center justify-center bg-transparent text-neutral-text",
     listBox: "max-h-[inherit] overflow-auto p-1 outline-none",
   },
   variants: {
     size: {
       1: {
         triggerButton: "size-6",
-        triggerButtonContents: "rounded-xs size-5",
+        triggerButtonContents: "size-5 rounded-xs",
       },
       2: {
         triggerButton: "size-7",
-        triggerButtonContents: "rounded-xs size-5",
+        triggerButtonContents: "size-5 rounded-xs",
       },
       3: {
         triggerButton: "size-8",
-        triggerButtonContents: "rounded-xs size-6",
+        triggerButtonContents: "size-6 rounded-xs",
       },
       4: {
         triggerButton: "size-10",
@@ -63,12 +63,12 @@ const style = tv({
       true: { triggerButtonContents: "text-neutral-text-subtle" },
     },
   },
-})
+});
 
 interface ComboBoxProps<T extends object>
-  extends Omit<RACComboBoxProps<T>, "children">,
+  extends Omit<RacComboBoxProps<T>, "children">,
     FieldProps {
-  children: React.ReactNode | ((item: T) => React.ReactNode)
+  children: React.ReactNode | ((item: T) => React.ReactNode);
 }
 
 function ComboBox<T extends object>({
@@ -80,24 +80,24 @@ function ComboBox<T extends object>({
   menuTrigger = "focus",
   ...props
 }: ComboBoxProps<T>) {
-  let themeProps = useThemeProps(props)
-  let { labelPosition, size } = themeProps
-  let { triggerButton, triggerButtonContents, listBox } = style({ size })
+  let themeProps = useThemeProps(props);
+  let { labelPosition, size } = themeProps;
+  let { triggerButton, triggerButtonContents, listBox } = style({ size });
 
   return (
-    <RACComboBox
+    <RacComboBox
       {...props}
-      menuTrigger={menuTrigger}
       className={cxRenderProps(
         props.className,
-        fieldLayoutStyle({ labelPosition }),
+        fieldLayoutStyle({ labelPosition })
       )}
+      menuTrigger={menuTrigger}
     >
       <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
         <FieldGroup>
           <GroupInput />
-          <RACButton className={triggerButton()}>
+          <RacButton className={triggerButton()}>
             {({ isHovered, isPressed, isDisabled }) => (
               <div
                 className={triggerButtonContents({
@@ -106,32 +106,32 @@ function ComboBox<T extends object>({
                   isPressed,
                 })}
               >
-                <CaretDown size={size === 1 ? 12 : 16} aria-hidden />
+                <CaretDownIcon aria-hidden size={ICON_SIZE_MAP[size]} />
               </div>
             )}
-          </RACButton>
+          </RacButton>
         </FieldGroup>
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
         <Popover isNonModal>
-          <ListBox items={items} className={listBox()}>
+          <ListBox className={listBox()} items={items}>
             {children}
           </ListBox>
         </Popover>
       </Theme>
-    </RACComboBox>
-  )
+    </RacComboBox>
+  );
 }
 
-type ComboBoxItemProps = RACListBoxItemProps
+type ComboBoxItemProps = RacListBoxItemProps;
 function ComboBoxItem(props: ComboBoxItemProps) {
-  return <ListBoxItem {...props} />
+  return <ListBoxItem {...props} />;
 }
 
-type ComboBoxSectionProps<T extends object> = ListBoxSectionProps<T>
+type ComboBoxSectionProps<T extends object> = ListBoxSectionProps<T>;
 function ComboBoxSection<T extends object>(props: ComboBoxSectionProps<T>) {
-  return <ListBoxSection {...props} />
+  return <ListBoxSection {...props} />;
 }
 
-export { ComboBox, ComboBoxItem, ComboBoxSection }
-export type { ComboBoxItemProps, ComboBoxProps, ComboBoxSectionProps }
+export { ComboBox, ComboBoxItem, ComboBoxSection };
+export type { ComboBoxItemProps, ComboBoxProps, ComboBoxSectionProps };

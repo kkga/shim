@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { cx } from "@lib/style"
-import type { ProgressBarProps as RACProgressBarProps } from "react-aria-components"
-import { ProgressBar as RACProgressBar } from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+import { cx } from "@lib/style";
+import type { ProgressBarProps as RacProgressBarProps } from "react-aria-components";
+import { ProgressBar as RacProgressBar } from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const style = tv({
   slots: {
@@ -26,53 +26,55 @@ const style = tv({
   defaultVariants: {
     size: 1,
   },
-})
+});
 
 interface ProgressCircleProps
-  extends RACProgressBarProps,
+  extends RacProgressBarProps,
     VariantProps<typeof style> {}
 
 function ProgressCircle(props: ProgressCircleProps) {
-  let [c, r] = ["50%", "calc(50% - 2px)"]
-  let { circle } = style({ size: props.size ?? style.defaultVariants.size })
+  let [c, r] = ["50%", "calc(50% - 2px)"];
+  let { circle } = style({ size: props.size ?? style.defaultVariants.size });
 
   return (
-    <RACProgressBar {...props}>
+    <RacProgressBar {...props}>
       {({ percentage, isIndeterminate }) => (
-        <svg className={circle()} viewBox="0 0 24 24" fill="none">
+        <svg className={circle()} fill="none" viewBox="0 0 24 24">
+          <title>Loading indicator</title>
           <circle
             cx={c}
             cy={c}
             r={r}
-            strokeWidth={3}
             stroke="currentColor"
             strokeOpacity={0.25}
+            strokeWidth={3}
           />
           <circle
-            cx={c}
-            cy={c}
-            r={r}
-            strokeWidth={3}
-            stroke="currentColor"
-            pathLength={100}
-            strokeDasharray="100 200"
-            strokeDashoffset={
-              isIndeterminate ? 100 - 30 : 100 - (percentage ?? 0)
-            }
-            strokeLinecap="round"
-            transform={isIndeterminate ? undefined : "rotate(-90)"}
             className={cx(
               "origin-center",
               !isIndeterminate &&
                 "transition-[stroke-dashoffset] duration-500 ease-in-out",
-              isIndeterminate && "animate-[spin_700ms_linear_infinite]",
+              isIndeterminate && "animate-[spin_700ms_linear_infinite]"
             )}
+            cx={c}
+            cy={c}
+            pathLength={100}
+            r={r}
+            stroke="currentColor"
+            strokeDasharray="100 200"
+            strokeDashoffset={
+              // biome-ignore lint/style/noMagicNumbers: no magic, just optics
+              isIndeterminate ? 100 - 30 : 100 - (percentage ?? 0)
+            }
+            strokeLinecap="round"
+            strokeWidth={3}
+            transform={isIndeterminate ? undefined : "rotate(-90)"}
           />
         </svg>
       )}
-    </RACProgressBar>
-  )
+    </RacProgressBar>
+  );
 }
 
-export { ProgressCircle }
-export type { ProgressCircleProps }
+export { ProgressCircle };
+export type { ProgressCircleProps };

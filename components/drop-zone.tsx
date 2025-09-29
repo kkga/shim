@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@/lib/style"
 import {
-  DropZone as RACDropZone,
-  DropZoneProps as RACDropZoneProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
+  DropZone as RacDropZone,
+  type DropZoneProps as RacDropZoneProps,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
+import { cxRenderProps } from "@/lib/style";
 
 const style = tv({
   base: [
-    "bg-neutral-bg-subtle border-neutral-line text-neutral-text relative flex items-center justify-center rounded-lg border border-dashed p-4",
-    "data-drop-target:bg-accent-bg-hover data-drop-target:border-accent-border data-drop-target:border-solid data-drop-target:text-accent-text",
+    "relative flex items-center justify-center rounded-lg border border-neutral-line border-dashed bg-neutral-bg-subtle p-4 text-neutral-text",
+    "data-drop-target:border-accent-border data-drop-target:border-solid data-drop-target:bg-accent-bg-hover data-drop-target:text-accent-text",
   ],
-})
+});
 
-function DropZone(props: RACDropZoneProps) {
+function DropZone(props: RacDropZoneProps) {
   return (
-    <RACDropZone
+    <RacDropZone
       {...props}
       className={cxRenderProps(props.className, style())}
     />
-  )
+  );
 }
 
-export { DropZone }
+export { DropZone };

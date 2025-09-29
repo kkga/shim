@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { focusStyle, Intent, INTENTS } from "@lib/style"
-import { useThemeProps } from "@lib/theme"
-import { Children, isValidElement, useContext } from "react"
+import { focusStyle, INTENTS, type Intent } from "@lib/style";
+import { useThemeProps } from "@lib/theme";
+import { Children, isValidElement, useContext } from "react";
 import {
   composeRenderProps,
-  ToggleButton as RACToggleButton,
+  ToggleButton as RacToggleButton,
+  type ToggleButtonProps as RacToggleButtonProps,
   ToggleGroupStateContext,
-  type ToggleButtonProps as RACToggleButtonProps,
-} from "react-aria-components"
-import { ClassValue, tv, VariantProps } from "tailwind-variants"
+} from "react-aria-components";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 
 const style = tv({
   extend: focusStyle,
   base: [
-    "leading-none! font-book inline-flex shrink-0 items-center justify-center font-sans",
+    "inline-flex shrink-0 items-center justify-center font-book font-sans leading-none!",
   ],
   variants: {
     variant: { soft: "", ghost: "bg-transparent" },
     intent: INTENTS.reduce(
       (acc, intent) => {
-        acc[intent] = ""
-        return acc
+        acc[intent] = "";
+        return acc;
       },
-      {} as Record<Intent, ClassValue>,
+      {} as Record<Intent, ClassValue>
     ),
     size: {
       1: "h-6 gap-1.5 rounded-sm px-1.5 text-xs",
@@ -37,8 +37,8 @@ const style = tv({
     isInGroup: {
       true: [
         "peer relative flex-1 shrink-0",
-        "after:bg-neutral-4 after:absolute after:-right-[0.5px] after:w-px last:after:hidden",
-        "data-selected:after:hidden not-data-selected:has-[+[data-selected]]:after:hidden data-selected:has-[+[data-selected]]:after:block! has-[+[data-selected]]:after:bg-white",
+        "after:-right-[0.5px] after:absolute after:w-px after:bg-neutral-4 last:after:hidden",
+        "data-selected:has-[+[data-selected]]:after:block! not-data-selected:has-[+[data-selected]]:after:hidden has-[+[data-selected]]:after:bg-white data-selected:after:hidden",
       ],
     },
   },
@@ -101,13 +101,13 @@ const style = tv({
       isDisabled: true,
       variant: ["soft"],
       intent: ["neutral", "accent", "success", "warning", "danger"],
-      class: "text-neutral-text-subtle bg-neutral-bg!",
+      class: "bg-neutral-bg! text-neutral-text-subtle",
     },
     {
       isDisabled: true,
       variant: "ghost",
       intent: ["neutral", "accent", "success", "warning", "danger"],
-      class: "text-neutral-text-subtle bg-transparent!",
+      class: "bg-transparent! text-neutral-text-subtle",
     },
   ],
   defaultVariants: {
@@ -115,12 +115,12 @@ const style = tv({
     intent: "neutral",
     size: 1,
   },
-})
+});
 
 interface ToggleButtonProps
-  extends RACToggleButtonProps,
+  extends RacToggleButtonProps,
     Omit<VariantProps<typeof style>, "isInGroup"> {
-  variant?: "soft" | "ghost"
+  variant?: "soft" | "ghost";
 }
 
 function ToggleButton({
@@ -130,14 +130,14 @@ function ToggleButton({
   isIconOnly,
   ...props
 }: ToggleButtonProps) {
-  let isInGroup = useContext(ToggleGroupStateContext) !== null
+  let isInGroup = useContext(ToggleGroupStateContext) !== null;
   let { buttonVariant, size } = useThemeProps({
     size: _size,
     buttonVariant: _variant,
-  })
+  });
 
   return (
-    <RACToggleButton
+    <RacToggleButton
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
         style({
@@ -147,28 +147,28 @@ function ToggleButton({
           intent,
           variant: buttonVariant as "soft" | "ghost",
           isIconOnly:
-            typeof isIconOnly === "boolean" ? isIconOnly : (
-              hasOnlySvgChild(props)
-            ),
+            typeof isIconOnly === "boolean"
+              ? isIconOnly
+              : hasOnlySvgChild(props),
           className,
-        }),
+        })
       )}
     />
-  )
+  );
 }
 
 function hasOnlySvgChild(props: Partial<ToggleButtonProps>): boolean {
   const children =
-    typeof props.children !== "function" ?
-      Children.toArray(props.children)
-    : null
+    typeof props.children !== "function"
+      ? Children.toArray(props.children)
+      : null;
 
   return (
     Array.isArray(children) &&
     children.length === 1 &&
     isValidElement(children[0]) &&
     children[0].type === "svg"
-  )
+  );
 }
 
-export { ToggleButton, type ToggleButtonProps }
+export { ToggleButton, type ToggleButtonProps };

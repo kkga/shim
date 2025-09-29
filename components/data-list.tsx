@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { Theme, useThemeProps } from "@lib/theme"
-import { tv, VariantProps } from "tailwind-variants"
+import { Theme, useThemeProps } from "@lib/theme";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const style = tv({
   slots: {
     list: "place-content-start items-center",
     item: "",
-    label: "text-neutral-text font-medium",
-    value: "text-neutral-text-contrast overflow-ellipsis",
+    label: "font-medium text-neutral-text",
+    value: "overflow-ellipsis text-neutral-text-contrast",
   },
   variants: {
     size: {
@@ -28,7 +28,7 @@ const style = tv({
       },
     },
   },
-})
+});
 
 interface DataListProps
   extends React.HTMLAttributes<HTMLDListElement>,
@@ -44,23 +44,23 @@ function DataList({
   let themeProps = useThemeProps({
     labelPosition,
     size,
-  })
+  });
 
   let { list } = style({
     labelPosition: themeProps.labelPosition,
     size: themeProps.size,
-  })
+  });
 
   return (
     <dl {...props} className={list({ className })}>
       <Theme {...themeProps}>{children}</Theme>
     </dl>
-  )
+  );
 }
 
 interface DataListItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  label: React.ReactNode
-  value: React.ReactNode
+  label: React.ReactNode;
+  value: React.ReactNode;
 }
 
 function DataListItem({
@@ -69,20 +69,20 @@ function DataListItem({
   value,
   ...props
 }: DataListItemProps) {
-  let { labelPosition } = useThemeProps()
+  let { labelPosition } = useThemeProps();
   let {
     item: itemStyle,
     label: labelStyle,
     value: valueStyle,
-  } = style({ labelPosition })
+  } = style({ labelPosition });
 
   return (
     <div className={itemStyle({ className })} {...props}>
       <dt className={labelStyle()}>{label}</dt>
       <dd className={valueStyle()}>{value}</dd>
     </div>
-  )
+  );
 }
 
-export { DataList, DataListItem }
-export type { DataListItemProps, DataListProps }
+export { DataList, DataListItem };
+export type { DataListItemProps, DataListProps };

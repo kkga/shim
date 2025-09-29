@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
-import type { ToggleButtonGroupProps as RACToggleButtonGroupProps } from "react-aria-components"
+import { cxRenderProps } from "@lib/style";
+import { Theme, useThemeProps } from "@lib/theme";
+import type { ToggleButtonGroupProps as RacToggleButtonGroupProps } from "react-aria-components";
 import {
   composeRenderProps,
-  ToggleButtonGroup as RACToggleButtonGroup,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+  ToggleButtonGroup as RacToggleButtonGroup,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
 import {
   Description,
   FieldError,
+  type FieldProps,
   fieldLayoutStyle,
-  FieldProps,
   Label,
-} from "./Field"
+} from "./field";
 
 const style = tv({
   base: "group grid auto-cols-fr grid-flow-col",
@@ -33,13 +33,13 @@ const style = tv({
     variant: "soft",
     intent: "neutral",
   },
-})
+});
 
 interface ToggleButtonGroupProps
-  extends RACToggleButtonGroupProps,
+  extends RacToggleButtonGroupProps,
     Omit<FieldProps, "variant">,
     VariantProps<typeof style> {
-  variant?: "soft" | "ghost"
+  variant?: "soft" | "ghost";
 }
 
 function ToggleButtonGroup({
@@ -49,14 +49,14 @@ function ToggleButtonGroup({
   errorMessage,
   ...props
 }: ToggleButtonGroupProps) {
-  let themeProps = useThemeProps({ ...props, buttonVariant: props.variant })
+  let themeProps = useThemeProps({ ...props, buttonVariant: props.variant });
 
   return (
-    <RACToggleButtonGroup
+    <RacToggleButtonGroup
       {...props}
       className={cxRenderProps(
         className,
-        fieldLayoutStyle({ labelPosition: themeProps.labelPosition }),
+        fieldLayoutStyle({ labelPosition: themeProps.labelPosition })
       )}
     >
       {composeRenderProps(props.children, (children) => (
@@ -67,8 +67,8 @@ function ToggleButtonGroup({
           <FieldError>{errorMessage}</FieldError>
         </Theme>
       ))}
-    </RACToggleButtonGroup>
-  )
+    </RacToggleButtonGroup>
+  );
 }
 
-export { ToggleButtonGroup }
+export { ToggleButtonGroup };

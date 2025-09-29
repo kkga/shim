@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@/lib/style"
-import { useThemeProps } from "@/lib/theme"
 import {
-  ColorSwatch as RACColorSwatch,
-  ColorSwatchProps as RACColorSwatchProps,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+  ColorSwatch as RacColorSwatch,
+  type ColorSwatchProps as RacColorSwatchProps,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
+import { cxRenderProps } from "@/lib/style";
+import { useThemeProps } from "@/lib/theme";
 
 const style = tv({
   base: "rounded shadow-inner",
@@ -21,17 +21,17 @@ const style = tv({
   defaultVariants: {
     size: 1,
   },
-})
+});
 
 interface ColorSwatchProps
-  extends RACColorSwatchProps,
+  extends RacColorSwatchProps,
     VariantProps<typeof style> {}
 
 function ColorSwatch(props: ColorSwatchProps) {
-  let { size } = useThemeProps(props)
+  let { size } = useThemeProps(props);
 
   return (
-    <RACColorSwatch
+    <RacColorSwatch
       {...props}
       className={cxRenderProps(props.className, style({ size }))}
       style={({ color }) => ({
@@ -39,7 +39,7 @@ function ColorSwatch(props: ColorSwatchProps) {
           repeating-conic-gradient(#CCC 0% 25%, white 0% 50%) 50% / 14px 14px`,
       })}
     />
-  )
+  );
 }
 
-export { ColorSwatch }
+export { ColorSwatch };

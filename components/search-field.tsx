@@ -1,23 +1,27 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
-import { FunnelSimple, MagnifyingGlass, X } from "@phosphor-icons/react"
+import { cxRenderProps } from "@lib/style";
+import { Theme, useThemeProps } from "@lib/theme";
 import {
-  Button as RACButton,
-  SearchField as RACSearchField,
-  type SearchFieldProps as RACSearchFieldProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
+  FunnelSimpleIcon,
+  MagnifyingGlassIcon,
+  XIcon,
+} from "@phosphor-icons/react";
+import {
+  Button as RacButton,
+  SearchField as RacSearchField,
+  type SearchFieldProps as RacSearchFieldProps,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
   FieldGroup,
-  FieldProps,
+  type FieldProps,
+  fieldLayoutStyle,
   GroupInput,
   Label,
-  fieldLayoutStyle,
-} from "./Field"
+} from "./field";
 
 const style = tv({
   slots: {
@@ -25,7 +29,7 @@ const style = tv({
     icon: "",
     clearButtonContainer: "flex items-center justify-center",
     clearButton:
-      "text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active flex items-center justify-center bg-transparent",
+      "flex items-center justify-center bg-transparent text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
   },
   variants: {
     size: {
@@ -33,19 +37,19 @@ const style = tv({
         iconContainer: "size-6",
         icon: "size-4",
         clearButtonContainer: "size-6",
-        clearButton: "rounded-xs size-5",
+        clearButton: "size-5 rounded-xs",
       },
       2: {
         iconContainer: "size-7",
         icon: "size-4",
         clearButtonContainer: "size-7",
-        clearButton: "rounded-xs size-5",
+        clearButton: "size-5 rounded-xs",
       },
       3: {
         iconContainer: "size-8",
         icon: "size-4",
         clearButtonContainer: "size-8",
-        clearButton: "rounded-xs size-6",
+        clearButton: "size-6 rounded-xs",
       },
       4: {
         iconContainer: "size-10",
@@ -67,10 +71,10 @@ const style = tv({
       },
     },
   },
-})
+});
 
-interface SearchFieldProps extends RACSearchFieldProps, FieldProps {
-  prefixIcon?: "search" | "filter" | React.ReactNode | null
+interface SearchFieldProps extends RacSearchFieldProps, FieldProps {
+  prefixIcon?: "search" | "filter" | React.ReactNode | null;
 }
 
 function SearchField({
@@ -81,18 +85,18 @@ function SearchField({
   prefixIcon = "search",
   ...props
 }: SearchFieldProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
-  let { labelPosition, size } = themeProps
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let { labelPosition, size } = themeProps;
   let { clearButtonContainer, clearButton, iconContainer, icon } = style({
     size,
-  })
+  });
 
   return (
-    <RACSearchField
+    <RacSearchField
       {...props}
       className={cxRenderProps(
         props.className,
-        fieldLayoutStyle({ labelPosition }),
+        fieldLayoutStyle({ labelPosition })
       )}
     >
       {({ isEmpty, isDisabled }) => (
@@ -101,29 +105,33 @@ function SearchField({
           <FieldGroup>
             {prefixIcon && (
               <div aria-hidden className={iconContainer({ isEmpty })}>
-                {prefixIcon === "search" ?
-                  <MagnifyingGlass className={icon()} />
-                : prefixIcon === "filter" ?
-                  <FunnelSimple className={icon()} />
-                : prefixIcon}
+                {(() => {
+                  if (prefixIcon === "search") {
+                    return <MagnifyingGlassIcon className={icon()} />;
+                  }
+                  if (prefixIcon === "filter") {
+                    return <FunnelSimpleIcon className={icon()} />;
+                  }
+                  return prefixIcon;
+                })()}
               </div>
             )}
             <GroupInput
-              placeholder={placeholder}
               className={prefixIcon ? "indent-0" : undefined}
+              placeholder={placeholder}
             />
             <div className={clearButtonContainer({ isEmpty })}>
-              <RACButton className={clearButton({ isDisabled })}>
-                <X size={16} aria-hidden />
-              </RACButton>
+              <RacButton className={clearButton({ isDisabled })}>
+                <XIcon aria-hidden size={16} />
+              </RacButton>
             </div>
           </FieldGroup>
           {description && <Description>{description}</Description>}
           <FieldError>{errorMessage}</FieldError>
         </Theme>
       )}
-    </RACSearchField>
-  )
+    </RacSearchField>
+  );
 }
 
-export { SearchField, type SearchFieldProps }
+export { SearchField, type SearchFieldProps };

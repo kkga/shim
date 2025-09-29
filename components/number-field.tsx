@@ -1,29 +1,33 @@
-"use client"
+"use client";
 
+import { cx, cxRenderProps } from "@lib/style";
+import { ICON_SIZE_MAP, Theme, useThemeProps } from "@lib/theme";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  MinusIcon,
+  PlusIcon,
+} from "@phosphor-icons/react";
 import {
   composeRenderProps,
-  Button as RACButton,
-  NumberField as RACNumberField,
-  type ButtonProps as RACButtonProps,
-  type NumberFieldProps as RACNumberFieldProps,
-} from "react-aria-components"
-
-import { cx, cxRenderProps } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
-import { CaretDown, CaretUp, Minus, Plus } from "@phosphor-icons/react"
-import { tv, VariantProps } from "tailwind-variants"
+  Button as RacButton,
+  type ButtonProps as RacButtonProps,
+  NumberField as RacNumberField,
+  type NumberFieldProps as RacNumberFieldProps,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
 import {
   Description,
   FieldError,
   FieldGroup,
+  type FieldProps,
   fieldLayoutStyle,
-  FieldProps,
   GroupInput,
   Label,
-} from "./Field"
+} from "./field";
 
-interface NumberFieldProps extends RACNumberFieldProps, FieldProps {
-  stepperLayout?: "inline" | "stacked"
+interface NumberFieldProps extends RacNumberFieldProps, FieldProps {
+  stepperLayout?: "inline" | "stacked";
 }
 
 function NumberField({
@@ -34,22 +38,22 @@ function NumberField({
   stepperLayout = "inline",
   ...props
 }: NumberFieldProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
-  let { size, labelPosition } = themeProps
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let { size, labelPosition } = themeProps;
 
   return (
-    <RACNumberField
+    <RacNumberField
       {...props}
       className={cxRenderProps(
         props.className,
-        fieldLayoutStyle({ labelPosition }),
+        fieldLayoutStyle({ labelPosition })
       )}
     >
       <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
         <FieldGroup>
           {({ isDisabled }) =>
-            stepperLayout === "stacked" ?
+            stepperLayout === "stacked" ? (
               <>
                 <GroupInput
                   className="tabular-nums"
@@ -57,53 +61,55 @@ function NumberField({
                 />
                 <div className={cx("flex flex-col self-stretch p-0.5")}>
                   <StepperButton isDisabled={isDisabled} slot="increment">
-                    <CaretUp aria-hidden size={size > 3 ? 20 : 16} />
+                    <CaretUpIcon aria-hidden size={ICON_SIZE_MAP[size]} />
                   </StepperButton>
                   <StepperButton isDisabled={isDisabled} slot="decrement">
-                    <CaretDown aria-hidden size={size > 3 ? 20 : 16} />
+                    <CaretDownIcon aria-hidden size={ICON_SIZE_MAP[size]} />
                   </StepperButton>
                 </div>
               </>
-            : <>
+            ) : (
+              <>
                 <StepperButton
+                  isDisabled={isDisabled}
                   isInline
                   size={size}
-                  isDisabled={isDisabled}
                   slot="decrement"
                 >
-                  <Minus aria-hidden size={size > 3 ? 20 : 16} />
+                  <MinusIcon aria-hidden size={ICON_SIZE_MAP[size]} />
                 </StepperButton>
                 <GroupInput
                   className="text-center indent-0 tabular-nums"
                   placeholder={placeholder}
                 />
                 <StepperButton
+                  isDisabled={isDisabled}
                   isInline
                   size={size}
-                  isDisabled={isDisabled}
                   slot="increment"
                 >
-                  <Plus aria-hidden size={size > 3 ? 20 : 16} />
+                  <PlusIcon aria-hidden size={ICON_SIZE_MAP[size]} />
                 </StepperButton>
               </>
+            )
           }
         </FieldGroup>
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
       </Theme>
-    </RACNumberField>
-  )
+    </RacNumberField>
+  );
 }
 
 const stepperButtonStyle = tv({
   base: [
-    "text-neutral-text-subtle flex cursor-default items-center justify-center bg-transparent",
+    "flex cursor-default items-center justify-center bg-transparent text-neutral-text-subtle",
   ],
   variants: {
     size: {
-      1: "rounded-xs mx-0.5 size-5",
-      2: "rounded-xs mx-0.5 size-6",
-      3: "rounded-xs mx-1 size-6",
+      1: "mx-0.5 size-5 rounded-xs",
+      2: "mx-0.5 size-6 rounded-xs",
+      3: "mx-1 size-6 rounded-xs",
       4: "mx-1.5 size-7 rounded-[3px]",
     },
     isInline: { true: "grow-0" },
@@ -114,10 +120,10 @@ const stepperButtonStyle = tv({
     isInvalid: { true: "text-error-text" },
   },
   defaultVariants: { size: 1 },
-})
+});
 
 interface StepperButtonProps
-  extends RACButtonProps,
+  extends RacButtonProps,
     VariantProps<typeof stepperButtonStyle> {}
 
 function StepperButton({
@@ -127,7 +133,7 @@ function StepperButton({
   ...props
 }: StepperButtonProps) {
   return (
-    <RACButton
+    <RacButton
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
         stepperButtonStyle({
@@ -136,10 +142,10 @@ function StepperButton({
           isStacked,
           size,
           className,
-        }),
+        })
       )}
     />
-  )
+  );
 }
 
-export { NumberField, type NumberFieldProps }
+export { NumberField, type NumberFieldProps };

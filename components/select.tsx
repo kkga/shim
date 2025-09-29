@@ -1,7 +1,7 @@
 "use client";
 
 import { cx, cxRenderProps } from "@lib/style";
-import { ICON_SIZES, Theme, useThemeProps } from "@lib/theme";
+import { ICON_SIZE_MAP, Theme, useThemeProps } from "@lib/theme";
 import { CaretDownIcon, CheckIcon } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
 import {
@@ -64,7 +64,7 @@ function Select<T extends object>({
             <CaretDownIcon
               aria-hidden
               className="shrink-0 text-current"
-              size={ICON_SIZES[size]}
+              size={ICON_SIZE_MAP[size]}
             />
           </Button>
           {description && <Description>{description}</Description>}
@@ -102,7 +102,7 @@ function SelectItem(props: ListBoxItemProps) {
                 {isSelected && (
                   <CheckIcon
                     aria-hidden
-                    size={ICON_SIZES[size]}
+                    size={ICON_SIZE_MAP[size]}
                     weight="bold"
                   />
                 )}

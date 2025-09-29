@@ -1,7 +1,7 @@
 "use client";
 
 import { cx, cxRenderProps } from "@lib/style";
-import { ICON_SIZES, type Size, Theme, useThemeProps } from "@lib/theme";
+import { ICON_SIZE_MAP, type Size, Theme, useThemeProps } from "@lib/theme";
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import {
   composeRenderProps,
@@ -85,7 +85,7 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
                 {isSelected && (
                   <CheckIcon
                     aria-hidden
-                    size={ICON_SIZES[size]}
+                    size={ICON_SIZE_MAP[size]}
                     weight="bold"
                   />
                 )}

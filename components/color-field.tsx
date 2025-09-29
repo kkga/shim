@@ -13,7 +13,7 @@ import {
   fieldLayoutStyle,
   Input,
   Label,
-} from "./Field";
+} from "./field";
 
 interface ColorFieldProps extends RacColorFieldProps, FieldProps {}
 

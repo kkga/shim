@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { Size, Theme, useThemeProps } from "@/lib/theme"
-import { focusStyle } from "@lib/style"
-import { X } from "@phosphor-icons/react"
-import { createContext, useContext } from "react"
+import { focusStyle } from "@lib/style";
+import { XIcon } from "@phosphor-icons/react";
+import { createContext, useContext } from "react";
 import {
   composeRenderProps,
-  Button as RACButton,
-  Tag as RACTag,
-  TagGroup as RACTagGroup,
-  TagGroupProps as RACTagGroupProps,
-  TagList as RACTagList,
-  TagListProps as RACTagListProps,
-  TagProps as RACTagProps,
-  Text as RACText,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
-import { Description, fieldLayoutStyle, Label } from "./Field"
+  Button as RacButton,
+  Tag as RacTag,
+  TagGroup as RacTagGroup,
+  type TagGroupProps as RacTagGroupProps,
+  TagList as RacTagList,
+  type TagListProps as RacTagListProps,
+  type TagProps as RacTagProps,
+  Text as RacText,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
+import { ICON_SIZE_MAP, type Size, Theme, useThemeProps } from "@/lib/theme";
+import { Description, fieldLayoutStyle, Label } from "./field";
 
 const COLORS = {
   gray: "text-[var(--slate-11)] border-[var(--slate-7)] data-selection-mode:data-hovered:border-[var(--slate-8)] data-selected:bg-[var(--slate-10)]",
@@ -26,19 +26,19 @@ const COLORS = {
   orange:
     "text-[var(--orange-11)] border-[var(--orange-7)] data-selection-mode:data-hovered:border-[var(--orange-8)] data-selected:bg-[var(--orange-10)]",
   red: "text-[var(--red-11)] border-[var(--red-7)] data-selection-mode:data-hovered:border-[var(--red-8)] data-selected:bg-[var(--red-10)]",
-}
+};
 
-type Color = keyof typeof COLORS
-const ColorContext = createContext<Color>("gray")
+type Color = keyof typeof COLORS;
+const ColorContext = createContext<Color>("gray");
 
 interface TagGroupProps<T>
-  extends Omit<RACTagGroupProps, "children">,
-    Pick<RACTagListProps<T>, "items" | "children" | "renderEmptyState"> {
-  color?: Color
-  size?: Size
-  label?: string
-  description?: string
-  errorMessage?: string
+  extends Omit<RacTagGroupProps, "children">,
+    Pick<RacTagListProps<T>, "items" | "children" | "renderEmptyState"> {
+  color?: Color;
+  size?: Size;
+  label?: string;
+  description?: string;
+  errorMessage?: string;
 }
 
 function TagGroup<T extends object>({
@@ -50,11 +50,11 @@ function TagGroup<T extends object>({
   renderEmptyState,
   ...props
 }: TagGroupProps<T>) {
-  let themeProps = useThemeProps({ ...props })
-  let { labelPosition } = themeProps
+  let themeProps = useThemeProps({ ...props });
+  let { labelPosition } = themeProps;
 
   return (
-    <RACTagGroup
+    <RacTagGroup
       {...props}
       className={fieldLayoutStyle({
         labelPosition,
@@ -66,23 +66,23 @@ function TagGroup<T extends object>({
       <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
         <ColorContext.Provider value={props.color || "gray"}>
-          <RACTagList
+          <RacTagList
+            className="flex flex-wrap gap-1.5"
             items={items}
             renderEmptyState={renderEmptyState}
-            className="flex flex-wrap gap-1.5"
           >
             {children}
-          </RACTagList>
+          </RacTagList>
         </ColorContext.Provider>
         {description && <Description>{description}</Description>}
         {errorMessage && (
-          <RACText slot="errorMessage" className="text-error-text text-xs">
+          <RacText className="text-error-text text-xs" slot="errorMessage">
             {errorMessage}
-          </RACText>
+          </RacText>
         )}
       </Theme>
-    </RACTagGroup>
-  )
+    </RacTagGroup>
+  );
 }
 
 const style = tv({
@@ -91,12 +91,12 @@ const style = tv({
       focusStyle(),
       "flex max-w-fit cursor-default items-center gap-1 overflow-clip rounded-full border leading-none",
       // selected
-      "data-selected:text-white data-selected:border-transparent!",
+      "data-selected:border-transparent! data-selected:text-white",
       // disabled
-      "data-disabled:bg-neutral-bg-subtle border-neutral-line text-neutral-text-subtle",
+      "border-neutral-line text-neutral-text-subtle data-disabled:bg-neutral-bg-subtle",
     ],
     removeButton: [
-      "border-current/30 -mr-px ml-1 flex h-5 cursor-default items-center justify-center rounded-r-full border-l outline-0",
+      "-mr-px ml-1 flex h-5 cursor-default items-center justify-center rounded-r-full border-current/30 border-l outline-0",
       // hover
       "data-hovered:bg-current/10 data-pressed:bg-current/20",
     ],
@@ -127,47 +127,47 @@ const style = tv({
       (acc, key) => {
         acc[key as Color] = {
           tag: COLORS[key as Color],
-        }
-        return acc
+        };
+        return acc;
       },
-      {} as Record<Color, { tag: string }>,
+      {} as Record<Color, { tag: string }>
     ),
   },
-})
+});
 
-interface TagProps extends RACTagProps {
-  color?: Color
-  size?: Size
+interface TagProps extends RacTagProps {
+  color?: Color;
+  size?: Size;
 }
 
 function Tag({ children, color, size: _size, ...props }: TagProps) {
-  let textValue = typeof children === "string" ? children : undefined
-  let groupColor = useContext(ColorContext)
-  let { size } = useThemeProps({ size: _size })
-  let { tag, removeButton } = style({ size, color: color || groupColor })
+  let textValue = typeof children === "string" ? children : undefined;
+  let groupColor = useContext(ColorContext);
+  let { size } = useThemeProps({ size: _size });
+  let { tag, removeButton } = style({ size, color: color || groupColor });
 
   return (
-    <RACTag
+    <RacTag
       textValue={textValue}
       {...props}
       className={composeRenderProps(
         props.className,
-        (className, { allowsRemoving }) => tag({ allowsRemoving, className }),
+        (className, { allowsRemoving }) => tag({ allowsRemoving, className })
       )}
     >
       {({ allowsRemoving }) => (
         <>
           {children as React.ReactNode}
           {allowsRemoving && (
-            <RACButton slot="remove" className={removeButton()}>
-              <X aria-hidden size={size >= 3 ? 16 : 12} />
-            </RACButton>
+            <RacButton className={removeButton()} slot="remove">
+              <XIcon aria-hidden size={ICON_SIZE_MAP[size]} />
+            </RacButton>
           )}
         </>
       )}
-    </RACTag>
-  )
+    </RacTag>
+  );
 }
 
-export { Tag, TagGroup }
-export type { TagGroupProps, TagProps }
+export { Tag, TagGroup };
+export type { TagGroupProps, TagProps };

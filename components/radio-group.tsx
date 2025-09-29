@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
+import { cxRenderProps, focusStyle } from "@lib/style";
+import { Theme, useThemeProps } from "@lib/theme";
 import {
   composeRenderProps,
-  Radio as RACRadio,
-  RadioGroup as RACRadioGroup,
-  type RadioGroupProps as RACRadioGroupProps,
-  type RadioProps as RACRadioProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
+  Radio as RacRadio,
+  RadioGroup as RacRadioGroup,
+  type RadioGroupProps as RacRadioGroupProps,
+  type RadioProps as RacRadioProps,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
+  type FieldProps,
   fieldLayoutStyle,
-  FieldProps,
   Label,
-} from "./Field"
+} from "./field";
 
 const style = tv({
   slots: {
     group: "flex",
-    item: "text-neutral-text group flex outline-none",
+    item: "group flex text-neutral-text outline-none",
     itemInput: [
       focusStyle(),
       "flex shrink-0 items-center justify-center rounded-full outline-offset-1 before:invisible before:rounded-full",
@@ -61,18 +61,18 @@ const style = tv({
       },
       soft: {
         itemInput:
-          "bg-neutral-bg-hover inset-ring-0 before:bg-accent-text-contrast",
+          "inset-ring-0 bg-neutral-bg-hover before:bg-accent-text-contrast",
       },
       outline: {
         itemInput:
-          "inset-ring-1 inset-ring-neutral-border before:bg-accent-text-contrast bg-transparent",
+          "inset-ring-1 inset-ring-neutral-border bg-transparent before:bg-accent-text-contrast",
       },
     },
     isDisabled: {
       true: {
-        item: "text-neutral-text-subtle cursor-not-allowed",
+        item: "cursor-not-allowed text-neutral-text-subtle",
         itemInput:
-          "bg-neutral-bg-subtle inset-ring-1 inset-ring-neutral-line text-neutral-text-subtle shadow-none",
+          "inset-ring-1 inset-ring-neutral-line bg-neutral-bg-subtle text-neutral-text-subtle shadow-none",
       },
     },
     isSelected: { true: { itemInput: "before:visible" } },
@@ -104,9 +104,9 @@ const style = tv({
       class: { itemInput: "inset-ring-neutral-border-hover bg-transparent" },
     },
   ],
-})
+});
 
-interface RadioGroupProps extends RACRadioGroupProps, FieldProps {}
+interface RadioGroupProps extends RacRadioGroupProps, FieldProps {}
 
 function RadioGroup({
   label,
@@ -120,15 +120,15 @@ function RadioGroup({
     ...props,
     labelPosition,
     fieldVariant: props.variant,
-  })
-  let { group } = style()
+  });
+  let { group } = style();
 
   return (
-    <RACRadioGroup
+    <RacRadioGroup
       {...props}
       className={cxRenderProps(
         className,
-        fieldLayoutStyle({ labelPosition: themeProps.labelPosition }),
+        fieldLayoutStyle({ labelPosition: themeProps.labelPosition })
       )}
     >
       {composeRenderProps(props.children, (children, { orientation }) => (
@@ -139,25 +139,25 @@ function RadioGroup({
           <FieldError>{errorMessage}</FieldError>
         </Theme>
       ))}
-    </RACRadioGroup>
-  )
+    </RacRadioGroup>
+  );
 }
 
-interface RadioProps extends RACRadioProps {
-  description?: string
+interface RadioProps extends RacRadioProps {
+  description?: string;
 }
 
 function Radio({ description, ...props }: RadioProps) {
-  let { size, fieldVariant: variant } = useThemeProps()
-  let { item, itemInput } = style({ size, variant })
+  let { size, fieldVariant: variant } = useThemeProps();
+  let { item, itemInput } = style({ size, variant });
 
   return (
-    <RACRadio
+    <RacRadio
       {...props}
       className={composeRenderProps(
         props.className,
         (className, { isDisabled, isPressed, isSelected }) =>
-          item({ isDisabled, isPressed, isSelected, className }),
+          item({ isDisabled, isPressed, isSelected, className })
       )}
     >
       {composeRenderProps(
@@ -170,11 +170,11 @@ function Radio({ description, ...props }: RadioProps) {
               {description && <Description>{description}</Description>}
             </div>
           </>
-        ),
+        )
       )}
-    </RACRadio>
-  )
+    </RacRadio>
+  );
 }
 
-export { Radio, RadioGroup }
-export type { RadioGroupProps, RadioProps }
+export { Radio, RadioGroup };
+export type { RadioGroupProps, RadioProps };

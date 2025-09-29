@@ -1,7 +1,7 @@
 "use client";
 
 import { cxRenderProps, focusStyle } from "@lib/style";
-import { ICON_SIZES, type Size, Theme, useThemeProps } from "@lib/theme";
+import { ICON_SIZE_MAP, type Size, Theme, useThemeProps } from "@lib/theme";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { useContext } from "react";
 import {
@@ -142,7 +142,7 @@ function DisclosureHeader({ children }: DisclosureHeaderProps) {
             <CaretDownIcon
               aria-hidden
               className={chevron({ isExpanded, isDisabled })}
-              size={ICON_SIZES[size]}
+              size={ICON_SIZE_MAP[size]}
               weight="bold"
             />
           </>

@@ -1,17 +1,17 @@
-import { focusStyle } from "@/lib/style"
 import {
-  ColorThumb as RACColorThumb,
-  ColorThumbProps as RACColorThumbProps,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+  ColorThumb as RacColorThumb,
+  type ColorThumbProps as RacColorThumbProps,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
+import { focusStyle } from "@/lib/style";
 
 const thumbStyles = tv({
   extend: focusStyle,
-  base: "left-[50%] top-[50%] border border-white",
+  base: "top-[50%] left-[50%] border border-white",
   variants: {
     variant: {
-      loupe: "border-3 rounded-full",
-      knob: "border-3 rounded-sm",
+      loupe: "rounded-full border-3",
+      knob: "rounded-sm border-3",
     },
     size: {
       1: "",
@@ -60,25 +60,25 @@ const thumbStyles = tv({
       variant: "knob",
       orientation: "horizontal",
       size: 4,
-      className: "w-4.5 h-12 rounded-[5px] border-4",
+      className: "h-12 w-4.5 rounded-[5px] border-4",
     },
     {
       variant: "knob",
       orientation: "vertical",
       size: 1,
-      className: "w-7.5 h-3",
+      className: "h-3 w-7.5",
     },
     {
       variant: "knob",
       orientation: "vertical",
       size: 2,
-      className: "w-8.5 h-3",
+      className: "h-3 w-8.5",
     },
     {
       variant: "knob",
       orientation: "vertical",
       size: 3,
-      className: "w-9.5 h-3.5",
+      className: "h-3.5 w-9.5",
     },
     {
       variant: "knob",
@@ -92,16 +92,17 @@ const thumbStyles = tv({
     orientation: "horizontal",
     variant: "knob",
   },
-})
+});
 
 interface ColorThumbProps
-  extends RACColorThumbProps,
+  extends RacColorThumbProps,
     VariantProps<typeof thumbStyles> {}
 
 function ColorThumb({ size, variant, orientation, ...props }: ColorThumbProps) {
   return (
-    <RACColorThumb
+    <RacColorThumb
       {...props}
+      className={() => thumbStyles({ size, variant, orientation })}
       style={({ defaultStyle }) => ({
         ...defaultStyle,
         // backgroundColor: isDisabled ? undefined : defaultStyle.backgroundColor,
@@ -110,9 +111,8 @@ function ColorThumb({ size, variant, orientation, ...props }: ColorThumbProps) {
         boxShadow:
           "0 0 0 1px var(--black-a3), var(--shadow-inner), var(--shadow-xs)",
       })}
-      className={({}) => thumbStyles({ size, variant, orientation })}
     />
-  )
+  );
 }
 
-export { ColorThumb, type ColorThumbProps }
+export { ColorThumb, type ColorThumbProps };

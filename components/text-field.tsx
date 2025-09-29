@@ -1,22 +1,21 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@lib/style"
+import { cxRenderProps } from "@lib/style";
+import { Theme, useThemeProps } from "@lib/theme";
 import {
-  TextField as RACTextField,
-  type TextFieldProps as RACTextFieldProps,
-} from "react-aria-components"
-
-import { Theme, useThemeProps } from "@lib/theme"
+  TextField as RacTextField,
+  type TextFieldProps as RacTextFieldProps,
+} from "react-aria-components";
 import {
   Description,
   FieldError,
-  FieldProps,
+  type FieldProps,
+  fieldLayoutStyle,
   Input,
   Label,
-  fieldLayoutStyle,
-} from "./Field"
+} from "./field";
 
-interface TextFieldProps extends RACTextFieldProps, FieldProps {}
+interface TextFieldProps extends RacTextFieldProps, FieldProps {}
 
 function TextField({
   label,
@@ -26,11 +25,11 @@ function TextField({
   placeholder,
   ...props
 }: TextFieldProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
-  let { labelPosition } = themeProps
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let { labelPosition } = themeProps;
 
   return (
-    <RACTextField
+    <RacTextField
       {...props}
       className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
@@ -40,8 +39,8 @@ function TextField({
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
       </Theme>
-    </RACTextField>
-  )
+    </RacTextField>
+  );
 }
 
-export { TextField, type TextFieldProps }
+export { TextField, type TextFieldProps };

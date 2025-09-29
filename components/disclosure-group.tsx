@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@lib/style"
-import { Size, Theme, useThemeProps } from "@lib/theme"
-import type { DisclosureGroupProps as RACDisclosureGroupProps } from "react-aria-components"
+import { cxRenderProps } from "@lib/style";
+import { type Size, Theme, useThemeProps } from "@lib/theme";
+import type { DisclosureGroupProps as RacDisclosureGroupProps } from "react-aria-components";
 import {
   composeRenderProps,
-  DisclosureGroup as RACDisclosureGroup,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
+  DisclosureGroup as RacDisclosureGroup,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
 
 const style = tv({
-  base: "border-neutral-line border",
+  base: "border border-neutral-line",
   variants: {
     size: {
       1: "rounded-md",
@@ -19,10 +19,10 @@ const style = tv({
       4: "rounded-xl",
     },
   },
-})
+});
 
-interface DisclosureGroupProps extends RACDisclosureGroupProps {
-  size?: Size
+interface DisclosureGroupProps extends RacDisclosureGroupProps {
+  size?: Size;
 }
 
 function DisclosureGroup({
@@ -31,19 +31,19 @@ function DisclosureGroup({
   size: _size,
   ...props
 }: DisclosureGroupProps) {
-  let { size } = useThemeProps({ size: _size })
+  let { size } = useThemeProps({ size: _size });
 
   return (
-    <RACDisclosureGroup
+    <RacDisclosureGroup
       {...props}
       className={cxRenderProps(className, style({ size }))}
     >
-      {composeRenderProps(children, (children) => (
-        <Theme size={size}>{children}</Theme>
+      {composeRenderProps(children, (renderedChildren) => (
+        <Theme size={size}>{renderedChildren}</Theme>
       ))}
-    </RACDisclosureGroup>
-  )
+    </RacDisclosureGroup>
+  );
 }
 
-export { DisclosureGroup }
-export type { DisclosureGroupProps }
+export { DisclosureGroup };
+export type { DisclosureGroupProps };
