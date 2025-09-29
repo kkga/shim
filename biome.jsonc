@@ -1,9 +1,7 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {},
-  "extends": [
-    "ultracite"
-  ],
+  "extends": ["ultracite"],
   "linter": {
     "rules": {
       "style": {

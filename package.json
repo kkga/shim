@@ -6,7 +6,6 @@
     "start": "next start",
     "check": "pnpx ultracite check",
     "registry:build": "shadcn build",
-    "prepare": "husky",
     "knip": "knip"
   },
   "dependencies": {
