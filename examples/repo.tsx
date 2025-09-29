@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Book,
@@ -15,8 +15,8 @@ import {
   Gear,
   GitBranch,
   GitFork,
-  GitPullRequest,
   GithubLogo,
+  GitPullRequest,
   House,
   Kanban,
   Laptop,
@@ -29,38 +29,45 @@ import {
   Tray,
   Upload,
   UploadSimple,
-} from "@phosphor-icons/react"
-import { Avatar } from "@ui/Avatar"
-import { Badge } from "@ui/Badge"
-import { Breadcrumb, Breadcrumbs } from "@ui/Breadcrumbs"
-import { Button } from "@ui/Button"
-import { ComboBox, ComboBoxItem } from "@ui/ComboBox"
-import { DataList, DataListItem } from "@ui/DataList"
-import { Link } from "@ui/Link"
+} from "@phosphor-icons/react";
+import { Avatar } from "@/components/avatar";
+import { Badge } from "@/components/badge";
+import { Breadcrumb, Breadcrumbs } from "@/components/breadcrumbs";
+import { Button } from "@/components/button";
+import { ComboBox, ComboBoxItem } from "@/components/combo-box";
+import { DataList, DataListItem } from "@/components/data-list";
+import { Link } from "@/components/link";
 import {
   Menu,
   MenuItem,
   MenuSection,
   MenuSeparator,
   MenuTrigger,
-} from "@ui/Menu"
-import { Popover, PopoverTrigger } from "@ui/Popover"
-import { SearchField } from "@ui/SearchField"
-import { Select, SelectItem } from "@ui/Select"
-import { Separator } from "@ui/Separator"
-import { Cell, Column, Row, Table, TableBody, TableHeader } from "@ui/Table"
-import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
-import { Tag, TagGroup } from "@ui/TagGroup"
-import { TextField } from "@ui/TextField"
-import { ToggleButton } from "@ui/ToggleButton"
-import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
-import { ExampleContainer } from "./container"
+} from "@/components/menu";
+import { Popover, PopoverTrigger } from "@/components/popover";
+import { SearchField } from "@/components/search-field";
+import { Select, SelectItem } from "@/components/select";
+import { Separator } from "@/components/separator";
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from "@/components/table";
+import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
+import { Tag, TagGroup } from "@/components/tag-group";
+import { TextField } from "@/components/text-field";
+import { ToggleButton } from "@/components/toggle-button";
+import { Tooltip, TooltipTrigger } from "@/components/tooltip";
+import { ExampleContainer } from "./container";
 
 const fileColumns = [
   { id: "file", name: "File", isRowHeader: true },
   { id: "commit", name: "Last commit" },
   { id: "editDate", name: "Last edited" },
-]
+];
 
 const fileRows = [
   {
@@ -129,14 +136,14 @@ const fileRows = [
     commit: "chore: update tsconfig",
     editDate: "2 weeks ago",
   },
-]
+];
 
 export function ExampleRepo() {
   return (
-    <ExampleContainer className="bg-panel min-w-[800px]">
+    <ExampleContainer className="min-w-[800px] bg-panel">
       <div className="flex items-center gap-2 p-4 pb-2 text-[13px]">
         <MenuTrigger>
-          <Button intent="neutral" isIconOnly aria-label="Menu">
+          <Button aria-label="Menu" intent="neutral" isIconOnly>
             <List size={16} />
           </Button>
           <Menu size={1}>
@@ -189,13 +196,13 @@ export function ExampleRepo() {
           <Breadcrumb>shim</Breadcrumb>
         </Breadcrumbs>
 
-        <div className="grow-1" aria-hidden></div>
+        <div aria-hidden className="grow-1" />
 
         <SearchField
-          className="w-40"
-          variant="soft"
           aria-label="Search"
+          className="w-40"
           placeholder="Search..."
+          variant="soft"
         />
         <Separator className="my-1" orientation="vertical" />
 
@@ -230,78 +237,78 @@ export function ExampleRepo() {
 
         <TooltipTrigger>
           <Button intent="neutral" isIconOnly>
-            <GitPullRequest weight="duotone" size={16} />
+            <GitPullRequest size={16} weight="duotone" />
           </Button>
           <Tooltip>Pull requests</Tooltip>
         </TooltipTrigger>
 
         <TooltipTrigger>
-          <Button intent="neutral" isIconOnly className="relative">
-            <div className="border-accent-line bg-accent-9 absolute -right-0.5 -top-0.5 size-2 rounded-full border shadow"></div>
-            <Tray weight="duotone" size={16} />
+          <Button className="relative" intent="neutral" isIconOnly>
+            <div className="-right-0.5 -top-0.5 absolute size-2 rounded-full border border-accent-line bg-accent-9 shadow" />
+            <Tray size={16} weight="duotone" />
           </Button>
           <Tooltip>Notifications</Tooltip>
         </TooltipTrigger>
 
         <TooltipTrigger>
           <Avatar
-            size={2}
-            radius="full"
-            src="https://avatars.githubusercontent.com/u/1460122?v=4"
             name="Gadzhi Kharkharov"
+            radius="full"
+            size={2}
+            src="https://avatars.githubusercontent.com/u/1460122?v=4"
           />
           <Tooltip>Notifications</Tooltip>
         </TooltipTrigger>
       </div>
 
       <Tabs className="flex-1 gap-0 overflow-auto">
-        <TabList variant="underline" className="shadow-neutral-3 gap-4 px-4">
+        <TabList className="gap-4 px-4 shadow-neutral-3" variant="underline">
           <Tab id="code">
-            <Code weight="duotone" size={16} />
+            <Code size={16} weight="duotone" />
             Code
           </Tab>
           <Tab id="pr">
-            <GitPullRequest weight="duotone" size={16} />
+            <GitPullRequest size={16} weight="duotone" />
             Pull requests
           </Tab>
           <Tab id="settings">
-            <Gear weight="duotone" size={16} />
+            <Gear size={16} weight="duotone" />
             Settings
           </Tab>
         </TabList>
 
         <TabPanel
-          className="bg-background flex flex-1 flex-col gap-4 overflow-y-scroll p-4"
+          className="flex flex-1 flex-col gap-4 overflow-y-scroll bg-background p-4"
           id="code"
         >
           <div className="flex gap-2">
             <div className="flex items-center gap-2">
-              <h2 className="text-neutral-text-contrast text-sm font-medium leading-none">
+              <h2 className="font-medium text-neutral-text-contrast text-sm leading-none">
                 shim
               </h2>
-              <Badge size={1} intent="neutral">
+              <Badge intent="neutral" size={1}>
                 Public
               </Badge>
             </div>
-            <div className="grow-1"></div>
+            <div className="grow-1" />
             <ToggleButton intent="neutral">
-              <Eye weight="duotone" size={16} />
+              <Eye size={16} weight="duotone" />
               Watch
-              <Badge size={1} intent="neutral">
+              <Badge intent="neutral" size={1}>
                 20
               </Badge>
             </ToggleButton>
             <Button intent="neutral">
-              <GitFork weight="duotone" size={16} />
+              <GitFork size={16} weight="duotone" />
               Fork
-              <Badge size={1} intent="neutral">
+              <Badge intent="neutral" size={1}>
                 38
               </Badge>
             </Button>
             <Button intent="neutral">
-              <Star weight="duotone" size={16} />
+              <Star size={16} weight="duotone" />
               Star
-              <Badge size={1} intent="neutral">
+              <Badge intent="neutral" size={1}>
                 2.1k
               </Badge>
             </Button>
@@ -329,11 +336,11 @@ export function ExampleRepo() {
                   </SelectItem>
                 </Select>
 
-                <div className="flex-1"></div>
+                <div className="flex-1" />
 
                 <ComboBox
-                  className="min-w-32"
                   aria-label="Files"
+                  className="min-w-32"
                   defaultItems={fileRows}
                   placeholder="Go to file"
                 >
@@ -369,9 +376,9 @@ export function ExampleRepo() {
                     Code
                     <CaretDown size={12} />
                   </Button>
-                  <Popover placement="bottom end" className="w-xs">
+                  <Popover className="w-xs" placement="bottom end">
                     <Tabs>
-                      <TabList variant="underline" className="gap-4 px-4">
+                      <TabList className="gap-4 px-4" variant="underline">
                         <Tab id="local">Local</Tab>
                         <Tab id="codespaces">Codespaces</Tab>
                       </TabList>
@@ -380,19 +387,19 @@ export function ExampleRepo() {
                         id="local"
                       >
                         <TextField
-                          label="Repository URL"
                           description="Clone using the web URL."
                           isReadOnly
+                          label="Repository URL"
                           value="https://github.com/kkga/shim.git"
                         />
 
                         <div className="flex gap-2">
-                          <Button intent="neutral" className="flex-1">
+                          <Button className="flex-1" intent="neutral">
                             <Desktop size={16} />
                             Open on desktop
                           </Button>
 
-                          <Button intent="neutral" className="flex-1">
+                          <Button className="flex-1" intent="neutral">
                             <DownloadSimple size={16} />
                             Download ZIP
                           </Button>
@@ -402,7 +409,7 @@ export function ExampleRepo() {
                         className={"flex flex-col gap-4 p-4 py-8 text-center"}
                         id="codespaces"
                       >
-                        <span className="text-neutral-text-contrast text-sm font-medium">
+                        <span className="font-medium text-neutral-text-contrast text-sm">
                           No codespaces
                         </span>
                         <p>
@@ -412,7 +419,7 @@ export function ExampleRepo() {
                         <Button className="self-center" intent="accent">
                           Create codespace
                         </Button>
-                        <Link className="text-xs" intent="neutral" href="#">
+                        <Link className="text-xs" href="#" intent="neutral">
                           Learn more about codespaces
                         </Link>
                       </TabPanel>
@@ -445,7 +452,7 @@ export function ExampleRepo() {
             </div>
 
             <div className="flex flex-col gap-3 py-1">
-              <h4 className="text-neutral-text-contrast text-sm font-medium leading-none">
+              <h4 className="font-medium text-neutral-text-contrast text-sm leading-none">
                 About
               </h4>
               <p className="text-[13px]">
@@ -454,7 +461,7 @@ export function ExampleRepo() {
                 v4.
               </p>
 
-              <DataList labelPosition="side" className="mb-2">
+              <DataList className="mb-2" labelPosition="side">
                 <DataListItem
                   label={<LinkIcon size={16} />}
                   value="shim.kkga.me"
@@ -484,7 +491,7 @@ export function ExampleRepo() {
               <Separator />
 
               <div className="flex items-center gap-2">
-                <h4 className="text-neutral-text-contrast text-sm font-medium leading-none">
+                <h4 className="font-medium text-neutral-text-contrast text-sm leading-none">
                   Releases
                 </h4>
                 <Badge intent="neutral" size={1}>
@@ -496,7 +503,7 @@ export function ExampleRepo() {
                 <div className="flex items-start gap-2">
                   <TagIcon size={16} />
                   <div>
-                    <h4 className="text-neutral-text-contrast text-xs font-medium leading-4">
+                    <h4 className="font-medium text-neutral-text-contrast text-xs leading-4">
                       May 1, 2024 Release
                     </h4>
                     <p className="text-neutral-text text-xs">2 weeks ago</p>
@@ -509,23 +516,23 @@ export function ExampleRepo() {
         </TabPanel>
 
         <TabPanel
-          className="bg-background flex flex-1 flex-col gap-4 overflow-y-scroll p-4"
+          className="flex flex-1 flex-col gap-4 overflow-y-scroll bg-background p-4"
           id="pr"
         >
-          <h2 className="text-neutral-text-contrast text-sm font-medium leading-none">
+          <h2 className="font-medium text-neutral-text-contrast text-sm leading-none">
             Pull requests
           </h2>
         </TabPanel>
 
         <TabPanel
-          className="bg-background flex flex-1 flex-col gap-4 overflow-y-scroll p-4"
+          className="flex flex-1 flex-col gap-4 overflow-y-scroll bg-background p-4"
           id="settings"
         >
-          <h2 className="text-neutral-text-contrast text-sm font-medium leading-none">
+          <h2 className="font-medium text-neutral-text-contrast text-sm leading-none">
             Settings
           </h2>
         </TabPanel>
       </Tabs>
     </ExampleContainer>
-  )
+  );
 }

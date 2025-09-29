@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Archive,
@@ -26,33 +26,33 @@ import {
   UsersThree,
   XCircle,
   XSquare,
-} from "@phosphor-icons/react"
-import { Avatar } from "@ui/Avatar"
-import { Badge } from "@ui/Badge"
-import { Breadcrumb, Breadcrumbs } from "@ui/Breadcrumbs"
-import { Button } from "@ui/Button"
-import { DataList, DataListItem } from "@ui/DataList"
-import { Kbd } from "@ui/Kbd"
-import { Link } from "@ui/Link"
-import { ListBox, ListBoxItem, ListBoxSection } from "@ui/ListBox"
+} from "@phosphor-icons/react";
+import { useMemo, useState } from "react";
+import type { Selection } from "react-aria-components";
+import { Avatar } from "@/components/avatar";
+import { Badge } from "@/components/badge";
+import { Breadcrumb, Breadcrumbs } from "@/components/breadcrumbs";
+import { Button } from "@/components/button";
+import { DataList, DataListItem } from "@/components/data-list";
+import { Kbd } from "@/components/kbd";
+import { Link } from "@/components/link";
+import { ListBox, ListBoxItem, ListBoxSection } from "@/components/list-box";
 import {
   Menu,
   MenuItem,
   MenuSeparator,
   MenuTrigger,
   SubmenuTrigger,
-} from "@ui/Menu"
-import { Popover, PopoverTrigger } from "@ui/Popover"
-import { Select, SelectItem } from "@ui/Select"
-import { Separator } from "@ui/Separator"
-import { Switch } from "@ui/Switch"
-import { Tag, TagGroup } from "@ui/TagGroup"
-import { TextArea } from "@ui/TextArea"
-import { ToggleButton } from "@ui/ToggleButton"
-import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
-import { useMemo, useState } from "react"
-import { Selection } from "react-aria-components"
-import { ExampleContainer } from "./container"
+} from "@/components/menu";
+import { Popover, PopoverTrigger } from "@/components/popover";
+import { Select, SelectItem } from "@/components/select";
+import { Separator } from "@/components/separator";
+import { Switch } from "@/components/switch";
+import { Tag, TagGroup } from "@/components/tag-group";
+import { TextArea } from "@/components/text-area";
+import { ToggleButton } from "@/components/toggle-button";
+import { Tooltip, TooltipTrigger } from "@/components/tooltip";
+import { ExampleContainer } from "./container";
 
 const items = [
   {
@@ -190,19 +190,19 @@ const items = [
     status: "done",
     age: "6d",
   },
-]
+];
 
 export function ExampleIssueTracker() {
   let [selectedKeys, setSelectedKeys] = useState<Selection>(
-    new Set(["LIN-5737"]),
-  )
+    new Set(["LIN-5737"])
+  );
   let breadcrumbs = useMemo(
     () => [
       {
         id: "mobile-app",
         text: "Mobile app",
         href: "#",
-        icon: <DeviceMobile size={16} className="text-accent-text" />,
+        icon: <DeviceMobile className="text-accent-text" size={16} />,
       },
       {
         id: [...selectedKeys][0],
@@ -211,24 +211,24 @@ export function ExampleIssueTracker() {
         icon: null,
       },
     ],
-    [selectedKeys],
-  )
+    [selectedKeys]
+  );
   let selectedItem = useMemo(
     () => items.find((item) => item.id === [...selectedKeys][0]),
-    [selectedKeys],
-  )
+    [selectedKeys]
+  );
 
   return (
     <ExampleContainer className="min-w-[800px]">
-      <div className="bg-panel flex flex-1 flex-row overflow-auto">
+      <div className="flex flex-1 flex-row overflow-auto bg-panel">
         <div className="flex min-w-[160px] flex-col gap-2.5 p-3 text-xs">
           <div className="flex items-center gap-1">
             <MenuTrigger>
               <Button
-                intent="neutral"
-                variant="ghost"
                 aria-label="Menu"
                 className="text-neutral-text-contrast"
+                intent="neutral"
+                variant="ghost"
               >
                 Acme <CaretDown size={12} />
               </Button>
@@ -236,7 +236,7 @@ export function ExampleIssueTracker() {
                 <MenuItem>
                   <SlidersHorizontal size={16} weight="duotone" />
                   Preferences
-                  <Kbd variant="plain" className="ml-auto">
+                  <Kbd className="ml-auto" variant="plain">
                     G then S
                   </Kbd>
                 </MenuItem>
@@ -255,7 +255,7 @@ export function ExampleIssueTracker() {
                 <MenuItem>
                   <SignOut size={16} weight="duotone" />
                   Log out
-                  <Kbd variant="plain" className="ml-auto">
+                  <Kbd className="ml-auto" variant="plain">
                     ⎇⇧Q
                   </Kbd>
                 </MenuItem>
@@ -263,15 +263,15 @@ export function ExampleIssueTracker() {
             </MenuTrigger>
 
             <Button
-              isIconOnly
-              intent="neutral"
-              variant="ghost"
               className="ml-auto"
+              intent="neutral"
+              isIconOnly
+              variant="ghost"
             >
               <MagnifyingGlass size={16} />
             </Button>
 
-            <Button isIconOnly intent="neutral">
+            <Button intent="neutral" isIconOnly>
               <Plus size={16} />
             </Button>
           </div>
@@ -280,14 +280,14 @@ export function ExampleIssueTracker() {
             aria-label="Navigation"
             className="gap-2"
             defaultSelectedKeys={["inbox"]}
-            selectionMode="single"
             disallowEmptySelection
+            selectionMode="single"
           >
             <ListBoxSection>
               <ListBoxItem id="inbox" textValue="inbox">
                 <Tray size={16} weight="duotone" />
                 Inbox
-                <Badge intent="neutral" className="ml-0" size={1}>
+                <Badge className="ml-0" intent="neutral" size={1}>
                   15
                 </Badge>
               </ListBoxItem>
@@ -315,25 +315,25 @@ export function ExampleIssueTracker() {
             <ListBoxSection title="Favorites">
               <ListBoxItem textValue="mobile-app">
                 <DeviceMobile
+                  className="text-accent-text"
                   size={16}
                   weight="duotone"
-                  className="text-accent-text"
                 />
                 Mobile app
               </ListBoxItem>
               <ListBoxItem textValue="roadmap">
                 <RoadHorizon
+                  className="text-success-text"
                   size={16}
                   weight="duotone"
-                  className="text-success-text"
                 />
                 3Q24 Roadmap
               </ListBoxItem>
               <ListBoxItem textValue="design-system">
                 <PencilRuler
+                  className="text-warning-text"
                   size={16}
                   weight="duotone"
-                  className="text-warning-text"
                 />
                 Design system
               </ListBoxItem>
@@ -351,33 +351,33 @@ export function ExampleIssueTracker() {
           </ListBox>
         </div>
 
-        <div className="bg-background shadow-xs ring-neutral-3 m-2 ml-0 flex flex-1 rounded ring">
-          <div className="border-neutral-3 flex w-[240px] flex-col border-r">
-            <div className="border-neutral-3 flex items-center gap-1.5 border-b p-1 px-2 text-xs">
-              <span className="text-neutral-text-contrast ml-1 font-medium">
+        <div className="m-2 ml-0 flex flex-1 rounded bg-background shadow-xs ring ring-neutral-3">
+          <div className="flex w-[240px] flex-col border-neutral-3 border-r">
+            <div className="flex items-center gap-1.5 border-neutral-3 border-b p-1 px-2 text-xs">
+              <span className="ml-1 font-medium text-neutral-text-contrast">
                 Inbox
               </span>
               <MenuTrigger>
                 <Button
-                  isIconOnly
-                  intent="neutral"
-                  variant="ghost"
                   aria-label="Inbox menu"
+                  intent="neutral"
+                  isIconOnly
+                  variant="ghost"
                 >
-                  <DotsThree weight="bold" size={16} />
+                  <DotsThree size={16} weight="bold" />
                 </Button>
                 <Menu>
                   <MenuItem>
                     <Checks size={16} weight="duotone" />
                     Mark all as read
-                    <Kbd variant="plain" className="ml-auto">
+                    <Kbd className="ml-auto" variant="plain">
                       ⎇U
                     </Kbd>
                   </MenuItem>
                   <MenuItem>
                     <XSquare size={16} weight="duotone" />
                     Empty inbox
-                    <Kbd variant="plain" className="ml-auto">
+                    <Kbd className="ml-auto" variant="plain">
                       ⎇⇧D
                     </Kbd>
                   </MenuItem>
@@ -386,14 +386,14 @@ export function ExampleIssueTracker() {
 
               <MenuTrigger>
                 <Button
-                  isIconOnly
-                  intent="neutral"
-                  variant="ghost"
                   className="ml-auto"
+                  intent="neutral"
+                  isIconOnly
+                  variant="ghost"
                 >
                   <FunnelSimple size={16} />
                 </Button>
-                <Menu selectionMode="multiple" placement="bottom end">
+                <Menu placement="bottom end" selectionMode="multiple">
                   <MenuItem>Assignments</MenuItem>
                   <MenuItem>Mentions</MenuItem>
                   <MenuItem>Status changes</MenuItem>
@@ -401,15 +401,15 @@ export function ExampleIssueTracker() {
                 </Menu>
               </MenuTrigger>
               <PopoverTrigger>
-                <Button isIconOnly intent="neutral" variant="ghost">
+                <Button intent="neutral" isIconOnly variant="ghost">
                   <SlidersHorizontal size={16} />
                 </Button>
                 <Popover placement="bottom end">
                   <div className="flex w-[220px] flex-col gap-2 p-3">
                     <Select
-                      labelPosition="side"
-                      label="Ordering"
                       defaultSelectedKey={"newest"}
+                      label="Ordering"
+                      labelPosition="side"
                     >
                       <SelectItem id="newest">Newest</SelectItem>
                       <SelectItem id="oldest">Oldest</SelectItem>
@@ -417,16 +417,16 @@ export function ExampleIssueTracker() {
                     </Select>
                     <Separator />
                     <div className="flex flex-col">
-                      <Switch labelPosition="start" defaultSelected>
+                      <Switch defaultSelected labelPosition="start">
                         Show snoozed
                       </Switch>
                       <Switch labelPosition="start">Show read</Switch>
                     </div>
                     <Separator />
                     <TagGroup
+                      defaultSelectedKeys={"id"}
                       label="Display properties"
                       selectionMode="multiple"
-                      defaultSelectedKeys={"id"}
                     >
                       <Tag>ID</Tag>
                       <Tag>Assignee</Tag>
@@ -440,53 +440,53 @@ export function ExampleIssueTracker() {
               <ListBox
                 aria-label="Inbox"
                 className="p-1"
-                items={items}
-                selectionMode="single"
                 disallowEmptySelection
-                selectedKeys={selectedKeys}
+                items={items}
                 onSelectionChange={setSelectedKeys}
+                selectedKeys={selectedKeys}
+                selectionMode="single"
               >
                 {({ title, description, user, status, age, id }) => (
                   <ListBoxItem
+                    className="h-auto px-2 py-1.5"
                     key={id}
                     textValue={title}
-                    className="h-auto px-2 py-1.5"
                   >
                     <div className="grid flex-1 grid-cols-[auto_1fr_auto] grid-rows-[auto_auto] gap-x-2.5 gap-y-0.5">
                       <Avatar
+                        className="row-span-2 place-self-center"
                         name={user}
                         size={2}
-                        className="row-span-2 place-self-center"
                       />
-                      <span className="text-neutral-text-contrast col-start-2 row-start-1 truncate">
+                      <span className="col-start-2 row-start-1 truncate text-neutral-text-contrast">
                         {title}
                       </span>
-                      <span className="text-neutral-text col-start-2 row-start-2">
+                      <span className="col-start-2 row-start-2 text-neutral-text">
                         {description}
                       </span>
-                      <span className="text-neutral-text col-start-3 row-start-2 text-right">
+                      <span className="col-start-3 row-start-2 text-right text-neutral-text">
                         {age}
                       </span>
                       <div className="col-start-3 row-start-1">
                         {status === "in-progress" && (
                           <CircleHalf
+                            className="text-warning-text"
                             size={16}
                             weight="duotone"
-                            className="text-warning-text"
                           />
                         )}
                         {status === "done" && (
                           <CheckCircle
+                            className="text-success-text"
                             size={16}
                             weight="duotone"
-                            className="text-success-text"
                           />
                         )}
                         {status === "cancelled" && (
                           <XCircle
+                            className="text-neutral-text"
                             size={16}
                             weight="duotone"
-                            className="text-neutral-text"
                           />
                         )}
                       </div>
@@ -498,14 +498,12 @@ export function ExampleIssueTracker() {
           </div>
 
           <div className="flex flex-1 flex-col">
-            <div className="border-neutral-3 flex items-center gap-1 border-b p-1 pl-2 text-xs">
+            <div className="flex items-center gap-1 border-neutral-3 border-b p-1 pl-2 text-xs">
               <Breadcrumbs items={breadcrumbs}>
                 {({ text, href, icon }) => (
                   <Breadcrumb href={href ?? ""} key={text}>
-                    <div className="text-neutral-text-contrast flex items-center gap-1 font-medium">
-                      {icon ?
-                        <span>{icon}</span>
-                      : null}
+                    <div className="flex items-center gap-1 font-medium text-neutral-text-contrast">
+                      {icon ? <span>{icon}</span> : null}
                       {text}
                     </div>
                   </Breadcrumb>
@@ -513,8 +511,8 @@ export function ExampleIssueTracker() {
               </Breadcrumbs>
 
               <MenuTrigger>
-                <Button variant="ghost" intent="neutral" isIconOnly>
-                  <DotsThree weight="bold" size={16} />
+                <Button intent="neutral" isIconOnly variant="ghost">
+                  <DotsThree size={16} weight="bold" />
                 </Button>
                 <Menu>
                   <MenuItem>Copy link</MenuItem>
@@ -533,13 +531,13 @@ export function ExampleIssueTracker() {
 
               <TooltipTrigger>
                 <ToggleButton
+                  aria-label="Favorite"
                   intent="neutral"
                   isIconOnly
                   variant="ghost"
-                  aria-label="Favorite"
                 >
                   {({ isSelected }) => (
-                    <Star weight={isSelected ? "fill" : "regular"} size={16} />
+                    <Star size={16} weight={isSelected ? "fill" : "regular"} />
                   )}
                 </ToggleButton>
                 <Tooltip>
@@ -550,11 +548,11 @@ export function ExampleIssueTracker() {
 
               <TooltipTrigger>
                 <Button
-                  intent="neutral"
-                  variant="ghost"
-                  isIconOnly
-                  className="ml-auto"
                   aria-label="Archive"
+                  className="ml-auto"
+                  intent="neutral"
+                  isIconOnly
+                  variant="ghost"
                 >
                   <Archive size={16} />
                 </Button>
@@ -565,10 +563,10 @@ export function ExampleIssueTracker() {
               </TooltipTrigger>
               <TooltipTrigger>
                 <Button
-                  intent="neutral"
-                  variant="ghost"
-                  isIconOnly
                   aria-label="Snooze"
+                  intent="neutral"
+                  isIconOnly
+                  variant="ghost"
                 >
                   <Clock size={16} />
                 </Button>
@@ -580,7 +578,7 @@ export function ExampleIssueTracker() {
             </div>
 
             <div className="flex flex-col gap-3 p-4 text-sm">
-              <h4 className="text-neutral-text-contrast text-balance text-base font-medium leading-tight">
+              <h4 className="text-balance font-medium text-base text-neutral-text-contrast leading-tight">
                 {selectedItem?.title}
               </h4>
 
@@ -595,8 +593,8 @@ export function ExampleIssueTracker() {
                 <DataListItem
                   label="Status"
                   value={
-                    selectedItem?.status === "in-progress" ?
-                      <div className="text-warning-text flex items-center gap-1.5">
+                    selectedItem?.status === "in-progress" ? (
+                      <div className="flex items-center gap-1.5 text-warning-text">
                         <CircleHalf
                           className="shrink-0"
                           size={16}
@@ -604,7 +602,8 @@ export function ExampleIssueTracker() {
                         />
                         In progress
                       </div>
-                    : <div className="text-success-text flex items-center gap-1.5">
+                    ) : (
+                      <div className="flex items-center gap-1.5 text-success-text">
                         <CheckCircle
                           className="shrink-0"
                           size={16}
@@ -612,6 +611,7 @@ export function ExampleIssueTracker() {
                         />
                         Done
                       </div>
+                    )
                   }
                 />
               </DataList>
@@ -627,14 +627,14 @@ export function ExampleIssueTracker() {
                 </Button>
               </div>
               <Separator />
-              <h5 className="text-neutral-text-contrast text-sm font-medium">
+              <h5 className="font-medium text-neutral-text-contrast text-sm">
                 Activity
               </h5>
               <div className="flex flex-col text-xs">
                 <div className="flex items-center gap-2">
                   <Avatar name={selectedItem?.user || "John Doe"} size={1} />
                   <span>
-                    <span className="text-neutral-text-contrast font-medium">
+                    <span className="font-medium text-neutral-text-contrast">
                       {selectedItem?.user}
                     </span>{" "}
                     {selectedItem?.description}
@@ -647,7 +647,7 @@ export function ExampleIssueTracker() {
               </div>
               <div className="mt-2 flex flex-col gap-2">
                 <TextArea aria-label="Comment" placeholder="Add a comment..." />
-                <Button intent="accent" variant="ghost" className="ml-auto">
+                <Button className="ml-auto" intent="accent" variant="ghost">
                   Post
                 </Button>
               </div>
@@ -656,5 +656,5 @@ export function ExampleIssueTracker() {
         </div>
       </div>
     </ExampleContainer>
-  )
+  );
 }
