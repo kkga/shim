@@ -1,5 +1,5 @@
 "use client";
-import { Check as CheckIcon, X as XIcon } from "@phosphor-icons/react";
+import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import {
   Cell,
   Column,

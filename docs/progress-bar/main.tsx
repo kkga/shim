@@ -7,7 +7,9 @@ export default () => {
 
   // Simulate loading
   useEffect(() => {
-    if (value >= 100) return;
+    if (value >= 100) {
+      return;
+    }
     let interval = setInterval(
       () => setValue((v) => Math.min(v + Math.random() * 25 + 1, 100)),
       1000

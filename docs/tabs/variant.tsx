@@ -1,4 +1,4 @@
-import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
+import { Tab, TabList, Tabs } from "@/components/tabs";
 
 export default () => (
   <>

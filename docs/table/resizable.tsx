@@ -37,16 +37,16 @@ export default () => {
   });
 
   let items = useMemo(() => {
-    let items = rows.slice().sort((a, b) => {
+    let sortedRows = rows.slice().sort((a, b) => {
       if (sortDescriptor.column) {
         return a[sortDescriptor.column].localeCompare(b[sortDescriptor.column]);
       }
       return 0;
     });
     if (sortDescriptor.direction === "descending") {
-      items.reverse();
+      sortedRows.reverse();
     }
-    return items;
+    return sortedRows;
   }, [sortDescriptor]);
 
   return (

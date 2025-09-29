@@ -13,7 +13,7 @@ export default () => {
       <Dialog
         className="max-w-sm"
         isOpen={isOpen}
-        onOpenChange={(isOpen) => setIsOpen(isOpen)}
+        onOpenChange={(open) => setIsOpen(open)}
         title="Dialog opened"
       >
         <p>Click outside to close the dialog.</p>

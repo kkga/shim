@@ -16,5 +16,17 @@
         }
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["docs/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noMagicNumbers": "off"
+          }
+        }
+      }
+    }
+  ]
 }
