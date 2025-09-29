@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "files": {
+    "includes": ["**", "!docs"]
+  },
+  "extends": ["ultracite"],
+  "linter": {
+    "rules": {
+      "style": {
+        "useConst": "off"
+      },
+      "nursery": {
+        "useConsistentTypeDefinitions": {
+          "level": "info",
+          "options": {
+            "style": "interface"
+          }
+        }
+      }
+    }
+  }
+}
