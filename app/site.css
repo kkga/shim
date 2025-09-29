@@ -1,3 +1,4 @@
+/* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
 @reference "../theme/theme.css";
 
 :root {
@@ -45,6 +46,21 @@ strong {
   color: var(--color-neutral-text-contrast);
 }
 
+.hash-link {
+  position: absolute;
+  visibility: hidden;
+  text-decoration: none;
+  margin-left: -1.5em;
+  padding: 0 0.5em;
+  cursor: pointer;
+
+  &:after {
+    content: "#";
+    color: var(--color-neutral-placeholder);
+    font-weight: normal;
+  }
+}
+
 *:hover > .hash-link {
   visibility: visible;
 }
@@ -63,21 +79,7 @@ strong {
   }
 }
 
-.hash-link {
-  position: absolute;
-  visibility: hidden;
-  text-decoration: none;
-  margin-left: -1.5em;
-  padding: 0 0.5em;
-  cursor: pointer;
-
-  &:after {
-    content: "#";
-    color: var(--color-neutral-placeholder);
-    font-weight: normal;
-  }
-}
-
 .doc-section {
+  /* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
   @apply px-6 py-6 lg:px-8 lg:py-6;
 }
