@@ -1,11 +1,11 @@
 "use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style";
 import {
   Link as RacLink,
   type LinkProps as RacLinkProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
+import { cxRenderProps, focusStyle } from "@/lib/style";
 
 const style = tv({
   extend: focusStyle,

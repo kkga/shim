@@ -1,6 +1,5 @@
 "use client";
 
-import { focusStyle } from "@lib/style";
 import { XIcon } from "@phosphor-icons/react";
 import { createContext, useContext } from "react";
 import {
@@ -15,8 +14,9 @@ import {
   Text as RacText,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import { Description, fieldLayoutStyle, Label } from "@/components/field";
+import { focusStyle } from "@/lib/style";
 import { ICON_SIZE_MAP, type Size, Theme, useThemeProps } from "@/lib/theme";
-import { Description, fieldLayoutStyle, Label } from "./field";
 
 const COLORS = {
   gray: "text-[var(--slate-11)] border-[var(--slate-7)] data-selection-mode:data-hovered:border-[var(--slate-8)] data-selected:bg-[var(--slate-10)]",

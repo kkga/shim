@@ -1,7 +1,5 @@
 "use client";
 
-import { cxRenderProps } from "@lib/style";
-import { ICON_SIZE_MAP, Theme, useThemeProps } from "@lib/theme";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import {
   Button as RacButton,
@@ -18,14 +16,16 @@ import {
   fieldLayoutStyle,
   GroupInput,
   Label,
-} from "./field";
+} from "@/components/field";
 import {
   ListBox,
   ListBoxItem,
   ListBoxSection,
   type ListBoxSectionProps,
-} from "./list-box";
-import { Popover } from "./popover";
+} from "@/components/list-box";
+import { Popover } from "@/components/popover";
+import { cxRenderProps } from "@/lib/style";
+import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   slots: {

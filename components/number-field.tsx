@@ -1,7 +1,5 @@
 "use client";
 
-import { cx, cxRenderProps } from "@lib/style";
-import { ICON_SIZE_MAP, Theme, useThemeProps } from "@lib/theme";
 import {
   CaretDownIcon,
   CaretUpIcon,
@@ -24,7 +22,9 @@ import {
   fieldLayoutStyle,
   GroupInput,
   Label,
-} from "./field";
+} from "@/components/field";
+import { cx, cxRenderProps } from "@/lib/style";
+import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/lib/theme";
 
 interface NumberFieldProps extends RacNumberFieldProps, FieldProps {
   stepperLayout?: "inline" | "stacked";

@@ -1,5 +1,4 @@
 "use client";
-import { Theme } from "@lib/theme";
 import { Checkbox, CheckboxGroup } from "@/components/checkbox";
 import { NumberField } from "@/components/number-field";
 import { Radio, RadioGroup } from "@/components/radio-group";
@@ -8,6 +7,7 @@ import { Separator } from "@/components/separator";
 import { Slider } from "@/components/slider";
 import { TextArea } from "@/components/text-area";
 import { TextField } from "@/components/text-field";
+import { Theme } from "@/lib/theme";
 
 export default () => (
   <div className="flex gap-4">

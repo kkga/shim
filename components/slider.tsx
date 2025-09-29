@@ -1,7 +1,5 @@
 "use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style";
-import { Theme, useThemeProps } from "@lib/theme";
 import {
   Slider as RacSlider,
   type SliderProps as RacSliderProps,
@@ -10,7 +8,14 @@ import {
   SliderTrack,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { Description, type FieldProps, fieldLayoutStyle, Label } from "./field";
+import {
+  Description,
+  type FieldProps,
+  fieldLayoutStyle,
+  Label,
+} from "@/components/field";
+import { cxRenderProps, focusStyle } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   slots: {

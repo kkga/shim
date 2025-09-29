@@ -1,7 +1,5 @@
 "use client";
 
-import { cxRenderProps } from "@lib/style";
-import { Theme, useThemeProps } from "@lib/theme";
 import type { ToggleButtonGroupProps as RacToggleButtonGroupProps } from "react-aria-components";
 import {
   composeRenderProps,
@@ -14,7 +12,9 @@ import {
   type FieldProps,
   fieldLayoutStyle,
   Label,
-} from "./field";
+} from "@/components/field";
+import { cxRenderProps } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   base: "group grid auto-cols-fr grid-flow-col",

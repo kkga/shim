@@ -1,8 +1,9 @@
 import { ColorSlider } from "@/components/color-slider";
+import { SIZES } from "@/lib/theme";
 
 export default () => (
   <>
-    {([1, 2, 3, 4] as const).map((size) => (
+    {SIZES.map((size) => (
       <ColorSlider
         channel="alpha"
         defaultValue="hsla(0, 100%, 50%, 0.5)"

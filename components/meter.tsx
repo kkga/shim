@@ -1,13 +1,13 @@
 "use client";
 
-import { cxRenderProps } from "@lib/style";
 import { useMemo } from "react";
 import {
   Meter as RacMeter,
   type MeterProps as RacMeterProps,
 } from "react-aria-components";
 import { twJoin } from "tailwind-merge";
-import { Description, Label } from "./field";
+import { Description, Label } from "@/components/field";
+import { cxRenderProps } from "@/lib/style";
 
 interface MeterProps extends RacMeterProps {
   label?: string;

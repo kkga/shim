@@ -1,7 +1,5 @@
 "use client";
 
-import { cx, cxRenderProps, focusStyle } from "@lib/style";
-import { Theme, useThemeProps } from "@lib/theme";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -27,7 +25,9 @@ import {
   useTableOptions,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { Checkbox } from "./checkbox";
+import { Checkbox } from "@/components/checkbox";
+import { cx, cxRenderProps, focusStyle } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 
 const styles = {
   // TODO: add size variants

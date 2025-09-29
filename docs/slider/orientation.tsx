@@ -1,7 +1,7 @@
 "use client";
-import { SIZES } from "@lib/theme";
 import { Fragment } from "react";
 import { Slider } from "@/components/slider";
+import { SIZES } from "@/lib/theme";
 
 export default () => (
   <div className="flex h-48 gap-4 self-start">

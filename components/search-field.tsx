@@ -1,7 +1,5 @@
 "use client";
 
-import { cxRenderProps } from "@lib/style";
-import { Theme, useThemeProps } from "@lib/theme";
 import {
   FunnelSimpleIcon,
   MagnifyingGlassIcon,
@@ -21,7 +19,9 @@ import {
   fieldLayoutStyle,
   GroupInput,
   Label,
-} from "./field";
+} from "@/components/field";
+import { cxRenderProps } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   slots: {

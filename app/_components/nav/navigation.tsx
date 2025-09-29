@@ -1,6 +1,5 @@
 "use client";
 
-import { focusStyle } from "@lib/style";
 import {
   ArrowSquareOutIcon,
   ArticleIcon,
@@ -34,6 +33,7 @@ import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 import { Badge } from "@/components/badge";
 import { SearchField } from "@/components/search-field";
+import { focusStyle } from "@/lib/style";
 
 export interface NavItem {
   name: string;

@@ -1,6 +1,6 @@
 "use client";
-import { SIZES } from "@lib/theme";
 import { Radio, RadioGroup } from "@/components/radio-group";
+import { SIZES } from "@/lib/theme";
 
 export default () =>
   SIZES.map((size) => (

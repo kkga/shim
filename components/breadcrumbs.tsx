@@ -1,6 +1,5 @@
 "use client";
 
-import { cx, cxRenderProps } from "@lib/style";
 import { CaretRightIcon } from "@phosphor-icons/react";
 import {
   type BreadcrumbProps,
@@ -9,6 +8,7 @@ import {
   Breadcrumbs as RacBreadcrumbs,
 } from "react-aria-components";
 import { Link, type LinkProps } from "@/components/link";
+import { cx, cxRenderProps } from "@/lib/style";
 
 function Breadcrumbs<T extends object>({
   className,

@@ -1,7 +1,5 @@
 "use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style";
-import { Theme, useThemeProps } from "@lib/theme";
 import {
   composeRenderProps,
   Radio as RacRadio,
@@ -16,7 +14,9 @@ import {
   type FieldProps,
   fieldLayoutStyle,
   Label,
-} from "./field";
+} from "@/components/field";
+import { cxRenderProps, focusStyle } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   slots: {

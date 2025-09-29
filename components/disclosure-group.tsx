@@ -1,13 +1,13 @@
 "use client";
 
-import { cxRenderProps } from "@lib/style";
-import { type Size, Theme, useThemeProps } from "@lib/theme";
 import type { DisclosureGroupProps as RacDisclosureGroupProps } from "react-aria-components";
 import {
   composeRenderProps,
   DisclosureGroup as RacDisclosureGroup,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import { cxRenderProps } from "@/lib/style";
+import { type Size, Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   base: "border border-neutral-line",

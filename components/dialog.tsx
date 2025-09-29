@@ -1,6 +1,5 @@
 "use client";
 
-import { cxRenderProps } from "@lib/style";
 import { useContext } from "react";
 import {
   OverlayTriggerStateContext,
@@ -14,6 +13,7 @@ import {
   Text as RacText,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import { cxRenderProps } from "@/lib/style";
 
 const style = tv({
   slots: {

@@ -1,8 +1,8 @@
 "use client";
 
-import { useThemeProps } from "@lib/theme";
 import { Children, isValidElement } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
+import { useThemeProps } from "@/lib/theme";
 
 const style = tv({
   base: "inline-flex w-fit items-center justify-center bg-clip-padding font-book leading-none",

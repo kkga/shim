@@ -1,7 +1,5 @@
 "use client";
 
-import { cxRenderProps } from "@lib/style";
-import { Theme, useThemeProps } from "@lib/theme";
 import {
   TextField as RacTextField,
   type TextFieldProps as RacTextFieldProps,
@@ -13,7 +11,9 @@ import {
   fieldLayoutStyle,
   Input,
   Label,
-} from "./field";
+} from "@/components/field";
+import { cxRenderProps } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 
 interface TextFieldProps extends RacTextFieldProps, FieldProps {}
 

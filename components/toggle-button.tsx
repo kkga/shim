@@ -1,7 +1,5 @@
 "use client";
 
-import { focusStyle, INTENTS, type Intent } from "@lib/style";
-import { useThemeProps } from "@lib/theme";
 import { Children, isValidElement, useContext } from "react";
 import {
   composeRenderProps,
@@ -10,6 +8,8 @@ import {
   ToggleGroupStateContext,
 } from "react-aria-components";
 import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
+import { focusStyle, INTENTS, type Intent } from "@/lib/style";
+import { useThemeProps } from "@/lib/theme";
 
 const style = tv({
   extend: focusStyle,

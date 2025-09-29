@@ -1,10 +1,10 @@
 "use client";
-import { SIZES } from "@lib/theme";
 import {
   Disclosure,
   DisclosureHeader,
   DisclosurePanel,
 } from "@/components/disclosure";
+import { SIZES } from "@/lib/theme";
 
 export default () =>
   SIZES.map((size) => (

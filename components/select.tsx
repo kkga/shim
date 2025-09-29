@@ -1,7 +1,5 @@
 "use client";
 
-import { cx, cxRenderProps } from "@lib/style";
-import { ICON_SIZE_MAP, Theme, useThemeProps } from "@lib/theme";
 import { CaretDownIcon, CheckIcon } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
 import {
@@ -17,15 +15,17 @@ import {
   type FieldProps,
   fieldLayoutStyle,
   Label,
-} from "./field";
+} from "@/components/field";
 import {
   ListBox,
   ListBoxItem,
   type ListBoxItemProps,
   ListBoxSection,
   type ListBoxSectionProps,
-} from "./list-box";
-import { Popover } from "./popover";
+} from "@/components/list-box";
+import { Popover } from "@/components/popover";
+import { cx, cxRenderProps } from "@/lib/style";
+import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/lib/theme";
 
 interface SelectProps<T extends object>
   extends Omit<RacSelectProps<T>, "children">,

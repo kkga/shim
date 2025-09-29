@@ -1,14 +1,14 @@
 "use client";
 
-import { focusStyle } from "@lib/style";
-import { Theme, useThemeProps } from "@lib/theme";
 import {
   composeRenderProps,
   Switch as RacSwitch,
   type SwitchProps as RacSwitchProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import type { FieldProps } from "./field";
+import type { FieldProps } from "@/components/field";
+import { focusStyle } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   slots: {

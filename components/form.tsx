@@ -1,11 +1,11 @@
 "use client";
 
-import { cx } from "@lib/style";
-import { Theme, type ThemeContextProps, useThemeProps } from "@lib/theme";
 import {
   Form as RacForm,
   type FormProps as RacFormProps,
 } from "react-aria-components";
+import { cx } from "@/lib/style";
+import { Theme, type ThemeContextProps, useThemeProps } from "@/lib/theme";
 
 function Form({
   className,

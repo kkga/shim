@@ -1,6 +1,5 @@
 "use client";
 
-import { type Size, Theme, useThemeProps } from "@lib/theme";
 import { createContext, useContext } from "react";
 import {
   composeRenderProps,
@@ -14,6 +13,7 @@ import {
   type TabsProps as RacTabsProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import { type Size, Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   slots: {

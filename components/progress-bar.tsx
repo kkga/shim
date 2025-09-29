@@ -1,11 +1,11 @@
 "use client";
 
-import { cx, cxRenderProps } from "@lib/style";
-import { Label } from "@ui/field";
 import {
   ProgressBar as RacProgressBar,
   type ProgressBarProps as RacProgressBarProps,
 } from "react-aria-components";
+import { Label } from "@/components/field";
+import { cx, cxRenderProps } from "@/lib/style";
 
 interface ProgressBarProps extends RacProgressBarProps {
   label?: string;

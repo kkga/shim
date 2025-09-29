@@ -1,7 +1,5 @@
 "use client";
 
-import { cxRenderProps } from "@lib/style";
-import { useThemeProps } from "@lib/theme";
 import {
   composeRenderProps,
   Dialog as RacDialog,
@@ -10,6 +8,8 @@ import {
   type PopoverProps as RacPopoverProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import { cxRenderProps } from "@/lib/style";
+import { useThemeProps } from "@/lib/theme";
 
 const style = tv({
   base: [

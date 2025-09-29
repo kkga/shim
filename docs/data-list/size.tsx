@@ -1,8 +1,8 @@
 "use client";
-import { SIZES } from "@lib/theme";
 import { Badge } from "@/components/badge";
 import { DataList, DataListItem } from "@/components/data-list";
 import { Link } from "@/components/link";
+import { SIZES } from "@/lib/theme";
 
 export default () => (
   <div className="grid grid-cols-2 gap-y-6 self-start">

@@ -1,7 +1,7 @@
 "use client";
 
-import { Theme, useThemeProps } from "@lib/theme";
 import { tv, type VariantProps } from "tailwind-variants";
+import { Theme, useThemeProps } from "@/lib/theme";
 
 const style = tv({
   slots: {

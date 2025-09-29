@@ -1,7 +1,5 @@
 "use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style";
-import { Theme, useThemeProps } from "@lib/theme";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import {
   composeRenderProps,
@@ -11,6 +9,8 @@ import {
   type CheckboxProps as RacCheckboxProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
+import { cxRenderProps, focusStyle } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 import {
   Description,
   FieldError,

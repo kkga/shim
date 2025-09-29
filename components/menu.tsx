@@ -1,7 +1,5 @@
 "use client";
 
-import { cx, cxRenderProps } from "@lib/style";
-import { ICON_SIZE_MAP, type Size, Theme, useThemeProps } from "@lib/theme";
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import {
   composeRenderProps,
@@ -20,8 +18,10 @@ import {
   SubmenuTrigger as RacSubmenuTrigger,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { itemStyle, sectionStyle } from "./list-box";
-import { Popover } from "./popover";
+import { itemStyle, sectionStyle } from "@/components/list-box";
+import { Popover } from "@/components/popover";
+import { cx, cxRenderProps } from "@/lib/style";
+import { ICON_SIZE_MAP, type Size, Theme, useThemeProps } from "@/lib/theme";
 
 interface MenuProps<T> extends RacMenuProps<T> {
   placement?: RacPopoverProps["placement"];

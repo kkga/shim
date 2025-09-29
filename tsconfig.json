@@ -18,10 +18,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@ui/*": ["./components/*"],
-      "@lib/*": ["./lib/*"],
-      "@docs/*": ["./docs/*"]
+      "@/*": ["./*"]
     },
     "strict": false,
     "strictNullChecks": true

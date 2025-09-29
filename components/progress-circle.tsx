@@ -1,9 +1,9 @@
 "use client";
 
-import { cx } from "@lib/style";
 import type { ProgressBarProps as RacProgressBarProps } from "react-aria-components";
 import { ProgressBar as RacProgressBar } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
+import { cx } from "@/lib/style";
 
 const style = tv({
   slots: {

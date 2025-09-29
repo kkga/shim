@@ -7,19 +7,20 @@ const DOCS_DIR = join(process.cwd(), "docs");
 const GUIDES_DIR = join(process.cwd(), "guides");
 const MDX_EXTENSION_REGEX = /\.mdx$/;
 
-const slugify = (str: string) =>
-  str
+function slugify(str: string) {
+  return str
     .trim()
     .replace(/([a-z])([A-Z])/g, "$1-$2")
     .replace(/\s+/g, "-")
     .replace(/[^a-zA-Z0-9-]/g, "")
     .toLowerCase();
+}
 
-function toKebabCase(componentName: ComponentMetadata["name"]): string {
+export function toKebabCase(componentName: ComponentMetadata["name"]): string {
   return componentName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
-function getComponentDocs(
+export function getComponentDocs(
   { exclude }: { exclude: ComponentMetadata["status"][] } = {
     exclude: [],
   }
@@ -43,7 +44,7 @@ function getComponentDocs(
     .filter((component) => !exclude.includes(component.metadata.status));
 }
 
-function getGuides() {
+export function getGuides() {
   let entries = fs
     .readdirSync(GUIDES_DIR, { withFileTypes: true })
     .filter((dirent) => dirent.isFile() && extname(dirent.name) === ".mdx")
@@ -60,14 +61,14 @@ function getGuides() {
     .sort((a, b) => (a.metadata.order ?? 0) - (b.metadata.order ?? 0));
 }
 
-function getComponentSource(name: ComponentMetadata["name"]) {
+export function getComponentSource(name: ComponentMetadata["name"]) {
   let filename = toKebabCase(name);
   return fs
     .readFileSync(join(process.cwd(), "components", `${filename}.tsx`), "utf-8")
     .trim();
 }
 
-function getDemosSource(name: ComponentMetadata["name"]) {
+export function getDemosSource(name: ComponentMetadata["name"]) {
   let dirname = toKebabCase(name);
   let path = join(DOCS_DIR, dirname);
   let demoFiles = fs
@@ -85,16 +86,7 @@ function getDemosSource(name: ComponentMetadata["name"]) {
   return demos;
 }
 
-function getFileSource(filePath: string) {
+export function getFileSource(filePath: string) {
   let resolvedPath = join(process.cwd(), filePath);
   return fs.readFileSync(resolvedPath, "utf-8").trim();
 }
-
-export {
-  getComponentDocs,
-  getComponentSource,
-  getDemosSource,
-  getFileSource,
-  getGuides,
-  toKebabCase,
-};
