@@ -15,6 +15,10 @@ const slugify = (str: string) =>
     .replace(/[^a-zA-Z0-9-]/g, "")
     .toLowerCase();
 
+function toKebabCase(componentName: ComponentMetadata["name"]): string {
+  return componentName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
 function getComponentDocs(
   { exclude }: { exclude: ComponentMetadata["status"][] } = {
     exclude: [],
@@ -56,27 +60,24 @@ function getGuides() {
     .sort((a, b) => (a.metadata.order ?? 0) - (b.metadata.order ?? 0));
 }
 
-function toKebabCase(componentName: string): string {
-  return componentName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
-}
-
-function getComponentSource(name: string) {
+function getComponentSource(name: ComponentMetadata["name"]) {
   let filename = toKebabCase(name);
   return fs
     .readFileSync(join(process.cwd(), "components", `${filename}.tsx`), "utf-8")
     .trim();
 }
 
-function getDemosSource(componentDir: string) {
-  let dir = join(DOCS_DIR, componentDir);
+function getDemosSource(name: ComponentMetadata["name"]) {
+  let dirname = toKebabCase(name);
+  let path = join(DOCS_DIR, dirname);
   let demoFiles = fs
-    .readdirSync(dir)
+    .readdirSync(path)
     .filter((file) => extname(file) === ".tsx");
 
   let demos: Record<string, string> = {};
 
   for (let file of demoFiles) {
-    let content = fs.readFileSync(join(dir, file), "utf-8").trim();
+    let content = fs.readFileSync(join(path, file), "utf-8").trim();
     let slug = basename(file, extname(file));
     demos[slug] = content;
   }
@@ -95,4 +96,5 @@ export {
   getDemosSource,
   getFileSource,
   getGuides,
+  toKebabCase,
 };
