@@ -1,12 +1,12 @@
-import { composeRenderProps } from "react-aria-components"
-import { twMerge, type ClassNameValue } from "tailwind-merge"
-import { tv } from "tailwind-variants"
+import { composeRenderProps } from "react-aria-components";
+import { type ClassNameValue, twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
 
 /**
  * A helper function that combines Tailwind classes and applies tailwind-merge.
  */
 export function cx(...args: ClassNameValue[]) {
-  return twMerge(args)
+  return twMerge(args);
 }
 
 /**
@@ -17,7 +17,9 @@ export function cxRenderProps<T>(
   className: ClassNameValue | ((v: T) => string) | undefined,
   ...tw: ClassNameValue[]
 ): string | ((v: T) => string) {
-  return composeRenderProps(className, (className) => twMerge(tw, className))
+  return composeRenderProps(className, (innerClassName) =>
+    twMerge(tw, innerClassName)
+  );
 }
 
 export const INTENTS = [
@@ -26,12 +28,12 @@ export const INTENTS = [
   "success",
   "warning",
   "danger",
-] as const
-export type Intent = (typeof INTENTS)[number]
+] as const;
+export type Intent = (typeof INTENTS)[number];
 
 export const focusStyle = tv({
   base: [
-    "outline-accent-focus-ring outline-0 outline-offset-1",
+    "outline-0 outline-accent-focus-ring outline-offset-1",
     "data-[focus-visible]:outline-2 group-data-[focus-visible]:outline-2",
   ],
-})
+});
