@@ -1,121 +1,117 @@
-import {
-  Disclosure,
-  DisclosureHeader,
-  DisclosurePanel,
-} from "@/components/Disclosure"
-import { clsx } from "clsx"
-import type { MDXComponents } from "next-mdx-remote-client"
-import { default as NextLink } from "next/link"
-import { ComponentPropsWithoutRef } from "react"
-import { Code } from "./code"
-import { CodeBlock } from "./code-block"
-import { Demo } from "./demo"
-import { demoComponents } from "./demo-components"
-import { Note } from "./note"
-import { Step, Steps } from "./steps"
+/** biome-ignore-all lint/style/useNamingConvention: MDX scope component names start with upper case */
+import { default as NextLink } from "next/link";
+import type { MDXComponents } from "next-mdx-remote-client";
+import type { ComponentPropsWithoutRef } from "react";
+import { twJoin, twMerge } from "tailwind-merge";
+import { Code } from "./code";
+import { CodeBlock } from "./code-block";
+import { Demo } from "./demo";
+import { demoComponents } from "./demo-components";
+import { Note } from "./note";
+import { Step, Steps } from "./steps";
 
 function Link({ className, href, ...props }: ComponentPropsWithoutRef<"a">) {
-  let classNames = clsx(
-    "text-accent-text decoration-accent-line hover:decoration-accent-border-hover underline underline-offset-2",
-    className,
-  )
+  let classNames = twMerge(
+    "text-accent-text underline decoration-accent-line underline-offset-2 hover:decoration-accent-border-hover",
+    className
+  );
   if (href?.startsWith("/")) {
     return (
-      <NextLink href={href} className={classNames} {...props}>
+      <NextLink className={classNames} href={href} {...props}>
         {props.children}
       </NextLink>
-    )
+    );
   }
 
   if (href?.startsWith("#")) {
-    return <a href={href} className={classNames} {...props} />
+    return <a className={classNames} href={href} {...props} />;
   }
 
   return (
     <a
       className={classNames}
-      target="_blank"
-      rel="noopener noreferrer"
       href={href}
+      rel="noopener noreferrer"
+      target="_blank"
       {...props}
     />
-  )
+  );
 }
 
 function H1({ className, ...props }: ComponentPropsWithoutRef<"h1">) {
   return (
     <h1
-      className={clsx(
-        "text-neutral-text-contrast scroll-mt-6 text-balance text-xl font-semibold leading-tight lg:text-2xl",
-        className,
+      className={twJoin(
+        "scroll-mt-6 text-balance font-semibold text-neutral-text-contrast text-xl leading-tight lg:text-2xl",
+        className
       )}
       {...props}
     />
-  )
+  );
 }
 
 function H2({ className, ...props }: ComponentPropsWithoutRef<"h2">) {
   return (
     <h2
-      className={clsx(
-        "text-neutral-text-contrast not-first:mt-12 mb-3 scroll-mt-6 text-balance text-base font-semibold leading-tight",
-        className,
+      className={twJoin(
+        "not-first:mt-12 mb-3 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast leading-tight",
+        className
       )}
       {...props}
     />
-  )
+  );
 }
 
 function H3({ className, ...props }: ComponentPropsWithoutRef<"h3">) {
   return (
     <h3
-      className={clsx(
-        "text-neutral-text-contrast not-first:mt-12 mb-2 scroll-mt-6 text-balance text-base font-medium leading-tight",
-        className,
+      className={twJoin(
+        "not-first:mt-12 mb-2 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast leading-tight",
+        className
       )}
       {...props}
     />
-  )
+  );
 }
 
 function H4({ className, ...props }: ComponentPropsWithoutRef<"h4">) {
   return (
     <h4
-      className={clsx(
-        "text-neutral-text-contrast not-first::mt-6 mb-2 scroll-mt-6 text-balance text-base font-medium leading-tight",
-        className,
+      className={twJoin(
+        "not-first::mt-6 mb-2 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast leading-tight",
+        className
       )}
       {...props}
     />
-  )
+  );
 }
 
 function H5({ className, ...props }: ComponentPropsWithoutRef<"h5">) {
   return (
     <h5
-      className={clsx(
-        "text-neutral-text-contrast not-first:mt-6 mb-2 scroll-mt-6 text-balance text-sm font-medium",
-        className,
+      className={twJoin(
+        "not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm",
+        className
       )}
       {...props}
     />
-  )
+  );
 }
 
 function H6({ className, ...props }: ComponentPropsWithoutRef<"h6">) {
   return (
     <h6
-      className={clsx(
-        "text-neutral-text-contrast not-first::mt-8 mb-4 scroll-mt-6 text-balance text-sm font-medium",
-        className,
+      className={twJoin(
+        "not-first::mt-8 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm",
+        className
       )}
       {...props}
     />
-  )
+  );
 }
 
 function P({ className, ...props }: ComponentPropsWithoutRef<"p">) {
-  return <p className={clsx("mb-2", className)} {...props} />
+  return <p className={twJoin("mb-2", className)} {...props} />;
 }
 
 const mdxComponents: MDXComponents = {
@@ -128,25 +124,25 @@ const mdxComponents: MDXComponents = {
   p: P,
   ul: ({ className, ...props }: ComponentPropsWithoutRef<"ul">) => (
     <ul
-      className={clsx("my-4 list-outside list-disc pl-4", className)}
+      className={twJoin("my-4 list-outside list-disc pl-4", className)}
       {...props}
     />
   ),
   li: ({ className, ...props }: ComponentPropsWithoutRef<"li">) => (
-    <li className={clsx("mb-2", className)} {...props} />
+    <li className={twJoin("mb-2", className)} {...props} />
   ),
   hr: ({ className, ...props }: ComponentPropsWithoutRef<"hr">) => (
-    <hr className={clsx("border-neutral-line my-12", className)} {...props} />
+    <hr className={twJoin("my-12 border-neutral-line", className)} {...props} />
   ),
   em: ({ className, ...props }: ComponentPropsWithoutRef<"em">) => (
     <em
-      className={clsx("text-neutral-text-contrast italic", className)}
+      className={twJoin("text-neutral-text-contrast italic", className)}
       {...props}
     />
   ),
   strong: ({ className, ...props }: ComponentPropsWithoutRef<"strong">) => (
     <strong
-      className={clsx("text-neutral-text-contrast font-medium", className)}
+      className={twJoin("font-medium text-neutral-text-contrast", className)}
       {...props}
     />
   ),
@@ -154,19 +150,15 @@ const mdxComponents: MDXComponents = {
   code: Code,
   pre: CodeBlock,
   Demo,
-  Section: Demo,
   Note,
   Steps,
   Step,
   CodeBlock,
-  Disclosure,
-  DisclosureHeader,
-  DisclosurePanel,
   ...demoComponents,
-}
+};
 
-export { H1, H2, H3, H4, H5, H6, Link, mdxComponents, P }
+export { H1, H2, H3, H4, H5, H6, Link, mdxComponents, P };
 
 declare global {
-  type MDXProvidedComponents = typeof mdxComponents
+  type MDXProvidedComponents = typeof mdxComponents;
 }

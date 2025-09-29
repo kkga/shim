@@ -1,12 +1,12 @@
-import { Separator } from "@/components/Separator"
-import clsx from "clsx"
-import { H1, P } from "./mdx-components"
+import { twJoin } from "tailwind-merge";
+import { Separator } from "@/components/separator";
+import { H1, P } from "./mdx-components";
 
 interface DocHeaderProps {
-  title: string
-  subtitle?: string
-  children?: React.ReactNode
-  className?: string
+  title: string;
+  subtitle?: string;
+  children?: React.ReactNode;
+  className?: string;
 }
 
 export function DocHeader({
@@ -17,25 +17,25 @@ export function DocHeader({
 }: DocHeaderProps) {
   return (
     <header
-      className={clsx(
-        "doc-section border-neutral-3 col-span-full flex flex-col gap-6 border-b",
-        className,
+      className={twJoin(
+        "doc-section col-span-full flex flex-col gap-6 border-neutral-3 border-b",
+        className
       )}
     >
       <div>
         <H1>{title}</H1>
         {subtitle && (
-          <P className="mb-0! mt-2! text-neutral-text text-base font-medium">
+          <P className="mt-2! mb-0! font-medium text-base text-neutral-text">
             {subtitle}
           </P>
         )}
       </div>
       {children && (
         <>
-          <Separator className="bg-neutral-4 max-w-16" />
+          <Separator className="max-w-16 bg-neutral-4" />
           {children}
         </>
       )}
     </header>
-  )
+  );
 }

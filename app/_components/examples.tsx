@@ -1,9 +1,10 @@
-"use client"
+"use client";
 
-import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
-import { Collection } from "react-aria-components"
-import { ExampleIssueTracker, ExampleRepo } from "../../examples"
-import { ThemeToggle } from "./nav/theme-toggle"
+import { Collection } from "react-aria-components";
+import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
+import { ExampleIssueTracker } from "@/examples/issue-tracker";
+import { ExampleRepo } from "@/examples/repo";
+import { ThemeToggle } from "./nav/theme-toggle";
 
 let items = [
   {
@@ -20,13 +21,13 @@ let items = [
       "A repository page layout. Includes Menu, Tabs, SearchField, ComboBox, Button, Table, Select and more.",
     component: ExampleRepo,
   },
-]
+];
 
 export function Examples() {
   return (
     <Tabs>
       <div className="mb-2 flex items-center justify-between">
-        <TabList variant="soft" items={items}>
+        <TabList items={items} variant="soft">
           {({ name }) => <Tab aria-label={name}>{name}</Tab>}
         </TabList>
         <ThemeToggle />
@@ -40,5 +41,5 @@ export function Examples() {
         )}
       </Collection>
     </Tabs>
-  )
+  );
 }

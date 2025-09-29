@@ -1,86 +1,86 @@
-"use client"
+"use client";
 
-import { LinkButton } from "@/components/Button"
-import { ArrowUpRightIcon } from "@phosphor-icons/react"
-import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
-import { ComponentPropsWithoutRef, useMemo, useState } from "react"
-import { Key } from "react-aria-components"
-import { Code } from "./code"
-import { Collapsible } from "./collapsible"
-import { CopyButton } from "./copy-button"
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
+import { type ComponentPropsWithoutRef, useMemo, useState } from "react";
+import type { Key } from "react-aria-components";
+import { LinkButton } from "@/components/button";
+import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
+import { Code } from "./code";
+import { Collapsible } from "./collapsible";
+import { CopyButton } from "./copy-button";
 
 export interface CodeItem {
-  content: string
-  title?: string
-  sourceUrl?: string
-  raw?: string
+  content: string;
+  title?: string;
+  sourceUrl?: string;
+  raw?: string;
 }
 
 interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
-  code?: Array<CodeItem> | string
-  children?: string | { props: { children: string } }
-  highlight?: boolean
-  clickToCopy?: boolean
+  code?: CodeItem[] | string;
+  children?: string | { props: { children: string } };
+  highlight?: boolean;
+  clickToCopy?: boolean;
 }
 
 function normalizeCode(
   code?: Props["code"],
-  children?: Props["children"],
+  children?: Props["children"]
 ): CodeItem[] {
   if (!code) {
     const content =
-      typeof children === "object" && "props" in children ?
-        children.props.children
-      : (children as string) || ""
-    return [{ content }]
+      typeof children === "object" && "props" in children
+        ? children.props.children
+        : (children as string) || "";
+    return [{ content }];
   }
 
   if (typeof code === "string") {
-    return [{ content: code }]
+    return [{ content: code }];
   }
 
-  return code
+  return code;
 }
 
 function CodeHeader({
   children,
   selectedCode,
 }: {
-  children?: React.ReactNode
-  selectedCode: CodeItem
+  children?: React.ReactNode;
+  selectedCode: CodeItem;
 }) {
   return (
-    <div className="border-neutral-3 bg-panel sticky top-0 z-20 flex min-h-8 items-center border-b px-1 py-0">
+    <div className="sticky top-0 z-20 flex min-h-8 items-center border-neutral-3 border-b bg-panel px-1 py-0">
       {children}
       <CodeActions
-        sourceUrl={selectedCode.sourceUrl}
         content={selectedCode.raw || selectedCode.content}
+        sourceUrl={selectedCode.sourceUrl}
       />
     </div>
-  )
+  );
 }
 
 export function CodeBlock({ highlight, ...props }: Props) {
   let normalizedCode = useMemo(
     () => normalizeCode(props.code, props.children),
-    [props.code, props.children],
-  )
+    [props.code, props.children]
+  );
 
-  let [tab, setTab] = useState<Key | null>(() => {
-    return normalizedCode[0].title || null
-  })
+  let [tab, setTab] = useState<Key | null>(
+    () => normalizedCode[0].title || null
+  );
 
   let selectedCode =
-    normalizedCode.find((c) => c.title === tab) ?? normalizedCode[0]
+    normalizedCode.find((c) => c.title === tab) ?? normalizedCode[0];
 
   return (
-    <div className="codeblock bg-panel border-neutral-3 text-neutral-text group isolate min-w-0 overflow-clip rounded-lg border text-[13px]">
-      {normalizedCode.length > 1 ?
-        <Tabs selectedKey={tab} onSelectionChange={(key) => setTab(key)}>
+    <div className="codeblock group isolate min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel text-[13px] text-neutral-text">
+      {normalizedCode.length > 1 ? (
+        <Tabs onSelectionChange={(key) => setTab(key)} selectedKey={tab}>
           <CodeHeader selectedCode={selectedCode}>
             <TabList size={1}>
               {normalizedCode.map((c) => (
-                <Tab key={c.title} id={c.title} className="px-2">
+                <Tab className="px-2" id={c.title} key={c.title}>
                   {c.title}
                 </Tab>
               ))}
@@ -88,66 +88,73 @@ export function CodeBlock({ highlight, ...props }: Props) {
           </CodeHeader>
 
           {normalizedCode.map((c) => (
-            <TabPanel key={c.title} id={c.title}>
-              <CodeContent highlight={highlight} code={c} />
+            <TabPanel id={c.title} key={c.title}>
+              <CodeContent code={c} highlight={highlight} />
             </TabPanel>
           ))}
         </Tabs>
-      : <>
+      ) : (
+        <>
           <CodeHeader selectedCode={selectedCode}>
-            <span className="text-neutral-text px-2 font-sans text-xs font-medium leading-6">
+            <span className="px-2 font-medium font-sans text-neutral-text text-xs leading-6">
               {normalizedCode[0].title}
             </span>
           </CodeHeader>
-          <CodeContent highlight={highlight} code={selectedCode} />
+          <CodeContent code={selectedCode} highlight={highlight} />
         </>
-      }
+      )}
     </div>
-  )
+  );
 }
 
 function CodeActions({
   sourceUrl,
   content,
 }: {
-  sourceUrl?: string
-  content?: string
+  sourceUrl?: string;
+  content?: string;
 }) {
   return (
     <div className="ml-auto flex gap-1">
       {sourceUrl && (
         <LinkButton
-          target="_blank"
-          variant="ghost"
           className="backdrop-blur-sm"
           href={sourceUrl}
+          target="_blank"
+          variant="ghost"
         >
           GitHub
           <ArrowUpRightIcon size={16} />
         </LinkButton>
       )}
-      <CopyButton className="backdrop-blur-sm" text={content} />
+      {content && <CopyButton className="backdrop-blur-sm" text={content} />}
     </div>
-  )
+  );
 }
+
+const TRAILING_NEWLINES_REGEX = /\n+$/;
 
 function CodeContent({
   code,
   highlight = true,
 }: {
-  code: CodeItem
-  highlight?: boolean
+  code: CodeItem;
+  highlight?: boolean;
 }) {
-  let { content } = code
-  let isContentLong = useMemo(() => content.split("\n").length > 24, [content])
+  let { content } = code;
+  let isContentLong = useMemo(() => content.split("\n").length > 24, [content]);
 
   let codeElement = (
-    <pre className="**:[code]:text-[100%] w-full overflow-x-scroll whitespace-pre px-3 py-2">
-      <Code highlight={highlight}>{content.replace(/\n+$/, "")}</Code>
+    <pre className="w-full overflow-x-scroll whitespace-pre px-3 py-2 **:[code]:text-[100%]">
+      <Code highlight={highlight}>
+        {content.replace(TRAILING_NEWLINES_REGEX, "")}
+      </Code>
     </pre>
-  )
+  );
 
-  return isContentLong ?
-      <Collapsible collapsed>{codeElement}</Collapsible>
-    : codeElement
+  return isContentLong ? (
+    <Collapsible collapsed>{codeElement}</Collapsible>
+  ) : (
+    codeElement
+  );
 }

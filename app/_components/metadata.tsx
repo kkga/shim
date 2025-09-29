@@ -1,40 +1,40 @@
-import type { ComponentMetadata } from "@/app/_lib/types"
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr"
-import { DataList, DataListItem } from "@ui/DataList"
-import { Link } from "@ui/Link"
-import { Fragment } from "react"
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
+import { Fragment } from "react";
+import type { ComponentMetadata } from "@/app/_lib/types";
+import { DataList, DataListItem } from "@/components/data-list";
+import { Link } from "@/components/link";
 
-const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components"
-const GITHUB_ISSUES_URL = "https://github.com/kkga/shim/issues"
+const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components";
+const GITHUB_ISSUES_URL = "https://github.com/kkga/shim/issues";
 
 interface MetadataLinkProps {
-  href: string
-  title: string
-  external: boolean
-  children: React.ReactNode
+  href: string;
+  title: string;
+  external: boolean;
+  children: React.ReactNode;
 }
 
 function MetadataLink({ href, title, external, children }: MetadataLinkProps) {
   return (
     <Link
+      aria-label={title}
       href={href}
       rel={external ? "noreferrer" : undefined}
       target={external ? "_blank" : undefined}
-      aria-label={title}
     >
       {children}
       {external && (
-        <ArrowUpRight
-          className="text-accent-10 ml-0.5 inline align-text-top"
+        <ArrowUpRightIcon
+          className="ml-0.5 inline align-text-top text-accent-10"
           size={16}
         />
       )}
     </Link>
-  )
+  );
 }
 
 interface MetadataProps extends ComponentMetadata {
-  dependencies?: { name: string; slug: string }[]
+  dependencies?: { name: string; slug: string }[];
 }
 
 export function Metadata({
@@ -45,17 +45,17 @@ export function Metadata({
 }: MetadataProps) {
   return (
     <DataList
-      size={2}
       className="grid grid-cols-2 gap-x-6 gap-y-3 md:grid-flow-col md:grid-cols-none"
+      size={2}
     >
       {docUrl && (
         <DataListItem
           label="Documentation"
           value={
             <MetadataLink
+              external
               href={docUrl}
               title={`View ${name} documentation`}
-              external
             >
               React Aria {name}
             </MetadataLink>
@@ -66,7 +66,7 @@ export function Metadata({
         <DataListItem
           label="Pattern"
           value={
-            <MetadataLink href={ariaUrl} title="View ARIA pattern" external>
+            <MetadataLink external href={ariaUrl} title="View ARIA pattern">
               W3C ARIA
             </MetadataLink>
           }
@@ -76,9 +76,9 @@ export function Metadata({
         label="Source"
         value={
           <MetadataLink
+            external
             href={`${GITHUB_FILE_URL}/${name}.tsx`}
             title="View source code on GitHub"
-            external
           >
             GitHub
           </MetadataLink>
@@ -88,9 +88,9 @@ export function Metadata({
         label="Issues"
         value={
           <MetadataLink
+            external
             href={`${GITHUB_ISSUES_URL}/new?title=[${name}] Issue`}
             title="New issue on GitHub"
-            external
           >
             Report issue
           </MetadataLink>
@@ -99,20 +99,20 @@ export function Metadata({
       {dependencies && (
         <DataListItem
           label="Composes"
-          value={dependencies.map(({ name, slug }, i) => (
-            <Fragment key={name}>
+          value={dependencies.map(({ name: depName, slug: depSlug }, i) => (
+            <Fragment key={depName}>
               {i > 0 && ", "}
               <MetadataLink
                 external={false}
-                href={`/docs/${slug}`}
-                title={`View ${name} documentation`}
+                href={`/docs/${depSlug}`}
+                title={`View ${depName} documentation`}
               >
-                {name}
+                {depName}
               </MetadataLink>
             </Fragment>
           ))}
         />
       )}
     </DataList>
-  )
+  );
 }

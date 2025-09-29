@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { Dialog } from "@/components/Dialog"
-import { Separator } from "@/components/Separator"
-import { Tooltip, TooltipTrigger } from "@/components/Tooltip"
 import {
   GithubLogoIcon,
   ListIcon,
   XIcon,
   XLogoIcon,
-} from "@phosphor-icons/react"
-import { Button, LinkButton } from "@ui/Button"
-import { Link } from "@ui/Link"
-import { useState } from "react"
-import { Logo } from "../logo"
-import { Navigation, type NavItem } from "./navigation"
-import { ThemeToggle } from "./theme-toggle"
+} from "@phosphor-icons/react";
+import { useState } from "react";
+import { Button, LinkButton } from "@/components/button";
+import { Dialog } from "@/components/dialog";
+import { Link } from "@/components/link";
+import { Separator } from "@/components/separator";
+import { Tooltip, TooltipTrigger } from "@/components/tooltip";
+import { Logo } from "../logo";
+import { type NavItem, Navigation } from "./navigation";
+import { ThemeToggle } from "./theme-toggle";
 
 export function TopNav(props: { items: NavItem[] }) {
-  let [isOpen, setOpen] = useState(false)
+  let [isOpen, setOpen] = useState(false);
 
   return (
-    <aside className="border-neutral-4 bg-panel sticky top-0 z-20 flex shrink-0 flex-col border-b px-1 text-sm lg:hidden">
-      <header className="bg-panel sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1">
+    <aside className="sticky top-0 z-20 flex shrink-0 flex-col border-neutral-4 border-b bg-panel px-1 text-sm lg:hidden">
+      <header className="sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1 bg-panel">
         <Link
-          intent="neutral"
           className="flex items-center gap-1 px-2 no-underline"
           href="/"
+          intent="neutral"
         >
           <Logo />
         </Link>
@@ -38,31 +38,31 @@ export function TopNav(props: { items: NavItem[] }) {
           <Separator className="my-1" orientation="vertical" />
 
           <Button
-            size={3}
-            onPress={() => setOpen(true)}
-            isIconOnly
-            variant="ghost"
             intent="neutral"
+            isIconOnly
+            onPress={() => setOpen(true)}
+            size={3}
+            variant="ghost"
           >
             <ListIcon size={16} />
           </Button>
 
           <Dialog
             aria-label="Navigation"
-            isOpen={isOpen}
-            isDismissable
-            onOpenChange={setOpen}
             className="h-full max-w-lg gap-0 p-0"
+            isDismissable
+            isOpen={isOpen}
+            onOpenChange={setOpen}
           >
             <div className="flex gap-1.5 p-3">
               <TooltipTrigger>
                 <LinkButton
+                  href="https://twitter.com/kkga_"
+                  intent="neutral"
                   isIconOnly
                   size={3}
-                  intent="neutral"
                   target="_blank"
                   variant="ghost"
-                  href="https://twitter.com/kkga_"
                 >
                   <XLogoIcon size={16} weight="duotone" />
                 </LinkButton>
@@ -71,12 +71,12 @@ export function TopNav(props: { items: NavItem[] }) {
 
               <TooltipTrigger>
                 <LinkButton
+                  href="https://github.com/kkga/shim"
+                  intent="neutral"
                   isIconOnly
                   size={3}
-                  intent="neutral"
                   target="_blank"
                   variant="ghost"
-                  href="https://github.com/kkga/shim"
                 >
                   <GithubLogoIcon size={16} weight="duotone" />
                 </LinkButton>
@@ -85,26 +85,26 @@ export function TopNav(props: { items: NavItem[] }) {
 
               <Button
                 className="ml-auto"
-                onPress={() => setOpen(false)}
+                intent="neutral"
                 isIconOnly
+                onPress={() => setOpen(false)}
                 size={3}
                 variant="soft"
-                intent="neutral"
               >
-                <XIcon weight="bold" size={16} />
+                <XIcon size={16} weight="bold" />
               </Button>
             </div>
 
             <div className="flex-1 overflow-auto">
               <Navigation
-                size={2}
-                onAction={() => setOpen(false)}
                 items={props.items}
+                onAction={() => setOpen(false)}
+                size={2}
               />
             </div>
           </Dialog>
         </div>
       </header>
     </aside>
-  )
+  );
 }
