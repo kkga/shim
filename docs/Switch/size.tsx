@@ -1,4 +1,4 @@
-import { Switch } from "@ui/Switch"
+import { Switch } from "@/components/switch";
 
 export default () => (
   <>
@@ -7,4 +7,4 @@ export default () => (
     <Switch size={3}>Size 3</Switch>
     <Switch size={4}>Size 4</Switch>
   </>
-)
+);

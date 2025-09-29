@@ -1,4 +1,4 @@
-import { Tab, TabList, Tabs } from "@ui/Tabs"
+import { Tab, TabList, Tabs } from "@/components/tabs";
 
 export default () => (
   <>
@@ -27,4 +27,4 @@ export default () => (
       </TabList>
     </Tabs>
   </>
-)
+);

@@ -1,21 +1,27 @@
-import { Radio, RadioGroup } from "@ui/RadioGroup"
+import { Radio, RadioGroup } from "@/components/radio-group";
 
 export default () => (
   <>
-    <RadioGroup variant="classic" defaultValue={"react"} label="Classic">
+    <RadioGroup defaultValue={"react"} label="Classic" variant="classic">
       <Radio value="react">React</Radio>
       <Radio value="svelte">Svelte</Radio>
-      <Radio isDisabled value="vue">Vue</Radio>
+      <Radio isDisabled value="vue">
+        Vue
+      </Radio>
     </RadioGroup>
-    <RadioGroup variant="soft" defaultValue={"react"} label="Soft">
+    <RadioGroup defaultValue={"react"} label="Soft" variant="soft">
       <Radio value="react">React</Radio>
       <Radio value="svelte">Svelte</Radio>
-      <Radio isDisabled value="vue">Vue</Radio>
+      <Radio isDisabled value="vue">
+        Vue
+      </Radio>
     </RadioGroup>
-    <RadioGroup variant="outline" defaultValue={"react"} label="Outline">
+    <RadioGroup defaultValue={"react"} label="Outline" variant="outline">
       <Radio value="react">React</Radio>
       <Radio value="svelte">Svelte</Radio>
-      <Radio isDisabled value="vue">Vue</Radio>
+      <Radio isDisabled value="vue">
+        Vue
+      </Radio>
     </RadioGroup>
   </>
-)
+);

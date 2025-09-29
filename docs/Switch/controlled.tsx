@@ -1,9 +1,9 @@
-"use client"
-import { Switch } from "@ui/Switch"
-import { useState } from "react"
+"use client";
+import { useState } from "react";
+import { Switch } from "@/components/switch";
 
 export default () => {
-  const [isOn, setIsOn] = useState(false)
+  const [isOn, setIsOn] = useState(false);
   return (
     <>
       <Switch isSelected={isOn} onChange={setIsOn}>
@@ -13,5 +13,5 @@ export default () => {
         Switch is <strong>{isOn ? "on" : "off"}</strong>
       </p>
     </>
-  )
-}
+  );
+};

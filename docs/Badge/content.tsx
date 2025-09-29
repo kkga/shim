@@ -4,26 +4,26 @@ import {
   GitBranch,
   Leaf,
   Lock,
-} from "@phosphor-icons/react/dist/ssr"
-import { Badge } from "@ui/Badge"
+} from "@phosphor-icons/react/dist/ssr";
+import { Badge } from "@/components/badge";
 
 export default () => (
   <>
     <div className="flex flex-wrap gap-2">
       <Badge intent="success">
-        <CheckFat size={12} weight="duotone" aria-label="Approved" />
+        <CheckFat aria-label="Approved" size={12} weight="duotone" />
       </Badge>
       <Badge intent="error">
-        <Lock size={12} weight="duotone" aria-label="Locked" />
+        <Lock aria-label="Locked" size={12} weight="duotone" />
       </Badge>
     </div>
 
     <div className="flex flex-wrap gap-2">
-      <Badge size={3} intent="warning">
-        <ClockCountdown size={16} weight="duotone" aria-label="Pending" />
+      <Badge intent="warning" size={3}>
+        <ClockCountdown aria-label="Pending" size={16} weight="duotone" />
       </Badge>
       <Badge size={3}>
-        <Leaf size={16} weight="duotone" aria-label="New" />
+        <Leaf aria-label="New" size={16} weight="duotone" />
       </Badge>
     </div>
 
@@ -41,4 +41,4 @@ export default () => (
       </Badge>
     </div>
   </>
-)
+);

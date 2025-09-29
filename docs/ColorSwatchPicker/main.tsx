@@ -1,8 +1,8 @@
-import { ColorSwatch } from "@/components/ColorSwatch"
+import { ColorSwatch } from "@/components/color-swatch";
 import {
   ColorSwatchPicker,
   ColorSwatchPickerItem,
-} from "@/components/ColorSwatchPicker"
+} from "@/components/color-swatch-picker";
 
 export default () => (
   <ColorSwatchPicker>
@@ -19,4 +19,4 @@ export default () => (
       <ColorSwatch />
     </ColorSwatchPickerItem>
   </ColorSwatchPicker>
-)
+);

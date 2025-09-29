@@ -1,11 +1,11 @@
-import { DotsThreeVertical } from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Menu, MenuItem, MenuSeparator, MenuTrigger } from "@ui/Menu"
+import { DotsThreeVertical } from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
+import { Menu, MenuItem, MenuSeparator, MenuTrigger } from "@/components/menu";
 
 export default () => (
   <>
     <MenuTrigger>
-      <Button size={1} aria-label="Menu">
+      <Button aria-label="Menu" size={1}>
         <DotsThreeVertical size={16} weight="bold" />
       </Button>
       <Menu size={1}>
@@ -17,7 +17,7 @@ export default () => (
     </MenuTrigger>
 
     <MenuTrigger>
-      <Button size={2} aria-label="Menu">
+      <Button aria-label="Menu" size={2}>
         <DotsThreeVertical size={16} weight="bold" />
       </Button>
       <Menu size={2}>
@@ -29,7 +29,7 @@ export default () => (
     </MenuTrigger>
 
     <MenuTrigger>
-      <Button size={3} aria-label="Menu">
+      <Button aria-label="Menu" size={3}>
         <DotsThreeVertical size={20} weight="bold" />
       </Button>
       <Menu size={3}>
@@ -41,7 +41,7 @@ export default () => (
     </MenuTrigger>
 
     <MenuTrigger>
-      <Button size={4} aria-label="Menu">
+      <Button aria-label="Menu" size={4}>
         <DotsThreeVertical size={24} weight="bold" />
       </Button>
       <Menu size={4}>
@@ -52,4 +52,4 @@ export default () => (
       </Menu>
     </MenuTrigger>
   </>
-)
+);

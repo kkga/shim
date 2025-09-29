@@ -1,4 +1,4 @@
-import { DropZone } from "@/components/DropZone"
+import { DropZone } from "@/components/drop-zone";
 
 export default () => (
   <>
@@ -7,10 +7,10 @@ export default () => (
     </DropZone>
 
     <div
+      className="w-max rounded-sm bg-neutral-base px-2 py-1 shadow-sm"
       draggable="true"
-      className="bg-neutral-base w-max rounded-sm px-2 py-1 shadow-sm"
     >
       Drag me
     </div>
   </>
-)
+);

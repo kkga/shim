@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Select, SelectItem } from "@ui/Select"
-import { useState } from "react"
-import { Key } from "react-aria-components"
+import { useState } from "react";
+import type { Key } from "react-aria-components";
+import { Select, SelectItem } from "@/components/select";
 
 export default () => {
   let options = [
@@ -10,16 +10,20 @@ export default () => {
     { name: "Closed" },
     { name: "In Progress" },
     { name: "Resolved" },
-  ]
-  let [status, setStatus] = useState<Key>("Open")
+  ];
+  let [status, setStatus] = useState<Key>("Open");
 
   return (
     <>
       <Select
         aria-label="Status"
         items={options}
+        onSelectionChange={(selected) => {
+          if (selected !== null) {
+            setStatus(selected);
+          }
+        }}
         selectedKey={status}
-        onSelectionChange={(selected) => setStatus(selected)}
       >
         {({ name }) => <SelectItem id={name}>{name}</SelectItem>}
       </Select>
@@ -27,5 +31,5 @@ export default () => {
         Selected: <strong>{status}</strong>
       </p>
     </>
-  )
-}
+  );
+};

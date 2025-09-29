@@ -1,11 +1,15 @@
-"use client"
-import { SIZES } from "@lib/theme"
-import { Disclosure, DisclosureHeader, DisclosurePanel } from "@ui/Disclosure"
-import { DisclosureGroup } from "@ui/DisclosureGroup"
+"use client";
+import { SIZES } from "@lib/theme";
+import {
+  Disclosure,
+  DisclosureHeader,
+  DisclosurePanel,
+} from "@/components/disclosure";
+import { DisclosureGroup } from "@/components/disclosure-group";
 
 export default () =>
   SIZES.map((size) => (
-    <DisclosureGroup size={size} defaultExpandedKeys={["refund"]} key={size}>
+    <DisclosureGroup defaultExpandedKeys={["refund"]} key={size} size={size}>
       <Disclosure id="refund">
         <DisclosureHeader>Refund policy?</DisclosureHeader>
         <DisclosurePanel>We offer refunds.</DisclosurePanel>
@@ -21,4 +25,4 @@ export default () =>
         <DisclosurePanel>30-day exchange policy.</DisclosurePanel>
       </Disclosure>
     </DisclosureGroup>
-  ))
+  ));

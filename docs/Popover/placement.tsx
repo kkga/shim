@@ -3,9 +3,9 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpLeft,
-} from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Popover, PopoverTrigger } from "@ui/Popover"
+} from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
+import { Popover, PopoverTrigger } from "@/components/popover";
 
 export default () => (
   <>
@@ -45,4 +45,4 @@ export default () => (
       </Popover>
     </PopoverTrigger>
   </>
-)
+);

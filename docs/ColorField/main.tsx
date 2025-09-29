@@ -1,3 +1,3 @@
-import { ColorField } from "@/components/ColorField"
+import { ColorField } from "@/components/color-field";
 
-export default () => <ColorField label="Color" defaultValue="#111111" />
+export default () => <ColorField defaultValue="#111111" label="Color" />;

@@ -1,4 +1,4 @@
-import { Tag, TagGroup } from "@ui/TagGroup"
+import { Tag, TagGroup } from "@/components/tag-group";
 
 export default () => (
   <TagGroup label="Labels">
@@ -6,4 +6,4 @@ export default () => (
     <Tag>Feature</Tag>
     <Tag>Chore</Tag>
   </TagGroup>
-)
+);

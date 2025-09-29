@@ -1,16 +1,16 @@
-import { TextField } from "@ui/TextField"
+import { TextField } from "@/components/text-field";
 
 export default () => (
   <>
     <TextField
+      description="Visible to others"
       label="First name"
       labelPosition="side"
-      description="Visible to others"
     />
     <TextField
+      description="Visible to others"
       label="First name"
       labelPosition="top"
-      description="Visible to others"
     />
   </>
-)
+);

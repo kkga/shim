@@ -2,14 +2,14 @@ import {
   TextB,
   TextItalic,
   TextUnderline,
-} from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Group } from "@ui/Group"
-import { Separator } from "@ui/Separator"
-import { Switch } from "@ui/Switch"
-import { ToggleButton } from "@ui/ToggleButton"
-import { ToggleButtonGroup } from "@ui/ToggleButtonGroup"
-import { Toolbar } from "@ui/Toolbar"
+} from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
+import { Group } from "@/components/group";
+import { Separator } from "@/components/separator";
+import { Switch } from "@/components/switch";
+import { ToggleButton } from "@/components/toggle-button";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
+import { Toolbar } from "@/components/toolbar";
 
 export default () => (
   <Toolbar aria-label="Text formatting">
@@ -33,4 +33,4 @@ export default () => (
     <Separator orientation="vertical" />
     <Switch variant="soft">Night mode</Switch>
   </Toolbar>
-)
+);

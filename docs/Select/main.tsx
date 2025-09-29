@@ -1,4 +1,4 @@
-import { Select, SelectItem } from "@ui/Select"
+import { Select, SelectItem } from "@/components/select";
 
 export default () => (
   <Select label="Status" placeholder="Select status">
@@ -7,4 +7,4 @@ export default () => (
     <SelectItem>In Progress</SelectItem>
     <SelectItem>Resolved</SelectItem>
   </Select>
-)
+);

@@ -1,23 +1,23 @@
-"use client"
-import { Button } from "@ui/Button"
-import { Dialog } from "@ui/Dialog"
-import { useState } from "react"
+"use client";
+import { useState } from "react";
+import { Button } from "@/components/button";
+import { Dialog } from "@/components/dialog";
 
 export default () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Button onPress={() => setIsOpen(true)} className="self-start">
+      <Button className="self-start" onPress={() => setIsOpen(true)}>
         Open dialog
       </Button>
       <Dialog
+        className="max-w-sm"
         isOpen={isOpen}
         onOpenChange={(isOpen) => setIsOpen(isOpen)}
         title="Dialog opened"
-        className="max-w-sm"
       >
         <p>Click outside to close the dialog.</p>
       </Dialog>
     </>
-  )
-}
+  );
+};

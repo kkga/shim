@@ -1,12 +1,12 @@
-import { Meter } from "@ui/Meter"
+import { Meter } from "@/components/meter";
 
 export default () => (
   <Meter
+    description="3 more steps to go!"
     label="Progress"
-    minValue={0}
     maxValue={4}
+    minValue={0}
     value={1}
     valueLabel="1 of 4"
-    description="3 more steps to go!"
   />
-)
+);

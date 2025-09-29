@@ -3,16 +3,16 @@ import {
   CalendarPlus,
   Link,
   Trash,
-} from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
+} from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
 
 export default () => (
   <>
-    <Button intent="accent" aria-label="Refresh">
+    <Button aria-label="Refresh" intent="accent">
       <ArrowsClockwise size={16} />
     </Button>
 
-    <Button intent="danger" aria-label="Delete">
+    <Button aria-label="Delete" intent="danger">
       <Trash size={16} />
     </Button>
 
@@ -26,4 +26,4 @@ export default () => (
       Add event
     </Button>
   </>
-)
+);

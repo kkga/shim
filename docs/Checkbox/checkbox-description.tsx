@@ -1,17 +1,17 @@
-import { Checkbox, CheckboxGroup } from "@ui/Checkbox"
+import { Checkbox, CheckboxGroup } from "@/components/checkbox";
 
 export default () => (
   <>
     <CheckboxGroup label="Views">
-      <Checkbox value="sidebar" description="This is a sidebar">
+      <Checkbox description="This is a sidebar" value="sidebar">
         Sidebar
       </Checkbox>
-      <Checkbox value="panel" description="This is a panel">
+      <Checkbox description="This is a panel" value="panel">
         Panel
       </Checkbox>
-      <Checkbox value="toolbar" description="This is a toolbar">
+      <Checkbox description="This is a toolbar" value="toolbar">
         Toolbar
       </Checkbox>
     </CheckboxGroup>
   </>
-)
+);

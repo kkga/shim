@@ -1,7 +1,14 @@
-"use client"
-import { Cell, Column, Row, Table, TableBody, TableHeader } from "@ui/Table"
-import { useMemo, useState } from "react"
-import type { SortDescriptor } from "react-aria-components"
+"use client";
+import { useMemo, useState } from "react";
+import type { SortDescriptor } from "react-aria-components";
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from "@/components/table";
 
 let rows = [
   { id: 1, name: "John Doe", major: "Computer Science", gpa: 3.5 },
@@ -12,43 +19,43 @@ let rows = [
   { id: 6, name: "Diana Evans", major: "Biology", gpa: 3.8 },
   { id: 7, name: "Ethan Foster", major: "Economics", gpa: 3.4 },
   { id: 8, name: "Fiona Green", major: "Psychology", gpa: 3.7 },
-]
+];
 
 export default () => {
   let [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
     column: "name",
     direction: "ascending",
-  })
+  });
 
   let items = useMemo(() => {
     let sorted = [...rows].sort((a, b) => {
       if (sortDescriptor.column) {
-        return typeof a[sortDescriptor.column] === "number" ?
-            a[sortDescriptor.column] - b[sortDescriptor.column]
-          : a[sortDescriptor.column].localeCompare(b[sortDescriptor.column])
+        return typeof a[sortDescriptor.column] === "number"
+          ? a[sortDescriptor.column] - b[sortDescriptor.column]
+          : a[sortDescriptor.column].localeCompare(b[sortDescriptor.column]);
       }
-      return 0
-    })
+      return 0;
+    });
     if (sortDescriptor.direction === "descending") {
-      sorted.reverse()
+      sorted.reverse();
     }
-    return sorted
-  }, [sortDescriptor])
+    return sorted;
+  }, [sortDescriptor]);
 
   return (
     <Table
       aria-label="Students"
-      sortDescriptor={sortDescriptor}
       onSortChange={setSortDescriptor}
+      sortDescriptor={sortDescriptor}
     >
       <TableHeader>
-        <Column id="name" isRowHeader allowsSorting>
+        <Column allowsSorting id="name" isRowHeader>
           Name
         </Column>
-        <Column id="major" allowsSorting>
+        <Column allowsSorting id="major">
           Major
         </Column>
-        <Column id="gpa" allowsSorting>
+        <Column allowsSorting id="gpa">
           GPA
         </Column>
       </TableHeader>
@@ -62,5 +69,5 @@ export default () => {
         )}
       </TableBody>
     </Table>
-  )
-}
+  );
+};

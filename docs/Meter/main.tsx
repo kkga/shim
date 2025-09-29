@@ -1,3 +1,3 @@
-import { Meter } from "@ui/Meter"
+import { Meter } from "@/components/meter";
 
-export default () => <Meter label="Random chance" value={70} />
+export default () => <Meter label="Random chance" value={70} />;

@@ -1,13 +1,13 @@
-"use client"
-import { SIZES } from "@lib/theme"
-import { Badge } from "@ui/Badge"
-import { DataList, DataListItem } from "@ui/DataList"
-import { Link } from "@ui/Link"
+"use client";
+import { SIZES } from "@lib/theme";
+import { Badge } from "@/components/badge";
+import { DataList, DataListItem } from "@/components/data-list";
+import { Link } from "@/components/link";
 
 export default () => (
   <div className="grid grid-cols-2 gap-y-6 self-start">
     {SIZES.map((size) => (
-      <DataList size={size} labelPosition="side" key={size}>
+      <DataList key={size} labelPosition="side" size={size}>
         <DataListItem label="Name" value="John Doe" />
         <DataListItem label="Role" value="Designer" />
         <DataListItem
@@ -21,4 +21,4 @@ export default () => (
       </DataList>
     ))}
   </div>
-)
+);

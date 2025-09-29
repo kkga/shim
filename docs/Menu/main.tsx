@@ -1,6 +1,6 @@
-import { DotsThreeVertical } from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Menu, MenuItem, MenuSeparator, MenuTrigger } from "@ui/Menu"
+import { DotsThreeVertical } from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
+import { Menu, MenuItem, MenuSeparator, MenuTrigger } from "@/components/menu";
 
 export default () => (
   <MenuTrigger>
@@ -14,4 +14,4 @@ export default () => (
       <MenuItem intent="error">Delete</MenuItem>
     </Menu>
   </MenuTrigger>
-)
+);

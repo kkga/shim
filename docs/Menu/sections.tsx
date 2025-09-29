@@ -1,6 +1,6 @@
-import { CaretDown } from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Menu, MenuItem, MenuSection, MenuTrigger } from "@ui/Menu"
+import { CaretDown } from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
+import { Menu, MenuItem, MenuSection, MenuTrigger } from "@/components/menu";
 
 export default () => (
   <MenuTrigger>
@@ -21,4 +21,4 @@ export default () => (
       </MenuSection>
     </Menu>
   </MenuTrigger>
-)
+);

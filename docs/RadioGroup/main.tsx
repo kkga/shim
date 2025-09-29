@@ -1,9 +1,9 @@
-import { Radio, RadioGroup } from "@ui/RadioGroup"
+import { Radio, RadioGroup } from "@/components/radio-group";
 
 export default () => (
-  <RadioGroup label="Language" defaultValue={"ts"}>
+  <RadioGroup defaultValue={"ts"} label="Language">
     <Radio value="js">JavaScript</Radio>
     <Radio value="ts">TypeScript</Radio>
     <Radio value="py">Python</Radio>
   </RadioGroup>
-)
+);

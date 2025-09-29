@@ -1,4 +1,4 @@
-import { Button } from "@ui/Button"
+import { Button } from "@/components/button";
 
 export default () => (
   <>
@@ -6,4 +6,4 @@ export default () => (
     <Button variant="solid">Solid</Button>
     <Button variant="ghost">Ghost</Button>
   </>
-)
+);

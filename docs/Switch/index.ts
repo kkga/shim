@@ -1,6 +1,6 @@
-export { default as Controlled } from "./controlled"
-export { default as LabelPosition } from "./label-position"
-export { default as Main } from "./main"
-export { default as Size } from "./size"
-export { default as States } from "./states"
-export { default as Variant } from "./variant"
+export { default as Controlled } from "./controlled";
+export { default as LabelPosition } from "./label-position";
+export { default as Main } from "./main";
+export { default as Size } from "./size";
+export { default as States } from "./states";
+export { default as Variant } from "./variant";

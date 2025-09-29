@@ -1,4 +1,8 @@
-import { Disclosure, DisclosureHeader, DisclosurePanel } from "@ui/Disclosure"
+import {
+  Disclosure,
+  DisclosureHeader,
+  DisclosurePanel,
+} from "@/components/disclosure";
 
 export default () => (
   <Disclosure>
@@ -7,4 +11,4 @@ export default () => (
       We offer a 30-day no-questions-asked refund policy.
     </DisclosurePanel>
   </Disclosure>
-)
+);

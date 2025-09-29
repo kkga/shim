@@ -1,26 +1,26 @@
-import { ListBox, ListBoxItem } from "@ui/ListBox"
+import { ListBox, ListBoxItem } from "@/components/list-box";
 
 export default () => (
   <div className="grid grid-cols-2 gap-3">
-    <ListBox size={1} selectionMode="single" aria-label="Favorite animal">
+    <ListBox aria-label="Favorite animal" selectionMode="single" size={1}>
       <ListBoxItem>Cat</ListBoxItem>
       <ListBoxItem>Dog</ListBoxItem>
       <ListBoxItem>Kangaroo</ListBoxItem>
     </ListBox>
-    <ListBox size={2} selectionMode="single" aria-label="Favorite animal">
+    <ListBox aria-label="Favorite animal" selectionMode="single" size={2}>
       <ListBoxItem>Cat</ListBoxItem>
       <ListBoxItem>Dog</ListBoxItem>
       <ListBoxItem>Kangaroo</ListBoxItem>
     </ListBox>
-    <ListBox size={3} selectionMode="single" aria-label="Favorite animal">
+    <ListBox aria-label="Favorite animal" selectionMode="single" size={3}>
       <ListBoxItem>Cat</ListBoxItem>
       <ListBoxItem>Dog</ListBoxItem>
       <ListBoxItem>Kangaroo</ListBoxItem>
     </ListBox>
-    <ListBox size={4} selectionMode="single" aria-label="Favorite animal">
+    <ListBox aria-label="Favorite animal" selectionMode="single" size={4}>
       <ListBoxItem>Cat</ListBoxItem>
       <ListBoxItem>Dog</ListBoxItem>
       <ListBoxItem>Kangaroo</ListBoxItem>
     </ListBox>
   </div>
-)
+);

@@ -1,4 +1,4 @@
-import { Button } from "@ui/Button"
+import { Button } from "@/components/button";
 
 export default () => (
   <>
@@ -7,4 +7,4 @@ export default () => (
     <Button size={3}>Size 3</Button>
     <Button size={4}>Size 4</Button>
   </>
-)
+);

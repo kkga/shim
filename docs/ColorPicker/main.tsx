@@ -1,3 +1,3 @@
-import { ColorPicker } from "@/components/ColorPicker"
+import { ColorPicker } from "@/components/color-picker";
 
-export default () => <ColorPicker defaultValue="hsl(200, 100%, 50%)" />
+export default () => <ColorPicker defaultValue="hsl(200, 100%, 50%)" />;

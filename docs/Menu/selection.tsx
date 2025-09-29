@@ -1,13 +1,13 @@
-"use client"
-import { CaretDown } from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Menu, MenuItem, MenuTrigger } from "@ui/Menu"
-import { useState } from "react"
-import type { Selection } from "react-aria-components"
+"use client";
+import { CaretDown } from "@phosphor-icons/react/dist/ssr";
+import { useState } from "react";
+import type { Selection } from "react-aria-components";
+import { Button } from "@/components/button";
+import { Menu, MenuItem, MenuTrigger } from "@/components/menu";
 
 export default () => {
-  const [align, setAlign] = useState<Selection>(new Set(["center"]))
-  const [views, setViews] = useState<Selection>(new Set(["sidebar"]))
+  const [align, setAlign] = useState<Selection>(new Set(["center"]));
+  const [views, setViews] = useState<Selection>(new Set(["sidebar"]));
 
   return (
     <div className="flex gap-2">
@@ -17,9 +17,9 @@ export default () => {
           <CaretDown size={12} weight="bold" />
         </Button>
         <Menu
-          selectionMode="single"
-          selectedKeys={align}
           onSelectionChange={setAlign}
+          selectedKeys={align}
+          selectionMode="single"
         >
           <MenuItem id="left">Left</MenuItem>
           <MenuItem id="center">Center</MenuItem>
@@ -33,9 +33,9 @@ export default () => {
           <CaretDown size={12} weight="bold" />
         </Button>
         <Menu
-          selectionMode="multiple"
-          selectedKeys={views}
           onSelectionChange={setViews}
+          selectedKeys={views}
+          selectionMode="multiple"
         >
           <MenuItem id="sidebar">Sidebar</MenuItem>
           <MenuItem id="toolbar">Toolbar</MenuItem>
@@ -43,5 +43,5 @@ export default () => {
         </Menu>
       </MenuTrigger>
     </div>
-  )
-}
+  );
+};

@@ -1,9 +1,9 @@
-import { ProgressCircle } from "@ui/ProgressCircle"
+import { ProgressCircle } from "@/components/progress-circle";
 
 export default () => (
   <>
-    <ProgressCircle size={1} value={70} aria-label="Loading…" />
-    <ProgressCircle size={2} value={70} aria-label="Loading…" />
-    <ProgressCircle size={3} value={70} aria-label="Loading…" />
+    <ProgressCircle aria-label="Loading…" size={1} value={70} />
+    <ProgressCircle aria-label="Loading…" size={2} value={70} />
+    <ProgressCircle aria-label="Loading…" size={3} value={70} />
   </>
-)
+);

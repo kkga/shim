@@ -1,7 +1,7 @@
-import { SlidersHorizontal } from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Popover, PopoverTrigger } from "@ui/Popover"
-import { Slider } from "@ui/Slider"
+import { SlidersHorizontal } from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
+import { Popover, PopoverTrigger } from "@/components/popover";
+import { Slider } from "@/components/slider";
 
 export default () => (
   <PopoverTrigger>
@@ -10,9 +10,9 @@ export default () => (
     </Button>
     <Popover className="w-[200px] p-4" placement="bottom start">
       <div className="grid gap-4">
-        <Slider label="Width" defaultValue={37} isFilled />
-        <Slider label="Height" defaultValue={73} isFilled />
+        <Slider defaultValue={37} isFilled label="Width" />
+        <Slider defaultValue={73} isFilled label="Height" />
       </div>
     </Popover>
   </PopoverTrigger>
-)
+);

@@ -1,15 +1,15 @@
-import { GearSix, User } from "@phosphor-icons/react/dist/ssr"
-import { Tab, TabList, TabPanel, Tabs } from "@ui/Tabs"
+import { GearSix, User } from "@phosphor-icons/react/dist/ssr";
+import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
 
 export default () => (
   <Tabs>
     <TabList>
       <Tab id="profile">
-        <User weight="duotone" size={16} />
+        <User size={16} weight="duotone" />
         Profile
       </Tab>
       <Tab id="settings">
-        <GearSix weight="duotone" size={16} />
+        <GearSix size={16} weight="duotone" />
         Settings
       </Tab>
     </TabList>
@@ -21,4 +21,4 @@ export default () => (
       Change your settings.
     </TabPanel>
   </Tabs>
-)
+);

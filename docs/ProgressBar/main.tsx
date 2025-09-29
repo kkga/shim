@@ -1,19 +1,19 @@
-"use client"
-import { ProgressBar } from "@ui/ProgressBar"
-import { useEffect, useState } from "react"
+"use client";
+import { useEffect, useState } from "react";
+import { ProgressBar } from "@/components/progress-bar";
 
 export default () => {
-  let [value, setValue] = useState(0)
+  let [value, setValue] = useState(0);
 
   // Simulate loading
   useEffect(() => {
-    if (value >= 100) return
+    if (value >= 100) return;
     let interval = setInterval(
       () => setValue((v) => Math.min(v + Math.random() * 25 + 1, 100)),
-      1000,
-    )
-    return () => clearInterval(interval)
-  }, [value])
+      1000
+    );
+    return () => clearInterval(interval);
+  }, [value]);
 
-  return <ProgressBar label="Loading…" value={value} />
-}
+  return <ProgressBar label="Loading…" value={value} />;
+};

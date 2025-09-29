@@ -1,4 +1,4 @@
-import { ListBox, ListBoxItem } from "@ui/ListBox"
+import { ListBox, ListBoxItem } from "@/components/list-box";
 
 export default () => (
   <ListBox aria-label="Favorite animal" selectionMode="single">
@@ -9,4 +9,4 @@ export default () => (
     <ListBoxItem>Panda</ListBoxItem>
     <ListBoxItem isDisabled>Snake</ListBoxItem>
   </ListBox>
-)
+);

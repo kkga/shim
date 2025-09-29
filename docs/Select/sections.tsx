@@ -1,4 +1,4 @@
-import { Select, SelectItem, SelectSection } from "@ui/Select"
+import { Select, SelectItem, SelectSection } from "@/components/select";
 
 export default () => (
   <Select aria-label="Favorite food" placeholder="Select your favorite">
@@ -18,4 +18,4 @@ export default () => (
       <SelectItem>Barley</SelectItem>
     </SelectSection>
   </Select>
-)
+);

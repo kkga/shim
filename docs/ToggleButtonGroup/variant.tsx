@@ -1,18 +1,18 @@
-import { ToggleButton } from "@ui/ToggleButton"
-import { ToggleButtonGroup } from "@ui/ToggleButtonGroup"
+import { ToggleButton } from "@/components/toggle-button";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
 
 export default () => (
   <>
-    <ToggleButtonGroup variant="soft" aria-label="View">
+    <ToggleButtonGroup aria-label="View" variant="soft">
       <ToggleButton id="grid">Grid</ToggleButton>
       <ToggleButton id="list">List</ToggleButton>
       <ToggleButton id="gallery">Gallery</ToggleButton>
     </ToggleButtonGroup>
 
-    <ToggleButtonGroup variant="ghost" aria-label="View">
+    <ToggleButtonGroup aria-label="View" variant="ghost">
       <ToggleButton id="grid">Grid</ToggleButton>
       <ToggleButton id="list">List</ToggleButton>
       <ToggleButton id="gallery">Gallery</ToggleButton>
     </ToggleButtonGroup>
   </>
-)
+);

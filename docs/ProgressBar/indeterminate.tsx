@@ -1,3 +1,3 @@
-import { ProgressBar } from "@ui/ProgressBar"
+import { ProgressBar } from "@/components/progress-bar";
 
-export default () => <ProgressBar aria-label="Loading…" isIndeterminate />
+export default () => <ProgressBar aria-label="Loading…" isIndeterminate />;

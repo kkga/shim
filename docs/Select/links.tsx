@@ -1,4 +1,4 @@
-import { Select, SelectItem } from "@ui/Select"
+import { Select, SelectItem } from "@/components/select";
 
 export default () => (
   <Select label="Project" placeholder="Pick a project">
@@ -9,4 +9,4 @@ export default () => (
     <SelectItem>Project B</SelectItem>
     <SelectItem>Project C</SelectItem>
   </Select>
-)
+);

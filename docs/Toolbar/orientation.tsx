@@ -1,9 +1,9 @@
-import { BoundingBox, Eraser, Pencil } from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Toolbar } from "@ui/Toolbar"
+import { BoundingBox, Eraser, Pencil } from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
+import { Toolbar } from "@/components/toolbar";
 
 export default () => (
-  <Toolbar orientation="vertical" aria-label="Tools">
+  <Toolbar aria-label="Tools" orientation="vertical">
     <Button aria-label="Pencil">
       <Pencil size={16} weight="duotone" />
     </Button>
@@ -14,4 +14,4 @@ export default () => (
       <Eraser size={16} weight="duotone" />
     </Button>
   </Toolbar>
-)
+);

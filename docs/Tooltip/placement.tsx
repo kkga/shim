@@ -3,9 +3,9 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUp,
-} from "@phosphor-icons/react/dist/ssr"
-import { Button } from "@ui/Button"
-import { Tooltip, TooltipTrigger } from "@ui/Tooltip"
+} from "@phosphor-icons/react/dist/ssr";
+import { Button } from "@/components/button";
+import { Tooltip, TooltipTrigger } from "@/components/tooltip";
 
 export default () => (
   <>
@@ -37,4 +37,4 @@ export default () => (
       <Tooltip placement="bottom">Bottom</Tooltip>
     </TooltipTrigger>
   </>
-)
+);

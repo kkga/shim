@@ -1,8 +1,8 @@
-import { Slider } from "@ui/Slider"
+import { Slider } from "@/components/slider";
 
 export default () => (
   <>
-    <Slider isFilled defaultValue={37} label="Slope" />
-    <Slider isFilled defaultValue={[17, 73]} label="Slope" />
+    <Slider defaultValue={37} isFilled label="Slope" />
+    <Slider defaultValue={[17, 73]} isFilled label="Slope" />
   </>
-)
+);

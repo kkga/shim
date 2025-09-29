@@ -1,8 +1,8 @@
-import { TextArea } from "@ui/TextArea"
+import { TextArea } from "@/components/text-area";
 
 export default () => (
   <>
-    <TextArea size={1} label="Note" placeholder="Add a note" />
-    <TextArea size={2} label="Note" placeholder="Add a note" />
+    <TextArea label="Note" placeholder="Add a note" size={1} />
+    <TextArea label="Note" placeholder="Add a note" size={2} />
   </>
-)
+);

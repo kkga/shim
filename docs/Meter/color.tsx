@@ -1,22 +1,22 @@
-"use client"
-import { Meter } from "@ui/Meter"
+"use client";
+import { Meter } from "@/components/meter";
 
 export default () => (
   <>
-    <Meter label="Usage" value={80} color="var(--color-warning-solid)" />
-    <Meter label="Almost there" value={95} color={getColor} />
-    <Meter label="Getting there" value={55} color={getColor} />
-    <Meter label="Just starting" value={15} color={getColor} />
+    <Meter color="var(--color-warning-solid)" label="Usage" value={80} />
+    <Meter color={getColor} label="Almost there" value={95} />
+    <Meter color={getColor} label="Getting there" value={55} />
+    <Meter color={getColor} label="Just starting" value={15} />
   </>
-)
+);
 
 function getColor(value: number) {
   switch (true) {
     case value > 90:
-      return "var(--color-success-solid)"
+      return "var(--color-success-solid)";
     case value > 50:
-      return "var(--color-accent-solid)"
+      return "var(--color-accent-solid)";
     default:
-      return "var(--color-neutral-solid)"
+      return "var(--color-neutral-solid)";
   }
 }

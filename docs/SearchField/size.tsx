@@ -1,10 +1,10 @@
-import { SearchField } from "@ui/SearchField"
+import { SearchField } from "@/components/search-field";
 
 export default () => (
   <>
-    <SearchField size={1} aria-label="Search docs" />
-    <SearchField size={2} aria-label="Search docs" />
-    <SearchField size={3} aria-label="Search docs" />
-    <SearchField size={4} aria-label="Search docs" />
+    <SearchField aria-label="Search docs" size={1} />
+    <SearchField aria-label="Search docs" size={2} />
+    <SearchField aria-label="Search docs" size={3} />
+    <SearchField aria-label="Search docs" size={4} />
   </>
-)
+);

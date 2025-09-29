@@ -1,21 +1,21 @@
-import { Link } from "@ui/Link"
+import { Link } from "@/components/link";
 
 export default () => (
   <>
-    <Link intent="neutral" href="#intent">
+    <Link href="#intent" intent="neutral">
       Neutral
     </Link>
-    <Link intent="accent" href="#intent">
+    <Link href="#intent" intent="accent">
       Accent
     </Link>
-    <Link intent="warning" href="#intent">
+    <Link href="#intent" intent="warning">
       Warning
     </Link>
-    <Link intent="success" href="#intent">
+    <Link href="#intent" intent="success">
       Success
     </Link>
-    <Link intent="error" href="#intent">
+    <Link href="#intent" intent="error">
       Error
     </Link>
   </>
-)
+);

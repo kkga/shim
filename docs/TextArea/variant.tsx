@@ -1,9 +1,9 @@
-import { TextArea } from "@ui/TextArea"
+import { TextArea } from "@/components/text-area";
 
 export default () => (
   <>
-    <TextArea variant="classic" label="Note" />
-    <TextArea variant="soft" label="Note" />
-    <TextArea variant="outline" label="Note" />
+    <TextArea label="Note" variant="classic" />
+    <TextArea label="Note" variant="soft" />
+    <TextArea label="Note" variant="outline" />
   </>
-)
+);

@@ -1,10 +1,17 @@
-"use client"
-import { Cell, Column, Row, Table, TableBody, TableHeader } from "@ui/Table"
-import { useMemo, useState } from "react"
+"use client";
+import { useMemo, useState } from "react";
 import {
   ResizableTableContainer,
   type SortDescriptor,
-} from "react-aria-components"
+} from "react-aria-components";
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from "@/components/table";
 
 let rows = [
   { id: 1, name: "Games", date: "6/7/2020", type: "File folder" },
@@ -21,40 +28,40 @@ let rows = [
   { id: 12, name: "Proposal.ppt", date: "6/18/2022", type: "PowerPoint file" },
   { id: 13, name: "Taxes.pdf", date: "12/6/2023", type: "PDF Document" },
   { id: 14, name: "Photos", date: "8/2/2021", type: "File folder" },
-]
+];
 
 export default () => {
   let [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
     column: "name",
     direction: "ascending",
-  })
+  });
 
   let items = useMemo(() => {
     let items = rows.slice().sort((a, b) => {
       if (sortDescriptor.column) {
-        return a[sortDescriptor.column].localeCompare(b[sortDescriptor.column])
+        return a[sortDescriptor.column].localeCompare(b[sortDescriptor.column]);
       }
-      return 0
-    })
+      return 0;
+    });
     if (sortDescriptor.direction === "descending") {
-      items.reverse()
+      items.reverse();
     }
-    return items
-  }, [sortDescriptor])
+    return items;
+  }, [sortDescriptor]);
 
   return (
     <ResizableTableContainer>
       <Table
-        selectionMode="multiple"
         aria-label="Files"
-        sortDescriptor={sortDescriptor}
         onSortChange={setSortDescriptor}
+        selectionMode="multiple"
+        sortDescriptor={sortDescriptor}
       >
         <TableHeader>
-          <Column id="name" isRowHeader allowsResizing>
+          <Column allowsResizing id="name" isRowHeader>
             Name
           </Column>
-          <Column id="type" allowsResizing>
+          <Column allowsResizing id="type">
             Type
           </Column>
           <Column id="date">Date Modified</Column>
@@ -70,5 +77,5 @@ export default () => {
         </TableBody>
       </Table>
     </ResizableTableContainer>
-  )
-}
+  );
+};

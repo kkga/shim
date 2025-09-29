@@ -1,6 +1,0 @@
-export { default as CheckboxDescription } from "./checkbox-description"
-export { default as Group } from "./group"
-export { default as Main } from "./main"
-export { default as Size } from "./size"
-export { default as States } from "./states"
-export { default as Variant } from "./variant"

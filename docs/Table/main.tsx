@@ -1,4 +1,11 @@
-import { Cell, Column, Row, Table, TableBody, TableHeader } from "@ui/Table"
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from "@/components/table";
 
 export default () => (
   <Table aria-label="Files">
@@ -29,4 +36,4 @@ export default () => (
       </Row>
     </TableBody>
   </Table>
-)
+);

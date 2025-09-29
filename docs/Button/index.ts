@@ -1,7 +1,0 @@
-export { default as Content } from "./content"
-export { default as Disabled } from "./disabled"
-export { default as Intent } from "./intent"
-export { default as Main } from "./main"
-export { default as Pending } from "./pending"
-export { default as Size } from "./size"
-export { default as Variant } from "./variant"

@@ -1,19 +1,19 @@
-"use client"
-import { PushPin } from "@phosphor-icons/react"
-import { ToggleButton } from "@ui/ToggleButton"
-import { useState } from "react"
+"use client";
+import { PushPin } from "@phosphor-icons/react";
+import { useState } from "react";
+import { ToggleButton } from "@/components/toggle-button";
 
 export default () => {
-  const [isSelected, setSelected] = useState(false)
+  const [isSelected, setSelected] = useState(false);
 
   return (
     <ToggleButton
+      aria-label="pin"
       isIconOnly
       isSelected={isSelected}
       onChange={setSelected}
-      aria-label="pin"
     >
       <PushPin size={16} weight={isSelected ? "fill" : "regular"} />
     </ToggleButton>
-  )
-}
+  );
+};

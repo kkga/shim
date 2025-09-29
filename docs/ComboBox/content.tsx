@@ -1,7 +1,7 @@
-"use client"
-import { ComboBox, ComboBoxItem } from "@ui/ComboBox"
-import { useState } from "react"
-import type { Key } from "react-aria-components"
+"use client";
+import { useState } from "react";
+import type { Key } from "react-aria-components";
+import { ComboBox, ComboBoxItem } from "@/components/combo-box";
 
 export default () => {
   let options = [
@@ -14,9 +14,9 @@ export default () => {
     { id: 7, name: "Chemical" },
     { id: 8, name: "Agricultural" },
     { id: 9, name: "Electrical" },
-  ]
+  ];
 
-  let [majorId, setMajorId] = useState<Key | null>(null)
+  let [majorId, setMajorId] = useState<Key | null>(null);
 
   return (
     <>
@@ -29,5 +29,5 @@ export default () => {
       </ComboBox>
       <p>Selected topic id: {majorId}</p>
     </>
-  )
-}
+  );
+};

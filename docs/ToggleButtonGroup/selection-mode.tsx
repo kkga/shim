@@ -2,24 +2,24 @@ import {
   TextB,
   TextItalic,
   TextUnderline,
-} from "@phosphor-icons/react/dist/ssr"
-import { ToggleButton } from "@ui/ToggleButton"
-import { ToggleButtonGroup } from "@ui/ToggleButtonGroup"
+} from "@phosphor-icons/react/dist/ssr";
+import { ToggleButton } from "@/components/toggle-button";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
 
 export default () => (
   <ToggleButtonGroup
-    selectionMode="multiple"
     aria-label="Style"
     defaultSelectedKeys={["bold", "italic"]}
+    selectionMode="multiple"
   >
-    <ToggleButton id="bold" aria-label="Bold">
+    <ToggleButton aria-label="Bold" id="bold">
       <TextB size={16} />
     </ToggleButton>
-    <ToggleButton id="italic" aria-label="Italic">
+    <ToggleButton aria-label="Italic" id="italic">
       <TextItalic size={16} />
     </ToggleButton>
-    <ToggleButton id="underline" aria-label="Underline">
+    <ToggleButton aria-label="Underline" id="underline">
       <TextUnderline size={16} />
     </ToggleButton>
   </ToggleButtonGroup>
-)
+);

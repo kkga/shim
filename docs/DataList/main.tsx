@@ -1,6 +1,6 @@
-import { Badge } from "@ui/Badge"
-import { DataList, DataListItem } from "@ui/DataList"
-import { Link } from "@ui/Link"
+import { Badge } from "@/components/badge";
+import { DataList, DataListItem } from "@/components/data-list";
+import { Link } from "@/components/link";
 
 export default () => (
   <DataList>
@@ -12,4 +12,4 @@ export default () => (
       value={<Badge intent="success">Active</Badge>}
     />
   </DataList>
-)
+);

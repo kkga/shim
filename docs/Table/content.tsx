@@ -1,6 +1,13 @@
-"use client"
-import { Check as CheckIcon, X as XIcon } from "@phosphor-icons/react"
-import { Cell, Column, Row, Table, TableBody, TableHeader } from "@ui/Table"
+"use client";
+import { Check as CheckIcon, X as XIcon } from "@phosphor-icons/react";
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from "@/components/table";
 
 let columns = [
   { id: "creature", name: "Creature", isRowHeader: true },
@@ -8,7 +15,7 @@ let columns = [
   { id: "hasHorn", name: "Has horn" },
   { id: "magical", name: "Magical" },
   { id: "scary", name: "Scary" },
-]
+];
 
 let rows = [
   {
@@ -51,12 +58,12 @@ let rows = [
     magical: false,
     scary: true,
   },
-]
+];
 
 const Check = () => (
-  <CheckIcon size={16} weight="bold" className="text-success-text" />
-)
-const X = () => <XIcon size={16} weight="bold" className="text-error-text" />
+  <CheckIcon className="text-success-text" size={16} weight="bold" />
+);
+const X = () => <XIcon className="text-error-text" size={16} weight="bold" />;
 
 export default () => (
   <Table aria-label="Mythical Creatures">
@@ -69,28 +76,12 @@ export default () => (
       {({ creature, canFly, hasHorn, magical, scary }) => (
         <Row>
           <Cell>{creature}</Cell>
-          <Cell>
-            {canFly ?
-              <Check />
-            : <X />}
-          </Cell>
-          <Cell>
-            {hasHorn ?
-              <Check />
-            : <X />}
-          </Cell>
-          <Cell>
-            {magical ?
-              <Check />
-            : <X />}
-          </Cell>
-          <Cell>
-            {scary ?
-              <Check />
-            : <X />}
-          </Cell>
+          <Cell>{canFly ? <Check /> : <X />}</Cell>
+          <Cell>{hasHorn ? <Check /> : <X />}</Cell>
+          <Cell>{magical ? <Check /> : <X />}</Cell>
+          <Cell>{scary ? <Check /> : <X />}</Cell>
         </Row>
       )}
     </TableBody>
   </Table>
-)
+);

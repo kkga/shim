@@ -1,3 +1,3 @@
-import { TextArea } from "@ui/TextArea"
+import { TextArea } from "@/components/text-area";
 
-export default () => <TextArea label="Note" />
+export default () => <TextArea label="Note" />;

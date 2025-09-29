@@ -1,5 +1,5 @@
-import { PushPin } from "@phosphor-icons/react/dist/ssr"
-import { ToggleButton } from "@ui/ToggleButton"
+import { PushPin } from "@phosphor-icons/react/dist/ssr";
+import { ToggleButton } from "@/components/toggle-button";
 
 export default () => (
   <>
@@ -19,4 +19,4 @@ export default () => (
       <PushPin size={20} weight="duotone" />
     </ToggleButton>
   </>
-)
+);

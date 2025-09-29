@@ -1,4 +1,4 @@
-import { Badge } from "@ui/Badge"
+import { Badge } from "@/components/badge";
 
 export default () => (
   <>
@@ -8,4 +8,4 @@ export default () => (
     <Badge intent="warning">Warning</Badge>
     <Badge intent="error">Error</Badge>
   </>
-)
+);

@@ -1,9 +1,5 @@
-import { NumberField } from "@ui/NumberField"
+import { NumberField } from "@/components/number-field";
 
 export default () => (
-  <NumberField
-    defaultValue={33}
-    aria-label="Cookies" 
-    className="self-start"
-  />
-)
+  <NumberField aria-label="Cookies" className="self-start" defaultValue={33} />
+);

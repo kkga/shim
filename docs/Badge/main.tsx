@@ -1,3 +1,3 @@
-import { Badge } from "@ui/Badge"
+import { Badge } from "@/components/badge";
 
-export default () => <Badge>Badge</Badge>
+export default () => <Badge>Badge</Badge>;

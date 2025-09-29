@@ -1,3 +1,3 @@
-import { NumberField } from "@ui/NumberField"
+import { NumberField } from "@/components/number-field";
 
-export default () => <NumberField label="Cookies" labelPosition="side" />
+export default () => <NumberField label="Cookies" labelPosition="side" />;

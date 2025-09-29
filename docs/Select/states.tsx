@@ -1,4 +1,4 @@
-import { Select, SelectItem } from "@ui/Select"
+import { Select, SelectItem } from "@/components/select";
 
 export default () => (
   <>
@@ -8,13 +8,13 @@ export default () => (
     </Select>
 
     <Select
-      label="Status"
-      isInvalid
       errorMessage={"Please select status"}
+      isInvalid
+      label="Status"
       placeholder="Select status"
     >
       <SelectItem>Open</SelectItem>
       <SelectItem>Closed</SelectItem>
     </Select>
   </>
-)
+);

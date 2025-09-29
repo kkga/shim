@@ -1,25 +1,25 @@
-import { ComboBox, ComboBoxItem } from "@ui/ComboBox"
+import { ComboBox, ComboBoxItem } from "@/components/combo-box";
 
 export default () => (
   <>
-    <ComboBox size={1} label="Size 1" placeholder="Pick a framework">
+    <ComboBox label="Size 1" placeholder="Pick a framework" size={1}>
       <ComboBoxItem>React</ComboBoxItem>
       <ComboBoxItem>Svelte</ComboBoxItem>
     </ComboBox>
 
-    <ComboBox size={2} label="Size 2" placeholder="Pick a framework">
+    <ComboBox label="Size 2" placeholder="Pick a framework" size={2}>
       <ComboBoxItem>React</ComboBoxItem>
       <ComboBoxItem>Svelte</ComboBoxItem>
     </ComboBox>
 
-    <ComboBox size={3} label="Size 3" placeholder="Pick a framework">
+    <ComboBox label="Size 3" placeholder="Pick a framework" size={3}>
       <ComboBoxItem>React</ComboBoxItem>
       <ComboBoxItem>Svelte</ComboBoxItem>
     </ComboBox>
 
-    <ComboBox size={4} label="Size 4" placeholder="Pick a framework">
+    <ComboBox label="Size 4" placeholder="Pick a framework" size={4}>
       <ComboBoxItem>React</ComboBoxItem>
       <ComboBoxItem>Svelte</ComboBoxItem>
     </ComboBox>
   </>
-)
+);

@@ -1,5 +1,0 @@
-export { default as Main } from "./main"
-export { default as SelectionMode } from "./selection-mode"
-export { default as Size } from "./size"
-export { default as States } from "./states"
-export { default as Variant } from "./variant"

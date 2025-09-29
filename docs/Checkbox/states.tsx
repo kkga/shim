@@ -1,16 +1,16 @@
-import { Checkbox, CheckboxGroup } from "@ui/Checkbox"
+import { Checkbox, CheckboxGroup } from "@/components/checkbox";
 
 export default () => (
   <>
     <Checkbox isIndeterminate>Indeterminate</Checkbox>
     <Checkbox isDisabled>Disabled</Checkbox>
-    <Checkbox isSelected isDisabled>
+    <Checkbox isDisabled isSelected>
       Selected disabled
     </Checkbox>
 
-    <CheckboxGroup label="Group disabled" isDisabled>
+    <CheckboxGroup isDisabled label="Group disabled">
       <Checkbox>Option A</Checkbox>
       <Checkbox>Option B</Checkbox>
     </CheckboxGroup>
   </>
-)
+);

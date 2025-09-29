@@ -1,8 +1,8 @@
-import { Tag, TagGroup } from "@ui/TagGroup"
+import { Tag, TagGroup } from "@/components/tag-group";
 
 export default () => (
   <>
-    <TagGroup label="Group color" color="blue" selectionMode="multiple">
+    <TagGroup color="blue" label="Group color" selectionMode="multiple">
       <Tag>Bug</Tag>
       <Tag>Feature</Tag>
       <Tag>Chore</Tag>
@@ -14,4 +14,4 @@ export default () => (
       <Tag color="orange">Chore</Tag>
     </TagGroup>
   </>
-)
+);

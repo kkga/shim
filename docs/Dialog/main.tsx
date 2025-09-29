@@ -1,23 +1,23 @@
-import { Button } from "@ui/Button"
-import { Dialog, DialogTrigger } from "@ui/Dialog"
-import { Form } from "@ui/Form"
-import { TextField } from "@ui/TextField"
+import { Button } from "@/components/button";
+import { Dialog, DialogTrigger } from "@/components/dialog";
+import { Form } from "@/components/form";
+import { TextField } from "@/components/text-field";
 
 export default () => (
   <DialogTrigger>
     <Button className="self-start">Edit profile</Button>
     <Dialog
-      title="Edit profile"
-      description="Edit your profile information."
       className="max-w-sm"
+      description="Edit your profile information."
+      title="Edit profile"
     >
-      <Form size={2} labelPosition="side">
+      <Form labelPosition="side" size={2}>
         <TextField label="Name" />
         <TextField label="Email" />
-        <Button variant="solid" className="self-end">
+        <Button className="self-end" variant="solid">
           Save
         </Button>
       </Form>
     </Dialog>
   </DialogTrigger>
-)
+);

@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import {
   Description,
-  Input,
-  Label,
   fieldLayoutStyle,
+  Input,
   inputBaseStyle,
-} from "@ui/Field"
+  Label,
+} from "@/components/field";
 
 /**
  * Utility components used in other form fields.
@@ -15,7 +15,7 @@ import {
 export default () => (
   <div className={fieldLayoutStyle()}>
     <Label htmlFor="f">Label</Label>
-    <Input id="f" className={inputBaseStyle()} />
+    <Input className={inputBaseStyle()} id="f" />
     <Description>Field description</Description>
   </div>
-)
+);

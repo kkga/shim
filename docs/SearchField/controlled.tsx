@@ -1,14 +1,14 @@
-"use client"
-import { SearchField } from "@ui/SearchField"
-import { useState } from "react"
+"use client";
+import { useState } from "react";
+import { SearchField } from "@/components/search-field";
 
 export default () => {
-  const [value, setValue] = useState("Get started")
+  const [value, setValue] = useState("Get started");
 
   return (
     <>
-      <SearchField value={value} onChange={setValue} aria-label="Search" />
+      <SearchField aria-label="Search" onChange={setValue} value={value} />
       <p>Value: {value}</p>
     </>
-  )
-}
+  );
+};

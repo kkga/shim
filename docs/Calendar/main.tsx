@@ -1,3 +1,3 @@
-import { Calendar } from "@ui/Calendar"
+import { Calendar } from "@/components/calendar";
 
-export default () => <Calendar />
+export default () => <Calendar />;

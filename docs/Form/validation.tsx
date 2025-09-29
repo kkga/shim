@@ -1,5 +1,5 @@
-import { Form } from "@ui/Form"
-import { TextField } from "@ui/TextField"
+import { Form } from "@/components/form";
+import { TextField } from "@/components/text-field";
 
 export default () => (
   <Form
@@ -8,7 +8,7 @@ export default () => (
       email: "User with this email already exists.",
     }}
   >
-    <TextField name="name" label="Name" />
-    <TextField name="email" type="email" label="Email" />
+    <TextField label="Name" name="name" />
+    <TextField label="Email" name="email" type="email" />
   </Form>
-)
+);

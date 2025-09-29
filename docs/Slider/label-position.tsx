@@ -1,8 +1,8 @@
-import { Slider } from "@ui/Slider"
+import { Slider } from "@/components/slider";
 
 export default () => (
   <>
-    <Slider labelPosition="top" defaultValue={37} label="Slope" />
-    <Slider labelPosition="side" defaultValue={37} label="Slope" />
+    <Slider defaultValue={37} label="Slope" labelPosition="top" />
+    <Slider defaultValue={37} label="Slope" labelPosition="side" />
   </>
-)
+);

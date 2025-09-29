@@ -1,11 +1,11 @@
-import { Switch } from "@ui/Switch"
+import { Switch } from "@/components/switch";
 
 export default () => (
   <>
     <Switch defaultSelected>Selected</Switch>
     <Switch isDisabled>Disabled</Switch>
-    <Switch isSelected isDisabled>
+    <Switch isDisabled isSelected>
       Selected and disabled
     </Switch>
   </>
-)
+);

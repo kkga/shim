@@ -1,5 +1,12 @@
-"use client"
-import { Cell, Column, Row, Table, TableBody, TableHeader } from "@ui/Table"
+"use client";
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from "@/components/table";
 
 export default () => (
   <Table aria-label="Files" selectionMode="multiple">
@@ -26,4 +33,4 @@ export default () => (
       </Row>
     </TableBody>
   </Table>
-)
+);

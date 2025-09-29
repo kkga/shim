@@ -1,5 +1,3 @@
-import { Switch } from "@ui/Switch"
+import { Switch } from "@/components/switch";
 
-export default () => (
-  <Switch>On</Switch>
-)
+export default () => <Switch>On</Switch>;

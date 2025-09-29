@@ -1,11 +1,11 @@
-"use client"
-import { Theme } from "@/lib/theme"
-import { NumberField } from "@ui/NumberField"
+"use client";
+import { NumberField } from "@/components/number-field";
+import { Theme } from "@/lib/theme";
 
 export default () => (
   <Theme labelPosition="side">
-    <NumberField variant="classic" label="Classic" />
-    <NumberField variant="soft" label="Soft" />
-    <NumberField variant="outline" label="Outline" />
+    <NumberField label="Classic" variant="classic" />
+    <NumberField label="Soft" variant="soft" />
+    <NumberField label="Outline" variant="outline" />
   </Theme>
-)
+);

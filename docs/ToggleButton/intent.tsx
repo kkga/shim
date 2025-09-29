@@ -1,4 +1,4 @@
-import { ToggleButton } from "@ui/ToggleButton"
+import { ToggleButton } from "@/components/toggle-button";
 
 export default () => (
   <>
@@ -8,4 +8,4 @@ export default () => (
     <ToggleButton intent="warning">Warning</ToggleButton>
     <ToggleButton intent="danger">Danger</ToggleButton>
   </>
-)
+);

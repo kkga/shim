@@ -1,5 +1,3 @@
-import { Checkbox } from "@ui/Checkbox"
+import { Checkbox } from "@/components/checkbox";
 
-export default () => (
-  <Checkbox>Agree</Checkbox>
-)
+export default () => <Checkbox>Agree</Checkbox>;

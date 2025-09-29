@@ -1,5 +1,5 @@
-import { ProgressCircle } from "@ui/ProgressCircle"
+import { ProgressCircle } from "@/components/progress-circle";
 
 export default () => (
-  <ProgressCircle isIndeterminate size={2} aria-label="Loading…" />
-)
+  <ProgressCircle aria-label="Loading…" isIndeterminate size={2} />
+);

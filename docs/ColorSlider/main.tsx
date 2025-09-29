@@ -1,5 +1,5 @@
-import { ColorSlider } from "@/components/ColorSlider"
+import { ColorSlider } from "@/components/color-slider";
 
 export default () => (
-  <ColorSlider label="Hue" channel="hue" defaultValue="hsl(20, 100%, 50%)" />
-)
+  <ColorSlider channel="hue" defaultValue="hsl(20, 100%, 50%)" label="Hue" />
+);

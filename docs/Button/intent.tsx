@@ -1,4 +1,4 @@
-import { Button } from "@ui/Button"
+import { Button } from "@/components/button";
 
 export default () => (
   <>
@@ -8,4 +8,4 @@ export default () => (
     <Button intent="warning">Warning</Button>
     <Button intent="danger">Danger</Button>
   </>
-)
+);

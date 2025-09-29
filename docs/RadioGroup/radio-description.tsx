@@ -1,24 +1,24 @@
-import { Radio, RadioGroup } from "@ui/RadioGroup"
+import { Radio, RadioGroup } from "@/components/radio-group";
 
 export default () => (
-  <RadioGroup label="Library" defaultValue={"ts-pattern"}>
+  <RadioGroup defaultValue={"ts-pattern"} label="Library">
     <Radio
-      value="ts-pattern"
       description="Type-safe pattern matching library for TypeScript."
+      value="ts-pattern"
     >
       TS-Pattern
     </Radio>
     <Radio
-      value="lodash"
       description="A modern JavaScript utility library delivering modularity, performance & extras."
+      value="lodash"
     >
       Lodash
     </Radio>
     <Radio
-      value="ramda"
       description="A practical functional library for JavaScript programmers."
+      value="ramda"
     >
       Ramda
     </Radio>
   </RadioGroup>
-)
+);

@@ -1,14 +1,14 @@
-"use client"
-import { Slider } from "@ui/Slider"
-import { useState } from "react"
+"use client";
+import { useState } from "react";
+import { Slider } from "@/components/slider";
 
 export default () => {
-  const [value, setValue] = useState<number | number[]>(73)
+  const [value, setValue] = useState<number | number[]>(73);
 
   return (
     <>
-      <Slider label="Slope" value={value} onChange={setValue} />
+      <Slider label="Slope" onChange={setValue} value={value} />
       <p>Value: {value}</p>
     </>
-  )
-}
+  );
+};

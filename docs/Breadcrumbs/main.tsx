@@ -1,4 +1,4 @@
-import { Breadcrumb, Breadcrumbs } from "@ui/Breadcrumbs"
+import { Breadcrumb, Breadcrumbs } from "@/components/breadcrumbs";
 
 export default () => (
   <Breadcrumbs>
@@ -6,4 +6,4 @@ export default () => (
     <Breadcrumb href="/docs">Docs</Breadcrumb>
     <Breadcrumb>Breadcrumbs</Breadcrumb>
   </Breadcrumbs>
-)
+);

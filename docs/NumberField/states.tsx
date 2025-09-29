@@ -1,8 +1,8 @@
-import { NumberField } from "@ui/NumberField"
+import { NumberField } from "@/components/number-field";
 
 export default () => (
   <>
-    <NumberField label="Cookies" isDisabled />
-    <NumberField label="Cookies" isInvalid errorMessage="Invalid cookies" />
+    <NumberField isDisabled label="Cookies" />
+    <NumberField errorMessage="Invalid cookies" isInvalid label="Cookies" />
   </>
-)
+);

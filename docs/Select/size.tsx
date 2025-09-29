@@ -1,18 +1,18 @@
-import { Select, SelectItem } from "@ui/Select"
+import { Select, SelectItem } from "@/components/select";
 
 export default () => (
   <>
-    <Select size={1} label="Status" placeholder="Select status">
+    <Select label="Status" placeholder="Select status" size={1}>
       <SelectItem>Open</SelectItem>
       <SelectItem>Closed</SelectItem>
     </Select>
-    <Select size={2} label="Status" placeholder="Select status">
+    <Select label="Status" placeholder="Select status" size={2}>
       <SelectItem>Open</SelectItem>
       <SelectItem>Closed</SelectItem>
     </Select>
-    <Select size={3} label="Status" placeholder="Select status">
+    <Select label="Status" placeholder="Select status" size={3}>
       <SelectItem>Open</SelectItem>
       <SelectItem>Closed</SelectItem>
     </Select>
   </>
-)
+);

@@ -1,13 +1,13 @@
-"use client"
-import { Theme } from "@lib/theme"
-import { Checkbox, CheckboxGroup } from "@ui/Checkbox"
-import { NumberField } from "@ui/NumberField"
-import { Radio, RadioGroup } from "@ui/RadioGroup"
-import { SearchField } from "@ui/SearchField"
-import { Separator } from "@ui/Separator"
-import { Slider } from "@ui/Slider"
-import { TextArea } from "@ui/TextArea"
-import { TextField } from "@ui/TextField"
+"use client";
+import { Theme } from "@lib/theme";
+import { Checkbox, CheckboxGroup } from "@/components/checkbox";
+import { NumberField } from "@/components/number-field";
+import { Radio, RadioGroup } from "@/components/radio-group";
+import { SearchField } from "@/components/search-field";
+import { Separator } from "@/components/separator";
+import { Slider } from "@/components/slider";
+import { TextArea } from "@/components/text-area";
+import { TextField } from "@/components/text-field";
 
 export default () => (
   <div className="flex gap-4">
@@ -75,4 +75,4 @@ export default () => (
       </Theme>
     </div>
   </div>
-)
+);

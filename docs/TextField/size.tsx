@@ -1,10 +1,10 @@
-import { TextField } from "@ui/TextField"
+import { TextField } from "@/components/text-field";
 
 export default () => (
   <>
-    <TextField size={1} label="First name" labelPosition="side" />
-    <TextField size={2} label="First name" labelPosition="side" />
-    <TextField size={3} label="First name" labelPosition="side" />
-    <TextField size={4} label="First name" labelPosition="side" />
+    <TextField label="First name" labelPosition="side" size={1} />
+    <TextField label="First name" labelPosition="side" size={2} />
+    <TextField label="First name" labelPosition="side" size={3} />
+    <TextField label="First name" labelPosition="side" size={4} />
   </>
-)
+);
