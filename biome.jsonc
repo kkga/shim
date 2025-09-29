@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "files": {
-    // "includes": ["app/**"]
-  },
-  "extends": ["ultracite"],
+  "files": {},
+  "extends": [
+    "ultracite"
+  ],
   "linter": {
     "rules": {
       "style": {
@@ -12,7 +12,9 @@
       "nursery": {
         "useConsistentTypeDefinitions": {
           "level": "error",
-          "options": { "style": "interface" }
+          "options": {
+            "style": "interface"
+          }
         }
       }
     }
