@@ -1,13 +1,13 @@
-import { mdxComponents as components } from "@/app/_components/mdx-components"
-import { evaluate, EvaluateOptions } from "next-mdx-remote-client/rsc"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypeSlug from "rehype-slug"
-import remarkFlexibleToc, { TocItem } from "remark-flexible-toc"
-import { postProcess, preProcess } from "./rehype-pre-raw"
+import { type EvaluateOptions, evaluate } from "next-mdx-remote-client/rsc";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
+import remarkFlexibleToc, { type TocItem } from "remark-flexible-toc";
+import { mdxComponents as components } from "@/app/_components/mdx-components";
+import { postProcess, preProcess } from "./rehype-pre-raw";
 
 interface Scope {
-  toc?: TocItem[]
-  [key: string]: unknown
+  toc?: TocItem[];
+  [key: string]: unknown;
 }
 
 let options: EvaluateOptions<Scope> = {
@@ -31,17 +31,18 @@ let options: EvaluateOptions<Scope> = {
       postProcess,
     ],
   },
-}
+};
 
-export const mdxToHtml = async ({
+export async function mdxToHtml({
   source,
   scope,
 }: {
-  source: string
-  scope?: Scope
-}) =>
-  await evaluate({
+  source: string;
+  scope?: Scope;
+}) {
+  return await evaluate({
     source,
     components,
     options: { ...options, scope },
-  })
+  });
+}
