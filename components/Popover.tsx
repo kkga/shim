@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@lib/style"
-import { useThemeProps } from "@lib/theme"
+import { cxRenderProps } from "@lib/style";
+import { useThemeProps } from "@lib/theme";
 import {
   composeRenderProps,
-  Dialog as RACDialog,
-  DialogTrigger as RACDialogTrigger,
-  Popover as RACPopover,
-  type PopoverProps as RACPopoverProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
+  Dialog as RacDialog,
+  DialogTrigger as RacDialogTrigger,
+  Popover as RacPopover,
+  type PopoverProps as RacPopoverProps,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
 
 const style = tv({
   base: [
-    "animate-slide bg-panel text-neutral-text z-20 min-w-[var(--trigger-width)] overflow-auto text-xs shadow-[var(--shadow-lg)] outline-none",
+    "z-20 min-w-[var(--trigger-width)] animate-slide overflow-auto bg-panel text-neutral-text text-xs shadow-[var(--shadow-lg)] outline-none",
     "data-[trigger=SubmenuTrigger]:-mt-1 data-[trigger=SubmenuTrigger]:data-[placement=left]:-mr-1 data-[trigger=SubmenuTrigger]:data-[placement=right]:-ml-1",
   ],
   variants: {
@@ -24,30 +24,32 @@ const style = tv({
       4: "rounded-xl",
     },
   },
-})
+});
 
-type PopoverProps = RACPopoverProps
+type PopoverProps = RacPopoverProps;
 
-function Popover({ className, offset = 4, ...props }: PopoverProps) {
-  let { size } = useThemeProps()
+function Popover({ className, children, offset = 4, ...props }: PopoverProps) {
+  let { size } = useThemeProps();
   return (
-    <RACPopover
+    <RacPopover
       {...props}
-      offset={offset}
       className={cxRenderProps(className, style({ size }))}
+      offset={offset}
     >
-      {composeRenderProps(props.children, (children, {}) =>
-        props.isNonModal ?
-          <div className="overflow-auto outline-none">{children}</div>
-        : <RACDialog className="overflow-auto outline-none">
-            {children}
-          </RACDialog>,
+      {composeRenderProps(children, (renderedChildren) =>
+        props.isNonModal ? (
+          <div className="overflow-auto outline-none">{renderedChildren}</div>
+        ) : (
+          <RacDialog className="overflow-auto outline-none">
+            {renderedChildren}
+          </RacDialog>
+        )
       )}
-    </RACPopover>
-  )
+    </RacPopover>
+  );
 }
 
-const PopoverTrigger = RACDialogTrigger
+const PopoverTrigger = RacDialogTrigger;
 
-export { Popover, PopoverTrigger }
-export type { PopoverProps }
+export { Popover, PopoverTrigger };
+export type { PopoverProps };

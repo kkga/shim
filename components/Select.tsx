@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import { cx, cxRenderProps } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
-import { CaretDown, Check } from "@phosphor-icons/react"
-import { Button } from "@ui/Button"
-import type { ReactNode } from "react"
+import { cx, cxRenderProps } from "@lib/style";
+import { ICON_SIZES, Theme, useThemeProps } from "@lib/theme";
+import { CaretDownIcon, CheckIcon } from "@phosphor-icons/react";
+import type { ReactNode } from "react";
 import {
-  Select as RACSelect,
-  SelectValue as RACSelectValue,
   composeRenderProps,
-  type SelectProps as RACSelectProps,
-} from "react-aria-components"
+  Select as RacSelect,
+  type SelectProps as RacSelectProps,
+  SelectValue as RacSelectValue,
+} from "react-aria-components";
+import { Button } from "@/components/button";
 import {
   Description,
   FieldError,
-  FieldProps,
-  Label,
+  type FieldProps,
   fieldLayoutStyle,
-} from "./Field"
+  Label,
+} from "./field";
 import {
   ListBox,
   ListBoxItem,
-  ListBoxItemProps,
+  type ListBoxItemProps,
   ListBoxSection,
-  ListBoxSectionProps,
-} from "./ListBox"
-import { Popover } from "./Popover"
+  type ListBoxSectionProps,
+} from "./list-box";
+import { Popover } from "./popover";
 
 interface SelectProps<T extends object>
-  extends Omit<RACSelectProps<T>, "children">,
+  extends Omit<RacSelectProps<T>, "children">,
     FieldProps {
-  items?: Iterable<T>
-  children: ReactNode | ((item: T) => ReactNode)
+  items?: Iterable<T>;
+  children: ReactNode | ((item: T) => ReactNode);
 }
 
 function Select<T extends object>({
@@ -40,53 +40,54 @@ function Select<T extends object>({
   errorMessage,
   children,
   items,
-  size,
-  labelPosition,
-  variant,
   ...props
 }: SelectProps<T>) {
-  let themeProps = useThemeProps({ size, labelPosition, fieldVariant: variant })
+  let { size, labelPosition, fieldVariant } = useThemeProps({
+    size: props.size,
+    labelPosition: props.labelPosition,
+    fieldVariant: props.variant,
+  });
 
   return (
-    <RACSelect
+    <RacSelect
       {...props}
       className={cxRenderProps(
         props.className,
-        fieldLayoutStyle({ labelPosition: themeProps.labelPosition }),
+        fieldLayoutStyle({ labelPosition })
       )}
     >
       {() => (
-        <Theme {...themeProps}>
+        <Theme {...{ size, fieldVariant, labelPosition }}>
           {label && <Label>{label}</Label>}
           <Button intent="neutral">
-            <RACSelectValue className="data-placeholder:text-neutral-text-subtle flex-1 truncate text-left font-normal" />
-            <CaretDown
-              size={themeProps.size === 1 ? 12 : 16}
+            <RacSelectValue className="flex-1 truncate text-left font-normal data-placeholder:text-neutral-text-subtle" />
+            <CaretDownIcon
               aria-hidden
               className="shrink-0 text-current"
+              size={ICON_SIZES[size]}
             />
           </Button>
           {description && <Description>{description}</Description>}
           <FieldError>{errorMessage}</FieldError>
           <Popover>
             <ListBox
-              items={items}
               className="max-h-[inherit] overflow-auto p-1 outline-none"
+              items={items}
             >
               {children}
             </ListBox>
           </Popover>
         </Theme>
       )}
-    </RACSelect>
-  )
+    </RacSelect>
+  );
 }
 
 function SelectItem(props: ListBoxItemProps) {
-  let { size } = useThemeProps({ size: props.size })
+  let { size } = useThemeProps({ size: props.size });
   let textValue =
     props.textValue ||
-    (typeof props.children === "string" ? props.children : undefined)
+    (typeof props.children === "string" ? props.children : undefined);
 
   return (
     <ListBoxItem {...props} textValue={textValue}>
@@ -99,9 +100,9 @@ function SelectItem(props: ListBoxItemProps) {
                 className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
               >
                 {isSelected && (
-                  <Check
-                    size={size === 1 ? 12 : 16}
+                  <CheckIcon
                     aria-hidden
+                    size={ICON_SIZES[size]}
                     weight="bold"
                   />
                 )}
@@ -110,21 +111,21 @@ function SelectItem(props: ListBoxItemProps) {
             <span
               className={cx(
                 "flex flex-1 items-center truncate",
-                size === 1 ? "gap-2" : "gap-2.5",
+                size === 1 ? "gap-2" : "gap-2.5"
               )}
             >
               {children}
             </span>
           </>
-        ),
+        )
       )}
     </ListBoxItem>
-  )
+  );
 }
 
 function SelectSection<T extends object>(props: ListBoxSectionProps<T>) {
-  return <ListBoxSection {...props} />
+  return <ListBoxSection {...props} />;
 }
 
-export { Select, SelectItem, SelectSection }
-export type { SelectProps }
+export { Select, SelectItem, SelectSection };
+export type { SelectProps };

@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { focusStyle } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
+import { focusStyle } from "@lib/style";
+import { Theme, useThemeProps } from "@lib/theme";
 import {
   composeRenderProps,
-  Switch as RACSwitch,
-  type SwitchProps as RACSwitchProps,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
-import { FieldProps } from "./Field"
+  Switch as RacSwitch,
+  type SwitchProps as RacSwitchProps,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
+import type { FieldProps } from "./field";
 
 const style = tv({
   slots: {
     container:
-      "text-neutral-text group flex items-center font-medium outline-none",
+      "group flex items-center font-medium text-neutral-text outline-none",
     track: [
       focusStyle(),
       "flex shrink-0 items-center rounded-full px-px outline-offset-1 transition-colors",
@@ -28,20 +28,20 @@ const style = tv({
         handle: "bg-white shadow-[var(--shadow-xs)]",
       },
       soft: {
-        track: "bg-neutral-bg-hover inset-ring-1 inset-ring-neutral-3",
-        handle: "bg-neutral-solid border border-transparent",
+        track: "inset-ring-1 inset-ring-neutral-3 bg-neutral-bg-hover",
+        handle: "border border-transparent bg-neutral-solid",
       },
       outline: {
         track: "inset-ring-1 inset-ring-neutral-border bg-transparent",
         handle:
-          "bg-neutral-bg inset-ring inset-ring-neutral-border border border-transparent",
+          "inset-ring inset-ring-neutral-border border border-transparent bg-neutral-bg",
       },
     },
     isPressed: { true: "" },
     isSelected: { true: "" },
     isDisabled: {
       true: {
-        container: "text-neutral-text-subtle cursor-not-allowed",
+        container: "cursor-not-allowed text-neutral-text-subtle",
         handle: "bg-neutral-bg-subtle",
       },
     },
@@ -91,7 +91,7 @@ const style = tv({
       isDisabled: false,
       class: {
         track: "bg-accent-solid",
-        handle: "shadow-xs shadow-black/5",
+        handle: "shadow-black/5 shadow-xs",
       },
     },
     {
@@ -117,14 +117,14 @@ const style = tv({
       variant: ["classic", "soft", "outline"],
       class: {
         track:
-          "bg-neutral-bg-subtle inset-ring inset-ring-neutral-line shadow-none",
+          "inset-ring inset-ring-neutral-line bg-neutral-bg-subtle shadow-none",
       },
     },
   ],
-})
+});
 
 interface SwitchProps
-  extends RACSwitchProps,
+  extends RacSwitchProps,
     Omit<
       FieldProps,
       "label" | "description" | "labelPosition" | "errorMessage"
@@ -135,15 +135,15 @@ function Switch({ labelPosition, ...props }: SwitchProps) {
   let themeProps = useThemeProps({
     size: props.size,
     fieldVariant: props.variant,
-  })
-  let { size, fieldVariant: variant } = themeProps
-  let { container, track, handle } = style({ size, variant, labelPosition })
+  });
+  let { size, fieldVariant: variant } = themeProps;
+  let { container, track, handle } = style({ size, variant, labelPosition });
 
   return (
-    <RACSwitch
+    <RacSwitch
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        container({ ...renderProps, className }),
+        container({ ...renderProps, className })
       )}
     >
       {composeRenderProps(props.children, (children, renderProps) => (
@@ -154,8 +154,8 @@ function Switch({ labelPosition, ...props }: SwitchProps) {
           {children}
         </Theme>
       ))}
-    </RACSwitch>
-  )
+    </RacSwitch>
+  );
 }
 
-export { Switch, type SwitchProps }
+export { Switch, type SwitchProps };

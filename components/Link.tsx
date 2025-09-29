@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style"
+import { cxRenderProps, focusStyle } from "@lib/style";
 import {
-  Link as RACLink,
-  type LinkProps as RACLinkProps,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+  Link as RacLink,
+  type LinkProps as RacLinkProps,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const style = tv({
   extend: focusStyle,
@@ -14,7 +14,7 @@ const style = tv({
     // hovered
     "data-hovered:underline",
     // disabled
-    "data-disabled:no-underline data-disabled:cursor-default data-disabled:text-neutral-text-subtle",
+    "data-disabled:cursor-default data-disabled:text-neutral-text-subtle data-disabled:no-underline",
     // current
     "data-current:text-neutral-text",
   ],
@@ -38,17 +38,17 @@ const style = tv({
   defaultVariants: {
     intent: "accent",
   },
-})
+});
 
-interface LinkProps extends RACLinkProps, VariantProps<typeof style> {}
+interface LinkProps extends RacLinkProps, VariantProps<typeof style> {}
 
 function Link({ className, intent, variant, ...props }: LinkProps) {
   return (
-    <RACLink
+    <RacLink
       {...props}
       className={cxRenderProps(className, style({ intent, variant }))}
     />
-  )
+  );
 }
 
-export { Link, type LinkProps }
+export { Link, type LinkProps };

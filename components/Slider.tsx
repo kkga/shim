@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
+import { cxRenderProps, focusStyle } from "@lib/style";
+import { Theme, useThemeProps } from "@lib/theme";
 import {
-  Slider as RACSlider,
+  Slider as RacSlider,
+  type SliderProps as RacSliderProps,
   SliderOutput,
   SliderThumb,
   SliderTrack,
-  type SliderProps as RACSliderProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
-import { Description, FieldProps, Label, fieldLayoutStyle } from "./Field"
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
+import { Description, type FieldProps, fieldLayoutStyle, Label } from "./field";
 
 const style = tv({
   slots: {
-    track: "grow-1 relative flex shrink-0 items-center",
+    track: "relative flex shrink-0 grow-1 items-center",
     indicator: "absolute overflow-hidden rounded-full",
     fill: "absolute",
     thumb: [focusStyle(), "rounded-full outline-offset-0"],
     output:
-      "text-neutral-text min-w-[3ch] self-center justify-self-end text-end text-xs tabular-nums",
+      "min-w-[3ch] self-center justify-self-end text-end text-neutral-text text-xs tabular-nums",
   },
   variants: {
     size: {
@@ -50,7 +50,7 @@ const style = tv({
         thumb: "bg-white shadow ring-1 ring-black/15",
       },
       soft: {
-        indicator: "bg-neutral-bg inset-ring-0",
+        indicator: "inset-ring-0 bg-neutral-bg",
         fill: "bg-accent-bg-active",
         thumb: "bg-accent-solid shadow-none",
       },
@@ -58,13 +58,13 @@ const style = tv({
         indicator:
           "inset-ring-1 inset-ring-neutral-line bg-transparent shadow-none",
         fill: "bg-accent-bg-solid",
-        thumb: "ring-neutral-border bg-white ring-1",
+        thumb: "bg-white ring-1 ring-neutral-border",
       },
     },
     isDisabled: {
       true: {
         indicator: "bg-neutral-bg-subtle shadow-none",
-        thumb: "bg-neutral-bg ring-neutral-line shadow-none",
+        thumb: "bg-neutral-bg shadow-none ring-neutral-line",
         output: "text-neutral-text-subtle",
       },
     },
@@ -143,11 +143,11 @@ const style = tv({
       },
     },
   ],
-})
+});
 
-interface SliderProps<T> extends RACSliderProps<T>, FieldProps {
-  thumbLabels?: string[]
-  isFilled?: boolean
+interface SliderProps<T> extends RacSliderProps<T>, FieldProps {
+  thumbLabels?: string[];
+  isFilled?: boolean;
 }
 
 function Slider<T extends number | number[]>({
@@ -158,12 +158,13 @@ function Slider<T extends number | number[]>({
   className,
   ...props
 }: SliderProps<T>) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
-  let { labelPosition, size, fieldVariant: variant } = themeProps
-  let { track, indicator, fill, output, thumb } = style({ size, variant })
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let { labelPosition, size, fieldVariant: variant } = themeProps;
+  let { track, indicator, fill, output, thumb } = style({ size, variant });
+  const MaxPercent = 100;
 
   return (
-    <RACSlider
+    <RacSlider
       {...props}
       className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
@@ -183,7 +184,7 @@ function Slider<T extends number | number[]>({
           </div>
         )}
 
-        <div className="grow-1 flex gap-1">
+        <div className="flex grow-1 gap-1">
           <SliderTrack className={({ orientation }) => track({ orientation })}>
             {({ state, orientation }) => (
               <>
@@ -192,31 +193,32 @@ function Slider<T extends number | number[]>({
                     <div
                       className={fill({ orientation })}
                       style={
-                        orientation === "horizontal" ?
-                          {
-                            left:
-                              state.values.length > 1 ?
-                                `${state.getThumbPercent(0) * 100}%`
-                              : 0,
-                            right: `${100 - state.getThumbPercent(state.values.length - 1) * 100}%`,
-                          }
-                        : {
-                            bottom:
-                              state.values.length > 1 ?
-                                `${state.getThumbPercent(0) * 100}%`
-                              : 0,
-                            top: `${100 - state.getThumbPercent(state.values.length - 1) * 100}%`,
-                          }
+                        orientation === "horizontal"
+                          ? {
+                              left:
+                                state.values.length > 1
+                                  ? `${state.getThumbPercent(0) * MaxPercent}%`
+                                  : 0,
+                              right: `${MaxPercent - state.getThumbPercent(state.values.length - 1) * MaxPercent}%`,
+                            }
+                          : {
+                              bottom:
+                                state.values.length > 1
+                                  ? `${state.getThumbPercent(0) * MaxPercent}%`
+                                  : 0,
+                              top: `${MaxPercent - state.getThumbPercent(state.values.length - 1) * MaxPercent}%`,
+                            }
                       }
                     />
                   )}
                 </div>
                 {state.values.map((_, i) => (
                   <SliderThumb
-                    key={i}
-                    index={i}
                     aria-label={thumbLabels?.[i]}
                     className={thumb({ orientation })}
+                    index={i}
+                    // biome-ignore lint/suspicious/noArrayIndexKey: ok here
+                    key={i}
                   />
                 ))}
               </>
@@ -236,8 +238,8 @@ function Slider<T extends number | number[]>({
 
         {description && <Description>{description}</Description>}
       </Theme>
-    </RACSlider>
-  )
+    </RacSlider>
+  );
 }
 
-export { Slider, style, type SliderProps }
+export { Slider, style, type SliderProps };

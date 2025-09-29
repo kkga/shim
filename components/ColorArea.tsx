@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@/lib/style"
 import {
-  ColorArea as RACColorArea,
-  ColorAreaProps as RACColorAreaProps,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
-import { ColorThumb } from "./ColorThumb"
+  ColorArea as RacColorArea,
+  type ColorAreaProps as RacColorAreaProps,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
+import { cxRenderProps } from "@/lib/style";
+import { ColorThumb } from "./ColorThumb";
 
 const style = tv({
-  base: "bg-neutral-bg-subtle size-56 rounded-sm shadow-inner",
-})
+  base: "size-56 rounded-sm bg-neutral-bg-subtle shadow-inner",
+});
 
 interface ColorAreaProps
-  extends RACColorAreaProps,
+  extends RacColorAreaProps,
     VariantProps<typeof style> {}
 
 function ColorArea(props: ColorAreaProps) {
   return (
-    <RACColorArea
+    <RacColorArea
       {...props}
       className={cxRenderProps(props.className, style())}
       style={({ defaultStyle, isDisabled }) => ({
@@ -27,8 +27,8 @@ function ColorArea(props: ColorAreaProps) {
       })}
     >
       <ColorThumb variant="loupe" />
-    </RACColorArea>
-  )
+    </RacColorArea>
+  );
 }
 
-export { ColorArea, type ColorAreaProps }
+export { ColorArea, type ColorAreaProps };

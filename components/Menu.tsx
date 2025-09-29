@@ -1,32 +1,32 @@
-"use client"
+"use client";
 
-import { cx, cxRenderProps } from "@lib/style"
-import { Size, Theme, useThemeProps } from "@lib/theme"
-import { CaretRight, Check } from "@phosphor-icons/react"
+import { cx, cxRenderProps } from "@lib/style";
+import { ICON_SIZES, type Size, Theme, useThemeProps } from "@lib/theme";
+import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import {
-  Collection as RACCollection,
-  Header as RACHeader,
-  Menu as RACMenu,
-  MenuItem as RACMenuItem,
-  MenuItemProps as RACMenuItemProps,
-  MenuProps as RACMenuProps,
-  MenuSection as RACMenuSection,
-  MenuSectionProps as RACMenuSectionProps,
-  MenuTrigger as RACMenuTrigger,
-  PopoverProps as RACPopoverProps,
-  Separator as RACSeparator,
-  SeparatorProps as RACSeparatorProps,
-  SubmenuTrigger as RACSubmenuTrigger,
   composeRenderProps,
-} from "react-aria-components"
-import { VariantProps, tv } from "tailwind-variants"
-import { itemStyle, sectionStyle } from "./ListBox"
-import { Popover } from "./Popover"
+  Collection as RacCollection,
+  Header as RacHeader,
+  Menu as RacMenu,
+  MenuItem as RacMenuItem,
+  type MenuItemProps as RacMenuItemProps,
+  type MenuProps as RacMenuProps,
+  MenuSection as RacMenuSection,
+  type MenuSectionProps as RacMenuSectionProps,
+  MenuTrigger as RacMenuTrigger,
+  type PopoverProps as RacPopoverProps,
+  Separator as RacSeparator,
+  type SeparatorProps as RacSeparatorProps,
+  SubmenuTrigger as RacSubmenuTrigger,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
+import { itemStyle, sectionStyle } from "./list-box";
+import { Popover } from "./popover";
 
-interface MenuProps<T> extends RACMenuProps<T> {
-  placement?: RACPopoverProps["placement"]
-  offset?: RACPopoverProps["offset"]
-  size?: Size
+interface MenuProps<T> extends RacMenuProps<T> {
+  placement?: RacPopoverProps["placement"];
+  offset?: RacPopoverProps["offset"];
+  size?: Size;
 }
 
 function Menu<T extends object>({
@@ -36,34 +36,34 @@ function Menu<T extends object>({
   size,
   ...props
 }: MenuProps<T>) {
-  let themeProps = useThemeProps({ size })
+  let themeProps = useThemeProps({ size });
 
   return (
     <Theme {...themeProps}>
-      <Popover offset={offset} placement={placement} className="min-w-32">
-        <RACMenu
+      <Popover className="min-w-32" offset={offset} placement={placement}>
+        <RacMenu
           {...props}
           className={cxRenderProps(
             className,
-            "flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0",
+            "flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0"
           )}
         />
       </Popover>
     </Theme>
-  )
+  );
 }
 
-const menuItemStyle = itemStyle
+const menuItemStyle = itemStyle;
 
 interface MenuItemProps
-  extends RACMenuItemProps,
+  extends RacMenuItemProps,
     VariantProps<typeof menuItemStyle> {}
 
 function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
-  let { size } = useThemeProps({ size: props.size })
+  let { size } = useThemeProps({ size: props.size });
 
   return (
-    <RACMenuItem
+    <RacMenuItem
       {...props}
       className={cxRenderProps(
         className,
@@ -71,21 +71,21 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
           intent,
           size,
           className: props.href ? "cursor-pointer" : "cursor-default",
-        }),
+        })
       )}
     >
       {composeRenderProps(
         children,
-        (children, { selectionMode, isSelected, hasSubmenu }) => (
+        (renderedChildren, { selectionMode, isSelected, hasSubmenu }) => (
           <>
             {selectionMode !== "none" && (
               <span
                 className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
               >
                 {isSelected && (
-                  <Check
-                    size={size === 1 ? 12 : 16}
+                  <CheckIcon
                     aria-hidden
+                    size={ICON_SIZES[size]}
                     weight="bold"
                   />
                 )}
@@ -94,21 +94,23 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
             <span
               className={cx(
                 "flex flex-1 items-center gap-1.5",
-                typeof children === "string" ? "truncate" : "",
+                typeof renderedChildren === "string" ? "truncate" : ""
               )}
             >
-              {children}
+              {renderedChildren}
             </span>
-            {hasSubmenu && <CaretRight size={12} weight="bold" aria-hidden />}
+            {hasSubmenu && (
+              <CaretRightIcon aria-hidden size={12} weight="bold" />
+            )}
           </>
-        ),
+        )
       )}
-    </RACMenuItem>
-  )
+    </RacMenuItem>
+  );
 }
 
 const separatorStyle = tv({
-  base: "bg-neutral-line my-1 h-px border-none",
+  base: "my-1 h-px border-none bg-neutral-line",
   variants: {
     size: {
       1: "mx-1.5",
@@ -117,17 +119,17 @@ const separatorStyle = tv({
       4: "mx-3",
     },
   },
-})
+});
 
-function MenuSeparator(props: RACSeparatorProps) {
-  let { size } = useThemeProps()
-  return <RACSeparator {...props} className={separatorStyle({ size })} />
+function MenuSeparator(props: RacSeparatorProps) {
+  let { size } = useThemeProps();
+  return <RacSeparator {...props} className={separatorStyle({ size })} />;
 }
 
 interface MenuSectionProps<T>
-  extends RACMenuSectionProps<T>,
+  extends RacMenuSectionProps<T>,
     VariantProps<typeof sectionStyle> {
-  title?: string
+  title?: string;
 }
 
 function MenuSection<T extends object>({
@@ -137,20 +139,20 @@ function MenuSection<T extends object>({
   className,
   ...props
 }: MenuSectionProps<T>) {
-  let themeProps = useThemeProps(props)
-  let { size } = themeProps
-  let { header, section } = sectionStyle({ size })
+  let themeProps = useThemeProps(props);
+  let { size } = themeProps;
+  let { header, section } = sectionStyle({ size });
 
   return (
-    <RACMenuSection {...props} className={section({ className })}>
-      {title && <RACHeader className={header()}>{title}</RACHeader>}
-      <RACCollection items={items}>{children}</RACCollection>
-    </RACMenuSection>
-  )
+    <RacMenuSection {...props} className={section({ className })}>
+      {title && <RacHeader className={header()}>{title}</RacHeader>}
+      <RacCollection items={items}>{children}</RacCollection>
+    </RacMenuSection>
+  );
 }
 
-const MenuTrigger = RACMenuTrigger
-const SubmenuTrigger = RACSubmenuTrigger
+const MenuTrigger = RacMenuTrigger;
+const SubmenuTrigger = RacSubmenuTrigger;
 
 export {
   Menu,
@@ -159,6 +161,6 @@ export {
   MenuSeparator,
   MenuTrigger,
   SubmenuTrigger,
-}
+};
 
-export type { MenuItemProps, MenuProps, MenuSectionProps }
+export type { MenuItemProps, MenuProps, MenuSectionProps };

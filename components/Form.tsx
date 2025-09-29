@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { cx } from "@lib/style"
-import { Theme, ThemeContextProps, useThemeProps } from "@lib/theme"
+import { cx } from "@lib/style";
+import { Theme, type ThemeContextProps, useThemeProps } from "@lib/theme";
 import {
-  Form as RACForm,
-  FormProps as RACFormProps,
-} from "react-aria-components"
+  Form as RacForm,
+  type FormProps as RacFormProps,
+} from "react-aria-components";
 
 function Form({
   className,
@@ -15,19 +15,19 @@ function Form({
   buttonVariant,
   size,
   ...props
-}: RACFormProps & Partial<ThemeContextProps>) {
+}: RacFormProps & Partial<ThemeContextProps>) {
   let themeProps = useThemeProps({
     labelPosition,
     fieldVariant,
     buttonVariant,
     size,
-  })
+  });
 
   return (
-    <RACForm {...props} className={cx("flex flex-col gap-3", className)}>
+    <RacForm {...props} className={cx("flex flex-col gap-3", className)}>
       <Theme {...themeProps}>{children}</Theme>
-    </RACForm>
-  )
+    </RacForm>
+  );
 }
 
-export { Form }
+export { Form };

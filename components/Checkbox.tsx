@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
-import { Check, Minus } from "@phosphor-icons/react"
+import { cxRenderProps, focusStyle } from "@lib/style";
+import { Theme, useThemeProps } from "@lib/theme";
+import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import {
   composeRenderProps,
-  Checkbox as RACCheckbox,
-  CheckboxGroup as RACCheckboxGroup,
-  type CheckboxGroupProps as RACCheckboxGroupProps,
-  type CheckboxProps as RACCheckboxProps,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+  Checkbox as RacCheckbox,
+  CheckboxGroup as RacCheckboxGroup,
+  type CheckboxGroupProps as RacCheckboxGroupProps,
+  type CheckboxProps as RacCheckboxProps,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
 import {
   Description,
   FieldError,
+  type FieldProps,
   fieldLayoutStyle,
-  FieldProps,
   Label,
-} from "./Field"
+} from "./field";
 
-interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {}
+interface CheckboxGroupProps extends RacCheckboxGroupProps, FieldProps {}
 
 function CheckboxGroup({
   className,
@@ -28,15 +28,15 @@ function CheckboxGroup({
   errorMessage,
   ...props
 }: CheckboxGroupProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
-  let { labelPosition } = themeProps
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let { labelPosition } = themeProps;
 
   return (
-    <RACCheckboxGroup
+    <RacCheckboxGroup
       {...props}
       className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
-      {composeRenderProps(props.children, (children, {}) => (
+      {composeRenderProps(props.children, (children) => (
         <Theme {...themeProps}>
           {label && <Label>{label}</Label>}
           <div className="flex flex-col">{children}</div>
@@ -44,13 +44,13 @@ function CheckboxGroup({
           <FieldError>{errorMessage}</FieldError>
         </Theme>
       ))}
-    </RACCheckboxGroup>
-  )
+    </RacCheckboxGroup>
+  );
 }
 
 const checkboxStyle = tv({
   slots: {
-    container: ["text-neutral-text group flex outline-none"],
+    container: ["group flex text-neutral-text outline-none"],
     checkbox: [
       focusStyle(),
       "flex shrink-0 items-center justify-center outline-offset-1",
@@ -59,7 +59,7 @@ const checkboxStyle = tv({
   variants: {
     isDisabled: {
       true: {
-        container: "text-neutral-text-subtle cursor-not-allowed",
+        container: "cursor-not-allowed text-neutral-text-subtle",
       },
     },
     size: {
@@ -94,7 +94,7 @@ const checkboxStyle = tv({
       },
       soft: {
         checkbox: [
-          "bg-neutral-bg-hover inset-ring-0 text-accent-text-contrast",
+          "inset-ring-0 bg-neutral-bg-hover text-accent-text-contrast",
           // pressed
           "group-data-pressed:bg-neutral-bg-active",
           // selected
@@ -105,13 +105,13 @@ const checkboxStyle = tv({
       },
       outline: {
         checkbox: [
-          "inset-ring-1 inset-ring-neutral-border text-accent-text-contrast bg-transparent",
+          "inset-ring-1 inset-ring-neutral-border bg-transparent text-accent-text-contrast",
           // pressed
           "group-data-pressed:bg-neutral-bg-active",
           // selected
-          "group-data-selected:bg-transparent group-data-selected:inset-ring-neutral-border-hover",
+          "group-data-selected:inset-ring-neutral-border-hover group-data-selected:bg-transparent",
           // indeterminate
-          "group-data-indeterminate:bg-transparent group-data-indeterminate:inset-ring-neutral-border-hover",
+          "group-data-indeterminate:inset-ring-neutral-border-hover group-data-indeterminate:bg-transparent",
         ],
       },
     },
@@ -122,16 +122,16 @@ const checkboxStyle = tv({
       variant: ["classic", "soft", "outline"],
       class: {
         checkbox:
-          "bg-neutral-bg-subtle! shadow-none! inset-ring-1! inset-ring-neutral-line! text-neutral-text-subtle!",
+          "inset-ring-1! inset-ring-neutral-line! bg-neutral-bg-subtle! text-neutral-text-subtle! shadow-none!",
       },
     },
   ],
-})
+});
 
 interface CheckboxProps
-  extends RACCheckboxProps,
+  extends RacCheckboxProps,
     VariantProps<typeof checkboxStyle> {
-  description?: string
+  description?: string;
 }
 
 function Checkbox({
@@ -144,16 +144,16 @@ function Checkbox({
     ...props,
     fieldVariant: _variant,
     size: _size,
-  })
-  let { size, fieldVariant } = themeProps
-  let { container, checkbox } = checkboxStyle({ size, variant: fieldVariant })
+  });
+  let { size, fieldVariant } = themeProps;
+  let { container, checkbox } = checkboxStyle({ size, variant: fieldVariant });
 
   return (
-    <RACCheckbox
+    <RacCheckbox
       {...props}
       className={composeRenderProps(
         props.className,
-        (className, { isDisabled }) => container({ isDisabled, className }),
+        (className, { isDisabled }) => container({ isDisabled, className })
       )}
     >
       {composeRenderProps(
@@ -161,22 +161,26 @@ function Checkbox({
         (children, { isDisabled, isSelected, isIndeterminate }) => (
           <>
             <div className={checkbox({ isDisabled })}>
-              {isIndeterminate ?
-                <Minus size={16} />
-              : isSelected ?
-                <Check size={16} weight="bold" />
-              : null}
+              {(() => {
+                if (isIndeterminate) {
+                  return <MinusIcon size={16} />;
+                }
+                if (isSelected) {
+                  return <CheckIcon size={16} weight="bold" />;
+                }
+                return null;
+              })()}
             </div>
             <div className="flex flex-col gap-1">
               {children}
               {description && <Description>{description}</Description>}
             </div>
           </>
-        ),
+        )
       )}
-    </RACCheckbox>
-  )
+    </RacCheckbox>
+  );
 }
 
-export { Checkbox, CheckboxGroup }
-export type { CheckboxGroupProps, CheckboxProps }
+export { Checkbox, CheckboxGroup };
+export type { CheckboxGroupProps, CheckboxProps };

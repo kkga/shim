@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@/lib/style"
-import { Theme, useThemeProps } from "@/lib/theme"
 import {
-  ColorField as RACColorField,
-  ColorFieldProps as RACColorFieldProps,
-} from "react-aria-components"
+  ColorField as RacColorField,
+  type ColorFieldProps as RacColorFieldProps,
+} from "react-aria-components";
+import { cxRenderProps } from "@/lib/style";
+import { Theme, useThemeProps } from "@/lib/theme";
 import {
   Description,
   FieldError,
-  FieldProps,
+  type FieldProps,
+  fieldLayoutStyle,
   Input,
   Label,
-  fieldLayoutStyle,
-} from "./Field"
+} from "./Field";
 
-interface ColorFieldProps extends RACColorFieldProps, FieldProps {}
+interface ColorFieldProps extends RacColorFieldProps, FieldProps {}
 
 export function ColorField({
   label,
@@ -23,15 +23,15 @@ export function ColorField({
   errorMessage,
   ...props
 }: ColorFieldProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant })
-  let { labelPosition } = themeProps
+  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let { labelPosition } = themeProps;
 
   return (
-    <RACColorField
+    <RacColorField
       {...props}
       className={cxRenderProps(
         props.className,
-        fieldLayoutStyle({ labelPosition }),
+        fieldLayoutStyle({ labelPosition })
       )}
     >
       <Theme {...themeProps}>
@@ -40,6 +40,6 @@ export function ColorField({
         {description && <Description>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
       </Theme>
-    </RACColorField>
-  )
+    </RacColorField>
+  );
 }

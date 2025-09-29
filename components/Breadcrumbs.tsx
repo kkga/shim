@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { cx, cxRenderProps } from "@lib/style"
-import { CaretRightIcon } from "@phosphor-icons/react"
-import { Link, LinkProps } from "@ui/Link"
+import { cx, cxRenderProps } from "@lib/style";
+import { CaretRightIcon } from "@phosphor-icons/react";
 import {
-  BreadcrumbProps,
-  BreadcrumbsProps,
-  Breadcrumb as RACBreadcrumb,
-  Breadcrumbs as RACBreadcrumbs,
-} from "react-aria-components"
+  type BreadcrumbProps,
+  type BreadcrumbsProps,
+  Breadcrumb as RacBreadcrumb,
+  Breadcrumbs as RacBreadcrumbs,
+} from "react-aria-components";
+import { Link, type LinkProps } from "@/components/link";
 
 function Breadcrumbs<T extends object>({
   className,
   ...props
 }: BreadcrumbsProps<T>) {
-  return <RACBreadcrumbs {...props} className={cx("flex gap-1", className)} />
+  return <RacBreadcrumbs {...props} className={cx("flex gap-1", className)} />;
 }
 
 // TODO: add support for render props
@@ -24,16 +24,16 @@ function Breadcrumb({
   ...props
 }: BreadcrumbProps & Omit<LinkProps, "className">) {
   return (
-    <RACBreadcrumb
+    <RacBreadcrumb
       {...props}
       className={cxRenderProps(className, "flex items-center gap-1")}
     >
-      <Link intent="neutral" href={href} {...props} />
+      <Link href={href} intent="neutral" {...props} />
       {href && (
-        <CaretRightIcon size={12} className="text-neutral-text-subtle" />
+        <CaretRightIcon className="text-neutral-text-subtle" size={12} />
       )}
-    </RACBreadcrumb>
-  )
+    </RacBreadcrumb>
+  );
 }
 
-export { Breadcrumb, Breadcrumbs }
+export { Breadcrumb, Breadcrumbs };

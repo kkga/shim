@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import { focusStyle, INTENTS, type Intent } from "@lib/style"
-import { useThemeProps } from "@lib/theme"
-import { Children, isValidElement } from "react"
+import { focusStyle, INTENTS, type Intent } from "@lib/style";
+import { useThemeProps } from "@lib/theme";
+import { Children, isValidElement } from "react";
 import {
   composeRenderProps,
-  Button as RACButton,
-  Link as RACLink,
-  LinkProps as RACLinkProps,
-  ProgressBar as RACProgressBar,
-  type ButtonProps as RACButtonProps,
-  type ProgressBarProps as RACProgressBarProps,
-} from "react-aria-components"
-import { ClassValue, tv, VariantProps } from "tailwind-variants"
+  Button as RacButton,
+  type ButtonProps as RacButtonProps,
+  Link as RacLink,
+  type LinkProps as RacLinkProps,
+  ProgressBar as RacProgressBar,
+  type ProgressBarProps as RacProgressBarProps,
+} from "react-aria-components";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 
 const style = tv({
   extend: focusStyle,
-  base: "leading-none! inline-flex shrink-0 items-center justify-center font-sans font-medium",
+  base: "inline-flex shrink-0 items-center justify-center font-medium font-sans leading-none!",
   variants: {
     variant: { soft: "", solid: "text-white", ghost: "bg-transparent" },
     intent: INTENTS.reduce(
       (acc, intent) => {
-        acc[intent] = ""
-        return acc
+        acc[intent] = "";
+        return acc;
       },
-      {} as Record<Intent, ClassValue>,
+      {} as Record<Intent, ClassValue>
     ),
     size: {
       1: "h-6 gap-1 rounded-sm px-2 text-xs",
@@ -36,7 +36,7 @@ const style = tv({
       true: "cursor-not-allowed",
     },
     isIconOnly: { true: "" },
-    isPending: { true: "*:not-data-progress:invisible relative" },
+    isPending: { true: "relative *:not-data-progress:invisible" },
   },
   compoundVariants: [
     { size: 1, isIconOnly: true, className: "size-6 p-0" },
@@ -47,104 +47,104 @@ const style = tv({
       intent: "neutral",
       variant: "soft",
       className:
-        "text-neutral-text bg-neutral-bg data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
+        "bg-neutral-bg text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
     },
     {
       intent: "neutral",
       variant: "ghost",
       className:
-        "text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active bg-transparent",
+        "bg-transparent text-neutral-text data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
     },
     {
       intent: "neutral",
       variant: "solid",
       className:
-        "bg-neutral-solid data-hovered:bg-neutral-solid-hover data-pressed:brightness-90 text-white",
+        "bg-neutral-solid text-white data-hovered:bg-neutral-solid-hover data-pressed:brightness-90",
     },
 
     {
       intent: "accent",
       variant: "soft",
       className:
-        "text-accent-text bg-accent-bg data-hovered:bg-accent-bg-hover data-pressed:bg-accent-bg-active",
+        "bg-accent-bg text-accent-text data-hovered:bg-accent-bg-hover data-pressed:bg-accent-bg-active",
     },
     {
       intent: "accent",
       variant: "ghost",
       className:
-        "text-accent-text data-hovered:bg-accent-bg-hover data-pressed:bg-accent-bg-active bg-transparent",
+        "bg-transparent text-accent-text data-hovered:bg-accent-bg-hover data-pressed:bg-accent-bg-active",
     },
     {
       intent: "accent",
       variant: "solid",
       className:
-        "bg-accent-solid data-hovered:bg-accent-solid-hover data-pressed:brightness-90 text-white",
+        "bg-accent-solid text-white data-hovered:bg-accent-solid-hover data-pressed:brightness-90",
     },
     {
       intent: "success",
       variant: "soft",
       className:
-        "text-success-text bg-success-bg data-hovered:bg-success-bg-hover data-pressed:bg-success-bg-active",
+        "bg-success-bg text-success-text data-hovered:bg-success-bg-hover data-pressed:bg-success-bg-active",
     },
     {
       intent: "success",
       variant: "ghost",
       className:
-        "text-success-text data-hovered:bg-success-bg-hover data-pressed:bg-success-bg-active bg-transparent",
+        "bg-transparent text-success-text data-hovered:bg-success-bg-hover data-pressed:bg-success-bg-active",
     },
     {
       intent: "success",
       variant: "solid",
       className:
-        "bg-success-solid data-hovered:bg-success-solid-hover data-pressed:brightness-90 text-white",
+        "bg-success-solid text-white data-hovered:bg-success-solid-hover data-pressed:brightness-90",
     },
     {
       intent: "warning",
       variant: "soft",
       className:
-        "text-warning-text bg-warning-bg data-hovered:bg-warning-bg-hover data-pressed:bg-warning-bg-active",
+        "bg-warning-bg text-warning-text data-hovered:bg-warning-bg-hover data-pressed:bg-warning-bg-active",
     },
     {
       intent: "warning",
       variant: "ghost",
       className:
-        "text-warning-text data-hovered:bg-warning-bg-hover data-pressed:bg-warning-bg-active bg-transparent",
+        "bg-transparent text-warning-text data-hovered:bg-warning-bg-hover data-pressed:bg-warning-bg-active",
     },
     {
       intent: "warning",
       variant: "solid",
       className:
-        "bg-warning-solid data-hovered:bg-warning-solid-hover data-pressed:brightness-90 text-white",
+        "bg-warning-solid text-white data-hovered:bg-warning-solid-hover data-pressed:brightness-90",
     },
     {
       intent: "danger",
       variant: "soft",
       className:
-        "text-danger-text bg-danger-bg data-hovered:bg-danger-bg-hover data-pressed:bg-danger-bg-active",
+        "bg-danger-bg text-danger-text data-hovered:bg-danger-bg-hover data-pressed:bg-danger-bg-active",
     },
     {
       intent: "danger",
       variant: "ghost",
       className:
-        "text-danger-text data-hovered:bg-danger-bg-hover data-pressed:bg-danger-bg-active bg-transparent",
+        "bg-transparent text-danger-text data-hovered:bg-danger-bg-hover data-pressed:bg-danger-bg-active",
     },
     {
       intent: "danger",
       variant: "solid",
       className:
-        "bg-danger-solid data-hovered:bg-danger-solid-hover data-pressed:brightness-90 text-white",
+        "bg-danger-solid text-white data-hovered:bg-danger-solid-hover data-pressed:brightness-90",
     },
     {
       isDisabled: true,
       variant: ["soft", "solid"],
       intent: ["accent", "success", "warning", "danger", "neutral"],
-      class: "text-neutral-text-subtle bg-neutral-bg!",
+      class: "bg-neutral-bg! text-neutral-text-subtle",
     },
     {
       isDisabled: true,
       variant: "ghost",
       intent: ["accent", "success", "warning", "danger", "neutral"],
-      className: "text-neutral-text-subtle bg-transparent!",
+      className: "bg-transparent! text-neutral-text-subtle",
     },
   ],
   defaultVariants: {
@@ -152,7 +152,7 @@ const style = tv({
     variant: "soft",
     size: 1,
   },
-})
+});
 
 const progressStyle = tv({
   slots: {
@@ -167,9 +167,9 @@ const progressStyle = tv({
       4: { circle: "size-7" },
     },
   },
-})
+});
 
-interface ButtonProps extends RACButtonProps, VariantProps<typeof style> {}
+interface ButtonProps extends RacButtonProps, VariantProps<typeof style> {}
 
 function Button({
   size: _size,
@@ -181,11 +181,11 @@ function Button({
   let { buttonVariant, size } = useThemeProps({
     size: _size,
     buttonVariant: _variant,
-  })
-  let { container, circle } = progressStyle({ size })
+  });
+  let { container, circle } = progressStyle({ size });
 
   return (
-    <RACButton
+    <RacButton
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
         style({
@@ -194,60 +194,62 @@ function Button({
           intent,
           size,
           isIconOnly:
-            typeof isIconOnly === "boolean" ? isIconOnly : (
-              hasOnlySvgChild(props)
-            ),
+            typeof isIconOnly === "boolean"
+              ? isIconOnly
+              : hasOnlySvgChild(props),
           className,
-        }),
+        })
       )}
     >
       {composeRenderProps(props.children, (children, { isPending }) => (
         <>
           {isPending && (
-            <div data-progress className={container()}>
+            <div className={container()} data-progress>
               <ProgressCircle className={circle()} />
             </div>
           )}
           <span className="contents">{children}</span>
         </>
       ))}
-    </RACButton>
-  )
+    </RacButton>
+  );
 }
 
-interface ProgressCircleProps extends Omit<RACProgressBarProps, "className"> {
-  className?: string
+interface ProgressCircleProps extends Omit<RacProgressBarProps, "className"> {
+  className?: string;
 }
 
 function ProgressCircle({ className, ...props }: ProgressCircleProps) {
-  let [c, r] = ["50%", "calc(50% - 2px)"]
+  let [c, r] = ["50%", "calc(50% - 2px)"];
 
   return (
-    <RACProgressBar {...props} aria-label="Loading">
-      <svg viewBox="0 0 16 16" className={className} fill="none">
+    <RacProgressBar {...props} aria-label="Loading">
+      <svg className={className} fill="none" viewBox="0 0 16 16">
+        <title>Loading indicator</title>
         <circle
           cx={c}
           cy={c}
           r={r}
-          strokeWidth={1.5}
           stroke="currentColor"
           strokeOpacity={0.25}
+          strokeWidth={1.5}
         />
         <circle
+          className="origin-center animate-[spin_700ms_linear_infinite]"
           cx={c}
           cy={c}
-          r={r}
-          strokeWidth={1.5}
-          stroke="currentColor"
           pathLength={100}
+          r={r}
+          stroke="currentColor"
           strokeDasharray="100 200"
+          // biome-ignore lint/style/noMagicNumbers: no need to extract
           strokeDashoffset={100 - 25}
           strokeLinecap="round"
-          className="origin-center animate-[spin_700ms_linear_infinite]"
+          strokeWidth={1.5}
         />
       </svg>
-    </RACProgressBar>
-  )
+    </RacProgressBar>
+  );
 }
 
 function LinkButton({
@@ -256,14 +258,14 @@ function LinkButton({
   intent,
   isIconOnly,
   ...props
-}: RACLinkProps & VariantProps<typeof style>) {
+}: RacLinkProps & VariantProps<typeof style>) {
   let { buttonVariant, size } = useThemeProps({
     size: _size,
     buttonVariant: _variant,
-  })
+  });
 
   return (
-    <RACLink
+    <RacLink
       {...props}
       className={composeRenderProps(
         props.className,
@@ -275,28 +277,28 @@ function LinkButton({
             isDisabled,
             size,
             isIconOnly:
-              typeof isIconOnly === "boolean" ? isIconOnly : (
-                hasOnlySvgChild(props)
-              ),
+              typeof isIconOnly === "boolean"
+                ? isIconOnly
+                : hasOnlySvgChild(props),
             className,
-          }),
+          })
       )}
     />
-  )
+  );
 }
 
-function hasOnlySvgChild(props: Partial<RACLinkProps> | Partial<ButtonProps>) {
+function hasOnlySvgChild(props: Partial<RacLinkProps> | Partial<ButtonProps>) {
   const children =
-    typeof props.children !== "function" ?
-      Children.toArray(props.children)
-    : null
+    typeof props.children !== "function"
+      ? Children.toArray(props.children)
+      : null;
 
   return (
     Array.isArray(children) &&
     children.length === 1 &&
     isValidElement(children[0]) &&
     children[0].type === "svg"
-  )
+  );
 }
 
-export { Button, LinkButton, type ButtonProps }
+export { Button, LinkButton, type ButtonProps };

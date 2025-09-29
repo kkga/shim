@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { Size, Theme, useThemeProps } from "@lib/theme"
-import { createContext, useContext } from "react"
+import { type Size, Theme, useThemeProps } from "@lib/theme";
+import { createContext, useContext } from "react";
 import {
   composeRenderProps,
-  Tab as RACTab,
-  TabList as RACTabList,
-  TabPanel as RACTabPanel,
-  Tabs as RACTabs,
-  type TabListProps as RACTabListProps,
-  type TabPanelProps as RACTabPanelProps,
-  type TabProps as RACTabProps,
-  type TabsProps as RACTabsProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
+  Tab as RacTab,
+  TabList as RacTabList,
+  type TabListProps as RacTabListProps,
+  TabPanel as RacTabPanel,
+  type TabPanelProps as RacTabPanelProps,
+  type TabProps as RacTabProps,
+  Tabs as RacTabs,
+  type TabsProps as RacTabsProps,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
 
 const style = tv({
   slots: {
     tabs: "flex",
     tabList: "group inline-flex items-stretch justify-start",
     tab: [
-      "text-neutral-text relative inline-flex cursor-default items-center gap-1.5 font-medium",
+      "relative inline-flex cursor-default items-center gap-1.5 font-medium text-neutral-text",
       "outline-0",
       // indicator
       "before:absolute after:absolute after:inset-x-0",
       "group-data-[orientation=horizontal]:before:inset-x-0 group-data-[orientation=horizontal]:before:bottom-0 group-data-[orientation=horizontal]:before:h-0.5",
-      "group-data-[orientation=vertical]:before:inset-y-1 group-data-[orientation=vertical]:before:-right-1 group-data-[orientation=vertical]:before:w-0.5",
+      "group-data-[orientation=vertical]:before:-right-1 group-data-[orientation=vertical]:before:inset-y-1 group-data-[orientation=vertical]:before:w-0.5",
     ],
     tabPanel: "grow-1",
   },
@@ -69,7 +69,7 @@ const style = tv({
     },
     isHovered: {
       true: {
-        tab: "text-neutral-text-contrast after:bg-neutral-bg-hover data-active:",
+        tab: "data-active: text-neutral-text-contrast after:bg-neutral-bg-hover",
       },
     },
     isPressed: {
@@ -79,17 +79,17 @@ const style = tv({
     },
     isSelected: {
       true: {
-        tab: "text-neutral-text-contrast border-b-neutral-text-contrast",
+        tab: "border-b-neutral-text-contrast text-neutral-text-contrast",
       },
     },
     isDisabled: {
       true: {
-        tab: "text-neutral-text-subtle cursor-not-allowed",
+        tab: "cursor-not-allowed text-neutral-text-subtle",
       },
     },
     isFocusVisible: {
       true: {
-        tab: "after:outline-accent-focus-ring after:outline-2 after:-outline-offset-2",
+        tab: "after:-outline-offset-2 after:outline-2 after:outline-accent-focus-ring",
       },
     },
   },
@@ -123,74 +123,74 @@ const style = tv({
       },
     },
   ],
-})
+});
 
-type TabListVariant = "soft" | "underline"
-const TabListVariantContext = createContext<TabListVariant>("soft")
+type TabListVariant = "soft" | "underline";
+const TabListVariantContext = createContext<TabListVariant>("soft");
 
-type TabsProps = RACTabsProps
+type TabsProps = RacTabsProps;
 function Tabs(props: TabsProps) {
-  let { tabs } = style()
+  let { tabs } = style();
   return (
-    <RACTabs
+    <RacTabs
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        tabs({ ...renderProps, className }),
+        tabs({ ...renderProps, className })
       )}
     />
-  )
+  );
 }
 
-interface TabListProps<T extends object> extends RACTabListProps<T> {
-  variant?: TabListVariant
-  size?: Size
+interface TabListProps<T extends object> extends RacTabListProps<T> {
+  variant?: TabListVariant;
+  size?: Size;
 }
 
 function TabList<T extends object>(props: TabListProps<T>) {
-  let themeProps = useThemeProps({ size: props.size })
-  let { tabList } = style({ variant: props.variant, size: themeProps.size })
+  let themeProps = useThemeProps({ size: props.size });
+  let { tabList } = style({ variant: props.variant, size: themeProps.size });
 
   return (
     <Theme {...themeProps}>
       <TabListVariantContext.Provider value={props.variant || "soft"}>
-        <RACTabList
+        <RacTabList
           {...props}
           className={composeRenderProps(
             props.className,
-            (className, renderProps) => tabList({ ...renderProps, className }),
+            (className, renderProps) => tabList({ ...renderProps, className })
           )}
         />
       </TabListVariantContext.Provider>
     </Theme>
-  )
+  );
 }
 
-function Tab(props: RACTabProps) {
-  let variant = useContext(TabListVariantContext)
-  let { size } = useThemeProps()
-  let { tab } = style({ variant, size })
+function Tab(props: RacTabProps) {
+  let variant = useContext(TabListVariantContext);
+  let { size } = useThemeProps();
+  let { tab } = style({ variant, size });
 
   return (
-    <RACTab
+    <RacTab
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        tab({ ...renderProps, className }),
+        tab({ ...renderProps, className })
       )}
     />
-  )
+  );
 }
 
-function TabPanel(props: RACTabPanelProps) {
-  let { tabPanel } = style()
+function TabPanel(props: RacTabPanelProps) {
+  let { tabPanel } = style();
   return (
-    <RACTabPanel
+    <RacTabPanel
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        tabPanel({ ...renderProps, className }),
+        tabPanel({ ...renderProps, className })
       )}
     />
-  )
+  );
 }
 
-export { Tab, TabList, TabPanel, Tabs }
-export type { TabListProps, TabsProps }
+export { Tab, TabList, TabPanel, Tabs };
+export type { TabListProps, TabsProps };

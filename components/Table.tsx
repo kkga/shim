@@ -1,29 +1,29 @@
-"use client"
+"use client";
 
-import { cx, cxRenderProps, focusStyle } from "@lib/style"
-import { Theme, useThemeProps } from "@lib/theme"
-import { ArrowDown, ArrowUp, DotsSixVertical } from "@phosphor-icons/react"
+import { cx, cxRenderProps, focusStyle } from "@lib/style";
+import { Theme, useThemeProps } from "@lib/theme";
+import { ArrowDown, ArrowUp, DotsSixVertical } from "@phosphor-icons/react";
 import {
   composeRenderProps,
-  Button as RACButton,
-  Cell as RACCell,
-  Collection as RACCollection,
-  Column as RACColumn,
-  ColumnResizer as RACColumnResizer,
-  Group as RACGroup,
-  Row as RACRow,
-  Table as RACTable,
-  TableBody as RACTableBody,
-  TableHeader as RACTableHeader,
+  Button as RacButton,
+  Cell as RacCell,
+  type CellProps as RacCellProps,
+  Collection as RacCollection,
+  Column as RacColumn,
+  type ColumnProps as RacColumnProps,
+  ColumnResizer as RacColumnResizer,
+  Group as RacGroup,
+  Row as RacRow,
+  type RowProps as RacRowProps,
+  Table as RacTable,
+  TableBody as RacTableBody,
+  TableHeader as RacTableHeader,
+  type TableHeaderProps as RacTableHeaderProps,
+  type TableProps as RacTableProps,
   useTableOptions,
-  type CellProps as RACCellProps,
-  type ColumnProps as RACColumnProps,
-  type RowProps as RACRowProps,
-  type TableHeaderProps as RACTableHeaderProps,
-  type TableProps as RACTableProps,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
-import { Checkbox } from "./Checkbox"
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
+import { Checkbox } from "./checkbox";
 
 const styles = {
   // TODO: add size variants
@@ -33,7 +33,7 @@ const styles = {
       variant: {
         ghost: "border-transparent",
         surface:
-          "bg-background border-neutral-line border-separate border-spacing-0 rounded-lg border",
+          "border-separate border-spacing-0 rounded-lg border border-neutral-line bg-background",
       },
     },
     defaultVariants: {
@@ -42,14 +42,14 @@ const styles = {
   }),
   column: tv({
     base: [
-      "text-neutral-text-contrast group text-xs font-medium",
+      "group font-medium text-neutral-text-contrast text-xs",
       // allows sorting
       "data-allows-sorting:cursor-default",
     ],
   }),
 
   header: tv({
-    base: "inset-shadow-[0_-1px_0_var(--color-neutral-line)] bg-panel sticky top-0 z-10 text-xs font-medium",
+    base: "sticky inset-shadow-[0_-1px_0_var(--color-neutral-line)] top-0 z-10 bg-panel font-medium text-xs",
   }),
 
   headerGroup: tv({
@@ -62,16 +62,16 @@ const styles = {
   }),
   resizer: tv({
     base: [
-      "bg-neutral-line box-content h-6 w-px translate-x-2 cursor-col-resize rounded bg-clip-content px-2 py-1 -outline-offset-2",
+      "-outline-offset-2 box-content h-6 w-px translate-x-2 cursor-col-resize rounded bg-neutral-line bg-clip-content px-2 py-1",
       // resizing
-      "data-resizing:w-[3px] data-resizing:px-[7px] data-resizing:bg-accent-border-hover",
+      "data-resizing:w-[3px] data-resizing:bg-accent-border-hover data-resizing:px-[7px]",
     ],
   }),
 
   row: tv({
     extend: focusStyle,
     base: [
-      "group/row text-neutral-text inset-shadow-[0_-1px_0_var(--color-neutral-line)] last:inset-shadow-none peer relative text-xs -outline-offset-2",
+      "group/row peer -outline-offset-2 relative inset-shadow-[0_-1px_0_var(--color-neutral-line)] text-neutral-text text-xs last:inset-shadow-none",
       // selection mode
       "data-[selection-mode]:cursor-default data-[selection-mode]:select-none",
       // hovered (in selection mode)
@@ -87,34 +87,34 @@ const styles = {
 
   cell: tv({
     extend: focusStyle,
-    base: ["h-8 truncate px-3 -outline-offset-2"],
+    base: ["-outline-offset-2 h-8 truncate px-3"],
   }),
-}
+};
 
-interface TableProps extends RACTableProps, VariantProps<typeof styles.table> {}
+interface TableProps extends RacTableProps, VariantProps<typeof styles.table> {}
 
 function Table({ className, ...props }: TableProps) {
-  let themeProps = useThemeProps()
+  let themeProps = useThemeProps();
 
   return (
     <Theme {...themeProps}>
       {/* <RACResizableTableContainer> */}
-      <RACTable
+      <RacTable
         {...props}
         className={cxRenderProps(className, styles.table())}
       />
       {/* </RACResizableTableContainer> */}
     </Theme>
-  )
+  );
 }
 
-interface ColumnProps extends RACColumnProps {
-  allowsResizing?: boolean
+interface ColumnProps extends RacColumnProps {
+  allowsResizing?: boolean;
 }
 
 function Column(props: ColumnProps) {
   return (
-    <RACColumn
+    <RacColumn
       {...props}
       className={cxRenderProps(props.className, styles.column())}
     >
@@ -122,54 +122,56 @@ function Column(props: ColumnProps) {
         props.children,
         (children, { allowsSorting, sortDirection }) => (
           <div className="peer flex h-8 items-center justify-between px-1">
-            <RACGroup
+            <RacGroup
+              className={styles.headerGroup()}
               role="presentation"
               tabIndex={-1}
-              className={styles.headerGroup()}
             >
               <span className="truncate">{children}</span>
               {allowsSorting && (
                 <span
                   className={cx(
-                    "text-neutral-text group-data-hovered:visible invisible flex size-4 items-center justify-center",
-                    sortDirection && "visible",
+                    "invisible flex size-4 items-center justify-center text-neutral-text group-data-hovered:visible",
+                    sortDirection && "visible"
                   )}
                 >
                   {sortDirection &&
-                    (sortDirection === "ascending" ?
-                      <ArrowDown weight="regular" size={16} aria-hidden />
-                    : <ArrowUp weight="regular" size={16} aria-hidden />)}
+                    (sortDirection === "ascending" ? (
+                      <ArrowDown aria-hidden size={16} weight="regular" />
+                    ) : (
+                      <ArrowUp aria-hidden size={16} weight="regular" />
+                    ))}
                 </span>
               )}
-            </RACGroup>
+            </RacGroup>
             {props.allowsResizing && !props.width && (
-              <RACColumnResizer className={styles.resizer()} />
+              <RacColumnResizer className={styles.resizer()} />
             )}
           </div>
-        ),
+        )
       )}
-    </RACColumn>
-  )
+    </RacColumn>
+  );
 }
 
-function TableHeader<T extends object>(props: RACTableHeaderProps<T>) {
-  let { selectionBehavior, selectionMode, allowsDragging } = useTableOptions()
+function TableHeader<T extends object>(props: RacTableHeaderProps<T>) {
+  let { selectionBehavior, selectionMode, allowsDragging } = useTableOptions();
 
   return (
-    <RACTableHeader
+    <RacTableHeader
       {...props}
       className={cxRenderProps(props.className, styles.header())}
     >
       {/* Add extra columns for drag and drop and selection. */}
       {allowsDragging && <Column />}
       {selectionBehavior === "toggle" && (
-        <RACColumn width={32} minWidth={32} className="w-8 px-0 pl-2">
+        <RacColumn className="w-8 px-0 pl-2" minWidth={32} width={32}>
           {selectionMode === "multiple" && <Checkbox slot="selection" />}
-        </RACColumn>
+        </RacColumn>
       )}
-      <RACCollection items={props.columns}>{props.children}</RACCollection>
-    </RACTableHeader>
-  )
+      <RacCollection items={props.columns}>{props.children}</RacCollection>
+    </RacTableHeader>
+  );
 }
 
 function Row<T extends object>({
@@ -177,16 +179,16 @@ function Row<T extends object>({
   columns,
   children,
   ...props
-}: RACRowProps<T>) {
-  let { selectionBehavior, allowsDragging } = useTableOptions()
+}: RacRowProps<T>) {
+  let { selectionBehavior, allowsDragging } = useTableOptions();
 
   return (
-    <RACRow id={id} {...props} className={styles.row()}>
+    <RacRow id={id} {...props} className={styles.row()}>
       {allowsDragging && (
         <Cell className="max-w-8 px-2">
-          <RACButton slot="drag">
+          <RacButton slot="drag">
             <DotsSixVertical size={16} weight="bold" />
-          </RACButton>
+          </RacButton>
         </Cell>
       )}
       {selectionBehavior === "toggle" && (
@@ -194,17 +196,17 @@ function Row<T extends object>({
           <Checkbox slot="selection" />
         </Cell>
       )}
-      <RACCollection items={columns}>{children}</RACCollection>
-    </RACRow>
-  )
+      <RacCollection items={columns}>{children}</RacCollection>
+    </RacRow>
+  );
 }
 
-function Cell({ className, ...props }: RACCellProps) {
+function Cell({ className, ...props }: RacCellProps) {
   return (
-    <RACCell {...props} className={cxRenderProps(className, styles.cell())} />
-  )
+    <RacCell {...props} className={cxRenderProps(className, styles.cell())} />
+  );
 }
 
-const TableBody = RACTableBody
+const TableBody = RacTableBody;
 
-export { Cell, Column, Row, Table, TableBody, TableHeader, type TableProps }
+export { Cell, Column, Row, Table, TableBody, TableHeader, type TableProps };

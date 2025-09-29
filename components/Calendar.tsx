@@ -1,5 +1,5 @@
-"use client"
+"use client";
 
 export function Calendar() {
-  return <div>Calendar</div>
+  return <div>Calendar</div>;
 }

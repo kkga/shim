@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { cxRenderProps, focusStyle } from "@lib/style"
-import { Size, Theme, useThemeProps } from "@lib/theme"
-import { CaretDown } from "@phosphor-icons/react"
-import { useContext } from "react"
+import { cxRenderProps, focusStyle } from "@lib/style";
+import { ICON_SIZES, type Size, Theme, useThemeProps } from "@lib/theme";
+import { CaretDownIcon } from "@phosphor-icons/react";
+import { useContext } from "react";
 import {
   Button,
   composeRenderProps,
   DisclosureGroupStateContext,
   DisclosureStateContext,
   Heading,
-  Disclosure as RACDisclosure,
-  DisclosurePanel as RACDisclosurePanel,
-  DisclosurePanelProps as RACDisclosurePanelProps,
-  DisclosureProps as RACDisclosureProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
+  Disclosure as RacDisclosure,
+  DisclosurePanel as RacDisclosurePanel,
+  type DisclosurePanelProps as RacDisclosurePanelProps,
+  type DisclosureProps as RacDisclosureProps,
+} from "react-aria-components";
+import { tv } from "tailwind-variants";
 
 const style = tv({
   slots: {
-    disclosure: "border-neutral-line text-neutral-text group border",
+    disclosure: "group border border-neutral-line text-neutral-text",
     button: [
       focusStyle(),
-      "bg-neutral-bg-subtle flex w-full cursor-default items-center gap-2 text-start",
+      "flex w-full cursor-default items-center gap-2 bg-neutral-bg-subtle text-start",
     ],
-    heading: "text-neutral-text-contrast font-medium leading-tight",
-    chevron: "text-neutral-text ml-auto",
+    heading: "font-medium text-neutral-text-contrast leading-tight",
+    chevron: "ml-auto text-neutral-text",
     panel: "",
   },
   variants: {
@@ -36,7 +36,7 @@ const style = tv({
         button: "bg-neutral-bg-subtle",
       },
       surface: {
-        disclosure: "bg-neutral-bg text-neutral-text group",
+        disclosure: "group bg-neutral-bg text-neutral-text",
       },
     },
     size: {
@@ -87,76 +87,83 @@ const style = tv({
     isExpanded: {
       true: {
         chevron: "rotate-180 transform",
-        button: "shadow-neutral-line rounded-b-none shadow-[0_1px]",
+        button: "rounded-b-none shadow-[0_1px] shadow-neutral-line",
       },
     },
   },
-})
+});
 
-interface DisclosureProps extends RACDisclosureProps {
-  size?: Size
+interface DisclosureProps extends RacDisclosureProps {
+  size?: Size;
 }
 
 function Disclosure({ children, size: _size, ...props }: DisclosureProps) {
-  let isInGroup = useContext(DisclosureGroupStateContext) !== null
-  let { size } = useThemeProps({ size: _size })
-  let { disclosure } = style({ isInGroup, size })
+  let isInGroup = useContext(DisclosureGroupStateContext) !== null;
+  let { size } = useThemeProps({ size: _size });
+  let { disclosure } = style({ isInGroup, size });
   return (
-    <RACDisclosure
+    <RacDisclosure
       {...props}
       className={composeRenderProps(props.className, (className, renderProps) =>
-        disclosure({ ...renderProps, isInGroup, className }),
+        disclosure({ ...renderProps, isInGroup, className })
       )}
     >
-      {composeRenderProps(children, (children, {}) => (
-        <Theme size={size}>{children}</Theme>
+      {composeRenderProps(children, (renderChildren) => (
+        <Theme size={size}>{renderChildren}</Theme>
       ))}
-    </RACDisclosure>
-  )
+    </RacDisclosure>
+  );
 }
 
 interface DisclosureHeaderProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 function DisclosureHeader({ children }: DisclosureHeaderProps) {
-  let { isExpanded } = useContext(DisclosureStateContext)!
-  let isInGroup = useContext(DisclosureGroupStateContext) !== null
-  let { size } = useThemeProps()
-  let { button, chevron, heading } = style({ isExpanded, isInGroup, size })
+  let context = useContext(DisclosureStateContext);
+  if (!context) {
+    throw new Error(
+      "DisclosureStateContext is null. Ensure this component is used within a Disclosure."
+    );
+  }
+  let { isExpanded } = context;
+  let isInGroup = useContext(DisclosureGroupStateContext) !== null;
+  let { size } = useThemeProps();
+  let { button, chevron, heading } = style({ isExpanded, isInGroup, size });
   return (
     <Heading className={heading()}>
       <Button
-        slot="trigger"
         className={(renderProps) => button({ ...renderProps, isInGroup })}
+        slot="trigger"
       >
         {({ isDisabled }) => (
           <>
             {children}
-            <CaretDown
+            <CaretDownIcon
               aria-hidden
-              size={size >= 3 ? 16 : 12}
-              weight="bold"
               className={chevron({ isExpanded, isDisabled })}
+              size={ICON_SIZES[size]}
+              weight="bold"
             />
           </>
         )}
       </Button>
     </Heading>
-  )
+  );
 }
 
-type DisclosurePanelProps = RACDisclosurePanelProps
+interface DisclosurePanelProps extends RacDisclosurePanelProps {}
+
 function DisclosurePanel({ className, ...props }: DisclosurePanelProps) {
-  let { size } = useThemeProps()
-  let { panel } = style({ size })
+  let { size } = useThemeProps();
+  let { panel } = style({ size });
   return (
-    <RACDisclosurePanel
+    <RacDisclosurePanel
       {...props}
       className={cxRenderProps(className, panel())}
     />
-  )
+  );
 }
 
-export { Disclosure, DisclosureHeader, DisclosurePanel }
-export type { DisclosureHeaderProps, DisclosurePanelProps, DisclosureProps }
+export { Disclosure, DisclosureHeader, DisclosurePanel };
+export type { DisclosureHeaderProps, DisclosurePanelProps, DisclosureProps };

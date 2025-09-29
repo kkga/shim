@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { cxRenderProps } from "@lib/style"
-import { useThemeProps } from "@lib/theme"
+import { cxRenderProps } from "@lib/style";
+import { useThemeProps } from "@lib/theme";
 import {
-  FieldError as RACFieldError,
-  Group as RACGroup,
-  Input as RACInput,
-  Label as RACLabel,
-  Text as RACText,
-  TextArea as RACTextArea,
-  ValidationResult,
-  type FieldErrorProps as RACFieldErrorProps,
-  type GroupProps as RACGroupProps,
-  type InputProps as RACInputProps,
-  type LabelProps as RACLabelProps,
-  type TextAreaProps as RACTextAreaProps,
-  type TextProps as RACTextProps,
-} from "react-aria-components"
-import { tv, VariantProps } from "tailwind-variants"
+  FieldError as RacFieldError,
+  type FieldErrorProps as RacFieldErrorProps,
+  Group as RacGroup,
+  type GroupProps as RacGroupProps,
+  Input as RacInput,
+  type InputProps as RacInputProps,
+  Label as RacLabel,
+  type LabelProps as RacLabelProps,
+  Text as RacText,
+  TextArea as RacTextArea,
+  type TextAreaProps as RacTextAreaProps,
+  type TextProps as RacTextProps,
+  type ValidationResult,
+} from "react-aria-components";
+import { tv, type VariantProps } from "tailwind-variants";
 
 interface FieldProps
   extends VariantProps<typeof fieldLayoutStyle>,
     VariantProps<typeof inputBaseStyle> {
-  label?: string
-  description?: string
-  errorMessage?: string | ((validation: ValidationResult) => string)
-  placeholder?: string
+  label?: string;
+  description?: string;
+  errorMessage?: string | ((validation: ValidationResult) => string);
+  placeholder?: string;
 }
 
 const fieldLayoutStyle = tv({
@@ -37,7 +37,7 @@ const fieldLayoutStyle = tv({
     },
   },
   defaultVariants: { labelPosition: "top" },
-})
+});
 
 const inputBaseStyle = tv({
   base: [
@@ -45,15 +45,15 @@ const inputBaseStyle = tv({
     // hovered
     "",
     // disabled
-    "data-disabled:cursor-not-allowed data-disabled:inset-ring data-disabled:inset-ring-neutral-line data-disabled:bg-neutral-bg-subtle data-disabled:text-neutral-text-subtle data-disabled:shadow-none",
+    "data-disabled:inset-ring data-disabled:inset-ring-neutral-line data-disabled:cursor-not-allowed data-disabled:bg-neutral-bg-subtle data-disabled:text-neutral-text-subtle data-disabled:shadow-none",
     // invalid
     "data-invalid:inset-ring data-invalid:inset-ring-danger-border data-invalid:bg-danger-bg-subtle",
     // focused
-    "data-focused:outline-2 data-focused:-outline-offset-1 data-focused:outline-accent-focus-ring",
+    "data-focused:-outline-offset-1 data-focused:outline-2 data-focused:outline-accent-focus-ring",
     // focus-visible
-    "data-focus-visible:outline-2 data-focus-visible:-outline-offset-1 data-focus-visible:outline-accent-focus-ring",
+    "data-focus-visible:-outline-offset-1 data-focus-visible:outline-2 data-focus-visible:outline-accent-focus-ring",
     // focus-within
-    "data-focus-within:outline-2 data-focus-within:-outline-offset-1 data-focus-within:outline-accent-focus-ring",
+    "data-focus-within:-outline-offset-1 data-focus-within:outline-2 data-focus-within:outline-accent-focus-ring",
   ],
   variants: {
     variant: {
@@ -69,29 +69,29 @@ const inputBaseStyle = tv({
     },
   },
   defaultVariants: { variant: "classic", size: 1 },
-})
+});
 
 interface InputProps
-  extends Omit<RACInputProps, "size">,
+  extends Omit<RacInputProps, "size">,
     VariantProps<typeof inputBaseStyle> {}
 
 function Input({ size, variant, className, ...props }: InputProps) {
-  let theme = useThemeProps({ size, fieldVariant: variant })
+  let theme = useThemeProps({ size, fieldVariant: variant });
 
   return (
-    <RACInput
+    <RacInput
       {...props}
       className={cxRenderProps(
         className,
-        inputBaseStyle({ variant: theme.fieldVariant, size: theme.size }),
+        inputBaseStyle({ variant: theme.fieldVariant, size: theme.size })
       )}
     />
-  )
+  );
 }
 
 const labelStyle = tv({
   base: [
-    "text-neutral-text font-book max-w-fit self-start truncate",
+    "max-w-fit self-start truncate font-book text-neutral-text",
     "data-disabled:text-neutral-text-subtle group-data-disabled:text-neutral-text-subtle peer-data-disabled:text-neutral-text-subtle",
   ],
   variants: {
@@ -113,10 +113,10 @@ const labelStyle = tv({
     { size: 4, labelPosition: "side", className: "min-h-10" },
   ],
   defaultVariants: { size: 1, labelPosition: "top" },
-})
+});
 
-interface LabelProps extends RACLabelProps, VariantProps<typeof labelStyle> {
-  isRequired?: boolean
+interface LabelProps extends RacLabelProps, VariantProps<typeof labelStyle> {
+  isRequired?: boolean;
 }
 
 function Label({
@@ -127,27 +127,27 @@ function Label({
   className,
   ...props
 }: LabelProps) {
-  let themeProps = useThemeProps({ size, labelPosition })
+  let themeProps = useThemeProps({ size, labelPosition });
 
   return (
-    <RACLabel
+    <RacLabel
       {...props}
-      slot="label"
       className={labelStyle({
         size: themeProps.size,
         labelPosition: themeProps.labelPosition,
         className,
       })}
+      slot="label"
     >
       {children}
       {isRequired && <span> *</span>}
-    </RACLabel>
-  )
+    </RacLabel>
+  );
 }
 
 const descriptionStyle = tv({
   base: [
-    "text-neutral-text col-start-2",
+    "col-start-2 text-neutral-text",
     "group-data-disabled:text-neutral-text-subtle peer-data-disabled:text-neutral-text-subtle",
   ],
   // TODO: size 2 doesn't look good in labelPosition side
@@ -160,26 +160,26 @@ const descriptionStyle = tv({
     },
   },
   defaultVariants: { size: 1 },
-})
+});
 
 interface DescriptionProps
-  extends RACTextProps,
+  extends RacTextProps,
     VariantProps<typeof descriptionStyle> {}
 
 function Description({ size, className, ...props }: DescriptionProps) {
-  let themeProps = useThemeProps({ size })
+  let themeProps = useThemeProps({ size });
 
   return (
-    <RACText
+    <RacText
       {...props}
-      slot="description"
       className={descriptionStyle({ size: themeProps.size, className })}
+      slot="description"
     />
-  )
+  );
 }
 
 const fieldErrorStyle = tv({
-  base: ["text-danger-text col-start-2"],
+  base: ["col-start-2 text-danger-text"],
   variants: {
     size: {
       1: "text-[11px]",
@@ -189,24 +189,24 @@ const fieldErrorStyle = tv({
     },
   },
   defaultVariants: { size: 1 },
-})
+});
 
 interface FieldErrorProps
-  extends RACFieldErrorProps,
+  extends RacFieldErrorProps,
     VariantProps<typeof fieldErrorStyle> {}
 
 function FieldError({ size, className, ...props }: FieldErrorProps) {
-  let themeProps = useThemeProps({ size })
+  let themeProps = useThemeProps({ size });
 
   return (
-    <RACFieldError
+    <RacFieldError
       {...props}
       className={cxRenderProps(
         className,
-        fieldErrorStyle({ size: themeProps.size }),
+        fieldErrorStyle({ size: themeProps.size })
       )}
     />
-  )
+  );
 }
 
 const fieldGroupStyle = tv({
@@ -223,27 +223,27 @@ const fieldGroupStyle = tv({
   defaultVariants: {
     size: 1,
   },
-})
+});
 
 interface FieldGroupProps
-  extends RACGroupProps,
+  extends RacGroupProps,
     VariantProps<typeof fieldGroupStyle> {}
 
 function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
-  let themeProps = useThemeProps({ size, fieldVariant: variant })
+  let themeProps = useThemeProps({ size, fieldVariant: variant });
 
   return (
-    <RACGroup
+    <RacGroup
       {...props}
       className={cxRenderProps(
         className,
         fieldGroupStyle({
           size: themeProps.size,
           variant: themeProps.fieldVariant,
-        }),
+        })
       )}
     />
-  )
+  );
 }
 
 const groupInputStyle = tv({
@@ -261,22 +261,22 @@ const groupInputStyle = tv({
     },
   },
   defaultVariants: { size: 1 },
-})
+});
 
 function GroupInput({ className, ...props }: Omit<InputProps, "variant">) {
-  let themeProps = useThemeProps({ ...props })
-  let { size } = themeProps
+  let themeProps = useThemeProps({ ...props });
+  let { size } = themeProps;
 
   return (
-    <RACInput
+    <RacInput
       {...props}
       className={cxRenderProps(className, groupInputStyle({ size }))}
     />
-  )
+  );
 }
 
-function TextAreaInput(props: RACTextAreaProps) {
-  return <RACTextArea {...props} className={cxRenderProps(props.className)} />
+function TextAreaInput(props: RacTextAreaProps) {
+  return <RacTextArea {...props} className={cxRenderProps(props.className)} />;
 }
 
 export {
@@ -290,4 +290,4 @@ export {
   Label,
   TextAreaInput,
   type FieldProps,
-}
+};

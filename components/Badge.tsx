@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import { useThemeProps } from "@lib/theme"
-import { Children, isValidElement } from "react"
-import { tv, VariantProps } from "tailwind-variants"
+import { useThemeProps } from "@lib/theme";
+import { Children, isValidElement } from "react";
+import { tv, type VariantProps } from "tailwind-variants";
 
 const style = tv({
-  base: "font-book inline-flex w-fit items-center justify-center bg-clip-padding leading-none",
+  base: "inline-flex w-fit items-center justify-center bg-clip-padding font-book leading-none",
   variants: {
     intent: {
       neutral:
-        "border-neutral-line bg-neutral-bg-subtle text-neutral-text border",
-      accent: "border-accent-line bg-accent-bg-subtle text-accent-text border",
+        "border border-neutral-line bg-neutral-bg-subtle text-neutral-text",
+      accent: "border border-accent-line bg-accent-bg-subtle text-accent-text",
       success:
-        "border-success-line bg-success-bg-subtle text-success-text border",
+        "border border-success-line bg-success-bg-subtle text-success-text",
       warning:
-        "border-warning-line bg-warning-bg-subtle text-warning-text border",
-      error: "border-error-line bg-error-bg-subtle text-error-text border",
+        "border border-warning-line bg-warning-bg-subtle text-warning-text",
+      error: "border border-error-line bg-error-bg-subtle text-error-text",
     },
     size: {
-      1: "rounded-xs h-4 gap-1 px-[3px] text-[11px]",
+      1: "h-4 gap-1 rounded-xs px-[3px] text-[11px]",
       2: "h-5 gap-1 rounded-[3px] px-1 text-xs",
       3: "h-6 gap-1.5 rounded-sm px-1.5 text-[13px]",
       4: "h-7 gap-2 rounded-md px-2 text-sm",
@@ -35,25 +35,25 @@ const style = tv({
     {
       isSquare: true,
       size: 1,
-      className: "p-0! size-4",
+      className: "size-4 p-0!",
     },
     {
       isSquare: true,
       size: 2,
-      className: "p-0! size-5",
+      className: "size-5 p-0!",
     },
     {
       isSquare: true,
       size: 3,
-      className: "p-0! size-6",
+      className: "size-6 p-0!",
     },
     {
       isSquare: true,
       size: 4,
-      className: "p-0! size-8",
+      className: "size-8 p-0!",
     },
   ],
-})
+});
 
 interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -66,24 +66,24 @@ function Badge({
   size: _size,
   ...props
 }: BadgeProps) {
-  let { size } = useThemeProps({ size: _size })
-  let children = Children.toArray(props.children)
+  let { size } = useThemeProps({ size: _size });
+  let children = Children.toArray(props.children);
   let hasOnlySvg =
     children.length === 1 &&
     isValidElement(children[0]) &&
-    children[0].type === "svg"
+    children[0].type === "svg";
 
   return (
     <div
       className={style({
         intent,
-        size: size,
+        size,
         isSquare: typeof isSquare === "boolean" ? isSquare : hasOnlySvg,
         className,
       })}
       {...props}
     />
-  )
+  );
 }
 
-export { Badge, type BadgeProps }
+export { Badge, type BadgeProps };
