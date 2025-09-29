@@ -14,12 +14,12 @@ export const SIZES = [
 ] as const;
 export type Size = (typeof SIZES)[number];
 
-export const ICON_SIZES: Record<Size, number> = {
-  1: 12,
-  2: 16,
-  3: 16,
-  4: 20,
-} as const;
+export const ICON_SIZE_MAP: Record<Size, number> = {
+  [SIZE_SMALL]: 12,
+  [SIZE_MEDIUM]: 16,
+  [SIZE_LARGE]: 16,
+  [SIZE_EXTRA_LARGE]: 20,
+};
 
 export interface ThemeContextProps {
   size: Size;
