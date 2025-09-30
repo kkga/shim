@@ -19,8 +19,8 @@ export async function GET(
     const source = getComponentSource(name);
     const json = {
       name,
-      files: [{ path: `components/ui/${name}.tsx`, content: source }],
-      dependencies: [], // optional
+      files: [{ path: `${name}.tsx`, content: source }],
+      dependencies: ["button"], // optional
     };
     return Response.json(json, {
       headers: { "Content-Type": "application/json" },
