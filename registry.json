@@ -1,0 +1,326 @@
+[
+  {
+    "name": "Avatar",
+    "description": "Display an image or icon representing a user or entity.",
+    "category": "Content",
+    "dependencies": [],
+    "files": ["components/avatar.tsx"],
+    "docUrl": null,
+    "ariaUrl": null
+  },
+  {
+    "name": "Kbd",
+    "description": "Display keyboard input or hotkey.",
+    "category": "Content",
+    "dependencies": [],
+    "files": ["components/kbd.tsx"],
+    "docUrl": null,
+    "ariaUrl": null
+  },
+  {
+    "name": "Toolbar",
+    "description": "Group related controls with keyboard navigation.",
+    "category": "Content",
+    "dependencies": [],
+    "files": ["components/toolbar.tsx"],
+    "docUrl": null,
+    "ariaUrl": null
+  },
+  {
+    "name": "Breadcrumbs",
+    "description": "Display a hierarchy of links to the current page.",
+    "category": "Navigation",
+    "dependencies": ["Link"],
+    "files": ["components/breadcrumbs.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Breadcrumbs.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/"
+  },
+  {
+    "name": "Disclosure",
+    "description": "Collapsible section of content.",
+    "category": "Navigation",
+    "dependencies": [],
+    "files": ["components/disclosure.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Disclosure.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/"
+  },
+  {
+    "name": "DisclosureGroup",
+    "description": "Group multiple disclosures into an accordion.",
+    "category": "Navigation",
+    "dependencies": [],
+    "files": ["components/disclosure-group.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/DisclosureGroup.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/"
+  },
+  {
+    "name": "Link",
+    "description": "Navigate to a different page or section.",
+    "category": "Navigation",
+    "dependencies": [],
+    "files": ["components/link.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Link.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/link/"
+  },
+  {
+    "name": "Tabs",
+    "description": "Navigate between different sections of content.",
+    "category": "Navigation",
+    "dependencies": [],
+    "files": ["components/tabs.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Tabs.html",
+    "ariaUrl": "tabs"
+  },
+  {
+    "name": "Button",
+    "description": "Perform an action.",
+    "category": "Buttons",
+    "dependencies": [],
+    "files": ["components/button.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Button.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/button/"
+  },
+  {
+    "name": "ToggleButton",
+    "description": "Toggle a state between two values.",
+    "category": "Buttons",
+    "dependencies": [],
+    "files": ["components/toggle-button.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/ToggleButton.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/button/"
+  },
+  {
+    "name": "ToggleButtonGroup",
+    "description": "Group multiple toggle buttons, with single or multiple selection.",
+    "category": "Buttons",
+    "dependencies": ["Field", "ToggleButton"],
+    "files": ["components/toggle-button-group.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/ToggleButtonGroup.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/"
+  },
+  {
+    "name": "ListBox",
+    "description": "Display a list of selectable options.",
+    "category": "Collections",
+    "dependencies": [],
+    "files": ["components/list-box.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/ListBox.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
+  },
+  {
+    "name": "Menu",
+    "description": "Display a list of actions or options in a popover.",
+    "category": "Collections",
+    "dependencies": ["ListBox", "Popover"],
+    "files": ["components/menu.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Menu.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/menubar/"
+  },
+  {
+    "name": "Table",
+    "description": "Display tabular data in a grid with selection and sorting.",
+    "category": "Collections",
+    "dependencies": [],
+    "files": ["components/table.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Table.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/"
+  },
+  {
+    "name": "TagGroup",
+    "description": "Display a group of tags that can be selected and removed.",
+    "category": "Collections",
+    "dependencies": ["Field"],
+    "files": ["components/tag-group.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Table.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/"
+  },
+  {
+    "name": "Tree",
+    "description": "Navigate through a hierarchy of items.",
+    "category": "Collections",
+    "dependencies": [],
+    "files": ["components/tree.tsx"],
+    "docUrl": null,
+    "ariaUrl": null
+  },
+  {
+    "name": "Checkbox",
+    "description": "Mark one or multiple options as selected.",
+    "category": "Forms",
+    "dependencies": ["Field"],
+    "files": ["components/checkbox.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Checkbox.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/"
+  },
+  {
+    "name": "Field",
+    "description": "Utility components for other form fields. Not intended to be used directly.",
+    "category": "Forms",
+    "dependencies": [],
+    "files": ["components/field.tsx"],
+    "docUrl": null,
+    "ariaUrl": null
+  },
+  {
+    "name": "Form",
+    "description": "Group form fields together, manage their state, and handle submission.",
+    "category": "Forms",
+    "dependencies": [],
+    "files": ["components/form.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Form.html",
+    "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#form"
+  },
+  {
+    "name": "NumberField",
+    "description": "Enter a number, and increment or decrement it with buttons.",
+    "category": "Forms",
+    "dependencies": ["Field"],
+    "files": ["components/number-field.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/NumberField.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/"
+  },
+  {
+    "name": "RadioGroup",
+    "description": "Mark one option as selected.",
+    "category": "Forms",
+    "dependencies": ["Field"],
+    "files": ["components/radio-group.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/RadioGroup.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/radio/"
+  },
+  {
+    "name": "SearchField",
+    "description": "Enter and clear a search query.",
+    "category": "Forms",
+    "dependencies": ["Field"],
+    "files": ["components/search-field.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/SearchField.html",
+    "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#searchbox"
+  },
+  {
+    "name": "Slider",
+    "description": "Select one or more values within a range.",
+    "category": "Forms",
+    "dependencies": ["Field"],
+    "files": ["components/slider.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Slider.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/"
+  },
+  {
+    "name": "Switch",
+    "description": "Toggle between two states.",
+    "category": "Forms",
+    "dependencies": [],
+    "files": ["components/switch.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Switch.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/switch/"
+  },
+  {
+    "name": "TextArea",
+    "description": "Enter a multi-line text value.",
+    "category": "Forms",
+    "dependencies": ["Field"],
+    "files": ["components/text-area.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/TextField.html",
+    "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#textbox"
+  },
+  {
+    "name": "TextField",
+    "description": "Enter a plain text value.",
+    "category": "Forms",
+    "dependencies": ["Field"],
+    "files": ["components/text-field.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/TextField.html",
+    "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#textbox"
+  },
+  {
+    "name": "Dialog",
+    "description": "Modal overlay displayed above other content.",
+    "category": "Overlays",
+    "dependencies": [],
+    "files": ["components/dialog.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Modal.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
+  },
+  {
+    "name": "Popover",
+    "description": "Relatively positioned overlay.",
+    "category": "Overlays",
+    "dependencies": [],
+    "files": ["components/popover.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Popover.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
+  },
+  {
+    "name": "Tooltip",
+    "description": "Display a description for an element on hover or focus.",
+    "category": "Overlays",
+    "dependencies": [],
+    "files": ["components/tooltip.tsx"],
+    "docUrl": null,
+    "ariaUrl": null
+  },
+  {
+    "name": "ComboBox",
+    "description": "Filter a list of options by typing in a text field.",
+    "category": "Pickers",
+    "dependencies": ["Field", "ListBox", "Popover"],
+    "files": ["components/combo-box.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/ComboBox.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+  },
+  {
+    "name": "Select",
+    "description": "Pick an option from a list.",
+    "category": "Pickers",
+    "dependencies": ["Button", "ListBox", "Popover", "Field"],
+    "files": ["components/select.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Select.html",
+    "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
+  },
+  {
+    "name": "Badge",
+    "description": "Indicate status or category.",
+    "category": "Status",
+    "dependencies": [],
+    "files": ["components/badge.tsx"],
+    "docUrl": null,
+    "ariaUrl": null
+  },
+  {
+    "name": "Meter",
+    "description": "Display a numeric value within a known range.",
+    "category": "Status",
+    "dependencies": ["Field"],
+    "files": ["components/meter.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/Meter.html",
+    "ariaUrl": "meter"
+  },
+  {
+    "name": "ProgressBar",
+    "description": "Display determinate or indeterminate progress over time.",
+    "category": "Status",
+    "dependencies": ["Field"],
+    "files": ["components/progress-bar.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/ProgressBar.html",
+    "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#progressbar"
+  },
+  {
+    "name": "ProgressCircle",
+    "description": "Display determinate or indeterminate progress over time.",
+    "category": "Status",
+    "dependencies": ["Field"],
+    "files": ["components/progress-circle.tsx"],
+    "docUrl": "https://react-spectrum.adobe.com/react-aria/ProgressBar.html",
+    "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#progressbar"
+  },
+  {
+    "name": "Toast",
+    "description": "Display a brief message to the user.",
+    "category": "Status",
+    "dependencies": [],
+    "files": ["components/toast.tsx"],
+    "docUrl": null,
+    "ariaUrl": null
+  }
+]
