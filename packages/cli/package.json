@@ -1,0 +1,24 @@
+{
+  "name": "shim-cli",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "shim": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "npm run build && node dist/index.js"
+  },
+  "dependencies": {
+    "commander": "^14.0.1",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "24.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "5.9.2"
+  }
+}
