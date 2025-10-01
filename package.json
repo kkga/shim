@@ -39,10 +39,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
-    "@types/node": "24.6.0",
+    "@types/node": "24.6.1",
     "knip": "^5.64.1",
-    "lefthook": "^1.13.5",
-    "typescript": "5.9.2",
+    "lefthook": "^1.13.6",
+    "typescript": "5.9.3",
     "ultracite": "5.4.6"
   },
   "pnpm": {
