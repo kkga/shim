@@ -17,7 +17,7 @@ interface ApiResponse {
 }
 
 const program = new Command();
-program.version(packageJson.version || "1.0.0");
+program.version(packageJson.version || "1.0.0").name("shim-cli");
 
 program
   .command("add <component>")
