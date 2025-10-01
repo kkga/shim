@@ -3,7 +3,7 @@ import { Badge } from "@/components/badge";
 import { DataList, DataListItem } from "@/components/data-list";
 import { Link } from "@/components/link";
 import { Separator } from "@/components/separator";
-import { Examples } from "./_components/examples";
+import { Examples } from "./_components/examples/examples";
 import { Logo } from "./_components/logo";
 import { P } from "./_components/mdx-components";
 
