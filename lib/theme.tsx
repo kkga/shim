@@ -6,12 +6,7 @@ export const SIZE_MEDIUM = 2;
 export const SIZE_LARGE = 3;
 export const SIZE_EXTRA_LARGE = 4;
 
-export const SIZES = [
-  SIZE_SMALL,
-  SIZE_MEDIUM,
-  SIZE_LARGE,
-  SIZE_EXTRA_LARGE,
-] as const;
+const SIZES = [SIZE_SMALL, SIZE_MEDIUM, SIZE_LARGE, SIZE_EXTRA_LARGE] as const;
 export type Size = (typeof SIZES)[number];
 
 export const ICON_SIZE_MAP: Record<Size, number> = {
