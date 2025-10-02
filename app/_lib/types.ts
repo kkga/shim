@@ -1,13 +1,6 @@
-export interface ComponentMetadata {
-  name: string;
-  description: string;
-  category: string;
-  docUrl?: string;
-  ariaUrl?: string;
-  composes?: string[];
-  status?: "stable" | "alpha" | "beta" | "deprecated" | "planned";
-  [key: string]: unknown;
-}
+import registry from "@/registry.json" with { type: "json" };
+
+export type ComponentMetadata = (typeof registry.items)[0];
 
 export interface GuideMetadata {
   title: string;

@@ -33,14 +33,15 @@ function MetadataLink({ href, title, external, children }: MetadataLinkProps) {
   );
 }
 
-interface MetadataProps extends ComponentMetadata {
-  dependencies?: { name: string; slug: string }[];
+interface MetadataProps
+  extends Pick<ComponentMetadata, "docUrl" | "ariaUrl" | "title"> {
+  dependencies: { name: string; slug: string }[];
 }
 
 export function Metadata({
+  title,
   docUrl,
   ariaUrl,
-  name,
   dependencies,
 }: MetadataProps) {
   return (
@@ -55,9 +56,9 @@ export function Metadata({
             <MetadataLink
               external
               href={docUrl}
-              title={`View ${name} documentation`}
+              title={`View ${title} documentation`}
             >
-              React Aria {name}
+              React Aria {title}
             </MetadataLink>
           }
         />
@@ -77,7 +78,7 @@ export function Metadata({
         value={
           <MetadataLink
             external
-            href={`${GITHUB_FILE_URL}/${name}.tsx`}
+            href={`${GITHUB_FILE_URL}/${title}.tsx`}
             title="View source code on GitHub"
           >
             GitHub
@@ -89,14 +90,14 @@ export function Metadata({
         value={
           <MetadataLink
             external
-            href={`${GITHUB_ISSUES_URL}/new?title=[${name}] Issue`}
+            href={`${GITHUB_ISSUES_URL}/new?title=[${title}] Issue`}
             title="New issue on GitHub"
           >
             Report issue
           </MetadataLink>
         }
       />
-      {dependencies && (
+      {dependencies.length > 0 && (
         <DataListItem
           label="Composes"
           value={dependencies.map(({ name: depName, slug: depSlug }, i) => (
@@ -104,7 +105,7 @@ export function Metadata({
               {i > 0 && ", "}
               <MetadataLink
                 external={false}
-                href={`/docs/${depSlug}`}
+                href={`/docs/components/${depSlug}`}
                 title={`View ${depName} documentation`}
               >
                 {depName}

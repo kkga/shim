@@ -18,7 +18,7 @@ export async function GET(
     );
   }
 
-  const component = registry.find((item) => item.name === name);
+  const component = registry.items.find((item) => item.name === name);
 
   if (!component) {
     return new Response(JSON.stringify({ error: "Component not found" }), {
