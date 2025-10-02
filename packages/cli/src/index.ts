@@ -6,8 +6,9 @@ import fetch from "node-fetch";
 
 import packageJson from "../package.json" with { type: "json" };
 
-// const API_URL = process.env.API_URL || "https://shim.kkga.me/api/components";
-const API_URL = process.env.API_URL || "http://localhost:3000/api/components";
+const API_URL =
+  process.env.SHIM_API_URL || "https://shim.kkga.me/api/components";
+
 interface ApiResponse {
   files: Array<{
     path: string;

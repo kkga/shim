@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "npm run build && node dist/index.js"
+    "dev": "SHIM_API_URL='http://localhost:3000/api/components' npm run build && node dist/index.js"
   },
   "dependencies": {
     "commander": "^14.0.1",
