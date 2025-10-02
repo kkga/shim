@@ -1,0 +1,49 @@
+
+### Size
+
+Use the `size` prop to set the size of the Select.
+
+<Demo demo={<SelectDemo.Size />} code={demos.size} />
+
+### Controlled selection with dynamic items
+
+Use `selectedKey` and `onSelectionChange` to control the selected option.
+
+<Demo
+  className="items-stretch"
+  demo={<SelectDemo.Controlled />}
+  code={demos.controlled}
+/>
+
+### Sections
+
+Use `<SelectSection>` component to group options.
+
+<Demo
+  className="items-stretch"
+  demo={<SelectDemo.Sections />}
+  code={demos.sections}
+/>
+
+### States
+
+Use `isDisabled` to disable the select. Use `isInvalid` and `errorMessage` to
+show an error state.
+
+<Demo
+  className="items-stretch"
+  demo={<SelectDemo.States />}
+  code={demos.states}
+/>
+
+### Links
+
+Use `href` prop on the `<SelectItem>` component to make it a link.
+
+TODO: add note about client-side routing
+
+<Demo
+  className="items-stretch"
+  demo={<SelectDemo.Links />}
+  code={demos.links}
+/>

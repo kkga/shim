@@ -2,7 +2,8 @@ import { Suspense } from "react";
 import { DocHeader } from "@/app/_components/doc-header";
 import Toc from "@/app/_components/toc";
 import { mdxToHtml } from "@/app/_lib/mdx";
-import { getFileSource, getGuides } from "@/app/_lib/utils";
+import { getFileSource } from "@/app/_lib/utils";
+import { getGuides } from "./utils";
 
 export const dynamicParams = false;
 export function generateStaticParams() {

@@ -5,12 +5,8 @@ import { DocHeader } from "@/app/_components/doc-header";
 import { Metadata } from "@/app/_components/metadata";
 import { Note } from "@/app/_components/note";
 import { mdxToHtml } from "@/app/_lib/mdx";
-import {
-  getComponentDocs,
-  getComponentSource,
-  getDemosSource,
-} from "@/app/_lib/utils";
 import { Link } from "@/components/link";
+import { getComponentDocs, getComponentSource, getDemosSource } from "./utils";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -35,7 +31,7 @@ export default async function DocPage({
   if (!doc) {
     throw new Error(`Document not found for slug: ${slug}`);
   }
-  let { name, description, composes } = doc.metadata;
+  let { name, title, description, ariaUrl, docUrl } = doc.metadata;
   let demos = getDemosSource(name);
   let source = getComponentSource(name);
   let MainDemo = getMainDemo(name);
@@ -43,14 +39,12 @@ export default async function DocPage({
   let curlCommand = `curl -o ${name}.tsx '${API_URL}?c=${name}'`;
   let sourceUrl = `${GITHUB_FILE_URL}/${name}.tsx`;
 
-  let dependencies = composes
-    ? composes
-        .map((depName) => {
-          const dep = docs.find((depDoc) => depDoc.metadata.name === depName);
-          return dep ? { name: dep.metadata.name, slug: dep.slug } : null;
-        })
-        .filter((dep) => dep !== null)
-    : [];
+  let dependencies = doc.metadata.dependencies
+    .map((depName) => {
+      const dep = docs.find((depDoc) => depDoc.metadata.name === depName);
+      return dep ? { name: dep.metadata.title, slug: dep.slug } : null;
+    })
+    .filter((dep): dep is { name: string; slug: string } => dep !== null);
 
   let { content } = await mdxToHtml({
     source: doc.source,
@@ -63,15 +57,17 @@ export default async function DocPage({
 
   return (
     <article className="grid grid-cols-1 place-content-start gap-x-8 divide-y divide-neutral-3 pb-12 *:last:border-neutral-3 *:last:border-b md:grid-cols-[2fr_3fr] md:gap-x-12">
-      <DocHeader subtitle={description} title={name}>
+      <DocHeader subtitle={description} title={title}>
         <Metadata
-          dependencies={dependencies.length > 0 ? dependencies : undefined}
-          {...doc.metadata}
+          ariaUrl={ariaUrl}
+          dependencies={dependencies}
+          docUrl={docUrl}
+          title={title}
         />
       </DocHeader>
 
       <Demo
-        code={[{ content: demos.main, title: `${name} example` }]}
+        code={[{ content: demos.main, title: `${title} example` }]}
         demo={<MainDemo />}
         hideTitle
       />

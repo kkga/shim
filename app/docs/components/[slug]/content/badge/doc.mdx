@@ -1,0 +1,17 @@
+<Demo title="Size " demo={<BadgeDemo.Size />} code={demos["size"]}>
+  Use the `size` prop to set the size of the badge.
+</Demo>
+
+<Demo title="Intent " demo={<BadgeDemo.Intent />} code={demos["intent"]}>
+  Use the `intent` prop to set the semantic color of the badge.
+</Demo>
+
+<Demo title="Content " demo={<BadgeDemo.Content />} code={demos["content"]}>
+  Badges can contain a label, icon, or both. Use icons by passing an icon
+  component as a child. If the only child is an SVG element, the badge will be
+  sized to a square. This can be controlled by setting the `isSquare` prop.
+  <Note>
+    If a visible label isn't specified, an `aria-label` must be provided to the
+    icon for accessibility.
+  </Note>
+</Demo>

@@ -1,7 +1,8 @@
 import { useMemo } from "react";
 import { SideNav } from "@/app/_components/nav/sidenav";
 import { TopNav } from "@/app/_components/nav/topnav";
-import { getComponentDocs, getGuides } from "@/app/_lib/utils";
+import { getComponentDocs } from "./components/[slug]/utils";
+import { getGuides } from "./guides/[slug]/utils";
 
 export default function DocsLayout({
   children,
@@ -30,7 +31,7 @@ export default function DocsLayout({
       },
       ...docs.map((doc) => ({
         src: `components/${doc.slug}`,
-        name: doc.metadata.name,
+        name: doc.metadata.title,
         category: doc.metadata.category,
         status: doc.metadata.status,
       })),
