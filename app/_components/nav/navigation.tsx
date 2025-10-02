@@ -69,7 +69,7 @@ export function getIcon(name: string): React.ReactNode {
       .with("Twitter", () => <XLogoIcon size={16} weight="duotone" />)
 
       // Default case
-      .otherwise(() => null)
+      .otherwise((): React.ReactNode => null)
   );
 }
 

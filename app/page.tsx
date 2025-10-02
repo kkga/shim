@@ -1,4 +1,7 @@
-import { ArrowRight, ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+import {
+  ArrowRightIcon,
+  ArrowSquareOutIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import { Badge } from "@/components/badge";
 import { DataList, DataListItem } from "@/components/data-list";
 import { Link } from "@/components/link";
@@ -34,7 +37,7 @@ export default function Page() {
               intent="accent"
             >
               Documentation
-              <ArrowRight size={16} />
+              <ArrowRightIcon size={16} />
             </Link>
             <Link
               className="flex items-center gap-1 font-medium"
@@ -43,7 +46,7 @@ export default function Page() {
               target="_blank"
             >
               GitHub
-              <ArrowSquareOut size={16} />
+              <ArrowSquareOutIcon size={16} />
             </Link>
           </div>
 

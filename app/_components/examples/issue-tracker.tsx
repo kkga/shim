@@ -1,31 +1,31 @@
 "use client";
 
 import {
-  Archive,
-  CaretDown,
-  CheckCircle,
-  Checks,
-  CircleHalf,
-  Clock,
-  DeviceMobile,
-  DotsThree,
-  Folder,
-  FunnelSimple,
-  MagnifyingGlass,
-  MapTrifold,
-  PencilRuler,
-  Plus,
-  RoadHorizon,
-  SignOut,
-  SlidersHorizontal,
-  Stack,
-  Star,
-  Tray,
-  UserFocus,
-  Users,
-  UsersThree,
-  XCircle,
-  XSquare,
+  ArchiveIcon,
+  CaretDownIcon,
+  CheckCircleIcon,
+  ChecksIcon,
+  CircleHalfIcon,
+  ClockIcon,
+  DeviceMobileIcon,
+  DotsThreeIcon,
+  FolderIcon,
+  FunnelSimpleIcon,
+  MagnifyingGlassIcon,
+  MapTrifoldIcon,
+  PencilRulerIcon,
+  PlusIcon,
+  RoadHorizonIcon,
+  SignOutIcon,
+  SlidersHorizontalIcon,
+  StackIcon,
+  StarIcon,
+  TrayIcon,
+  UserFocusIcon,
+  UsersIcon,
+  UsersThreeIcon,
+  XCircleIcon,
+  XSquareIcon,
 } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import type { Selection } from "react-aria-components";
@@ -202,13 +202,11 @@ export function ExampleIssueTracker() {
         id: "mobile-app",
         text: "Mobile app",
         href: "#",
-        icon: <DeviceMobile className="text-accent-text" size={16} />,
+        icon: <DeviceMobileIcon className="text-accent-text" size={16} />,
       },
       {
         id: [...selectedKeys][0],
         text: [...selectedKeys][0],
-        href: null,
-        icon: null,
       },
     ],
     [selectedKeys]
@@ -230,11 +228,11 @@ export function ExampleIssueTracker() {
                 intent="neutral"
                 variant="ghost"
               >
-                Acme <CaretDown size={12} />
+                Acme <CaretDownIcon size={12} />
               </Button>
               <Menu className="min-w-[180px]">
                 <MenuItem>
-                  <SlidersHorizontal size={16} weight="duotone" />
+                  <SlidersHorizontalIcon size={16} weight="duotone" />
                   Preferences
                   <Kbd className="ml-auto" variant="plain">
                     G then S
@@ -243,7 +241,7 @@ export function ExampleIssueTracker() {
                 <MenuSeparator />
                 <SubmenuTrigger>
                   <MenuItem>
-                    <UsersThree size={16} weight="duotone" />
+                    <UsersThreeIcon size={16} weight="duotone" />
                     Workspace
                   </MenuItem>
                   <Menu>
@@ -253,7 +251,7 @@ export function ExampleIssueTracker() {
                   </Menu>
                 </SubmenuTrigger>
                 <MenuItem>
-                  <SignOut size={16} weight="duotone" />
+                  <SignOutIcon size={16} weight="duotone" />
                   Log out
                   <Kbd className="ml-auto" variant="plain">
                     ⎇⇧Q
@@ -268,11 +266,11 @@ export function ExampleIssueTracker() {
               isIconOnly
               variant="ghost"
             >
-              <MagnifyingGlass size={16} />
+              <MagnifyingGlassIcon size={16} />
             </Button>
 
             <Button intent="neutral" isIconOnly>
-              <Plus size={16} />
+              <PlusIcon size={16} />
             </Button>
           </div>
 
@@ -285,36 +283,36 @@ export function ExampleIssueTracker() {
           >
             <ListBoxSection>
               <ListBoxItem id="inbox" textValue="inbox">
-                <Tray size={16} weight="duotone" />
+                <TrayIcon size={16} weight="duotone" />
                 Inbox
                 <Badge className="ml-0" intent="neutral" size={1}>
                   15
                 </Badge>
               </ListBoxItem>
               <ListBoxItem textValue="my-issues">
-                <UserFocus size={16} weight="duotone" />
+                <UserFocusIcon size={16} weight="duotone" />
                 My issues
               </ListBoxItem>
             </ListBoxSection>
 
             <ListBoxSection title="Workspace">
               <ListBoxItem textValue="views">
-                <Stack size={16} weight="duotone" />
+                <StackIcon size={16} weight="duotone" />
                 Views
               </ListBoxItem>
               <ListBoxItem textValue="roadmaps">
-                <MapTrifold size={16} weight="duotone" />
+                <MapTrifoldIcon size={16} weight="duotone" />
                 Roadmaps
               </ListBoxItem>
               <ListBoxItem textValue="teams">
-                <Users size={16} weight="duotone" />
+                <UsersIcon size={16} weight="duotone" />
                 Teams
               </ListBoxItem>
             </ListBoxSection>
 
             <ListBoxSection title="Favorites">
               <ListBoxItem textValue="mobile-app">
-                <DeviceMobile
+                <DeviceMobileIcon
                   className="text-accent-text"
                   size={16}
                   weight="duotone"
@@ -322,7 +320,7 @@ export function ExampleIssueTracker() {
                 Mobile app
               </ListBoxItem>
               <ListBoxItem textValue="roadmap">
-                <RoadHorizon
+                <RoadHorizonIcon
                   className="text-success-text"
                   size={16}
                   weight="duotone"
@@ -330,7 +328,7 @@ export function ExampleIssueTracker() {
                 3Q24 Roadmap
               </ListBoxItem>
               <ListBoxItem textValue="design-system">
-                <PencilRuler
+                <PencilRulerIcon
                   className="text-warning-text"
                   size={16}
                   weight="duotone"
@@ -339,12 +337,12 @@ export function ExampleIssueTracker() {
               </ListBoxItem>
 
               <ListBoxItem textValue="projects">
-                <Folder size={16} weight="duotone" />
+                <FolderIcon size={16} weight="duotone" />
                 Projects
               </ListBoxItem>
 
               <ListBoxItem textValue="docs">
-                <Folder size={16} weight="duotone" />
+                <FolderIcon size={16} weight="duotone" />
                 Docs
               </ListBoxItem>
             </ListBoxSection>
@@ -364,18 +362,18 @@ export function ExampleIssueTracker() {
                   isIconOnly
                   variant="ghost"
                 >
-                  <DotsThree size={16} weight="bold" />
+                  <DotsThreeIcon size={16} weight="bold" />
                 </Button>
                 <Menu>
                   <MenuItem>
-                    <Checks size={16} weight="duotone" />
+                    <ChecksIcon size={16} weight="duotone" />
                     Mark all as read
                     <Kbd className="ml-auto" variant="plain">
                       ⎇U
                     </Kbd>
                   </MenuItem>
                   <MenuItem>
-                    <XSquare size={16} weight="duotone" />
+                    <XSquareIcon size={16} weight="duotone" />
                     Empty inbox
                     <Kbd className="ml-auto" variant="plain">
                       ⎇⇧D
@@ -391,7 +389,7 @@ export function ExampleIssueTracker() {
                   isIconOnly
                   variant="ghost"
                 >
-                  <FunnelSimple size={16} />
+                  <FunnelSimpleIcon size={16} />
                 </Button>
                 <Menu placement="bottom end" selectionMode="multiple">
                   <MenuItem>Assignments</MenuItem>
@@ -402,7 +400,7 @@ export function ExampleIssueTracker() {
               </MenuTrigger>
               <PopoverTrigger>
                 <Button intent="neutral" isIconOnly variant="ghost">
-                  <SlidersHorizontal size={16} />
+                  <SlidersHorizontalIcon size={16} />
                 </Button>
                 <Popover placement="bottom end">
                   <div className="flex w-[220px] flex-col gap-2 p-3">
@@ -469,21 +467,21 @@ export function ExampleIssueTracker() {
                       </span>
                       <div className="col-start-3 row-start-1">
                         {status === "in-progress" && (
-                          <CircleHalf
+                          <CircleHalfIcon
                             className="text-warning-text"
                             size={16}
                             weight="duotone"
                           />
                         )}
                         {status === "done" && (
-                          <CheckCircle
+                          <CheckCircleIcon
                             className="text-success-text"
                             size={16}
                             weight="duotone"
                           />
                         )}
                         {status === "cancelled" && (
-                          <XCircle
+                          <XCircleIcon
                             className="text-neutral-text"
                             size={16}
                             weight="duotone"
@@ -512,7 +510,7 @@ export function ExampleIssueTracker() {
 
               <MenuTrigger>
                 <Button intent="neutral" isIconOnly variant="ghost">
-                  <DotsThree size={16} weight="bold" />
+                  <DotsThreeIcon size={16} weight="bold" />
                 </Button>
                 <Menu>
                   <MenuItem>Copy link</MenuItem>
@@ -537,7 +535,10 @@ export function ExampleIssueTracker() {
                   variant="ghost"
                 >
                   {({ isSelected }) => (
-                    <Star size={16} weight={isSelected ? "fill" : "regular"} />
+                    <StarIcon
+                      size={16}
+                      weight={isSelected ? "fill" : "regular"}
+                    />
                   )}
                 </ToggleButton>
                 <Tooltip>
@@ -554,7 +555,7 @@ export function ExampleIssueTracker() {
                   isIconOnly
                   variant="ghost"
                 >
-                  <Archive size={16} />
+                  <ArchiveIcon size={16} />
                 </Button>
                 <Tooltip>
                   Archive
@@ -568,7 +569,7 @@ export function ExampleIssueTracker() {
                   isIconOnly
                   variant="ghost"
                 >
-                  <Clock size={16} />
+                  <ClockIcon size={16} />
                 </Button>
                 <Tooltip>
                   Snooze
@@ -595,7 +596,7 @@ export function ExampleIssueTracker() {
                   value={
                     selectedItem?.status === "in-progress" ? (
                       <div className="flex items-center gap-1.5 text-warning-text">
-                        <CircleHalf
+                        <CircleHalfIcon
                           className="shrink-0"
                           size={16}
                           weight="duotone"
@@ -604,7 +605,7 @@ export function ExampleIssueTracker() {
                       </div>
                     ) : (
                       <div className="flex items-center gap-1.5 text-success-text">
-                        <CheckCircle
+                        <CheckCircleIcon
                           className="shrink-0"
                           size={16}
                           weight="duotone"
@@ -618,11 +619,11 @@ export function ExampleIssueTracker() {
 
               <div className="mt-1 flex flex-col items-start gap-1">
                 <Button intent="neutral" variant="ghost">
-                  <Plus size={12} />
+                  <PlusIcon size={12} />
                   Add sub-issues
                 </Button>
                 <Button intent="neutral" variant="ghost">
-                  <Plus size={12} />
+                  <PlusIcon size={12} />
                   Add links
                 </Button>
               </div>
