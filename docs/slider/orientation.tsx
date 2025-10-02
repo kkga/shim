@@ -1,11 +1,10 @@
 "use client";
 import { Fragment } from "react";
 import { Slider } from "@/components/slider";
-import { SIZES } from "@/lib/theme";
 
 export default () => (
   <div className="flex h-48 gap-4 self-start">
-    {SIZES.map((size) => (
+    {([1, 2, 3, 4] as const).map((size) => (
       <Fragment key={size}>
         <Slider
           aria-label="Slope"

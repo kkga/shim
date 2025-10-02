@@ -4,10 +4,9 @@ import {
   DisclosureHeader,
   DisclosurePanel,
 } from "@/components/disclosure";
-import { SIZES } from "@/lib/theme";
 
 export default () =>
-  SIZES.map((size) => (
+  ([1, 2, 3, 4] as const).map((size) => (
     <Disclosure key={size} size={size}>
       <DisclosureHeader>Size {size}</DisclosureHeader>
       <DisclosurePanel>Size {size} content</DisclosurePanel>

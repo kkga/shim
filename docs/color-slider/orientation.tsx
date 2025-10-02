@@ -1,9 +1,8 @@
 import { ColorSlider } from "@/components/color-slider";
-import { SIZES } from "@/lib/theme";
 
 export default () => (
   <div className="flex gap-4">
-    {SIZES.map((size) => (
+    {([1, 2, 3, 4] as const).map((size) => (
       <ColorSlider
         aria-label="Alpha"
         channel="alpha"

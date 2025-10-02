@@ -1,28 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useListData } from "react-stately";
 import { Tag, TagGroup } from "@/components/tag-group";
 
 export default () => {
-  let defaultItems = [
-    { id: 1, name: "News" },
-    { id: 2, name: "Travel" },
-    { id: 3, name: "Gaming" },
-    { id: 4, name: "Shopping" },
-  ];
-
-  let [items, setItems] = useState(defaultItems);
-
-  let onRemove = (keys) => {
-    setItems((prevItems) => prevItems.filter((item) => !keys.has(item.id)));
-  };
+  let list = useListData({
+    initialItems: [
+      { id: 1, name: "News" },
+      { id: 2, name: "Travel" },
+      { id: 3, name: "Gaming" },
+      { id: 4, name: "Shopping" },
+    ],
+  });
 
   return (
     <TagGroup
       aria-label="Categories"
-      items={items}
-      onRemove={onRemove}
+      items={list.items}
+      onRemove={(keys) => list.remove(...keys)}
       renderEmptyState={() => <div className="p-2">No items</div>}
-      selectionMode="multiple"
     >
       {(item) => <Tag>{item.name}</Tag>}
     </TagGroup>

@@ -10,7 +10,14 @@ import {
   TableHeader,
 } from "@/components/table";
 
-let rows = [
+interface RowData {
+  id: number;
+  name: string;
+  major: string;
+  gpa: number;
+}
+
+let rows: RowData[] = [
   { id: 1, name: "John Doe", major: "Computer Science", gpa: 3.5 },
   { id: 2, name: "Jane Smith", major: "Mechanical Engineering", gpa: 3.8 },
   { id: 3, name: "Alice Johnson", major: "Mathematics", gpa: 3.9 },
@@ -29,10 +36,12 @@ export default () => {
 
   let items = useMemo(() => {
     let sorted = [...rows].sort((a, b) => {
-      if (sortDescriptor.column) {
-        return typeof a[sortDescriptor.column] === "number"
-          ? a[sortDescriptor.column] - b[sortDescriptor.column]
-          : a[sortDescriptor.column].localeCompare(b[sortDescriptor.column]);
+      let column = sortDescriptor.column as keyof RowData;
+      if (typeof a[column] === "number" && typeof b[column] === "number") {
+        return a[column] - b[column];
+      }
+      if (typeof a[column] === "string" && typeof b[column] === "string") {
+        return a[column].localeCompare(b[column]);
       }
       return 0;
     });

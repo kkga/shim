@@ -1,9 +1,8 @@
 "use client";
 import { Tag, TagGroup } from "@/components/tag-group";
-import { SIZES } from "@/lib/theme";
 
 export default () =>
-  SIZES.map((size) => (
+  ([1, 2, 3, 4] as const).map((size) => (
     <TagGroup
       key={size}
       label={`Size ${size}`}

@@ -5,10 +5,9 @@ import {
   DisclosurePanel,
 } from "@/components/disclosure";
 import { DisclosureGroup } from "@/components/disclosure-group";
-import { SIZES } from "@/lib/theme";
 
 export default () =>
-  SIZES.map((size) => (
+  ([1, 2, 3, 4] as const).map((size) => (
     <DisclosureGroup defaultExpandedKeys={["refund"]} key={size} size={size}>
       <Disclosure id="refund">
         <DisclosureHeader>Refund policy?</DisclosureHeader>

@@ -13,7 +13,14 @@ import {
   TableHeader,
 } from "@/components/table";
 
-let rows = [
+interface RowData {
+  id: number;
+  name: string;
+  date: string;
+  type: string;
+}
+
+let rows: RowData[] = [
   { id: 1, name: "Games", date: "6/7/2020", type: "File folder" },
   { id: 2, name: "Program Files", date: "4/7/2021", type: "File folder" },
   { id: 3, name: "bootmgr", date: "11/20/2010", type: "System file" },
@@ -37,16 +44,20 @@ export default () => {
   });
 
   let items = useMemo(() => {
-    let sortedRows = rows.slice().sort((a, b) => {
-      if (sortDescriptor.column) {
-        return a[sortDescriptor.column].localeCompare(b[sortDescriptor.column]);
+    let sorted = [...rows].sort((a, b) => {
+      let column = sortDescriptor.column as keyof RowData;
+      if (typeof a[column] === "number" && typeof b[column] === "number") {
+        return a[column] - b[column];
+      }
+      if (typeof a[column] === "string" && typeof b[column] === "string") {
+        return a[column].localeCompare(b[column]);
       }
       return 0;
     });
     if (sortDescriptor.direction === "descending") {
-      sortedRows.reverse();
+      sorted.reverse();
     }
-    return sortedRows;
+    return sorted;
   }, [sortDescriptor]);
 
   return (
