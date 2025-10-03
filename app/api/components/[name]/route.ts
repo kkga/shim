@@ -1,6 +1,6 @@
-import fs from "node:fs";
 import path from "node:path";
 import type { NextRequest } from "next/server";
+import { getFileSource } from "@/app/_lib/utils";
 import registry from "@/shim-ui/registry/registry.json" with { type: "json" };
 
 export async function GET(
@@ -35,13 +35,10 @@ export async function GET(
     docUrl: component.docUrl,
     ariaUrl: component.ariaUrl,
     dependencies: component.dependencies,
-    files: component.files.map((file) => {
-      const filePath = path.resolve(process.cwd(), file);
-      const content = fs.existsSync(filePath)
-        ? fs.readFileSync(filePath, "utf-8")
-        : "// File not found";
-      return { path: file, content };
-    }),
+    files: component.files.map((file) => ({
+      path: path.basename(file),
+      content: getFileSource(file),
+    })),
   };
 
   return Response.json(json, {

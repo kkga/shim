@@ -5,9 +5,10 @@ import { DocHeader } from "@/app/_components/doc-header";
 import { Metadata } from "@/app/_components/metadata";
 import { Note } from "@/app/_components/note";
 import { mdxToHtml } from "@/app/_lib/mdx";
+import { getFileSource } from "@/app/_lib/utils";
 import { Link } from "@/shim-ui/link";
 import { demoComponents, getMainDemo } from "./demo-components";
-import { getComponentDocs, getComponentSource, getDemosSource } from "./utils";
+import { getComponentDocs, getDemosSource } from "./utils";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -32,9 +33,9 @@ export default async function DocPage({
   if (!doc) {
     throw new Error(`Document not found for slug: ${slug}`);
   }
-  let { name, title, description, ariaUrl, docUrl } = doc.metadata;
+  let { name, title, description, ariaUrl, docUrl, files } = doc.metadata;
   let demos = getDemosSource(name);
-  let source = getComponentSource(name);
+  let source = getFileSource(files[0]);
   let MainDemo = getMainDemo(name);
 
   let curlCommand = `curl -o ${name}.tsx '${API_URL}?c=${name}'`;

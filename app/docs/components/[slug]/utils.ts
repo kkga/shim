@@ -40,11 +40,6 @@ export function getComponentDocs({
     });
 }
 
-export function getComponentSource(name: ComponentMetadata["name"]) {
-  let filename = toKebabCase(name);
-  return getFileSource(`shim-ui/${filename}.tsx`);
-}
-
 export function getDemosSource(name: ComponentMetadata["name"]) {
   let dirname = toKebabCase(name);
   let path = join(DOCS_DIR, dirname);
