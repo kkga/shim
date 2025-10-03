@@ -10,7 +10,7 @@
       "category": "Buttons",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/button.tsx"],
+      "files": ["shim-ui/button.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Button.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/button/"
     },
@@ -21,7 +21,7 @@
       "category": "Buttons",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/toggle-button.tsx"],
+      "files": ["shim-ui/toggle-button.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ToggleButton.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/button/"
     },
@@ -32,7 +32,7 @@
       "category": "Buttons",
       "status": "stable",
       "dependencies": ["field", "toggle-button"],
-      "files": ["components/toggle-button-group.tsx"],
+      "files": ["shim-ui/toggle-button-group.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ToggleButtonGroup.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/"
     },
@@ -44,7 +44,7 @@
       "category": "Collections",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/list-box.tsx"],
+      "files": ["shim-ui/list-box.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ListBox.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
     },
@@ -55,7 +55,7 @@
       "category": "Collections",
       "status": "stable",
       "dependencies": ["list-box", "popover"],
-      "files": ["components/menu.tsx"],
+      "files": ["shim-ui/menu.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Menu.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/menubar/"
     },
@@ -66,7 +66,7 @@
       "category": "Collections",
       "status": "alpha",
       "dependencies": [],
-      "files": ["components/table.tsx"],
+      "files": ["shim-ui/table.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Table.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/"
     },
@@ -77,7 +77,7 @@
       "category": "Collections",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/tag-group.tsx"],
+      "files": ["shim-ui/tag-group.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Table.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/"
     },
@@ -88,7 +88,7 @@
       "category": "Collections",
       "status": "planned",
       "dependencies": [],
-      "files": ["components/tree.tsx"],
+      "files": ["shim-ui/tree.tsx"],
       "docUrl": null,
       "ariaUrl": null
     },
@@ -100,7 +100,7 @@
       "category": "Color",
       "status": "beta",
       "dependencies": [],
-      "files": ["components/color-area.tsx"],
+      "files": ["shim-ui/color-area.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorArea.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/"
     },
@@ -111,7 +111,7 @@
       "category": "Color",
       "status": "beta",
       "dependencies": ["field"],
-      "files": ["components/color-field.tsx"],
+      "files": ["shim-ui/color-field.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorField.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/"
     },
@@ -122,7 +122,7 @@
       "category": "Color",
       "status": "beta",
       "dependencies": [],
-      "files": ["components/color-picker.tsx"],
+      "files": ["shim-ui/color-picker.tsx"],
       "docUrl": null,
       "ariaUrl": null
     },
@@ -133,7 +133,7 @@
       "category": "Color",
       "status": "beta",
       "dependencies": [],
-      "files": ["components/color-slider.tsx"],
+      "files": ["shim-ui/color-slider.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorSlider.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/"
     },
@@ -144,7 +144,7 @@
       "category": "Color",
       "status": "beta",
       "dependencies": [],
-      "files": ["components/color-swatch.tsx"],
+      "files": ["shim-ui/color-swatch.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorSwatch.html",
       "ariaUrl": "https://w3c.github.io/aria/#img"
     },
@@ -155,7 +155,7 @@
       "category": "Color",
       "status": "beta",
       "dependencies": [],
-      "files": ["components/color-swatch-picker.tsx"],
+      "files": ["shim-ui/color-swatch-picker.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorSwatchPicker.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
     },
@@ -167,7 +167,7 @@
       "category": "Content",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/avatar.tsx"],
+      "files": ["shim-ui/avatar.tsx"],
       "docUrl": null,
       "ariaUrl": null
     },
@@ -178,7 +178,7 @@
       "category": "Content",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/data-list.tsx"],
+      "files": ["shim-ui/data-list.tsx"],
       "docUrl": null,
       "ariaUrl": null
     },
@@ -189,7 +189,7 @@
       "category": "Content",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/kbd.tsx"],
+      "files": ["shim-ui/kbd.tsx"],
       "docUrl": null,
       "ariaUrl": null
     },
@@ -200,7 +200,7 @@
       "category": "Content",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/toolbar.tsx"],
+      "files": ["shim-ui/toolbar.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Toolbar.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/"
     },
@@ -212,7 +212,7 @@
       "category": "Date and time",
       "status": "planned",
       "dependencies": [],
-      "files": ["components/calendar.tsx"],
+      "files": ["shim-ui/calendar.tsx"],
       "docUrl": null,
       "ariaUrl": null
     },
@@ -224,7 +224,7 @@
       "category": "Drag and drop",
       "status": "beta",
       "dependencies": [],
-      "files": ["components/drop-zone.tsx"],
+      "files": ["shim-ui/drop-zone.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/DropZone.html",
       "ariaUrl": null
     },
@@ -236,7 +236,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/checkbox.tsx"],
+      "files": ["shim-ui/checkbox.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Checkbox.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/"
     },
@@ -247,7 +247,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/field.tsx"],
+      "files": ["shim-ui/field.tsx"],
       "docUrl": null,
       "ariaUrl": null
     },
@@ -258,7 +258,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/form.tsx"],
+      "files": ["shim-ui/form.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Form.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#form"
     },
@@ -269,7 +269,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/number-field.tsx"],
+      "files": ["shim-ui/number-field.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/NumberField.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/"
     },
@@ -280,7 +280,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/radio-group.tsx"],
+      "files": ["shim-ui/radio-group.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/RadioGroup.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/radio/"
     },
@@ -291,7 +291,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/search-field.tsx"],
+      "files": ["shim-ui/search-field.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/SearchField.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#searchbox"
     },
@@ -302,7 +302,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/slider.tsx"],
+      "files": ["shim-ui/slider.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Slider.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/"
     },
@@ -313,7 +313,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/switch.tsx"],
+      "files": ["shim-ui/switch.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Switch.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/switch/"
     },
@@ -324,7 +324,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/text-area.tsx"],
+      "files": ["shim-ui/text-area.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/TextField.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#textbox"
     },
@@ -335,7 +335,7 @@
       "category": "Forms",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/text-field.tsx"],
+      "files": ["shim-ui/text-field.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/TextField.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#textbox"
     },
@@ -347,7 +347,7 @@
       "category": "Navigation",
       "status": "stable",
       "dependencies": ["link"],
-      "files": ["components/breadcrumbs.tsx"],
+      "files": ["shim-ui/breadcrumbs.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Breadcrumbs.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/"
     },
@@ -358,7 +358,7 @@
       "category": "Navigation",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/disclosure.tsx"],
+      "files": ["shim-ui/disclosure.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Disclosure.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/"
     },
@@ -369,7 +369,7 @@
       "category": "Navigation",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/disclosure-group.tsx"],
+      "files": ["shim-ui/disclosure-group.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/DisclosureGroup.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/"
     },
@@ -380,7 +380,7 @@
       "category": "Navigation",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/link.tsx"],
+      "files": ["shim-ui/link.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Link.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/link/"
     },
@@ -391,7 +391,7 @@
       "category": "Navigation",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/tabs.tsx"],
+      "files": ["shim-ui/tabs.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Tabs.html",
       "ariaUrl": "tabs"
     },
@@ -403,7 +403,7 @@
       "category": "Overlays",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/dialog.tsx"],
+      "files": ["shim-ui/dialog.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Modal.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
     },
@@ -414,7 +414,7 @@
       "category": "Overlays",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/popover.tsx"],
+      "files": ["shim-ui/popover.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Popover.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/"
     },
@@ -425,7 +425,7 @@
       "category": "Overlays",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/tooltip.tsx"],
+      "files": ["shim-ui/tooltip.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Tooltip.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#tooltip"
     },
@@ -437,7 +437,7 @@
       "category": "Pickers",
       "status": "stable",
       "dependencies": ["field", "list-box", "popover"],
-      "files": ["components/combo-box.tsx"],
+      "files": ["shim-ui/combo-box.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ComboBox.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
     },
@@ -448,7 +448,7 @@
       "category": "Pickers",
       "status": "stable",
       "dependencies": ["button", "field", "list-box", "popover"],
-      "files": ["components/select.tsx"],
+      "files": ["shim-ui/select.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Select.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
     },
@@ -460,7 +460,7 @@
       "category": "Status",
       "status": "stable",
       "dependencies": [],
-      "files": ["components/badge.tsx"],
+      "files": ["shim-ui/badge.tsx"],
       "docUrl": null,
       "ariaUrl": null
     },
@@ -471,7 +471,7 @@
       "category": "Status",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/meter.tsx"],
+      "files": ["shim-ui/meter.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Meter.html",
       "ariaUrl": "meter"
     },
@@ -482,7 +482,7 @@
       "category": "Status",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/progress-bar.tsx"],
+      "files": ["shim-ui/progress-bar.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ProgressBar.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#progressbar"
     },
@@ -493,7 +493,7 @@
       "category": "Status",
       "status": "stable",
       "dependencies": ["field"],
-      "files": ["components/progress-circle.tsx"],
+      "files": ["shim-ui/progress-circle.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ProgressBar.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#progressbar"
     },
@@ -504,7 +504,7 @@
       "category": "Status",
       "status": "planned",
       "dependencies": [],
-      "files": ["components/toast.tsx"],
+      "files": ["shim-ui/toast.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Toast.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/alertdialog/"
     }
