@@ -3,8 +3,8 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { type ComponentPropsWithoutRef, useMemo, useState } from "react";
 import type { Key } from "react-aria-components";
-import { LinkButton } from "@/components/button";
-import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
+import { LinkButton } from "@/shim-ui/button";
+import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
 import { Code } from "./code";
 import { Collapsible } from "./collapsible";
 import { CopyButton } from "./copy-button";

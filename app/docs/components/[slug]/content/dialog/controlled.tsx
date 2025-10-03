@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Button } from "@/components/button";
-import { Dialog } from "@/components/dialog";
+import { Button } from "@/shim-ui/button";
+import { Dialog } from "@/shim-ui/dialog";
 
 export default () => {
   const [isOpen, setIsOpen] = useState(false);

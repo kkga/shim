@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { Key } from "react-aria-components";
-import { ComboBox, ComboBoxItem } from "@/components/combo-box";
+import { ComboBox, ComboBoxItem } from "@/shim-ui/combo-box";
 
 export default () => {
   let options = [

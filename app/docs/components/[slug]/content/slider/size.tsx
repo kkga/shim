@@ -1,4 +1,4 @@
-import { Slider } from "@/components/slider";
+import { Slider } from "@/shim-ui/slider";
 
 export default () => (
   <>

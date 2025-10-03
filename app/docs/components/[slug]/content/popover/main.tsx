@@ -1,7 +1,7 @@
 import { SlidersHorizontal } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/button";
-import { Popover, PopoverTrigger } from "@/components/popover";
-import { Slider } from "@/components/slider";
+import { Button } from "@/shim-ui/button";
+import { Popover, PopoverTrigger } from "@/shim-ui/popover";
+import { Slider } from "@/shim-ui/slider";
 
 export default () => (
   <PopoverTrigger>

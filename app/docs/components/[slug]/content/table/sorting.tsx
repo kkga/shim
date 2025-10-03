@@ -8,7 +8,7 @@ import {
   Table,
   TableBody,
   TableHeader,
-} from "@/components/table";
+} from "@/shim-ui/table";
 
 interface RowData {
   id: number;

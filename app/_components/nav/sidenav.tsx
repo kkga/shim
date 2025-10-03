@@ -1,10 +1,10 @@
 import { GithubLogoIcon, XLogoIcon } from "@phosphor-icons/react/dist/ssr";
-import { LinkButton } from "@/components/button";
-import { Link } from "@/components/link";
-import { Tooltip, TooltipTrigger } from "@/components/tooltip";
+import { LinkButton } from "@/shim-ui/button";
+import { Link } from "@/shim-ui/link";
+import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
 import { Logo } from "../logo";
+import { ThemeToggle } from "../theme-toggle";
 import { type NavItem, Navigation } from "./navigation";
-import { ThemeToggle } from "./theme-toggle";
 
 export function SideNav(props: { items: NavItem[] }) {
   return (

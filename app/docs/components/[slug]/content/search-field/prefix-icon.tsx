@@ -1,5 +1,5 @@
 import { ListMagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
-import { SearchField } from "@/components/search-field";
+import { SearchField } from "@/shim-ui/search-field";
 
 export default () => (
   <>

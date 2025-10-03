@@ -1,3 +1,3 @@
-import { Meter } from "@/components/meter";
+import { Meter } from "@/shim-ui/meter";
 
 export default () => <Meter label="Random chance" value={70} />;

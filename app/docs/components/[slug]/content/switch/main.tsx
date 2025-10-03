@@ -1,3 +1,3 @@
-import { Switch } from "@/components/switch";
+import { Switch } from "@/shim-ui/switch";
 
 export default () => <Switch>On</Switch>;

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { SearchField } from "@/components/search-field";
+import { SearchField } from "@/shim-ui/search-field";
 
 export default () => {
   const [value, setValue] = useState("Get started");

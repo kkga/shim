@@ -1,4 +1,4 @@
-import { Link } from "@/components/link";
+import { Link } from "@/shim-ui/link";
 import { Logo } from "./_components/logo";
 
 export default function NotFound() {

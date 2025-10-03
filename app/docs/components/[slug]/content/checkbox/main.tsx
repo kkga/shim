@@ -1,3 +1,3 @@
-import { Checkbox } from "@/components/checkbox";
+import { Checkbox } from "@/shim-ui/checkbox";
 
 export default () => <Checkbox>Agree</Checkbox>;

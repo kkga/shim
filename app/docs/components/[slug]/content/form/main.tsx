@@ -1,6 +1,6 @@
-import { Button } from "@/components/button";
-import { Form } from "@/components/form";
-import { TextField } from "@/components/text-field";
+import { Button } from "@/shim-ui/button";
+import { Form } from "@/shim-ui/form";
+import { TextField } from "@/shim-ui/text-field";
 
 export default () => (
   <Form>

@@ -1,4 +1,4 @@
-import { ToggleButton } from "@/components/toggle-button";
+import { ToggleButton } from "@/shim-ui/toggle-button";
 
 export default () => (
   <>

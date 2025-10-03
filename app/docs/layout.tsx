@@ -9,7 +9,7 @@ export default function DocsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let docs = getComponentDocs();
+  let docs = getComponentDocs({ excludePlanned: false });
   let guides = getGuides();
 
   let navItems = useMemo(

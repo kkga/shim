@@ -1,6 +1,6 @@
 "use client";
 import { Fragment } from "react";
-import { Slider } from "@/components/slider";
+import { Slider } from "@/shim-ui/slider";
 
 export default () => (
   <div className="flex h-48 gap-4 self-start">

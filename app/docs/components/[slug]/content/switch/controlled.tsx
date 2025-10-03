@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Switch } from "@/components/switch";
+import { Switch } from "@/shim-ui/switch";
 
 export default () => {
   const [isOn, setIsOn] = useState(false);

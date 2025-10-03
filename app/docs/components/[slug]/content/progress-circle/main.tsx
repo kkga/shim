@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ProgressCircle } from "@/components/progress-circle";
+import { ProgressCircle } from "@/shim-ui/progress-circle";
 
 export default () => {
   let [value, setValue] = useState(0);

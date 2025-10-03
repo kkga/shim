@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Slider } from "@/components/slider";
+import { Slider } from "@/shim-ui/slider";
 
 export default () => {
   const [range, setRange] = useState<number | number[]>([17, 73]);

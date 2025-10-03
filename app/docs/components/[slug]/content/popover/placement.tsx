@@ -4,8 +4,8 @@ import {
   ArrowRight,
   ArrowUpLeft,
 } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/button";
-import { Popover, PopoverTrigger } from "@/components/popover";
+import { Button } from "@/shim-ui/button";
+import { Popover, PopoverTrigger } from "@/shim-ui/popover";
 
 export default () => (
   <>

@@ -3,8 +3,8 @@ import {
   Disclosure,
   DisclosureHeader,
   DisclosurePanel,
-} from "@/components/disclosure";
-import { DisclosureGroup } from "@/components/disclosure-group";
+} from "@/shim-ui/disclosure";
+import { DisclosureGroup } from "@/shim-ui/disclosure-group";
 
 export default () =>
   ([1, 2, 3, 4] as const).map((size) => (

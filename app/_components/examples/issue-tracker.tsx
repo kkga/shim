@@ -29,29 +29,29 @@ import {
 } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import type { Selection } from "react-aria-components";
-import { Avatar } from "@/components/avatar";
-import { Badge } from "@/components/badge";
-import { Breadcrumb, Breadcrumbs } from "@/components/breadcrumbs";
-import { Button } from "@/components/button";
-import { DataList, DataListItem } from "@/components/data-list";
-import { Kbd } from "@/components/kbd";
-import { Link } from "@/components/link";
-import { ListBox, ListBoxItem, ListBoxSection } from "@/components/list-box";
+import { Avatar } from "@/shim-ui/avatar";
+import { Badge } from "@/shim-ui/badge";
+import { Breadcrumb, Breadcrumbs } from "@/shim-ui/breadcrumbs";
+import { Button } from "@/shim-ui/button";
+import { DataList, DataListItem } from "@/shim-ui/data-list";
+import { Kbd } from "@/shim-ui/kbd";
+import { Link } from "@/shim-ui/link";
+import { ListBox, ListBoxItem, ListBoxSection } from "@/shim-ui/list-box";
 import {
   Menu,
   MenuItem,
   MenuSeparator,
   MenuTrigger,
   SubmenuTrigger,
-} from "@/components/menu";
-import { Popover, PopoverTrigger } from "@/components/popover";
-import { Select, SelectItem } from "@/components/select";
-import { Separator } from "@/components/separator";
-import { Switch } from "@/components/switch";
-import { Tag, TagGroup } from "@/components/tag-group";
-import { TextArea } from "@/components/text-area";
-import { ToggleButton } from "@/components/toggle-button";
-import { Tooltip, TooltipTrigger } from "@/components/tooltip";
+} from "@/shim-ui/menu";
+import { Popover, PopoverTrigger } from "@/shim-ui/popover";
+import { Select, SelectItem } from "@/shim-ui/select";
+import { Separator } from "@/shim-ui/separator";
+import { Switch } from "@/shim-ui/switch";
+import { Tag, TagGroup } from "@/shim-ui/tag-group";
+import { TextArea } from "@/shim-ui/text-area";
+import { ToggleButton } from "@/shim-ui/toggle-button";
+import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
 import { ExampleContainer } from "./container";
 
 const items = [

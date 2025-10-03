@@ -1,3 +1,3 @@
-import { Slider } from "@/components/slider";
+import { Slider } from "@/shim-ui/slider";
 
 export default () => <Slider defaultValue={37} label="Slope" />;

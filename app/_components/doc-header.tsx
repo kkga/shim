@@ -1,5 +1,5 @@
 import { twJoin } from "tailwind-merge";
-import { Separator } from "@/components/separator";
+import { Separator } from "@/shim-ui/separator";
 import { H1, P } from "./mdx-components";
 
 interface DocHeaderProps {

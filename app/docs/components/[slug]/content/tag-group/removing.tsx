@@ -1,6 +1,6 @@
 "use client";
 import { useListData } from "react-stately";
-import { Tag, TagGroup } from "@/components/tag-group";
+import { Tag, TagGroup } from "@/shim-ui/tag-group";
 
 export default () => {
   let list = useListData({

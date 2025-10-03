@@ -1,5 +1,5 @@
 import { GearSix, User } from "@phosphor-icons/react/dist/ssr";
-import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
+import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
 
 export default () => (
   <Tabs>

@@ -1,4 +1,4 @@
-import registry from "@/registry.json" with { type: "json" };
+import registry from "@/shim-ui/registry/registry.json" with { type: "json" };
 
 export type ComponentMetadata = (typeof registry.items)[0];
 

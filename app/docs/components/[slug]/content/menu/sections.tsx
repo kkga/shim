@@ -1,6 +1,6 @@
 import { CaretDown } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/button";
-import { Menu, MenuItem, MenuSection, MenuTrigger } from "@/components/menu";
+import { Button } from "@/shim-ui/button";
+import { Menu, MenuItem, MenuSection, MenuTrigger } from "@/shim-ui/menu";
 
 export default () => (
   <MenuTrigger>

@@ -1,4 +1,4 @@
-import { Tag, TagGroup } from "@/components/tag-group";
+import { Tag, TagGroup } from "@/shim-ui/tag-group";
 
 export default () => (
   <TagGroup label="Labels">

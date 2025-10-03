@@ -6,7 +6,7 @@ import {
   Table,
   TableBody,
   TableHeader,
-} from "@/components/table";
+} from "@/shim-ui/table";
 
 export default () => (
   <Table aria-label="Files" selectionMode="multiple">

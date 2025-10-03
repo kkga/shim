@@ -1,13 +1,13 @@
 "use client";
-import { Checkbox, CheckboxGroup } from "@/components/checkbox";
-import { NumberField } from "@/components/number-field";
-import { Radio, RadioGroup } from "@/components/radio-group";
-import { SearchField } from "@/components/search-field";
-import { Separator } from "@/components/separator";
-import { Slider } from "@/components/slider";
-import { TextArea } from "@/components/text-area";
-import { TextField } from "@/components/text-field";
-import { Theme } from "@/lib/theme";
+import { Checkbox, CheckboxGroup } from "@/shim-ui/checkbox";
+import { Theme } from "@/shim-ui/lib/theme";
+import { NumberField } from "@/shim-ui/number-field";
+import { Radio, RadioGroup } from "@/shim-ui/radio-group";
+import { SearchField } from "@/shim-ui/search-field";
+import { Separator } from "@/shim-ui/separator";
+import { Slider } from "@/shim-ui/slider";
+import { TextArea } from "@/shim-ui/text-area";
+import { TextField } from "@/shim-ui/text-field";
 
 export default () => (
   <div className="flex gap-4">

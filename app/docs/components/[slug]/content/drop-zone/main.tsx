@@ -1,4 +1,4 @@
-import { DropZone } from "@/components/drop-zone";
+import { DropZone } from "@/shim-ui/drop-zone";
 
 export default () => (
   <>

@@ -1,4 +1,4 @@
-import { Select, SelectItem, SelectSection } from "@/components/select";
+import { Select, SelectItem, SelectSection } from "@/shim-ui/select";
 
 export default () => (
   <Select aria-label="Favorite food" placeholder="Select your favorite">

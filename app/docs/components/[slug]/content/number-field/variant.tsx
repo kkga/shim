@@ -1,6 +1,6 @@
 "use client";
-import { NumberField } from "@/components/number-field";
-import { Theme } from "@/lib/theme";
+import { Theme } from "@/shim-ui/lib/theme";
+import { NumberField } from "@/shim-ui/number-field";
 
 export default () => (
   <Theme labelPosition="side">

@@ -1,8 +1,8 @@
-import { ColorSwatch } from "@/components/color-swatch";
+import { ColorSwatch } from "@/shim-ui/color-swatch";
 import {
   ColorSwatchPicker,
   ColorSwatchPickerItem,
-} from "@/components/color-swatch-picker";
+} from "@/shim-ui/color-swatch-picker";
 
 export default () => (
   <ColorSwatchPicker>

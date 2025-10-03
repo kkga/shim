@@ -2,10 +2,10 @@ import {
   ArrowRightIcon,
   ArrowSquareOutIcon,
 } from "@phosphor-icons/react/dist/ssr";
-import { Badge } from "@/components/badge";
-import { DataList, DataListItem } from "@/components/data-list";
-import { Link } from "@/components/link";
-import { Separator } from "@/components/separator";
+import { Badge } from "@/shim-ui/badge";
+import { DataList, DataListItem } from "@/shim-ui/data-list";
+import { Link } from "@/shim-ui/link";
+import { Separator } from "@/shim-ui/separator";
 import { Examples } from "./_components/examples/examples";
 import { Logo } from "./_components/logo";
 import { P } from "./_components/mdx-components";

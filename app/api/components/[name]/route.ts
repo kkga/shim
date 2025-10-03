@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { NextRequest } from "next/server";
-import registry from "@/registry.json" with { type: "json" };
+import registry from "@/shim-ui/registry/registry.json" with { type: "json" };
 
 export async function GET(
   _request: NextRequest,

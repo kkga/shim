@@ -1,16 +1,17 @@
+import type { MDXComponents } from "next-mdx-remote-client/rsc";
 import { Suspense } from "react";
 import { Demo } from "@/app/_components/demo";
-import { getMainDemo } from "@/app/_components/demo-components";
 import { DocHeader } from "@/app/_components/doc-header";
 import { Metadata } from "@/app/_components/metadata";
 import { Note } from "@/app/_components/note";
 import { mdxToHtml } from "@/app/_lib/mdx";
-import { Link } from "@/components/link";
+import { Link } from "@/shim-ui/link";
+import { demoComponents, getMainDemo } from "./demo-components";
 import { getComponentDocs, getComponentSource, getDemosSource } from "./utils";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  let params = getComponentDocs({ exclude: ["planned"] }).map((doc) => ({
+  let params = getComponentDocs().map((doc) => ({
     slug: doc.slug,
   }));
   return params;
@@ -26,7 +27,7 @@ export default async function DocPage({
 }) {
   let { slug } = await params;
 
-  let docs = getComponentDocs({ exclude: ["planned"] });
+  let docs = getComponentDocs();
   let doc = docs.find((d) => d.slug === slug);
   if (!doc) {
     throw new Error(`Document not found for slug: ${slug}`);
@@ -53,6 +54,7 @@ export default async function DocPage({
       demos,
       source,
     },
+    components: demoComponents as MDXComponents,
   });
 
   return (

@@ -1,5 +1,5 @@
-import { Description } from "@/components/field";
-import { ListBox, ListBoxItem } from "@/components/list-box";
+import { Description } from "@/shim-ui/field";
+import { ListBox, ListBoxItem } from "@/shim-ui/list-box";
 
 export default () => (
   <ListBox aria-label="Permissions" selectionMode="single">

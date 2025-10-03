@@ -2,7 +2,7 @@ import fs from "node:fs";
 import { basename, extname, join } from "node:path";
 import type { ComponentMetadata } from "@/app/_lib/types";
 import { getFileSource, slugify, toKebabCase } from "@/app/_lib/utils";
-import registry from "@/registry.json" with { type: "json" };
+import registry from "@/shim-ui/registry/registry.json" with { type: "json" };
 
 const DOCS_DIR = join(
   process.cwd(),
@@ -20,9 +20,13 @@ function readMdxContent(filePath: string) {
   return fs.readFileSync(filePath, "utf-8");
 }
 
-export function getComponentDocs({ exclude }: { exclude?: string[] } = {}) {
+export function getComponentDocs({
+  excludePlanned = true,
+}: {
+  excludePlanned?: boolean;
+} = {}) {
   return registry.items
-    .filter((component) => !exclude?.includes(component.name))
+    .filter((component) => !(excludePlanned && component.status === "planned"))
     .map((component) => {
       let docPath = join(DOCS_DIR, component.name, "doc.mdx");
       let source = readMdxContent(docPath) || "";
@@ -38,7 +42,7 @@ export function getComponentDocs({ exclude }: { exclude?: string[] } = {}) {
 
 export function getComponentSource(name: ComponentMetadata["name"]) {
   let filename = toKebabCase(name);
-  return getFileSource(`components/${filename}.tsx`);
+  return getFileSource(`shim-ui/${filename}.tsx`);
 }
 
 export function getDemosSource(name: ComponentMetadata["name"]) {

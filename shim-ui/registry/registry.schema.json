@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["name", "homepage", "items"],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "title",
+          "description",
+          "category",
+          "status",
+          "dependencies",
+          "files",
+          "docUrl",
+          "ariaUrl"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "Buttons",
+              "Collections",
+              "Color",
+              "Content",
+              "Date and time",
+              "Drag and drop",
+              "Forms",
+              "Navigation",
+              "Overlays",
+              "Pickers",
+              "Status"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["stable", "new", "alpha", "beta", "deprecated", "planned"]
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "docUrl": {
+            "type": ["string", "null"]
+          },
+          "ariaUrl": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    }
+  }
+}

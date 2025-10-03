@@ -1,4 +1,4 @@
-import "../theme/theme.css";
+import "../shim-ui/theme/theme.css";
 import "./site.css";
 
 import { Analytics } from "@vercel/analytics/react";
@@ -8,8 +8,8 @@ import { type ReactNode, StrictMode } from "react";
 import { LocalizedStringProvider } from "react-aria-components/i18n";
 import { ClientProviders, ThemeProvider } from "./_components/providers";
 import { fontMono, fontSans } from "./_fonts";
-import DarkIcon from "./icon-dark.png";
-import LightIcon from "./icon-light.png";
+import DarkIcon from "./_img/icon-dark.png";
+import LightIcon from "./_img/icon-light.png";
 import { baseUrl } from "./sitemap";
 
 export const metadata: Metadata = {

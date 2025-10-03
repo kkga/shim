@@ -1,4 +1,4 @@
-import { Avatar } from "@/components/avatar";
+import { Avatar } from "@/shim-ui/avatar";
 
 export default () => (
   <>

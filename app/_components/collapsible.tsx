@@ -3,7 +3,7 @@
 import { ArrowLineDownIcon, ArrowLineUpIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 import { twJoin } from "tailwind-merge";
-import { Button } from "@/components/button";
+import { Button } from "@/shim-ui/button";
 
 interface Props {
   children: React.ReactNode;

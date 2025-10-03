@@ -3,7 +3,7 @@
 import { GearSix, User, XSquare } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Collection, type Key } from "react-aria-components";
-import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
+import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
 
 export default () => {
   const [tabId, setTabId] = useState<Key>("profile");

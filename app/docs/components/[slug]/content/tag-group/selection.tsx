@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import type { Selection } from "react-aria-components";
-import { Tag, TagGroup } from "@/components/tag-group";
+import { Tag, TagGroup } from "@/shim-ui/tag-group";
 
 export default () => {
   let [selected, setSelected] = useState<Selection>(new Set(["travel"]));

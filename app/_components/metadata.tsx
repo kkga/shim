@@ -1,8 +1,8 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { Fragment } from "react";
 import type { ComponentMetadata } from "@/app/_lib/types";
-import { DataList, DataListItem } from "@/components/data-list";
-import { Link } from "@/components/link";
+import { DataList, DataListItem } from "@/shim-ui/data-list";
+import { Link } from "@/shim-ui/link";
 
 const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components";
 const GITHUB_ISSUES_URL = "https://github.com/kkga/shim/issues";

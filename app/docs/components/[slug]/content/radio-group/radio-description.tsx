@@ -1,4 +1,4 @@
-import { Radio, RadioGroup } from "@/components/radio-group";
+import { Radio, RadioGroup } from "@/shim-ui/radio-group";
 
 export default () => (
   <RadioGroup defaultValue={"ts-pattern"} label="Library">

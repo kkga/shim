@@ -1,4 +1,4 @@
-import { Badge } from "@/components/badge";
+import { Badge } from "@/shim-ui/badge";
 
 export default () => (
   <>

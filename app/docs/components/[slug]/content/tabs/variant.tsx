@@ -1,4 +1,4 @@
-import { Tab, TabList, Tabs } from "@/components/tabs";
+import { Tab, TabList, Tabs } from "@/shim-ui/tabs";
 
 export default () => (
   <>

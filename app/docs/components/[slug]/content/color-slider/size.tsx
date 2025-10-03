@@ -1,4 +1,4 @@
-import { ColorSlider } from "@/components/color-slider";
+import { ColorSlider } from "@/shim-ui/color-slider";
 
 export default () => (
   <>

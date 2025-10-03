@@ -1,4 +1,4 @@
-import { ListBox, ListBoxItem } from "@/components/list-box";
+import { ListBox, ListBoxItem } from "@/shim-ui/list-box";
 
 export default () => (
   <ListBox aria-label="Favorite animal" selectionMode="single">

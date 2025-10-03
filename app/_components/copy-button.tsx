@@ -2,7 +2,7 @@
 
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
-import { Button } from "@/components/button";
+import { Button } from "@/shim-ui/button";
 
 const useClipboard = () => {
   const [copiedText, setCopiedText] = useState<string | null>("");

@@ -1,5 +1,5 @@
 import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/button";
+import { Button } from "@/shim-ui/button";
 
 export default () => (
   <Button className="self-start">

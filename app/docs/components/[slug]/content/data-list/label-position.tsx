@@ -1,6 +1,6 @@
-import { Badge } from "@/components/badge";
-import { DataList, DataListItem } from "@/components/data-list";
-import { Link } from "@/components/link";
+import { Badge } from "@/shim-ui/badge";
+import { DataList, DataListItem } from "@/shim-ui/data-list";
+import { Link } from "@/shim-ui/link";
 
 export default () => (
   <DataList labelPosition="side">

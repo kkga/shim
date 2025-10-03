@@ -1,4 +1,4 @@
-import { TextField } from "@/components/text-field";
+import { TextField } from "@/shim-ui/text-field";
 
 export default () => (
   <TextField

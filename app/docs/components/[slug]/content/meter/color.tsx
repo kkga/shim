@@ -1,5 +1,5 @@
 "use client";
-import { Meter } from "@/components/meter";
+import { Meter } from "@/shim-ui/meter";
 
 export default () => (
   <>

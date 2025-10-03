@@ -1,7 +1,7 @@
 "use client";
-import { Badge } from "@/components/badge";
-import { DataList, DataListItem } from "@/components/data-list";
-import { Link } from "@/components/link";
+import { Badge } from "@/shim-ui/badge";
+import { DataList, DataListItem } from "@/shim-ui/data-list";
+import { Link } from "@/shim-ui/link";
 
 export default () => (
   <div className="grid grid-cols-2 gap-y-6 self-start">

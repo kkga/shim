@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxGroup } from "@/components/checkbox";
+import { Checkbox, CheckboxGroup } from "@/shim-ui/checkbox";
 
 export default () => (
   <>

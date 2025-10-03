@@ -1,4 +1,4 @@
-import { ProgressCircle } from "@/components/progress-circle";
+import { ProgressCircle } from "@/shim-ui/progress-circle";
 
 export default () => (
   <>

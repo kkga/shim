@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/style/useNamingConvention: MDX scope component names start with upper case */
 import { default as NextLink } from "next/link";
 import type { MDXComponents } from "next-mdx-remote-client";
 import type { ComponentPropsWithoutRef } from "react";
@@ -6,7 +5,6 @@ import { twJoin, twMerge } from "tailwind-merge";
 import { Code } from "./code";
 import { CodeBlock } from "./code-block";
 import { Demo } from "./demo";
-import { demoComponents } from "./demo-components";
 import { Note } from "./note";
 import { Step, Steps } from "./steps";
 
@@ -154,7 +152,6 @@ const mdxComponents: MDXComponents = {
   Steps,
   Step,
   CodeBlock,
-  ...demoComponents,
 };
 
 export { H1, H2, H3, H4, H5, H6, Link, mdxComponents, P };

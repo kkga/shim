@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Key } from "react-aria-components";
-import { Select, SelectItem } from "@/components/select";
+import { Select, SelectItem } from "@/shim-ui/select";
 
 export default () => {
   let options = [

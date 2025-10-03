@@ -1,4 +1,4 @@
-import { Select, SelectItem } from "@/components/select";
+import { Select, SelectItem } from "@/shim-ui/select";
 
 export default () => (
   <Select label="Project" placeholder="Pick a project">

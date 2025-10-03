@@ -2,8 +2,8 @@
 import { CaretDown } from "@phosphor-icons/react/dist/ssr";
 import { useState } from "react";
 import type { Selection } from "react-aria-components";
-import { Button } from "@/components/button";
-import { Menu, MenuItem, MenuTrigger } from "@/components/menu";
+import { Button } from "@/shim-ui/button";
+import { Menu, MenuItem, MenuTrigger } from "@/shim-ui/menu";
 
 export default () => {
   const [align, setAlign] = useState<Selection>(new Set(["center"]));

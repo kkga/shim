@@ -3,8 +3,8 @@
 import { Collection } from "react-aria-components";
 import { ExampleIssueTracker } from "@/app/_components/examples/issue-tracker";
 import { ExampleRepo } from "@/app/_components/examples/repo";
-import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
-import { ThemeToggle } from "../nav/theme-toggle";
+import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
+import { ThemeToggle } from "../theme-toggle";
 
 let items = [
   {

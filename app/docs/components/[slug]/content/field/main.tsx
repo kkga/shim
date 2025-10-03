@@ -5,7 +5,7 @@ import {
   Input,
   inputBaseStyle,
   Label,
-} from "@/components/field";
+} from "@/shim-ui/field";
 
 /**
  * Utility components used in other form fields.

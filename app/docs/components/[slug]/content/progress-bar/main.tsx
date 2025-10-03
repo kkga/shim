@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ProgressBar } from "@/components/progress-bar";
+import { ProgressBar } from "@/shim-ui/progress-bar";
 
 export default () => {
   let [value, setValue] = useState(0);

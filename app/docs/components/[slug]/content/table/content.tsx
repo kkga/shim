@@ -7,7 +7,7 @@ import {
   Table,
   TableBody,
   TableHeader,
-} from "@/components/table";
+} from "@/shim-ui/table";
 
 let columns = [
   { id: "creature", name: "Creature", isRowHeader: true },

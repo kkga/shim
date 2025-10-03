@@ -1,4 +1,4 @@
-import { ComboBox, ComboBoxItem } from "@/components/combo-box";
+import { ComboBox, ComboBoxItem } from "@/shim-ui/combo-box";
 
 export default () => (
   <>

@@ -1,3 +1,3 @@
-import { ProgressBar } from "@/components/progress-bar";
+import { ProgressBar } from "@/shim-ui/progress-bar";
 
 export default () => <ProgressBar aria-label="Loading…" isIndeterminate />;

@@ -5,7 +5,7 @@ import {
   Leaf,
   Lock,
 } from "@phosphor-icons/react/dist/ssr";
-import { Badge } from "@/components/badge";
+import { Badge } from "@/shim-ui/badge";
 
 export default () => (
   <>

@@ -4,8 +4,8 @@ import {
   ArrowRight,
   ArrowUp,
 } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/button";
-import { Tooltip, TooltipTrigger } from "@/components/tooltip";
+import { Button } from "@/shim-ui/button";
+import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
 
 export default () => (
   <>

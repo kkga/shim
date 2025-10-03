@@ -2,8 +2,8 @@ import {
   Disclosure,
   DisclosureHeader,
   DisclosurePanel,
-} from "@/components/disclosure";
-import { DisclosureGroup } from "@/components/disclosure-group";
+} from "@/shim-ui/disclosure";
+import { DisclosureGroup } from "@/shim-ui/disclosure-group";
 
 export default () => (
   <DisclosureGroup defaultExpandedKeys={["refund"]}>

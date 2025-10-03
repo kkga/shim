@@ -1,4 +1,4 @@
-import { Switch } from "@/components/switch";
+import { Switch } from "@/shim-ui/switch";
 
 export default () => (
   <div className="grid grid-cols-3 items-center gap-2 self-start">

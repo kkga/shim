@@ -31,9 +31,9 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
-import { Badge } from "@/components/badge";
-import { SearchField } from "@/components/search-field";
-import { focusStyle } from "@/lib/style";
+import { Badge } from "@/shim-ui/badge";
+import { focusStyle } from "@/shim-ui/lib/style";
+import { SearchField } from "@/shim-ui/search-field";
 
 export interface NavItem {
   name: string;
@@ -242,10 +242,13 @@ export function Navigation({
                       <>
                         {section === "Intro" && getIcon(name)}
                         {name}
-                        {status && (
+                        {status && status !== "stable" && (
                           <Badge
-                            className="text-current"
-                            intent="neutral"
+                            intent={match(status)
+                              .with("planned", () => "neutral" as const)
+                              .with("beta", () => "accent" as const)
+                              .with("alpha", () => "warning" as const)
+                              .otherwise(() => "neutral" as const)}
                             size={size}
                           >
                             {status[0].toUpperCase() + status.slice(1)}

@@ -3,7 +3,7 @@ import {
   Disclosure,
   DisclosureHeader,
   DisclosurePanel,
-} from "@/components/disclosure";
+} from "@/shim-ui/disclosure";
 
 export default () =>
   ([1, 2, 3, 4] as const).map((size) => (

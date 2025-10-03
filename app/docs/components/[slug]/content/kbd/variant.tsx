@@ -1,4 +1,4 @@
-import { Kbd } from "@/components/kbd";
+import { Kbd } from "@/shim-ui/kbd";
 
 export default () => (
   <>

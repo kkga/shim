@@ -1,4 +1,4 @@
-import { Breadcrumb, Breadcrumbs } from "@/components/breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@/shim-ui/breadcrumbs";
 
 export default () => (
   <Breadcrumbs>

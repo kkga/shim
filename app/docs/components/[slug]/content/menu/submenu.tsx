@@ -1,12 +1,12 @@
 import { DotsThreeVertical } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/button";
+import { Button } from "@/shim-ui/button";
 import {
   Menu,
   MenuItem,
   MenuSeparator,
   MenuTrigger,
   SubmenuTrigger,
-} from "@/components/menu";
+} from "@/shim-ui/menu";
 
 export default () => (
   <MenuTrigger>

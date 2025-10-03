@@ -1,5 +1,5 @@
 "use client";
-import { Tag, TagGroup } from "@/components/tag-group";
+import { Tag, TagGroup } from "@/shim-ui/tag-group";
 
 export default () =>
   ([1, 2, 3, 4] as const).map((size) => (

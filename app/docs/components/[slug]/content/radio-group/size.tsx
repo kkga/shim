@@ -1,5 +1,5 @@
 "use client";
-import { Radio, RadioGroup } from "@/components/radio-group";
+import { Radio, RadioGroup } from "@/shim-ui/radio-group";
 
 export default () =>
   ([1, 2, 3, 4] as const).map((size) => (

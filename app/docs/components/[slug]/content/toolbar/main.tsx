@@ -3,13 +3,13 @@ import {
   TextItalic,
   TextUnderline,
 } from "@phosphor-icons/react/dist/ssr";
-import { Button } from "@/components/button";
-import { Group } from "@/components/group";
-import { Separator } from "@/components/separator";
-import { Switch } from "@/components/switch";
-import { ToggleButton } from "@/components/toggle-button";
-import { ToggleButtonGroup } from "@/components/toggle-button-group";
-import { Toolbar } from "@/components/toolbar";
+import { Button } from "@/shim-ui/button";
+import { Group } from "@/shim-ui/group";
+import { Separator } from "@/shim-ui/separator";
+import { Switch } from "@/shim-ui/switch";
+import { ToggleButton } from "@/shim-ui/toggle-button";
+import { ToggleButtonGroup } from "@/shim-ui/toggle-button-group";
+import { Toolbar } from "@/shim-ui/toolbar";
 
 export default () => (
   <Toolbar aria-label="Text formatting">

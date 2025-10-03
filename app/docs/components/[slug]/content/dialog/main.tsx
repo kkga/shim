@@ -1,7 +1,7 @@
-import { Button } from "@/components/button";
-import { Dialog, DialogTrigger } from "@/components/dialog";
-import { Form } from "@/components/form";
-import { TextField } from "@/components/text-field";
+import { Button } from "@/shim-ui/button";
+import { Dialog, DialogTrigger } from "@/shim-ui/dialog";
+import { Form } from "@/shim-ui/form";
+import { TextField } from "@/shim-ui/text-field";
 
 export default () => (
   <DialogTrigger>

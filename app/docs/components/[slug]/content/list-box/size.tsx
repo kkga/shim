@@ -1,4 +1,4 @@
-import { ListBox, ListBoxItem } from "@/components/list-box";
+import { ListBox, ListBoxItem } from "@/shim-ui/list-box";
 
 export default () => (
   <div className="grid grid-cols-2 gap-3">

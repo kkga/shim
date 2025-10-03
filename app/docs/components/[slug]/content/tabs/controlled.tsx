@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Key } from "react-aria-components";
-import { Tab, TabList, Tabs } from "@/components/tabs";
+import { Tab, TabList, Tabs } from "@/shim-ui/tabs";
 
 export default () => {
   const [tabId, setTabId] = useState<Key>("favorites");

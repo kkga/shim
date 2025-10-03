@@ -28,9 +28,9 @@ export default async function GuidePage({
   let { title, description } = metadata;
 
   let [styleUtilsSrc, themeUtilsSrc, themeCssSrc] = [
-    getFileSource("lib/style.ts"),
-    getFileSource("lib/theme.tsx"),
-    getFileSource("theme/theme.css"),
+    getFileSource("shim-ui/lib/style.ts"),
+    getFileSource("shim-ui/lib/theme.tsx"),
+    getFileSource("shim-ui/theme/theme.css"),
   ];
 
   let [styleUtilsUrl, themeUtilsUrl, themeCssUrl] = [

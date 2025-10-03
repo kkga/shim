@@ -30,24 +30,24 @@ import {
   Upload,
   UploadSimple,
 } from "@phosphor-icons/react";
-import { Avatar } from "@/components/avatar";
-import { Badge } from "@/components/badge";
-import { Breadcrumb, Breadcrumbs } from "@/components/breadcrumbs";
-import { Button } from "@/components/button";
-import { ComboBox, ComboBoxItem } from "@/components/combo-box";
-import { DataList, DataListItem } from "@/components/data-list";
-import { Link } from "@/components/link";
+import { Avatar } from "@/shim-ui/avatar";
+import { Badge } from "@/shim-ui/badge";
+import { Breadcrumb, Breadcrumbs } from "@/shim-ui/breadcrumbs";
+import { Button } from "@/shim-ui/button";
+import { ComboBox, ComboBoxItem } from "@/shim-ui/combo-box";
+import { DataList, DataListItem } from "@/shim-ui/data-list";
+import { Link } from "@/shim-ui/link";
 import {
   Menu,
   MenuItem,
   MenuSection,
   MenuSeparator,
   MenuTrigger,
-} from "@/components/menu";
-import { Popover, PopoverTrigger } from "@/components/popover";
-import { SearchField } from "@/components/search-field";
-import { Select, SelectItem } from "@/components/select";
-import { Separator } from "@/components/separator";
+} from "@/shim-ui/menu";
+import { Popover, PopoverTrigger } from "@/shim-ui/popover";
+import { SearchField } from "@/shim-ui/search-field";
+import { Select, SelectItem } from "@/shim-ui/select";
+import { Separator } from "@/shim-ui/separator";
 import {
   Cell,
   Column,
@@ -55,12 +55,12 @@ import {
   Table,
   TableBody,
   TableHeader,
-} from "@/components/table";
-import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
-import { Tag, TagGroup } from "@/components/tag-group";
-import { TextField } from "@/components/text-field";
-import { ToggleButton } from "@/components/toggle-button";
-import { Tooltip, TooltipTrigger } from "@/components/tooltip";
+} from "@/shim-ui/table";
+import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
+import { Tag, TagGroup } from "@/shim-ui/tag-group";
+import { TextField } from "@/shim-ui/text-field";
+import { ToggleButton } from "@/shim-ui/toggle-button";
+import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
 import { ExampleContainer } from "./container";
 
 const fileColumns = [

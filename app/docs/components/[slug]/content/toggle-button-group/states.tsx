@@ -1,5 +1,5 @@
-import { ToggleButton } from "@/components/toggle-button";
-import { ToggleButtonGroup } from "@/components/toggle-button-group";
+import { ToggleButton } from "@/shim-ui/toggle-button";
+import { ToggleButtonGroup } from "@/shim-ui/toggle-button-group";
 
 export default () => (
   <>

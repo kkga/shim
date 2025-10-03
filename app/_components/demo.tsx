@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { Theme } from "@/lib/theme";
+import { Theme } from "@/shim-ui/lib/theme";
 import { CodeBlock, type CodeItem } from "./code-block";
 
 interface Props {

@@ -1,9 +1,10 @@
-import { getComponentDocs, getGuides } from "@/app/_lib/utils";
+import { getComponentDocs } from "./docs/components/[slug]/utils";
+import { getGuides } from "./docs/guides/[slug]/utils";
 
 export const baseUrl = "https://shim.kkga.me";
 
 export default function sitemap() {
-  let docs = getComponentDocs({ exclude: ["planned"] }).map((doc) => ({
+  let docs = getComponentDocs().map((doc) => ({
     url: `${baseUrl}/docs/${doc.slug}`,
   }));
   let guides = getGuides().map((guide) => ({
