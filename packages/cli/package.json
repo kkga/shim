@@ -1,8 +1,26 @@
 {
   "name": "@kkga/shim",
   "version": "1.0.2",
+  "description": "Command-line tool for installing UI components from Shim",
   "type": "module",
   "license": "MIT",
+  "homepage": "https://shim.kkga.me",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkga/shim.git",
+    "directory": "packages/cli"
+  },
+  "bugs": "https://github.com/kkga/shim/issues",
+  "keywords": [
+    "ui",
+    "components",
+    "react",
+    "tailwind",
+    "cli",
+    "copy-paste",
+    "design-system",
+    "react-aria-components"
+  ],
   "bin": {
     "shim": "dist/index.js"
   },
@@ -11,7 +29,11 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "SHIM_API_URL='http://localhost:3000/api/components' pnpm run build && node dist/index.js"
+    "clean": "rm -rf dist",
+    "dev": "SHIM_API_URL='http://localhost:3000/api/components' pnpm run build && node dist/index.js",
+    "publish:dev": "pnpm version patch && pnpm build && pnpm publish --access public --tag dev",
+    "publish:release": "pnpm version patch && pnpm build && pnpm publish --access public",
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "commander": "^14.0.1",
