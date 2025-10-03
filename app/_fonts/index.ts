@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 
 export const fontMono = localFont({
-  src: [{ path: "./commit-mono.woff2" }],
+  src: [{ path: "./MonaspaceNeon-Regular.woff2" }],
   variable: "--font-mono",
 });
 
