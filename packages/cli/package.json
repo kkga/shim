@@ -1,6 +1,6 @@
 {
   "name": "@kkga/shim",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Command-line tool for installing UI components from Shim",
   "type": "module",
   "license": "MIT",
@@ -31,8 +31,9 @@
     "build": "tsc",
     "clean": "rm -rf dist",
     "dev": "SHIM_API_URL='http://localhost:3000/api/components' pnpm run build && node dist/index.js",
-    "publish:dev": "pnpm version patch && pnpm build && pnpm publish --access public --tag dev",
-    "publish:release": "pnpm version patch && pnpm build && pnpm publish --access public",
+    "version:patch": "pnpm version patch --no-git-tag-version",
+    "publish:dev": "pnpm run version:patch && pnpm build && pnpm publish --access public --tag dev",
+    "publish:release": "pnpm run version:patch && pnpm build && pnpm publish --access public",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
