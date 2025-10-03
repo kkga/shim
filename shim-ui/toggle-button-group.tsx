@@ -20,7 +20,7 @@ const style = tv({
   base: "group grid auto-cols-fr grid-flow-col",
   variants: {
     variant: { soft: "", ghost: "" },
-    intent: { neutral: "", accent: "", success: "", warning: "", error: "" },
+    intent: { neutral: "", accent: "", success: "", warning: "", danger: "" },
     size: {
       1: "rounded-sm",
       2: "rounded-sm",

@@ -39,7 +39,7 @@ export default () => (
         </Menu>
       </SubmenuTrigger>
       <MenuSeparator />
-      <MenuItem intent="error">Delete</MenuItem>
+      <MenuItem intent="danger">Delete</MenuItem>
     </Menu>
   </MenuTrigger>
 );

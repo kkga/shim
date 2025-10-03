@@ -54,8 +54,8 @@ const itemStyle = tv({
         "text-success-text data-focus-visible:bg-success-bg-hover data-hovered:bg-success-bg-hover data-open:bg-success-bg-hover data-pressed:bg-success-bg-active data-selected:bg-success-bg-active data-selected:text-success-text-contrast",
       warning:
         "text-warning-text data-focus-visible:bg-warning-bg-hover data-hovered:bg-warning-bg-hover data-open:bg-warning-bg-hover data-pressed:bg-warning-bg-active data-selected:bg-warning-bg-active data-selected:text-warning-text-contrast",
-      error:
-        "text-error-text data-focus-visible:bg-error-bg-hover data-hovered:bg-error-bg-hover data-open:bg-error-bg-hover data-pressed:bg-error-bg-active data-selected:bg-error-bg-active data-selected:text-error-text-contrast",
+      danger:
+        "text-danger-text data-focus-visible:bg-danger-bg-hover data-hovered:bg-danger-bg-hover data-open:bg-danger-bg-hover data-pressed:bg-danger-bg-active data-selected:bg-danger-bg-active data-selected:text-danger-text-contrast",
     },
     isDisabled: {
       true: "text-neutral-text-subtle",

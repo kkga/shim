@@ -6,6 +6,6 @@ export default () => (
     <Badge intent="accent">Accent</Badge>
     <Badge intent="success">Success</Badge>
     <Badge intent="warning">Warning</Badge>
-    <Badge intent="error">Error</Badge>
+    <Badge intent="danger">Danger</Badge>
   </>
 );

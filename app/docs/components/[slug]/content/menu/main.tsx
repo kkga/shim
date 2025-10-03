@@ -11,7 +11,7 @@ export default () => (
       <MenuItem>Edit</MenuItem>
       <MenuItem>Duplicate</MenuItem>
       <MenuSeparator />
-      <MenuItem intent="error">Delete</MenuItem>
+      <MenuItem intent="danger">Delete</MenuItem>
     </Menu>
   </MenuTrigger>
 );

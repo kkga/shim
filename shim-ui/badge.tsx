@@ -15,7 +15,7 @@ const style = tv({
         "border border-success-line bg-success-bg-subtle text-success-text",
       warning:
         "border border-warning-line bg-warning-bg-subtle text-warning-text",
-      error: "border border-error-line bg-error-bg-subtle text-error-text",
+      danger: "border border-danger-line bg-danger-bg-subtle text-danger-text",
     },
     size: {
       1: "h-4 gap-1 rounded-xs px-[3px] text-[11px]",

@@ -14,8 +14,8 @@ export default () => (
     <Link href="#intent" intent="success">
       Success
     </Link>
-    <Link href="#intent" intent="error">
-      Error
+    <Link href="#intent" intent="danger">
+      Danger
     </Link>
   </>
 );

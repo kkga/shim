@@ -13,7 +13,7 @@ export default () => (
       <Badge intent="success">
         <CheckFat aria-label="Approved" size={12} weight="duotone" />
       </Badge>
-      <Badge intent="error">
+      <Badge intent="danger">
         <Lock aria-label="Locked" size={12} weight="duotone" />
       </Badge>
     </div>

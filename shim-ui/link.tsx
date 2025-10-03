@@ -31,8 +31,8 @@ const style = tv({
         "text-warning-text decoration-warning-line data-hovered:decoration-warning-border-hover",
       success:
         "text-success-text decoration-success-line data-hovered:decoration-success-border-hover",
-      error:
-        "text-error-text decoration-error-line data-hovered:decoration-error-border-hover",
+      danger:
+        "text-danger-text decoration-danger-line data-hovered:decoration-danger-border-hover",
     },
   },
   defaultVariants: {
