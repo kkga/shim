@@ -30,13 +30,13 @@ export default async function GuidePage({
   let [styleUtilsSrc, themeUtilsSrc, themeCssSrc] = [
     getFileSource("shim-ui/lib/style.ts"),
     getFileSource("shim-ui/lib/theme.tsx"),
-    getFileSource("shim-ui/theme/theme.css"),
+    getFileSource("shim-ui/css/theme.css"),
   ];
 
   let [styleUtilsUrl, themeUtilsUrl, themeCssUrl] = [
     `${GITHUB_FILE_URL}/lib/style.ts`,
     `${GITHUB_FILE_URL}/lib/theme.tsx`,
-    `${GITHUB_FILE_URL}/theme/theme.css`,
+    `${GITHUB_FILE_URL}/css/theme.css`,
   ];
 
   let { content, scope } = await mdxToHtml({

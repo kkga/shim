@@ -1,5 +1,5 @@
 /* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
-@reference "../shim-ui/theme/theme.css";
+@reference "../shim-ui/css/theme.css";
 
 :root {
   --font-family-mono: var(--font-mono);

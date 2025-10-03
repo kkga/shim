@@ -71,7 +71,6 @@ export default async function DocPage({
       <Demo
         code={[{ content: demos.main, title: `${title} example` }]}
         demo={<MainDemo />}
-        hideTitle
       />
 
       <Demo

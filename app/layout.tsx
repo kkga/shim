@@ -1,4 +1,4 @@
-import "../shim-ui/theme/theme.css";
+import "../shim-ui/css/theme.css";
 import "./site.css";
 
 import { Analytics } from "@vercel/analytics/react";

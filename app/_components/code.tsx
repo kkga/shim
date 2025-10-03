@@ -13,16 +13,12 @@ export function Code({
   if (highlight) {
     return (
       <code
-        className="min-w-min font-book font-mono text-accent-text"
+        className="min-w-min font-mono text-accent-text"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Highlighted code
         dangerouslySetInnerHTML={{ __html: html }}
       />
     );
   }
 
-  return (
-    <code className="min-w-min font-book font-mono text-accent-text">
-      {html}
-    </code>
-  );
+  return <code className="min-w-min font-mono text-accent-text">{html}</code>;
 }

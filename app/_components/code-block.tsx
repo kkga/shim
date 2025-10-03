@@ -50,7 +50,7 @@ function CodeHeader({
   selectedCode: CodeItem;
 }) {
   return (
-    <div className="sticky top-0 z-20 flex min-h-8 items-center border-neutral-3 border-b bg-panel px-1 py-0">
+    <div className="sticky top-0 z-20 flex min-h-8 items-center bg-panel px-1 py-0">
       {children}
       <CodeActions
         content={selectedCode.raw || selectedCode.content}
@@ -74,7 +74,7 @@ export function CodeBlock({ highlight, ...props }: Props) {
     normalizedCode.find((c) => c.title === tab) ?? normalizedCode[0];
 
   return (
-    <div className="codeblock group isolate min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel text-[13px] text-neutral-text">
+    <div className="codeblock group isolate min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel text-neutral-text text-xs">
       {normalizedCode.length > 1 ? (
         <Tabs onSelectionChange={(key) => setTab(key)} selectedKey={tab}>
           <CodeHeader selectedCode={selectedCode}>

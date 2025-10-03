@@ -4,18 +4,17 @@ import { CodeBlock, type CodeItem } from "./code-block";
 
 interface Props {
   title?: string;
-  hideTitle?: boolean;
   children?: React.ReactNode;
   demo?: React.ReactNode;
   code?: string | CodeItem[];
   className?: string;
 }
 
-function Demo({ title, hideTitle, demo, code, className, children }: Props) {
+function Demo({ title, demo, code, className, children }: Props) {
   return (
     <section className="doc-section col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-stretch">
       <div className="col-start-1">
-        {title && !hideTitle && (
+        {title && (
           <h2 className="mb-2 font-semibold text-base text-neutral-text-contrast leading-tight">
             {title}
           </h2>
