@@ -1,49 +1,46 @@
 # Shim CLI
 
-A command-line tool for installing UI components from the Shim component library.
+Command-line tool for installing UI components from [Shim](https://shim.kkga.me).
+
+[Documentation](https://shim.kkga.me) • [GitHub](https://github.com/kkga/shim) • [npm](https://www.npmjs.com/package/@kkga/shim)
 
 ## Usage
 
-Run the CLI without installing it globally:
-
 ```bash
-# The package name is '@kkga/shim', the command is 'shim'
-pnpm dlx @kkga/shim <command>
+pnpm dlx @kkga/shim add <component>
 ```
 
-### Adding Components
+## Commands
+
+### `add`
+
+Install components to your project:
 
 ```bash
-# Install a component to the default directory
+# Install a component
 pnpm dlx @kkga/shim add button
 
-# Install a component to a custom directory (relative to project root)
-pnpm dlx @kkga/shim add button --path src/components
-
-# Force overwrite existing files
-pnpm dlx @kkga/shim add button --overwrite
+# Install to custom path
+pnpm dlx @kkga/shim add button --path src/ui
 
 # Install multiple components
 pnpm dlx @kkga/shim add button dialog form
+
+# Overwrite existing files
+pnpm dlx @kkga/shim add button --overwrite
 ```
 
-### Configuration File
+### `init`
 
-You can create a configuration file to customize component installation paths and other settings.
-
-#### Creating a Config File
+Create a configuration file:
 
 ```bash
-# Generate a sample configuration file
 pnpm dlx @kkga/shim init
-
-# Force overwrite existing config file
-pnpm dlx @kkga/shim init --force
 ```
 
-#### Configuration Options
+## Configuration
 
-Create a `shim.config.json` file in your project root:
+Create `shim.config.json` in your project root:
 
 ```json
 {
@@ -51,49 +48,23 @@ Create a `shim.config.json` file in your project root:
 }
 ```
 
-**Options:**
-- `componentsPath` (string): Path where components will be installed (relative to project root)
+### Path Resolution
 
-#### Priority Order
+1. `--path` flag (highest priority)
+2. `componentsPath` in config file
+3. `components/` directory (default)
 
-The CLI determines the installation path in this order:
-1. Command-line `--path` option (highest priority)
-2. `componentsPath` from config file
-3. Default `components` directory (lowest priority)
-
-#### Overwrite Protection
-
-By default, the CLI will not overwrite existing files. If a component file already exists, the installation will fail with an error message listing the conflicting files.
-
-```bash
-# This will fail if button.tsx already exists
-pnpm dlx @kkga/shim add button
-
-# Use --overwrite to force overwrite existing files
-pnpm dlx @kkga/shim add button --overwrite
-```
-
-#### Supported Config Files
-
-The CLI will automatically look for these config files in order:
-- `shim.config.json`
-- `.shim.config.json`
+All paths are relative to your project root (where `package.json` is located).
 
 ## Examples
 
 ```bash
-# With the example config above (paths always relative to project root):
-pnpm dlx @kkga/shim add button    # Installs to <project-root>/src/components/
-pnpm dlx @kkga/shim add dialog    # Installs to <project-root>/src/components/
-pnpm dlx @kkga/shim add card      # Installs to <project-root>/src/components/
+# Basic usage
+pnpm dlx @kkga/shim add button
 
-# Override with CLI option:
-pnpm dlx @kkga/shim add button --path lib/ui  # Installs to <project-root>/lib/ui/
+# With config file { "componentsPath": "src/ui" }
+pnpm dlx @kkga/shim add button    # → src/ui/button.tsx
 
-# Force overwrite existing files:
-pnpm dlx @kkga/shim add button --overwrite  # Overwrites existing button.tsx
-
-# Works from any subdirectory in your project:
-cd src/pages
-pnpm dlx @kkga/shim add button --path components  # Still installs to <project-root>/components/
+# Override config with flag
+pnpm dlx @kkga/shim add button --path lib/components    # → lib/components/button.tsx
 ```
