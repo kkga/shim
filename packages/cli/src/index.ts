@@ -34,7 +34,7 @@ function loadConfig(): ShimConfig {
         return JSON.parse(content) as ShimConfig;
       } catch (err) {
         process.stderr.write(
-          `⚠️ Error reading config file ${configPath}: ${err instanceof Error ? err.message : String(err)}\n`
+          `Error reading config file ${configPath}: ${err instanceof Error ? err.message : String(err)}\n`
         );
       }
     }
@@ -77,7 +77,7 @@ program
 
     async function fetchAndInstall(componentName: string) {
       if (installedComponents.has(componentName)) {
-        logSkip(componentName);
+        // Skip silently if already installed
         return;
       }
 
@@ -91,7 +91,7 @@ program
         installedComponents.add(componentName);
 
         if (dependencies && dependencies.length > 0) {
-          await installDependencies(componentName, dependencies);
+          await installDependencies(dependencies);
         }
 
         logSuccess(componentName);
@@ -105,7 +105,7 @@ program
       const res = await fetch(url);
 
       if (!res.ok) {
-        process.stderr.write(`❌ Component "${componentName}" not found\n`);
+        process.stderr.write(`Component "${componentName}" not found\n`);
         process.exit(1);
       }
 
@@ -115,7 +115,7 @@ program
     function validateFiles(componentName: string, files: ApiResponse["files"]) {
       if (!files || files.length === 0) {
         process.stderr.write(
-          `❌ No files found for component "${componentName}"\n`
+          `No files found for component "${componentName}"\n`
         );
         process.exit(1);
       }
@@ -150,10 +150,9 @@ program
       fs.mkdirSync(fileDir, { recursive: true });
       fs.writeFileSync(filePath, file.content, "utf-8");
 
+      // Only show output for overwrites, not every file write
       if (options.overwrite && fileExists) {
-        process.stdout.write(`⚠️ Overwrote file: ${filePath}\n`);
-      } else {
-        process.stdout.write(`✅ Wrote file: ${filePath}\n`);
+        process.stdout.write(`Overwrote: ${filePath}\n`);
       }
     }
 
@@ -163,7 +162,7 @@ program
         const existingFiles = checkForExistingFiles(outDir, files);
 
         if (existingFiles.length > 0) {
-          process.stderr.write("❌ The following files already exist:\n");
+          process.stderr.write("The following files already exist:\n");
           for (const file of existingFiles) {
             process.stderr.write(`   ${file}\n`);
           }
@@ -180,31 +179,20 @@ program
       }
     }
 
-    async function installDependencies(
-      componentName: string,
-      dependencies: string[]
-    ) {
-      process.stdout.write(
-        `🔄 Installing dependencies for "${componentName}": ${dependencies.join(", ")}\n`
-      );
+    async function installDependencies(dependencies: string[]) {
+      // Install dependencies silently
       for (const dependency of dependencies) {
         await fetchAndInstall(dependency);
       }
     }
 
     function logSuccess(componentName: string) {
-      process.stdout.write(`✅ Successfully installed "${componentName}"\n`);
+      process.stdout.write(`Installed ${componentName}\n`);
     }
 
     function logError(componentName: string, err: unknown) {
       process.stderr.write(
-        `❌ Error fetching component "${componentName}": ${err instanceof Error ? err.message : String(err)}\n`
-      );
-    }
-
-    function logSkip(componentName: string) {
-      process.stdout.write(
-        `⚠️ Skipping already installed component: "${componentName}"\n`
+        `Error fetching component "${componentName}": ${err instanceof Error ? err.message : String(err)}\n`
       );
     }
 
@@ -221,7 +209,7 @@ program
 
     if (fs.existsSync(configPath) && !options.force) {
       process.stderr.write(
-        `❌ Configuration file already exists at ${configPath}\n`
+        `Configuration file already exists at ${configPath}\n`
       );
       process.stderr.write("Use --force to overwrite\n");
       process.exit(1);
@@ -237,13 +225,10 @@ program
         JSON.stringify(sampleConfig, null, 2),
         "utf-8"
       );
-      process.stdout.write(`✅ Created configuration file: ${configPath}\n`);
-      process.stdout.write(
-        "You can now customize the components path in this file.\n"
-      );
+      process.stdout.write(`Created ${configPath}\n`);
     } catch (err) {
       process.stderr.write(
-        `❌ Error creating config file: ${err instanceof Error ? err.message : String(err)}\n`
+        `Error creating config file: ${err instanceof Error ? err.message : String(err)}\n`
       );
       process.exit(1);
     }
