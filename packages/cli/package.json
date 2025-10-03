@@ -1,5 +1,5 @@
 {
-  "name": "shim-cli",
+  "name": "@kkga/shim",
   "version": "1.0.0",
   "type": "module",
   "bin": {
@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "dev": "SHIM_API_URL='http://localhost:3000/api/components' npm run build && node dist/index.js"
+    "dev": "SHIM_API_URL='http://localhost:3000/api/components' pnpm run build && node dist/index.js"
   },
   "dependencies": {
     "commander": "^14.0.1",
