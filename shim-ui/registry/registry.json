@@ -1,7 +1,7 @@
 {
   "$schema": "./registry.schema.json",
   "name": "shim",
-  "homepage": "https://kkga.me/shim",
+  "homepage": "https://shim.kkga.me",
   "items": [
     {
       "name": "button",
