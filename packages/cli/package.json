@@ -2,6 +2,7 @@
   "name": "@kkga/shim",
   "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
   "bin": {
     "shim": "dist/index.js"
   },
