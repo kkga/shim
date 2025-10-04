@@ -30,13 +30,27 @@ pnpm dlx @kkga/shim add button dialog form
 pnpm dlx @kkga/shim add button --overwrite
 ```
 
+Path is relative to your project root (where `package.json` is located).
+
 ### `init`
 
-Create a configuration file:
+Initialize your project with configuration and utility files:
 
 ```bash
+# Create config with default paths
 pnpm dlx @kkga/shim init
+
+# Create config with custom paths
+pnpm dlx @kkga/shim init --components-path src/ui --utils-path src/lib
+
+# Force overwrite existing config
+pnpm dlx @kkga/shim init --force
 ```
+
+The `init` command:
+- Creates a `shim.config.json` configuration file
+- Downloads required utility files (`style.ts`, `theme.tsx`) to your utils directory
+- Ensures your project is ready for component installation
 
 ## Configuration
 
@@ -44,27 +58,32 @@ Create `shim.config.json` in your project root:
 
 ```json
 {
-  "componentsPath": "src/components"
+  "componentsPath": "src/components",
+  "utilsPath": "src/lib"
 }
 ```
 
-### Path Resolution
+### Available Options
 
-1. `--path` flag (highest priority)
-2. `componentsPath` in config file
-3. `components/` directory (default)
+- `componentsPath`: Directory for component files (default: `"components"`)
+- `utilsPath`: Directory for utility files (default: `"utils"`)
 
-All paths are relative to your project root (where `package.json` is located).
+## Features
 
-## Examples
+### Import Transformation
 
-```bash
-# Basic usage
-pnpm dlx @kkga/shim add button
+Imports are automatically transformed based on your configured paths:
 
-# With config file { "componentsPath": "src/ui" }
-pnpm dlx @kkga/shim add button    # → src/ui/button.tsx
-
-# Override config with flag
-pnpm dlx @kkga/shim add button --path lib/components    # → lib/components/button.tsx
+```typescript
+// Original: import { Button } from "@/shim-ui/button";
+// Becomes: import { Button } from "@/src/ui/button";
 ```
+
+### Dependency Resolution
+
+Components with dependencies are installed automatically.
+
+### Utility Files
+
+Downloads required utility files (`style.ts`, `theme.tsx`) during init.
+
