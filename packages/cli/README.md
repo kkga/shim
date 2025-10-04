@@ -41,7 +41,7 @@ Initialize your project with configuration and utility files:
 pnpm dlx @kkga/shim init
 
 # Create config with custom paths
-pnpm dlx @kkga/shim init --components-path src/ui --utils-path src/lib
+pnpm dlx @kkga/shim init --components-path src/ui --utils-path src/lib --css-path src/styles
 
 # Force overwrite existing config
 pnpm dlx @kkga/shim init --force
@@ -50,6 +50,7 @@ pnpm dlx @kkga/shim init --force
 The `init` command:
 - Creates a `shim.config.json` configuration file
 - Downloads required utility files (`style.ts`, `theme.tsx`) to your utils directory
+- Downloads CSS theme file (`theme.css`) to your styles directory
 - Ensures your project is ready for component installation
 
 ## Configuration
@@ -59,7 +60,8 @@ Create `shim.config.json` in your project root:
 ```json
 {
   "componentsPath": "src/components",
-  "utilsPath": "src/lib"
+  "utilsPath": "src/lib",
+  "cssPath": "src/styles"
 }
 ```
 
@@ -67,6 +69,7 @@ Create `shim.config.json` in your project root:
 
 - `componentsPath`: Directory for component files (default: `"components"`)
 - `utilsPath`: Directory for utility files (default: `"utils"`)
+- `cssPath`: Directory for CSS files (default: `"styles"`)
 
 ## Features
 
@@ -85,5 +88,43 @@ Components with dependencies are installed automatically.
 
 ### Utility Files
 
-Downloads required utility files (`style.ts`, `theme.tsx`) during init.
+Essential utility files are managed automatically:
+- `style.ts` - Styling utilities and design tokens
+- `theme.tsx` - Theme configuration and React context
+- `theme.css` - Complete CSS theme with design tokens, animations, and utilities
+
+## Path Resolution
+
+### Component Installation
+
+1. `--path` flag (highest priority)
+2. `componentsPath` in config file  
+3. `components/` directory (default)
+
+### Utility Files
+
+1. `--utils-path` flag during `init` (highest priority)
+2. `utilsPath` in config file
+3. `utils/` directory (default)
+
+### CSS Files
+
+1. `--css-path` flag during `init` (highest priority)  
+2. `cssPath` in config file
+3. `styles/` directory (default)
+
+All paths are relative to your project root (where `package.json` is located).
+
+## Examples
+
+```bash
+# Initialize project
+pnpm dlx @kkga/shim init
+
+# Install components
+pnpm dlx @kkga/shim add button dialog
+
+# Custom paths
+pnpm dlx @kkga/shim init --components-path src/ui --utils-path src/lib --css-path src/styles
+```
 
