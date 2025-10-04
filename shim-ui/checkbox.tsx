@@ -9,15 +9,15 @@ import {
   type CheckboxProps as RacCheckboxProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 import {
   Description,
   FieldError,
   type FieldProps,
   fieldLayoutStyle,
   Label,
-} from "./field";
+} from "@/shim-ui/field";
+import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface CheckboxGroupProps extends RacCheckboxGroupProps, FieldProps {}
 

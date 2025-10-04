@@ -4,8 +4,6 @@ import {
   ColorField as RacColorField,
   type ColorFieldProps as RacColorFieldProps,
 } from "react-aria-components";
-import { cxRenderProps } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 import {
   Description,
   FieldError,
@@ -13,7 +11,9 @@ import {
   fieldLayoutStyle,
   Input,
   Label,
-} from "./field";
+} from "@/shim-ui/field";
+import { cxRenderProps } from "@/shim-ui/lib/style";
+import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface ColorFieldProps extends RacColorFieldProps, FieldProps {}
 

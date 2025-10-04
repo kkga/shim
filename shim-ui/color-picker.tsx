@@ -10,14 +10,14 @@ import {
   DialogTrigger as RacDialogTrigger,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import { ColorArea } from "@/shim-ui/color-area";
+import { ColorField } from "@/shim-ui/color-field";
+import { ColorSlider } from "@/shim-ui/color-slider";
+import { ColorSwatch } from "@/shim-ui/color-swatch";
 import { focusStyle } from "@/shim-ui/lib/style";
-import { ColorArea } from "./color-area";
-import { ColorField } from "./color-field";
-import { ColorSlider } from "./color-slider";
-import { ColorSwatch } from "./color-swatch";
-import { Popover } from "./popover";
-import { Select, SelectItem } from "./select";
-import { Separator } from "./separator";
+import { Popover } from "@/shim-ui/popover";
+import { Select, SelectItem } from "@/shim-ui/select";
+import { Separator } from "@/shim-ui/separator";
 
 const buttonStyles = tv({
   extend: focusStyle,

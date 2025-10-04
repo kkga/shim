@@ -7,11 +7,11 @@ import {
   SliderTrack as RacSliderTrack,
 } from "react-aria-components";
 import type { VariantProps } from "tailwind-variants";
+import { ColorThumb } from "@/shim-ui/color-thumb";
+import { fieldLayoutStyle, Label } from "@/shim-ui/field";
 import { cxRenderProps } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
-import { ColorThumb } from "./color-thumb";
-import { fieldLayoutStyle, Label } from "./field";
-import { style } from "./slider";
+import { style } from "@/shim-ui/slider";
 
 interface ColorSliderProps
   extends RacColorSliderProps,

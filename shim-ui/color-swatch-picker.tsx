@@ -7,8 +7,8 @@ import {
   type ColorSwatchPickerProps as RacColorSwatchPickerProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
+import { ColorSwatch } from "@/shim-ui/color-swatch";
 import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
-import { ColorSwatch } from "./color-swatch";
 
 function ColorSwatchPicker({
   children,
