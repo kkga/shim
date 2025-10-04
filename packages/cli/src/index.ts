@@ -19,6 +19,7 @@ interface ApiResponse {
 
 interface ShimConfig {
   componentsPath?: string;
+  utilsPath?: string;
 }
 
 function loadConfig(): ShimConfig {
@@ -75,6 +76,27 @@ program
     // Determine output directory from CLI option, config file, or default
     const outputDir = options.path || config.componentsPath || "components";
 
+    function transformImports(
+      files: ApiResponse["files"],
+      shimConfig: ShimConfig
+    ) {
+      const utilsPath = shimConfig.utilsPath || "utils";
+      const componentsPath = shimConfig.componentsPath || "components";
+
+      return files.map((file) => ({
+        ...file,
+        content: file.content
+          .replace(
+            /from ["']@\/shim-ui\/lib\/(style|theme)["']/g,
+            `from "@/${utilsPath}/$1"`
+          )
+          .replace(
+            /from ["']@\/shim-ui\/([^"']+)["']/g,
+            `from "@/${componentsPath}/$1"`
+          ),
+      }));
+    }
+
     async function fetchAndInstall(componentName: string) {
       if (installedComponents.has(componentName)) {
         // Skip silently if already installed
@@ -85,8 +107,11 @@ program
         const { files, dependencies } = await fetchComponentData(componentName);
         validateFiles(componentName, files);
 
+        // Transform import paths to match user's configuration
+        const transformedFiles = transformImports(files, config);
+
         const outDir = prepareOutputDirectory(outputDir);
-        writeFiles(outDir, files);
+        writeFiles(outDir, transformedFiles);
 
         installedComponents.add(componentName);
 
@@ -204,7 +229,15 @@ program
   .command("init")
   .description("Create a sample configuration file")
   .option("-f, --force", "overwrite existing config file")
-  .action((options) => {
+  .option(
+    "--components-path <path>",
+    "custom path for components (default: components)"
+  )
+  .option(
+    "--utils-path <path>",
+    "custom path for utility files (default: utils)"
+  )
+  .action(async (options) => {
     const configPath = path.resolve(process.cwd(), "shim.config.json");
 
     if (fs.existsSync(configPath) && !options.force) {
@@ -216,16 +249,44 @@ program
     }
 
     const sampleConfig: ShimConfig = {
-      componentsPath: "components",
+      componentsPath: options.componentsPath || "components",
+      utilsPath: options.utilsPath || "utils",
     };
 
     try {
+      // Create config file
       fs.writeFileSync(
         configPath,
         JSON.stringify(sampleConfig, null, 2),
         "utf-8"
       );
       process.stdout.write(`Created ${configPath}\n`);
+
+      // Fetch and create utility files
+      const projectRoot = findProjectRoot();
+      const utilsPath = sampleConfig.utilsPath || "utils";
+      const utilsDir = path.resolve(projectRoot, utilsPath);
+
+      fs.mkdirSync(utilsDir, { recursive: true }); // Fetch utilities from API
+      const utilsUrl = `${API_URL.replace("/components", "")}/utils`;
+      const response = await fetch(utilsUrl);
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch utilities: ${response.status}`);
+      }
+
+      const { files } = (await response.json()) as {
+        files: Array<{ path: string; content: string }>;
+      };
+
+      for (const file of files) {
+        const filePath = path.join(utilsDir, file.path);
+
+        if (!fs.existsSync(filePath) || options.force) {
+          fs.writeFileSync(filePath, file.content, "utf-8");
+          process.stdout.write(`Created ${filePath}\n`);
+        }
+      }
     } catch (err) {
       process.stderr.write(
         `Error creating config file: ${err instanceof Error ? err.message : String(err)}\n`
