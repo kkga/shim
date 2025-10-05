@@ -52,7 +52,8 @@ function H2({ className, ...props }: ComponentPropsWithoutRef<"h2">) {
   return (
     <h2
       className={twJoin(
-        "not-first:mt-12 mb-3 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast leading-tight",
+        "not-first:mt-12 mb-3 scroll-mt-6 text-balance font-semibold text-lg text-neutral-text-contrast leading-tight",
+        "*:text-inherit *:no-underline *:hover:underline *:hover:decoration-neutral-border-hover",
         className
       )}
       {...props}
@@ -65,6 +66,7 @@ function H3({ className, ...props }: ComponentPropsWithoutRef<"h3">) {
     <h3
       className={twJoin(
         "not-first:mt-12 mb-2 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast leading-tight",
+        "*:text-inherit *:no-underline *:hover:underline *:hover:decoration-neutral-border-hover",
         className
       )}
       {...props}
@@ -77,6 +79,7 @@ function H4({ className, ...props }: ComponentPropsWithoutRef<"h4">) {
     <h4
       className={twJoin(
         "not-first::mt-6 mb-2 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast leading-tight",
+        "*:text-inherit *:no-underline *:hover:underline *:hover:decoration-neutral-border-hover",
         className
       )}
       {...props}
@@ -89,6 +92,7 @@ function H5({ className, ...props }: ComponentPropsWithoutRef<"h5">) {
     <h5
       className={twJoin(
         "not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm",
+        "*:text-inherit *:no-underline *:hover:underline *:hover:decoration-neutral-border-hover",
         className
       )}
       {...props}
@@ -101,6 +105,7 @@ function H6({ className, ...props }: ComponentPropsWithoutRef<"h6">) {
     <h6
       className={twJoin(
         "not-first::mt-8 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm",
+        "*:text-inherit *:no-underline *:hover:underline *:hover:decoration-neutral-border-hover",
         className
       )}
       {...props}
