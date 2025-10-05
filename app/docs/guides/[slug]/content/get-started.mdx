@@ -4,141 +4,159 @@ description: Setup the components in your project.
 order: 1
 ---
 
-## Introduction
+## What is Shim?
 
-It's a collection of components built on top of
-[React Aria](https://react-spectrum.adobe.com/react-aria/index.html). You
-install the core dependencies and copy-paste (or download) the components you
-need. This way, you own the code and can customize it to your liking.
+Copy-paste UI components built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html). You own the code.
 
-## Setup
-
-This guide will walk you through setting up the components in your project. It
-assumes you have a React project set up with TypeScript.
+## Install the prerequisites
 
 <Steps>
+  <Step>
+    ### React Aria Components
 
-<Step>
-  ### Install React Aria Components
+    Core accessible primitives used by Shim components. Read the docs at [react-spectrum.adobe.com/react-aria/components](https://react-spectrum.adobe.com/react-aria/components.html).
 
-**Install React Aria Components** using your package manager of choice.
+    <CodeBlock code={[ { title: "Terminal", content: "pnpm add react-aria-components", }, ]} />
 
-<CodeBlock
-  code={[
-    {
-      title: "PNPM",
-      content: `pnpm add @react-aria/components @react-aria/utils @react-stately/utils`,
-    },
-    {
-      title: "NPM",
-      content: `npm install @react-aria/components @react-aria/utils @react-stately/utils`,
-    },
-    {
-      title: "Yarn",
-      content: `yarn add @react-aria/components @react-aria/utils @react-stately/utils`,
-    },
-  ]}
-/>
+  </Step>
 
-</Step>
+  <Step>
+    ### Tailwind CSS v4
 
-<Step>
-  ## Install Tailwind CSS **Install Tailwind CSS v4 Beta.** Refer to the [v4
-  docs](https://tailwindcss.com/docs/v4-beta) on how to install it for your
-  project.
-</Step>
+    Utility-first styling foundation. Installation depends on your framework—follow the [official Tailwind guide](https://tailwindcss.com/docs) for the correct steps.
 
-<Step>
-  **Install styling dependencies and icons:**
+  </Step>
 
-- [tailwind-variants](https://www.tailwind-variants.org/) works very well with
-  React Aria Components;
-- [clsx](https://github.com/lukeed/clsx) and
-  [tailwind-merge](https://github.com/dcastil/tailwind-merge) are used for class
-  merging;
-- [Radix Colors](https://www.radix-ui.com/colors) for a balanced semantic
-  palette and automatic dark mode;
-- [Phosphor Icons](https://phosphoricons.com/) are used within the components.
-  They're great.
+  <Step>
+    ### tailwind-variants
 
-<CodeBlock
-  code={[
-    {
-      title: "PNPM",
-      content: `pnpm add tailwind-variants clsx tailwind-merge @radix-ui/colors @phosphor-icons/react`,
-    },
-    {
-      title: "NPM",
-      content: `npm install tailwind-variants clsx tailwind-merge @radix-ui/colors @phosphor-icons/react`,
-    },
-    {
-      title: "Yarn",
-      content: `yarn add tailwind-variants clsx tailwind-merge @radix-ui/colors @phosphor-icons/react`,
-    },
-  ]}
-/>
+    Declarative variant helpers for Tailwind class strings. See the docs at [tailwind-variants.org](https://www.tailwind-variants.org/).
 
-</Step>
+    <CodeBlock
+      code={[
+        {
+        title: "Install",
+        content: "pnpm add tailwind-variants",
+        },
+      ]}
+    />
 
-<Step>
-**Add style and theme utilities.** The components use a few utility functions for styling and theming.
-Copy-paste these into your project or download from the [GitHub repo](https://github.com/kkga/shim/tree/master/lib).
-A good place to put these files might be `lib/style.ts` and `lib/theme.tsx`, but
-the path alias can be customized (see the last step).
+  </Step>
 
-<CodeBlock
-  collapsed
-  code={[{
-    content: styleUtilsSrc,
-    title: 'style.ts',
-    sourceUrl: styleUtilsUrl
-  },
- {
-    content: themeUtilsSrc,
-    title: 'theme.tsx',
-    sourceUrl: themeUtilsUrl
-  } 
-  ]}
-/>
-</Step>
+  <Step>
+    ### tailwind-merge
 
-<Step>
-**Add theme CSS.** A single file containing [Tailwind v4 configuration](https://tailwindcss.com/docs/v4-beta#css-configuration-in-depth) and theme colors.
-This file needs to be imported in your app entry file.
+    Safely merge conditional Tailwind classes. Documentation lives at [github.com/dcastil/tailwind-merge](https://github.com/dcastil/tailwind-merge).
 
-<CodeBlock
-  collapsed
-  code={[{ 
-    title: 'theme.css',
-    content: themeCssSrc, 
-    sourceUrl: themeCssUrl }
-  ]}
-/>
-</Step>
+    <CodeBlock
+      code={[
+        {
+        title: "Install",
+        content: "pnpm add tailwind-merge",
+        },
+      ]}
+    />
 
-<Step>
-**Add path aliases** to TypeScript configuration.
-This will allow importing components and utils with `@ui/*` and `@lib/*` aliases.
-If you'll use different aliases, make sure to update the imports in components.
+  </Step>
 
-<CodeBlock
-  title="tsconfig.json"
-  code={[
-    {
-      title: "tsconfig.json",
-      content: `{
+  <Step>
+    ### Radix Colors
+    Semantic color palette used by Shim tokens. Browse palettes at [radix-ui.com/colors](https://www.radix-ui.com/colors).
+    <CodeBlock
+      code={[
+        {
+        title: "Install",
+        content: "pnpm add @radix-ui/colors",
+        },
+      ]}
+    />
+
+  </Step>
+
+  <Step>
+    ### Phosphor Icons
+    Icon set referenced by several components. Explore the catalog at [phosphoricons.com](https://phosphoricons.com/).
+    <CodeBlock code={[{ title: "Install", content: "pnpm add @phosphor-icons/react", }]} />
+
+  </Step>
+</Steps>
+
+## Shim setup
+
+<Steps>
+  <Step>
+    ### Configure path alias
+
+    Shim components import files via the `@/` alias. Configure the path in `tsconfig.json` (or `jsconfig.json`) so those imports resolve:
+
+    <CodeBlock
+      code={[
+        {
+          title: "tsconfig.json",
+          content: `{
     "compilerOptions": {
-      "baseUrl": "./",
+      "baseUrl": ".",
       "paths": {
-        "@ui/*": ["./components/ui/*"], // path to the components
-        "@lib/*": ["./lib/*"], // path to the utilities (style.ts, theme.tsx)
+        "@/*": ["./*"]
       }
     }
-  }`,
+}`,
+        },
+      ]}
+    />
+
+  </Step>
+  <Step>
+    ### Initialize Shim
+
+    Run the `init` command to initialize Shim. 
+    This command:
+
+    - Creates `shim.config.json` with your chosen paths
+    - Downloads the required utility files (`style.ts`, `theme.tsx`)
+    - Fetches the theme CSS file (`theme.css`)
+
+
+    <CodeBlock code={[{ title: "Terminal", content: "pnpm dlx @kkga/shim init", }]} />
+
+  </Step>
+</Steps>
+
+
+You can customise the paths during setup:
+
+```bash
+pnpm dlx @kkga/shim init --components-path src/ui --utils-path src/lib --css-path src/styles
+```
+
+Sample configuration:
+
+<CodeBlock
+  code={[
+    {
+      title: "shim.config.json",
+      content: `{
+"componentsPath": "src/ui",
+"utilsPath": "src/lib",
+"cssPath": "src/styles"
+}`,
     },
   ]}
 />
 
-</Step>
+## Add components
 
-</Steps>
+### Using the CLI
+
+```bash
+pnpm dlx @kkga/shim add button dialog
+```
+
+The CLI resolves dependencies, rewrites imports, and installs into the paths defined in `shim.config.json`.
+
+### Manual copy-paste
+
+1. Browse the component source in the [Shim repository](https://github.com/kkga/shim/tree/master/shim-ui)
+2. Copy the component `.tsx` file into your project
+3. Copy required utility files (`lib/style.ts`, `lib/theme.tsx`) and `css/theme.css`
+4. Update import paths (or set up a path alias) so component imports continue to resolve. Aliases keep your project structure flexible and match what the CLI generates.

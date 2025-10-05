@@ -39,7 +39,7 @@ export default async function GuidePage({
     `${GITHUB_FILE_URL}/css/theme.css`,
   ];
 
-  let { content, scope } = await mdxToHtml({
+  let { content } = await mdxToHtml({
     source,
     scope: {
       styleUtilsSrc,
@@ -52,18 +52,18 @@ export default async function GuidePage({
   });
 
   return (
-    <article className="grid grid-cols-1 text-[15px] text-neutral-text leading-normal md:grid-cols-[3fr_1fr]">
+    <article className="grid grid-cols-1 text-[15px] text-neutral-text leading-6">
       <DocHeader subtitle={description} title={title} />
       <section className="p-6 lg:p-8">
         <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>
       </section>
-      {scope.toc && scope.toc.length > 0 && (
+      {/* {scope.toc && scope.toc.length > 0 && (
         <aside className="hidden min-w-[16rem] border-neutral-3 border-l px-6 py-6 md:block">
           <nav className="sticky top-6">
             <Toc toc={scope.toc} />
           </nav>
         </aside>
-      )}
+      )} */}
     </article>
   );
 }

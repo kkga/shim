@@ -46,25 +46,6 @@ strong {
   color: var(--color-neutral-text-contrast);
 }
 
-.hash-link {
-  position: absolute;
-  visibility: hidden;
-  text-decoration: none;
-  margin-left: -1.5em;
-  padding: 0 0.5em;
-  cursor: pointer;
-
-  &:after {
-    content: "#";
-    color: var(--color-neutral-placeholder);
-    font-weight: normal;
-  }
-}
-
-*:hover > .hash-link {
-  visibility: visible;
-}
-
 .prose {
   pre,
   ul,
