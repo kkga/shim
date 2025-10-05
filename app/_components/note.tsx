@@ -1,14 +1,14 @@
-import { CaretDoubleRight } from "@phosphor-icons/react/dist/ssr";
+import { CaretDoubleRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { tv } from "tailwind-variants";
 
 const noteStyle = tv({
   slots: {
     container:
-      "-ml-[calc(1px+calc(var(--spacing)*8))] my-4 grid grid-cols-[min-content_1fr] gap-x-2 py-1.5 pl-2 text-[13px] text-neutral-text leading-normal *:m-0 [&_code]:text-current",
+      "-ml-[calc(1px+calc(var(--spacing)*8))] my-4 grid grid-cols-[min-content_1fr] text-neutral-text leading-normal *:m-0 [&_code]:text-current",
     title:
       "col-start-2 col-end-3 self-center font-medium text-neutral-text-contrast",
     icon: "col-start-1 col-end-2 row-start-1 flex shrink-0 items-center justify-center place-self-center",
-    content: "col-start-2 pr-2 *:last:mb-0",
+    content: "col-start-2 text-balance pr-2 *:last:mb-0",
   },
   variants: {
     intent: {
@@ -25,6 +25,16 @@ const noteStyle = tv({
         icon: "text-warning-text",
       },
     },
+    size: {
+      1: {
+        container: "gap-x-2 py-1.5 pl-2 text-[13px]",
+        icon: "size-4",
+      },
+      2: {
+        container: "gap-x-2 py-2 pl-2 text-sm",
+        icon: "size-4",
+      },
+    },
   },
 });
 
@@ -33,17 +43,24 @@ function Note({
   title,
   children,
   className,
+  size = 1,
 }: {
   intent?: "info" | "warning";
   title?: string;
   children: React.ReactNode;
   className?: string;
+  size?: 1 | 2;
 }) {
   let icons = {
-    info: <CaretDoubleRight size={16} weight="duotone" />,
-    warning: <CaretDoubleRight size={16} weight="duotone" />,
+    info: <CaretDoubleRightIcon size={16} weight="duotone" />,
+    warning: <CaretDoubleRightIcon size={16} weight="duotone" />,
   };
-  let { icon, container, title: titleStyle, content } = noteStyle({ intent });
+  let {
+    icon,
+    container,
+    title: titleStyle,
+    content,
+  } = noteStyle({ intent, size });
 
   return (
     <div className={container({ className })}>
