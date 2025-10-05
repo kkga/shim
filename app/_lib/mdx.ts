@@ -24,12 +24,7 @@ let options: EvaluateOptions<Scope> = {
       [
         rehypeAutolinkHeadings,
         {
-          behaviour: "append",
-          properties: {
-            ariaHidden: true,
-            tabIndex: -1,
-            className: "hash-link",
-          },
+          behavior: "wrap",
         },
       ],
       postProcess,
