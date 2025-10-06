@@ -1,13 +1,11 @@
-import type { MDXComponents } from "next-mdx-remote-client/rsc";
-import { type ReactNode, Suspense } from "react";
+import type { ReactNode } from "react";
 import { DocHeader } from "@/app/_components/doc-header";
 import { DocSection } from "@/app/_components/doc-section";
 import { Metadata } from "@/app/_components/metadata";
 import { Note } from "@/app/_components/note";
-import { mdxToHtml } from "@/app/_lib/mdx";
 import { getFileSource, toKebabCase } from "@/app/_lib/utils";
 import { Link } from "@/shim-ui/link";
-import { demoRegistry, getMainDemo } from "./demo-registry";
+import { getMainDemo } from "./demo-registry";
 import {
   getComponentDocs,
   getDemosSource,
@@ -50,27 +48,12 @@ export default async function DocPage({
   let source = getFileSource(files[0]);
   let MainDemo = getMainDemo(name);
   let sections = await loadDocSections(name);
-  let mdxFallback: ReactNode | null = null;
 
   if (!demos.main) {
     let expectedPath = `app/docs/components/[slug]/content/${toKebabCase(name)}/main.tsx`;
     throw new Error(
       `Missing main demo for "${name}". Expected source at "${expectedPath}".`
     );
-  }
-
-  if (sections.length === 0 && doc.source) {
-    let { content } = await mdxToHtml({
-      source: doc.source,
-      scope: {
-        ...doc.metadata,
-        demos,
-        source,
-      },
-      components: demoRegistry as MDXComponents,
-    });
-
-    mdxFallback = <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>;
   }
 
   let curlCommand = `curl -o ${name}.tsx '${API_URL}?c=${name}'`;
@@ -141,7 +124,6 @@ export default async function DocPage({
           </DocSection>
         );
       })}
-      {mdxFallback}
     </article>
   );
 }

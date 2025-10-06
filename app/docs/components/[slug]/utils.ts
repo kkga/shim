@@ -16,14 +16,6 @@ const DOCS_DIR = join(
   "content"
 );
 
-function readFileIfExists(path: string) {
-  if (!fs.existsSync(path)) {
-    return null;
-  }
-
-  return fs.readFileSync(path, "utf-8");
-}
-
 export function getComponentDocs({
   excludePlanned = true,
 }: {
@@ -33,14 +25,10 @@ export function getComponentDocs({
     .filter((component) => !(excludePlanned && component.status === "planned"))
     .map((component) => {
       let slug = slugify(component.name);
-      let docSource = readFileIfExists(
-        join(DOCS_DIR, component.name, "doc.mdx")
-      );
 
       return {
         metadata: component,
         slug,
-        source: docSource,
       };
     });
 }
