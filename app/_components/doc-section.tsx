@@ -2,7 +2,8 @@ import { twMerge } from "tailwind-merge";
 import { Theme } from "@/shim-ui/lib/theme";
 import { CodeBlock, type CodeItem } from "./code-block";
 
-interface Props {
+interface DocSectionProps {
+  id?: string;
   title?: string;
   children?: React.ReactNode;
   demo?: React.ReactNode;
@@ -10,13 +11,32 @@ interface Props {
   className?: string;
 }
 
-function Demo({ title, demo, code, className, children }: Props) {
+function DocSection({
+  id,
+  title,
+  demo,
+  code,
+  className,
+  children,
+}: DocSectionProps) {
   return (
-    <section className="doc-section col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-stretch">
+    <section
+      className="doc-section col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-stretch"
+      id={id}
+    >
       <div className="col-start-1">
         {title && (
-          <h2 className="mb-2 font-semibold text-base text-neutral-text-contrast leading-tight">
-            {title}
+          <h2 className="mb-2 font-semibold text-base text-neutral-text-contrast leading-8">
+            {id ? (
+              <a
+                className="inline-flex items-center gap-2 text-current no-underline hover:text-neutral-text/80 focus-visible:underline focus-visible:outline-none"
+                href={`#${id}`}
+              >
+                {title}
+              </a>
+            ) : (
+              title
+            )}
           </h2>
         )}
 
@@ -48,4 +68,4 @@ function Demo({ title, demo, code, className, children }: Props) {
   );
 }
 
-export { Demo };
+export { DocSection };

@@ -4,7 +4,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
 import { Code } from "./code";
 import { CodeBlock } from "./code-block";
-import { Demo } from "./demo";
+import { DocSection } from "./doc-section";
 import { Note } from "./note";
 import { Step, Steps } from "./steps";
 
@@ -152,7 +152,7 @@ const mdxComponents: MDXComponents = {
   a: Link,
   code: Code,
   pre: CodeBlock,
-  Demo,
+  Demo: DocSection,
   Note,
   Steps,
   Step,
