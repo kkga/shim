@@ -1,5 +1,5 @@
-import { getComponentDocs } from "@/app/docs/components/[slug]/utils";
-import { getGuides } from "@/app/docs/guides/[slug]/utils";
+import { getGuides } from "@/app/(docs)/[slug]/utils";
+import { getComponentDocs } from "@/app/(docs)/components/[slug]/utils";
 
 export const baseUrl = "https://shim.kkga.me";
 

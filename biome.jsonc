@@ -19,7 +19,7 @@
   },
   "overrides": [
     {
-      "includes": ["app/(docs)/docs/components/**"],
+      "includes": ["app/(docs)/components/**/content/**"],
       "linter": {
         "rules": {
           "style": {

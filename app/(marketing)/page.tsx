@@ -32,7 +32,7 @@ export default function Page() {
           <div className="mt-8 flex gap-6">
             <Link
               className="flex items-center gap-1 font-medium"
-              href="/docs"
+              href="/get-started"
               intent="accent"
             >
               Documentation
