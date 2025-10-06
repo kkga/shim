@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
-import type { ComponentMetadata } from "@/app/_lib/types";
+import type { ComponentMetadata } from "@/app/docs/_lib/types";
 import { ProgressBar } from "@/shim-ui/progress-bar";
 import { toKebabCase } from "../../_lib/utils";
 

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { extname, join } from "node:path";
 
-import type { GuideMetadata } from "@/app/_lib/types";
+import type { GuideMetadata } from "@/app/docs/_lib/types";
 import { readMdxFile, slugify } from "../../_lib/utils";
 
 const GUIDES_DIR = join(

@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import { basename, extname, join } from "node:path";
 import type { ComponentType } from "react";
-import type { ComponentMetadata } from "@/app/_lib/types";
 import { getFileSource } from "@/app/_lib/utils";
+import type { ComponentMetadata } from "@/app/docs/_lib/types";
 import registry from "@/shim-ui/registry/registry.json" with { type: "json" };
 import { slugify, toKebabCase } from "../../_lib/utils";
 import type { DocModule, DocSection } from "../schema";

@@ -2,8 +2,14 @@ import path from "node:path";
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
-const preRawPlugin = path.join(__dirname, "app/_lib/rehype-pre-raw.mjs");
-const postRawPlugin = path.join(__dirname, "app/_lib/rehype-post-raw.mjs");
+const preRawPlugin = path.join(
+  __dirname,
+  "app/(docs)/docs/_lib/rehype-pre-raw.mjs"
+);
+const postRawPlugin = path.join(
+  __dirname,
+  "app/(docs)/docs/_lib/rehype-post-raw.mjs"
+);
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,

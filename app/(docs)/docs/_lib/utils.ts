@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import matter from "gray-matter";
-import type { ComponentMetadata } from "@/app/_lib/types";
+import type { ComponentMetadata } from "@/app/docs/_lib/types";
 
 export function readMdxFile<T extends Record<string, unknown>>(
   filePath: string

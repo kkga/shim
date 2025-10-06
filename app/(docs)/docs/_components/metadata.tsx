@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/ssr";
 import { Fragment } from "react";
-import type { ComponentMetadata } from "@/app/_lib/types";
+import type { ComponentMetadata } from "@/app/docs/_lib/types";
 import { DataList, DataListItem } from "@/shim-ui/data-list";
 import { Link } from "@/shim-ui/link";
 
