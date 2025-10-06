@@ -12,7 +12,7 @@ export default {
       ),
       demo: {
         group: "radio-group",
-        name: "labelPosition",
+        name: "label-position",
       },
       code: "label-position",
     },
@@ -69,7 +69,7 @@ export default {
       ),
       demo: {
         group: "radio-group",
-        name: "radioDescription",
+        name: "radio-description",
       },
       code: "radio-description",
     },

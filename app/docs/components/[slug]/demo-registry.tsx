@@ -30,9 +30,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     content: dynamic(() => import(`${DOCS_DIR}/badge/content`)),
   },
   meter: {
-    Main: dynamic(() => import(`${DOCS_DIR}/meter/main`)),
-    Custom: dynamic(() => import(`${DOCS_DIR}/meter/custom`)),
-    Color: dynamic(() => import(`${DOCS_DIR}/meter/color`)),
+    main: dynamic(() => import(`${DOCS_DIR}/meter/main`)),
+    custom: dynamic(() => import(`${DOCS_DIR}/meter/custom`)),
+    color: dynamic(() => import(`${DOCS_DIR}/meter/color`)),
   },
   "progress-bar": {
     main: dynamic(() => import(`${DOCS_DIR}/progress-bar/main`)),
@@ -68,7 +68,7 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   },
   "toggle-button-group": {
     main: dynamic(() => import(`${DOCS_DIR}/toggle-button-group/main`)),
-    selectionMode: dynamic(
+    "selection-mode": dynamic(
       () => import(`${DOCS_DIR}/toggle-button-group/selection-mode`)
     ),
     states: dynamic(() => import(`${DOCS_DIR}/toggle-button-group/states`)),
@@ -83,9 +83,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   },
   field: {
     main: dynamic(() => import(`${DOCS_DIR}/field/main`)),
-    themeSize: dynamic(() => import(`${DOCS_DIR}/field/theme-size`)),
-    themeVariant: dynamic(() => import(`${DOCS_DIR}/field/theme-variant`)),
-    themeLabelPosition: dynamic(
+    "theme-size": dynamic(() => import(`${DOCS_DIR}/field/theme-size`)),
+    "theme-variant": dynamic(() => import(`${DOCS_DIR}/field/theme-variant`)),
+    "theme-label-position": dynamic(
       () => import(`${DOCS_DIR}/field/theme-label-position`)
     ),
   },
@@ -104,19 +104,19 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     states: dynamic(() => import(`${DOCS_DIR}/number-field/states`)),
     size: dynamic(() => import(`${DOCS_DIR}/number-field/size`)),
     variant: dynamic(() => import(`${DOCS_DIR}/number-field/variant`)),
-    labelPosition: dynamic(
+    "label-position": dynamic(
       () => import(`${DOCS_DIR}/number-field/label-position`)
     ),
   },
   "radio-group": {
     main: dynamic(() => import(`${DOCS_DIR}/radio-group/main`)),
     orientation: dynamic(() => import(`${DOCS_DIR}/radio-group/orientation`)),
-    labelPosition: dynamic(
+    "label-position": dynamic(
       () => import(`${DOCS_DIR}/radio-group/label-position`)
     ),
     size: dynamic(() => import(`${DOCS_DIR}/radio-group/size`)),
     variant: dynamic(() => import(`${DOCS_DIR}/radio-group/variant`)),
-    radioDescription: dynamic(
+    "radio-description": dynamic(
       () => import(`${DOCS_DIR}/radio-group/radio-description`)
     ),
   },
@@ -132,11 +132,13 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     main: dynamic(() => import(`${DOCS_DIR}/slider/main`)),
     filled: dynamic(() => import(`${DOCS_DIR}/slider/filled`)),
     controlled: dynamic(() => import(`${DOCS_DIR}/slider/controlled`)),
-    controlledRange: dynamic(
+    "controlled-range": dynamic(
       () => import(`${DOCS_DIR}/slider/controlled-range`)
     ),
     orientation: dynamic(() => import(`${DOCS_DIR}/slider/orientation`)),
-    labelPosition: dynamic(() => import(`${DOCS_DIR}/slider/label-position`)),
+    "label-position": dynamic(
+      () => import(`${DOCS_DIR}/slider/label-position`)
+    ),
     variant: dynamic(() => import(`${DOCS_DIR}/slider/variant`)),
     size: dynamic(() => import(`${DOCS_DIR}/slider/size`)),
   },
@@ -146,11 +148,13 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     states: dynamic(() => import(`${DOCS_DIR}/switch/states`)),
     variant: dynamic(() => import(`${DOCS_DIR}/switch/variant`)),
     size: dynamic(() => import(`${DOCS_DIR}/switch/size`)),
-    labelPosition: dynamic(() => import(`${DOCS_DIR}/switch/label-position`)),
+    "label-position": dynamic(
+      () => import(`${DOCS_DIR}/switch/label-position`)
+    ),
   },
   "text-field": {
     main: dynamic(() => import(`${DOCS_DIR}/text-field/main`)),
-    labelPosition: dynamic(
+    "label-position": dynamic(
       () => import(`${DOCS_DIR}/text-field/label-position`)
     ),
     size: dynamic(() => import(`${DOCS_DIR}/text-field/size`)),
@@ -158,7 +162,7 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   },
   "text-area": {
     main: dynamic(() => import(`${DOCS_DIR}/text-area/main`)),
-    labelPosition: dynamic(
+    "label-position": dynamic(
       () => import(`${DOCS_DIR}/text-area/label-position`)
     ),
     size: dynamic(() => import(`${DOCS_DIR}/text-area/size`)),
@@ -266,7 +270,7 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   },
   "data-list": {
     main: dynamic(() => import(`${DOCS_DIR}/data-list/main`)),
-    labelPosition: dynamic(
+    "label-position": dynamic(
       () => import(`${DOCS_DIR}/data-list/label-position`)
     ),
     size: dynamic(() => import(`${DOCS_DIR}/data-list/size`)),

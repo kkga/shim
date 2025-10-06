@@ -12,7 +12,7 @@ export default {
       ),
       demo: {
         group: "field",
-        name: "themeVariant",
+        name: "theme-variant",
       },
       className: "gap-4",
       code: "theme-variant",
@@ -27,7 +27,7 @@ export default {
       ),
       demo: {
         group: "field",
-        name: "themeLabelPosition",
+        name: "theme-label-position",
       },
       className: "gap-4",
       code: "theme-label-position",
@@ -42,7 +42,7 @@ export default {
       ),
       demo: {
         group: "field",
-        name: "themeSize",
+        name: "theme-size",
       },
       className: "gap-4",
       code: "theme-size",

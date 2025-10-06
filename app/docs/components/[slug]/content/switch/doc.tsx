@@ -39,7 +39,7 @@ export default {
       ),
       demo: {
         group: "switch",
-        name: "labelPosition",
+        name: "label-position",
       },
       className: "items-start",
       code: "label-position",

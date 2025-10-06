@@ -1,5 +1,5 @@
+import type { MDXComponents } from "mdx/types";
 import { default as NextLink } from "next/link";
-import type { MDXComponents } from "next-mdx-remote-client";
 import type { ComponentPropsWithoutRef } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
 import { Code } from "./code";

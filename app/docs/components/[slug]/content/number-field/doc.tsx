@@ -11,7 +11,7 @@ export default {
       ),
       demo: {
         group: "number-field",
-        name: "labelPosition",
+        name: "label-position",
       },
       code: "label-position",
     },

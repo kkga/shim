@@ -1,6 +1,5 @@
-import { Suspense } from "react";
 import { DocHeader } from "@/app/_components/doc-header";
-import { mdxToHtml } from "@/app/_lib/mdx";
+import { mdxComponents } from "@/app/_components/mdx-components";
 import { getFileSource } from "@/app/_lib/utils";
 import { getGuides } from "./utils";
 
@@ -23,7 +22,7 @@ export default async function GuidePage({
   if (!guide) {
     throw new Error(`Guide not found for slug: ${slug}`);
   }
-  let { metadata, source } = guide;
+  let { metadata } = guide;
   let { title, description } = metadata;
 
   let [styleUtilsSrc, themeUtilsSrc, themeCssSrc] = [
@@ -38,23 +37,21 @@ export default async function GuidePage({
     `${GITHUB_FILE_URL}/css/theme.css`,
   ];
 
-  let { content } = await mdxToHtml({
-    source,
-    scope: {
-      styleUtilsSrc,
-      themeUtilsSrc,
-      themeCssSrc,
-      styleUtilsUrl,
-      themeUtilsUrl,
-      themeCssUrl,
-    },
-  });
+  let { default: GuideContent } = await import(`./content/${slug}.mdx`);
 
   return (
     <article className="grid grid-cols-1 text-[15px] text-neutral-text leading-6">
       <DocHeader subtitle={description} title={title} />
       <section className="p-6 lg:p-8">
-        <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>
+        <GuideContent
+          components={mdxComponents}
+          styleUtilsSrc={styleUtilsSrc}
+          styleUtilsUrl={styleUtilsUrl}
+          themeCssSrc={themeCssSrc}
+          themeCssUrl={themeCssUrl}
+          themeUtilsSrc={themeUtilsSrc}
+          themeUtilsUrl={themeUtilsUrl}
+        />
       </section>
       {/* {scope.toc && scope.toc.length > 0 && (
         <aside className="hidden min-w-[16rem] border-neutral-3 border-l px-6 py-6 md:block">

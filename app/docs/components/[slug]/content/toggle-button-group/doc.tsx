@@ -12,7 +12,7 @@ export default {
       ),
       demo: {
         group: "toggle-button-group",
-        name: "selectionMode",
+        name: "selection-mode",
       },
       className: "items-start",
       code: "selection-mode",

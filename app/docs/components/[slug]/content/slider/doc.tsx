@@ -27,7 +27,7 @@ export default {
       ),
       demo: {
         group: "slider",
-        name: "controlledRange",
+        name: "controlled-range",
       },
       className: "items-stretch",
       code: "controlled-range",
@@ -42,7 +42,7 @@ export default {
       ),
       demo: {
         group: "slider",
-        name: "labelPosition",
+        name: "label-position",
       },
       className: "items-stretch",
       code: "label-position",

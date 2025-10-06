@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { join } from "node:path";
-import { getFrontmatter } from "next-mdx-remote-client/utils";
+import matter from "gray-matter";
 import type { ComponentMetadata } from "./types";
 
 export function readMdxFile<T extends Record<string, unknown>>(
@@ -10,7 +10,12 @@ export function readMdxFile<T extends Record<string, unknown>>(
     return null;
   }
   let rawContent = fs.readFileSync(filePath, "utf-8");
-  return getFrontmatter<T>(rawContent);
+  let { data, content } = matter(rawContent);
+
+  return {
+    frontmatter: data as T,
+    strippedSource: content,
+  };
 }
 
 export function slugify(str: string) {

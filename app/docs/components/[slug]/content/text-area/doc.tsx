@@ -11,7 +11,7 @@ export default {
       ),
       demo: {
         group: "text-area",
-        name: "labelPosition",
+        name: "label-position",
       },
       code: "label-position",
     },
