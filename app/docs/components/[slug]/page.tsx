@@ -1,21 +1,25 @@
 import type { MDXComponents } from "next-mdx-remote-client/rsc";
-import { Suspense } from "react";
-import { Demo } from "@/app/_components/demo";
+import { type ReactNode, Suspense } from "react";
 import { DocHeader } from "@/app/_components/doc-header";
+import { DocSection } from "@/app/_components/doc-section";
 import { Metadata } from "@/app/_components/metadata";
 import { Note } from "@/app/_components/note";
 import { mdxToHtml } from "@/app/_lib/mdx";
-import { getFileSource } from "@/app/_lib/utils";
+import { getFileSource, toKebabCase } from "@/app/_lib/utils";
 import { Link } from "@/shim-ui/link";
-import { demoComponents, getMainDemo } from "./demo-components";
-import { getComponentDocs, getDemosSource } from "./utils";
+import { demoComponents, getMainDemo } from "./demo-registry";
+import {
+  getComponentDocs,
+  getDemosSource,
+  loadDocSections,
+  resolveSection,
+} from "./utils";
 
 export const dynamicParams = false;
 export function generateStaticParams() {
-  let params = getComponentDocs().map((doc) => ({
+  return getComponentDocs().map((doc) => ({
     slug: doc.slug,
   }));
-  return params;
 }
 
 const API_URL = "https://shim.kkga.me/api";
@@ -33,30 +37,51 @@ export default async function DocPage({
   if (!doc) {
     throw new Error(`Document not found for slug: ${slug}`);
   }
-  let { name, title, description, ariaUrl, docUrl, files } = doc.metadata;
+  let {
+    name,
+    title,
+    description,
+    ariaUrl,
+    docUrl,
+    files,
+    dependencies: dependencyNames = [],
+  } = doc.metadata;
   let demos = getDemosSource(name);
   let source = getFileSource(files[0]);
   let MainDemo = getMainDemo(name);
+  let sections = await loadDocSections(name);
+  let mdxFallback: ReactNode | null = null;
+
+  if (!demos.main) {
+    let expectedPath = `app/docs/components/[slug]/content/${toKebabCase(name)}/main.tsx`;
+    throw new Error(
+      `Missing main demo for "${name}". Expected source at "${expectedPath}".`
+    );
+  }
+
+  if (sections.length === 0 && doc.source) {
+    let { content } = await mdxToHtml({
+      source: doc.source,
+      scope: {
+        ...doc.metadata,
+        demos,
+        source,
+      },
+      components: demoComponents as MDXComponents,
+    });
+
+    mdxFallback = <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>;
+  }
 
   let curlCommand = `curl -o ${name}.tsx '${API_URL}?c=${name}'`;
   let sourceUrl = `${GITHUB_FILE_URL}/${name}.tsx`;
 
-  let dependencies = doc.metadata.dependencies
+  let dependencies = dependencyNames
     .map((depName) => {
-      const dep = docs.find((depDoc) => depDoc.metadata.name === depName);
+      let dep = docs.find((depDoc) => depDoc.metadata.name === depName);
       return dep ? { name: dep.metadata.title, slug: dep.slug } : null;
     })
     .filter((dep): dep is { name: string; slug: string } => dep !== null);
-
-  let { content } = await mdxToHtml({
-    source: doc.source,
-    scope: {
-      ...doc.metadata,
-      demos,
-      source,
-    },
-    components: demoComponents as MDXComponents,
-  });
 
   return (
     <article className="grid grid-cols-1 place-content-start gap-x-8 divide-y divide-neutral-3 pb-12 *:last:border-neutral-3 *:last:border-b md:grid-cols-[2fr_3fr] md:gap-x-12">
@@ -69,12 +94,12 @@ export default async function DocPage({
         />
       </DocHeader>
 
-      <Demo
+      <DocSection
         code={[{ content: demos.main, title: `${title} example` }]}
         demo={<MainDemo />}
       />
 
-      <Demo
+      <DocSection
         code={[
           {
             title: "Command",
@@ -93,38 +118,78 @@ export default async function DocPage({
           source code into your project.
         </p>
 
-        {dependencies && dependencies.length > 0 && (
-          <Note className="mt-4" intent="warning" title="Dependencies">
-            <p>
-              {name} depends on{" "}
-              {dependencies.map(({ name: depName, slug: depSlug }, i) => (
-                <span key={depName}>
-                  {i > 0
-                    ? (() => {
-                        if (i === dependencies.length - 1) {
-                          return " and ";
-                        }
-                        return ", ";
-                      })()
-                    : ""}
-                  <Link
-                    href={`/docs/components/${depSlug}`}
-                    variant="underline"
-                  >
-                    {depName}
-                  </Link>
-                  {i === dependencies.length - 1 ? "." : ""}
-                </span>
-              ))}{" "}
-              Install the dependencies before using the component.
-            </p>
-          </Note>
-        )}
-      </Demo>
+        <DependenciesNote dependencies={dependencies} name={name} />
+      </DocSection>
 
-      <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>
+      {sections.map((section) => {
+        let { anchorId, code, DemoComponent } = resolveSection(section, {
+          componentName: name,
+          demos,
+          slug,
+        });
+
+        return (
+          <DocSection
+            className={section.className}
+            code={code}
+            demo={<DemoComponent />}
+            id={anchorId}
+            key={anchorId}
+            title={section.title}
+          >
+            {section.description}
+          </DocSection>
+        );
+      })}
+      {mdxFallback}
     </article>
   );
+}
+
+function DependenciesNote({
+  dependencies,
+  name,
+}: {
+  dependencies: Array<{ name: string; slug: string }>;
+  name: string;
+}) {
+  if (dependencies.length === 0) {
+    return null;
+  }
+
+  let links = buildDependencyLinks(dependencies);
+
+  return (
+    <Note className="mt-4" intent="warning" title="Dependencies">
+      <p>
+        {name} depends on {links}. Install the dependencies before using the
+        component.
+      </p>
+    </Note>
+  );
+}
+
+function buildDependencyLinks(
+  dependencies: Array<{ name: string; slug: string }>
+) {
+  let nodes: ReactNode[] = [];
+  dependencies.forEach((dependency, index) => {
+    if (index > 0) {
+      nodes.push(index === dependencies.length - 1 ? " and " : ", ");
+    }
+
+    nodes.push(
+      <Link
+        href={`/docs/components/${dependency.slug}`}
+        key={dependency.slug}
+        variant="underline"
+      >
+        {dependency.name}
+      </Link>
+    );
+  });
+
+  return nodes;
 }
 
 // TODO: Uncomment this when the metadata is ready
