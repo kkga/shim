@@ -7,7 +7,7 @@ import { Note } from "@/app/_components/note";
 import { mdxToHtml } from "@/app/_lib/mdx";
 import { getFileSource, toKebabCase } from "@/app/_lib/utils";
 import { Link } from "@/shim-ui/link";
-import { demoComponents, getMainDemo } from "./demo-registry";
+import { demoRegistry, getMainDemo } from "./demo-registry";
 import {
   getComponentDocs,
   getDemosSource,
@@ -67,7 +67,7 @@ export default async function DocPage({
         demos,
         source,
       },
-      components: demoComponents as MDXComponents,
+      components: demoRegistry as MDXComponents,
     });
 
     mdxFallback = <Suspense fallback={<p>Loading...</p>}>{content}</Suspense>;
