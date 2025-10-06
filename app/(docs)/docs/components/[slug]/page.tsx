@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
-import { DocHeader } from "@/app/_components/doc-header";
-import { DocSection } from "@/app/_components/doc-section";
-import { Metadata } from "@/app/_components/metadata";
-import { Note } from "@/app/_components/note";
-import { getFileSource, toKebabCase } from "@/app/_lib/utils";
+import { getFileSource } from "@/app/_lib/utils";
+import { DocHeader } from "@/app/(docs)/docs/_components/doc-header";
+import { DocSection } from "@/app/(docs)/docs/_components/doc-section";
+import { Metadata } from "@/app/(docs)/docs/_components/metadata";
+import { Note } from "@/app/(docs)/docs/_components/note";
 import { Link } from "@/shim-ui/link";
+import { toKebabCase } from "../../_lib/utils";
 import { getMainDemo } from "./demo-registry";
 import {
   getComponentDocs,
@@ -50,7 +51,7 @@ export default async function DocPage({
   let sections = await loadDocSections(name);
 
   if (!demos.main) {
-    let expectedPath = `app/docs/components/[slug]/content/${toKebabCase(name)}/main.tsx`;
+    let expectedPath = `app/(docs)/docs/components/[slug]/content/${toKebabCase(name)}/main.tsx`;
     throw new Error(
       `Missing main demo for "${name}". Expected source at "${expectedPath}".`
     );

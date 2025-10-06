@@ -2,11 +2,12 @@ import fs from "node:fs";
 import { extname, join } from "node:path";
 
 import type { GuideMetadata } from "@/app/_lib/types";
-import { readMdxFile, slugify } from "@/app/_lib/utils";
+import { readMdxFile, slugify } from "../../_lib/utils";
 
 const GUIDES_DIR = join(
   process.cwd(),
   "app",
+  "(docs)",
   "docs",
   "guides",
   "[slug]",

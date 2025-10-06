@@ -12,7 +12,7 @@ export async function GET(
   if (!name) {
     return new Response(
       JSON.stringify({
-        error: "Provide a component name. Example: /api/components/button",
+        error: "Provide a component name. Example: /api/registry/button",
       }),
       { status: 400, headers: { "Content-Type": "application/json" } }
     );

@@ -2,13 +2,12 @@ import {
   ArrowRightIcon,
   ArrowSquareOutIcon,
 } from "@phosphor-icons/react/dist/ssr";
+import { Logo } from "@/app/_components/logo";
 import { Badge } from "@/shim-ui/badge";
 import { DataList, DataListItem } from "@/shim-ui/data-list";
 import { Link } from "@/shim-ui/link";
 import { Separator } from "@/shim-ui/separator";
 import { Examples } from "./_components/examples/examples";
-import { Logo } from "./_components/logo";
-import { P } from "./_components/mdx-components";
 
 export default function Page() {
   return (
@@ -22,13 +21,13 @@ export default function Page() {
             </Badge>
           </div>
 
-          <P className="mt-4 mb-4 text-balance font-medium text-4xl text-neutral-text-contrast leading-10 tracking-tight">
+          <p className="mt-4 mb-4 text-balance font-medium text-4xl text-neutral-text-contrast leading-10 tracking-tight">
             Toolkit for refined interfaces.
-          </P>
-          <P className="m-0 text-balance text-neutral-text">
+          </p>
+          <p className="m-0 text-balance text-neutral-text">
             A collection of React Aria-based components, carefully styled and
             ready to go.
-          </P>
+          </p>
 
           <div className="mt-8 flex gap-6">
             <Link

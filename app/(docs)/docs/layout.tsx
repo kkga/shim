@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { SideNav } from "@/app/_components/nav/sidenav";
-import { TopNav } from "@/app/_components/nav/topnav";
+import { SideNav } from "./_components/nav/sidenav";
+import { TopNav } from "./_components/nav/topnav";
 import { getComponentDocs } from "./components/[slug]/utils";
 import { getGuides } from "./guides/[slug]/utils";
 

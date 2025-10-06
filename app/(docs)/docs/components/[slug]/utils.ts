@@ -2,14 +2,16 @@ import fs from "node:fs";
 import { basename, extname, join } from "node:path";
 import type { ComponentType } from "react";
 import type { ComponentMetadata } from "@/app/_lib/types";
-import { getFileSource, slugify, toKebabCase } from "@/app/_lib/utils";
+import { getFileSource } from "@/app/_lib/utils";
 import registry from "@/shim-ui/registry/registry.json" with { type: "json" };
+import { slugify, toKebabCase } from "../../_lib/utils";
 import type { DocModule, DocSection } from "../schema";
 import { demoRegistry } from "./demo-registry";
 
 const DOCS_DIR = join(
   process.cwd(),
   "app",
+  "(docs)",
   "docs",
   "components",
   "[slug]",
@@ -50,7 +52,7 @@ export function getDemosSource(name: ComponentMetadata["name"]) {
   for (let file of demoFiles) {
     let slug = basename(file, extname(file));
     demos[slug] = getFileSource(
-      `app/docs/components/[slug]/content/${dirname}/${file}`
+      `app/(docs)/docs/components/[slug]/content/${dirname}/${file}`
     );
   }
 
@@ -128,7 +130,7 @@ export function resolveSection(
 
   if (codeKey && !codeContent) {
     throw new Error(
-      `Missing code snippet "${codeKey}" for "${componentName}". Ensure "app/docs/components/[slug]/content/${toKebabCase(componentName)}/${codeKey}.tsx" exists.`
+      `Missing code snippet "${codeKey}" for "${componentName}". Ensure "app/(docs)/docs/components/[slug]/content/${toKebabCase(componentName)}/${codeKey}.tsx" exists.`
     );
   }
 

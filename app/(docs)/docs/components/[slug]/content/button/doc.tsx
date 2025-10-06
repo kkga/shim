@@ -1,4 +1,4 @@
-import { Note } from "@/app/_components/note";
+import { Note } from "@/app/(docs)/docs/_components/note";
 import type { DocModule } from "@/app/docs/components/schema";
 
 export default {

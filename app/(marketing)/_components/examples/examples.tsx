@@ -1,10 +1,10 @@
 "use client";
 
 import { Collection } from "react-aria-components";
-import { ExampleIssueTracker } from "@/app/_components/examples/issue-tracker";
-import { ExampleRepo } from "@/app/_components/examples/repo";
+import { ThemeToggle } from "@/app/_components/theme-toggle";
 import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
-import { ThemeToggle } from "../theme-toggle";
+import { ExampleIssueTracker } from "./issue-tracker";
+import { ExampleRepo } from "./repo";
 
 let items = [
   {

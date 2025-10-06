@@ -7,13 +7,13 @@ import {
   XLogoIcon,
 } from "@phosphor-icons/react";
 import { useState } from "react";
+import { Logo } from "@/app/_components/logo";
+import { ThemeToggle } from "@/app/_components/theme-toggle";
 import { Button, LinkButton } from "@/shim-ui/button";
 import { Dialog } from "@/shim-ui/dialog";
 import { Link } from "@/shim-ui/link";
 import { Separator } from "@/shim-ui/separator";
 import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
-import { Logo } from "../logo";
-import { ThemeToggle } from "../theme-toggle";
 import { type NavItem, Navigation } from "./navigation";
 
 export function TopNav(props: { items: NavItem[] }) {

@@ -1,10 +1,10 @@
 import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 import type { ComponentMetadata } from "@/app/_lib/types";
-import { toKebabCase } from "@/app/_lib/utils";
 import { ProgressBar } from "@/shim-ui/progress-bar";
+import { toKebabCase } from "../../_lib/utils";
 
-const DOCS_DIR = "@/app/docs/components/[slug]/content";
+const DOCS_DIR = "@/app/(docs)/docs/components/[slug]/content";
 
 export function getMainDemo(name: ComponentMetadata["name"]) {
   let filename = toKebabCase(name);

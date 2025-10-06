@@ -1,6 +1,6 @@
-import { DocHeader } from "@/app/_components/doc-header";
-import { mdxComponents } from "@/app/_components/mdx-components";
 import { getFileSource } from "@/app/_lib/utils";
+import { DocHeader } from "@/app/(docs)/docs/_components/doc-header";
+import { mdxComponents } from "@/app/(docs)/docs/_components/mdx-components";
 import { getGuides } from "./utils";
 
 export const dynamicParams = false;
