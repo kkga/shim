@@ -14,8 +14,9 @@ export default {
         group: "field",
         name: "theme-variant",
       },
-      className: "gap-4",
+      className: "flex flex-row gap-4",
       code: "theme-variant",
+      stacked: true,
     },
     {
       title: "Theme label position",
@@ -29,8 +30,9 @@ export default {
         group: "field",
         name: "theme-label-position",
       },
-      className: "gap-4",
+      className: "flex flex-row gap-4",
       code: "theme-label-position",
+      stacked: true,
     },
     {
       title: "Theme size",
@@ -44,8 +46,9 @@ export default {
         group: "field",
         name: "theme-size",
       },
-      className: "gap-4",
+      className: "grid grid-cols-2 gap-4",
       code: "theme-size",
+      stacked: true,
     },
   ],
 } satisfies DocModule;

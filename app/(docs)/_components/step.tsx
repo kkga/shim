@@ -21,8 +21,8 @@ export function Step({
       }}
     >
       <div className="relative z-10 col-start-1! col-end-2! row-start-1!">
-        <div className="mb-4 flex size-6 items-center justify-center bg-panel">
-          <span className="font-bold font-mono text-neutral-text text-xs before:[content:counter(step)]" />
+        <div className="mb-4 flex size-6 items-center justify-center rounded-sm bg-panel">
+          <span className="font-medium text-neutral-text text-sm before:[content:counter(step)]" />
         </div>
       </div>
 

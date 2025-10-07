@@ -11,6 +11,7 @@ interface DocSectionProps {
   code?: string | CodeItem[];
   className?: string;
   onCodeTabChange?: (tab: Key) => void;
+  stacked?: boolean;
 }
 
 function DocSection({
@@ -21,10 +22,14 @@ function DocSection({
   className,
   children,
   onCodeTabChange,
+  stacked = false,
 }: DocSectionProps) {
   return (
     <section
-      className="col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-start gap-y-4 p-4 text-[15px] md:p-8"
+      className={twMerge(
+        "col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-start gap-y-4 p-4 text-[15px] md:p-8",
+        stacked ? "md:grid-cols-1" : ""
+      )}
       id={id}
     >
       <div className="col-start-1 self-stretch">

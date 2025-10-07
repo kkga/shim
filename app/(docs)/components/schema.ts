@@ -18,6 +18,10 @@ export interface DocSection {
    * Optional extra props passed to the demo wrapper.
    */
   className?: string;
+  /**
+   * Whether to stack the demo and code sections. Defaults to false.
+   */
+  stacked?: boolean;
 }
 
 export interface DocModule {

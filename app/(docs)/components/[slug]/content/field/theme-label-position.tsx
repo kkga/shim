@@ -4,16 +4,14 @@ import { Theme } from "@/shim-ui/lib/theme";
 import { NumberField } from "@/shim-ui/number-field";
 import { Radio, RadioGroup } from "@/shim-ui/radio-group";
 import { SearchField } from "@/shim-ui/search-field";
-import { Separator } from "@/shim-ui/separator";
 import { Slider } from "@/shim-ui/slider";
 import { TextArea } from "@/shim-ui/text-area";
 import { TextField } from "@/shim-ui/text-field";
 
 export default () => (
-  <div className="flex gap-4">
-    <div className="flex grow-1 flex-col gap-3">
-      <strong>Label position: top</strong>
-      <Separator />
+  <>
+    <div className="flex grow-1 basis-2xs flex-col gap-3 rounded-lg border border-neutral-line p-4">
+      <h5>Label position: top</h5>
       <Theme labelPosition="top">
         <TextField label="Label" />
         <TextArea label="Label" />
@@ -31,11 +29,8 @@ export default () => (
       </Theme>
     </div>
 
-    <Separator orientation="vertical" />
-
-    <div className="flex grow-1 flex-col gap-3">
-      <strong>Label position: side</strong>
-      <Separator />
+    <div className="flex grow-1 basis-2xs flex-col gap-3 rounded-lg border border-neutral-line p-4">
+      <h5>Label position: side</h5>
       <Theme labelPosition="side">
         <TextField label="Label" />
         <TextArea label="Label" />
@@ -52,5 +47,5 @@ export default () => (
         </CheckboxGroup>
       </Theme>
     </div>
-  </div>
+  </>
 );

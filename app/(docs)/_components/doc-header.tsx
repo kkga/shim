@@ -17,7 +17,7 @@ export function DocHeader({
   return (
     <header
       className={twJoin(
-        "col-span-full flex flex-col gap-6 p-4 md:p-8",
+        "col-span-full flex flex-col gap-6 px-4 py-8 md:px-8 md:py-12",
         className
       )}
     >

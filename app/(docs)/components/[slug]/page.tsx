@@ -71,6 +71,7 @@ export default async function DocPage({
           ariaUrl={ariaUrl}
           dependencies={dependencies}
           docUrl={docUrl}
+          name={name}
           title={title}
         />
       </DocHeader>
@@ -102,6 +103,7 @@ export default async function DocPage({
             demo={<DemoComponent />}
             id={anchorId}
             key={anchorId}
+            stacked={section.stacked}
             title={section.title}
           >
             {section.description}

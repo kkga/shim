@@ -4,7 +4,7 @@ import type { ComponentMetadata } from "@/app/(docs)/_lib/types";
 import { DataList, DataListItem } from "@/shim-ui/data-list";
 import { Link } from "@/shim-ui/link";
 
-const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components";
+const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/shim-ui";
 const GITHUB_ISSUES_URL = "https://github.com/kkga/shim/issues";
 
 interface MetadataLinkProps {
@@ -34,11 +34,12 @@ function MetadataLink({ href, title, external, children }: MetadataLinkProps) {
 }
 
 interface MetadataProps
-  extends Pick<ComponentMetadata, "docUrl" | "ariaUrl" | "title"> {
+  extends Pick<ComponentMetadata, "docUrl" | "ariaUrl" | "title" | "name"> {
   dependencies: { name: string; slug: string }[];
 }
 
 export function Metadata({
+  name,
   title,
   docUrl,
   ariaUrl,
@@ -78,7 +79,7 @@ export function Metadata({
         value={
           <MetadataLink
             external
-            href={`${GITHUB_FILE_URL}/${title}.tsx`}
+            href={`${GITHUB_FILE_URL}/${name}.tsx`}
             title="View source code on GitHub"
           >
             GitHub
@@ -105,7 +106,7 @@ export function Metadata({
               {i > 0 && ", "}
               <MetadataLink
                 external={false}
-                href={`/docs/components/${depSlug}`}
+                href={`/docs/${depSlug}`}
                 title={`View ${depName} documentation`}
               >
                 {depName}
