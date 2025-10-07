@@ -6,7 +6,7 @@ export default {
       title: "Selection mode",
       description: (
         <p>
-          Configure how many buttons may be active by setting the
+          Configure how many buttons may be active by setting the{" "}
           <code>selectionMode</code> prop.
         </p>
       ),

@@ -1,6 +1,5 @@
 import { twJoin } from "tailwind-merge";
 import { Separator } from "@/shim-ui/separator";
-import { H1, P } from "./mdx-components";
 
 interface DocHeaderProps {
   title: string;
@@ -18,21 +17,21 @@ export function DocHeader({
   return (
     <header
       className={twJoin(
-        "doc-section col-span-full flex flex-col gap-6 border-neutral-3 border-b",
+        "col-span-full flex flex-col gap-6 p-4 md:p-8",
         className
       )}
     >
       <div>
-        <H1>{title}</H1>
+        <h1>{title}</h1>
         {subtitle && (
-          <P className="mt-2! mb-0! font-medium text-base text-neutral-text">
+          <p className="mt-2! mb-0! text-base text-neutral-text lg:text-lg">
             {subtitle}
-          </P>
+          </p>
         )}
       </div>
       {children && (
         <>
-          <Separator className="max-w-16 bg-neutral-4" />
+          <Separator className="my-0! max-w-16 bg-neutral-3" />
           {children}
         </>
       )}

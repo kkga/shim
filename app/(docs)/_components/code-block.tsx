@@ -3,6 +3,7 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { type ComponentPropsWithoutRef, useMemo, useState } from "react";
 import type { Key } from "react-aria-components";
+import { twMerge } from "tailwind-merge";
 import { LinkButton } from "@/shim-ui/button";
 import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
 import { Code } from "./code";
@@ -52,7 +53,7 @@ function CodeHeader({
   selectedCode: CodeItem;
 }) {
   return (
-    <div className="sticky top-0 z-20 flex min-h-8 items-center border-neutral-3 border-b bg-background px-1 py-0">
+    <div className="sticky top-0 z-20 flex min-h-8 items-center bg-panel px-1 py-0">
       {children}
       <CodeActions
         content={selectedCode.raw || selectedCode.content}
@@ -126,7 +127,12 @@ export function CodeBlock({ highlight, ...props }: Props) {
     normalizedCode.find((c) => c.title === tab) ?? normalizedCode[0];
 
   return (
-    <div className="codeblock group relative isolate min-w-0 overflow-clip rounded-lg border border-neutral-3 text-[13px] text-neutral-text leading-normal">
+    <div
+      className={twMerge(
+        "codeblock group relative isolate my-8 min-w-0 overflow-clip rounded-lg bg-panel text-neutral-text text-xs leading-relaxed",
+        props.className
+      )}
+    >
       {normalizedCode.length > 1 ? (
         <Tabs onSelectionChange={(key) => setTab(key)} selectedKey={tab}>
           <CodeHeader selectedCode={selectedCode}>

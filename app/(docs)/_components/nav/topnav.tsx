@@ -20,8 +20,8 @@ export function TopNav(props: { items: NavItem[] }) {
   let [isOpen, setOpen] = useState(false);
 
   return (
-    <aside className="sticky top-0 z-20 flex shrink-0 flex-col border-neutral-4 border-b bg-panel px-1 text-sm lg:hidden">
-      <header className="sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1 bg-panel">
+    <aside className="sticky top-0 z-20 flex shrink-0 flex-col bg-background px-1 text-sm lg:hidden">
+      <header className="sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1">
         <Link
           className="flex items-center gap-1 px-2 no-underline"
           href="/"

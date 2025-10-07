@@ -44,7 +44,7 @@ export default function DocsLayout({
       <SideNav items={navItems} />
       <TopNav items={navItems} />
 
-      <main className="min-h-screen w-full bg-background font-book text-sm leading-normal lg:col-3 lg:justify-self-center lg:border-neutral-3 lg:border-x">
+      <main className="min-h-screen w-full text-base lg:col-3 lg:justify-self-center">
         {children}
       </main>
     </div>

@@ -1,16 +1,10 @@
-/* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
-@reference "../shim-ui/css/theme.css";
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: tailwind at-rule syntax */
+@import "../shim-ui/css/theme.css";
 
 :root {
-  --font-family-mono: var(--font-mono);
-  --font-family-sans: var(--font-sans);
-
   --sidebar-width: 240px;
   --content-width-min: 360px;
-  --content-width-max: 1152px;
-
-  --color-background: var(--color-pure);
-  --color-background-subtle: var(--color-neutral-1);
+  --content-width-max: 1024px;
 
   --sh-class: var(--color-neutral-12);
   --sh-identifier: var(--color-neutral-12);
@@ -23,10 +17,17 @@
   --sh-entity: var(--color-neutral-12);
 }
 
+@theme {
+  --font-family-mono: var(--font-mono);
+  --font-family-sans: var(--font-sans);
+  --color-background: var(--color-pure);
+  --color-background-subtle: var(--color-neutral-1);
+}
+
 .dark,
 .dark-theme {
   --color-background: var(--color-neutral-1);
-  --color-background-subtle: var(--color-neutral-2);
+  --color-background-subtle: var(--color-pure);
 }
 
 ::selection {
@@ -37,30 +38,58 @@ html {
   min-width: 360px;
 }
 
+h1 {
+  @apply scroll-mt-6 text-balance font-semibold text-neutral-text-contrast text-xl leading-tight lg:text-2xl;
+}
+
+h2 {
+  @apply not-first:mt-12 mb-3 scroll-mt-6 text-balance font-semibold text-lg lg:text-xl text-neutral-text-contrast;
+}
+
+h3 {
+  @apply not-first:mt-12 mb-2 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast;
+}
+
+h4 {
+  @apply not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast;
+}
+
+h5 {
+  @apply not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
+}
+
+h6 {
+  @apply not-first:mt-8 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
+}
+
+:is(h1, h2, h3, h4, h5, h6) a {
+  @apply text-inherit no-underline hover:underline hover:decoration-neutral-border-hover;
+}
+
+p {
+  @apply mb-2;
+}
+
+ul {
+  @apply my-4 list-outside list-disc pl-4;
+}
+
+li {
+  @apply mb-2;
+}
+
 hr {
-  border-color: var(--color-neutral-4);
+  @apply my-4 border-neutral-3;
+}
+
+em {
+  @apply italic text-neutral-text-contrast;
 }
 
 strong {
-  font-weight: 500;
-  color: var(--color-neutral-text-contrast);
+  @apply font-medium text-neutral-text-contrast;
 }
 
-.prose {
-  pre,
-  ul,
-  ol,
-  dl,
-  blockquote,
-  table,
-  img,
-  video {
-    margin-top: var(--spacing-4);
-    margin-bottom: var(--spacing-4);
-  }
-}
-
-.doc-section {
-  /* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
-  @apply px-6 py-6 lg:px-8 lg:py-6;
+code {
+  @apply min-w-min font-mono text-accent-text;
 }

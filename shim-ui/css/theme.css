@@ -27,6 +27,9 @@
 @import "@radix-ui/colors/red-dark.css";
 @import "@radix-ui/colors/red-dark-alpha.css";
 
+/* biome-ignore lint/suspicious/noUnknownAtRules: tailwindcss dark mode rule */
+@custom-variant dark (&:where(.dark, .dark *, .dark-theme, .dark-theme *));
+
 /* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
 @theme {
   --color-\*: initial; /* Reset Tailwind colors */

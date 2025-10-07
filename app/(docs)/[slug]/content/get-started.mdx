@@ -4,159 +4,120 @@ description: Setup the components in your project.
 order: 1
 ---
 
-## What is Shim?
+Shim is a pre-styled collection of copy-paste UI components built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html). You own the code.
 
-Copy-paste UI components built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html). You own the code.
+{/* <Note title="Warning" intent="warning" size={2}>
+  This documentation is a work in progress. Things might not work as described.
+</Note> */}
 
 ## Install the prerequisites
 
-<Steps>
-  <Step>
-    ### React Aria Components
+Shim components depend on several libraries. Use the commands below to install them.
 
-    Core accessible primitives used by Shim components. Read the docs at [react-spectrum.adobe.com/react-aria/components](https://react-spectrum.adobe.com/react-aria/components.html).
+<Step
+  title="React Aria Components"
+  code="pnpm add react-aria-components" 
+  description={
+    <p>
+      Core unstyled primitives used by Shim components.<br/>
+      Read the docs at <a href="https://react-spectrum.adobe.com/react-aria/components.html">react-spectrum.adobe.com/react-aria/components</a>.
+    </p>
+  }
+/>
 
-    <CodeBlock code={[ { title: "Terminal", content: "pnpm add react-aria-components", }, ]} />
+<Step
+  title="Tailwind CSS v4"
+  description={
+    <p>
+      Utility-first styling foundation.<br/>
+      Installation depends on your framework—follow the <a href="https://tailwindcss.com/docs">official Tailwind guide</a> for the correct steps.
+    </p>
+  } 
+/>
 
-  </Step>
+<Step
+  title="tailwind-variants and tailwind-merge"
+  code="pnpm add tailwind-variants tailwind-merge"
+  description={
+    <p>
+      Declarative <a href="https://www.tailwind-variants.org/">variant helpers</a> and <a href="https://github.com/dcastil/tailwind-merge">merge utilities</a>.
+    </p>
+  }
+/>
 
-  <Step>
-    ### Tailwind CSS v4
+<Step
+  title="Radix Colors"
+  code="pnpm add @radix-ui/colors"
+  description={
+    <p>
+      Semantic color palette used by Shim tokens.<br/>
+      Browse palettes at <a href="https://www.radix-ui.com/colors">radix-ui.com/colors</a>.
+    </p>
+  }
+/>
 
-    Utility-first styling foundation. Installation depends on your framework—follow the [official Tailwind guide](https://tailwindcss.com/docs) for the correct steps.
+<Step
+  title="Phosphor Icons"
+  code="pnpm add @phosphor-icons/react" 
+  description={
+    <p>
+      Icon set referenced by several components.<br/>
+      Explore the catalog at <a href="https://phosphoricons.com/">phosphoricons.com</a>.
+    </p>
+  }
+/>
 
-  </Step>
 
-  <Step>
-    ### tailwind-variants
+## Set up Shim
 
-    Declarative variant helpers for Tailwind class strings. See the docs at [tailwind-variants.org](https://www.tailwind-variants.org/).
+The Shim CLI helps you set up your project and add components.
 
-    <CodeBlock
-      code={[
-        {
-        title: "Install",
-        content: "pnpm add tailwind-variants",
-        },
-      ]}
-    />
-
-  </Step>
-
-  <Step>
-    ### tailwind-merge
-
-    Safely merge conditional Tailwind classes. Documentation lives at [github.com/dcastil/tailwind-merge](https://github.com/dcastil/tailwind-merge).
-
-    <CodeBlock
-      code={[
-        {
-        title: "Install",
-        content: "pnpm add tailwind-merge",
-        },
-      ]}
-    />
-
-  </Step>
-
-  <Step>
-    ### Radix Colors
-    Semantic color palette used by Shim tokens. Browse palettes at [radix-ui.com/colors](https://www.radix-ui.com/colors).
-    <CodeBlock
-      code={[
-        {
-        title: "Install",
-        content: "pnpm add @radix-ui/colors",
-        },
-      ]}
-    />
-
-  </Step>
-
-  <Step>
-    ### Phosphor Icons
-    Icon set referenced by several components. Explore the catalog at [phosphoricons.com](https://phosphoricons.com/).
-    <CodeBlock code={[{ title: "Install", content: "pnpm add @phosphor-icons/react", }]} />
-
-  </Step>
-</Steps>
-
-## Shim setup
-
-<Steps>
-  <Step>
-    ### Configure path alias
-
-    Shim components import files via the `@/` alias. Configure the path in `tsconfig.json` (or `jsconfig.json`) so those imports resolve:
-
-    <CodeBlock
-      code={[
-        {
-          title: "tsconfig.json",
-          content: `{
+<Step
+  reset
+  title="Configure path alias"
+  description={
+    <p>
+      Shim components import files via the <strong>@/</strong> alias.<br/>
+      Configure the path in <strong>tsconfig.json</strong> (or <strong>jsconfig.json</strong>) so those imports resolve.
+    </p>
+  }
+  code={[{
+    title: "tsconfig.json",
+    content: `{
     "compilerOptions": {
       "baseUrl": ".",
       "paths": {
         "@/*": ["./*"]
       }
     }
-}`,
-        },
-      ]}
-    />
-
-  </Step>
-  <Step>
-    ### Initialize Shim
-
-    Run the `init` command to initialize Shim. 
-    This command:
-
-    - Creates `shim.config.json` with your chosen paths
-    - Downloads the required utility files (`style.ts`, `theme.tsx`)
-    - Fetches the theme CSS file (`theme.css`)
-
-
-    <CodeBlock code={[{ title: "Terminal", content: "pnpm dlx @kkga/shim init", }]} />
-
-  </Step>
-</Steps>
-
-
-You can customise the paths during setup:
-
-```bash
-pnpm dlx @kkga/shim init --components-path src/ui --utils-path src/lib --css-path src/styles
-```
-
-Sample configuration:
-
-<CodeBlock
-  code={[
-    {
-      title: "shim.config.json",
-      content: `{
-"componentsPath": "src/ui",
-"utilsPath": "src/lib",
-"cssPath": "src/styles"
-}`,
-    },
-  ]}
+}`}]}
 />
 
-## Add components
+<Step
+  title="Initialize Shim"
+  description={
+    <p>
+      Run the <code>init</code> command to initialize Shim.<br/>
+      It creates a <strong>shim.config.json</strong> file in your project root that
+      defines where components, utility files, and CSS are installed.
+    </p>
+  }
+  code="pnpm dlx @kkga/shim init"
+/>
 
-### Using the CLI
+<Step
+  title="Add components"
+  description={
+    <p>
+      Use the <code>add</code> command to copy components into your project.<br/>
+      The CLI resolves dependencies, rewrites imports, and installs into the paths defined in <strong>shim.config.json</strong>.
+    </p>
+  }
+  code="pnpm dlx @kkga/shim add button"
+/>
 
-```bash
-pnpm dlx @kkga/shim add button dialog
-```
 
-The CLI resolves dependencies, rewrites imports, and installs into the paths defined in `shim.config.json`.
+<Note title="Todo" intent="warning" size={2}>
+  Manual setup instructions.
+</Note>
 
-### Manual copy-paste
-
-1. Browse the component source in the [Shim repository](https://github.com/kkga/shim/tree/master/shim-ui)
-2. Copy the component `.tsx` file into your project
-3. Copy required utility files (`lib/style.ts`, `lib/theme.tsx`) and `css/theme.css`
-4. Update import paths (or set up a path alias) so component imports continue to resolve. Aliases keep your project structure flexible and match what the CLI generates.

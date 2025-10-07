@@ -68,7 +68,7 @@ export default async function DocPage({
     .filter((dep): dep is { name: string; slug: string } => dep !== null);
 
   return (
-    <article className="grid grid-cols-1 place-content-start gap-x-8 divide-y divide-neutral-3 pb-12 *:last:border-neutral-3 *:last:border-b md:grid-cols-[2fr_3fr] md:gap-x-12">
+    <article className="grid grid-cols-1 place-content-start gap-x-8 pb-12 md:grid-cols-[2fr_3fr] md:gap-x-12">
       <DocHeader subtitle={description} title={title}>
         <Metadata
           ariaUrl={ariaUrl}

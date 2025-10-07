@@ -40,7 +40,7 @@ export default async function GuidePage({
   let { default: GuideContent } = await import(`./content/${slug}.mdx`);
 
   return (
-    <article className="grid grid-cols-1 text-[15px] text-neutral-text leading-6">
+    <article className="grid grid-cols-1">
       <DocHeader subtitle={description} title={title} />
       <section className="p-6 lg:p-8">
         <GuideContent

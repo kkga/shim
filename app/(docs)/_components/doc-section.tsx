@@ -21,15 +21,15 @@ function DocSection({
 }: DocSectionProps) {
   return (
     <section
-      className="doc-section col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-stretch"
+      className="col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-start gap-y-4 p-4 text-[15px] md:p-8"
       id={id}
     >
-      <div className="col-start-1">
+      <div className="col-start-1 self-stretch">
         {title && (
-          <h2 className="mb-2 font-semibold text-base text-neutral-text-contrast leading-8">
+          <h3 className="mb-2">
             {id ? (
               <a
-                className="inline-flex items-center gap-2 text-current no-underline hover:text-neutral-text/80 focus-visible:underline focus-visible:outline-none"
+                className="inline-flex items-center gap-2 text-current no-underline hover:text-neutral-text/20 focus-visible:underline focus-visible:outline-none"
                 href={`#${id}`}
               >
                 {title}
@@ -37,7 +37,7 @@ function DocSection({
             ) : (
               title
             )}
-          </h2>
+          </h3>
         )}
 
         {children}
@@ -56,6 +56,7 @@ function DocSection({
 
       {code && (
         <CodeBlock
+          className="m-0"
           code={
             Array.isArray(code)
               ? code

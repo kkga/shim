@@ -3,6 +3,7 @@
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 import { Button } from "@/shim-ui/button";
+import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
 
 const useClipboard = () => {
   const [copiedText, setCopiedText] = useState<string | null>("");
@@ -80,15 +81,18 @@ function CopyButton({
   }
 
   return (
-    <Button
-      className={className}
-      intent={justCopied ? "success" : "neutral"}
-      onPress={handleCopy}
-      variant="ghost"
-    >
-      Copy
-      {iconOrChildren}
-    </Button>
+    <TooltipTrigger>
+      <Button
+        className={className}
+        intent={justCopied ? "success" : "neutral"}
+        isIconOnly
+        onPress={handleCopy}
+        variant="ghost"
+      >
+        {iconOrChildren}
+      </Button>
+      <Tooltip>Copy</Tooltip>
+    </TooltipTrigger>
   );
 }
 
