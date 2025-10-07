@@ -1,11 +1,9 @@
-import type { ReactNode } from "react";
 import { getFileSource } from "@/app/_lib/utils";
 import { DocHeader } from "@/app/(docs)/_components/doc-header";
 import { DocSection } from "@/app/(docs)/_components/doc-section";
 import { Metadata } from "@/app/(docs)/_components/metadata";
-import { Note } from "@/app/(docs)/_components/note";
-import { Link } from "@/shim-ui/link";
 import { toKebabCase } from "../../_lib/utils";
+import { InstallSection } from "./_components/install-section";
 import { getMainDemo } from "./demo-registry";
 import {
   getComponentDocs,
@@ -82,26 +80,13 @@ export default async function DocPage({
         demo={<MainDemo />}
       />
 
-      <DocSection
-        code={[
-          {
-            title: "Command",
-            content: command,
-          },
-          {
-            title: "Source code",
-            content: source,
-            sourceUrl,
-          },
-        ]}
-        title="Install"
-      >
-        <p>
-          Run the command in your terminal or copy the source code manually.
-        </p>
-
-        <DependenciesNote dependencies={dependencies} name={title} />
-      </DocSection>
+      <InstallSection
+        command={command}
+        componentTitle={title}
+        dependencies={dependencies}
+        source={source}
+        sourceUrl={sourceUrl}
+      />
 
       {sections.map((section) => {
         let { anchorId, code, DemoComponent } = resolveSection(section, {
@@ -125,53 +110,6 @@ export default async function DocPage({
       })}
     </article>
   );
-}
-
-function DependenciesNote({
-  dependencies,
-  name,
-}: {
-  dependencies: Array<{ name: string; slug: string }>;
-  name: string;
-}) {
-  if (dependencies.length === 0) {
-    return null;
-  }
-
-  let links = buildDependencyLinks(dependencies);
-
-  return (
-    <Note className="mt-4" title="Dependencies">
-      <p>
-        {name} depends on {links}, and the CLI will automatically install all
-        dependencies.
-      </p>
-      <p>Otherwise, make sure to install the dependencies manually.</p>
-    </Note>
-  );
-}
-
-function buildDependencyLinks(
-  dependencies: Array<{ name: string; slug: string }>
-) {
-  let nodes: ReactNode[] = [];
-  dependencies.forEach((dependency, index) => {
-    if (index > 0) {
-      nodes.push(index === dependencies.length - 1 ? " and " : ", ");
-    }
-
-    nodes.push(
-      <Link
-        href={`/docs/components/${dependency.slug}`}
-        key={dependency.slug}
-        variant="underline"
-      >
-        {dependency.name}
-      </Link>
-    );
-  });
-
-  return nodes;
 }
 
 // TODO: Uncomment this when the metadata is ready

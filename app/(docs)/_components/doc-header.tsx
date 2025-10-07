@@ -24,9 +24,7 @@ export function DocHeader({
       <div>
         <h1>{title}</h1>
         {subtitle && (
-          <p className="mt-2! mb-0! text-base text-neutral-text lg:text-lg">
-            {subtitle}
-          </p>
+          <p className="mt-2! mb-0! text-base text-neutral-text">{subtitle}</p>
         )}
       </div>
       <Separator className="my-0! max-w-16" />

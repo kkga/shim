@@ -1,7 +1,12 @@
 "use client";
 
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
-import { type ComponentPropsWithoutRef, useMemo, useState } from "react";
+import React, {
+  type ComponentPropsWithoutRef,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import type { Key } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { LinkButton } from "@/shim-ui/button";
@@ -14,6 +19,7 @@ const TRAILING_NEWLINES_REGEX = /\n+$/;
 
 export interface CodeItem {
   content: string;
+  note?: React.ReactNode;
   title?: string;
   sourceUrl?: string;
   raw?: string;
@@ -96,8 +102,13 @@ function CodeContent({
   code: CodeItem;
   highlight?: boolean;
 }) {
+  const LONG_CODE_LINE_THRESHOLD = 20;
+
   let { content } = code;
-  let isContentLong = useMemo(() => content.split("\n").length > 24, [content]);
+  let isContentLong = useMemo(
+    () => content.split("\n").length > LONG_CODE_LINE_THRESHOLD,
+    [content]
+  );
 
   let codeElement = (
     <pre className="w-full overflow-x-scroll whitespace-pre px-3 py-2 **:[code]:text-[100%]">
@@ -124,7 +135,7 @@ export function CodeBlock({ highlight, onCodeTabChange, ...props }: Props) {
     () => normalizedCode[0].title || null
   );
 
-  useMemo(() => {
+  useEffect(() => {
     if (tab && onCodeTabChange) {
       onCodeTabChange(tab);
     }
@@ -154,6 +165,11 @@ export function CodeBlock({ highlight, onCodeTabChange, ...props }: Props) {
 
           {normalizedCode.map((c) => (
             <TabPanel id={c.title} key={c.title}>
+              {c.note && (
+                <div className="border-neutral-3 border-b px-3 py-2 font-medium text-[13px] text-neutral-text *:m-0!">
+                  {c.note}
+                </div>
+              )}
               <CodeContent code={c} highlight={highlight} />
             </TabPanel>
           ))}

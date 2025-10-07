@@ -20,17 +20,17 @@ const noteStyle = tv({
     size: {
       1: {
         container:
-          "-ml-[calc(1px+calc(var(--spacing)*3))] gap-x-2 rounded py-1.5 pl-3 text-[13px]",
+          "-ml-[calc(1px+calc(var(--spacing)*3))] gap-x-2 rounded-lg py-2 pl-3 text-[13px]",
         title: "mb-1 text-[13px]",
       },
       2: {
         container:
-          "-ml-[calc(1px+calc(var(--spacing)*4))] gap-x-2 rounded-lg py-2.5 pl-4 text-sm",
+          "-ml-[calc(1px+calc(var(--spacing)*4))] gap-x-2 rounded-xl py-2.5 pl-4 text-sm",
         title: "mb-1 text-sm",
       },
       3: {
         container:
-          "-ml-[calc(1px+calc(var(--spacing)*4))] gap-x-2 rounded-lg py-2.5 pl-4 text-base",
+          "-ml-[calc(1px+calc(var(--spacing)*4))] gap-x-2 rounded-xl py-2.5 pl-4 text-base",
         title: "mb-1 text-base",
       },
     },

@@ -9,8 +9,7 @@ export default {
           <p>
             Provide additional context with the <code>label</code> and
             <code>description</code> props. Control the range via{" "}
-            <code>minValue</code>
-            and <code>maxValue</code>.
+            <code>minValue</code> and <code>maxValue</code>.
           </p>
           <p>
             See the{" "}
