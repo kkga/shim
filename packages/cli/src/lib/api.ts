@@ -11,7 +11,7 @@ export interface ApiResponse {
 }
 
 export async function fetchComponent(name: string): Promise<ApiResponse> {
-  const response = await fetch(`${API_URL}/components/${name}`);
+  const response = await fetch(`${API_URL}/registry/${name}`);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch component ${name}: ${response.status}`);
