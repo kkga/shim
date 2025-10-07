@@ -21,8 +21,7 @@ export function generateStaticParams() {
   }));
 }
 
-const API_URL = "https://shim.kkga.me/api";
-const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/components";
+const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/shim-ui";
 
 export default async function DocPage({
   params,
@@ -57,7 +56,7 @@ export default async function DocPage({
     );
   }
 
-  let curlCommand = `curl -o ${name}.tsx '${API_URL}?c=${name}'`;
+  let command = `pnpm dlx @kkga/shim add ${name}`;
   let sourceUrl = `${GITHUB_FILE_URL}/${name}.tsx`;
 
   let dependencies = dependencyNames
@@ -87,7 +86,7 @@ export default async function DocPage({
         code={[
           {
             title: "Command",
-            content: curlCommand,
+            content: command,
           },
           {
             title: "Source code",
@@ -98,11 +97,10 @@ export default async function DocPage({
         title="Install"
       >
         <p>
-          To install the component, run the command in your terminal or copy the
-          source code into your project.
+          Run the command in your terminal or copy the source code manually.
         </p>
 
-        <DependenciesNote dependencies={dependencies} name={name} />
+        <DependenciesNote dependencies={dependencies} name={title} />
       </DocSection>
 
       {sections.map((section) => {
@@ -143,11 +141,12 @@ function DependenciesNote({
   let links = buildDependencyLinks(dependencies);
 
   return (
-    <Note className="mt-4" intent="warning" title="Dependencies">
+    <Note className="mt-4" title="Dependencies">
       <p>
-        {name} depends on {links}. Install the dependencies before using the
-        component.
+        {name} depends on {links}, and the CLI will automatically install all
+        dependencies.
       </p>
+      <p>Otherwise, make sure to install the dependencies manually.</p>
     </Note>
   );
 }

@@ -1,3 +1,4 @@
+import type { Key } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { Theme } from "@/shim-ui/lib/theme";
 import { CodeBlock, type CodeItem } from "./code-block";
@@ -9,6 +10,7 @@ interface DocSectionProps {
   demo?: React.ReactNode;
   code?: string | CodeItem[];
   className?: string;
+  onCodeTabChange?: (tab: Key) => void;
 }
 
 function DocSection({
@@ -18,6 +20,7 @@ function DocSection({
   code,
   className,
   children,
+  onCodeTabChange,
 }: DocSectionProps) {
   return (
     <section
@@ -63,6 +66,7 @@ function DocSection({
               : [{ content: code, title: `${title} example` }]
           }
           lang="tsx"
+          onCodeTabChange={onCodeTabChange}
         />
       )}
     </section>

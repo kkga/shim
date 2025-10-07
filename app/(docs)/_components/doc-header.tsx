@@ -29,12 +29,8 @@ export function DocHeader({
           </p>
         )}
       </div>
-      {children && (
-        <>
-          <Separator className="my-0! max-w-16 bg-neutral-3" />
-          {children}
-        </>
-      )}
+      <Separator className="my-0! max-w-16" />
+      {children && <>{children}</>}
     </header>
   );
 }

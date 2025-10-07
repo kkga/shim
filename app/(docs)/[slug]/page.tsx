@@ -42,7 +42,7 @@ export default async function GuidePage({
   return (
     <article className="grid grid-cols-1">
       <DocHeader subtitle={description} title={title} />
-      <section className="p-6 lg:p-8">
+      <section className="p-4 lg:p-8">
         <GuideContent
           components={mdxComponents}
           styleUtilsSrc={styleUtilsSrc}

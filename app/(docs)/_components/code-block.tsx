@@ -24,6 +24,7 @@ interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
   children?: string | { props: { children: string } };
   highlight?: boolean;
   clickToCopy?: boolean;
+  onCodeTabChange?: (tab: Key) => void;
 }
 
 function normalizeCode(
@@ -113,7 +114,7 @@ function CodeContent({
   );
 }
 
-export function CodeBlock({ highlight, ...props }: Props) {
+export function CodeBlock({ highlight, onCodeTabChange, ...props }: Props) {
   let normalizedCode = useMemo(
     () => normalizeCode(props.code, props.children),
     [props.code, props.children]
@@ -122,6 +123,12 @@ export function CodeBlock({ highlight, ...props }: Props) {
   let [tab, setTab] = useState<Key | null>(
     () => normalizedCode[0].title || null
   );
+
+  useMemo(() => {
+    if (tab && onCodeTabChange) {
+      onCodeTabChange(tab);
+    }
+  }, [tab, onCodeTabChange]);
 
   let selectedCode =
     normalizedCode.find((c) => c.title === tab) ?? normalizedCode[0];
