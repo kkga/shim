@@ -1,7 +1,10 @@
 import {
-  TextB,
-  TextItalic,
-  TextUnderline,
+  ClipboardIcon,
+  CopyIcon,
+  ScissorsIcon,
+  TextBIcon,
+  TextItalicIcon,
+  TextUnderlineIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/shim-ui/button";
 import { Group } from "@/shim-ui/group";
@@ -15,20 +18,26 @@ export default () => (
   <Toolbar aria-label="Text formatting">
     <ToggleButtonGroup aria-label="Style">
       <ToggleButton aria-label="Bold">
-        <TextB size={16} weight="duotone" />
+        <TextBIcon size={16} weight="duotone" />
       </ToggleButton>
       <ToggleButton aria-label="Italic">
-        <TextItalic size={16} weight="duotone" />
+        <TextItalicIcon size={16} weight="duotone" />
       </ToggleButton>
       <ToggleButton aria-label="Underline">
-        <TextUnderline size={16} weight="duotone" />
+        <TextUnderlineIcon size={16} weight="duotone" />
       </ToggleButton>
     </ToggleButtonGroup>
     <Separator orientation="vertical" />
     <Group aria-label="Clipboard" className="contents">
-      <Button>Copy</Button>
-      <Button>Paste</Button>
-      <Button>Cut</Button>
+      <Button aria-label="Cut">
+        <ScissorsIcon size={16} weight="duotone" />
+      </Button>
+      <Button aria-label="Copy">
+        <CopyIcon size={16} weight="duotone" />
+      </Button>
+      <Button aria-label="Paste">
+        <ClipboardIcon size={16} weight="duotone" />
+      </Button>
     </Group>
     <Separator orientation="vertical" />
     <Switch variant="soft">Night mode</Switch>

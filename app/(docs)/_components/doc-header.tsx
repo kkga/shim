@@ -15,16 +15,16 @@ export function DocHeader({
   className,
 }: DocHeaderProps) {
   return (
-    <header className={twJoin("mb-12", className)}>
-      <h1 className="font-semibold text-2xl text-neutral-text-contrast lg:text-3xl">
+    <header className={twJoin("mb-20", className)}>
+      <h1 className="font-semibold text-neutral-text-contrast text-xl lg:text-2xl">
         {title}
       </h1>
       {subtitle && (
-        <p className="mt-2 font-medium text-base text-neutral-text lg:text-lg">
+        <p className="mt-1 font-medium text-base text-neutral-text">
           {subtitle}
         </p>
       )}
-      <Separator className="my-6!" />
+      <Separator className="my-4!" />
       {children && <>{children}</>}
     </header>
   );

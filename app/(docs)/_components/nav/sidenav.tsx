@@ -9,7 +9,7 @@ import { type NavItem, Navigation } from "./navigation";
 export function SideNav(props: { items: NavItem[] }) {
   return (
     <aside
-      className="sticky top-0 z-20 hidden h-svh shrink-0 flex-col overflow-auto text-sm lg:flex"
+      className="sticky top-0 z-20 hidden h-svh shrink-0 flex-col overflow-auto border-neutral-line border-r text-sm lg:flex"
       style={{ scrollbarWidth: "thin" }}
     >
       <header className="sticky top-0 flex shrink-0 items-center gap-1 py-2 pr-3 pl-3">

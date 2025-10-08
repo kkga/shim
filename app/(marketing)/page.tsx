@@ -11,9 +11,9 @@ import { Examples } from "./_components/examples/examples";
 
 export default function Page() {
   return (
-    <main className="flex min-h-svh flex-col bg-neutral-bg-subtle">
-      <div className="mx-auto flex w-full max-w-7xl flex-col text-sm lg:grid lg:grid-cols-3 lg:gap-12">
-        <div className="col-span-1 p-8 lg:p-12">
+    <main className="flex h-svh flex-col overflow-clip md:overflow-y-auto">
+      <div className="mx-auto flex w-full max-w-7xl flex-col text-sm md:grid md:grid-cols-[46ch_1fr_1fr] md:gap-8">
+        <div className="col-span-1 p-8 md:p-12 lg:py-20 2xl:py-24">
           <div className="flex items-center gap-4">
             <Logo />
             <Badge intent="warning" size={2}>
@@ -24,7 +24,7 @@ export default function Page() {
           <p className="mt-4 mb-4 text-balance font-medium text-4xl text-neutral-text-contrast leading-10 tracking-tight">
             Toolkit for refined interfaces.
           </p>
-          <p className="m-0 text-balance text-neutral-text">
+          <p className="m-0 text-balance font-book text-neutral-text">
             A collection of React Aria-based components, carefully styled and
             ready to go.
           </p>
@@ -49,32 +49,34 @@ export default function Page() {
             </Link>
           </div>
 
-          <Separator className="mt-12 max-w-12" />
+          <Separator className="mt-8 max-w-12 md:my-8" />
 
-          <DataList className="mt-12 gap-6" size={2}>
-            <DataListItem
-              label="What's going on here?"
-              value="Great components, without the hassle."
-            />
+          <div className="hidden md:block">
+            <DataList className="gap-4" size={3}>
+              <DataListItem
+                label="What's going on here?"
+                value="Great components, without the hassle."
+              />
 
-            <DataListItem
-              label="How so?"
-              value="It is what it is. Built on top of RAC—the best primitives out there, styled with care and attention to detail."
-            />
+              <DataListItem
+                label="How so?"
+                value="It is what it is. Built on top of RAC—the best primitives out there, meticulously styled with care and attention to detail."
+              />
 
-            <DataListItem
-              label="Why should I care?"
-              value="Because I care about you."
-            />
+              <DataListItem
+                label="Why should I care?"
+                value="Because I care about you."
+              />
 
-            <DataListItem
-              label="What's the stack?"
-              value="React, TypeScript, RAC and Tailwind CSS v4. The good stuff."
-            />
-          </DataList>
+              <DataListItem
+                label="What's the stack?"
+                value="React, TypeScript, RAC and Tailwind CSS v4. The good stuff."
+              />
+            </DataList>
+          </div>
         </div>
 
-        <div className="col-span-2 hidden pt-12 lg:block">
+        <div className="col-span-2 px-8 md:px-0 md:py-12 lg:py-20 2xl:py-24">
           <Examples />
         </div>
       </div>

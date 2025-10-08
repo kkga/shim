@@ -9,14 +9,14 @@ import { ExampleRepo } from "./repo";
 let items = [
   {
     id: "issue-tracker",
-    name: "Issue tracker",
+    name: "Demo: Issue tracker",
     description:
       "Uses a variety of components to create a GitHub repository page layout. Click around to see the components in action. Includes Menu, Tabs, SearchField, ComboBox, Button, Table, Select and more.",
     component: ExampleIssueTracker,
   },
   {
     id: "repository",
-    name: "Repository",
+    name: "Demo: Repository",
     description:
       "A repository page layout. Includes Menu, Tabs, SearchField, ComboBox, Button, Table, Select and more.",
     component: ExampleRepo,
@@ -30,7 +30,9 @@ export function Examples() {
         <TabList items={items} variant="soft">
           {({ name }) => <Tab aria-label={name}>{name}</Tab>}
         </TabList>
-        <ThemeToggle />
+        <div className="sticky right-4">
+          <ThemeToggle />
+        </div>
       </div>
 
       <Collection items={items}>

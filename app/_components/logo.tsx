@@ -8,10 +8,14 @@ interface Props extends ComponentProps<"div"> {
 
 function Logo({ className, withType = true }: Props) {
   return (
-    <div className={twJoin("flex items-center gap-2", className)}>
-      <ShapesIcon className="text-current" size={16} weight="fill" />
+    <div className={twJoin("flex items-center gap-1", className)}>
+      <ShapesIcon
+        className="text-neutral-text-contrast"
+        size={16}
+        weight="fill"
+      />
       {withType && (
-        <span className="font-semibold text-[13px] text-current leading-5">
+        <span className="font-semibold text-[13px] text-neutral-text-contrast leading-5">
           Shim
         </span>
       )}

@@ -212,7 +212,7 @@ export function Navigation({
                 <Header className={headerStyle()} key={section}>
                   {getIcon(section)}
                   {section}
-                  <div className="h-px grow bg-neutral-3" />
+                  <div className="h-px grow bg-neutral-line" />
                 </Header>
               )}
               <Collection items={sectionItems}>
