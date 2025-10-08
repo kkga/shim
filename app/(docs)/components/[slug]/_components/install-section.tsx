@@ -1,9 +1,6 @@
-"use client";
-
-import { type ReactNode, useState } from "react";
+import type { ReactNode } from "react";
 import type { CodeItem } from "@/app/(docs)/_components/code-block";
 import { DocSection } from "@/app/(docs)/_components/doc-section";
-import { Note } from "@/app/(docs)/_components/note";
 import { Link } from "@/shim-ui/link";
 
 interface InstallSectionProps {
@@ -32,58 +29,17 @@ function InstallSection({
       note:
         dependencies.length > 0 ? (
           <p>
-            {componentTitle} depends on {links}. Install the dependencies to
-            ensure proper functionality.
+            {componentTitle} depends on {links}.<br />
+            Install the dependencies to ensure proper functionality.
           </p>
         ) : null,
     },
   ];
 
-  let [currentTab, setCurrentTab] = useState(
-    () => snippets.at(0)?.title ?? null
-  );
-
   return (
-    <DocSection
-      code={snippets}
-      onCodeTabChange={(tab) =>
-        setCurrentTab(typeof tab === "string" ? tab : String(tab))
-      }
-      title="Install"
-    >
+    <DocSection code={snippets} title="Install">
       <p>Use the CLI or copy the source code manually.</p>
-      {currentTab !== "Command" && (
-        <DependenciesNote
-          componentTitle={componentTitle}
-          dependencies={dependencies}
-        />
-      )}
     </DocSection>
-  );
-}
-
-interface DependenciesNoteProps {
-  componentTitle: string;
-  dependencies: Array<{ name: string; slug: string }>;
-}
-
-function DependenciesNote({
-  componentTitle,
-  dependencies,
-}: DependenciesNoteProps) {
-  if (dependencies.length === 0) {
-    return null;
-  }
-
-  let links = buildDependencyLinks(dependencies);
-
-  return (
-    <Note className="mt-4" intent="warning" title="Dependencies">
-      <p>
-        {componentTitle} depends on {links}. Install the dependencies to ensure
-        proper functionality.
-      </p>
-    </Note>
   );
 }
 

@@ -40,9 +40,9 @@ export default async function GuidePage({
   let { default: GuideContent } = await import(`./content/${slug}.mdx`);
 
   return (
-    <article className="grid grid-cols-1">
+    <article>
       <DocHeader subtitle={description} title={title} />
-      <section className="p-4 lg:p-8">
+      <div className="prose">
         <GuideContent
           components={mdxComponents}
           styleUtilsSrc={styleUtilsSrc}
@@ -52,7 +52,8 @@ export default async function GuidePage({
           themeUtilsSrc={themeUtilsSrc}
           themeUtilsUrl={themeUtilsUrl}
         />
-      </section>
+      </div>
+
       {/* {scope.toc && scope.toc.length > 0 && (
         <aside className="hidden min-w-[16rem] border-neutral-3 border-l px-6 py-6 md:block">
           <nav className="sticky top-6">

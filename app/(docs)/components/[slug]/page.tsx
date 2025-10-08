@@ -2,6 +2,7 @@ import { getFileSource } from "@/app/_lib/utils";
 import { DocHeader } from "@/app/(docs)/_components/doc-header";
 import { DocSection } from "@/app/(docs)/_components/doc-section";
 import { Metadata } from "@/app/(docs)/_components/metadata";
+import { Separator } from "@/shim-ui/separator";
 import { toKebabCase } from "../../_lib/utils";
 import { InstallSection } from "./_components/install-section";
 import { getMainDemo } from "./demo-registry";
@@ -65,8 +66,8 @@ export default async function DocPage({
     .filter((dep): dep is { name: string; slug: string } => dep !== null);
 
   return (
-    <article className="grid grid-cols-1 place-content-start gap-x-8 pb-12 md:grid-cols-[2fr_3fr] md:gap-x-12">
-      <DocHeader subtitle={description} title={title}>
+    <article>
+      <DocHeader className="col-span-full" subtitle={description} title={title}>
         <Metadata
           ariaUrl={ariaUrl}
           dependencies={dependencies}
@@ -88,6 +89,8 @@ export default async function DocPage({
         source={source}
         sourceUrl={sourceUrl}
       />
+
+      <Separator className="my-12" />
 
       {sections.map((section) => {
         let { anchorId, code, DemoComponent } = resolveSection(section, {

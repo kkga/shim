@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRightIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, WarningDiamondIcon } from "@phosphor-icons/react";
 import React, {
   type ComponentPropsWithoutRef,
   useEffect,
@@ -166,7 +166,12 @@ export function CodeBlock({ highlight, onCodeTabChange, ...props }: Props) {
           {normalizedCode.map((c) => (
             <TabPanel id={c.title} key={c.title}>
               {c.note && (
-                <div className="border-neutral-3 border-b px-3 py-2 font-medium text-[13px] text-neutral-text *:m-0!">
+                <div className="flex items-start gap-2 border-neutral-3 border-b px-3 py-2 font-medium text-[13px] text-neutral-text *:m-0!">
+                  <WarningDiamondIcon
+                    className="h-lh"
+                    size={16}
+                    weight="duotone"
+                  />
                   {c.note}
                 </div>
               )}

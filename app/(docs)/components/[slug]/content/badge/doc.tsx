@@ -34,11 +34,14 @@ export default {
         <>
           <p>
             Badges can contain a label, icon, or both. Use icons by passing an
-            icon component as a child. If the only child is an SVG element, the
-            badge will be sized to a square. This can be controlled by setting
-            the <code>isSquare</code> prop.
+            icon component as a child.
           </p>
-          <Note>
+          <p>
+            If the only child is an SVG element, the badge will be sized to a
+            square. This can be controlled by setting the <code>isSquare</code>{" "}
+            prop.
+          </p>
+          <Note title="Accessibility note">
             If a visible label isn&apos;t specified, an <code>aria-label</code>{" "}
             must be provided to the icon for accessibility.
           </Note>

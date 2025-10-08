@@ -4,7 +4,7 @@
 :root {
   --sidebar-width: 240px;
   --content-width-min: 360px;
-  --content-width-max: 1024px;
+  --content-width-max: 1080px;
 
   --sh-class: var(--color-neutral-12);
   --sh-identifier: var(--color-neutral-12);
@@ -38,58 +38,68 @@ html {
   min-width: 360px;
 }
 
-h1 {
-  @apply scroll-mt-6 text-balance font-semibold text-neutral-text-contrast text-xl leading-tight lg:text-2xl;
-}
+article {
+  @apply px-4 py-8 md:px-8 md:py-12;
 
-h2 {
-  @apply not-first:mt-12 mb-3 scroll-mt-6 text-balance font-semibold text-lg lg:text-xl text-neutral-text-contrast;
-}
+  .prose {
+    :is(h1, h2, h3, h4, h5, h6) {
+      @apply col-span-full;
+    }
 
-h3 {
-  @apply not-first:mt-12 mb-2 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast;
-}
+    h1 {
+      @apply scroll-mt-6 text-balance font-semibold text-neutral-text-contrast text-xl leading-tight lg:text-3xl;
+    }
 
-h4 {
-  @apply not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast;
-}
+    h2 {
+      @apply not-first:mt-16 mb-4 scroll-mt-6 text-balance font-semibold text-lg lg:text-xl text-neutral-text-contrast;
+    }
 
-h5 {
-  @apply not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
-}
+    h3 {
+      @apply not-first:mt-12 mb-4 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast;
+    }
 
-h6 {
-  @apply not-first:mt-8 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
-}
+    h4 {
+      @apply not-first:mt-6 mb-4 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast;
+    }
 
-:is(h1, h2, h3, h4, h5, h6) a {
-  @apply text-inherit no-underline hover:underline hover:decoration-neutral-border-hover;
-}
+    h5 {
+      @apply not-first:mt-6 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
+    }
 
-p {
-  @apply mb-2;
-}
+    h6 {
+      @apply not-first:mt-8 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
+    }
 
-ul {
-  @apply my-4 list-outside list-disc pl-4;
-}
+    :is(h1, h2, h3, h4, h5, h6) a {
+      @apply text-inherit no-underline hover:underline hover:decoration-neutral-border-hover;
+    }
 
-li {
-  @apply mb-2;
-}
+    p {
+      @apply mb-4;
+    }
 
-hr {
-  @apply my-4 border-neutral-3;
-}
+    ul {
+      @apply my-4 list-outside list-disc pl-4;
+    }
 
-em {
-  @apply italic text-neutral-text-contrast;
-}
+    li {
+      @apply mb-4;
+    }
 
-strong {
-  @apply font-medium text-neutral-text-contrast;
-}
+    hr {
+      @apply my-4 border-neutral-3;
+    }
 
-code {
-  @apply min-w-min font-mono text-accent-text;
+    em {
+      @apply italic text-neutral-text-contrast;
+    }
+
+    strong {
+      @apply font-medium text-neutral-text-contrast;
+    }
+
+    code {
+      @apply min-w-min font-mono text-accent-text;
+    }
+  }
 }

@@ -27,17 +27,17 @@ function DocSection({
   return (
     <section
       className={twMerge(
-        "col-span-full grid max-w-[var(--content-width)] grid-cols-subgrid items-start gap-y-4 p-4 text-[15px] md:p-8",
+        "col-span-full my-12 grid items-start gap-x-8 gap-y-4 md:grid-cols-[2fr_3fr] md:gap-x-12",
         stacked ? "md:grid-cols-1" : ""
       )}
       id={id}
     >
       <div className="col-start-1 self-stretch">
         {title && (
-          <h3 className="mb-2">
+          <h3 className="mb-2 font-semibold text-base text-neutral-text-contrast">
             {id ? (
               <a
-                className="inline-flex items-center gap-2 text-current no-underline hover:text-neutral-text/20 focus-visible:underline focus-visible:outline-none"
+                className="no-underline hover:underline focus-visible:underline focus-visible:outline-none"
                 href={`#${id}`}
               >
                 {title}
@@ -48,12 +48,16 @@ function DocSection({
           </h3>
         )}
 
-        {children}
+        {children && (
+          <div className="font-book text-neutral-text text-sm leading-normal [&_code]:text-neutral-text-contrast">
+            {children}
+          </div>
+        )}
 
         {demo && (
           <div
             className={twMerge(
-              "sticky top-6 not-first:mt-6 flex flex-col flex-wrap gap-2 text-[13px] text-neutral-text",
+              "not-first:mt-6 flex flex-col flex-wrap gap-2 text-[13px] text-neutral-text",
               className
             )}
           >
