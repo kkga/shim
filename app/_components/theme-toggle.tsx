@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { Switch } from "react-aria-components";
 import { tv } from "tailwind-variants";
 import { focusStyle } from "@/shim-ui/lib/style";
-import type { Size } from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -19,6 +18,18 @@ const style = tv({
       "flex size-4.5 items-center justify-center rounded-full bg-clip-content transition-transform will-change-transform",
   },
   variants: {
+    size: {
+      1: {
+        container: "w-7",
+        track: "h-3",
+        handle: "size-4.5",
+      },
+      2: {
+        container: "w-9",
+        track: "h-4",
+        handle: "size-5",
+      },
+    },
     isPressed: { true: "" },
     isSelected: { true: "" },
     dark: {
@@ -39,13 +50,23 @@ const style = tv({
       isPressed: true,
       class: { track: "bg-neutral-bg-active" },
     },
+    {
+      size: 2,
+      dark: true,
+      class: { handle: "-translate-x-0.5" },
+    },
+    {
+      size: 2,
+      light: true,
+      class: { handle: "translate-x-4.5" },
+    },
   ],
 });
 
-function ThemeToggle({ size: _size }: { size?: Size }) {
+function ThemeToggle({ size }: { size?: 1 | 2 } = { size: 1 }) {
   let [mounted, setMounted] = useState(false);
   let { theme, systemTheme, resolvedTheme, setTheme } = useTheme();
-  let { container, track, handle } = style();
+  let { container, track, handle } = style({ size });
 
   let themes: string[];
   if (systemTheme === "dark") {
