@@ -258,6 +258,7 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     main: dynamic(() => import(`${DOCS_DIR}/avatar/main`)),
     size: dynamic(() => import(`${DOCS_DIR}/avatar/size`)),
     radius: dynamic(() => import(`${DOCS_DIR}/avatar/radius`)),
+    color: dynamic(() => import(`${DOCS_DIR}/avatar/color`)),
   },
   toolbar: {
     main: dynamic(() => import(`${DOCS_DIR}/toolbar/main`)),
