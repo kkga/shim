@@ -29,5 +29,19 @@ export default {
       },
       className: "flex-row",
     },
+    {
+      title: "Color",
+      description: (
+        <p>
+          Use the <code>color</code> prop to set the color of the avatar
+          background and matching text color.
+        </p>
+      ),
+      demo: {
+        group: "avatar",
+        name: "color",
+      },
+      className: "flex-row",
+    },
   ],
 } satisfies DocModule;
