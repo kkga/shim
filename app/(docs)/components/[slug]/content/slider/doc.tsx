@@ -104,7 +104,7 @@ export default {
         group: "slider",
         name: "orientation",
       },
-      className: "items-stretch",
+      className: "flex-row",
       code: "orientation",
     },
   ],

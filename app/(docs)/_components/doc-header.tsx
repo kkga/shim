@@ -15,7 +15,7 @@ export function DocHeader({
   className,
 }: DocHeaderProps) {
   return (
-    <header className={twJoin("mb-20", className)}>
+    <header className={twJoin("mb-12", className)}>
       <h1 className="font-semibold text-neutral-text-contrast text-xl lg:text-2xl">
         {title}
       </h1>
@@ -24,7 +24,7 @@ export function DocHeader({
           {subtitle}
         </p>
       )}
-      <Separator className="my-4!" />
+      <Separator className="my-4! max-w-16" />
       {children && <>{children}</>}
     </header>
   );

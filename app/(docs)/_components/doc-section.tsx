@@ -27,7 +27,7 @@ function DocSection({
   return (
     <section
       className={twMerge(
-        "col-span-full my-12 grid items-start gap-x-8 gap-y-4 md:grid-cols-[2fr_3fr] md:gap-x-12",
+        "col-span-full my-12 grid scroll-mt-8 items-start gap-x-8 gap-y-8 md:grid-cols-[2fr_3fr] md:gap-x-12",
         stacked ? "md:grid-cols-1" : ""
       )}
       id={id}
@@ -57,7 +57,7 @@ function DocSection({
         {demo && (
           <div
             className={twMerge(
-              "not-first:mt-6 flex flex-col flex-wrap gap-2 text-[13px] text-neutral-text",
+              "not-first:mt-6 flex flex-col flex-wrap gap-4 text-[13px] text-neutral-text",
               className
             )}
           >

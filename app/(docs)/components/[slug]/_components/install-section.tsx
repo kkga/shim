@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import type { CodeItem } from "@/app/(docs)/_components/code-block";
 import { DocSection } from "@/app/(docs)/_components/doc-section";
 import { Link } from "@/shim-ui/link";
@@ -21,14 +21,14 @@ function InstallSection({
   let links = buildDependencyLinks(dependencies);
 
   let snippets: CodeItem[] = [
-    { title: "Command", content: command },
+    { title: "Command", content: command, highlight: false },
     {
       title: "Source code",
       content: source,
       sourceUrl,
       note:
         dependencies.length > 0 ? (
-          <p>
+          <p key={componentTitle}>
             {componentTitle} depends on {links}.<br />
             Install the dependencies to ensure proper functionality.
           </p>
@@ -37,7 +37,7 @@ function InstallSection({
   ];
 
   return (
-    <DocSection code={snippets} title="Install">
+    <DocSection code={snippets} id="install" title="Install">
       <p>Use the CLI or copy the source code manually.</p>
     </DocSection>
   );
@@ -46,25 +46,22 @@ function InstallSection({
 function buildDependencyLinks(
   dependencies: Array<{ name: string; slug: string }>
 ) {
-  let nodes: ReactNode[] = [];
+  return dependencies.map<ReactNode>((dependency, index) => {
+    let separator = "";
 
-  dependencies.forEach((dependency, index) => {
     if (index > 0) {
-      nodes.push(index === dependencies.length - 1 ? " and " : ", ");
+      separator = index === dependencies.length - 1 ? " and " : ", ";
     }
 
-    nodes.push(
-      <Link
-        href={`/components/${dependency.slug}`}
-        key={dependency.slug}
-        variant="underline"
-      >
-        {dependency.name}
-      </Link>
+    return (
+      <Fragment key={dependency.slug}>
+        {separator}
+        <Link href={`/docs/components/${dependency.slug}`} variant="underline">
+          {dependency.name}
+        </Link>
+      </Fragment>
     );
   });
-
-  return nodes;
 }
 
 export { InstallSection };

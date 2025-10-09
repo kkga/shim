@@ -23,12 +23,12 @@ export interface CodeItem {
   title?: string;
   sourceUrl?: string;
   raw?: string;
+  highlight?: boolean;
 }
 
 interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
   code?: CodeItem[] | string;
   children?: string | { props: { children: string } };
-  highlight?: boolean;
   clickToCopy?: boolean;
   onCodeTabChange?: (tab: Key) => void;
 }
@@ -77,6 +77,10 @@ function CodeActions({
   sourceUrl?: string;
   content?: string;
 }) {
+  if (sourceUrl === undefined && content === undefined) {
+    return null;
+  }
+
   return (
     <div className="ml-auto flex gap-1">
       {sourceUrl && (
@@ -95,21 +99,17 @@ function CodeActions({
   );
 }
 
-function CodeContent({
+const LONG_CODE_LINE_THRESHOLD = 20;
+
+function CodePane({
   code,
   highlight = true,
 }: {
   code: CodeItem;
   highlight?: boolean;
 }) {
-  const LONG_CODE_LINE_THRESHOLD = 20;
-
-  let { content } = code;
-  let isContentLong = useMemo(
-    () => content.split("\n").length > LONG_CODE_LINE_THRESHOLD,
-    [content]
-  );
-
+  let { content, note } = code;
+  let isContentLong = content.split("\n").length > LONG_CODE_LINE_THRESHOLD;
   let codeElement = (
     <pre className="w-full overflow-x-scroll whitespace-pre px-3 py-2 **:[code]:text-[100%]">
       <Code highlight={highlight}>
@@ -118,14 +118,24 @@ function CodeContent({
     </pre>
   );
 
-  return isContentLong ? (
-    <Collapsible collapsed>{codeElement}</Collapsible>
-  ) : (
-    codeElement
+  return (
+    <>
+      {note && (
+        <div className="flex items-start gap-2 border-neutral-3 border-b px-3 py-2 font-medium text-[13px] text-neutral-text *:m-0!">
+          <WarningDiamondIcon className="h-lh" size={16} weight="duotone" />
+          {note}
+        </div>
+      )}
+      {isContentLong ? (
+        <Collapsible collapsed>{codeElement}</Collapsible>
+      ) : (
+        codeElement
+      )}
+    </>
   );
 }
 
-export function CodeBlock({ highlight, onCodeTabChange, ...props }: Props) {
+export function CodeBlock({ onCodeTabChange, ...props }: Props) {
   let normalizedCode = useMemo(
     () => normalizeCode(props.code, props.children),
     [props.code, props.children]
@@ -165,17 +175,7 @@ export function CodeBlock({ highlight, onCodeTabChange, ...props }: Props) {
 
           {normalizedCode.map((c) => (
             <TabPanel id={c.title} key={c.title}>
-              {c.note && (
-                <div className="flex items-start gap-2 border-neutral-3 border-b px-3 py-2 font-medium text-[13px] text-neutral-text *:m-0!">
-                  <WarningDiamondIcon
-                    className="h-lh"
-                    size={16}
-                    weight="duotone"
-                  />
-                  {c.note}
-                </div>
-              )}
-              <CodeContent code={c} highlight={highlight} />
+              <CodePane code={c} highlight={c.highlight} />
             </TabPanel>
           ))}
         </Tabs>
@@ -186,7 +186,7 @@ export function CodeBlock({ highlight, onCodeTabChange, ...props }: Props) {
               {normalizedCode[0].title}
             </span>
           </CodeHeader>
-          <CodeContent code={selectedCode} highlight={highlight} />
+          <CodePane code={selectedCode} highlight={selectedCode.highlight} />
         </>
       )}
     </div>

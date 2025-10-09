@@ -39,7 +39,7 @@ html {
 }
 
 article {
-  @apply px-4 py-8 md:px-8 md:py-12;
+  @apply px-4 py-6 md:px-8 md:py-8;
 
   .prose {
     :is(h1, h2, h3, h4, h5, h6) {
