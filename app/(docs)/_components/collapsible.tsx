@@ -56,6 +56,7 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
         intent="neutral"
         onPress={toggle}
         size={1}
+        variant="ghost"
       >
         {collapsed ? (
           <ArrowLineDownIcon size={16} />
