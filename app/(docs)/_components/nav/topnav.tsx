@@ -20,19 +20,19 @@ export function TopNav(props: { items: NavItem[] }) {
   let [isOpen, setOpen] = useState(false);
 
   return (
-    <aside className="sticky top-0 z-20 flex shrink-0 flex-col bg-background px-1 text-sm lg:hidden">
-      <header className="sticky top-0 flex h-10 shrink-0 items-center justify-between gap-1">
+    <aside className="sticky top-0 z-20 flex shrink-0 flex-col bg-panel px-1 text-sm lg:hidden">
+      <header className="sticky top-0 flex shrink-0 items-center justify-between gap-1 p-1">
         <Link
           className="flex items-center gap-1 px-2 no-underline"
           href="/"
           intent="neutral"
         >
-          <Logo />
+          <Logo size={2} />
         </Link>
 
         <div className="flex gap-1.5">
           <div className="flex items-stretch px-2">
-            <ThemeToggle size={3} />
+            <ThemeToggle size={2} />
           </div>
 
           <Separator className="my-1" orientation="vertical" />
@@ -41,7 +41,7 @@ export function TopNav(props: { items: NavItem[] }) {
             intent="neutral"
             isIconOnly
             onPress={() => setOpen(true)}
-            size={3}
+            size={4}
             variant="ghost"
           >
             <ListIcon size={16} />
@@ -60,7 +60,7 @@ export function TopNav(props: { items: NavItem[] }) {
                   href="https://twitter.com/kkga_"
                   intent="neutral"
                   isIconOnly
-                  size={3}
+                  size={4}
                   target="_blank"
                   variant="ghost"
                 >
@@ -74,7 +74,7 @@ export function TopNav(props: { items: NavItem[] }) {
                   href="https://github.com/kkga/shim"
                   intent="neutral"
                   isIconOnly
-                  size={3}
+                  size={4}
                   target="_blank"
                   variant="ghost"
                 >
@@ -88,7 +88,7 @@ export function TopNav(props: { items: NavItem[] }) {
                 intent="neutral"
                 isIconOnly
                 onPress={() => setOpen(false)}
-                size={3}
+                size={4}
                 variant="soft"
               >
                 <XIcon size={16} weight="bold" />

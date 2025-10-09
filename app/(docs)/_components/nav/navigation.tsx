@@ -169,7 +169,7 @@ export function Navigation({
 
   return (
     <div className="relative flex h-full flex-col overflow-auto">
-      <div className="px-3 py-0.5">
+      <div className="px-2 py-0.5">
         <SearchField
           aria-label="Filter navigation items"
           onChange={setFilter}
@@ -179,12 +179,12 @@ export function Navigation({
           // biome-ignore lint/style/noMagicNumbers: no need to create a constant for this
           size={size > 1 ? 3 : 2}
           value={filter}
-          variant="outline"
+          variant="soft"
         />
       </div>
 
       <nav
-        className="grow overflow-y-scroll px-3 py-4"
+        className="grow overflow-y-scroll px-2 py-4"
         style={{
           maskImage: "linear-gradient(to bottom, transparent, black 16px )",
         }}
