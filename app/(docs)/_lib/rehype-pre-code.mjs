@@ -1,6 +1,6 @@
 import { visit } from "unist-util-visit";
 
-const TITLE_REGEX = /title\s*=\s*"([^"]+)"/i;
+const TITLE_REGEX = /title\s*=\s*(?:"([^"]+)"|([^"\s]+))/i;
 
 function extractTitle(meta) {
   if (typeof meta !== "string") {
@@ -8,7 +8,11 @@ function extractTitle(meta) {
   }
 
   const match = meta.match(TITLE_REGEX);
-  return match ? match[1] : undefined;
+  if (match) {
+    return (match[1] || match[2]).trim();
+  }
+
+  return;
 }
 
 const rehypePreRaw = () => (tree) => {
