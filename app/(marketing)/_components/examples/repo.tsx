@@ -1,34 +1,34 @@
 "use client";
 
 import {
-  Book,
-  CaretDown,
-  Chats,
-  CirclesThree,
-  Code,
-  CodeSimple,
-  Desktop,
-  DownloadSimple,
-  Eye,
-  File,
-  Folder,
-  Gear,
-  GitBranch,
-  GitFork,
-  GithubLogo,
-  GitPullRequest,
-  House,
-  Kanban,
-  Laptop,
-  Link as LinkIcon,
-  List,
-  Plus,
-  Scales,
-  Star,
-  Tag as TagIcon,
-  Tray,
-  Upload,
-  UploadSimple,
+  BookIcon,
+  CaretDownIcon,
+  ChatsIcon,
+  CirclesThreeIcon,
+  CodeIcon,
+  CodeSimpleIcon,
+  DesktopIcon,
+  DownloadSimpleIcon,
+  EyeIcon,
+  FileIcon,
+  FolderIcon,
+  GearIcon,
+  GitBranchIcon,
+  GitForkIcon,
+  GithubLogoIcon,
+  GitPullRequestIcon,
+  HouseIcon,
+  KanbanIcon,
+  LaptopIcon,
+  LinkIcon,
+  ListIcon,
+  PlusIcon,
+  ScalesIcon,
+  StarIcon,
+  TagIcon,
+  TrayIcon,
+  UploadIcon,
+  UploadSimpleIcon,
 } from "@phosphor-icons/react";
 import { Avatar } from "@/shim-ui/avatar";
 import { Badge } from "@/shim-ui/badge";
@@ -71,67 +71,67 @@ const fileColumns = [
 
 const fileRows = [
   {
-    icon: <Folder size={16} weight="duotone" />,
+    icon: <FolderIcon size={16} weight="duotone" />,
     id: ".husky",
     commit: "chore: add commitlint",
     editDate: "2 weeks ago",
   },
   {
-    icon: <Folder size={16} weight="duotone" />,
+    icon: <FolderIcon size={16} weight="duotone" />,
     id: "app",
     commit: "fix: update searchfield for themeprops",
     editDate: "yesterday",
   },
   {
-    icon: <Folder size={16} weight="duotone" />,
+    icon: <FolderIcon size={16} weight="duotone" />,
     id: "components",
     commit: "fix: update searchfield for themeprops",
     editDate: "yesterday",
   },
   {
-    icon: <Folder size={16} weight="duotone" />,
+    icon: <FolderIcon size={16} weight="duotone" />,
     id: "demos",
     commit: "docs: update readme",
     editDate: "3 days ago",
   },
   {
-    icon: <Folder size={16} weight="duotone" />,
+    icon: <FolderIcon size={16} weight="duotone" />,
     id: "docs",
     commit: "docs: update readme",
     editDate: "3 days ago",
   },
   {
-    icon: <File size={16} weight="duotone" />,
+    icon: <FileIcon size={16} weight="duotone" />,
     id: ".gitignore",
     commit: "docs: update readme",
     editDate: "3 days ago",
   },
   {
-    icon: <File size={16} weight="duotone" />,
+    icon: <FileIcon size={16} weight="duotone" />,
     id: ".eslintrc.json",
     commit: "chore: update eslint",
     editDate: "1 week ago",
   },
   {
-    icon: <File size={16} weight="duotone" />,
+    icon: <FileIcon size={16} weight="duotone" />,
     id: "next.config.js",
     commit: "chore: update next config",
     editDate: "2 weeks ago",
   },
   {
-    icon: <File size={16} weight="duotone" />,
+    icon: <FileIcon size={16} weight="duotone" />,
     id: "package.json",
     commit: "chore: update packages",
     editDate: "2 weeks ago",
   },
   {
-    icon: <File size={16} weight="duotone" />,
+    icon: <FileIcon size={16} weight="duotone" />,
     id: "README.md",
     commit: "docs: update readme",
     editDate: "3 days ago",
   },
   {
-    icon: <File size={16} weight="duotone" />,
+    icon: <FileIcon size={16} weight="duotone" />,
     id: "tsconfig.json",
     commit: "chore: update tsconfig",
     editDate: "2 weeks ago",
@@ -141,47 +141,48 @@ const fileRows = [
 export function ExampleRepo() {
   return (
     <ExampleContainer className="min-w-[800px] bg-panel">
+      {/* TODO: add other tabs (Issues, PRs, Settings) */}
       <div className="flex items-center gap-2 p-4 pb-2 text-[13px]">
         <MenuTrigger>
           <Button aria-label="Menu" intent="neutral" isIconOnly>
-            <List size={16} />
+            <ListIcon size={16} />
           </Button>
           <Menu size={1}>
             <MenuItem>
-              <House size={16} weight="duotone" />
+              <HouseIcon size={16} weight="duotone" />
               Home
             </MenuItem>
             <MenuItem>
-              <CirclesThree size={16} weight="duotone" />
+              <CirclesThreeIcon size={16} weight="duotone" />
               Issues
             </MenuItem>
             <MenuItem>
-              <GitPullRequest size={16} weight="duotone" /> Pull requests
+              <GitPullRequestIcon size={16} weight="duotone" /> Pull requests
             </MenuItem>
             <MenuItem>
-              <Kanban size={16} weight="duotone" />
+              <KanbanIcon size={16} weight="duotone" />
               Projects
             </MenuItem>
             <MenuItem>
-              <Chats size={16} weight="duotone" />
+              <ChatsIcon size={16} weight="duotone" />
               Discussions
             </MenuItem>
             <MenuItem>
-              <Desktop size={16} weight="duotone" />
+              <DesktopIcon size={16} weight="duotone" />
               Codespaces
             </MenuItem>
             <MenuSeparator />
             <MenuSection title="Repositories">
               <MenuItem>
-                <Book size={16} weight="duotone" />
+                <BookIcon size={16} weight="duotone" />
                 kkga/shim
               </MenuItem>
               <MenuItem>
-                <Book size={16} weight="duotone" />
+                <BookIcon size={16} weight="duotone" />
                 kkga/ter
               </MenuItem>
               <MenuItem>
-                <Book size={16} weight="duotone" />
+                <BookIcon size={16} weight="duotone" />
                 kkga/config
               </MenuItem>
             </MenuSection>
@@ -189,7 +190,7 @@ export function ExampleRepo() {
         </MenuTrigger>
 
         <Separator className="my-1" orientation="vertical" />
-        <GithubLogo size={16} />
+        <GithubLogoIcon size={16} />
 
         <Breadcrumbs>
           <Breadcrumb href="/">kkga</Breadcrumb>
@@ -209,27 +210,27 @@ export function ExampleRepo() {
         <MenuTrigger>
           <TooltipTrigger>
             <Button intent="accent">
-              <Plus size={16} />
-              <CaretDown size={12} />
+              <PlusIcon size={16} />
+              <CaretDownIcon size={12} />
             </Button>
             <Tooltip>Create new...</Tooltip>
           </TooltipTrigger>
           <Menu>
             <MenuItem>
-              <Book size={16} weight="duotone" />
+              <BookIcon size={16} weight="duotone" />
               New repository
             </MenuItem>
             <MenuItem>
-              <Upload size={16} weight="duotone" />
+              <UploadIcon size={16} weight="duotone" />
               Import repository
             </MenuItem>
             <MenuSeparator />
             <MenuItem>
-              <Laptop size={16} weight="duotone" />
+              <LaptopIcon size={16} weight="duotone" />
               New codespace
             </MenuItem>
             <MenuItem>
-              <CodeSimple size={16} weight="duotone" />
+              <CodeSimpleIcon size={16} weight="duotone" />
               New gist
             </MenuItem>
           </Menu>
@@ -237,7 +238,7 @@ export function ExampleRepo() {
 
         <TooltipTrigger>
           <Button intent="neutral" isIconOnly>
-            <GitPullRequest size={16} weight="duotone" />
+            <GitPullRequestIcon size={16} weight="duotone" />
           </Button>
           <Tooltip>Pull requests</Tooltip>
         </TooltipTrigger>
@@ -245,7 +246,7 @@ export function ExampleRepo() {
         <TooltipTrigger>
           <Button className="relative" intent="neutral" isIconOnly>
             <div className="-right-0.5 -top-0.5 absolute size-2 rounded-full border border-accent-line bg-accent-9 shadow" />
-            <Tray size={16} weight="duotone" />
+            <TrayIcon size={16} weight="duotone" />
           </Button>
           <Tooltip>Notifications</Tooltip>
         </TooltipTrigger>
@@ -264,15 +265,15 @@ export function ExampleRepo() {
       <Tabs className="flex-1 gap-0 overflow-auto">
         <TabList className="gap-4 px-4 shadow-neutral-3" variant="underline">
           <Tab id="code">
-            <Code size={16} weight="duotone" />
+            <CodeIcon size={16} weight="duotone" />
             Code
           </Tab>
           <Tab id="pr">
-            <GitPullRequest size={16} weight="duotone" />
+            <GitPullRequestIcon size={16} weight="duotone" />
             Pull requests
           </Tab>
           <Tab id="settings">
-            <Gear size={16} weight="duotone" />
+            <GearIcon size={16} weight="duotone" />
             Settings
           </Tab>
         </TabList>
@@ -292,21 +293,21 @@ export function ExampleRepo() {
             </div>
             <div className="grow-1" />
             <ToggleButton intent="neutral">
-              <Eye size={16} weight="duotone" />
+              <EyeIcon size={16} weight="duotone" />
               Watch
               <Badge intent="neutral" size={1}>
                 20
               </Badge>
             </ToggleButton>
             <Button intent="neutral">
-              <GitFork size={16} weight="duotone" />
+              <GitForkIcon size={16} weight="duotone" />
               Fork
               <Badge intent="neutral" size={1}>
                 38
               </Badge>
             </Button>
             <Button intent="neutral">
-              <Star size={16} weight="duotone" />
+              <StarIcon size={16} weight="duotone" />
               Star
               <Badge intent="neutral" size={1}>
                 2.1k
@@ -321,17 +322,17 @@ export function ExampleRepo() {
               <div className="flex gap-2">
                 <Select aria-label="Branch" defaultSelectedKey="master">
                   <SelectItem id="master" textValue="master">
-                    <GitBranch size={16} />
+                    <GitBranchIcon size={16} />
                     master
                   </SelectItem>
 
                   <SelectItem id="develop" textValue="develop">
-                    <GitBranch size={16} />
+                    <GitBranchIcon size={16} />
                     develop
                   </SelectItem>
 
                   <SelectItem id="feature" textValue="feature/1">
-                    <GitBranch size={16} />
+                    <GitBranchIcon size={16} />
                     feature/1
                   </SelectItem>
                 </Select>
@@ -355,16 +356,16 @@ export function ExampleRepo() {
                 <MenuTrigger>
                   <Button intent="neutral">
                     Add file
-                    <CaretDown size={12} />
+                    <CaretDownIcon size={12} />
                   </Button>
                   <Menu>
                     <MenuItem>
-                      <Plus size={16} />
+                      <PlusIcon size={16} />
                       Create new file
                     </MenuItem>
 
                     <MenuItem>
-                      <UploadSimple size={16} />
+                      <UploadSimpleIcon size={16} />
                       Upload files
                     </MenuItem>
                   </Menu>
@@ -372,9 +373,9 @@ export function ExampleRepo() {
 
                 <PopoverTrigger>
                   <Button intent="success">
-                    <Code size={16} />
+                    <CodeIcon size={16} />
                     Code
-                    <CaretDown size={12} />
+                    <CaretDownIcon size={12} />
                   </Button>
                   <Popover className="w-xs" placement="bottom end">
                     <Tabs>
@@ -395,12 +396,12 @@ export function ExampleRepo() {
 
                         <div className="flex gap-2">
                           <Button className="flex-1" intent="neutral">
-                            <Desktop size={16} />
+                            <DesktopIcon size={16} />
                             Open on desktop
                           </Button>
 
                           <Button className="flex-1" intent="neutral">
-                            <DownloadSimple size={16} />
+                            <DownloadSimpleIcon size={16} />
                             Download ZIP
                           </Button>
                         </div>
@@ -480,12 +481,21 @@ export function ExampleRepo() {
 
               <DataList labelPosition="side">
                 <DataListItem
-                  label={<Scales size={16} />}
+                  label={<ScalesIcon size={16} />}
                   value="MIT License"
                 />
-                <DataListItem label={<Star size={16} />} value="2.1k stars" />
-                <DataListItem label={<Eye size={16} />} value="20 watchers" />
-                <DataListItem label={<GitFork size={16} />} value="38 forks" />
+                <DataListItem
+                  label={<StarIcon size={16} />}
+                  value="2.1k stars"
+                />
+                <DataListItem
+                  label={<EyeIcon size={16} />}
+                  value="20 watchers"
+                />
+                <DataListItem
+                  label={<GitForkIcon size={16} />}
+                  value="38 forks"
+                />
               </DataList>
 
               <Separator />
