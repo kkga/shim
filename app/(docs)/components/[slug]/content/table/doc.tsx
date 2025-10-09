@@ -24,7 +24,7 @@ export default {
         <>
           <p>
             Enable column sorting by providing a <code>sortDescriptor</code>{" "}
-            with a<code>column</code> key and <code>direction</code> value.
+            with a <code>column</code> key and <code>direction</code> value.
           </p>
           <p>
             Direction accepts <code>"ascending"</code> or{" "}

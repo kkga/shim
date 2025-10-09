@@ -63,7 +63,7 @@ let rows = [
 const Check = () => (
   <CheckIcon className="text-success-text" size={16} weight="bold" />
 );
-const X = () => <XIcon className="text-danger-text" size={16} weight="bold" />;
+const X = () => <XIcon className="text-neutral-text-subtle" size={16} />;
 
 export default () => (
   <Table aria-label="Mythical Creatures">
