@@ -27,7 +27,7 @@ export function Examples() {
   return (
     <Tabs>
       <div className="mb-2 flex items-center justify-between">
-        <TabList items={items} variant="soft">
+        <TabList items={items} size={2} variant="soft">
           {({ name }) => <Tab aria-label={name}>{name}</Tab>}
         </TabList>
         <div className="sticky right-4">
