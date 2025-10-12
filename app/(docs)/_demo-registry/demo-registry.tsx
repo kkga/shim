@@ -366,4 +366,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
       () => import(`${COMPONENT_DEMOS_PATH}/color-swatch-picker/main`)
     ),
   },
+
+  // Drag and Drop
+  "drop-zone": {
+    main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/drop-zone/main`)),
+  },
 };

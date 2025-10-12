@@ -34,7 +34,7 @@ function DocSection({
       )}
       id={id}
     >
-      <div className="col-start-1 self-stretch overflow-scroll py-1">
+      <div className="col-start-1 self-stretch py-1">
         {title && (
           <h3 className="mb-2 font-semibold text-[15px] text-neutral-text-contrast">
             {id ? (
