@@ -6,8 +6,8 @@ export interface DemoReference {
 }
 
 export interface DocSection {
-  title: string;
-  description: ReactNode;
+  title?: string;
+  description?: ReactNode;
   demo: DemoReference;
   /**
    * Key in the demos source map. When omitted, the doc loader will try to use a kebab-case version of the demo name.

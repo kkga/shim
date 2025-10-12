@@ -1,5 +1,12 @@
 import type { DocModule } from "@/app/(docs)/components/schema";
 
 export default {
-  sections: [],
+  sections: [
+    {
+      demo: {
+        group: "drop-zone",
+        name: "main",
+      },
+    },
+  ],
 } satisfies DocModule;

@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "meter",
+        name: "main",
+      },
+    },
+    {
       title: "Custom range and labels",
       description: (
         <>

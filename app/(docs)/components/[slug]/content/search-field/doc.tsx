@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "search-field",
+        name: "main",
+      },
+    },
+    {
       title: "Controlled value",
       description: (
         <p>

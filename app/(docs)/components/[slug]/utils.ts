@@ -3,10 +3,10 @@ import { basename, extname, join } from "node:path";
 import type { ComponentType } from "react";
 import { getFileSource } from "@/app/_lib/utils";
 import type { ComponentMetadata } from "@/app/(docs)/_lib/types";
+import { demoRegistry } from "@/app/docs/_demo-registry/demo-registry";
 import registry from "@/shim-ui/registry/registry.json" with { type: "json" };
 import { slugify, toKebabCase } from "../../_lib/utils";
 import type { DocModule, DocSection } from "../schema";
-import { demoRegistry } from "./demo-registry";
 
 const DOCS_DIR = join(
   process.cwd(),
@@ -105,10 +105,12 @@ export function resolveSection(
   section: DocSection,
   {
     componentName,
+    componentTitle,
     demos,
     slug,
   }: {
     componentName: string;
+    componentTitle: string;
     demos: Record<string, string | undefined>;
     slug: string;
   }
@@ -137,7 +139,9 @@ export function resolveSection(
     ? [
         {
           content: codeContent,
-          title: section.codeTitle ?? `${section.title} example`,
+          title:
+            section.codeTitle ??
+            `${section.title ? `${section.title} example` : `${componentTitle} example`}`,
         },
       ]
     : undefined;

@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "progress-bar",
+        name: "main",
+      },
+    },
+    {
       title: "Indeterminate",
       description: (
         <p>

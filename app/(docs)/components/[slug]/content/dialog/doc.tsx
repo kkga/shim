@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "dialog",
+        name: "main",
+      },
+    },
+    {
       title: "Controlled open state",
       description: (
         <p>

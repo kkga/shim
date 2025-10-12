@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "switch",
+        name: "main",
+      },
+    },
+    {
       title: "States",
       description: (
         <p>

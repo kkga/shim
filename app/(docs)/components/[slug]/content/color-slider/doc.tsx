@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "color-slider",
+        name: "main",
+      },
+    },
+    {
       title: "Size",
       description: (
         <p>

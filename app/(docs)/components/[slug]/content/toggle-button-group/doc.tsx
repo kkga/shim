@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "toggle-button-group",
+        name: "main",
+      },
+    },
+    {
       title: "Selection mode",
       description: (
         <p>

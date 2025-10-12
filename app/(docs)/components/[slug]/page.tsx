@@ -1,10 +1,11 @@
+import { Fragment } from "react";
 import { getFileSource } from "@/app/_lib/utils";
 import { DocHeader } from "@/app/(docs)/_components/doc-header";
 import { DocSection } from "@/app/(docs)/_components/doc-section";
 import { Metadata } from "@/app/(docs)/_components/metadata";
 import { toKebabCase } from "../../_lib/utils";
 import { InstallSection } from "./_components/install-section";
-import { getMainDemo } from "./demo-registry";
+// import { getMainDemo } from "./demo-registry";
 import {
   getComponentDocs,
   getDemosSource,
@@ -44,7 +45,7 @@ export default async function DocPage({
   } = doc.metadata;
   let demos = getDemosSource(name);
   let source = getFileSource(files[0]);
-  let MainDemo = getMainDemo(name);
+  // let MainDemo = getMainDemo(name);
   let sections = await loadDocSections(name);
 
   if (!demos.main) {
@@ -76,38 +77,38 @@ export default async function DocPage({
         />
       </DocHeader>
 
-      <DocSection
-        code={[{ content: demos.main, title: `${title} example` }]}
-        demo={<MainDemo />}
-      />
-
-      <InstallSection
-        command={command}
-        componentTitle={title}
-        dependencies={dependencies}
-        source={source}
-        sourceUrl={sourceUrl}
-      />
-
       {sections.map((section) => {
         let { anchorId, code, DemoComponent } = resolveSection(section, {
           componentName: name,
+          componentTitle: title,
           demos,
           slug,
         });
 
         return (
-          <DocSection
-            className={section.className}
-            code={code}
-            demo={<DemoComponent />}
-            id={anchorId}
-            key={anchorId}
-            stacked={section.stacked}
-            title={section.title}
-          >
-            {section.description}
-          </DocSection>
+          <Fragment key={anchorId}>
+            <DocSection
+              className={section.className}
+              code={code}
+              demo={<DemoComponent />}
+              id={anchorId}
+              key={anchorId}
+              stacked={section.stacked}
+              title={section.title}
+            >
+              {section.description}
+            </DocSection>
+
+            {section.demo.name === "main" && (
+              <InstallSection
+                command={command}
+                componentTitle={title}
+                dependencies={dependencies}
+                source={source}
+                sourceUrl={sourceUrl}
+              />
+            )}
+          </Fragment>
         );
       })}
     </article>

@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "list-box",
+        name: "main",
+      },
+    },
+    {
       title: "Sections",
       description: (
         <p>

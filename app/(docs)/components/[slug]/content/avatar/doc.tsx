@@ -3,6 +3,13 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "avatar",
+        name: "main",
+      },
+      className: "flex-row",
+    },
+    {
       title: "Size",
       description: (
         <p>

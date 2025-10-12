@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import matter from "gray-matter";
-import type { ComponentMetadata } from "@/app/(docs)/_lib/types";
 
 export function readMdxFile<T extends Record<string, unknown>>(
   filePath: string
@@ -26,6 +25,13 @@ export function slugify(str: string) {
     .toLowerCase();
 }
 
-export function toKebabCase(componentName: ComponentMetadata["name"]): string {
-  return componentName.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+export function toKebabCase(str: string): string {
+  return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+export function toTitleCase(str: string): string {
+  return str
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
 }

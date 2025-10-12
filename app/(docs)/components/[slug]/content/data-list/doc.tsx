@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "data-list",
+        name: "main",
+      },
+    },
+    {
       title: "Orientation",
       description: (
         <p>

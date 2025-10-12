@@ -3,6 +3,12 @@ import type { DocModule } from "@/app/(docs)/components/schema";
 export default {
   sections: [
     {
+      demo: {
+        group: "text-field",
+        name: "main",
+      },
+    },
+    {
       title: "Label position",
       description: (
         <p>
