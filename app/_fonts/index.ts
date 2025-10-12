@@ -1,24 +1,16 @@
-import { Mona_Sans } from "next/font/google";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
 export const fontMono = localFont({
-  src: [{ path: "./MonaspaceNeon-Regular.woff2" }],
+  src: [{ path: "./commit-mono.woff2" }],
   variable: "--font-mono",
   display: "swap",
 });
 
-export const fontSans = Mona_Sans({
+export const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
   style: "normal",
-  axes: ["wdth"],
+  axes: ["opsz"],
 });
-
-// export const fontSans = localFont({
-//   src: [{ path: "./MonaSans[ital,wdth,wght].woff2" }],
-//   variable: "--font-sans",
-//   display: "swap",
-//   weight: "200 900",
-//   style: "italic",
-// });

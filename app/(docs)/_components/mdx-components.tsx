@@ -3,7 +3,7 @@ import { default as NextLink } from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { getFileSource } from "@/app/_lib/utils";
-import { demoRegistry } from "../components/[slug]/demo-registry";
+import { demoRegistry } from "@/app/docs/_demo-registry/demo-registry";
 import { Code } from "./code";
 import { CodeBlock } from "./code-block";
 import { DocSection } from "./doc-section";
@@ -82,7 +82,6 @@ function ComponentDemo({
   demo,
   stacked,
   title,
-  wrapperClassName,
 }: ComponentDemoProps) {
   let group = demoRegistry[component];
   if (!group) {
@@ -99,17 +98,15 @@ function ComponentDemo({
   let codeSnippets = getDemoCode(component, code ?? demo, title, codeTitle);
 
   return (
-    <div className={twMerge("not-prose", wrapperClassName)}>
-      <DocSection
-        className={className}
-        code={codeSnippets}
-        demo={<DemoComponent />}
-        stacked={stacked}
-        title={title}
-      >
-        {children}
-      </DocSection>
-    </div>
+    <DocSection
+      className={className}
+      code={codeSnippets}
+      demo={<DemoComponent />}
+      stacked={stacked}
+      title={title}
+    >
+      {children}
+    </DocSection>
   );
 }
 

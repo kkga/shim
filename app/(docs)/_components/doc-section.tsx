@@ -1,5 +1,5 @@
 import type { Key } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Theme } from "@/shim-ui/lib/theme";
 import { CodeBlock, type CodeItem } from "./code-block";
 
@@ -27,14 +27,14 @@ function DocSection({
   return (
     <section
       className={twMerge(
-        "col-span-full my-12 grid scroll-mt-8 items-start gap-x-8 gap-y-8 md:grid-cols-[2fr_3fr] md:gap-x-12",
+        "doc-section col-span-full grid scroll-mt-8 items-start gap-x-8 gap-y-8 md:grid-cols-[2fr_3fr]",
         stacked ? "md:grid-cols-1" : ""
       )}
       id={id}
     >
-      <div className="col-start-1 self-stretch">
+      <div className="col-start-1 self-stretch py-1">
         {title && (
-          <h3 className="mb-2 font-semibold text-base text-neutral-text-contrast">
+          <h3 className="mb-2 font-semibold text-[15px] text-neutral-text-contrast">
             {id ? (
               <a
                 className="no-underline hover:underline focus-visible:underline focus-visible:outline-none"
@@ -49,7 +49,12 @@ function DocSection({
         )}
 
         {children && (
-          <div className="font-book text-neutral-text text-sm leading-normal [&_code]:text-neutral-text-contrast">
+          <div
+            className={twJoin(
+              "space-y-2 text-base text-neutral-text [&_code]:font-book [&_code]:font-sans [&_code]:text-neutral-text-contrast",
+              stacked ? "max-w-[var(--body-width)] text-base" : "text-sm"
+            )}
+          >
             {children}
           </div>
         )}

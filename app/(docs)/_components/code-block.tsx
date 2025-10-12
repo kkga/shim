@@ -157,7 +157,7 @@ export function CodeBlock({ onCodeTabChange, ...props }: Props) {
   return (
     <div
       className={twMerge(
-        "codeblock group relative isolate my-8 min-w-0 overflow-clip rounded-lg bg-panel text-neutral-text text-xs leading-relaxed",
+        "codeblock group relative isolate my-8 min-w-0 overflow-clip rounded-lg bg-panel text-neutral-text text-xs leading-normal",
         props.className
       )}
     >

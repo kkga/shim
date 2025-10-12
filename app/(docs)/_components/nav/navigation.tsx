@@ -115,7 +115,7 @@ const style = tv({
     headerIcon: "flex items-center justify-center text-neutral-text",
     item: [
       focusStyle(),
-      "flex items-center rounded font-book text-neutral-text-contrast leading-none",
+      "flex items-center rounded text-neutral-text-contrast leading-none",
     ],
   },
   variants: {
@@ -205,7 +205,7 @@ export function Navigation({
         >
           {({ section, items: sectionItems }) => (
             <ListBoxSection
-              className="col-span-full mb-4 grid grid-cols-subgrid gap-y-0.5"
+              className="col-span-full mb-4 grid grid-cols-subgrid gap-y-0.25"
               id={section}
             >
               {section !== "Intro" && (

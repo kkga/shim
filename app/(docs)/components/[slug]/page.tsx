@@ -66,7 +66,7 @@ export default async function DocPage({
     .filter((dep): dep is { name: string; slug: string } => dep !== null);
 
   return (
-    <article>
+    <article className="space-y-12">
       <DocHeader className="col-span-full" subtitle={description} title={title}>
         <Metadata
           ariaUrl={ariaUrl}

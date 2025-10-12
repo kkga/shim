@@ -59,7 +59,7 @@ export function Metadata({
               href={docUrl}
               title={`View ${title} documentation`}
             >
-              React Aria {title}
+              React Aria
             </MetadataLink>
           }
         />
@@ -94,7 +94,7 @@ export function Metadata({
             href={`${GITHUB_ISSUES_URL}/new?title=[${title}] Issue`}
             title="New issue on GitHub"
           >
-            Report issue
+            Report
           </MetadataLink>
         }
       />

@@ -4,7 +4,6 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { Logo } from "@/app/_components/logo";
 import { Badge } from "@/shim-ui/badge";
-import { DataList, DataListItem } from "@/shim-ui/data-list";
 import { Link } from "@/shim-ui/link";
 import { Separator } from "@/shim-ui/separator";
 import { Examples } from "./_components/examples/examples";
@@ -51,28 +50,32 @@ export default function Page() {
 
           <Separator className="mt-8 max-w-12 md:my-8" />
 
-          <div className="hidden md:block">
-            <DataList className="gap-4" size={3}>
-              <DataListItem
-                label="What's going on here?"
-                value="Great components, without the hassle."
-              />
-
-              <DataListItem
-                label="How so?"
-                value="It is what it is. Built on top of RAC—the best primitives out there, meticulously styled with care and attention to detail."
-              />
-
-              <DataListItem
-                label="Why should I care?"
-                value="Because I care about you."
-              />
-
-              <DataListItem
-                label="What's the stack?"
-                value="React, TypeScript, RAC and Tailwind CSS v4. The good stuff."
-              />
-            </DataList>
+          <div className="hidden text-sm md:block">
+            <strong className="font-medium text-neutral-text-contrast">
+              What's going on here?
+            </strong>
+            <p className="mt-1 mb-6 text-neutral-text">
+              Great components, without the hassle.
+            </p>
+            <strong className="font-medium text-neutral-text-contrast">
+              How so?
+            </strong>
+            <p className="mt-1 mb-6 text-neutral-text">
+              It is what it is. Built on top of RAC—the best primitives out
+              there, meticulously styled and ready to use.
+            </p>
+            <strong className="font-medium text-neutral-text-contrast">
+              Why should I care?
+            </strong>
+            <p className="mt-1 mb-6 text-neutral-text">
+              Because I care about you.
+            </p>
+            <strong className="font-medium text-neutral-text-contrast">
+              What's the stack?
+            </strong>
+            <p className="mt-1 text-neutral-text">
+              React, TypeScript, RAC and Tailwind CSS v4. The good stuff.
+            </p>
           </div>
         </div>
 

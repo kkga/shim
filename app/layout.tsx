@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { type ReactNode, StrictMode } from "react";
 import { LocalizedStringProvider } from "react-aria-components/i18n";
 import { ClientProviders, ThemeProvider } from "./_components/providers";
-import { fontMono, fontSans } from "./_fonts";
+import { fontSans } from "./_fonts";
 import DarkIcon from "./_img/icon-dark.png";
 import LightIcon from "./_img/icon-light.png";
 import { baseUrl } from "./sitemap";
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <StrictMode>
       <html
-        className={`${fontMono.variable} ${fontSans.variable}`}
+        className={`${fontSans.variable}`}
         lang="en"
         suppressHydrationWarning
       >
