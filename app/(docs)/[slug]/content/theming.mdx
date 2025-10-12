@@ -2,3 +2,73 @@
 title: Theming
 order: 2
 ---
+
+Shim ships with a theme system that keeps tokens, variants, and layout patterns in sync across all components. The examples below reuse the Field component playground to demonstrate how the same controls adapt across different surfaces.
+
+## Variants
+
+<ComponentDemo
+  title="Field variants"
+  component="theme"
+  demo="field-variant"
+  className="grid sm:grid-cols-3 gap-8"
+  stacked
+>
+  Forms and field-based components support `classic`, `soft` and `outline` variants that adjust visual styles while preserving spacing and layout.
+</ComponentDemo>
+
+<ComponentDemo
+  title="Button variants"
+  component="theme"
+  demo="button-variant"
+  className="grid sm:grid-cols-3 gap-8"
+  stacked
+>
+  Buttons support `soft`, `solid`, and `ghost` variants.
+</ComponentDemo>
+
+
+## Set global defaults
+
+Wrap your application (or any subtree) in the `<Theme>` provider to broadcast shared props to every Shim component underneath it. The provider merges values from the nearest ancestor, so you can layer overrides as needed.
+
+```tsx title="layout.tsx"
+import type { ReactNode } from "react";
+import { Theme } from "@/shim-ui/lib/theme";
+import "./globals.css";
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <Theme fieldVariant="soft" labelPosition="side" size={2}>
+          {children}
+        </Theme>
+      </body>
+    </html>
+  );
+}
+```
+
+Inside a page or component you can scope a more specific override while inheriting the rest of the defaults:
+
+```tsx title="components/callout.tsx"
+import { Theme } from "@/shim-ui/lib/theme";
+import { Button } from "@/shim-ui/button";
+
+export function Callout() {
+  return (
+    <Theme buttonVariant="solid">
+      <Button>Download</Button>
+    </Theme>
+  );
+}
+```
+
+The available props are:
+
+- `size`: `1`–`4`, adjusting control scale and spacing
+- `labelPosition`: `top` or `side`
+- `fieldVariant`: `classic`, `soft`, or `outline`
+- `buttonVariant`: `soft`, `solid`, or `ghost`
+
