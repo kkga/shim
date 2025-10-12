@@ -136,6 +136,12 @@ const fileRows = [
     commit: "chore: update tsconfig",
     editDate: "2 weeks ago",
   },
+  {
+    icon: <FileIcon size={16} weight="duotone" />,
+    id: "pnpm-workspace.yaml",
+    commit: "chore: update pnpm workspace",
+    editDate: "2 weeks ago",
+  },
 ];
 
 export function ExampleRepo() {

@@ -67,15 +67,23 @@ export default function Page() {
               Tell me more?
             </strong>
             <p className="mt-1 mb-6 text-neutral-text">
-              It is what it is. Built on RAC—the best primitives out there—and
-              styled like someone actually cared (obsessively).
+              It is what it is. Built on{" "}
+              <Link
+                href="https://react-spectrum.adobe.com/react-aria/why.html"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                RAC
+              </Link>
+              —the best primitives out there—and styled like someone actually
+              cared (obsessively).
             </p>
             <strong className="font-medium text-neutral-text-contrast">
               What's the stack?
             </strong>
             <p className="mt-1 text-neutral-text">
-              React, TypeScript, RAC, Tailwind CSS v4. All signal, zero
-              ceremony—nothing cute, just speed.
+              React Aria, TypeScript, Tailwind v4 with some goodies and Radix
+              colors. All signal, zero ceremony—nothing cute, just speed.
             </p>
           </div>
         </div>

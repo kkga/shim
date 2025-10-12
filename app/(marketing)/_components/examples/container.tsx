@@ -10,7 +10,7 @@ export function ExampleContainer({
   return (
     <div
       className={twJoin(
-        "flex h-[600px] flex-col overflow-clip rounded-xl border border-neutral-line",
+        "flex h-[600px] flex-col overflow-clip rounded-xl ring ring-neutral-line",
         className
       )}
     >

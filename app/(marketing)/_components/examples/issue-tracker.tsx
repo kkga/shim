@@ -217,8 +217,8 @@ export function ExampleIssueTracker() {
   );
 
   return (
-    <ExampleContainer className="min-w-[800px]">
-      <div className="flex flex-1 flex-row overflow-auto bg-panel">
+    <ExampleContainer className="min-w-[800px] bg-panel">
+      <div className="flex flex-1 flex-row overflow-auto">
         <div className="flex min-w-[160px] flex-col gap-2.5 p-3 text-xs">
           <div className="flex items-center gap-1">
             <MenuTrigger>
