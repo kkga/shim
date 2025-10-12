@@ -38,7 +38,7 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
           collapsed
             ? {
                 maskImage:
-                  "linear-gradient(black calc(100% - 120px), transparent)",
+                  "linear-gradient(black calc(100% - 120px), transparent calc(100% - 32px))",
               }
             : {}
         }
