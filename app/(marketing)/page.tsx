@@ -24,7 +24,7 @@ export default function Page() {
             Toolkit for refined interfaces.
           </p>
           <p className="m-0 text-balance font-book text-neutral-text">
-            A collection of React Aria-based components, carefully styled and
+            A collection of React Aria-based components, meticulously styled and
             ready to go.
           </p>
 
@@ -55,26 +55,27 @@ export default function Page() {
               What's going on here?
             </strong>
             <p className="mt-1 mb-6 text-neutral-text">
-              Great components, without the hassle.
-            </p>
-            <strong className="font-medium text-neutral-text-contrast">
-              How so?
-            </strong>
-            <p className="mt-1 mb-6 text-neutral-text">
-              It is what it is. Built on top of RAC—the best primitives out
-              there, meticulously styled and ready to use.
+              Great components. No drama.
             </p>
             <strong className="font-medium text-neutral-text-contrast">
               Why should I care?
             </strong>
             <p className="mt-1 mb-6 text-neutral-text">
-              Because I care about you.
+              Because you've got better things to do than babysit focus rings.
+            </p>
+            <strong className="font-medium text-neutral-text-contrast">
+              Tell me more?
+            </strong>
+            <p className="mt-1 mb-6 text-neutral-text">
+              It is what it is. Built on RAC—the best primitives out there—and
+              styled like someone actually cared (obsessively).
             </p>
             <strong className="font-medium text-neutral-text-contrast">
               What's the stack?
             </strong>
             <p className="mt-1 text-neutral-text">
-              React, TypeScript, RAC and Tailwind CSS v4. The good stuff.
+              React, TypeScript, RAC, Tailwind CSS v4. All signal, zero
+              ceremony—nothing cute, just speed.
             </p>
           </div>
         </div>
