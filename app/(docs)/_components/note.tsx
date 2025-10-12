@@ -11,11 +11,13 @@ const noteStyle = tv({
   variants: {
     intent: {
       info: {
-        container: "border-accent-line bg-accent-panel",
+        container:
+          "border-accent-line bg-gradient-to-r from-accent-2 to-accent-1",
         title: "text-accent-text!",
       },
       warning: {
-        container: "bg-gradient-to-r from-warning-2 to-transparent",
+        container:
+          "border-warning-line bg-gradient-to-r from-warning-2 to-warning-1",
         title: "text-warning-text!",
       },
     },

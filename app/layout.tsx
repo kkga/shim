@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         lang="en"
         suppressHydrationWarning
       >
-        <body className="bg-background text-neutral-text antialiased">
+        <body className="bg-pure text-neutral-text antialiased">
           <LocalizedStringProvider locale="en-US" />
           <ClientProviders>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
