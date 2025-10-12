@@ -27,7 +27,7 @@ const style = tv({
     disclosure: "group border border-neutral-line text-neutral-text",
     button: [
       focusStyle(),
-      "flex w-full cursor-default items-center gap-2 bg-neutral-bg-subtle text-start",
+      "flex w-full cursor-default items-center gap-2 bg-neutral-panel text-start",
     ],
     heading: "font-medium text-neutral-text-contrast leading-tight",
     chevron: "ml-auto text-neutral-text",
@@ -38,7 +38,7 @@ const style = tv({
     variant: {
       soft: {
         disclosure: "bg-transparent",
-        button: "bg-neutral-bg-subtle",
+        button: "bg-neutral-panel",
       },
       surface: {
         disclosure: "group bg-neutral-bg text-neutral-text",

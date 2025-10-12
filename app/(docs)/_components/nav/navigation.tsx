@@ -169,7 +169,7 @@ export function Navigation({
 
   return (
     <div className="relative flex h-full flex-col overflow-auto">
-      <div className="px-2 py-0.5">
+      <div className="px-4 pt-0.5 pb-2">
         <SearchField
           aria-label="Filter navigation items"
           onChange={setFilter}
@@ -184,7 +184,7 @@ export function Navigation({
       </div>
 
       <nav
-        className="grow overflow-y-scroll px-2 py-4"
+        className="grow overflow-y-scroll p-4"
         style={{
           maskImage: "linear-gradient(to bottom, transparent, black 16px )",
         }}

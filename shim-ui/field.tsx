@@ -45,9 +45,9 @@ const inputBaseStyle = tv({
     // hovered
     "",
     // disabled
-    "data-disabled:inset-ring data-disabled:inset-ring-neutral-line data-disabled:cursor-not-allowed data-disabled:bg-neutral-bg-subtle data-disabled:text-neutral-text-subtle data-disabled:shadow-none",
+    "data-disabled:inset-ring data-disabled:inset-ring-neutral-line data-disabled:cursor-not-allowed data-disabled:bg-neutral-panel data-disabled:text-neutral-text-subtle data-disabled:shadow-none",
     // invalid
-    "data-invalid:inset-ring data-invalid:inset-ring-danger-border data-invalid:bg-danger-bg-subtle",
+    "data-invalid:inset-ring data-invalid:inset-ring-danger-border data-invalid:bg-danger-panel",
     // focused
     "data-focused:-outline-offset-1 data-focused:outline-2 data-focused:outline-accent-focus-ring",
     // focus-visible
@@ -57,7 +57,7 @@ const inputBaseStyle = tv({
   ],
   variants: {
     variant: {
-      classic: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
+      classic: "bg-neutral-panel shadow-[var(--shadow-inner)]",
       soft: "bg-neutral-bg",
       outline: "inset-ring inset-ring-neutral-border bg-transparent",
     },

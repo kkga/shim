@@ -8,7 +8,7 @@ const style = tv({
   variants: {
     variant: {
       plain: "bg-transparent",
-      surface: "bg-neutral-bg-subtle shadow-[var(--shadow-xs)]",
+      surface: "bg-neutral-panel shadow-[var(--shadow-xs)]",
     },
     size: {
       1: "h-4 gap-1 rounded-sm px-[3px] text-[11px]",

@@ -57,7 +57,7 @@ const style = tv({
     variant: {
       classic: {
         itemInput:
-          "bg-neutral-bg-subtle shadow-[var(--shadow-inner)] before:bg-white",
+          "bg-neutral-panel shadow-[var(--shadow-inner)] before:bg-white",
       },
       soft: {
         itemInput:
@@ -72,7 +72,7 @@ const style = tv({
       true: {
         item: "cursor-not-allowed text-neutral-text-subtle",
         itemInput:
-          "inset-ring-1 inset-ring-neutral-line bg-neutral-bg-subtle text-neutral-text-subtle shadow-none",
+          "inset-ring-1 inset-ring-neutral-line bg-neutral-panel text-neutral-text-subtle shadow-none",
       },
     },
     isSelected: { true: { itemInput: "before:visible" } },

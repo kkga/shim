@@ -22,6 +22,10 @@ export interface DocSection {
    * Whether to stack the demo and code sections. Defaults to false.
    */
   stacked?: boolean;
+  /**
+   *  Layout of the demo content: row or column. Defaults to "column".
+   */
+  demoLayout?: "row" | "column";
 }
 
 export interface DocModule {

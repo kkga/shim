@@ -21,6 +21,7 @@ export default {
         name: "states",
       },
       code: "states",
+      className: "gap-2 items-start",
     },
     {
       title: "Variant",
@@ -34,6 +35,7 @@ export default {
         name: "variant",
       },
       code: "variant",
+      className: "gap-2 items-start",
     },
     {
       title: "Label position",
@@ -47,7 +49,7 @@ export default {
         group: "switch",
         name: "label-position",
       },
-      className: "items-start",
+      className: "gap-2 items-start",
       code: "label-position",
     },
     {
@@ -63,6 +65,7 @@ export default {
         name: "size",
       },
       code: "size",
+      className: "gap-2 items-start",
     },
     {
       title: "Controlled",
@@ -77,6 +80,7 @@ export default {
         name: "controlled",
       },
       code: "controlled",
+      className: "gap-2 items-start",
     },
   ],
 } satisfies DocModule;

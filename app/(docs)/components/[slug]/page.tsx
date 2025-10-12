@@ -91,6 +91,7 @@ export default async function DocPage({
               className={section.className}
               code={code}
               demo={<DemoComponent />}
+              demoLayout={section.demoLayout}
               id={anchorId}
               key={anchorId}
               stacked={section.stacked}

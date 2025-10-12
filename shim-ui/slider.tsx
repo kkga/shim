@@ -50,7 +50,7 @@ const style = tv({
     },
     variant: {
       classic: {
-        indicator: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
+        indicator: "bg-neutral-panel shadow-[var(--shadow-inner)]",
         fill: "bg-accent-solid",
         thumb: "bg-white shadow ring-1 ring-black/15",
       },
@@ -68,7 +68,7 @@ const style = tv({
     },
     isDisabled: {
       true: {
-        indicator: "bg-neutral-bg-subtle shadow-none",
+        indicator: "bg-neutral-panel shadow-none",
         thumb: "bg-neutral-bg shadow-none ring-neutral-line",
         output: "text-neutral-text-subtle",
       },

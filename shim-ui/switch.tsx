@@ -24,7 +24,7 @@ const style = tv({
   variants: {
     variant: {
       classic: {
-        track: "bg-neutral-bg-subtle shadow-[var(--shadow-inner)]",
+        track: "bg-neutral-panel shadow-[var(--shadow-inner)]",
         handle: "bg-white shadow-[var(--shadow-xs)]",
       },
       soft: {
@@ -42,7 +42,7 @@ const style = tv({
     isDisabled: {
       true: {
         container: "cursor-not-allowed text-neutral-text-subtle",
-        handle: "bg-neutral-bg-subtle",
+        handle: "bg-neutral-panel",
       },
     },
     size: {
@@ -117,7 +117,7 @@ const style = tv({
       variant: ["classic", "soft", "outline"],
       class: {
         track:
-          "inset-ring inset-ring-neutral-line bg-neutral-bg-subtle shadow-none",
+          "inset-ring inset-ring-neutral-line bg-neutral-panel shadow-none",
       },
     },
   ],

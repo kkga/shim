@@ -20,7 +20,7 @@ export default {
         group: "button",
         name: "size",
       },
-      className: "flex-row items-start",
+      demoLayout: "row",
     },
     {
       title: "Intent",
@@ -33,7 +33,7 @@ export default {
         group: "button",
         name: "intent",
       },
-      className: "flex-row items-start",
+      demoLayout: "row",
     },
     {
       title: "Variant",
@@ -47,7 +47,7 @@ export default {
         name: "variant",
       },
       code: "variant",
-      className: "flex-row items-start",
+      demoLayout: "row",
     },
     {
       title: "Content",
@@ -61,10 +61,7 @@ export default {
             If the only child is an SVG element, the button will be sized to a
             square. Control this with the <code>isIconOnly</code> prop.
           </p>
-          <Note intent="info" title="Accessibility">
-            If a visible label isn&apos;t specified, provide an{" "}
-            <code>aria-label</code> for accessibility.
-          </Note>
+          <Note preset="aria-label" />
         </>
       ),
       demo: {
@@ -72,7 +69,7 @@ export default {
         name: "content",
       },
       code: "content",
-      className: "flex-row",
+      demoLayout: "row",
     },
     {
       title: "Disabled",
@@ -85,7 +82,7 @@ export default {
         group: "button",
         name: "disabled",
       },
-      className: "flex-row items-start",
+      demoLayout: "row",
     },
     {
       title: "Pending",
@@ -100,7 +97,7 @@ export default {
         group: "button",
         name: "pending",
       },
-      className: "items-start",
+      demoLayout: "row",
     },
   ],
 } satisfies DocModule;

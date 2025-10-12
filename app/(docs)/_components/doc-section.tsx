@@ -12,6 +12,7 @@ interface DocSectionProps {
   className?: string;
   onCodeTabChange?: (tab: Key) => void;
   stacked?: boolean;
+  demoLayout?: "row" | "column";
 }
 
 function DocSection({
@@ -23,6 +24,7 @@ function DocSection({
   children,
   onCodeTabChange,
   stacked = false,
+  demoLayout = "column",
 }: DocSectionProps) {
   return (
     <section
@@ -32,7 +34,7 @@ function DocSection({
       )}
       id={id}
     >
-      <div className="col-start-1 self-stretch py-1">
+      <div className="col-start-1 self-stretch overflow-scroll py-1">
         {title && (
           <h3 className="mb-2 font-semibold text-[15px] text-neutral-text-contrast">
             {id ? (
@@ -62,7 +64,10 @@ function DocSection({
         {demo && (
           <div
             className={twMerge(
-              "not-first:mt-6 flex flex-col flex-wrap gap-4 text-[13px] text-neutral-text",
+              "not-first:mt-6 flex text-neutral-text text-sm",
+              demoLayout === "row"
+                ? "flex-row flex-wrap gap-2"
+                : "flex-col gap-4",
               className
             )}
           >

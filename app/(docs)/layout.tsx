@@ -40,11 +40,11 @@ export default function DocsLayout({
   );
 
   return (
-    <div className="flex min-h-svh flex-col lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(1rem,1fr)_minmax(var(--content-width-min),var(--content-width-max))_minmax(1rem,1fr)]">
+    <div className="flex min-h-svh flex-col lg:grid lg:grid-cols-[1fr_var(--sidebar-width)_var(--content-width)_1fr]">
       <SideNav items={navItems} />
       <TopNav items={navItems} />
 
-      <main className="min-h-screen w-full text-base lg:col-3 lg:justify-self-center">
+      <main className="mb-12 min-h-screen w-full text-base lg:col-3 lg:justify-self-center">
         {children}
       </main>
     </div>

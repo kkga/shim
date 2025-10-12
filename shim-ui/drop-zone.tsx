@@ -9,7 +9,7 @@ import { cxRenderProps } from "@/shim-ui/lib/style";
 
 const style = tv({
   base: [
-    "relative flex items-center justify-center rounded-lg border border-neutral-line border-dashed bg-neutral-bg-subtle p-4 text-neutral-text",
+    "relative flex items-center justify-center rounded-lg border border-neutral-line border-dashed bg-neutral-panel p-4 text-neutral-text",
     "data-drop-target:border-accent-border data-drop-target:border-solid data-drop-target:bg-accent-bg-hover data-drop-target:text-accent-text",
   ],
 });

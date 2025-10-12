@@ -108,7 +108,7 @@
   /* Use case aliases: https://www.radix-ui.com/colors/docs/overview/aliasing#use-case-aliases */
 
   --color-neutral-base: var(--color-neutral-1);
-  --color-neutral-bg-subtle: var(--color-neutral-2);
+  --color-neutral-panel: var(--color-neutral-2);
   --color-neutral-bg: var(--color-neutral-3);
   --color-neutral-bg-hover: var(--color-neutral-4);
   --color-neutral-bg-active: var(--color-neutral-5);
@@ -123,7 +123,7 @@
   --color-neutral-text-contrast: var(--color-neutral-12);
 
   --color-accent-base: var(--color-accent-1);
-  --color-accent-bg-subtle: var(--color-accent-2);
+  --color-accent-panel: var(--color-accent-2);
   --color-accent-bg: var(--color-accent-3);
   --color-accent-bg-hover: var(--color-accent-4);
   --color-accent-bg-active: var(--color-accent-5);
@@ -138,7 +138,7 @@
   --color-accent-text-contrast: var(--color-accent-12);
 
   --color-success-base: var(--color-success-1);
-  --color-success-bg-subtle: var(--color-success-2);
+  --color-success-panel: var(--color-success-2);
   --color-success-bg: var(--color-success-3);
   --color-success-bg-hover: var(--color-success-4);
   --color-success-bg-active: var(--color-success-5);
@@ -153,7 +153,7 @@
   --color-success-text-contrast: var(--color-success-12);
 
   --color-warning-base: var(--color-warning-1);
-  --color-warning-bg-subtle: var(--color-warning-2);
+  --color-warning-panel: var(--color-warning-2);
   --color-warning-bg: var(--color-warning-3);
   --color-warning-bg-hover: var(--color-warning-4);
   --color-warning-bg-active: var(--color-warning-5);
@@ -168,7 +168,7 @@
   --color-warning-text-contrast: var(--color-warning-12);
 
   --color-danger-base: var(--color-danger-1);
-  --color-danger-bg-subtle: var(--color-danger-2);
+  --color-danger-panel: var(--color-danger-2);
   --color-danger-bg: var(--color-danger-3);
   --color-danger-bg-hover: var(--color-danger-4);
   --color-danger-bg-active: var(--color-danger-5);

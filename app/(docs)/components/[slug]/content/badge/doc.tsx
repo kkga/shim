@@ -20,6 +20,7 @@ export default {
         group: "badge",
         name: "size",
       },
+      demoLayout: "row",
     },
     {
       title: "Intent",
@@ -33,6 +34,7 @@ export default {
         group: "badge",
         name: "intent",
       },
+      demoLayout: "row",
     },
     {
       title: "Content",
@@ -47,16 +49,14 @@ export default {
             square. This can be controlled by setting the <code>isSquare</code>{" "}
             prop.
           </p>
-          <Note title="Accessibility note">
-            If a visible label isn&apos;t specified, an <code>aria-label</code>{" "}
-            must be provided to the icon for accessibility.
-          </Note>
+          <Note preset="aria-label" />
         </>
       ),
       demo: {
         group: "badge",
         name: "content",
       },
+      demoLayout: "row",
     },
   ],
 } satisfies DocModule;

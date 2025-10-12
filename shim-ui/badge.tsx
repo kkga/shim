@@ -8,14 +8,11 @@ const style = tv({
   base: "inline-flex w-fit items-center justify-center bg-clip-padding font-book leading-none",
   variants: {
     intent: {
-      neutral:
-        "border border-neutral-line bg-neutral-bg-subtle text-neutral-text",
-      accent: "border border-accent-line bg-accent-bg-subtle text-accent-text",
-      success:
-        "border border-success-line bg-success-bg-subtle text-success-text",
-      warning:
-        "border border-warning-line bg-warning-bg-subtle text-warning-text",
-      danger: "border border-danger-line bg-danger-bg-subtle text-danger-text",
+      neutral: "border border-neutral-line bg-neutral-panel text-neutral-text",
+      accent: "border border-accent-line bg-accent-panel text-accent-text",
+      success: "border border-success-line bg-success-panel text-success-text",
+      warning: "border border-warning-line bg-warning-panel text-warning-text",
+      danger: "border border-danger-line bg-danger-panel text-danger-text",
     },
     size: {
       1: "h-4 gap-1 rounded-xs px-[3px] text-[11px]",

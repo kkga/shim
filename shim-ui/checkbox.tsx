@@ -83,7 +83,7 @@ const checkboxStyle = tv({
     variant: {
       classic: {
         checkbox: [
-          "bg-neutral-bg-subtle text-white shadow-[var(--shadow-inner)]",
+          "bg-neutral-panel text-white shadow-[var(--shadow-inner)]",
           // pressed
           "group-data-pressed:bg-neutral-bg-active",
           // selected
@@ -122,7 +122,7 @@ const checkboxStyle = tv({
       variant: ["classic", "soft", "outline"],
       class: {
         checkbox:
-          "inset-ring-1! inset-ring-neutral-line! bg-neutral-bg-subtle! text-neutral-text-subtle! shadow-none!",
+          "inset-ring-1! inset-ring-neutral-line! bg-neutral-panel! text-neutral-text-subtle! shadow-none!",
       },
     },
   ],

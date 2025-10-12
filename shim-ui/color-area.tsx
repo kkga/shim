@@ -9,7 +9,7 @@ import { ColorThumb } from "@/shim-ui/color-thumb";
 import { cxRenderProps } from "@/shim-ui/lib/style";
 
 const style = tv({
-  base: "size-56 rounded-sm bg-neutral-bg-subtle shadow-inner",
+  base: "size-56 rounded-sm bg-neutral-panel shadow-inner",
 });
 
 interface ColorAreaProps
