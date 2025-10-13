@@ -21,7 +21,6 @@ export default {
         group: "checkbox",
         name: "group",
       },
-      className: "flex-row gap-6",
     },
     {
       title: "States",
@@ -35,7 +34,6 @@ export default {
         group: "checkbox",
         name: "states",
       },
-      className: "flex-row gap-6",
     },
     {
       title: "Size",
@@ -49,7 +47,7 @@ export default {
         group: "checkbox",
         name: "size",
       },
-      className: "flex-row gap-6",
+      className: "grid grid-cols-2 place-self-start",
     },
     {
       title: "Variant",
@@ -63,7 +61,8 @@ export default {
         group: "checkbox",
         name: "variant",
       },
-      className: "flex-row gap-6",
+      demoLayout: "row",
+      className: "gap-4",
     },
     {
       title: "Checkbox description",

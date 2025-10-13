@@ -7,7 +7,7 @@ export default {
         group: "avatar",
         name: "main",
       },
-      className: "flex-row",
+      demoLayout: "row",
     },
     {
       title: "Size",
@@ -20,7 +20,7 @@ export default {
         group: "avatar",
         name: "size",
       },
-      className: "flex-row",
+      demoLayout: "row",
     },
     {
       title: "Radius",
@@ -34,7 +34,7 @@ export default {
         group: "avatar",
         name: "radius",
       },
-      className: "flex-row",
+      demoLayout: "row",
     },
     {
       title: "Color",
@@ -48,7 +48,7 @@ export default {
         group: "avatar",
         name: "color",
       },
-      className: "flex-row",
+      demoLayout: "row",
     },
   ],
 } satisfies DocModule;

@@ -75,15 +75,15 @@ export default function Page() {
               >
                 RAC
               </Link>
-              —the best primitives out there—and styled like someone actually
+              —the best foundation out there—and styled like someone actually
               cared (obsessively).
             </p>
             <strong className="font-medium text-neutral-text-contrast">
               What's the stack?
             </strong>
             <p className="mt-1 text-neutral-text">
-              React Aria, TypeScript, Tailwind v4 with some goodies and Radix
-              colors. All signal, zero ceremony—nothing cute, just speed.
+              React Aria, TypeScript, Tailwind v4 with Radix Colors. The good
+              stuff, no fluff—nothing cute, just speed.
             </p>
           </div>
         </div>

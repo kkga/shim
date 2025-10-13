@@ -20,7 +20,7 @@ export default {
         group: "toggle-button-group",
         name: "selection-mode",
       },
-      className: "items-start",
+      demoLayout: "row",
       code: "selection-mode",
     },
     {
@@ -49,7 +49,7 @@ export default {
         group: "toggle-button-group",
         name: "size",
       },
-      className: "self-start",
+      className: "items-start",
       code: "size",
     },
     {
@@ -63,7 +63,7 @@ export default {
         group: "toggle-button-group",
         name: "variant",
       },
-      className: "self-start",
+      className: "items-start",
       code: "variant",
     },
   ],

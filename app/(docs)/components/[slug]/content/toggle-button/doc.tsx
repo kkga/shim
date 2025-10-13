@@ -19,7 +19,7 @@ export default {
         group: "toggle-button",
         name: "size",
       },
-      className: "flex-row items-start",
+      demoLayout: "row",
       code: "size",
     },
     {
@@ -33,7 +33,7 @@ export default {
         group: "toggle-button",
         name: "intent",
       },
-      className: "flex-row items-start",
+      demoLayout: "row",
       code: "intent",
     },
     {
@@ -47,7 +47,7 @@ export default {
         group: "toggle-button",
         name: "variant",
       },
-      className: "flex-row items-start",
+      demoLayout: "row",
       code: "variant",
     },
     {
@@ -62,7 +62,7 @@ export default {
         group: "toggle-button",
         name: "states",
       },
-      className: "flex-row items-start",
+      demoLayout: "row",
       code: "states",
     },
     {
@@ -77,7 +77,7 @@ export default {
         group: "toggle-button",
         name: "controlled",
       },
-      className: "items-start",
+      demoLayout: "row",
       code: "controlled",
     },
   ],

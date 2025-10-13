@@ -16,7 +16,7 @@ import { useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   extend: focusStyle,
-  base: "inline-flex shrink-0 items-center justify-center font-medium font-sans leading-none!",
+  base: "inline-flex shrink-0 items-center justify-center font-book font-sans leading-none!",
   variants: {
     variant: { soft: "", solid: "text-white", ghost: "bg-transparent" },
     intent: INTENTS.reduce(
@@ -27,10 +27,10 @@ const style = tv({
       {} as Record<Intent, ClassValue>
     ),
     size: {
-      1: "h-6 gap-1 rounded-sm px-2 text-xs",
-      2: "h-7 gap-2 rounded-sm px-2 text-sm",
-      3: "h-8 gap-2 rounded-md px-2.5 text-base",
-      4: "h-10 gap-2.5 rounded-lg px-3 text-base",
+      1: "h-6 gap-1 rounded-sm px-1.5 text-xs",
+      2: "h-7 gap-1.5 rounded-sm px-2 text-sm",
+      3: "h-8 gap-1.5 rounded-md px-2.5 text-sm",
+      4: "h-10 gap-2 rounded-lg px-3 text-base",
     },
     isDisabled: {
       true: "cursor-not-allowed",

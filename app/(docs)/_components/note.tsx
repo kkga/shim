@@ -4,7 +4,7 @@ import { match } from "ts-pattern";
 const noteStyle = tv({
   slots: {
     container:
-      "my-4 border text-neutral-text leading-normal [&_code]:text-current",
+      "my-4 text-neutral-text leading-normal ring [&_code]:text-current",
     title: "block font-medium",
     content: "col-start-2 pr-2 *:my-1! *:last:mb-0!",
   },
@@ -12,23 +12,23 @@ const noteStyle = tv({
     intent: {
       info: {
         container:
-          "border-accent-line bg-gradient-to-r from-accent-2 to-accent-1",
+          "bg-gradient-to-br from-accent-2 to-accent-1 ring-accent-line",
         title: "text-accent-text!",
       },
       warning: {
         container:
-          "border-warning-line bg-gradient-to-r from-warning-2 to-warning-1",
+          "bg-gradient-to-br from-warning-2 to-warning-1 ring-warning-line",
         title: "text-warning-text!",
       },
     },
     size: {
       1: {
-        container: "gap-x-2 rounded-lg py-2 pl-3 text-[13px]",
+        container: "gap-x-2 rounded-md py-2 pl-3 text-[13px]",
         title: "mb-1 text-[13px]",
       },
       2: {
-        container: "gap-x-2 rounded-xl py-2.5 pl-4 text-sm",
-        title: "mb-1 text-sm",
+        container: "gap-x-2 rounded-lg py-2.5 pl-4 text-[15px]",
+        title: "mb-1 text-[15px]",
       },
       3: {
         container: "gap-x-2 rounded-xl py-2.5 pl-4 text-base",
