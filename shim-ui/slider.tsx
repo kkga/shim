@@ -35,7 +35,7 @@ const style = tv({
     },
     orientation: {
       horizontal: {
-        track: "min-w-32",
+        track: "min-w-20",
         indicator: "inset-y-auto",
         fill: "inset-y-0",
         thumb: "left-0",

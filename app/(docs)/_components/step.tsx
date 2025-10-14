@@ -14,22 +14,20 @@ export function Step({
 }) {
   return (
     <div
-      className="group/step col-span-full my-8 grid grid-cols-[auto_1fr] grid-rows-[24px_auto] gap-x-2 gap-y-2 text-sm leading-normal md:grid-cols-[auto_1fr_1fr] md:items-start md:gap-x-4 md:gap-y-0"
+      className="group/step col-span-full my-8 grid grid-cols-[auto_1fr] grid-rows-[20px_auto] gap-x-2 gap-y-2 text-sm leading-normal md:grid-cols-[auto_1fr_1fr] md:items-start md:gap-x-4 md:gap-y-0"
       style={{
         counterIncrement: "step",
         ...(reset ? { counterReset: "step" } : {}),
       }}
     >
       <div className="relative z-10 col-start-1! col-end-2! row-start-1!">
-        <div className="mb-4 flex size-6 items-center justify-center border border-neutral-line">
-          <span className="font-semibold text-[13px] text-neutral-text before:[content:counter(step)]" />
+        <div className="mb-4 flex size-5 items-center justify-center border border-neutral-line">
+          <span className="font-book text-[13px] text-neutral-text-contrast before:[content:counter(step)]" />
         </div>
       </div>
 
       {title && (
-        <strong className="col-start-2! row-start-1! text-[15px] leading-6">
-          {title}
-        </strong>
+        <strong className="col-start-2! row-start-1! leading-5">{title}</strong>
       )}
 
       <div

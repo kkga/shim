@@ -3,29 +3,54 @@ title: Theming
 order: 2
 ---
 
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from "@/shim-ui/table";
+
 Shim ships with a theme system that keeps tokens, variants, and layout patterns in sync across all components. The examples below reuse the Field component playground to demonstrate how the same controls adapt across different surfaces.
+
+## Size
+
+All components support four sizes that scale proportionally across components.
+
+<ComponentDemo
+  component="theme"
+  codeTitle="Size example"
+  demo="size"
+  className="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-4"
+  stacked
+/>
+
+
 
 ## Variants
 
+### Field variants
+
+Forms and field-based components support `classic`, `soft` and `outline` variants that adjust visual styles while preserving spacing and layout.
+
 <ComponentDemo
-  title="Field variants"
   component="theme"
   demo="field-variant"
   className="grid sm:grid-cols-3 gap-8"
   stacked
->
-  Forms and field-based components support `classic`, `soft` and `outline` variants that adjust visual styles while preserving spacing and layout.
-</ComponentDemo>
+/>
+
+### Button variants
+
+  Buttons support `soft`, `solid`, and `ghost` variants.
 
 <ComponentDemo
-  title="Button variants"
   component="theme"
   demo="button-variant"
   className="grid sm:grid-cols-3 gap-8"
   stacked
->
-  Buttons support `soft`, `solid`, and `ghost` variants.
-</ComponentDemo>
+/>
 
 
 ## Set global defaults
@@ -65,10 +90,70 @@ export function Callout() {
 }
 ```
 
-The available props are:
+### Theme API reference
 
-- `size`: `1`–`4`, adjusting control scale and spacing
-- `labelPosition`: `top` or `side`
-- `fieldVariant`: `classic`, `soft`, or `outline`
-- `buttonVariant`: `soft`, `solid`, or `ghost`
-
+<Table aria-label="Theme API reference" className="w-full not-prose" size={2}>
+  <TableHeader>
+    <Column isRowHeader>Prop</Column>
+    <Column>Type</Column>
+    <Column>Default</Column>
+    <Column>Description</Column>
+  </TableHeader>
+  <TableBody>
+    <Row>
+      <Cell>
+        `size`
+      </Cell>
+      <Cell>
+        `1 | 2 | 3 | 4`
+      </Cell>
+      <Cell>
+        `1`
+      </Cell>
+      <Cell>
+        Sets the base size for all components. Sizes scale proportionally across
+        components.
+      </Cell>
+    </Row>
+    <Row>
+      <Cell>
+        `labelPosition`
+      </Cell>
+      <Cell>
+        `"side" | "top"`
+      </Cell>
+      <Cell>
+        `"side"`
+      </Cell>
+      <Cell>
+        Sets the default position for labels on field-based components.
+      </Cell>
+    </Row>
+    <Row>
+      <Cell>
+        `fieldVariant`
+      </Cell>
+      <Cell>
+        `"classic" | "soft" | "outline"`
+      </Cell>
+      <Cell>
+        `"classic"`
+      </Cell>
+      <Cell>
+        Sets the default variant for field-based components.
+      </Cell>
+    </Row>
+    <Row>
+      <Cell>
+        `buttonVariant`
+      </Cell>
+      <Cell>
+        `"soft" | "solid" | "ghost"`
+      </Cell>
+      <Cell>
+        `"soft"`
+      </Cell>
+      <Cell>Sets the default variant for buttons.</Cell>
+    </Row>
+  </TableBody>
+</Table>

@@ -1,6 +1,7 @@
 import { getFileSource } from "@/app/_lib/utils";
 import { DocHeader } from "@/app/(docs)/_components/doc-header";
 import { mdxComponents } from "@/app/(docs)/_components/mdx-components";
+import { Toc } from "@/app/(docs)/_components/toc";
 import { getGuides } from "./utils";
 
 export const dynamicParams = false;
@@ -37,12 +38,16 @@ export default async function GuidePage({
     `${GITHUB_FILE_URL}/css/theme.css`,
   ];
 
-  let { default: GuideContent } = await import(`./content/${slug}.mdx`);
+  let { default: GuideContent, toc } = await import(`./content/${slug}.mdx`);
 
   return (
-    <article>
-      <DocHeader subtitle={description} title={title} />
-      <div className="prose">
+    <article className="grid grid-cols-4 gap-x-8">
+      <DocHeader
+        className="col-span-full"
+        subtitle={description}
+        title={title}
+      />
+      <div className="prose -col-end-1 col-start-1 xl:col-end-4">
         <GuideContent
           components={mdxComponents}
           styleUtilsSrc={styleUtilsSrc}
@@ -54,13 +59,13 @@ export default async function GuidePage({
         />
       </div>
 
-      {/* {scope.toc && scope.toc.length > 0 && (
-        <aside className="hidden min-w-[16rem] border-neutral-3 border-l px-6 py-6 md:block">
-          <nav className="sticky top-6">
-            <Toc toc={scope.toc} />
+      {toc && toc.length > 0 && (
+        <aside className="hidden min-w-[12rem] xl:block">
+          <nav className="sticky top-6 border-neutral-3 border-l pl-4">
+            <Toc toc={toc} />
           </nav>
         </aside>
-      )} */}
+      )}
     </article>
   );
 }

@@ -14,6 +14,7 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     "button-variant": dynamic(
       () => import(`${GUIDE_DEMOS_PATH}/theme-button-variant`)
     ),
+    size: dynamic(() => import(`${GUIDE_DEMOS_PATH}/theme-size`)),
   },
 
   // Status

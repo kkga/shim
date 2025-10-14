@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import { default as NextLink } from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
+import { match } from "ts-pattern";
 import { getFileSource } from "@/app/_lib/utils";
 import { demoRegistry } from "@/app/docs/_demo-registry/demo-registry";
 import { Code } from "./code";
@@ -57,10 +58,14 @@ function getDemoCode(
     return;
   }
 
-  try {
-    let content = getFileSource(
-      `app/(docs)/components/[slug]/content/${component}/${code}.tsx`
+  let source = match(component)
+    .with("theme", () => `app/(docs)/[slug]/content/demos/theme-${code}.tsx`)
+    .otherwise(
+      () => `app/(docs)/components/[slug]/content/${component}/${code}.tsx`
     );
+
+  try {
+    let content = getFileSource(source);
 
     return [
       {

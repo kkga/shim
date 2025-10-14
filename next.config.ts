@@ -10,15 +10,12 @@ const postRawPlugin = path.join(
   __dirname,
   "app/(docs)/_lib/rehype-post-code.mjs"
 );
+const tocPlugin = path.join(__dirname, "app/(docs)/_lib/remark-toc.mjs");
 
 const withMDX = createMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [
-      "remark-frontmatter",
-      "remark-mdx-frontmatter",
-      ["remark-flexible-toc", { maxDepth: 3 }],
-    ],
+    remarkPlugins: ["remark-frontmatter", "remark-mdx-frontmatter", tocPlugin],
     rehypePlugins: [
       preRawPlugin,
       "rehype-slug",

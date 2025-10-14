@@ -13,7 +13,7 @@
   --sh-class: var(--color-neutral-12);
   --sh-identifier: var(--color-neutral-12);
   --sh-sign: var(--color-neutral-10);
-  --sh-string: var(--color-neutral-11);
+  --sh-string: var(--color-neutral-12);
   --sh-keyword: var(--color-neutral-11);
   --sh-comment: var(--color-neutral-9);
   --sh-jsxliterals: var(--color-neutral-11);
@@ -48,71 +48,71 @@ article {
   .prose {
     /* @apply font-book; */
 
-    > section {
+    :where(section):not(:where(.not-prose, .not-prose *)) {
       @apply my-8;
     }
 
-    > :is(p, ul, ol) {
+    :where(p, ul, ol):not(:where(.not-prose, .not-prose *)) {
       @apply max-w-[var(--body-width)];
     }
 
-    :is(h1, h2, h3, h4, h5, h6) {
+    :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
       @apply col-span-full;
     }
 
-    > h1 {
+    :where(h1):not(:where(.not-prose, .not-prose *)) {
       @apply scroll-mt-6 text-balance font-semibold text-neutral-text-contrast text-xl leading-tight lg:text-3xl;
     }
 
-    > h2 {
+    :where(h2):not(:where(.not-prose, .not-prose *)) {
       @apply not-first:mt-16 mb-4 scroll-mt-6 text-balance font-semibold text-lg lg:text-xl text-neutral-text-contrast;
     }
 
-    > h3 {
-      @apply not-first:mt-12 mb-4 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast;
+    :where(h3):not(:where(.not-prose, .not-prose *)) {
+      @apply not-first:mt-8 mb-4 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast;
     }
 
-    > h4 {
+    :where(h4):not(:where(.not-prose, .not-prose *)) {
       @apply not-first:mt-6 mb-4 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast;
     }
 
-    > h5 {
+    :where(h5):not(:where(.not-prose, .not-prose *)) {
       @apply not-first:mt-6 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
     }
 
-    > h6 {
+    :where(h6):not(:where(.not-prose, .not-prose *)) {
       @apply not-first:mt-8 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
     }
 
-    :is(h1, h2, h3, h4, h5, h6) a {
+    :where(h1, h2, h3, h4, h5, h6) a:not(:where(.not-prose, .not-prose *)) {
       @apply text-inherit no-underline hover:underline hover:decoration-neutral-border-hover;
     }
 
-    p {
+    :where(p):not(:where(.not-prose, .not-prose *)) {
       @apply mb-4;
     }
 
-    ul {
+    :where(ul):not(:where(.not-prose, .not-prose *)) {
       @apply my-4 list-outside list-disc pl-4;
     }
 
-    li {
+    :where(li):not(:where(.not-prose, .not-prose *)) {
       @apply mb-4;
     }
 
-    hr {
+    :where(hr):not(:where(.not-prose, .not-prose *)) {
       @apply my-4 border-neutral-3;
     }
 
-    em {
+    :where(em):not(:where(.not-prose, .not-prose *)) {
       @apply italic text-neutral-text-contrast;
     }
 
-    strong {
+    :where(strong):not(:where(.not-prose, .not-prose *)) {
       @apply font-medium text-neutral-text-contrast;
     }
 
-    code {
+    :where(code):not(:where(.not-prose, .not-prose *)) {
       @apply min-w-min font-mono text-accent-text;
     }
   }
