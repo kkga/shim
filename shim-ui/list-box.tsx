@@ -98,16 +98,28 @@ function ListBoxItem({ intent, href, ...props }: ListBoxItemProps) {
 
 const sectionStyle = tv({
   slots: {
-    section: "not-last:mb-1 flex flex-col gap-px",
+    section: "flex flex-col gap-px first:mt-0",
     header:
       "flex items-center truncate font-medium text-neutral-text-contrast leading-none!",
   },
   variants: {
     size: {
-      1: { header: "h-6 px-1.5 text-xs" },
-      2: { header: "h-7 px-2 text-sm" },
-      3: { header: "h-8 px-2 text-base" },
-      4: { header: "h-10 px-3 text-base" },
+      1: {
+        section: "mt-1",
+        header: "h-6 px-1.5 text-xs",
+      },
+      2: {
+        section: "mt-2",
+        header: "h-7 px-2 text-sm",
+      },
+      3: {
+        section: "mt-3",
+        header: "h-8 px-2.5 text-base",
+      },
+      4: {
+        section: "mt-4",
+        header: "h-10 px-3 text-base",
+      },
     },
   },
 });

@@ -19,7 +19,7 @@ import {
 interface AutocompleteProps<T extends object>
   extends Omit<RacAutocompleteProps, "children">,
     Omit<FieldProps, "errorMessage" | "labelPosition">,
-    Pick<SearchFieldProps, "prefixIcon"> {
+    Pick<SearchFieldProps, "prefixIcon" | "autoFocus"> {
   children: React.ReactNode | ((item: T) => React.ReactNode);
   items?: Iterable<T>;
   onAction?: (id: Key) => void;
@@ -35,11 +35,12 @@ function Autocomplete<T extends object>({
   ...props
 }: AutocompleteProps<T>) {
   let { contains } = useFilter({ sensitivity: "base" });
-  let { size, variant, prefixIcon } = props;
+  let { size, variant, prefixIcon, autoFocus } = props;
 
   return (
     <RacAutocomplete filter={contains} {...props}>
       <SearchField
+        autoFocus={autoFocus}
         description={description}
         label={label}
         labelPosition="top"
