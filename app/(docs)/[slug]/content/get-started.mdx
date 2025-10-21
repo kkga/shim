@@ -4,6 +4,8 @@ description: Setup the components in your project.
 order: 1
 ---
 
+import { SetupShimSection } from './setup-shim';
+
 Shim is a pre-styled collection of copy-paste UI components built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html). 
 
 ## Install the prerequisites
@@ -66,54 +68,7 @@ Shim components depend on several libraries. Use the commands below to install t
 
 ## Set up Shim
 
-The Shim CLI helps you set up your project and add components.
-
-<Step
-  reset
-  title="Configure path alias"
-  description={
-    <p>
-      Shim components import files via the <strong>@/</strong> alias.<br/>
-      Configure the path in <strong>tsconfig.json</strong> (or <strong>jsconfig.json</strong>) so those imports resolve.
-    </p>
-  }
-  code={[{
-    title: "tsconfig.json",
-    content: `{
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["./*"]
-      }
-    }
-}`}]}
-/>
-
-<Step
-  title="Initialize Shim"
-  description={
-    <p>
-      Run the <code>init</code> command to initialize Shim.<br/>
-      It creates a <strong>shim.config.json</strong> file in your project root that
-      defines where components, utility files, and CSS are installed.
-    </p>
-  }
-  code="pnpm dlx @kkga/shim init"
-/>
-
-<Step
-  title="Add components"
-  description={
-    <p>
-      Use the <code>add</code> command to copy components into your project.<br/>
-      The CLI resolves dependencies, rewrites imports, and installs into the paths defined in <strong>shim.config.json</strong>.
-    </p>
-  }
-  code="pnpm dlx @kkga/shim add button"
-/>
+<SetupShimSection />
 
 
-<Note title="Todo" intent="warning" size={2}>
-  Manual setup instructions.
-</Note>
 

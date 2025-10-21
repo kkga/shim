@@ -433,10 +433,10 @@
     {
       "name": "autocomplete",
       "title": "Autocomplete",
-      "description": "Combine a search field with a list of options that can be filtered by typing.",
+      "description": "Combine a search field with a filterable list of options.",
       "category": "Pickers",
-      "status": "planned",
-      "dependencies": ["field", "list-box", "popover"],
+      "status": "alpha",
+      "dependencies": ["list-box", "search-field"],
       "files": ["shim-ui/autocomplete.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Autocomplete.html",
       "ariaUrl": "https://w3c.github.io/aria/#aria-autocomplete"

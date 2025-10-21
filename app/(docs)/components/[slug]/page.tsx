@@ -1,11 +1,13 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Fragment } from "react";
 import { getFileSource } from "@/app/_lib/utils";
 import { DocHeader } from "@/app/(docs)/_components/doc-header";
+import { DocMetadata } from "@/app/(docs)/_components/doc-metadata";
 import { DocSection } from "@/app/(docs)/_components/doc-section";
-import { Metadata } from "@/app/(docs)/_components/metadata";
+import { baseUrl } from "@/app/sitemap";
 import { toKebabCase } from "../../_lib/utils";
 import { InstallSection } from "./_components/install-section";
-// import { getMainDemo } from "./demo-registry";
 import {
   getComponentDocs,
   getDemosSource,
@@ -28,7 +30,6 @@ export default async function DocPage({
   params: Promise<{ slug: string }>;
 }) {
   let { slug } = await params;
-
   let docs = getComponentDocs();
   let doc = docs.find((d) => d.slug === slug);
   if (!doc) {
@@ -68,7 +69,7 @@ export default async function DocPage({
   return (
     <article className="space-y-12">
       <DocHeader className="col-span-full" subtitle={description} title={title}>
-        <Metadata
+        <DocMetadata
           ariaUrl={ariaUrl}
           dependencies={dependencies}
           docUrl={docUrl}
@@ -116,37 +117,32 @@ export default async function DocPage({
   );
 }
 
-// TODO: Uncomment this when the metadata is ready
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: Promise<{ slug: string }>
-// }): Promise<Metadata> {
-//   const slug = (await params).slug
-//   const doc = getComponentDocs().find((doc) => doc.slug === slug)
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  let { slug } = await params;
+  let docs = getComponentDocs();
+  let doc = docs.find((d) => d.slug === slug);
+  if (!doc) {
+    notFound();
+  }
+  let { title, description } = doc.metadata;
 
-//   if (!doc) {
-//     notFound()
-//   }
-
-//   const { name, description } = doc.metadata
-//   const ogImage = `${baseUrl}/og?title=${encodeURIComponent(name)}`
-
-//   return {
-//     title: name,
-//     description,
-//     openGraph: {
-//       title: name,
-//       description,
-//       type: "article",
-//       url: `${baseUrl}/docs/${doc.slug}`,
-//       images: [{ url: ogImage }],
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: name,
-//       description,
-//       images: [ogImage],
-//     },
-//   }
-// }
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `${baseUrl}/components/${doc.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}

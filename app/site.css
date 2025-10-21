@@ -53,7 +53,7 @@ article {
     }
 
     :where(p, ul, ol):not(:where(.not-prose, .not-prose *)) {
-      @apply max-w-[var(--body-width)];
+      @apply max-w-(--body-width);
     }
 
     :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
@@ -69,7 +69,7 @@ article {
     }
 
     :where(h3):not(:where(.not-prose, .not-prose *)) {
-      @apply not-first:mt-8 mb-4 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast;
+      @apply not-first:mt-8 mb-2 scroll-mt-6 text-balance font-semibold text-base text-neutral-text-contrast;
     }
 
     :where(h4):not(:where(.not-prose, .not-prose *)) {

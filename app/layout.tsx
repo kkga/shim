@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 import { type ReactNode, StrictMode } from "react";
 import { LocalizedStringProvider } from "react-aria-components/i18n";
 import { ClientProviders, ThemeProvider } from "./_components/providers";
-import { fontSans } from "./_fonts";
+import { fontMono, fontSans } from "./_fonts";
 import DarkIcon from "./_img/icon-dark.png";
 import LightIcon from "./_img/icon-light.png";
 import { baseUrl } from "./sitemap";
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: "Shim",
-    template: "%s — Shim",
+    template: "%s • Shim",
   },
   description: "Toolkit for refined interfaces.",
   openGraph: {
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <StrictMode>
       <html
-        className={`${fontSans.variable}`}
+        className={`${fontSans.variable} ${fontMono.variable}`}
         lang="en"
         suppressHydrationWarning
       >

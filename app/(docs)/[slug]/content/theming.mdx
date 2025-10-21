@@ -1,5 +1,6 @@
 ---
 title: Theming
+description: Sizes, variants, and global defaults.
 order: 2
 ---
 
@@ -12,17 +13,17 @@ import {
   TableHeader,
 } from "@/shim-ui/table";
 
-Shim ships with a theme system that keeps tokens, variants, and layout patterns in sync across all components. The examples below reuse the Field component playground to demonstrate how the same controls adapt across different surfaces.
+Shim includes a theme system that keeps tokens, variants, and layout patterns in sync across all components. It also provides a `<Theme>` provider that lets you set global defaults for size, variants, and label positions.
 
 ## Size
 
-All components support four sizes that scale proportionally across components.
+Most components support four sizes that scale proportionally.
 
 <ComponentDemo
   component="theme"
   codeTitle="Size example"
   demo="size"
-  className="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-4"
+  className="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8"
   stacked
 />
 
@@ -101,7 +102,7 @@ export function Callout() {
   </TableHeader>
   <TableBody>
     <Row>
-      <Cell>
+      <Cell className="flex items-center gap-1">
         `size`
       </Cell>
       <Cell>

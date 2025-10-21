@@ -300,6 +300,13 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   },
 
   // Pickers
+  autocomplete: {
+    main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/autocomplete/main`)),
+    content: dynamic(
+      () => import(`${COMPONENT_DEMOS_PATH}/autocomplete/content`)
+    ),
+    size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/autocomplete/size`)),
+  },
   select: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/select/main`)),
     controlled: dynamic(

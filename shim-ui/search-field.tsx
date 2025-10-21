@@ -93,6 +93,7 @@ function SearchField({
 
   return (
     <RacSearchField
+      aria-label={props["aria-label"] || label || "Search"}
       {...props}
       className={cxRenderProps(
         props.className,

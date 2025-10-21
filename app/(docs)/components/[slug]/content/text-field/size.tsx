@@ -1,10 +1,12 @@
 import { TextField } from "@/shim-ui/text-field";
 
-export default () => (
-  <>
-    <TextField label="First name" labelPosition="side" size={1} />
-    <TextField label="First name" labelPosition="side" size={2} />
-    <TextField label="First name" labelPosition="side" size={3} />
-    <TextField label="First name" labelPosition="side" size={4} />
-  </>
-);
+export default () =>
+  ([1, 2, 3, 4] as const).map((size) => (
+    <TextField
+      key={size}
+      label="First name"
+      labelPosition="side"
+      placeholder="John"
+      size={size}
+    />
+  ));

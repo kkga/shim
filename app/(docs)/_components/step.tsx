@@ -22,7 +22,7 @@ export function Step({
     >
       <div className="relative z-10 col-start-1! col-end-2! row-start-1!">
         <div className="mb-4 flex size-5 items-center justify-center border border-neutral-line">
-          <span className="font-book text-[13px] text-neutral-text-contrast before:[content:counter(step)]" />
+          <span className="font-medium text-[11px] text-neutral-text-contrast tabular-nums before:[content:counter(step)]" />
         </div>
       </div>
 

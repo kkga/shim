@@ -38,7 +38,7 @@ interface MetadataProps
   dependencies: { name: string; slug: string }[];
 }
 
-export function Metadata({
+export function DocMetadata({
   name,
   title,
   docUrl,
@@ -106,7 +106,7 @@ export function Metadata({
               {i > 0 && ", "}
               <MetadataLink
                 external={false}
-                href={`/docs/${depSlug}`}
+                href={`/components/${depSlug}`}
                 title={`View ${depName} documentation`}
               >
                 {depName}

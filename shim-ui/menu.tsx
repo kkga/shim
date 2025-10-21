@@ -32,28 +32,43 @@ interface MenuProps<T> extends RacMenuProps<T> {
   placement?: RacPopoverProps["placement"];
   offset?: RacPopoverProps["offset"];
   size?: Size;
+  withPopover?: boolean;
 }
+
+const style = tv({
+  slots: {
+    menu: "flex max-h-[inherit] flex-col gap-px overflow-y-scroll outline-0",
+    popover: "min-w-32",
+  },
+  variants: {
+    withPopover: {
+      true: {
+        menu: "p-1",
+      },
+    },
+  },
+});
 
 function Menu<T extends object>({
   placement,
   className,
   offset,
   size,
+  withPopover = true,
   ...props
 }: MenuProps<T>) {
   let themeProps = useThemeProps({ size });
+  let { menu, popover } = style({ withPopover });
 
   return (
     <Theme {...themeProps}>
-      <Popover className="min-w-32" offset={offset} placement={placement}>
-        <RacMenu
-          {...props}
-          className={cxRenderProps(
-            className,
-            "flex max-h-[inherit] flex-col gap-px overflow-y-scroll p-1 outline-0"
-          )}
-        />
-      </Popover>
+      {withPopover ? (
+        <Popover className={popover()} offset={offset} placement={placement}>
+          <RacMenu {...props} className={cxRenderProps(className, menu())} />
+        </Popover>
+      ) : (
+        <RacMenu {...props} className={cxRenderProps(className, menu())} />
+      )}
     </Theme>
   );
 }
@@ -66,6 +81,8 @@ interface MenuItemProps
 
 function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
   let { size } = useThemeProps({ size: props.size });
+  let textValue =
+    props.textValue || (typeof children === "string" ? children : undefined);
 
   return (
     <RacMenuItem
@@ -78,6 +95,7 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
           className: props.href ? "cursor-pointer" : "cursor-default",
         })
       )}
+      textValue={textValue}
     >
       {composeRenderProps(
         children,

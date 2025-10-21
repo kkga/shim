@@ -115,7 +115,11 @@ function ComponentDemo({
   );
 }
 
-function Link({ className, href, ...props }: ComponentPropsWithoutRef<"a">) {
+export function Link({
+  className,
+  href,
+  ...props
+}: ComponentPropsWithoutRef<"a">) {
   let classNames = twMerge(
     "text-accent-text underline decoration-accent-line underline-offset-2 hover:decoration-accent-border-hover",
     className
@@ -143,7 +147,7 @@ function Link({ className, href, ...props }: ComponentPropsWithoutRef<"a">) {
   );
 }
 
-const mdxComponents: MDXComponents = {
+export const mdxComponents: MDXComponents = {
   a: Link,
   code: Code,
   pre: Pre,
@@ -153,8 +157,6 @@ const mdxComponents: MDXComponents = {
   Step,
   CodeBlock,
 };
-
-export { Link, mdxComponents };
 
 declare global {
   type MDXProvidedComponents = typeof mdxComponents;

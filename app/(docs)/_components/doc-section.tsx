@@ -53,8 +53,8 @@ function DocSection({
         {children && (
           <div
             className={twJoin(
-              "space-y-2 text-neutral-text [&_code]:font-book [&_code]:font-sans [&_code]:text-neutral-text-contrast",
-              stacked ? "max-w-[var(--body-width)]" : "text-sm"
+              "space-y-2 text-neutral-text [&_code]:font-sans [&_code]:text-neutral-text-contrast [&_code]:italic",
+              stacked ? "max-w-(--body-width)" : "text-sm"
             )}
           >
             {children}

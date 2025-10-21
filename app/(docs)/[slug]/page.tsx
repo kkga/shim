@@ -41,13 +41,13 @@ export default async function GuidePage({
   let { default: GuideContent, toc } = await import(`./content/${slug}.mdx`);
 
   return (
-    <article className="grid grid-cols-4 gap-x-8">
+    <article className="grid grid-cols-5 gap-x-8">
       <DocHeader
         className="col-span-full"
         subtitle={description}
         title={title}
       />
-      <div className="prose -col-end-1 col-start-1 xl:col-end-4">
+      <div className="prose -col-end-1 col-start-1 xl:col-end-5">
         <GuideContent
           components={mdxComponents}
           styleUtilsSrc={styleUtilsSrc}

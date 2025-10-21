@@ -1,3 +1,4 @@
+import { Link } from "@/app/(docs)/_components/mdx-components";
 import type { DocModule } from "@/app/(docs)/components/schema";
 
 export default {
@@ -14,16 +15,15 @@ export default {
         <>
           <p>
             Menu follows the{" "}
-            <a href="https://react-spectrum.adobe.com/react-aria/collections.html">
+            <Link href="https://react-spectrum.adobe.com/react-aria/collections.html">
               Collections API
-            </a>{" "}
+            </Link>{" "}
             and supports both static and dynamic items.
           </p>
           <p>
             Pass an <code>items</code> prop and a render function as children to
             render dynamic collections. The render function receives each item
-            from
-            <code>items</code> and should return a React element.
+            from <code>items</code> and should return a React element.
           </p>
         </>
       ),
@@ -69,8 +69,7 @@ export default {
       description: (
         <p>
           Group items with <code>{"<MenuSection>"}</code> and provide a heading
-          via the
-          <code>title</code> prop.
+          via the <code>title</code> prop.
         </p>
       ),
       demo: {

@@ -1,5 +1,5 @@
 "use client";
-import { CaretDown } from "@phosphor-icons/react/dist/ssr";
+import { CaretDownIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/shim-ui/button";
 import { Menu, MenuItem, MenuTrigger } from "@/shim-ui/menu";
 
@@ -18,7 +18,7 @@ export default () => {
     <MenuTrigger>
       <Button aria-label="Menu">
         Options
-        <CaretDown size={12} weight="bold" />
+        <CaretDownIcon size={12} weight="bold" />
       </Button>
       <Menu items={items}>{(item) => <MenuItem>{item.name}</MenuItem>}</Menu>
     </MenuTrigger>

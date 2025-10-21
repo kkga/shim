@@ -57,14 +57,15 @@ const inputBaseStyle = tv({
   ],
   variants: {
     variant: {
-      classic: "bg-neutral-panel shadow-[var(--shadow-inner)]",
+      classic: "bg-neutral-panel shadow-(--shadow-inner)",
       soft: "bg-neutral-bg",
       outline: "inset-ring inset-ring-neutral-border bg-transparent",
     },
     size: {
+      // TODO: the field text size should match other components text size map (listbox, button, etc)
       1: "h-6 rounded indent-1.5 text-xs",
-      2: "h-7 rounded indent-[7px] text-[13px]",
-      3: "h-8 rounded-md indent-2 text-sm",
+      2: "h-7 rounded indent-2 text-sm",
+      3: "h-8 rounded-md indent-2.5 text-base",
       4: "h-10 rounded-lg indent-3 text-base",
     },
   },
@@ -254,10 +255,10 @@ const groupInputStyle = tv({
   ],
   variants: {
     size: {
-      1: "indent-1.5 text-xs",
-      2: "indent-[7px] text-[13px]",
-      3: "indent-2 text-sm",
-      4: "indent-3 text-base",
+      1: "indent-1.5",
+      2: "indent-[7px]",
+      3: "indent-2",
+      4: "indent-3",
     },
   },
   defaultVariants: { size: 1 },

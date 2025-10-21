@@ -91,7 +91,7 @@ const styles = {
 
   cell: tv({
     extend: focusStyle,
-    base: ["-outline-offset-2 h-8 truncate px-3"],
+    base: ["-outline-offset-2 min-h-8 px-3 py-2 align-text-bottom"],
   }),
 };
 
