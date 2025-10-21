@@ -56,7 +56,7 @@ function buildDependencyLinks(
     return (
       <Fragment key={dependency.slug}>
         {separator}
-        <Link href={`/docs/components/${dependency.slug}`} variant="underline">
+        <Link href={`/components/${dependency.slug}`} variant="underline">
           {dependency.name}
         </Link>
       </Fragment>
