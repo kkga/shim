@@ -41,7 +41,6 @@ export default {
         group: "autocomplete",
         name: "size",
       },
-      className: "grid grid-cols-2",
     },
   ],
 } satisfies DocModule;
