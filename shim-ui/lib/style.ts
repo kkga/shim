@@ -34,6 +34,6 @@ export type Intent = (typeof INTENTS)[number];
 export const focusStyle = tv({
   base: [
     "outline-0 outline-accent-focus-ring outline-offset-1",
-    "data-[focus-visible]:outline-2 group-data-[focus-visible]:outline-2",
+    "data-focus-visible:outline-2 group-data-focus-visible:outline-2",
   ],
 });

@@ -18,13 +18,13 @@ import { cxRenderProps } from "@/shim-ui/lib/style";
 const style = tv({
   slots: {
     overlay:
-      "fixed top-0 left-0 isolate z-20 flex h-[var(--visual-viewport-height)] w-full animate-fade flex-col items-center justify-center bg-overlay p-4 backdrop-grayscale",
+      "fixed top-0 left-0 isolate z-20 flex h-(--visual-viewport-height) w-full animate-fade flex-col items-center justify-center bg-overlay p-4 backdrop-grayscale",
     modal:
-      "z-50 w-full max-w-md animate-slide overflow-auto rounded-2xl bg-panel p-4 text-neutral-text text-xs shadow-[var(--shadow-xl)] outline-none",
+      "z-50 w-full max-w-md animate-slide rounded-2xl bg-panel p-4 text-neutral-text text-xs shadow-(--shadow-xl) outline-none",
     headingText:
       "font-medium text-base text-neutral-text-contrast leading-tight",
     descriptionText: "text-[13px] text-neutral-text",
-    dialog: "flex h-full flex-col overflow-auto outline-0",
+    dialog: "flex h-full flex-col outline-0",
   },
 });
 

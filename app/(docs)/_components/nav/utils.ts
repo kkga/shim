@@ -10,10 +10,10 @@ export function categorizeItems(items: NavItem[]) {
   const categories = Array.from(
     new Set(items.map((item) => item.category))
   ).sort((a, b) => {
-    if (a === "Intro") {
+    if (a === "Overview") {
       return -1;
     }
-    if (b === "Intro") {
+    if (b === "Overview") {
       return 1;
     }
     return a.localeCompare(b);

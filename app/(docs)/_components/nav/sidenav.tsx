@@ -89,7 +89,7 @@ export function SideNav({ navSections, className }: Props) {
             className="col-span-full mb-4 grid grid-cols-subgrid gap-y-0.25"
             id={section}
           >
-            {section !== "Intro" && (
+            {section !== "Overview" && (
               <Header className={headerStyle()} key={section}>
                 <CategoryIcon name={section} />
                 {section}
@@ -121,7 +121,7 @@ export function SideNav({ navSections, className }: Props) {
                 >
                   {({ isHovered }) => (
                     <>
-                      {section === "Intro" && <CategoryIcon name={name} />}
+                      {section === "Overview" && <CategoryIcon name={name} />}
                       {name}
                       {status && status !== "stable" && (
                         <Badge

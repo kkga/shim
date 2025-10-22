@@ -19,19 +19,19 @@ export default function DocsLayout({
         id: guide.slug,
         src: `${guide.slug}`,
         name: guide.metadata.title,
-        category: "Intro",
+        category: "Overview",
       })),
       {
         id: "github",
         src: "https://github.com/kkga/shim",
         name: "GitHub",
-        category: "Intro",
+        category: "Overview",
       },
       {
         id: "twitter",
         src: "https://twitter.com/kkga_",
         name: "Twitter",
-        category: "Intro",
+        category: "Overview",
       },
       ...docs.map((doc) => ({
         id: doc.slug,

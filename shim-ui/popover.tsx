@@ -13,7 +13,7 @@ import { useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: [
-    "z-20 min-w-[var(--trigger-width)] animate-slide overflow-auto bg-panel text-neutral-text text-xs shadow-[var(--shadow-lg)] outline-none",
+    "z-20 min-w-(--trigger-width) animate-slide overflow-auto bg-panel text-neutral-text text-xs shadow-(--shadow-lg) outline-none",
     "data-[trigger=SubmenuTrigger]:-mt-1 data-[trigger=SubmenuTrigger]:data-[placement=left]:-mr-1 data-[trigger=SubmenuTrigger]:data-[placement=right]:-ml-1",
   ],
   variants: {

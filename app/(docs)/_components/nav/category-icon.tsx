@@ -30,7 +30,7 @@ export function CategoryIcon({ name }: Props): React.ReactNode {
   return (
     match(name)
       // Category Icons
-      .with("Intro", () => <HouseSimpleIcon {...iconProps} />)
+      .with("Overview", () => <HouseSimpleIcon {...iconProps} />)
       .with("Overlays", () => <CardsIcon {...iconProps} />)
       .with("Forms", () => <TextboxIcon {...iconProps} />)
       .with("Status", () => <WarningDiamondIcon {...iconProps} />)

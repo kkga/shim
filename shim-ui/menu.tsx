@@ -17,6 +17,7 @@ import {
   type SeparatorProps as RacSeparatorProps,
   SubmenuTrigger as RacSubmenuTrigger,
 } from "react-aria-components";
+import { twJoin } from "tailwind-merge";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cx, cxRenderProps } from "@/shim-ui/lib/style";
 import {
@@ -79,7 +80,7 @@ interface MenuItemProps
   extends RacMenuItemProps,
     VariantProps<typeof menuItemStyle> {}
 
-function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
+function MenuItem({ children, intent, ...props }: MenuItemProps) {
   let { size } = useThemeProps({ size: props.size });
   let textValue =
     props.textValue || (typeof children === "string" ? children : undefined);
@@ -87,13 +88,17 @@ function MenuItem({ className, children, intent, ...props }: MenuItemProps) {
   return (
     <RacMenuItem
       {...props}
-      className={cxRenderProps(
-        className,
-        menuItemStyle({
-          intent,
-          size,
-          className: props.href ? "cursor-pointer" : "cursor-default",
-        })
+      className={composeRenderProps(
+        props.className,
+        (className, { isDisabled }) =>
+          menuItemStyle({
+            intent,
+            size,
+            isDisabled,
+            className: props.href
+              ? twJoin("cursor-pointer", className)
+              : twJoin("cursor-default", className),
+          })
       )}
       textValue={textValue}
     >
