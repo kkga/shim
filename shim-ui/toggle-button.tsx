@@ -28,7 +28,7 @@ const style = tv({
     size: {
       1: "h-6 gap-1 rounded-sm px-1.5 text-xs",
       2: "h-7 gap-1.5 rounded-sm px-2 text-sm",
-      3: "h-8 gap-1.5 rounded-md px-2.5 text-sm",
+      3: "h-8 gap-1.5 rounded-md px-2.5 text-[15px] leading-normal",
       4: "h-10 gap-2 rounded-lg px-3 text-base",
     },
     isFocusVisible: { true: "relative" },

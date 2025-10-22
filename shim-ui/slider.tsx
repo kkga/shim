@@ -29,8 +29,8 @@ const style = tv({
   variants: {
     size: {
       1: { output: "text-xs", thumb: "size-4" },
-      2: { output: "text-[13px]", thumb: "size-[18px]" },
-      3: { output: "text-sm", thumb: "size-5" },
+      2: { output: "text-sm", thumb: "size-[18px]" },
+      3: { output: "text-[15px] leading-normal", thumb: "size-5" },
       4: { output: "text-base", thumb: "size-6" },
     },
     orientation: {
@@ -50,7 +50,7 @@ const style = tv({
     },
     variant: {
       classic: {
-        indicator: "bg-neutral-panel shadow-[var(--shadow-inner)]",
+        indicator: "bg-neutral-panel shadow-(--shadow-inner)",
         fill: "bg-accent-solid",
         thumb: "bg-white shadow ring-1 ring-black/15",
       },

@@ -38,26 +38,25 @@ const style = tv({
     },
     size: {
       1: {
-        item: "gap-2 py-1 text-xs",
+        item: "gap-2 py-1 text-xs leading-4",
         itemInput: "size-4 before:size-1.5",
       },
       2: {
-        item: "gap-2 py-[5px] text-[13px]",
+        item: "gap-2 py-[5px] text-sm leading-[18px]",
         itemInput: "size-[18px] before:size-2",
       },
       3: {
-        item: "gap-2.5 py-1.5 text-sm",
+        item: "gap-2.5 py-1.5 text-[15px] leading-5",
         itemInput: "size-5 before:size-2",
       },
       4: {
-        item: "gap-3 py-2 text-base",
+        item: "gap-3 py-2 text-base leading-6",
         itemInput: "size-6 before:size-2.5",
       },
     },
     variant: {
       classic: {
-        itemInput:
-          "bg-neutral-panel shadow-[var(--shadow-inner)] before:bg-white",
+        itemInput: "bg-neutral-panel shadow-(--shadow-inner) before:bg-white",
       },
       soft: {
         itemInput:

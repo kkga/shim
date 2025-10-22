@@ -65,7 +65,7 @@ export default function DocsLayout({
         <SideNav className="hidden lg:block" navSections={navSections} />
       </div>
 
-      <main className="min-h-screen w-full border-neutral-3 border-r bg-background text-[15px] leading-normal lg:col-3 lg:justify-self-center">
+      <main className="@container/main min-h-screen w-full border-neutral-3 border-r bg-background text-[15px] leading-normal lg:col-3 lg:justify-self-center">
         {children}
       </main>
     </div>

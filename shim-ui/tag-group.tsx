@@ -94,7 +94,7 @@ const style = tv({
   slots: {
     tag: [
       focusStyle(),
-      "flex max-w-fit cursor-default items-center gap-1 overflow-clip rounded-full border leading-none",
+      "flex max-w-fit cursor-default items-center overflow-clip rounded-full border leading-none",
       // selected
       "data-selected:border-transparent! data-selected:text-white",
       // disabled
@@ -112,19 +112,19 @@ const style = tv({
     },
     size: {
       1: {
-        tag: "h-5 px-2 text-xs",
+        tag: "h-5 gap-1 px-2 text-xs",
         removeButton: "h-5 w-[22px] pr-0.5",
       },
       2: {
-        tag: "h-6 px-2.5 text-[13px]",
+        tag: "h-6 gap-1 px-2.5 text-sm",
         removeButton: "h-6 w-[26px] pr-1",
       },
       3: {
-        tag: "h-7 px-3 text-sm",
+        tag: "h-7 gap-1.5 px-3 text-[15px] leading-normal",
         removeButton: "h-7 w-[30px] pr-1",
       },
       4: {
-        tag: "h-9 px-3.5 text-base",
+        tag: "h-9 gap-2 px-3.5 text-base",
         removeButton: "h-9 w-[38px] pr-1.5",
       },
     },

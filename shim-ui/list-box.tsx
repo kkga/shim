@@ -42,7 +42,7 @@ const itemStyle = tv({
     size: {
       1: "h-6 gap-2 rounded-sm px-2 text-xs",
       2: "h-7 gap-2.5 rounded-sm px-2 text-sm",
-      3: "h-8 gap-2.5 rounded-md px-2.5 text-base",
+      3: "h-8 gap-2.5 rounded-md px-2.5 text-[15px] leading-normal",
       4: "h-10 gap-2.5 rounded-lg px-3 text-base",
     },
     intent: {
@@ -114,7 +114,7 @@ const sectionStyle = tv({
       },
       3: {
         section: "mt-3",
-        header: "h-8 px-2.5 text-base",
+        header: "h-8 px-2.5 text-[15px] leading-normal",
       },
       4: {
         section: "mt-4",

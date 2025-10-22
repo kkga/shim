@@ -29,7 +29,7 @@ function DocSection({
   return (
     <section
       className={twMerge(
-        "doc-section col-span-full grid scroll-mt-8 items-start gap-x-8 gap-y-8 md:grid-cols-[2fr_3fr]",
+        "col-span-full grid scroll-mt-8 @4xl/main:grid-cols-[2fr_3fr] items-start gap-x-8 gap-y-8",
         stacked ? "md:grid-cols-1" : ""
       )}
       id={id}

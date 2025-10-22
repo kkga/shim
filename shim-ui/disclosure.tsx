@@ -48,22 +48,22 @@ const style = tv({
       1: {
         disclosure: "rounded-md text-xs",
         button: "rounded-[5px] px-2.5 py-2",
-        panel: "group-data-[expanded]:px-2.5 group-data-[expanded]:py-2",
+        panel: "group-data-expanded:px-2.5 group-data-expanded:py-2",
       },
       2: {
-        disclosure: "rounded-[7px] text-[13px]",
+        disclosure: "rounded-[7px] text-sm",
         button: "rounded-[6px] px-3 py-2.5",
-        panel: "group-data-[expanded]:px-3 group-data-[expanded]:py-2.5",
+        panel: "group-data-expanded:px-3 group-data-expanded:py-2.5",
       },
       3: {
-        disclosure: "rounded-lg text-sm",
+        disclosure: "rounded-lg text-[15px] leading-5",
         button: "rounded-[7px] px-3.5 py-3",
-        panel: "group-data-[expanded]:px-3.5 group-data-[expanded]:py-3",
+        panel: "group-data-expanded:px-3.5 group-data-expanded:py-3",
       },
       4: {
         disclosure: "rounded-xl text-base",
         button: "rounded-[11px] px-4 py-3.5",
-        panel: "group-data-[expanded]:px-4 group-data-[expanded]:py-3.5",
+        panel: "group-data-expanded:px-4 group-data-expanded:py-3.5",
       },
     },
     isHovered: {

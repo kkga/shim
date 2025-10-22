@@ -64,19 +64,19 @@ const checkboxStyle = tv({
     },
     size: {
       1: {
-        container: "gap-2 py-1 text-xs",
+        container: "gap-2 py-1 text-xs leading-4",
         checkbox: "size-4 rounded-[3px] p-px",
       },
       2: {
-        container: "gap-2 py-[5px] text-[13px]",
+        container: "gap-2 py-[5px] text-sm leading-[18px]",
         checkbox: "size-[18px] rounded-[3px]",
       },
       3: {
-        container: "gap-2 py-1.5 text-sm",
+        container: "gap-2 py-1.5 text-[15px] leading-5",
         checkbox: "size-5 rounded",
       },
       4: {
-        container: "gap-2.5 py-2 text-base",
+        container: "gap-2.5 py-2 text-base leading-6",
         checkbox: "size-6 rounded-md",
       },
     },

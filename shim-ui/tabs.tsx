@@ -45,12 +45,12 @@ const style = tv({
         tab: "h-8 px-1.5 text-xs after:inset-y-1 after:rounded",
       },
       2: {
-        tabList: "text-[13px]",
-        tab: "h-9 px-2 text-[13px] after:inset-y-[5px] after:rounded",
+        tabList: "text-sm",
+        tab: "h-9 px-2 text-sm after:inset-y-[5px] after:rounded",
       },
       3: {
-        tabList: "text-sm",
-        tab: "h-10 px-2.5 text-sm after:inset-y-1.5 after:rounded-md",
+        tabList: "text-[15px] leading-normal",
+        tab: "h-10 px-2.5 text-[15px] leading-normal after:inset-y-1.5 after:rounded-md",
       },
       4: {
         tabList: "text-base",

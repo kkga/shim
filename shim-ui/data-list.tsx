@@ -6,16 +6,16 @@ import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 const style = tv({
   slots: {
     list: "place-content-start items-center",
-    item: "",
+    item: "leading-tight",
     label: "font-medium text-neutral-text",
     value: "overflow-ellipsis text-neutral-text-contrast",
   },
   variants: {
     size: {
-      1: { list: "gap-x-3 gap-y-2 text-xs leading-4" },
-      2: { list: "gap-x-4 gap-y-2 text-[13px] leading-5" },
-      3: { list: "gap-x-5 gap-y-2 text-sm leading-6" },
-      4: { list: "gap-x-6 gap-y-2 text-base leading-7" },
+      1: { list: "gap-x-3 gap-y-2 text-xs" },
+      2: { list: "gap-x-4 gap-y-2 text-sm" },
+      3: { list: "gap-x-5 gap-y-2 text-[15px]" },
+      4: { list: "gap-x-6 gap-y-2 text-base" },
     },
     labelPosition: {
       side: {

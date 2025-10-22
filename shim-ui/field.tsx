@@ -65,7 +65,7 @@ const inputBaseStyle = tv({
       // TODO: the field text size should match other components text size map (listbox, button, etc)
       1: "h-6 rounded indent-1.5 text-xs",
       2: "h-7 rounded indent-2 text-sm",
-      3: "h-8 rounded-md indent-2.5 text-base",
+      3: "h-8 rounded-md indent-2.5 text-[15px] leading-normal",
       4: "h-10 rounded-lg indent-3 text-base",
     },
   },
@@ -99,7 +99,7 @@ const labelStyle = tv({
     size: {
       1: "text-xs",
       2: "text-sm",
-      3: "text-base",
+      3: "text-[15px] leading-normal",
       4: "text-base",
     },
     labelPosition: {

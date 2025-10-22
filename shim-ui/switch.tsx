@@ -57,7 +57,7 @@ const style = tv({
         handle: "size-4",
       },
       3: {
-        container: "h-8 gap-2 text-sm",
+        container: "h-8 gap-2 text-[15px] leading-normal",
         track: "h-5 w-[36px]",
         handle: "size-[18px]",
       },
