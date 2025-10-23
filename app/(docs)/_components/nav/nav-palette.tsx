@@ -66,8 +66,8 @@ export function NavPalette({ navSections }: Props) {
         size={2}
         variant="ghost"
       >
-        <ListIcon size={16} />
         <Kbd size={1}>⌘K</Kbd>
+        <ListIcon size={16} />
       </Button>
 
       <Dialog
@@ -94,7 +94,7 @@ export function NavPalette({ navSections }: Props) {
                 size={3}
                 variant="soft"
               >
-                <XIcon size={20} />
+                <XIcon size={16} weight="bold" />
               </Button>
             </div>
             <Menu
@@ -106,7 +106,7 @@ export function NavPalette({ navSections }: Props) {
                   No results found
                 </p>
               )}
-              size={3}
+              size={2}
               withPopover={false}
             >
               {({ section, items: sectionItems }) => (

@@ -18,8 +18,8 @@ export function NavHeader({ navSections }: Props) {
         <Logo className="text-neutral-text-contrast" />
       </Link>
 
-      <NavPalette navSections={navSections} />
       <ThemeToggle size={1} />
+      <NavPalette navSections={navSections} />
     </header>
   );
 }

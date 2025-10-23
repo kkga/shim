@@ -28,11 +28,11 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
     <div
       className={twJoin(
         "relative flex w-full flex-col",
-        collapsed && "max-h-[20rem] overflow-hidden"
+        collapsed && "max-h-80 overflow-hidden"
       )}
     >
       <div
-        className={twJoin("grow-1", collapsed && "overflow-hidden")}
+        className={twJoin("grow", collapsed && "overflow-hidden")}
         ref={ref}
         style={
           collapsed
