@@ -44,6 +44,9 @@ export function NavPalette({ navSections }: Props) {
       if (e.key === "k" && (isMac ? e.metaKey : e.ctrlKey)) {
         e.preventDefault();
         setOpen((prev: boolean) => !prev);
+      } else if (e.key === "/") {
+        e.preventDefault();
+        setOpen(true);
       } else if (e.key === "Escape") {
         e.preventDefault();
         setOpen(false);
@@ -61,7 +64,7 @@ export function NavPalette({ navSections }: Props) {
         intent="neutral"
         onPress={() => setOpen(true)}
         size={2}
-        variant="soft"
+        variant="ghost"
       >
         <ListIcon size={16} />
         <Kbd size={1}>⌘K</Kbd>
@@ -80,7 +83,7 @@ export function NavPalette({ navSections }: Props) {
               <TextField
                 autoFocus
                 className="grow *:[input]:outline-0!"
-                placeholder="Search docs"
+                placeholder="Go to..."
                 size={3}
                 variant="soft"
               />

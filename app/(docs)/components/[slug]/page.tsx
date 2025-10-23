@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
 import { getFileSource } from "@/app/_lib/utils";
-import { DocHeader } from "@/app/(docs)/_components/doc-header";
-import { DocMetadata } from "@/app/(docs)/_components/doc-metadata";
-import { DocSection } from "@/app/(docs)/_components/doc-section";
+import { DocHeader } from "@/app/docs/_components/doc-header";
+import { DocMetadata } from "@/app/docs/_components/doc-metadata";
+import { DocSection } from "@/app/docs/_components/doc-section";
+import { InstallSection } from "@/app/docs/_components/install-section";
+import { toKebabCase } from "@/app/docs/_lib/utils";
+import { COMPONENT_DEMOS_PATH } from "@/app/docs/demo-registry";
 import { baseUrl } from "@/app/sitemap";
-import { toKebabCase } from "../../_lib/utils";
-import { InstallSection } from "./_components/install-section";
 import {
   getComponentDocs,
   getDemosSource,
@@ -46,11 +47,10 @@ export default async function DocPage({
   } = doc.metadata;
   let demos = getDemosSource(name);
   let source = getFileSource(files[0]);
-  // let MainDemo = getMainDemo(name);
   let sections = await loadDocSections(name);
 
   if (!demos.main) {
-    let expectedPath = `app/(docs)/docs/components/[slug]/content/${toKebabCase(name)}/main.tsx`;
+    let expectedPath = `${COMPONENT_DEMOS_PATH}/${toKebabCase(name)}/main.tsx`;
     throw new Error(
       `Missing main demo for "${name}". Expected source at "${expectedPath}".`
     );

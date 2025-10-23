@@ -2,8 +2,8 @@
 @import "../shim-ui/css/theme.css";
 
 :root {
-  --sidebar-width-min: 200px;
-  --sidebar-width-max: 280px;
+  --sidebar-width-min: 240px;
+  --sidebar-width-max: 240px;
   --sidebar-width: minmax(var(--sidebar-width-min), var(--sidebar-width-max));
   --content-width-min: 800px;
   --content-width-max: 1120px;

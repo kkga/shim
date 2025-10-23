@@ -10,7 +10,7 @@ import { ToggleButtonGroup } from "@/shim-ui/toggle-button-group";
 
 export default () =>
   ([1, 2, 3, 4] as const).map((size) => (
-    <div className="flex flex-col gap-4" key={size}>
+    <div className="flex flex-col gap-3" key={size}>
       <span className="font-semibold text-neutral-text-subtle text-xs">
         size: {size}
       </span>

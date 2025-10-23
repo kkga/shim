@@ -4,7 +4,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { match } from "ts-pattern";
 import { getFileSource } from "@/app/_lib/utils";
-import { demoRegistry } from "@/app/docs/_demo-registry/demo-registry";
+import { demoRegistry } from "@/app/(docs)/demo-registry";
 import { Code } from "./code";
 import { CodeBlock } from "./code-block";
 import { DocSection } from "./doc-section";
@@ -59,9 +59,9 @@ function getDemoCode(
   }
 
   let source = match(component)
-    .with("theme", () => `app/(docs)/[slug]/content/demos/theme-${code}.tsx`)
+    .with("theme", () => `app/(docs)/[slug]/_content/demos/theme-${code}.tsx`)
     .otherwise(
-      () => `app/(docs)/components/[slug]/content/${component}/${code}.tsx`
+      () => `app/(docs)/components/[slug]/_content/${component}/${code}.tsx`
     );
 
   try {

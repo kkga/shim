@@ -5,20 +5,25 @@ import { tv, type VariantProps } from "tailwind-variants";
 import { useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
-  base: "inline-flex w-fit items-center justify-center bg-clip-padding font-book leading-none",
+  base: "inline-flex w-fit items-center justify-center bg-clip-padding font-book",
   variants: {
     intent: {
-      neutral: "border border-neutral-line bg-neutral-panel text-neutral-text",
-      accent: "border border-accent-line bg-accent-panel text-accent-text",
-      success: "border border-success-line bg-success-panel text-success-text",
-      warning: "border border-warning-line bg-warning-panel text-warning-text",
-      danger: "border border-danger-line bg-danger-panel text-danger-text",
+      neutral:
+        "inset-ring inset-ring-neutral-line bg-neutral-panel text-neutral-text",
+      accent:
+        "inset-ring inset-ring-accent-line bg-accent-panel text-accent-text",
+      success:
+        "inset-ring inset-ring-success-line bg-success-panel text-success-text",
+      warning:
+        "inset-ring inset-ring-warning-line bg-warning-panel text-warning-text",
+      danger:
+        "inset-ring inset-ring-danger-line bg-danger-panel text-danger-text",
     },
     size: {
-      1: "h-4 gap-1 rounded-xs px-[3px] text-[11px]",
-      2: "h-5 gap-1 rounded-[3px] px-1 text-xs",
-      3: "h-6 gap-1.5 rounded-sm px-1.5 text-[13px]",
-      4: "h-7 gap-2 rounded-md px-2 text-sm",
+      1: "h-4 gap-1 rounded-xs px-1 text-[11px] leading-none",
+      2: "h-5 gap-1 rounded-[3px] px-1.5 text-xs leading-none",
+      3: "h-6 gap-1.5 rounded-sm px-2 text-[13px] leading-none",
+      4: "h-7 gap-2 rounded-md px-2.5 text-sm leading-none",
     },
     isSquare: {
       true: "",

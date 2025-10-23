@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 import type { ComponentType } from "react";
 
-const COMPONENT_DEMOS_PATH = "@/app/(docs)/components/[slug]/content";
-const GUIDE_DEMOS_PATH = "@/app/(docs)/[slug]/content/demos";
+export const COMPONENT_DEMOS_PATH = "@/app/(docs)/components/[slug]/_content";
+const GUIDE_DEMOS_PATH = "@/app/(docs)/[slug]/_content/demos";
 
 export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   // TODO: add loaders

@@ -3,6 +3,7 @@
 import { createContext, useContext } from "react";
 import {
   composeRenderProps,
+  SelectionIndicator as RacSelectionIndicator,
   Tab as RacTab,
   TabList as RacTabList,
   type TabListProps as RacTabListProps,
@@ -18,43 +19,38 @@ import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 const style = tv({
   slots: {
     tabs: "flex",
-    tabList: "group inline-flex items-stretch justify-start",
-    tab: [
-      "relative inline-flex cursor-default items-center gap-1.5 font-medium text-neutral-text",
-      "outline-0",
-      // indicator
-      "before:absolute after:absolute after:inset-x-0",
-      "group-data-[orientation=horizontal]:before:inset-x-0 group-data-[orientation=horizontal]:before:bottom-0 group-data-[orientation=horizontal]:before:h-0.5",
-      "group-data-[orientation=vertical]:before:-right-1 group-data-[orientation=vertical]:before:inset-y-1 group-data-[orientation=vertical]:before:w-0.5",
-    ],
-    tabPanel: "grow-1",
-  },
-  defaultVariants: {
-    variant: "soft",
-    size: 1,
-    orientation: "horizontal",
+    tabList: "group inline-flex items-stretch",
+    tab: "relative inline-flex cursor-default items-center font-medium text-neutral-text outline-0",
+    selectionIndicator: "motion-safe:transition-[translate,width,height]",
+    tabPanel: "grow",
   },
   variants: {
-    variant: {
-      underline: {},
-      soft: {},
-    },
     size: {
       1: {
-        tabList: "text-xs",
-        tab: "h-8 px-1.5 text-xs after:inset-y-1 after:rounded",
+        tab: "h-6 gap-1 rounded-sm px-1.5 text-xs/none",
+        selectionIndicator: "rounded-sm",
       },
       2: {
-        tabList: "text-sm",
-        tab: "h-9 px-2 text-sm after:inset-y-[5px] after:rounded",
+        tab: "h-7 gap-1.5 rounded-sm px-2 text-sm/none",
+        selectionIndicator: "rounded-sm",
       },
       3: {
-        tabList: "text-[15px] leading-normal",
-        tab: "h-10 px-2.5 text-[15px] leading-normal after:inset-y-1.5 after:rounded-md",
+        tab: "h-8 gap-1.5 rounded-md px-2.5 text-[15px]/none",
+        selectionIndicator: "rounded-md",
       },
       4: {
-        tabList: "text-base",
-        tab: "h-12 px-3 text-base after:inset-y-2 after:rounded-lg",
+        tab: "h-10 gap-2 rounded-lg px-3 text-base/none",
+        selectionIndicator: "rounded-lg",
+      },
+    },
+    variant: {
+      underline: {
+        tabList: "py-1",
+        selectionIndicator:
+          "absolute top-0 left-0 z-10 size-full rounded-none!",
+      },
+      soft: {
+        selectionIndicator: "absolute top-0 left-0 z-10 size-full",
       },
     },
     orientation: {
@@ -64,22 +60,20 @@ const style = tv({
       },
       vertical: {
         tabs: "flex-row",
-        tabList: "flex-col gap-0 px-1",
+        tabList: "flex-col gap-1",
       },
     },
     isHovered: {
       true: {
-        tab: "data-active: text-neutral-text-contrast after:bg-neutral-bg-hover",
+        tab: "text-neutral-text-contrast",
       },
     },
     isPressed: {
-      true: {
-        tab: "after:bg-neutral-bg-active",
-      },
+      true: {},
     },
     isSelected: {
       true: {
-        tab: "border-b-neutral-text-contrast text-neutral-text-contrast",
+        tab: "text-neutral-text-contrast",
       },
     },
     isDisabled: {
@@ -89,7 +83,7 @@ const style = tv({
     },
     isFocusVisible: {
       true: {
-        tab: "after:-outline-offset-2 after:outline-2 after:outline-accent-focus-ring",
+        tab: "-outline-offset-2 outline-2 outline-accent-focus-ring",
       },
     },
   },
@@ -98,31 +92,38 @@ const style = tv({
       orientation: "horizontal",
       variant: "underline",
       class: {
-        tabList: "shadow-[inset_0_-1px_0_0_var(--color-neutral-line)]",
+        tabList:
+          "shadow-[inset_0_-1px_0_0_var(--color-neutral-line)] **:data-tablist-indicator:h-[calc(100%+4px)] **:data-tablist-indicator:shadow-[inset_0_-2px_0_0_currentColor]",
       },
     },
     {
       orientation: "vertical",
       variant: "underline",
       class: {
-        tabList: "shadow-[inset_-1px_0_0_0_var(--color-neutral-line)]",
+        tabList:
+          "shadow-[inset_-1px_0_0_0_var(--color-neutral-line)] **:data-tablist-indicator:shadow-[inset_-2px_0_0_0_currentColor]",
       },
     },
     {
       variant: "soft",
       isSelected: true,
       class: {
-        tab: "after:bg-neutral-bg-active",
+        selectionIndicator: "bg-neutral-bg-active",
       },
     },
     {
       variant: "underline",
       isSelected: true,
       class: {
-        tab: "before:bg-neutral-text-contrast",
+        selectionIndicator: "border-current",
       },
     },
   ],
+  defaultVariants: {
+    variant: "soft",
+    size: 1,
+    orientation: "horizontal",
+  },
 });
 
 type TabListVariant = "soft" | "underline";
@@ -168,7 +169,7 @@ function TabList<T extends object>(props: TabListProps<T>) {
 function Tab(props: RacTabProps) {
   let variant = useContext(TabListVariantContext);
   let { size } = useThemeProps();
-  let { tab } = style({ variant, size });
+  let { tab, selectionIndicator } = style({ variant, size });
 
   return (
     <RacTab
@@ -176,7 +177,17 @@ function Tab(props: RacTabProps) {
       className={composeRenderProps(props.className, (className, renderProps) =>
         tab({ ...renderProps, className })
       )}
-    />
+    >
+      {composeRenderProps(props.children, (renderedChildren, renderProps) => (
+        <>
+          {renderedChildren}
+          <RacSelectionIndicator
+            className={selectionIndicator({ ...renderProps })}
+            data-tablist-indicator
+          />
+        </>
+      ))}
+    </RacTab>
   );
 }
 

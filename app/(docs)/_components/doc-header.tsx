@@ -16,11 +16,11 @@ export function DocHeader({
 }: DocHeaderProps) {
   return (
     <header className={twJoin("mb-12", className)}>
-      <h1 className="font-semibold text-neutral-text-contrast text-xl lg:text-3xl">
+      <h1 className="font-semibold text-neutral-text-contrast text-xl leading-tight lg:text-2xl">
         {title}
       </h1>
       {subtitle && (
-        <p className="mt-1 font-medium text-[15px] text-neutral-text lg:mt-2 lg:text-base">
+        <p className="mt-1 font-book text-[15px] text-neutral-text lg:mt-2 lg:text-base">
           {subtitle}
         </p>
       )}

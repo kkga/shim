@@ -40,7 +40,7 @@ export default {
       title: "Orientation",
       description: (
         <p>
-          Switch between horizontal and vertical layouts via the
+          Switch between horizontal and vertical layouts via the{" "}
           <code>orientation</code> prop.
         </p>
       ),
@@ -54,7 +54,7 @@ export default {
       title: "Controlled",
       description: (
         <p>
-          Manage tab selection with <code>selectedKey</code> and
+          Manage tab selection with <code>selectedKey</code> and{" "}
           <code>onSelectionChange</code>.
         </p>
       ),

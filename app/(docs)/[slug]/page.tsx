@@ -38,7 +38,7 @@ export default async function GuidePage({
     `${GITHUB_FILE_URL}/css/theme.css`,
   ];
 
-  let { default: GuideContent, toc } = await import(`./content/${slug}.mdx`);
+  let { default: GuideContent, toc } = await import(`./_content/${slug}.mdx`);
 
   return (
     <article className="grid grid-cols-5 gap-x-8">
@@ -60,7 +60,7 @@ export default async function GuidePage({
       </div>
 
       {toc && toc.length > 0 && (
-        <aside className="hidden min-w-[12rem] xl:block">
+        <aside className="hidden min-w-48 xl:block">
           <nav className="sticky top-6 border-neutral-3 border-l pl-4">
             <Toc toc={toc} />
           </nav>

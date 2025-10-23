@@ -4,7 +4,7 @@ import { extname, join } from "node:path";
 import type { GuideMetadata } from "@/app/(docs)/_lib/types";
 import { readMdxFile, slugify } from "../_lib/utils";
 
-const GUIDES_DIR = join(process.cwd(), "app", "(docs)", "[slug]", "content");
+const GUIDES_DIR = join(process.cwd(), "app", "(docs)", "[slug]", "_content");
 const MDX_EXTENSION_REGEX = /\.mdx$/;
 
 export function getGuides() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { GearSix, User, XSquare } from "@phosphor-icons/react";
+import { GearSixIcon, UserIcon, XSquareIcon } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Collection, type Key } from "react-aria-components";
 import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
@@ -11,21 +11,21 @@ export default () => {
     {
       id: "profile",
       label: "Profile",
-      icon: User,
+      icon: UserIcon,
       content: "Your profile information.",
       disabled: false,
     },
     {
       id: "settings",
       label: "Settings",
-      icon: GearSix,
+      icon: GearSixIcon,
       content: "Change your settings here.",
       disabled: false,
     },
     {
       id: "disabled",
       label: "Disabled",
-      icon: XSquare,
+      icon: XSquareIcon,
       content: "You can't see this.",
       disabled: true,
     },

@@ -24,13 +24,13 @@ import {
 } from "@/shim-ui/lib/theme";
 
 const COLORS = {
-  gray: "text-[var(--slate-11)] border-[var(--slate-7)] data-selection-mode:data-hovered:border-[var(--slate-8)] data-selected:bg-[var(--slate-10)]",
-  blue: "text-[var(--iris-11)] border-[var(--iris-7)] data-selection-mode:data-hovered:border-[var(--iris-8)] data-selected:bg-[var(--iris-10)]",
+  gray: "text-(--slate-11) border-(--slate-7) data-selection-mode:data-hovered:border-(--slate-8) data-selected:bg-(--slate-10)",
+  blue: "text-(--iris-11) border-(--iris-7) data-selection-mode:data-hovered:border-(--iris-8) data-selected:bg-(--iris-10)",
   green:
-    "text-[var(--green-11)] border-[var(--green-7)] data-selection-mode:data-hovered:border-[var(--green-8)] data-selected:bg-[var(--green-10)]",
+    "text-(--green-11) border-(--green-7) data-selection-mode:data-hovered:border-(--green-8) data-selected:bg-(--green-10)",
   orange:
-    "text-[var(--orange-11)] border-[var(--orange-7)] data-selection-mode:data-hovered:border-[var(--orange-8)] data-selected:bg-[var(--orange-10)]",
-  red: "text-[var(--red-11)] border-[var(--red-7)] data-selection-mode:data-hovered:border-[var(--red-8)] data-selected:bg-[var(--red-10)]",
+    "text-(--orange-11) border-(--orange-7) data-selection-mode:data-hovered:border-(--orange-8) data-selected:bg-(--orange-10)",
+  red: "text-(--red-11) border-(--red-7) data-selection-mode:data-hovered:border-(--red-8) data-selected:bg-(--red-10)",
 };
 
 type Color = keyof typeof COLORS;

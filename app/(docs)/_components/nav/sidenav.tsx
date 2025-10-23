@@ -65,7 +65,7 @@ export function SideNav({ navSections, className }: Props) {
 
   return (
     <nav
-      className={twJoin("grow overflow-y-scroll p-4", className)}
+      className={twJoin("grow overflow-y-scroll p-3", className)}
       style={{
         maskImage: "linear-gradient(to bottom, transparent, black 16px )",
         scrollbarWidth: "thin",

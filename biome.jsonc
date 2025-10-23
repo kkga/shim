@@ -20,7 +20,7 @@
   "overrides": [
     {
       "includes": [
-        "app/(docs)/components/**/content/**",
+        "app/(docs)/components/**/_content/**",
         "app/(docs)/**/demos/**"
       ],
       "linter": {

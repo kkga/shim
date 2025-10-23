@@ -27,10 +27,10 @@ const style = tv({
       {} as Record<Intent, ClassValue>
     ),
     size: {
-      1: "h-6 gap-1 rounded-sm px-1.5 text-xs",
-      2: "h-7 gap-1.5 rounded-sm px-2 text-sm",
-      3: "h-8 gap-1.5 rounded-md px-2.5 text-[15px] leading-normal",
-      4: "h-10 gap-2 rounded-lg px-3 text-base",
+      1: "h-6 gap-1 rounded-sm px-1.5 text-xs/none",
+      2: "h-7 gap-1.5 rounded-sm px-2 text-sm/none",
+      3: "h-8 gap-1.5 rounded-md px-2.5 text-[15px]/none",
+      4: "h-10 gap-2 rounded-lg px-3 text-base/none",
     },
     isDisabled: {
       true: "cursor-not-allowed",
@@ -201,14 +201,14 @@ function Button({
         })
       )}
     >
-      {composeRenderProps(props.children, (renderedChildren, { isPending }) => (
+      {composeRenderProps(props.children, (children, { isPending }) => (
         <>
           {isPending && (
             <div className={container()} data-progress>
               <ProgressCircle className={circle()} />
             </div>
           )}
-          <span className="contents">{renderedChildren}</span>
+          <span className="contents">{children}</span>
         </>
       ))}
     </RacButton>
