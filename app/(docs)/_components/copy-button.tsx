@@ -83,6 +83,7 @@ function CopyButton({
   return (
     <TooltipTrigger>
       <Button
+        aria-label="Copy to clipboard"
         className={className}
         intent={justCopied ? "success" : "neutral"}
         isIconOnly

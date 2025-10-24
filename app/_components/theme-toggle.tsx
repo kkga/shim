@@ -92,6 +92,7 @@ function ThemeToggle({ size }: { size?: 1 | 2 } = { size: 1 }) {
 
   return (
     <Switch
+      aria-label="Toggle theme"
       className={container()}
       isSelected={resolvedTheme === "dark"}
       onChange={handleThemeChange}
