@@ -47,6 +47,7 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
       </div>
 
       <Button
+        aria-label={collapsed ? "Expand content" : "Collapse content"}
         className={twJoin(
           "z-10 h-7 backdrop-blur",
           collapsed
