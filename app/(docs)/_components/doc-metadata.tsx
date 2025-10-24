@@ -57,7 +57,7 @@ export function DocMetadata({
             <MetadataLink
               external
               href={docUrl}
-              title={`View ${title} documentation`}
+              title={`Go to ${title} on React Aria documentation`}
             >
               React Aria
             </MetadataLink>
@@ -68,7 +68,11 @@ export function DocMetadata({
         <DataListItem
           label="Pattern"
           value={
-            <MetadataLink external href={ariaUrl} title="View ARIA pattern">
+            <MetadataLink
+              external
+              href={ariaUrl}
+              title="Go to W3C ARIA documentation"
+            >
               W3C ARIA
             </MetadataLink>
           }
@@ -92,7 +96,7 @@ export function DocMetadata({
           <MetadataLink
             external
             href={`${GITHUB_ISSUES_URL}/new?title=[${title}] Issue`}
-            title="New issue on GitHub"
+            title="Report an issue on GitHub"
           >
             Report
           </MetadataLink>
@@ -107,7 +111,7 @@ export function DocMetadata({
               <MetadataLink
                 external={false}
                 href={`/components/${depSlug}`}
-                title={`View ${depName} documentation`}
+                title={`Go to ${depName} documentation`}
               >
                 {depName}
               </MetadataLink>
