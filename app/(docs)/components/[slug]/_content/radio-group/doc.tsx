@@ -48,7 +48,7 @@ export default {
         group: "radio-group",
         name: "variant",
       },
-      className: "flex-row gap-6",
+      demoClassName: "flex-row gap-6",
       code: "variant",
     },
     {

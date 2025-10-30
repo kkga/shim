@@ -1,12 +1,7 @@
 "use client";
 
 import { ArrowUpRightIcon, WarningDiamondIcon } from "@phosphor-icons/react";
-import React, {
-  type ComponentPropsWithoutRef,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { type ComponentPropsWithoutRef, useMemo, useState } from "react";
 import type { Key } from "react-aria-components";
 import { twMerge } from "tailwind-merge";
 import { LinkButton } from "@/shim-ui/button";
@@ -24,13 +19,6 @@ export interface CodeItem {
   sourceUrl?: string;
   raw?: string;
   highlight?: boolean;
-}
-
-interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
-  code?: CodeItem[] | string;
-  children?: string | { props: { children: string } };
-  clickToCopy?: boolean;
-  onCodeTabChange?: (tab: Key) => void;
 }
 
 function normalizeCode(
@@ -135,7 +123,13 @@ function CodePane({
   );
 }
 
-export function CodeBlock({ onCodeTabChange, ...props }: Props) {
+interface Props extends Omit<ComponentPropsWithoutRef<"pre">, "children"> {
+  code?: CodeItem[] | string;
+  children?: string | { props: { children: string } };
+  clickToCopy?: boolean;
+}
+
+export function CodeBlock(props: Props) {
   let normalizedCode = useMemo(
     () => normalizeCode(props.code, props.children),
     [props.code, props.children]
@@ -144,12 +138,6 @@ export function CodeBlock({ onCodeTabChange, ...props }: Props) {
   let [tab, setTab] = useState<Key | null>(
     () => normalizedCode[0].title || null
   );
-
-  useEffect(() => {
-    if (tab && onCodeTabChange) {
-      onCodeTabChange(tab);
-    }
-  }, [tab, onCodeTabChange]);
 
   let selectedCode =
     normalizedCode.find((c) => c.title === tab) ?? normalizedCode[0];

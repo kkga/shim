@@ -1,13 +1,11 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {},
-  "extends": ["ultracite"],
+  "extends": ["ultracite/core", "ultracite/next"],
   "linter": {
     "rules": {
       "style": {
-        "useConst": "off"
-      },
-      "nursery": {
+        "useConst": "off",
         "useConsistentTypeDefinitions": {
           "level": "error",
           "options": {

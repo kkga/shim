@@ -20,7 +20,7 @@ export default {
         group: "search-field",
         name: "controlled",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "controlled",
     },
     {
@@ -35,7 +35,7 @@ export default {
         group: "search-field",
         name: "size",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "size",
     },
     {
@@ -50,7 +50,7 @@ export default {
         group: "search-field",
         name: "variant",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "variant",
     },
     {
@@ -66,7 +66,7 @@ export default {
         group: "search-field",
         name: "prefixIcon",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "prefix-icon",
     },
     {
@@ -82,7 +82,7 @@ export default {
         group: "search-field",
         name: "states",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "states",
     },
   ],

@@ -27,10 +27,8 @@
 @import "@radix-ui/colors/red-dark.css";
 @import "@radix-ui/colors/red-dark-alpha.css";
 
-/* biome-ignore lint/suspicious/noUnknownAtRules: tailwindcss dark mode rule */
 @custom-variant dark (&:where(.dark, .dark *, .dark-theme, .dark-theme *));
 
-/* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
 @theme {
   --color-\*: initial; /* Reset Tailwind colors */
   --color-white: #fff;
@@ -191,7 +189,7 @@
   /* Popover background color for menus and dialogs */
   --color-popover: var(--color-white);
   /* Overlay background color for dialogs */
-  --color-overlay: var(--black-a6);
+  --color-overlay: var(--gray-a8);
 
   /* Type scale */
 
@@ -228,12 +226,10 @@
 
   /* Shadows */
 
-  /* prettier-ignore */
   --shadow-inner:
     inset 0 0 0 1px var(--slate-a5), inset 0 1.5px 2px 0 var(--slate-a2), inset
     0 1.5px 2px 0 var(--black-a2);
 
-  /* prettier-ignore */
   --shadow-xs:
     0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%),
     0 0 0 0.5px var(--black-a1),
@@ -241,29 +237,26 @@
     0 2px 1px -1px var(--black-a1),
     0 1px 3px 0 var(--black-a1);
 
-  /* prettier-ignore */
   --shadow-sm:
     0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%),
     0 2px 3px -2px var(--slate-a3),
     0 3px 12px -4px var(--black-a2),
     0 4px 16px -8px var(--black-a2);
 
-  /* prettier-ignore */
   --shadow-md:
     0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%), 0 8px
     40px var(--black-a1), 0 12px 32px -16px var(--slate-a3);
 
-  /* prettier-ignore */
   --shadow-lg:
     0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%), 0 12px
     60px var(--black-a3), 0 12px 32px -16px var(--slate-a5);
 
-  /* prettier-ignore */
   --shadow-xl:
     0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%), 0 12px
     60px var(--black-a3), 0 16px 64px var(--slate-a2), 0 16px 36px -20px
     var(--slate-a7);
 
+  /* TODO: remove? */
   /* Inset shadows
   --inset-shadow-xs: inset 0 1px rgb(0 0 0 / 0.05);
   --inset-shadow-sm: inset 0 1px 1px rgb(0 0 0 / 0.05);
@@ -278,14 +271,12 @@
   --color-popover: var(--color-neutral-2);
   --color-overlay: var(--black-a8);
 
-  /* prettier-ignore */
   --shadow-inner:
     inset 0 -1px 1px 0 var(--slate-a3),
     inset 0 0 0 1px var(--slate-a3),
     inset 0 3px 4px 0 var(--black-a5),
     inset 0 0 0 1px var(--slate-a4);
 
-  /* prettier-ignore */
   --shadow-xs:
     0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%),
     0 0 0 0.5px var(--black-a3),
@@ -293,24 +284,20 @@
     0 2px 1px -1px var(--black-a6),
     0 1px 3px 0 var(--black-a5);
 
-  /* prettier-ignore */
   --shadow-sm:
     0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%),
     0 2px 3px -2px var(--black-a3),
     0 3px 8px -2px var(--black-a6),
     0 4px 12px -4px var(--black-a7);
 
-  /* prettier-ignore */
   --shadow-md:
     0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%), 0 8px
     40px var(--black-a3), 0 12px 32px -16px var(--black-a5);
 
-  /* prettier-ignore */
   --shadow-lg:
     0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%), 0 12px
     60px var(--black-a5), 0 12px 32px -16px var(--black-a7);
 
-  /* prettier-ignore */
   --shadow-xl:
     0 0 0 1px color-mix(in oklab, var(--slate-a6), var(--slate-6) 25%), 0 12px
     60px var(--black-a4), 0 16px 64px var(--black-a6), 0 16px 36px -20px
@@ -416,7 +403,6 @@
   }
 }
 
-/* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
 @utility animate-fade {
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -431,7 +417,6 @@
   }
 }
 
-/* biome-ignore lint/suspicious/noUnknownAtRules: tailwind css at-rule */
 @utility animate-slide {
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 

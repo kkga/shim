@@ -67,7 +67,7 @@ export default async function DocPage({
     .filter((dep): dep is { name: string; slug: string } => dep !== null);
 
   return (
-    <article className="space-y-12">
+    <article className="divide-y divide-neutral-3">
       <DocHeader className="col-span-full" subtitle={description} title={title}>
         <DocMetadata
           ariaUrl={ariaUrl}
@@ -89,9 +89,9 @@ export default async function DocPage({
         return (
           <Fragment key={anchorId}>
             <DocSection
-              className={section.className}
               code={code}
               demo={<DemoComponent />}
+              demoClassName={section.demoClassName}
               demoLayout={section.demoLayout}
               id={anchorId}
               key={anchorId}

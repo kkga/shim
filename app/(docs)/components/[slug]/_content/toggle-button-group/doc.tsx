@@ -35,7 +35,7 @@ export default {
         group: "toggle-button-group",
         name: "states",
       },
-      className: "items-start",
+      demoClassName: "items-start",
       code: "states",
     },
     {
@@ -49,7 +49,7 @@ export default {
         group: "toggle-button-group",
         name: "size",
       },
-      className: "items-start",
+      demoClassName: "items-start",
       code: "size",
     },
     {
@@ -63,7 +63,7 @@ export default {
         group: "toggle-button-group",
         name: "variant",
       },
-      className: "items-start",
+      demoClassName: "items-start",
       code: "variant",
     },
   ],

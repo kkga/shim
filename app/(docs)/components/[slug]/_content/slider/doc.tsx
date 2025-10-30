@@ -20,7 +20,7 @@ export default {
         group: "slider",
         name: "controlled",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "controlled",
     },
     {
@@ -35,7 +35,7 @@ export default {
         group: "slider",
         name: "controlled-range",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "controlled-range",
     },
     {
@@ -50,7 +50,7 @@ export default {
         group: "slider",
         name: "label-position",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "label-position",
     },
     {
@@ -65,7 +65,7 @@ export default {
         group: "slider",
         name: "filled",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "filled",
     },
     {
@@ -80,7 +80,7 @@ export default {
         group: "slider",
         name: "variant",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "variant",
     },
     {
@@ -95,7 +95,7 @@ export default {
         group: "slider",
         name: "size",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "size",
     },
     {
@@ -110,7 +110,7 @@ export default {
         group: "slider",
         name: "orientation",
       },
-      className: "flex-row",
+      demoClassName: "flex-row",
       code: "orientation",
     },
   ],

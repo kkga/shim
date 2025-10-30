@@ -22,12 +22,10 @@ Most components support four sizes that scale proportionally.
 <ComponentDemo
   component="theme"
   codeTitle="Size example"
-  demo="size"
-  className="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8"
   stacked
+  demo="size"
+  demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8"
 />
-
-
 
 ## Variants
 
@@ -38,21 +36,20 @@ Forms and field-based components support `classic`, `soft` and `outline` variant
 <ComponentDemo
   component="theme"
   demo="field-variant"
-  className="grid sm:grid-cols-3 gap-8"
+  demoClassName="grid sm:grid-cols-3 gap-8"
   stacked
 />
 
 ### Button variants
 
-  Buttons support `soft`, `solid`, and `ghost` variants.
+Buttons support `soft`, `solid`, and `ghost` variants.
 
 <ComponentDemo
   component="theme"
   demo="button-variant"
-  className="grid sm:grid-cols-3 gap-8"
+  demoClassName="grid sm:grid-cols-3 gap-8"
   stacked
 />
-
 
 ## Set global defaults
 
@@ -102,58 +99,32 @@ export function Callout() {
   </TableHeader>
   <TableBody>
     <Row>
-      <Cell className="flex items-center gap-1">
-        `size`
-      </Cell>
-      <Cell>
-        `1 | 2 | 3 | 4`
-      </Cell>
-      <Cell>
-        `1`
-      </Cell>
+      <Cell className="flex items-center gap-1">`size`</Cell>
+      <Cell>`1 | 2 | 3 | 4`</Cell>
+      <Cell>`1`</Cell>
       <Cell>
         Sets the base size for all components. Sizes scale proportionally across
         components.
       </Cell>
     </Row>
     <Row>
-      <Cell>
-        `labelPosition`
-      </Cell>
-      <Cell>
-        `"side" | "top"`
-      </Cell>
-      <Cell>
-        `"side"`
-      </Cell>
+      <Cell>`labelPosition`</Cell>
+      <Cell>`"side" | "top"`</Cell>
+      <Cell>`"side"`</Cell>
       <Cell>
         Sets the default position for labels on field-based components.
       </Cell>
     </Row>
     <Row>
-      <Cell>
-        `fieldVariant`
-      </Cell>
-      <Cell>
-        `"classic" | "soft" | "outline"`
-      </Cell>
-      <Cell>
-        `"classic"`
-      </Cell>
-      <Cell>
-        Sets the default variant for field-based components.
-      </Cell>
+      <Cell>`fieldVariant`</Cell>
+      <Cell>`"classic" | "soft" | "outline"`</Cell>
+      <Cell>`"classic"`</Cell>
+      <Cell>Sets the default variant for field-based components.</Cell>
     </Row>
     <Row>
-      <Cell>
-        `buttonVariant`
-      </Cell>
-      <Cell>
-        `"soft" | "solid" | "ghost"`
-      </Cell>
-      <Cell>
-        `"soft"`
-      </Cell>
+      <Cell>`buttonVariant`</Cell>
+      <Cell>`"soft" | "solid" | "ghost"`</Cell>
+      <Cell>`"soft"`</Cell>
       <Cell>Sets the default variant for buttons.</Cell>
     </Row>
   </TableBody>

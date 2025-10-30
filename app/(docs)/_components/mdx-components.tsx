@@ -38,7 +38,7 @@ function Pre({
 
 interface ComponentDemoProps {
   children?: ReactNode;
-  className?: string;
+  demoClassName?: string;
   code?: string | false;
   codeTitle?: string;
   component: keyof typeof demoRegistry;
@@ -80,7 +80,7 @@ function getDemoCode(
 
 function ComponentDemo({
   children,
-  className,
+  demoClassName,
   code,
   codeTitle,
   component,
@@ -104,9 +104,10 @@ function ComponentDemo({
 
   return (
     <DocSection
-      className={className}
+      className="p-0!"
       code={codeSnippets}
       demo={<DemoComponent />}
+      demoClassName={demoClassName}
       stacked={stacked}
       title={title}
     >

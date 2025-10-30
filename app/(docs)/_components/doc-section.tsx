@@ -1,4 +1,3 @@
-import type { Key } from "react-aria-components";
 import { twJoin, twMerge } from "tailwind-merge";
 import { Theme } from "@/shim-ui/lib/theme";
 import { CodeBlock, type CodeItem } from "./code-block";
@@ -7,36 +6,37 @@ interface DocSectionProps {
   id?: string;
   title?: string;
   children?: React.ReactNode;
-  demo?: React.ReactNode;
   code?: string | CodeItem[];
   className?: string;
-  onCodeTabChange?: (tab: Key) => void;
   stacked?: boolean;
+  demo?: React.ReactNode;
   demoLayout?: "row" | "column";
+  demoClassName?: string;
 }
 
 function DocSection({
   id,
   title,
-  demo,
   code,
   className,
   children,
-  onCodeTabChange,
   stacked = false,
+  demo,
   demoLayout = "column",
+  demoClassName,
 }: DocSectionProps) {
   return (
     <section
       className={twMerge(
-        "col-span-full grid scroll-mt-8 items-start gap-x-8 gap-y-8",
-        stacked ? "md:grid-cols-1" : "@3xl/main:grid-cols-[2fr_3fr]"
+        "col-span-full grid scroll-mt-8 items-start gap-x-8 gap-y-8 px-4 py-6 md:px-8 md:py-8",
+        stacked ? "md:grid-cols-1" : "@3xl/main:grid-cols-[2fr_3fr]",
+        className
       )}
       id={id}
     >
-      <div className="col-start-1 self-stretch py-1">
+      <div className="col-start-1 self-stretch">
         {title && (
-          <h3 className="mb-2 font-semibold text-[15px] text-neutral-text-contrast">
+          <h3 className="mb-2 font-semibold text-base text-neutral-text-contrast">
             {id ? (
               <a
                 className="no-underline hover:underline focus-visible:underline focus-visible:outline-none"
@@ -68,7 +68,7 @@ function DocSection({
               demoLayout === "row"
                 ? "flex-row flex-wrap gap-2"
                 : "flex-col gap-4",
-              className
+              demoClassName
             )}
           >
             <Theme size={2}>{demo}</Theme>
@@ -85,7 +85,6 @@ function DocSection({
               : [{ content: code, title: `${title} example` }]
           }
           lang="tsx"
-          onCodeTabChange={onCodeTabChange}
         />
       )}
     </section>

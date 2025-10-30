@@ -24,7 +24,7 @@ export default {
         group: "form",
         name: "validation",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
     },
   ],
 } satisfies DocModule;

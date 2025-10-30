@@ -30,7 +30,7 @@ export default {
         group: "meter",
         name: "custom",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "custom",
     },
     {
@@ -46,7 +46,7 @@ export default {
         group: "meter",
         name: "color",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "color",
     },
   ],

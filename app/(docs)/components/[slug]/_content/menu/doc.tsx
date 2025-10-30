@@ -31,7 +31,7 @@ export default {
         group: "menu",
         name: "content",
       },
-      className: "items-start",
+      demoClassName: "items-start",
     },
     {
       title: "Selection",
@@ -62,7 +62,7 @@ export default {
         group: "menu",
         name: "size",
       },
-      className: "flex-row",
+      demoClassName: "flex-row",
     },
     {
       title: "Sections",
@@ -76,7 +76,7 @@ export default {
         group: "menu",
         name: "sections",
       },
-      className: "items-start",
+      demoClassName: "items-start",
     },
     {
       title: "Submenu",
@@ -91,7 +91,7 @@ export default {
         group: "menu",
         name: "submenu",
       },
-      className: "items-start",
+      demoClassName: "items-start",
     },
   ],
 } satisfies DocModule;

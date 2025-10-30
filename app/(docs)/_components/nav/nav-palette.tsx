@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowSquareOutIcon, ListIcon, XIcon } from "@phosphor-icons/react";
+import { ArrowSquareOutIcon, XIcon } from "@phosphor-icons/react";
+import { ListIcon } from "@phosphor-icons/react/dist/ssr";
 import { useEffect, useMemo, useState } from "react";
 import {
   Collection,
@@ -60,13 +61,25 @@ export function NavPalette({ navSections }: Props) {
   return (
     <DialogTrigger isOpen={isOpen} onOpenChange={setOpen}>
       <Button
-        className="px-1.5"
+        className="hidden text-neutral-text-subtle md:flex"
         intent="neutral"
         onPress={() => setOpen(true)}
         size={2}
         variant="ghost"
       >
-        <Kbd size={1}>⌘K</Kbd>
+        Go to…
+        <Kbd className="ml-1 text-neutral-text-subtle" size={1}>
+          ⌘K
+        </Kbd>
+      </Button>
+
+      <Button
+        className="md:hidden"
+        isIconOnly
+        onPress={() => setOpen(true)}
+        size={3}
+        variant="ghost"
+      >
         <ListIcon size={16} />
       </Button>
 
@@ -83,7 +96,7 @@ export function NavPalette({ navSections }: Props) {
               <TextField
                 autoFocus
                 className="grow *:[input]:outline-0!"
-                placeholder="Go to..."
+                placeholder="Go to…"
                 size={3}
                 variant="soft"
               />

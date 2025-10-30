@@ -8,7 +8,7 @@
   --content-width-min: 800px;
   --content-width-max: 1120px;
   --content-width: minmax(var(--content-width-min), var(--content-width-max));
-  --body-width: 80ch;
+  /* --body-width: 80ch; */
 
   --sh-class: var(--color-neutral-12);
   --sh-identifier: var(--color-neutral-12);
@@ -43,7 +43,7 @@ html {
 }
 
 article {
-  @apply px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-12;
+  /* @apply px-4 py-6 md:px-8 md:py-8 lg:px-12 lg:py-12; */
 
   .prose {
     /* @apply font-book; */

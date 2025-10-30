@@ -47,7 +47,7 @@ export default {
         group: "checkbox",
         name: "size",
       },
-      className: "grid grid-cols-2 place-self-start",
+      demoClassName: "grid grid-cols-2 place-self-start",
     },
     {
       title: "Variant",
@@ -62,7 +62,7 @@ export default {
         name: "variant",
       },
       demoLayout: "row",
-      className: "gap-4",
+      demoClassName: "gap-4",
     },
     {
       title: "Checkbox description",

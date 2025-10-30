@@ -34,7 +34,7 @@ export default {
         group: "select",
         name: "controlled",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "controlled",
     },
     {
@@ -49,7 +49,7 @@ export default {
         group: "select",
         name: "sections",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "sections",
     },
     {
@@ -65,7 +65,7 @@ export default {
         group: "select",
         name: "states",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "states",
     },
     {
@@ -80,7 +80,7 @@ export default {
         group: "select",
         name: "links",
       },
-      className: "items-stretch",
+      demoClassName: "items-stretch",
       code: "links",
     },
   ],

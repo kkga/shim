@@ -15,9 +15,9 @@ export interface DocSection {
   code?: string;
   codeTitle?: string;
   /**
-   * Optional extra props passed to the demo wrapper.
+   * Optional extra classnames passed to the demo wrapper.
    */
-  className?: string;
+  demoClassName?: string;
   /**
    * Whether to stack the demo and code sections. Defaults to false.
    */

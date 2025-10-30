@@ -14,10 +14,10 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.0.0",
+    "@next/mdx": "^16.0.1",
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/colors": "^3.0.0",
-    "@tailwindcss/postcss": "4.1.15",
+    "@tailwindcss/postcss": "4.1.16",
     "@types/mdx": "^2.0.13",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
@@ -25,7 +25,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
-    "next": "16.0.0",
+    "next": "16.0.1",
     "next-themes": "^0.4.6",
     "postcss": "^8.5.6",
     "react": "19.2.0",
@@ -39,17 +39,17 @@
     "sugar-high": "^0.9.4",
     "tailwind-merge": "^3.3.1",
     "tailwind-variants": "^3.1.1",
-    "tailwindcss": "4.1.15",
-    "ts-pattern": "^5.8.0",
+    "tailwindcss": "4.1.16",
+    "ts-pattern": "^5.9.0",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.7",
-    "@types/node": "24.9.1",
-    "knip": "^5.66.2",
-    "lefthook": "^2.0.0",
+    "@biomejs/biome": "2.3.2",
+    "@types/node": "24.9.2",
+    "knip": "^5.66.4",
+    "lefthook": "^2.0.2",
     "typescript": "5.9.3",
-    "ultracite": "5.6.4"
+    "ultracite": "6.1.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import { NavHeader } from "./_components/nav/nav-header";
-import { SideNav } from "./_components/nav/sidenav";
+import { Nav } from "./_components/nav/nav";
 import { categorizeItems, type NavItem } from "./_components/nav/utils";
 import { getGuides } from "./[slug]/utils";
 import { getComponentDocs } from "./components/[slug]/utils";
@@ -21,18 +20,6 @@ export default function DocsLayout({
         name: guide.metadata.title,
         category: "Overview",
       })),
-      {
-        id: "github",
-        src: "https://github.com/kkga/shim",
-        name: "GitHub",
-        category: "Overview",
-      },
-      {
-        id: "twitter",
-        src: "https://twitter.com/kkga_",
-        name: "Twitter",
-        category: "Overview",
-      },
       ...docs.map((doc) => ({
         id: doc.slug,
         src: `components/${doc.slug}`,
@@ -60,12 +47,8 @@ export default function DocsLayout({
 
   return (
     <div className="flex min-h-svh flex-col lg:grid lg:grid-cols-[1fr_var(--sidebar-width)_var(--content-width)_1fr]">
-      <div className="sticky top-0 z-20 col-start-2 flex flex-col overflow-auto border-neutral-3 bg-background lg:h-svh lg:border-x">
-        <NavHeader navSections={navSections} />
-        <SideNav className="hidden lg:block" navSections={navSections} />
-      </div>
-
-      <main className="@container/main min-h-screen w-full border-neutral-3 border-r bg-background text-[15px] leading-normal lg:col-3 lg:justify-self-center">
+      <Nav navSections={navSections} />
+      <main className="@container/main w-full bg-background text-[15px] leading-normal lg:col-3 lg:justify-self-center xl:border-neutral-3 xl:border-r">
         {children}
       </main>
     </div>

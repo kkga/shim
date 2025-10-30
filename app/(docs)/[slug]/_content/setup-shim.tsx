@@ -5,7 +5,7 @@ import { Note } from "../../_components/note";
 export function SetupShimSection() {
   return (
     <Tabs>
-      <TabList size={3} variant="underline">
+      <TabList size={3}>
         <Tab id="cli">CLI</Tab>
         <Tab id="manual">Manual</Tab>
       </TabList>
