@@ -11,7 +11,7 @@ export function Toc({ toc }: Props) {
   }
 
   return (
-    <ul className="space-y-1.5 text-[13px]">
+    <ul className="space-y-1.5 text-sm">
       <li className="flex items-center gap-1">
         <Link className="inline-block" href="#" intent="neutral">
           Back to top ↑
@@ -20,10 +20,10 @@ export function Toc({ toc }: Props) {
       {toc.map((heading) => (
         <li
           className={match(heading.depth)
-            .with(2, () => "ml-0 font-medium")
+            .with(2, () => "ml-0")
             // biome-ignore lint/style/noMagicNumbers: no magic
             .with(3, () => "ml-4")
-            .otherwise(() => "ml-0 font-medium")}
+            .otherwise(() => "ml-0")}
           key={heading.value}
         >
           <Link className="inline-block" href={heading.href} intent="neutral">

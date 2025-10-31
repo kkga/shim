@@ -26,7 +26,7 @@ function Logo({ className, withType = true, size = 1 }: Props) {
         <span
           className={twMerge(
             "font-semibold text-neutral-text-contrast",
-            size === 1 ? "text-[13px] leading-5" : "text-[15px] leading-6"
+            size === 1 ? "text-sm leading-5" : "text-[15px] leading-6"
           )}
         >
           Shim

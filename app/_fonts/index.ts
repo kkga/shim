@@ -1,22 +1,17 @@
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Host_Grotesk, JetBrains_Mono } from "next/font/google";
 
-// export const fontMono = localFont({
-//   src: [{ path: "./commit-mono.woff2" }],
-//   variable: "--font-mono",
-//   display: "swap",
-// });
-
-export const fontSans = Inter({
+export const fontSans = Host_Grotesk({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
   style: ["normal", "italic"],
-  axes: ["opsz"],
+  weight: "variable",
 });
 
 export const fontMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
-  style: ["normal", "italic"],
+  style: ["normal"],
+  weight: ["400"],
 });

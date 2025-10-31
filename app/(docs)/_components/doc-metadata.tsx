@@ -48,7 +48,7 @@ export function DocMetadata({
   return (
     <DataList
       className="grid grid-cols-2 gap-x-6 gap-y-3 md:grid-flow-col md:grid-cols-none"
-      size={1}
+      size={2}
     >
       {docUrl && (
         <DataListItem

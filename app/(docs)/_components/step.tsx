@@ -14,20 +14,22 @@ export function Step({
 }) {
   return (
     <div
-      className="group/step col-span-full my-8 grid grid-cols-[auto_1fr] grid-rows-[20px_auto] gap-x-2 gap-y-2 text-sm leading-normal md:grid-cols-[auto_1fr_1fr] md:items-start md:gap-x-4 md:gap-y-0"
+      className="group/step col-span-full my-8 grid grid-cols-[auto_1fr] grid-rows-[24px_auto] gap-x-2 gap-y-2 text-[15px] leading-normal md:grid-cols-[auto_1fr_1fr] md:items-start md:gap-x-4 md:gap-y-0"
       style={{
         counterIncrement: "step",
         ...(reset ? { counterReset: "step" } : {}),
       }}
     >
       <div className="relative z-10 col-start-1! col-end-2! row-start-1!">
-        <div className="mb-4 flex size-5 items-center justify-center rounded bg-panel ring ring-neutral-line">
-          <span className="font-medium text-[11px] text-neutral-text-contrast tabular-nums before:[content:counter(step)]" />
+        <div className="mb-4 flex size-6 items-center justify-center rounded bg-panel">
+          <span className="font-medium text-neutral-text-contrast text-xs tabular-nums before:[content:counter(step)]" />
         </div>
       </div>
 
       {title && (
-        <strong className="col-start-2! row-start-1! leading-5">{title}</strong>
+        <strong className="col-start-2! row-start-1! text-base leading-6">
+          {title}
+        </strong>
       )}
 
       <div
@@ -44,7 +46,7 @@ export function Step({
           {typeof code === "string" ? (
             <CodeBlock
               className="m-0"
-              code={[{ title: "Terminal", content: code, highlight: false }]}
+              code={[{ content: code, highlight: false }]}
             />
           ) : (
             <CodeBlock className="m-0" code={code} />

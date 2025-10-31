@@ -105,7 +105,6 @@ export function resolveSection(
   section: DocSection,
   {
     componentName,
-    componentTitle,
     demos,
     slug,
   }: {
@@ -139,9 +138,7 @@ export function resolveSection(
     ? [
         {
           content: codeContent,
-          title:
-            section.codeTitle ??
-            `${section.title ? `${section.title} example` : `${componentTitle} example`}`,
+          title: section.codeTitle,
         },
       ]
     : undefined;

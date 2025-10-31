@@ -13,8 +13,11 @@ import {
   TableHeader,
 } from "@/shim-ui/table";
 
+<section>
 Shim includes a theme system that keeps tokens, variants, and layout patterns in sync across all components. It also provides a `<Theme>` provider that lets you set global defaults for size, variants, and label positions.
+</section>
 
+<section>
 ## Size
 
 Most components support four sizes that scale proportionally.
@@ -26,7 +29,9 @@ Most components support four sizes that scale proportionally.
   demo="size"
   demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8"
 />
+</section>
 
+<section>
 ## Variants
 
 ### Field variants
@@ -50,7 +55,9 @@ Buttons support `soft`, `solid`, and `ghost` variants.
   demoClassName="grid sm:grid-cols-3 gap-8"
   stacked
 />
+</section>
 
+<section>
 ## Set global defaults
 
 Wrap your application (or any subtree) in the `<Theme>` provider to broadcast shared props to every Shim component underneath it. The provider merges values from the nearest ancestor, so you can layer overrides as needed.
@@ -129,3 +136,4 @@ export function Callout() {
     </Row>
   </TableBody>
 </Table>
+</section>

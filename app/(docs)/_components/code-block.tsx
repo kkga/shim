@@ -48,7 +48,12 @@ function CodeHeader({
   selectedCode: CodeItem;
 }) {
   return (
-    <div className="sticky top-0 z-20 flex min-h-8 items-center bg-panel px-1 py-0">
+    <div
+      className={twMerge(
+        "sticky top-0 z-20 flex min-h-8 items-center px-1 py-0",
+        children ? "bg-panel" : "pointer-events-none absolute inset-x-0"
+      )}
+    >
       {children}
       <CodeActions
         content={selectedCode.raw || selectedCode.content}
@@ -70,7 +75,7 @@ function CodeActions({
   }
 
   return (
-    <div className="ml-auto flex gap-1">
+    <div className="pointer-events-auto ml-auto flex gap-1">
       {sourceUrl && (
         <LinkButton
           className="backdrop-blur-sm"
@@ -99,7 +104,7 @@ function CodePane({
   let { content, note } = code;
   let isContentLong = content.split("\n").length > LONG_CODE_LINE_THRESHOLD;
   let codeElement = (
-    <pre className="w-full overflow-x-scroll whitespace-pre px-3 py-2 **:[code]:text-[100%]">
+    <pre className="w-full overflow-x-scroll whitespace-pre px-3 py-[7px] **:[code]:text-[100%]">
       <Code highlight={highlight}>
         {content.replace(TRAILING_NEWLINES_REGEX, "")}
       </Code>
@@ -109,7 +114,7 @@ function CodePane({
   return (
     <>
       {note && (
-        <div className="flex items-start gap-2 border-neutral-3 border-b px-3 py-2 font-medium text-[13px] text-neutral-text *:m-0!">
+        <div className="flex items-start gap-2 border-neutral-3 border-b px-3 py-2 font-medium text-neutral-text *:m-0!">
           <WarningDiamondIcon className="h-lh" size={16} weight="duotone" />
           {note}
         </div>
@@ -145,7 +150,7 @@ export function CodeBlock(props: Props) {
   return (
     <div
       className={twMerge(
-        "codeblock group relative isolate my-8 min-w-0 overflow-clip rounded-lg bg-panel text-neutral-text text-xs leading-normal",
+        "codeblock group relative isolate my-8 min-w-0 overflow-clip rounded-lg bg-panel font-normal text-neutral-text text-xs leading-normal",
         props.className
       )}
     >
@@ -170,9 +175,11 @@ export function CodeBlock(props: Props) {
       ) : (
         <>
           <CodeHeader selectedCode={selectedCode}>
-            <span className="px-2 font-medium font-sans text-neutral-text text-xs leading-6">
-              {normalizedCode[0].title}
-            </span>
+            {normalizedCode[0].title && (
+              <span className="px-2 font-medium font-sans text-neutral-text text-xs leading-6">
+                {normalizedCode[0].title}
+              </span>
+            )}
           </CodeHeader>
           <CodePane code={selectedCode} highlight={selectedCode.highlight} />
         </>

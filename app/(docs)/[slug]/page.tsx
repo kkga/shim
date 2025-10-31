@@ -47,7 +47,7 @@ export default async function GuidePage({
         subtitle={description}
         title={title}
       />
-      <div className="prose -col-end-1 col-start-1 px-4 py-6 md:px-8 md:py-8 xl:col-end-5">
+      <div className="prose -col-end-1 col-start-1 xl:col-end-5">
         <GuideContent
           components={mdxComponents}
           styleUtilsSrc={styleUtilsSrc}

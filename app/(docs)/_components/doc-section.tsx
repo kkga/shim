@@ -28,7 +28,7 @@ function DocSection({
   return (
     <section
       className={twMerge(
-        "col-span-full grid scroll-mt-8 items-start gap-x-8 gap-y-8 px-4 py-6 md:px-8 md:py-8",
+        "col-span-full grid scroll-mt-8 items-start gap-x-8 gap-y-8",
         stacked ? "md:grid-cols-1" : "@3xl/main:grid-cols-[2fr_3fr]",
         className
       )}
@@ -36,7 +36,7 @@ function DocSection({
     >
       <div className="col-start-1 self-stretch">
         {title && (
-          <h3 className="mb-2 font-semibold text-base text-neutral-text-contrast">
+          <h3 className="mb-2 font-medium text-lg text-neutral-text-contrast leading-tight">
             {id ? (
               <a
                 className="no-underline hover:underline focus-visible:underline focus-visible:outline-none"
@@ -53,8 +53,8 @@ function DocSection({
         {children && (
           <div
             className={twJoin(
-              "space-y-2 text-neutral-text [&_code]:font-sans [&_code]:text-neutral-text-contrast [&_code]:italic",
-              stacked ? "max-w-(--body-width)" : "text-sm"
+              "space-y-2 text-neutral-text [&_code]:font-book [&_code]:font-sans [&_code]:text-neutral-text-contrast",
+              stacked ? "max-w-(--body-width)" : "text-[15px]"
             )}
           >
             {children}
@@ -64,7 +64,7 @@ function DocSection({
         {demo && (
           <div
             className={twMerge(
-              "not-first:mt-6 flex text-neutral-text text-sm",
+              "not-prose not-first:mt-6 flex text-[15px] text-neutral-text",
               demoLayout === "row"
                 ? "flex-row flex-wrap gap-2"
                 : "flex-col gap-4",
@@ -79,11 +79,7 @@ function DocSection({
       {code && (
         <CodeBlock
           className="m-0"
-          code={
-            Array.isArray(code)
-              ? code
-              : [{ content: code, title: `${title} example` }]
-          }
+          code={Array.isArray(code) ? code : [{ content: code }]}
           lang="tsx"
         />
       )}

@@ -119,7 +119,7 @@ export function NavPalette({ navSections }: Props) {
                   No results found
                 </p>
               )}
-              size={2}
+              size={3}
               withPopover={false}
             >
               {({ section, items: sectionItems }) => (
