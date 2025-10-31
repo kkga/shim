@@ -8,7 +8,6 @@
   --content-width-min: 800px;
   --content-width-max: 1120px;
   --content-width: minmax(var(--content-width-min), var(--content-width-max));
-  /* --body-width: 80ch; */
 
   --sh-class: var(--color-neutral-12);
   --sh-identifier: var(--color-neutral-12);
@@ -30,8 +29,8 @@
 
 .dark,
 .dark-theme {
-  --color-background: var(--color-neutral-1);
-  --color-background-subtle: var(--color-pure);
+  --color-background: var(--color-neutral-2);
+  --color-background-subtle: var(--color-neutral-1);
 }
 
 ::selection {
@@ -55,10 +54,6 @@ article {
     /* :where(section):not(:where(.not-prose, .not-prose *)) {
       @apply my-8;
     } */
-
-    :where(p, ul, ol):not(:where(.not-prose, .not-prose *)) {
-      @apply max-w-(--body-width);
-    }
 
     :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
       @apply col-span-full;
