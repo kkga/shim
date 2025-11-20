@@ -51,7 +51,7 @@ export function Nav({ navSections }: Props) {
   let { header: headerStyle, item: itemStyle } = style();
 
   return (
-    <div className="sticky top-0 z-30 col-start-2 flex flex-col border-neutral-3 bg-background-subtle lg:h-svh lg:border-l">
+    <div className="sticky top-0 z-30 col-start-2 flex flex-col border-neutral-3 bg-background lg:h-svh lg:border-x">
       <NavHeader navSections={navSections} />
 
       <nav

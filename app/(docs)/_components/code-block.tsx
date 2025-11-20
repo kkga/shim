@@ -51,7 +51,9 @@ function CodeHeader({
     <div
       className={twMerge(
         "sticky top-0 z-20 flex min-h-8 items-center px-1 py-0",
-        children ? "bg-panel" : "pointer-events-none absolute inset-x-0"
+        children
+          ? "bg-panel backdrop-blur-md"
+          : "pointer-events-none absolute inset-x-0"
       )}
     >
       {children}
@@ -87,7 +89,7 @@ function CodeActions({
           <ArrowUpRightIcon size={16} />
         </LinkButton>
       )}
-      {content && <CopyButton className="backdrop-blur-sm" text={content} />}
+      {content && <CopyButton className="backdrop-blur-md" text={content} />}
     </div>
   );
 }
@@ -150,7 +152,7 @@ export function CodeBlock(props: Props) {
   return (
     <div
       className={twMerge(
-        "group relative isolate my-8 min-w-0 overflow-clip rounded-lg bg-panel font-normal text-neutral-text text-xs leading-normal dark:ring dark:ring-neutral-3",
+        "group relative isolate my-8 min-w-0 overflow-clip rounded-lg bg-panel font-normal text-neutral-text text-xs leading-normal",
         props.className
       )}
     >

@@ -27,8 +27,8 @@
 
 .dark,
 .dark-theme {
-  --color-background: var(--color-neutral-2);
-  --color-background-subtle: var(--color-neutral-1);
+  /* --color-background: var(--color-neutral-2);
+  --color-background-subtle: var(--color-neutral-1); */
 }
 
 ::selection {
@@ -37,6 +37,16 @@
 
 html {
   min-width: 360px;
+}
+
+.bg-dots {
+  background-color: var(--color-background-subtle);
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    var(--color-neutral-2) 1px,
+    transparent 0
+  );
+  background-size: 4px 4px;
 }
 
 article {
