@@ -17,7 +17,7 @@ export function DocHeader({
   return (
     <header className={twJoin("border-neutral-3 border-b", className)}>
       <div className="px-4 py-6 md:px-8 md:py-8">
-        <h1 className="font-semibold text-neutral-text-contrast text-xl leading-tight lg:text-3xl">
+        <h1 className="font-semibold text-neutral-text-contrast text-xl leading-tight lg:text-2xl">
           {title}
         </h1>
         {subtitle && (

@@ -36,7 +36,7 @@ function DocSection({
     >
       <div className="col-start-1 self-stretch">
         {title && (
-          <h3 className="mb-2 font-medium text-lg text-neutral-text-contrast leading-tight">
+          <h3 className="mb-2 font-semibold text-base text-neutral-text-contrast leading-tight">
             {id ? (
               <a
                 className="no-underline hover:underline focus-visible:underline focus-visible:outline-none"

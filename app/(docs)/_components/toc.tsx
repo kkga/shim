@@ -21,7 +21,6 @@ export function Toc({ toc }: Props) {
         <li
           className={match(heading.depth)
             .with(2, () => "ml-0")
-            // biome-ignore lint/style/noMagicNumbers: no magic
             .with(3, () => "ml-4")
             .otherwise(() => "ml-0")}
           key={heading.value}

@@ -18,7 +18,6 @@ function Logo({ className, withType = true, size = 1 }: Props) {
     >
       <ShapesIcon
         className="text-neutral-text-contrast"
-        // biome-ignore lint/style/noMagicNumbers: no magic
         size={size === 1 ? 16 : 20}
         weight="fill"
       />
