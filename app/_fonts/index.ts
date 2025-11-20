@@ -1,14 +1,14 @@
-import { Host_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Fragment_Mono, TASA_Explorer } from "next/font/google";
 
-export const fontSans = Host_Grotesk({
+export const fontSans = TASA_Explorer({
   subsets: ["latin"],
+  fallback: ["system-ui", "sans-serif"],
   variable: "--font-sans",
   display: "swap",
-  style: ["normal", "italic"],
   weight: "variable",
 });
 
-export const fontMono = JetBrains_Mono({
+export const fontMono = Fragment_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
