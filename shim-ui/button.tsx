@@ -242,7 +242,6 @@ function ProgressCircle({ className, ...props }: ProgressCircleProps) {
           r={r}
           stroke="currentColor"
           strokeDasharray="100 200"
-          // biome-ignore lint/style/noMagicNumbers: no need to extract
           strokeDashoffset={100 - 25}
           strokeLinecap="round"
           strokeWidth={1.5}

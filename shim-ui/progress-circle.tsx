@@ -63,7 +63,6 @@ function ProgressCircle(props: ProgressCircleProps) {
             stroke="currentColor"
             strokeDasharray="100 200"
             strokeDashoffset={
-              // biome-ignore lint/style/noMagicNumbers: no magic, just optics
               isIndeterminate ? 100 - 30 : 100 - (percentage ?? 0)
             }
             strokeLinecap="round"
