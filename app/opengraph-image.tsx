@@ -1,5 +1,3 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { ShapesIcon } from "@phosphor-icons/react/dist/ssr";
 import { ImageResponse } from "next/og";
 
@@ -13,11 +11,11 @@ export const size = {
 export const contentType = "image/png";
 
 // Image generation
-export default async function Image() {
+export default function Image() {
   // Font loading, process.cwd() is Next.js project directory
-  const font = await readFile(
-    join(process.cwd(), "app/_fonts/MonaSans-SemiBold.ttf")
-  );
+  // const font = await readFile(
+  //   join(process.cwd(), "app/_fonts/MonaSans-SemiBold.ttf")
+  // );
 
   return new ImageResponse(
     // ImageResponse JSX element
@@ -48,14 +46,14 @@ export default async function Image() {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
       ...size,
-      fonts: [
-        {
-          name: "Mona Sans",
-          data: font,
-          style: "normal",
-          weight: 600,
-        },
-      ],
+      // fonts: [
+      //   {
+      //     name: "Mona Sans",
+      //     data: font,
+      //     style: "normal",
+      //     weight: 600,
+      //   },
+      // ],
     }
   );
 }
