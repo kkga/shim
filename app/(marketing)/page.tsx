@@ -1,6 +1,6 @@
 import {
   ArrowRightIcon,
-  ArrowSquareOutIcon,
+  ArrowUpRightIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { Logo } from "@/app/_components/logo";
 import { Badge } from "@/shim-ui/badge";
@@ -20,7 +20,7 @@ export default function Page() {
             </Badge>
           </div>
 
-          <p className="mt-4 mb-4 text-balance font-medium text-4xl text-neutral-text-contrast leading-10 tracking-tight">
+          <p className="mt-8 mb-4 text-balance font-semibold text-3xl text-neutral-text-contrast leading-8 tracking-tight">
             Toolkit for refined interfaces.
           </p>
           <p className="m-0 text-balance font-book text-neutral-text">
@@ -30,7 +30,7 @@ export default function Page() {
 
           <div className="mt-8 flex gap-6">
             <Link
-              className="flex items-center gap-1 font-medium"
+              className="flex items-center gap-0.5 font-medium"
               href="/get-started"
               intent="accent"
             >
@@ -38,13 +38,13 @@ export default function Page() {
               <ArrowRightIcon size={16} />
             </Link>
             <Link
-              className="flex items-center gap-1 font-medium"
+              className="flex items-center gap-0.5 font-medium"
               href="https://github.com/kkga/shim"
-              intent="accent"
+              intent="neutral"
               target="_blank"
             >
               GitHub
-              <ArrowSquareOutIcon size={16} />
+              <ArrowUpRightIcon size={16} />
             </Link>
           </div>
 

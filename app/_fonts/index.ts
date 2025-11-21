@@ -1,6 +1,6 @@
-import { Fragment_Mono, TASA_Explorer } from "next/font/google";
+import { Fragment_Mono, TASA_Orbiter } from "next/font/google";
 
-export const fontSans = TASA_Explorer({
+export const fontSans = TASA_Orbiter({
   subsets: ["latin"],
   fallback: ["system-ui", "sans-serif"],
   variable: "--font-sans",

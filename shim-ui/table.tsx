@@ -77,21 +77,21 @@ const styles = {
     base: [
       "group/row peer -outline-offset-2 relative inset-shadow-[0_-1px_0_var(--color-neutral-line)] text-neutral-text text-xs last:inset-shadow-none",
       // selection mode
-      "data-[selection-mode]:cursor-default data-[selection-mode]:select-none",
+      "data-selection-mode:cursor-default data-selection-mode:select-none",
       // hovered (in selection mode)
-      "data-[hovered]:bg-neutral-bg-hover",
+      "data-hovered:bg-neutral-bg-hover",
       // selected
-      "data-[selected]:bg-accent-bg-hover",
+      "data-selected:bg-accent-bg-hover",
       // hovered+selected (in selection mode)
-      "data-[selected]:data-[hovered]:bg-accent-bg-active",
+      "data-selected:data-hovered:bg-accent-bg-active",
       // disabled
-      "data-[disabled]:text-neutral-text-subtle",
+      "data-disabled:text-neutral-text-subtle",
     ],
   }),
 
   cell: tv({
     extend: focusStyle,
-    base: ["-outline-offset-2 min-h-8 px-3 py-2 align-text-bottom"],
+    base: ["-outline-offset-2 min-h-8 px-3 py-2"],
   }),
 };
 

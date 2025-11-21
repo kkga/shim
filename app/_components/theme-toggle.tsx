@@ -111,7 +111,11 @@ function ThemeToggle({ size }: { size?: 1 | 2 } = { size: 1 }) {
               light: resolvedTheme === "light",
             })}
           >
-            <CircleHalfIcon size={16} weight="fill" />
+            <CircleHalfIcon
+              className={theme === "dark" ? "rotate-0" : "rotate-180"}
+              size={16}
+              weight="fill"
+            />
           </div>
         </div>
       )}
