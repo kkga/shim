@@ -44,7 +44,7 @@ export function CategoryIcon({ name }: Props): React.ReactNode {
       .with("Color", () => <PaletteIcon {...iconProps} />)
 
       // Guide Icons
-      .with("Get started", () => <FlagBannerIcon {...iconProps} />)
+      .with("Quick start", () => <FlagBannerIcon {...iconProps} />)
       .with("Theming", () => <SwatchesIcon {...iconProps} />)
       .with("Changelog", () => <LightningIcon {...iconProps} />)
       .with("GitHub", () => <GithubLogoIcon {...iconProps} />)

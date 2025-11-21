@@ -31,7 +31,7 @@ export default function Page() {
           <div className="mt-8 flex gap-6">
             <Link
               className="flex items-center gap-0.5 font-medium"
-              href="/get-started"
+              href="/quick-start"
               intent="accent"
             >
               Documentation
