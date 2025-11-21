@@ -20,10 +20,10 @@ import type { NavItem } from "./utils";
 const style = tv({
   slots: {
     header:
-      "col-span-full flex h-6 items-center gap-1.5 px-2 font-medium text-neutral-text-contrast text-sm leading-none",
+      "col-span-full flex h-7 items-center gap-1.5 px-2 font-medium text-[15px] text-neutral-text-contrast leading-none",
     item: [
       focusStyle(),
-      "flex h-6 items-center gap-2 rounded px-2 text-neutral-text text-sm leading-none",
+      "flex h-7 items-center gap-2 rounded px-2 text-[15px] text-neutral-text leading-none",
     ],
   },
   variants: {
