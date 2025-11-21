@@ -468,7 +468,7 @@ export function ExampleRepo() {
                 v4.
               </p>
 
-              <DataList className="mb-2" labelPosition="side">
+              <DataList className="mb-2 gap-x-2" labelPosition="side">
                 <DataListItem
                   label={<LinkIcon size={16} />}
                   value="shim.kkga.me"
@@ -485,7 +485,7 @@ export function ExampleRepo() {
 
               <Separator />
 
-              <DataList labelPosition="side">
+              <DataList className="gap-x-2" labelPosition="side">
                 <DataListItem
                   label={<ScalesIcon size={16} />}
                   value="MIT License"
