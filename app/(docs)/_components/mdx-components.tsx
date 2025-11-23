@@ -10,6 +10,7 @@ import { CodeBlock } from "./code-block";
 import { DocSection } from "./doc-section";
 import { Note } from "./note";
 import { Step } from "./step";
+import { Tooltip } from "./tooltip";
 
 function Pre({
   children,
@@ -66,7 +67,6 @@ function getDemoCode(
 
   try {
     let content = getFileSource(source);
-
     return [
       {
         content,
@@ -157,6 +157,7 @@ export const mdxComponents: MDXComponents = {
   Note,
   Step,
   CodeBlock,
+  Tooltip,
 };
 
 declare global {

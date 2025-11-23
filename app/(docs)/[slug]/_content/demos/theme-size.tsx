@@ -12,7 +12,7 @@ export default () =>
   ([1, 2, 3, 4] as const).map((size) => (
     <div className="flex flex-col gap-3" key={size}>
       <span className="font-semibold text-neutral-text-subtle text-xs">
-        size: {size}
+        Size: {size}
       </span>
 
       <div className="flex gap-2">

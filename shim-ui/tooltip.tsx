@@ -10,7 +10,7 @@ import { tv } from "tailwind-variants";
 import { cxRenderProps } from "@/shim-ui/lib/style";
 
 const style = tv({
-  base: "flex max-w-64 animate-slide items-center gap-1 overflow-hidden rounded bg-panel px-1.5 py-0.5 font-book text-[12px] text-neutral-text-contrast shadow-[var(--shadow-sm)] outline-0",
+  base: "flex max-w-64 animate-slide items-center gap-1 overflow-hidden rounded bg-panel px-1.5 py-0.5 font-book text-neutral-text-contrast text-xs shadow-(--shadow-sm) outline-0",
 });
 
 function Tooltip({ className, offset = 4, ...props }: RacTooltipProps) {

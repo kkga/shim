@@ -14,7 +14,11 @@ import {
 } from "@/shim-ui/table";
 
 <section>
-Shim includes a theme system that keeps tokens, variants, and layout patterns in sync across all components. It also provides a `<Theme>` provider that lets you set global defaults for size, variants, and label positions.
+## Overview
+
+Many Shim components support theming options like size and visual variants to help you adapt the look and feel to your design needs.
+You can also set global defaults using a theme provider to ensure consistency across your application.
+
 </section>
 
 <section>
@@ -36,25 +40,29 @@ Most components support four sizes that scale proportionally.
 
 ### Field variants
 
-Forms and field-based components support `classic`, `soft` and `outline` variants that adjust visual styles while preserving spacing and layout.
+Forms and field-based components support "classic", "soft", and "outline" variants that adjust visual styles while preserving spacing and layout.
 
 <ComponentDemo
   component="theme"
   demo="field-variant"
   demoClassName="grid sm:grid-cols-3 gap-8"
+  codeTitle="Field variants example"
   stacked
 />
 
 ### Button variants
 
-Buttons support `soft`, `solid`, and `ghost` variants.
+Buttons support "soft", "ghost", and "solid" variants for different visual emphasis levels.
+Note that ToggleButton and ToggleButtonGroup do not support the "solid" variant to avoid confusion with selected states.
 
 <ComponentDemo
   component="theme"
   demo="button-variant"
   demoClassName="grid sm:grid-cols-3 gap-8"
+  codeTitle="Button variants example"
   stacked
 />
+
 </section>
 
 <section>
@@ -89,7 +97,10 @@ import { Button } from "@/shim-ui/button";
 export function Callout() {
   return (
     <Theme buttonVariant="solid">
-      <Button>Download</Button>
+      {...}
+      <Button>Get started</Button>
+      <Button>Learn more</Button>
+      {...}
     </Theme>
   );
 }
@@ -97,43 +108,60 @@ export function Callout() {
 
 ### Theme API reference
 
-<Table aria-label="Theme API reference" className="w-full not-prose" size={2}>
+<Table aria-label="Theme API reference" className="w-full not-prose" size={1}>
   <TableHeader>
     <Column isRowHeader>Prop</Column>
     <Column>Type</Column>
     <Column>Default</Column>
-    <Column>Description</Column>
   </TableHeader>
+
   <TableBody>
     <Row>
-      <Cell className="flex items-center gap-1">`size`</Cell>
+      <Cell className="flex items-center gap-1">
+        `size`
+
+        <Tooltip text="Sets the base size for all components." />
+      </Cell>
+
       <Cell>`1 | 2 | 3 | 4`</Cell>
       <Cell>`1`</Cell>
-      <Cell>
-        Sets the base size for all components. Sizes scale proportionally across
-        components.
-      </Cell>
     </Row>
+
     <Row>
-      <Cell>`labelPosition`</Cell>
+      <Cell className="flex items-center gap-1">
+        `labelPosition`
+
+        <Tooltip text="Sets the default position for labels on field-based components." />
+      </Cell>
+
       <Cell>`"side" | "top"`</Cell>
       <Cell>`"side"`</Cell>
-      <Cell>
-        Sets the default position for labels on field-based components.
-      </Cell>
     </Row>
+
     <Row>
-      <Cell>`fieldVariant`</Cell>
+      <Cell className="flex items-center gap-1">
+        `fieldVariant`
+
+        <Tooltip text="Sets the default variant for field-based components." />
+      </Cell>
+
       <Cell>`"classic" | "soft" | "outline"`</Cell>
       <Cell>`"classic"`</Cell>
-      <Cell>Sets the default variant for field-based components.</Cell>
     </Row>
+
     <Row>
-      <Cell>`buttonVariant`</Cell>
+      <Cell className="flex items-center gap-1">
+        `buttonVariant`
+
+        <Tooltip text="Sets the default variant for buttons." />
+      </Cell>
+
       <Cell>`"soft" | "solid" | "ghost"`</Cell>
       <Cell>`"soft"`</Cell>
-      <Cell>Sets the default variant for buttons.</Cell>
     </Row>
+
   </TableBody>
+
 </Table>
+
 </section>
