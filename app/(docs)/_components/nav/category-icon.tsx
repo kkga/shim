@@ -14,6 +14,7 @@ import {
   PathIcon,
   RowsIcon,
   SwatchesIcon,
+  TerminalIcon,
   TextboxIcon,
   WarningDiamondIcon,
   XLogoIcon,
@@ -47,6 +48,7 @@ export function CategoryIcon({ name }: Props): React.ReactNode {
       .with("Quick start", () => <FlagBannerIcon {...iconProps} />)
       .with("Theming", () => <SwatchesIcon {...iconProps} />)
       .with("Changelog", () => <LightningIcon {...iconProps} />)
+      .with("CLI", () => <TerminalIcon {...iconProps} />)
       .with("GitHub", () => <GithubLogoIcon {...iconProps} />)
       .with("Twitter", () => <XLogoIcon {...iconProps} />)
 

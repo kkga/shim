@@ -1,0 +1,217 @@
+---
+title: CLI
+description: Use the Shim CLI to initialize and install components.
+order: 3
+---
+
+import {
+  Cell,
+  Column,
+  Row,
+  Table,
+  TableBody,
+  TableHeader,
+} from "@/shim-ui/table";
+
+<section>
+## Overview
+
+The Shim CLI lets you bootstrap configuration and install components (and their dependencies) straight into your project.
+
+</section>
+
+<section>
+## Usage
+
+Run commands on demand via **pnpm dlx** (no local install required):
+
+```bash title="Initialize Shim and add components"
+pnpm dlx @kkga/shim init
+pnpm dlx @kkga/shim add button dialog form
+```
+
+For convenience, you can add a script to your package.json:
+
+```json title="package.json"
+{
+  "scripts": {
+    "shim": "pnpm dlx @kkga/shim"
+  }
+}
+```
+
+Then run commands like this:
+
+```bash
+pnpm shim add button
+```
+
+</section>
+
+<section>
+## Commands
+
+### shim init
+
+Initialize Shim in your project. Creates the configuration file and installs utility and CSS files.
+
+- Creates a **shim.config.json** configuration file
+- Downloads required utility files (**style.ts**, **theme.tsx**) to your utils directory
+- Downloads CSS theme file (**theme.css**) to your styles directory
+- Ensures your project is ready for component installation
+
+```bash
+shim init [options]
+```
+
+<Table aria-label="Shim init command options" className="w-full not-prose" size={1}>
+  <TableHeader>
+    <Column isRowHeader>Option</Column>
+    <Column>Description</Column>
+  </TableHeader>
+
+  <TableBody>
+    <Row>
+      <Cell>
+        <code>--components-path &lt;path></code>
+      </Cell>
+      <Cell>
+        Destination for components (default: <code>components</code>).
+      </Cell>
+    </Row>
+
+    <Row>
+      <Cell>
+        <code>--utils-path &lt;path></code>
+      </Cell>
+      <Cell>
+        Destination for utility files (default: <code>utils</code>).
+      </Cell>
+    </Row>
+
+    <Row>
+      <Cell>
+        <code>--css-path &lt;path></code>
+      </Cell>
+      <Cell>
+        Destination for CSS files (default: <code>styles</code>).
+      </Cell>
+    </Row>
+
+    <Row>
+      <Cell>
+        <code>-f, --force</code>
+      </Cell>
+      <Cell>Overwrite existing config and installed files.</Cell>
+    </Row>
+
+  </TableBody>
+</Table>
+
+### shim add
+
+Install one or more components by name. Automatically installs component dependencies.
+
+```bash
+shim add <components...> [options]
+```
+
+<Table aria-label="Shim add command options" className="w-full not-prose" size={1}>
+  <TableHeader>
+    <Column isRowHeader>Option</Column>
+    <Column>Description</Column>
+  </TableHeader>
+
+  <TableBody>
+    <Row>
+      <Cell>
+        <code>\<components...></code>
+      </Cell>
+      <Cell>
+        One or more component names (e.g. <code>button dialog form</code>).
+      </Cell>
+    </Row>
+
+    <Row>
+      <Cell>
+        <code>-p, --path \<path></code>
+      </Cell>
+      <Cell>
+        Destination for installed components (overrides config <code>componentsPath</code>).
+      </Cell>
+    </Row>
+
+    <Row>
+      <Cell>
+        <code>-f, --overwrite</code>
+      </Cell>
+      <Cell>Overwrite files that already exist.</Cell>
+    </Row>
+
+  </TableBody>
+</Table>
+
+</section>
+
+<section>
+
+## Configuration File
+
+Running **shim init** creates a configuration file in your project root:
+
+```json title="shim.config.json"
+{
+  "componentsPath": "components",
+  "utilsPath": "utils",
+  "cssPath": "styles"
+}
+```
+
+<Table aria-label="Shim configuration file options" className="w-full not-prose" size={1}>
+  <TableHeader>
+    <Column isRowHeader>Option</Column>
+    <Column>Description</Column>
+  </TableHeader>
+
+  <TableBody>
+    <Row>
+      <Cell>
+        <code>componentsPath</code>
+      </Cell>
+      <Cell>
+        Default destination for installed components.
+      </Cell>
+    </Row>
+
+    <Row>
+      <Cell>
+        <code>utilsPath</code>
+      </Cell>
+      <Cell>
+        Destination for downloaded utility files.
+      </Cell>
+    </Row>
+
+    <Row>
+      <Cell>
+        <code>cssPath</code>
+      </Cell>
+      <Cell>
+        Destination for downloaded CSS files.
+      </Cell>
+    </Row>
+
+  </TableBody>
+</Table>
+
+</section>
+
+<section>
+  ## Troubleshooting
+
+- Use `--overwrite` / `--force` if existing files block installation.
+- For path-related options, reference directories from your project root (avoid full filesystem paths like /Users/... ).
+- If a component fails to install, re-run with a single name to isolate the issue.
+- Remove partially installed files before retrying to avoid stale code.
+
+</section>

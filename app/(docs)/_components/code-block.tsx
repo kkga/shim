@@ -152,7 +152,7 @@ export function CodeBlock(props: Props) {
   return (
     <div
       className={twMerge(
-        "group relative isolate my-8 min-w-0 overflow-clip rounded-lg bg-panel font-normal text-neutral-text text-xs leading-normal",
+        "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel font-normal text-neutral-text text-xs leading-normal",
         props.className
       )}
     >

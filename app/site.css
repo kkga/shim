@@ -1,4 +1,3 @@
-/** biome-ignore-all lint/suspicious/noUnknownAtRules: tailwind at-rule syntax */
 @import "../shim-ui/css/theme.css";
 
 :root {
@@ -23,12 +22,6 @@
 @theme {
   --color-background: var(--color-pure);
   --color-background-subtle: var(--color-neutral-1);
-}
-
-.dark,
-.dark-theme {
-  /* --color-background: var(--color-neutral-2);
-  --color-background-subtle: var(--color-neutral-1); */
 }
 
 ::selection {
@@ -57,10 +50,6 @@ article {
   }
 
   .prose {
-    /* :where(section):not(:where(.not-prose, .not-prose *)) {
-      @apply my-8;
-    } */
-
     :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
       @apply col-span-full;
     }
@@ -70,11 +59,11 @@ article {
     }
 
     :where(h2):not(:where(.not-prose, .not-prose *)) {
-      @apply not-first:mt-16 mb-4 scroll-mt-6 text-balance font-semibold text-lg lg:text-xl text-neutral-text-contrast;
+      @apply not-first:mt-16 mb-4 scroll-mt-6 text-balance font-semibold text-lg text-neutral-text-contrast;
     }
 
     :where(h3):not(:where(.not-prose, .not-prose *)) {
-      @apply not-first:mt-8 mb-2 scroll-mt-6 text-balance font-medium text-base lg:text-lg text-neutral-text-contrast;
+      @apply not-first:mt-8 mb-2 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast;
     }
 
     :where(h4):not(:where(.not-prose, .not-prose *)) {
@@ -98,11 +87,11 @@ article {
     }
 
     :where(ul):not(:where(.not-prose, .not-prose *)) {
-      @apply not-last:my-4 list-outside list-disc pl-4;
+      @apply not-last:my-4 list-outside list-disc pl-8;
     }
 
     :where(li):not(:where(.not-prose, .not-prose *)) {
-      @apply not-last:mb-4;
+      @apply not-last:mb-0;
     }
 
     :where(hr):not(:where(.not-prose, .not-prose *)) {
@@ -119,6 +108,18 @@ article {
 
     :where(code):not(:where(.not-prose, .not-prose *)) {
       @apply min-w-min font-mono text-accent-text;
+    }
+
+    :where(dl):not(:where(.not-prose, .not-prose *)) {
+      @apply my-4;
+    }
+
+    :where(dt):not(:where(.not-prose, .not-prose *)) {
+      @apply font-medium text-neutral-text-contrast;
+    }
+
+    :where(dd):not(:where(.not-prose, .not-prose *)) {
+      @apply mb-4 ml-4;
     }
   }
 }
