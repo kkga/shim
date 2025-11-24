@@ -6,7 +6,7 @@ import { ToggleButtonGroup } from "@/shim-ui/toggle-button-group";
 export default () => (
   <>
     <div className="grid grid-cols-[1fr_auto] gap-4">
-      <span className="col-span-full font-semibold text-neutral-text-subtle text-xs">
+      <span className="col-span-full font-semibold text-neutral-text-subtle text-sm">
         Variant: soft
       </span>
 
@@ -22,7 +22,7 @@ export default () => (
     </div>
 
     <div className="grid grid-cols-[1fr_auto] gap-4">
-      <span className="col-span-full font-semibold text-neutral-text-subtle text-xs">
+      <span className="col-span-full font-semibold text-neutral-text-subtle text-sm">
         Variant: ghost
       </span>
 
@@ -42,7 +42,7 @@ export default () => (
     </div>
 
     <div className="grid grid-cols-[1fr_auto] gap-4">
-      <span className="col-span-full font-semibold text-neutral-text-subtle text-xs">
+      <span className="col-span-full font-semibold text-neutral-text-subtle text-sm">
         Variant: solid
       </span>
 

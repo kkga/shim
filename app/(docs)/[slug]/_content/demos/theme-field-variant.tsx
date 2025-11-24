@@ -9,7 +9,7 @@ import { TextField } from "@/shim-ui/text-field";
 export default () =>
   (["classic", "soft", "outline"] as const).map((variant) => (
     <div className="grid grid-cols-4 gap-4" key={variant}>
-      <span className="col-span-full font-semibold text-neutral-text-subtle text-xs">
+      <span className="col-span-full font-semibold text-neutral-text-subtle text-sm">
         Variant: {variant}
       </span>
 
