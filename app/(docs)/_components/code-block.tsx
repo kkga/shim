@@ -50,9 +50,9 @@ function CodeHeader({
   return (
     <div
       className={twMerge(
-        "sticky top-0 z-20 flex min-h-8 items-center px-1 py-0",
+        "z-20 flex min-h-8 items-center rounded-t-lg px-1 py-0",
         children
-          ? "bg-panel backdrop-blur-md"
+          ? "border-b border-b-neutral-3 bg-panel backdrop-blur-md"
           : "pointer-events-none absolute inset-x-0"
       )}
     >
@@ -106,7 +106,11 @@ function CodePane({
   let { content, note } = code;
   let isContentLong = content.split("\n").length > LONG_CODE_LINE_THRESHOLD;
   let codeElement = (
-    <pre className="w-full overflow-x-scroll whitespace-pre px-3 py-[7px] **:[code]:text-[100%]">
+    <pre
+      className={twMerge(
+        "min-h-8 w-full overflow-x-scroll whitespace-pre px-3 py-2 **:[code]:text-[100%]"
+      )}
+    >
       <Code highlight={highlight}>
         {content.replace(TRAILING_NEWLINES_REGEX, "")}
       </Code>
@@ -152,7 +156,7 @@ export function CodeBlock(props: Props) {
   return (
     <div
       className={twMerge(
-        "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel font-normal text-neutral-text text-xs leading-normal",
+        "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel font-normal text-neutral-text text-xs leading-5",
         props.className
       )}
     >

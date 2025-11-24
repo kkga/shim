@@ -42,7 +42,7 @@ For convenience, you can add a script to your package.json:
 
 Then run commands like this:
 
-```bash
+```bash title="Using Shim CLI via package script"
 pnpm shim add button
 ```
 
@@ -60,13 +60,13 @@ Initialize Shim in your project. Creates the configuration file and installs uti
 - Downloads CSS theme file (**theme.css**) to your styles directory
 - Ensures your project is ready for component installation
 
-```bash
+```bash title="Terminal"
 shim init [options]
 ```
 
-<Table aria-label="Shim init command options" className="w-full not-prose" size={1}>
+<Table aria-label="Shim init command options" className="w-full not-prose table-fixed" size={1}>
   <TableHeader>
-    <Column isRowHeader>Option</Column>
+    <Column className="w-1/3" isRowHeader>Option</Column>
     <Column>Description</Column>
   </TableHeader>
 
@@ -112,13 +112,13 @@ shim init [options]
 
 Install one or more components by name. Automatically installs component dependencies.
 
-```bash
+```bash title="Terminal"
 shim add <components...> [options]
 ```
 
-<Table aria-label="Shim add command options" className="w-full not-prose" size={1}>
+<Table aria-label="Shim add command options" className="w-full not-prose table-fixed" size={1}>
   <TableHeader>
-    <Column isRowHeader>Option</Column>
+    <Column className="w-1/3" isRowHeader>Option</Column>
     <Column>Description</Column>
   </TableHeader>
 
@@ -167,9 +167,9 @@ Running **shim init** creates a configuration file in your project root:
 }
 ```
 
-<Table aria-label="Shim configuration file options" className="w-full not-prose" size={1}>
+<Table aria-label="Shim configuration file options" className="w-full not-prose table-fixed" size={1}>
   <TableHeader>
-    <Column isRowHeader>Option</Column>
+    <Column className="w-1/3" isRowHeader>Option</Column>
     <Column>Description</Column>
   </TableHeader>
 

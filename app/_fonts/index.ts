@@ -1,4 +1,4 @@
-import { Fragment_Mono, TASA_Orbiter } from "next/font/google";
+import { Geist_Mono, TASA_Orbiter } from "next/font/google";
 
 export const fontSans = TASA_Orbiter({
   subsets: ["latin"],
@@ -8,7 +8,7 @@ export const fontSans = TASA_Orbiter({
   weight: "variable",
 });
 
-export const fontMono = Fragment_Mono({
+export const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",

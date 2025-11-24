@@ -46,7 +46,7 @@ export function Step({
           {typeof code === "string" ? (
             <CodeBlock
               className="m-0"
-              code={[{ content: code, highlight: false }]}
+              code={[{ content: code, title: "Terminal", highlight: false }]}
             />
           ) : (
             <CodeBlock className="m-0" code={code} />

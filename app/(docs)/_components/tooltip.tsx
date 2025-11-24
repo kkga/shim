@@ -7,14 +7,14 @@ import { Tooltip as ShimTooltip, TooltipTrigger } from "@/shim-ui/tooltip";
 export function Tooltip({
   text,
   children,
-  placement,
+  placement = "right",
 }: {
   text: string;
   children?: ReactNode;
   placement?: TooltipProps["placement"];
 }) {
   return (
-    <TooltipTrigger>
+    <TooltipTrigger delay={0}>
       <Focusable>
         {children ? (
           <span>{children}</span>

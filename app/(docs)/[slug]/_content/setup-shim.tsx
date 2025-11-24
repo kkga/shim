@@ -18,12 +18,12 @@ export function SetupShimSection() {
             {
               title: "tsconfig.json",
               content: `{
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["./*"]
-      }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
     }
+  }
 }`,
             },
           ]}
