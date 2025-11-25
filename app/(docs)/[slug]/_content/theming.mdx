@@ -19,11 +19,15 @@ import { Tooltip } from "../../_components/tooltip";
 Many Shim components support theming options like size and visual variants to help you adapt the look and feel to your design needs.
 You can also set global defaults using a theme provider to ensure consistency across your application.
 
+***
+
 ## Size
 
 Most components support four sizes that scale proportionally.
 
 <ComponentDemo component="theme" codeTitle="Size example" stacked demo="size" demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8" />
+
+***
 
 ## Variants
 
@@ -39,6 +43,8 @@ Buttons support "soft", "ghost", and "solid" variants for different visual empha
 Note that ToggleButton and ToggleButtonGroup do not support the "solid" variant to avoid confusion with selected states.
 
 <ComponentDemo component="theme" demo="button-variant" demoClassName="grid sm:grid-cols-3 gap-8" codeTitle="Button variants example" stacked />
+
+***
 
 ## Set global defaults
 
@@ -81,7 +87,7 @@ export function Callout() {
 
 ### Theme API reference
 
-<Table aria-label="Theme API reference" className="table-fixed" size={2} variant="ghost">
+<Table aria-label="Theme API reference" className="table-fixed" size={2} variant="zebra">
   <TableHeader>
     <Column className="md:w-1/4" isRowHeader>Prop</Column>
     <Column>Type</Column>

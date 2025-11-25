@@ -8,23 +8,23 @@ export function NavFooter() {
       <LinkButton
         href="https://github.com/kkga/shim"
         intent="neutral"
-        isIconOnly
         size={1}
         target="_blank"
         variant="ghost"
       >
         <GithubLogoIcon size={16} />
+        GitHub
       </LinkButton>
       <LinkButton
         className="mr-auto"
         href="https://twitter.com/kkga_"
         intent="neutral"
-        isIconOnly
         size={1}
         target="_blank"
         variant="ghost"
       >
         <XLogoIcon size={16} />
+        kkga_
       </LinkButton>
 
       <ThemeToggle size={1} />

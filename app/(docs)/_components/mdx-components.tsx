@@ -103,7 +103,7 @@ function ComponentDemo({
 
   return (
     <DocSection
-      className="p-0!"
+      className="border-none p-0!"
       code={codeSnippets}
       demo={<DemoComponent />}
       demoClassName={demoClassName}

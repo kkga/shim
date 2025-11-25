@@ -152,7 +152,7 @@ export function CodeBlock(props: Props) {
   return (
     <div
       className={cn(
-        "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel font-normal text-neutral-text text-xs leading-5",
+        "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-background font-normal text-neutral-text text-xs leading-5",
         props.className
       )}
     >

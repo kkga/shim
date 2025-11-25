@@ -5,12 +5,12 @@ import { Note } from "../../_components/note";
 export function SetupShimSection() {
   return (
     <Tabs>
-      <TabList size={3}>
+      <TabList className="mb-8" size={3}>
         <Tab id="cli">CLI</Tab>
         <Tab id="manual">Manual</Tab>
       </TabList>
 
-      <TabPanel className="py-8" id="cli">
+      <TabPanel id="cli">
         <p>The Shim CLI helps you set up your project and add components.</p>
 
         <Step
@@ -58,7 +58,7 @@ export function SetupShimSection() {
           </p>
         </Step>
       </TabPanel>
-      <TabPanel className="py-8" id="manual">
+      <TabPanel id="manual">
         <Note intent="warning" size={2} title="Todo">
           Manual setup instructions.
         </Note>
