@@ -3,7 +3,7 @@
 import { ArrowUpRightIcon, WarningDiamondIcon } from "@phosphor-icons/react";
 import React, { type ComponentPropsWithoutRef, useMemo, useState } from "react";
 import type { Key } from "react-aria-components";
-import { cn, cx } from "tailwind-variants";
+import { cn } from "tailwind-variants";
 import { LinkButton } from "@/shim-ui/button";
 import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
 import { Code } from "./code";
@@ -151,7 +151,7 @@ export function CodeBlock(props: Props) {
 
   return (
     <div
-      className={cx(
+      className={cn(
         "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel font-normal text-neutral-text text-xs leading-5",
         props.className
       )}

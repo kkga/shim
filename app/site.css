@@ -32,14 +32,16 @@ html {
   min-width: 360px;
 }
 
-.bg-dots {
+.bg-pattern {
   background-color: var(--color-background-subtle);
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    var(--color-neutral-2) 1px,
-    transparent 0
+  background-image: repeating-linear-gradient(
+    0deg,
+    var(--gray-a3) 0px,
+    var(--gray-a3) 1px,
+    transparent 1px,
+    transparent 2px
   );
-  background-size: 4px 4px;
+  background-attachment: fixed;
 }
 
 article {

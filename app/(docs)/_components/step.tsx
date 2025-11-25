@@ -1,4 +1,3 @@
-import { cn } from "tailwind-variants";
 import { CodeBlock, type CodeItem } from "./code-block";
 
 export function Step({
@@ -21,23 +20,16 @@ export function Step({
       }}
     >
       <div className="relative z-10 col-start-1! col-end-2! row-start-1!">
-        <div className="mb-4 flex size-6 items-center justify-center rounded bg-panel">
+        <div className="mb-4 flex size-6 items-center justify-center rounded border border-neutral-3 bg-panel">
           <span className="font-medium text-neutral-text-contrast text-xs tabular-nums before:[content:counter(step)]" />
         </div>
       </div>
 
       {title && (
-        <strong className="col-start-2! row-start-1! text-base leading-6">
-          {title}
-        </strong>
+        <strong className="col-start-2! row-start-1! leading-6">{title}</strong>
       )}
 
-      <div
-        className={cn(
-          "col-span-full *:last:mb-0! md:col-start-2",
-          code ? "md:col-end-3" : "md:col-end-4"
-        )}
-      >
+      <div className="col-span-full *:last:mb-0! md:col-start-2 md:col-end-3">
         {children}
       </div>
 

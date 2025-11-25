@@ -20,10 +20,10 @@ import type { NavItem } from "./utils";
 const style = tv({
   slots: {
     header:
-      "col-span-full flex h-7 items-center gap-1.5 px-2 font-medium text-[15px] text-neutral-text-contrast leading-none",
+      "col-span-full flex h-7 items-center gap-1.5 px-2 font-medium text-neutral-text-contrast text-sm leading-none",
     item: [
       focusStyle(),
-      "flex h-7 items-center gap-2 rounded px-2 text-[15px] text-neutral-text leading-none",
+      "flex h-7 items-center gap-2 rounded px-2 text-neutral-text text-sm leading-none",
     ],
   },
   variants: {
@@ -51,7 +51,7 @@ export function Nav({ navSections }: Props) {
   let { header: headerStyle, item: itemStyle } = style();
 
   return (
-    <div className="sticky top-0 z-30 col-start-2 flex flex-col border-neutral-3 bg-background lg:h-svh lg:border-x">
+    <div className="sticky top-0 z-30 col-start-2 flex flex-col border-neutral-3 border-r bg-background lg:h-svh xl:border-none">
       <NavHeader navSections={navSections} />
 
       <nav

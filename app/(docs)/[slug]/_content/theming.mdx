@@ -12,6 +12,7 @@ import {
   TableBody,
   TableHeader,
 } from "@/shim-ui/table";
+import { Tooltip } from "../../_components/tooltip";
 
 ## Overview
 
@@ -80,7 +81,7 @@ export function Callout() {
 
 ### Theme API reference
 
-<Table aria-label="Theme API reference">
+<Table aria-label="Theme API reference" className="table-fixed" size={2} variant="ghost">
   <TableHeader>
     <Column className="md:w-1/4" isRowHeader>Prop</Column>
     <Column>Type</Column>
@@ -91,6 +92,8 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>size</code>
+
+        <Tooltip text="Default component size, ranging from 1 (smallest) to 4 (largest)." />
       </Cell>
 
       <Cell><code>1 | 2 | 3 | 4</code></Cell>
@@ -100,6 +103,8 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>labelPosition</code>
+
+        <Tooltip text="Default position of the label relative to the input field." />
       </Cell>
 
       <Cell><code>"side" | "top"</code></Cell>
@@ -109,6 +114,8 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>fieldVariant</code>
+
+        <Tooltip text="Default visual style for form and field components." />
       </Cell>
 
       <Cell><code>"classic" | "soft" | "outline"</code></Cell>
@@ -118,6 +125,8 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>buttonVariant</code>
+
+        <Tooltip text="Default visual style for button components." />
       </Cell>
 
       <Cell><code>"soft" | "solid" | "ghost"</code></Cell>

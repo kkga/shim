@@ -68,7 +68,7 @@ export function NavPalette({ navSections }: Props) {
         variant="ghost"
       >
         Go to…
-        <Kbd className="ml-1 text-neutral-text-subtle" size={1}>
+        <Kbd className="ml-1 text-neutral-text" size={1}>
           ⌘K
         </Kbd>
       </Button>
