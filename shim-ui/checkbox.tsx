@@ -171,10 +171,12 @@ function Checkbox({
                 return null;
               })()}
             </div>
-            <div className="flex flex-col gap-1">
-              {children}
-              {description && <Description>{description}</Description>}
-            </div>
+            {children && (
+              <div className="flex flex-col gap-1">
+                {children}
+                {description && <Description>{description}</Description>}
+              </div>
+            )}
           </>
         )
       )}

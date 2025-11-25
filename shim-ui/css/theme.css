@@ -304,6 +304,74 @@
     var(--black-a11);
 }
 
+/* Utilities */
+
+@utility focus-ring {
+  @apply outline-0 outline-accent-focus-ring outline-offset-1 data-focus-visible:outline-2 group-data-focus-visible:outline-2;
+}
+
+@utility animate-fade {
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:where([data-entering]) {
+    animation-duration: 160ms;
+    animation-name: fade-in;
+  }
+
+  &:where([data-exiting]) {
+    animation-duration: 120ms;
+    animation-name: fade-out;
+  }
+}
+
+@utility animate-slide {
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:where([data-entering]) {
+    animation-duration: 160ms;
+    animation-name: slide-in-top, fade-in;
+
+    &:where([data-placement="top"]) {
+      animation-name: slide-in-top, fade-in;
+    }
+
+    &:where([data-placement="bottom"]) {
+      animation-name: slide-in-bottom, fade-in;
+    }
+
+    &:where([data-placement="left"]) {
+      animation-name: slide-in-left, fade-in;
+    }
+
+    &:where([data-placement="right"]) {
+      animation-name: slide-in-right, fade-in;
+    }
+  }
+
+  &:where([data-exiting]) {
+    animation-duration: 120ms;
+    animation-name: slide-out-top, fade-out;
+
+    &:where([data-placement="top"]) {
+      animation-name: slide-out-top, fade-out;
+    }
+
+    &:where([data-placement="bottom"]) {
+      animation-name: slide-out-bottom, fade-out;
+    }
+
+    &:where([data-placement="left"]) {
+      animation-name: slide-out-left, fade-out;
+    }
+
+    &:where([data-placement="right"]) {
+      animation-name: slide-out-right, fade-out;
+    }
+  }
+}
+
+/* Keyframes */
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -400,65 +468,5 @@
   }
   to {
     left: 100%;
-  }
-}
-
-@utility animate-fade {
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-
-  &:where([data-entering]) {
-    animation-duration: 160ms;
-    animation-name: fade-in;
-  }
-
-  &:where([data-exiting]) {
-    animation-duration: 120ms;
-    animation-name: fade-out;
-  }
-}
-
-@utility animate-slide {
-  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-
-  &:where([data-entering]) {
-    animation-duration: 160ms;
-    animation-name: slide-in-top, fade-in;
-
-    &:where([data-placement="top"]) {
-      animation-name: slide-in-top, fade-in;
-    }
-
-    &:where([data-placement="bottom"]) {
-      animation-name: slide-in-bottom, fade-in;
-    }
-
-    &:where([data-placement="left"]) {
-      animation-name: slide-in-left, fade-in;
-    }
-
-    &:where([data-placement="right"]) {
-      animation-name: slide-in-right, fade-in;
-    }
-  }
-
-  &:where([data-exiting]) {
-    animation-duration: 120ms;
-    animation-name: slide-out-top, fade-out;
-
-    &:where([data-placement="top"]) {
-      animation-name: slide-out-top, fade-out;
-    }
-
-    &:where([data-placement="bottom"]) {
-      animation-name: slide-out-bottom, fade-out;
-    }
-
-    &:where([data-placement="left"]) {
-      animation-name: slide-out-left, fade-out;
-    }
-
-    &:where([data-placement="right"]) {
-      animation-name: slide-out-right, fade-out;
-    }
   }
 }

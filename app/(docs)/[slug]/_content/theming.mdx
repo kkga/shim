@@ -100,7 +100,6 @@ export function Callout() {
       {...}
       <Button>Get started</Button>
       <Button>Learn more</Button>
-      {...}
     </Theme>
   );
 }
@@ -108,7 +107,7 @@ export function Callout() {
 
 ### Theme API reference
 
-<Table aria-label="Theme API reference" className="w-full not-prose md:table-fixed **:[td]:overflow-x-scroll" size={1}>
+<Table variant="ghost" aria-label="Theme API reference" className="md:table-fixed" size={2}>
   <TableHeader>
     <Column className="md:w-1/4" isRowHeader>Prop</Column>
     <Column>Type</Column>
@@ -118,46 +117,38 @@ export function Callout() {
   <TableBody>
     <Row>
       <Cell className="flex items-center gap-1">
-        `size`
-
+        <code>size</code>
         <Tooltip text="Sets the base size for all components." />
       </Cell>
-
-      <Cell>`1 | 2 | 3 | 4`</Cell>
-      <Cell>`1`</Cell>
+      <Cell><code>1 | 2 | 3 | 4</code></Cell>
+      <Cell><code>1</code></Cell>
     </Row>
 
     <Row>
       <Cell className="flex items-center gap-1">
-        `labelPosition`
-
+        <code>labelPosition</code>
         <Tooltip text="Sets the default position for labels on field-based components." />
       </Cell>
-
-      <Cell>`"side" | "top"`</Cell>
-      <Cell>`"side"`</Cell>
+      <Cell><code>"side" | "top"</code></Cell>
+      <Cell><code>"side"</code></Cell>
     </Row>
 
     <Row>
       <Cell className="flex items-center gap-1">
-        `fieldVariant`
-
+        <code>fieldVariant</code>
         <Tooltip text="Sets the default variant for field-based components." />
       </Cell>
-
-      <Cell>`"classic" | "soft" | "outline"`</Cell>
-      <Cell>`"classic"`</Cell>
+      <Cell><code>"classic" | "soft" | "outline"</code></Cell>
+      <Cell><code>"classic"</code></Cell>
     </Row>
 
     <Row>
       <Cell className="flex items-center gap-1">
-        `buttonVariant`
-
+        <code>buttonVariant</code>
         <Tooltip text="Sets the default variant for buttons." />
       </Cell>
-
-      <Cell>`"soft" | "solid" | "ghost"`</Cell>
-      <Cell>`"soft"`</Cell>
+      <Cell><code>"soft" | "solid" | "ghost"</code></Cell>
+      <Cell><code>"soft"</code></Cell>
     </Row>
 
   </TableBody>

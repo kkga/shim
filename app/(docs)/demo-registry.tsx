@@ -286,6 +286,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     sorting: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/table/sorting`)),
     content: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/table/content`)),
     resizable: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/table/resizable`)),
+    selection: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/table/selection`)),
+    variant: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/table/variant`)),
+    size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/table/size`)),
   },
   "tag-group": {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/tag-group/main`)),

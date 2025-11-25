@@ -107,7 +107,11 @@ article {
     }
 
     :where(code):not(:where(.not-prose, .not-prose *)) {
-      @apply min-w-min font-mono text-accent-text;
+      @apply min-w-min font-mono text-accent-text text-[95%];
+    }
+
+    :is(:where(pre):not(:where(.not-prose, .not-prose *))) > :is(code) {
+      @apply text-[100%];
     }
 
     :where(dl):not(:where(.not-prose, .not-prose *)) {

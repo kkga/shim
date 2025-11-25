@@ -8,7 +8,7 @@ import {
 } from "@/shim-ui/table";
 
 export default () => (
-  <Table aria-label="Files">
+  <Table aria-label="Files" className="table-fixed">
     <TableHeader>
       <Column isRowHeader>Name</Column>
       <Column>Type</Column>

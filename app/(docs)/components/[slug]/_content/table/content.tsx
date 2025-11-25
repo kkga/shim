@@ -13,7 +13,6 @@ let columns = [
   { id: "creature", name: "Creature", isRowHeader: true },
   { id: "canFly", name: "Can fly" },
   { id: "hasHorn", name: "Has horn" },
-  { id: "magical", name: "Magical" },
   { id: "scary", name: "Scary" },
 ];
 
@@ -23,7 +22,6 @@ let rows = [
     creature: "Unicorn",
     canFly: false,
     hasHorn: true,
-    magical: true,
     scary: false,
   },
   {
@@ -31,7 +29,6 @@ let rows = [
     creature: "Dragon",
     canFly: true,
     hasHorn: false,
-    magical: true,
     scary: true,
   },
   {
@@ -39,24 +36,7 @@ let rows = [
     creature: "Mermaid",
     canFly: false,
     hasHorn: false,
-    magical: true,
     scary: false,
-  },
-  {
-    id: 4,
-    creature: "Bigfoot",
-    canFly: false,
-    hasHorn: false,
-    magical: false,
-    scary: true,
-  },
-  {
-    id: 5,
-    creature: "Chimera",
-    canFly: false,
-    hasHorn: true,
-    magical: false,
-    scary: true,
   },
 ];
 
@@ -66,20 +46,19 @@ const Check = () => (
 const X = () => <XIcon className="text-neutral-text-subtle" size={16} />;
 
 export default () => (
-  <Table aria-label="Mythical Creatures">
+  <Table aria-label="Mythical Creatures" className="table-fixed">
     <TableHeader columns={columns}>
       {(column) => (
         <Column isRowHeader={column.isRowHeader}>{column.name}</Column>
       )}
     </TableHeader>
     <TableBody items={rows}>
-      {({ creature, canFly, hasHorn, magical, scary }) => (
+      {({ creature, canFly, hasHorn, scary }) => (
         <Row>
           <Cell>{creature}</Cell>
-          <Cell>{canFly ? <Check /> : <X />}</Cell>
-          <Cell>{hasHorn ? <Check /> : <X />}</Cell>
-          <Cell>{magical ? <Check /> : <X />}</Cell>
-          <Cell>{scary ? <Check /> : <X />}</Cell>
+          <Cell className="align-middle">{canFly ? <Check /> : <X />}</Cell>
+          <Cell className="align-middle">{hasHorn ? <Check /> : <X />}</Cell>
+          <Cell className="align-middle">{scary ? <Check /> : <X />}</Cell>
         </Row>
       )}
     </TableBody>
