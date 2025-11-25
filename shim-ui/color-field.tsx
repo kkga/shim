@@ -12,7 +12,7 @@ import {
   Input,
   Label,
 } from "@/shim-ui/field";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface ColorFieldProps extends RacColorFieldProps, FieldProps {}
@@ -29,7 +29,7 @@ export function ColorField({
   return (
     <RacColorField
       {...props}
-      className={cxRenderProps(
+      className={cnRenderProps(
         props.className,
         fieldLayoutStyle({ labelPosition })
       )}

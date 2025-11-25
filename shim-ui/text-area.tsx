@@ -14,7 +14,7 @@ import {
   Label,
   TextAreaInput,
 } from "@/shim-ui/field";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface TextAreaProps extends RacTextFieldProps, FieldProps {}
@@ -48,7 +48,7 @@ function TextArea({
   return (
     <RacTextField
       {...props}
-      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
+      className={cnRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
       <Theme {...themeProps}>
         {label && <Label>{label}</Label>}

@@ -1,6 +1,6 @@
 import { ShapesIcon } from "@phosphor-icons/react/dist/ssr";
 import type { ComponentProps } from "react";
-import { twMerge } from "tailwind-merge";
+import { cx } from "tailwind-variants";
 
 interface Props extends ComponentProps<"div"> {
   withType?: boolean;
@@ -10,7 +10,7 @@ interface Props extends ComponentProps<"div"> {
 function Logo({ className, withType = true, size = 1 }: Props) {
   return (
     <div
-      className={twMerge(
+      className={cx(
         "flex items-center",
         size === 1 ? "gap-2" : "gap-2",
         className
@@ -23,7 +23,7 @@ function Logo({ className, withType = true, size = 1 }: Props) {
       />
       {withType && (
         <span
-          className={twMerge(
+          className={cx(
             "font-semibold text-neutral-text-contrast",
             size === 1 ? "text-sm leading-5" : "text-[15px] leading-6"
           )}

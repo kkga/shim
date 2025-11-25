@@ -1,4 +1,4 @@
-import { twJoin, twMerge } from "tailwind-merge";
+import { cn, cx } from "tailwind-variants";
 import { Theme } from "@/shim-ui/lib/theme";
 import { CodeBlock, type CodeItem } from "./code-block";
 
@@ -27,7 +27,7 @@ function DocSection({
 }: DocSectionProps) {
   return (
     <section
-      className={twMerge(
+      className={cx(
         "col-span-full grid scroll-mt-8 items-start gap-x-8 gap-y-8",
         stacked ? "md:grid-cols-1" : "@3xl/main:grid-cols-[2fr_3fr]",
         className
@@ -52,7 +52,7 @@ function DocSection({
 
         {children && (
           <div
-            className={twJoin(
+            className={cn(
               "space-y-2 text-neutral-text [&_code]:font-book [&_code]:font-sans [&_code]:text-neutral-text-contrast",
               stacked ? "max-w-(--body-width)" : "text-[15px]"
             )}
@@ -63,7 +63,7 @@ function DocSection({
 
         {demo && (
           <div
-            className={twMerge(
+            className={cx(
               "not-prose not-first:mt-6 flex text-[15px] text-neutral-text",
               demoLayout === "row"
                 ? "flex-row flex-wrap gap-2"

@@ -6,7 +6,7 @@ import {
   DisclosureGroup as RacDisclosureGroup,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
@@ -36,7 +36,7 @@ function DisclosureGroup({
   return (
     <RacDisclosureGroup
       {...props}
-      className={cxRenderProps(className, style({ size }))}
+      className={cnRenderProps(className, style({ size }))}
     >
       {composeRenderProps(children, (renderedChildren) => (
         <Theme size={size}>{renderedChildren}</Theme>

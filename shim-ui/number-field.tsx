@@ -23,7 +23,7 @@ import {
   GroupInput,
   Label,
 } from "@/shim-ui/field";
-import { cx, cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface NumberFieldProps extends RacNumberFieldProps, FieldProps {
@@ -44,7 +44,7 @@ function NumberField({
   return (
     <RacNumberField
       {...props}
-      className={cxRenderProps(
+      className={cnRenderProps(
         props.className,
         fieldLayoutStyle({ labelPosition })
       )}
@@ -59,7 +59,7 @@ function NumberField({
                   className="tabular-nums"
                   placeholder={placeholder}
                 />
-                <div className={cx("flex flex-col self-stretch p-0.5")}>
+                <div className="flex flex-col self-stretch p-0.5">
                   <StepperButton isDisabled={isDisabled} slot="increment">
                     <CaretUpIcon aria-hidden size={ICON_SIZE_MAP[size]} />
                   </StepperButton>

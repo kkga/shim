@@ -8,6 +8,7 @@ import {
   type SelectProps as RacSelectProps,
   SelectValue as RacSelectValue,
 } from "react-aria-components";
+import { cx } from "tailwind-variants";
 import { Button } from "@/shim-ui/button";
 import {
   Description,
@@ -16,7 +17,7 @@ import {
   fieldLayoutStyle,
   Label,
 } from "@/shim-ui/field";
-import { cx, cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 import {
   ListBox,
@@ -51,7 +52,7 @@ function Select<T extends object>({
   return (
     <RacSelect
       {...props}
-      className={cxRenderProps(
+      className={cnRenderProps(
         props.className,
         fieldLayoutStyle({ labelPosition })
       )}

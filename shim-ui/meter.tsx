@@ -5,9 +5,9 @@ import {
   Meter as RacMeter,
   type MeterProps as RacMeterProps,
 } from "react-aria-components";
-import { twJoin } from "tailwind-merge";
+import { cx } from "tailwind-variants";
 import { Description, Label } from "@/shim-ui/field";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 
 interface MeterProps extends RacMeterProps {
   label?: string;
@@ -28,7 +28,7 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
   return (
     <RacMeter
       {...props}
-      className={cxRenderProps(props.className, "flex flex-col gap-1.5")}
+      className={cnRenderProps(props.className, "flex flex-col gap-1.5")}
     >
       {/* TODO: these values dont work */}
       {({ percentage, valueText }) => {
@@ -44,10 +44,10 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
           <>
             <div className="flex justify-between gap-2">
               <Label>{label}</Label>
-              <span className={twJoin("text-xs", textColor)}>{valueText}</span>
+              <span className={cx("text-xs", textColor)}>{valueText}</span>
             </div>
             <div className="flex h-4 items-center">
-              <div className="relative h-1.5 w-full overflow-hidden rounded-[2px] bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
+              <div className="relative h-1.5 w-full overflow-hidden rounded-xs bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
                 <div
                   className="absolute top-0 left-0 h-full bg-accent-solid"
                   style={{

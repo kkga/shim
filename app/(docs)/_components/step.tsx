@@ -1,4 +1,4 @@
-import { twJoin } from "tailwind-merge";
+import { cn } from "tailwind-variants";
 import { CodeBlock, type CodeItem } from "./code-block";
 
 export function Step({
@@ -33,7 +33,7 @@ export function Step({
       )}
 
       <div
-        className={twJoin(
+        className={cn(
           "col-span-full *:last:mb-0! md:col-start-2",
           code ? "md:col-end-3" : "md:col-end-4"
         )}

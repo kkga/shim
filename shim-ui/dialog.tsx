@@ -13,7 +13,7 @@ import {
   Text as RacText,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 
 const style = tv({
   slots: {
@@ -56,7 +56,7 @@ function Dialog({ title, description, ...props }: DialogProps) {
       <RacModal
         isDismissable
         {...props}
-        className={cxRenderProps(props.className, modal())}
+        className={cnRenderProps(props.className, modal())}
       >
         <RacDialog aria-label={title} className={dialog()}>
           {title || description ? (

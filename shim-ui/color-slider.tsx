@@ -9,7 +9,7 @@ import {
 import type { VariantProps } from "tailwind-variants";
 import { ColorThumb } from "@/shim-ui/color-thumb";
 import { fieldLayoutStyle, Label } from "@/shim-ui/field";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 import { style } from "@/shim-ui/slider";
 
@@ -27,7 +27,7 @@ function ColorSlider({ label, ...props }: ColorSliderProps) {
   return (
     <RacColorSlider
       {...props}
-      className={cxRenderProps(props.className, fieldLayoutStyle())}
+      className={cnRenderProps(props.className, fieldLayoutStyle())}
     >
       {({ orientation }) => (
         <Theme {...themeProps}>

@@ -1,7 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import { default as NextLink } from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
+import { cx } from "tailwind-variants";
 import { match } from "ts-pattern";
 import { getFileSource } from "@/app/_lib/utils";
 import { demoRegistry } from "@/app/(docs)/demo-registry";
@@ -120,7 +120,7 @@ export function Link({
   href,
   ...props
 }: ComponentPropsWithoutRef<"a">) {
-  let classNames = twMerge(
+  let classNames = cx(
     "text-accent-text underline decoration-accent-line underline-offset-2 hover:decoration-accent-border-hover",
     className
   );

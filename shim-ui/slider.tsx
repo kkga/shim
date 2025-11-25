@@ -14,12 +14,12 @@ import {
   fieldLayoutStyle,
   Label,
 } from "@/shim-ui/field";
-import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
-    track: "relative flex shrink-0 grow-1 items-center",
+    track: "relative flex shrink-0 grow items-center",
     indicator: "absolute overflow-hidden rounded-full",
     fill: "absolute",
     thumb: [focusStyle(), "rounded-full outline-offset-0"],
@@ -171,7 +171,7 @@ function Slider<T extends number | number[]>({
   return (
     <RacSlider
       {...props}
-      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
+      className={cnRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
       <Theme {...themeProps}>
         {label && (
@@ -189,7 +189,7 @@ function Slider<T extends number | number[]>({
           </div>
         )}
 
-        <div className="flex grow-1 gap-1">
+        <div className="flex grow gap-1">
           <SliderTrack className={({ orientation }) => track({ orientation })}>
             {({ state, orientation }) => (
               <>

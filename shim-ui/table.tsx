@@ -25,9 +25,9 @@ import {
   type TableProps as RacTableProps,
   useTableOptions,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { cx, tv, type VariantProps } from "tailwind-variants";
 import { Checkbox } from "@/shim-ui/checkbox";
-import { cx, cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 let style = tv({
@@ -140,7 +140,7 @@ function Table({ className, variant = "surface", size, ...props }: TableProps) {
     <Theme {...themeProps}>
       <TableVariantContext.Provider value={variant}>
         {/* <RACResizableTableContainer> */}
-        <RacTable {...props} className={cxRenderProps(className, table())} />
+        <RacTable {...props} className={cnRenderProps(className, table())} />
       </TableVariantContext.Provider>
       {/* </RACResizableTableContainer> */}
     </Theme>
@@ -159,7 +159,7 @@ function Column(props: ColumnProps) {
   return (
     <RacColumn
       {...props}
-      className={cxRenderProps(props.className, columnHeader())}
+      className={cnRenderProps(props.className, columnHeader())}
     >
       {composeRenderProps(
         props.children,
@@ -174,8 +174,8 @@ function Column(props: ColumnProps) {
               {allowsSorting && (
                 <span
                   className={cx(
-                    "invisible flex size-4 items-center justify-center text-neutral-text group-data-hovered:visible",
-                    sortDirection && "visible"
+                    "flex size-4 items-center justify-center text-neutral-text group-data-hovered:visible",
+                    sortDirection ? "visible" : "invisible"
                   )}
                 >
                   {sortDirection &&
@@ -210,7 +210,7 @@ function TableHeader<T extends object>(props: RacTableHeaderProps<T>) {
   return (
     <RacTableHeader
       {...props}
-      className={cxRenderProps(props.className, header())}
+      className={cnRenderProps(props.className, header())}
     >
       {/* Add extra columns for drag and drop and selection. */}
       {allowsDragging && <Column />}
@@ -259,7 +259,7 @@ function Cell({ className, ...props }: RacCellProps) {
   let variant = useContext(TableVariantContext);
   let { cell } = style({ size, variant });
 
-  return <RacCell {...props} className={cxRenderProps(className, cell())} />;
+  return <RacCell {...props} className={cnRenderProps(className, cell())} />;
 }
 
 const TableBody = RacTableBody;

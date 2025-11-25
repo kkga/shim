@@ -7,7 +7,7 @@ import {
   type TooltipTriggerComponentProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { useThemeProps } from "./lib/theme";
 
 const style = tv({
@@ -33,7 +33,7 @@ function Tooltip({
   return (
     <RacTooltip
       {...props}
-      className={cxRenderProps(className, style({ size: themeProps.size }))}
+      className={cnRenderProps(className, style({ size: themeProps.size }))}
       offset={offset}
     />
   );

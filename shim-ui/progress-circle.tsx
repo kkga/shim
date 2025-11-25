@@ -2,8 +2,7 @@
 
 import type { ProgressBarProps as RacProgressBarProps } from "react-aria-components";
 import { ProgressBar as RacProgressBar } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
-import { cx } from "@/shim-ui/lib/style";
+import { cx, tv, type VariantProps } from "tailwind-variants";
 
 const style = tv({
   slots: {

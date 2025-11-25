@@ -14,7 +14,7 @@ import {
   type DisclosureProps as RacDisclosureProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
 import {
   ICON_SIZE_MAP,
   type Size,
@@ -165,7 +165,7 @@ function DisclosurePanel({ className, ...props }: DisclosurePanelProps) {
   return (
     <RacDisclosurePanel
       {...props}
-      className={cxRenderProps(className, panel())}
+      className={cnRenderProps(className, panel())}
     />
   );
 }

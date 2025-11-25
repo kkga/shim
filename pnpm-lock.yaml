@@ -86,9 +86,6 @@ importers:
       sugar-high:
         specifier: ^0.9.5
         version: 0.9.5
-      tailwind-merge:
-        specifier: ^3.4.0
-        version: 3.4.0
       tailwind-variants:
         specifier: ^3.2.2
         version: 3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.1.17)
@@ -5291,7 +5288,8 @@ snapshots:
 
   sugar-high@0.9.5: {}
 
-  tailwind-merge@3.4.0: {}
+  tailwind-merge@3.4.0:
+    optional: true
 
   tailwind-variants@3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.1.17):
     dependencies:

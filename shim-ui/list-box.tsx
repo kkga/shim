@@ -12,7 +12,7 @@ import {
   type ListBoxSectionProps as RacListBoxSectionProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
 import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface ListBoxProps<T> extends RacListBoxProps<T> {
@@ -29,7 +29,7 @@ function ListBox<T extends object>({
     <Theme {...themeProps}>
       <RacListBox
         {...props}
-        className={cxRenderProps(className, "flex flex-col gap-px")}
+        className={cnRenderProps(className, "flex flex-col gap-px")}
       />
     </Theme>
   );

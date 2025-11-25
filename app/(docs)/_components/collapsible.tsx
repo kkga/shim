@@ -2,7 +2,7 @@
 
 import { ArrowLineDownIcon, ArrowLineUpIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
-import { twJoin } from "tailwind-merge";
+import { cn } from "tailwind-variants";
 import { Button } from "@/shim-ui/button";
 
 interface Props {
@@ -26,13 +26,13 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
 
   return (
     <div
-      className={twJoin(
+      className={cn(
         "relative flex w-full flex-col",
         collapsed && "max-h-80 overflow-hidden"
       )}
     >
       <div
-        className={twJoin("grow", collapsed && "overflow-hidden")}
+        className={cn("grow", collapsed && "overflow-hidden")}
         ref={ref}
         style={
           collapsed
@@ -48,7 +48,7 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
 
       <Button
         aria-label={collapsed ? "Expand content" : "Collapse content"}
-        className={twJoin(
+        className={cn(
           "z-10 h-7 backdrop-blur-md",
           collapsed
             ? "absolute inset-1 top-auto"

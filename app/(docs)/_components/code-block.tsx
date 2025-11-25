@@ -3,7 +3,7 @@
 import { ArrowUpRightIcon, WarningDiamondIcon } from "@phosphor-icons/react";
 import React, { type ComponentPropsWithoutRef, useMemo, useState } from "react";
 import type { Key } from "react-aria-components";
-import { twMerge } from "tailwind-merge";
+import { cn, cx } from "tailwind-variants";
 import { LinkButton } from "@/shim-ui/button";
 import { Tab, TabList, TabPanel, Tabs } from "@/shim-ui/tabs";
 import { Code } from "./code";
@@ -49,7 +49,7 @@ function CodeHeader({
 }) {
   return (
     <div
-      className={twMerge(
+      className={cn(
         "z-20 flex min-h-8 items-center rounded-t-lg px-1 py-0",
         children
           ? "border-b border-b-neutral-3 bg-panel backdrop-blur-md"
@@ -106,11 +106,7 @@ function CodePane({
   let { content, note } = code;
   let isContentLong = content.split("\n").length > LONG_CODE_LINE_THRESHOLD;
   let codeElement = (
-    <pre
-      className={twMerge(
-        "min-h-8 w-full overflow-x-scroll whitespace-pre px-3 py-2 **:[code]:text-[100%]"
-      )}
-    >
+    <pre className="min-h-8 w-full overflow-x-scroll whitespace-pre px-3 py-2 **:[code]:text-[100%]">
       <Code highlight={highlight}>
         {content.replace(TRAILING_NEWLINES_REGEX, "")}
       </Code>
@@ -155,7 +151,7 @@ export function CodeBlock(props: Props) {
 
   return (
     <div
-      className={twMerge(
+      className={cx(
         "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-panel font-normal text-neutral-text text-xs leading-5",
         props.className
       )}

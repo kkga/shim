@@ -8,7 +8,7 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 import { ColorSwatch } from "@/shim-ui/color-swatch";
-import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
 
 function ColorSwatchPicker({
   children,
@@ -17,7 +17,7 @@ function ColorSwatchPicker({
   return (
     <RacColorSwatchPicker
       {...props}
-      className={cxRenderProps(props.className, "flex gap-1")}
+      className={cnRenderProps(props.className, "flex gap-1")}
     >
       {children}
     </RacColorSwatchPicker>

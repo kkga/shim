@@ -17,9 +17,8 @@ import {
   type SeparatorProps as RacSeparatorProps,
   SubmenuTrigger as RacSubmenuTrigger,
 } from "react-aria-components";
-import { twJoin } from "tailwind-merge";
-import { tv, type VariantProps } from "tailwind-variants";
-import { cx, cxRenderProps } from "@/shim-ui/lib/style";
+import { cx, tv, type VariantProps } from "tailwind-variants";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   ICON_SIZE_MAP,
   type Size,
@@ -65,10 +64,10 @@ function Menu<T extends object>({
     <Theme {...themeProps}>
       {withPopover ? (
         <Popover className={popover()} offset={offset} placement={placement}>
-          <RacMenu {...props} className={cxRenderProps(className, menu())} />
+          <RacMenu {...props} className={cnRenderProps(className, menu())} />
         </Popover>
       ) : (
-        <RacMenu {...props} className={cxRenderProps(className, menu())} />
+        <RacMenu {...props} className={cnRenderProps(className, menu())} />
       )}
     </Theme>
   );
@@ -95,9 +94,7 @@ function MenuItem({ children, intent, ...props }: MenuItemProps) {
             intent,
             size,
             isDisabled,
-            className: props.href
-              ? twJoin("cursor-pointer", className)
-              : twJoin("cursor-default", className),
+            className: cx(className, props.href ? "cursor-pointer" : ""),
           })
       )}
       textValue={textValue}

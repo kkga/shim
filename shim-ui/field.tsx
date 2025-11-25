@@ -16,7 +16,7 @@ import {
   type ValidationResult,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { useThemeProps } from "@/shim-ui/lib/theme";
 
 interface FieldProps
@@ -82,7 +82,7 @@ function Input({ size, variant, className, ...props }: InputProps) {
   return (
     <RacInput
       {...props}
-      className={cxRenderProps(
+      className={cnRenderProps(
         className,
         inputBaseStyle({ variant: theme.fieldVariant, size: theme.size })
       )}
@@ -202,7 +202,7 @@ function FieldError({ size, className, ...props }: FieldErrorProps) {
   return (
     <RacFieldError
       {...props}
-      className={cxRenderProps(
+      className={cnRenderProps(
         className,
         fieldErrorStyle({ size: themeProps.size })
       )}
@@ -236,7 +236,7 @@ function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
   return (
     <RacGroup
       {...props}
-      className={cxRenderProps(
+      className={cnRenderProps(
         className,
         fieldGroupStyle({
           size: themeProps.size,
@@ -271,13 +271,13 @@ function GroupInput({ className, ...props }: Omit<InputProps, "variant">) {
   return (
     <RacInput
       {...props}
-      className={cxRenderProps(className, groupInputStyle({ size }))}
+      className={cnRenderProps(className, groupInputStyle({ size }))}
     />
   );
 }
 
 function TextAreaInput(props: RacTextAreaProps) {
-  return <RacTextArea {...props} className={cxRenderProps(props.className)} />;
+  return <RacTextArea {...props} className={props.className} />;
 }
 
 export {

@@ -6,7 +6,7 @@ import {
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
 import { ColorThumb } from "@/shim-ui/color-thumb";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 
 const style = tv({
   base: "size-56 rounded-sm bg-neutral-panel shadow-inner",
@@ -20,7 +20,7 @@ function ColorArea(props: ColorAreaProps) {
   return (
     <RacColorArea
       {...props}
-      className={cxRenderProps(props.className, style())}
+      className={cnRenderProps(props.className, style())}
       style={({ defaultStyle, isDisabled }) => ({
         ...defaultStyle,
         background: isDisabled ? undefined : defaultStyle.background,

@@ -4,7 +4,7 @@ import {
   Form as RacForm,
   type FormProps as RacFormProps,
 } from "react-aria-components";
-import { cx } from "@/shim-ui/lib/style";
+import { cn } from "tailwind-variants";
 import {
   Theme,
   type ThemeContextProps,
@@ -28,7 +28,7 @@ function Form({
   });
 
   return (
-    <RacForm {...props} className={cx("flex flex-col gap-3", className)}>
+    <RacForm {...props} className={cn("flex flex-col gap-3", className)}>
       <Theme {...themeProps}>{children}</Theme>
     </RacForm>
   );

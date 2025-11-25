@@ -17,7 +17,7 @@ import {
   GroupInput,
   Label,
 } from "@/shim-ui/field";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 import {
   ListBox,
@@ -87,7 +87,7 @@ function ComboBox<T extends object>({
   return (
     <RacComboBox
       {...props}
-      className={cxRenderProps(
+      className={cnRenderProps(
         props.className,
         fieldLayoutStyle({ labelPosition })
       )}

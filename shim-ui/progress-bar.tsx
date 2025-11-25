@@ -4,8 +4,9 @@ import {
   ProgressBar as RacProgressBar,
   type ProgressBarProps as RacProgressBarProps,
 } from "react-aria-components";
+import { cx } from "tailwind-variants";
 import { Label } from "@/shim-ui/field";
-import { cx, cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 
 interface ProgressBarProps extends RacProgressBarProps {
   label?: string;
@@ -15,7 +16,7 @@ function ProgressBar({ label, ...props }: ProgressBarProps) {
   return (
     <RacProgressBar
       {...props}
-      className={cxRenderProps(props.className, "flex flex-col gap-1.5")}
+      className={cnRenderProps(props.className, "flex flex-col gap-1.5")}
     >
       {({ percentage, valueText, isIndeterminate }) => (
         <>
@@ -26,7 +27,7 @@ function ProgressBar({ label, ...props }: ProgressBarProps) {
             </div>
           ) : null}
           <div className="flex h-4 items-center">
-            <div className="relative h-1.5 w-full overflow-hidden rounded-[2px] bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
+            <div className="relative h-1.5 w-full overflow-hidden rounded-xs bg-neutral-bg ring ring-neutral-solid/20 ring-inset">
               <div
                 className={cx(
                   "absolute top-0 h-full bg-accent-solid transition-[width] duration-500",

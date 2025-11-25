@@ -15,7 +15,7 @@ import {
   fieldLayoutStyle,
   Label,
 } from "@/shim-ui/field";
-import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
@@ -125,7 +125,7 @@ function RadioGroup({
   return (
     <RacRadioGroup
       {...props}
-      className={cxRenderProps(
+      className={cnRenderProps(
         className,
         fieldLayoutStyle({ labelPosition: themeProps.labelPosition })
       )}

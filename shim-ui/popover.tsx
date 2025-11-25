@@ -8,7 +8,7 @@ import {
   type PopoverProps as RacPopoverProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
@@ -33,7 +33,7 @@ function Popover({ className, children, offset = 4, ...props }: PopoverProps) {
   return (
     <RacPopover
       {...props}
-      className={cxRenderProps(className, style({ size }))}
+      className={cnRenderProps(className, style({ size }))}
       offset={offset}
     >
       {composeRenderProps(children, (renderedChildren) =>

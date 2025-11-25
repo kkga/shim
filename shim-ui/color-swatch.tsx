@@ -5,7 +5,7 @@ import {
   type ColorSwatchProps as RacColorSwatchProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
@@ -33,7 +33,7 @@ function ColorSwatch(props: ColorSwatchProps) {
   return (
     <RacColorSwatch
       {...props}
-      className={cxRenderProps(props.className, style({ size }))}
+      className={cnRenderProps(props.className, style({ size }))}
       style={({ color }) => ({
         background: `linear-gradient(${color}, ${color}),
           repeating-conic-gradient(#CCC 0% 25%, white 0% 50%) 50% / 14px 14px`,

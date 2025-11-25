@@ -12,7 +12,7 @@ import {
   Input,
   Label,
 } from "@/shim-ui/field";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface TextFieldProps extends RacTextFieldProps, FieldProps {}
@@ -31,7 +31,7 @@ function TextField({
   return (
     <RacTextField
       {...props}
-      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
+      className={cnRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
       <Theme {...themeProps}>
         {label && <Label isRequired={props.isRequired}>{label}</Label>}

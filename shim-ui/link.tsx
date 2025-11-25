@@ -5,7 +5,7 @@ import {
   type LinkProps as RacLinkProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
 
 const style = tv({
   extend: focusStyle,
@@ -46,7 +46,7 @@ function Link({ className, intent, variant, ...props }: LinkProps) {
   return (
     <RacLink
       {...props}
-      className={cxRenderProps(className, style({ intent, variant }))}
+      className={cnRenderProps(className, style({ intent, variant }))}
     />
   );
 }

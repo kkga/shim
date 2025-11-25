@@ -5,7 +5,7 @@ import {
   type DropZoneProps as RacDropZoneProps,
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { cxRenderProps } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 
 const style = tv({
   base: [
@@ -18,7 +18,7 @@ function DropZone(props: RacDropZoneProps) {
   return (
     <RacDropZone
       {...props}
-      className={cxRenderProps(props.className, style())}
+      className={cnRenderProps(props.className, style())}
     />
   );
 }

@@ -7,7 +7,8 @@ import {
   Breadcrumb as RacBreadcrumb,
   Breadcrumbs as RacBreadcrumbs,
 } from "react-aria-components";
-import { cx, cxRenderProps } from "@/shim-ui/lib/style";
+import { cx } from "tailwind-variants";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { Link, type LinkProps } from "@/shim-ui/link";
 
 function Breadcrumbs<T extends object>({
@@ -26,7 +27,7 @@ function Breadcrumb({
   return (
     <RacBreadcrumb
       {...props}
-      className={cxRenderProps(className, "flex items-center gap-1")}
+      className={cnRenderProps(className, "flex items-center gap-1")}
     >
       <Link href={href} intent="neutral" {...props} />
       {href && (

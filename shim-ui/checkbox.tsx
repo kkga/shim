@@ -16,7 +16,7 @@ import {
   fieldLayoutStyle,
   Label,
 } from "@/shim-ui/field";
-import { cxRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface CheckboxGroupProps extends RacCheckboxGroupProps, FieldProps {}
@@ -34,7 +34,7 @@ function CheckboxGroup({
   return (
     <RacCheckboxGroup
       {...props}
-      className={cxRenderProps(className, fieldLayoutStyle({ labelPosition }))}
+      className={cnRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
       {composeRenderProps(props.children, (children) => (
         <Theme {...themeProps}>
@@ -83,7 +83,7 @@ const checkboxStyle = tv({
     variant: {
       classic: {
         checkbox: [
-          "bg-neutral-panel text-white shadow-[var(--shadow-inner)]",
+          "bg-neutral-panel text-white shadow-(--shadow-inner)",
           // pressed
           "group-data-pressed:bg-neutral-bg-active",
           // selected
