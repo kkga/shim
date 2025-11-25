@@ -6,7 +6,6 @@ order: 1
 
 import { SetupShimSection } from "./setup-shim";
 
-<section>
 ## Introduction
 
 Shim is a collection of pre-styled, accessible UI components built on [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html).
@@ -14,84 +13,37 @@ Components are installed directly into your codebase—you own the code and can 
 
 This guide covers the prerequisites and setup steps to get Shim running in your React project.
 
-</section>
-
-<section>
 ## Install the prerequisites
 
 Shim components depend on several libraries. Use the commands below to install them.
 
-<Step
-  title="React Aria Components"
-  code="pnpm add react-aria-components"
-  description={
-    <p>
-      Core unstyled primitives used by Shim components.
-      <br />
-      Read the docs at{" "}
-      <a href="https://react-spectrum.adobe.com/react-aria/components.html">
-        react-spectrum.adobe.com/react-aria/components
-      </a>
-      .
-    </p>
-  }
-/>
+<Step title="React Aria Components" code="pnpm add react-aria-components">
+  Core unstyled primitives used by Shim components.
+  Read the docs at
+  [react-spectrum.adobe.com/react-aria/components](https://react-spectrum.adobe.com/react-aria/components.html).
+</Step>
 
-<Step
-  title="Tailwind CSS v4"
-  description={
-    <p>
-      Utility-first styling foundation.
-      <br />
-      Installation depends on your framework—follow the{" "}
-      <a href="https://tailwindcss.com/docs">official Tailwind guide</a> for the
-      correct steps.
-    </p>
-  }
-/>
+<Step title="Tailwind CSS v4">
+  Utility-first styling foundation.<br />
+  Installation depends on your framework—follow the
+  [official Tailwind guide](https://tailwindcss.com/docs) for the
+  correct steps.
+</Step>
 
-<Step
-  title="tailwind-variants and tailwind-merge"
-  code="pnpm add tailwind-variants tailwind-merge"
-  description={
-    <p>
-      Declarative{" "}
-      <a href="https://www.tailwind-variants.org/">variant helpers</a> and{" "}
-      <a href="https://github.com/dcastil/tailwind-merge">merge utilities</a>.
-    </p>
-  }
-/>
+<Step title="tailwind-variants and tailwind-merge" code="pnpm add tailwind-variants tailwind-merge">
+  Declarative [variant helpers](https://www.tailwind-variants.org/) and [merge utilities](https://github.com/dcastil/tailwind-merge).
+</Step>
 
-<Step
-  title="Radix Colors"
-  code="pnpm add @radix-ui/colors"
-  description={
-    <p>
-      Semantic color palette used by Shim tokens.
-      <br />
-      Browse palettes at{" "}
-      <a href="https://www.radix-ui.com/colors">radix-ui.com/colors</a>.
-    </p>
-  }
-/>
+<Step title="Radix Colors" code="pnpm add @radix-ui/colors">
+  Semantic color palette used by Shim tokens.<br />
+  Browse palettes at [radix-ui.com/colors](https://www.radix-ui.com/colors).
+</Step>
 
-<Step
-  title="Phosphor Icons"
-  code="pnpm add @phosphor-icons/react"
-  description={
-    <p>
-      Icon set referenced by several components.
-      <br />
-      Explore the catalog at{" "}
-      <a href="https://phosphoricons.com/">phosphoricons.com</a>.
-    </p>
-  }
-/>
+<Step title="Phosphor Icons" code="pnpm add @phosphor-icons/react">
+  Icon set referenced by several components. <br />
+  Explore the catalog at [phosphoricons.com](https://phosphoricons.com).
+</Step>
 
-</section>
-
-<section>
 ## Set up Shim
 
 <SetupShimSection />
-</section>

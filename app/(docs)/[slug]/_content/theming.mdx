@@ -13,59 +13,32 @@ import {
   TableHeader,
 } from "@/shim-ui/table";
 
-<section>
 ## Overview
 
 Many Shim components support theming options like size and visual variants to help you adapt the look and feel to your design needs.
 You can also set global defaults using a theme provider to ensure consistency across your application.
 
-</section>
-
-<section>
 ## Size
 
 Most components support four sizes that scale proportionally.
 
-<ComponentDemo
-  component="theme"
-  codeTitle="Size example"
-  stacked
-  demo="size"
-  demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8"
-/>
-</section>
+<ComponentDemo component="theme" codeTitle="Size example" stacked demo="size" demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8" />
 
-<section>
 ## Variants
 
 ### Field variants
 
 Forms and field-based components support "classic", "soft", and "outline" variants that adjust visual styles while preserving spacing and layout.
 
-<ComponentDemo
-  component="theme"
-  demo="field-variant"
-  demoClassName="grid sm:grid-cols-3 gap-8"
-  codeTitle="Field variants example"
-  stacked
-/>
+<ComponentDemo component="theme" demo="field-variant" demoClassName="grid sm:grid-cols-3 gap-8" codeTitle="Field variants example" stacked />
 
 ### Button variants
 
 Buttons support "soft", "ghost", and "solid" variants for different visual emphasis levels.
 Note that ToggleButton and ToggleButtonGroup do not support the "solid" variant to avoid confusion with selected states.
 
-<ComponentDemo
-  component="theme"
-  demo="button-variant"
-  demoClassName="grid sm:grid-cols-3 gap-8"
-  codeTitle="Button variants example"
-  stacked
-/>
+<ComponentDemo component="theme" demo="button-variant" demoClassName="grid sm:grid-cols-3 gap-8" codeTitle="Button variants example" stacked />
 
-</section>
-
-<section>
 ## Set global defaults
 
 Wrap your application (or any subtree) in the `<Theme>` provider to broadcast shared props to every Shim component underneath it. The provider merges values from the nearest ancestor, so you can layer overrides as needed.
@@ -107,7 +80,7 @@ export function Callout() {
 
 ### Theme API reference
 
-<Table variant="ghost" aria-label="Theme API reference" className="md:table-fixed" size={2}>
+<Table aria-label="Theme API reference">
   <TableHeader>
     <Column className="md:w-1/4" isRowHeader>Prop</Column>
     <Column>Type</Column>
@@ -118,8 +91,8 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>size</code>
-        <Tooltip text="Sets the base size for all components." />
       </Cell>
+
       <Cell><code>1 | 2 | 3 | 4</code></Cell>
       <Cell><code>1</code></Cell>
     </Row>
@@ -127,8 +100,8 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>labelPosition</code>
-        <Tooltip text="Sets the default position for labels on field-based components." />
       </Cell>
+
       <Cell><code>"side" | "top"</code></Cell>
       <Cell><code>"side"</code></Cell>
     </Row>
@@ -136,8 +109,8 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>fieldVariant</code>
-        <Tooltip text="Sets the default variant for field-based components." />
       </Cell>
+
       <Cell><code>"classic" | "soft" | "outline"</code></Cell>
       <Cell><code>"classic"</code></Cell>
     </Row>
@@ -145,14 +118,10 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>buttonVariant</code>
-        <Tooltip text="Sets the default variant for buttons." />
       </Cell>
+
       <Cell><code>"soft" | "solid" | "ghost"</code></Cell>
       <Cell><code>"soft"</code></Cell>
     </Row>
-
   </TableBody>
-
 </Table>
-
-</section>

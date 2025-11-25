@@ -3,14 +3,14 @@ import { CodeBlock, type CodeItem } from "./code-block";
 
 export function Step({
   title,
-  description,
   code,
   reset,
+  children,
 }: {
   title?: string;
-  description: React.ReactNode;
   code?: CodeItem[] | string;
   reset?: boolean;
+  children?: React.ReactNode;
 }) {
   return (
     <div
@@ -38,7 +38,7 @@ export function Step({
           code ? "md:col-end-3" : "md:col-end-4"
         )}
       >
-        {description}
+        {children}
       </div>
 
       {code && (

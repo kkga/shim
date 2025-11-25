@@ -13,14 +13,10 @@ import {
   TableHeader,
 } from "@/shim-ui/table";
 
-<section>
 ## Overview
 
 The Shim CLI lets you bootstrap configuration and install components (and their dependencies) straight into your project.
 
-</section>
-
-<section>
 ## Usage
 
 Run commands on demand via **pnpm dlx** (no local install required):
@@ -46,19 +42,16 @@ Then run commands like this:
 pnpm shim add button
 ```
 
-</section>
-
-<section>
 ## Commands
 
 ### shim init
 
 Initialize Shim in your project. Creates the configuration file and installs utility and CSS files.
 
-- Creates a **shim.config.json** configuration file
-- Downloads required utility files (**style.ts**, **theme.tsx**) to your utils directory
-- Downloads CSS theme file (**theme.css**) to your styles directory
-- Ensures your project is ready for component installation
+* Creates a **shim.config.json** configuration file
+* Downloads required utility files (**style.ts**, **theme.tsx**) to your utils directory
+* Downloads CSS theme file (**theme.css**) to your styles directory
+* Ensures your project is ready for component installation
 
 ```bash title="Terminal"
 shim init [options]
@@ -73,8 +66,9 @@ shim init [options]
   <TableBody>
     <Row>
       <Cell>
-        <code>--components-path &lt;path></code>
+        <code>--components-path \<path></code>
       </Cell>
+
       <Cell>
         Destination for components (default: <code>components</code>).
       </Cell>
@@ -82,8 +76,9 @@ shim init [options]
 
     <Row>
       <Cell>
-        <code>--utils-path &lt;path></code>
+        <code>--utils-path \<path></code>
       </Cell>
+
       <Cell>
         Destination for utility files (default: <code>utils</code>).
       </Cell>
@@ -91,8 +86,9 @@ shim init [options]
 
     <Row>
       <Cell>
-        <code>--css-path &lt;path></code>
+        <code>--css-path \<path></code>
       </Cell>
+
       <Cell>
         Destination for CSS files (default: <code>styles</code>).
       </Cell>
@@ -102,9 +98,9 @@ shim init [options]
       <Cell>
         <code>-f, --force</code>
       </Cell>
+
       <Cell>Overwrite existing config and installed files.</Cell>
     </Row>
-
   </TableBody>
 </Table>
 
@@ -127,6 +123,7 @@ shim add <components...> [options]
       <Cell>
         <code>\<components...></code>
       </Cell>
+
       <Cell>
         One or more component names (e.g. <code>button dialog form</code>).
       </Cell>
@@ -136,6 +133,7 @@ shim add <components...> [options]
       <Cell>
         <code>-p, --path \<path></code>
       </Cell>
+
       <Cell>
         Destination for installed components (overrides config <code>componentsPath</code>).
       </Cell>
@@ -145,15 +143,11 @@ shim add <components...> [options]
       <Cell>
         <code>-f, --overwrite</code>
       </Cell>
+
       <Cell>Overwrite files that already exist.</Cell>
     </Row>
-
   </TableBody>
 </Table>
-
-</section>
-
-<section>
 
 ## Configuration File
 
@@ -178,6 +172,7 @@ Running **shim init** creates a configuration file in your project root:
       <Cell>
         <code>componentsPath</code>
       </Cell>
+
       <Cell>
         Default destination for installed components.
       </Cell>
@@ -187,6 +182,7 @@ Running **shim init** creates a configuration file in your project root:
       <Cell>
         <code>utilsPath</code>
       </Cell>
+
       <Cell>
         Destination for downloaded utility files.
       </Cell>
@@ -196,22 +192,17 @@ Running **shim init** creates a configuration file in your project root:
       <Cell>
         <code>cssPath</code>
       </Cell>
+
       <Cell>
         Destination for downloaded CSS files.
       </Cell>
     </Row>
-
   </TableBody>
 </Table>
 
-</section>
+## Troubleshooting
 
-<section>
-  ## Troubleshooting
-
-- Use `--overwrite` / `--force` if existing files block installation.
-- For path-related options, reference directories from your project root (avoid full filesystem paths like /Users/... ).
-- If a component fails to install, re-run with a single name to isolate the issue.
-- Remove partially installed files before retrying to avoid stale code.
-
-</section>
+* Use `--overwrite` / `--force` if existing files block installation.
+* For path-related options, reference directories from your project root (avoid full filesystem paths like /Users/... ).
+* If a component fails to install, re-run with a single name to isolate the issue.
+* Remove partially installed files before retrying to avoid stale code.
