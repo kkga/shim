@@ -46,9 +46,9 @@ export default function DocsLayout({
   }, [navItems]);
 
   return (
-    <div className="flex min-h-svh flex-col bg-pattern lg:grid lg:grid-cols-[1fr_var(--sidebar-width)_var(--content-width)_1fr] xl:gap-6 2xl:gap-8">
+    <div className="flex min-h-svh flex-col lg:grid lg:grid-cols-[var(--sidebar-width)_var(--content-width)_1fr]">
       <Nav navSections={navSections} />
-      <main className="@container/main w-full bg-background text-[15px] leading-normal lg:col-3 lg:justify-self-center">
+      <main className="@container/main w-full bg-background text-base lg:justify-self-center">
         {children}
       </main>
     </div>

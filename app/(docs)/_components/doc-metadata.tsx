@@ -107,7 +107,7 @@ export function DocMetadata({
           label="Composes"
           value={dependencies.map(({ name: depName, slug: depSlug }, i) => (
             <Fragment key={depName}>
-              {i > 0 && ", "}
+              {i > 0 && <span className="mx-1">&middot;</span>}
               <MetadataLink
                 external={false}
                 href={`/components/${depSlug}`}

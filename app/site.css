@@ -5,7 +5,7 @@
   --sidebar-width-max: 240px;
   --sidebar-width: minmax(var(--sidebar-width-min), var(--sidebar-width-max));
   --content-width-min: 800px;
-  --content-width-max: 1120px;
+  --content-width-max: 1400px;
   --content-width: minmax(var(--content-width-min), var(--content-width-max));
 
   --sh-class: var(--color-neutral-12);
@@ -32,25 +32,13 @@ html {
   min-width: 360px;
 }
 
-.bg-pattern {
-  background-color: var(--color-background-subtle);
-  background-image: repeating-linear-gradient(
-    0deg,
-    var(--gray-a3) 0px,
-    var(--gray-a3) 1px,
-    transparent 1px,
-    transparent 2px
-  );
-  background-attachment: fixed;
-}
-
 article {
   :where(section):not(:where(.not-prose, .not-prose *)) {
-    @apply px-4 py-6 md:px-8 md:py-8 not-last:border-b border-neutral-3;
+    @apply p-6 md:p-8 not-last:border-b border-neutral-3;
   }
 
   .prose {
-    @apply px-4 py-6 md:px-8 md:py-8;
+    @apply p-6 md:p-8;
 
     :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
       @apply col-span-full;
@@ -61,7 +49,7 @@ article {
     }
 
     :where(h2):not(:where(.not-prose, .not-prose *)) {
-      @apply not-first:mt-8 mb-6 scroll-mt-6 text-balance font-medium text-lg lg:text-xl text-neutral-text-contrast;
+      @apply not-first:mt-8 mb-4 scroll-mt-6 text-balance font-medium text-lg lg:text-xl text-neutral-text-contrast;
     }
 
     :where(h3):not(:where(.not-prose, .not-prose *)) {
