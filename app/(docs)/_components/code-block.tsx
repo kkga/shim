@@ -50,9 +50,9 @@ function CodeHeader({
   return (
     <div
       className={cn(
-        "z-20 flex min-h-8 items-center rounded-t-lg px-1 py-0",
+        "z-20 flex min-h-8 items-center px-1",
         children
-          ? "border-b border-b-neutral-3 bg-panel backdrop-blur-md"
+          ? "border-(--gray-3) border-b bg-panel backdrop-blur-md"
           : "pointer-events-none absolute inset-x-0"
       )}
     >
@@ -116,8 +116,8 @@ function CodePane({
   return (
     <>
       {note && (
-        <div className="flex items-start gap-2 border-neutral-3 border-b px-3 py-2 font-medium text-neutral-text *:m-0!">
-          <WarningDiamondIcon className="h-lh" size={16} weight="duotone" />
+        <div className="m-2 flex items-start gap-2 rounded-sm bg-warning-panel px-2.5 py-2 font-medium text-[13px]/5 text-warning-text-contrast *:m-0!">
+          <WarningDiamondIcon className="h-lh" size={16} />
           {note}
         </div>
       )}
@@ -152,7 +152,7 @@ export function CodeBlock(props: Props) {
   return (
     <div
       className={cn(
-        "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-neutral-3 bg-background font-normal text-neutral-text text-xs leading-5",
+        "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-(--gray-3) bg-background font-normal text-neutral-text text-xs leading-5",
         props.className
       )}
     >
@@ -178,7 +178,7 @@ export function CodeBlock(props: Props) {
         <>
           <CodeHeader selectedCode={selectedCode}>
             {normalizedCode[0].title && (
-              <span className="px-2 font-medium font-sans text-neutral-text text-xs leading-6">
+              <span className="px-2 font-medium font-sans text-[13px] text-neutral-text leading-6">
                 {normalizedCode[0].title}
               </span>
             )}
