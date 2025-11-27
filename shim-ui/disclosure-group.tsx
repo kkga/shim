@@ -5,30 +5,37 @@ import {
   composeRenderProps,
   DisclosureGroup as RacDisclosureGroup,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import { DisclosureVariantContext } from "./disclosure";
 
 const style = tv({
-  base: "border border-neutral-line",
+  base: "",
   variants: {
     size: {
-      1: "rounded-md",
-      2: "rounded-[7px]",
-      3: "rounded-lg",
-      4: "rounded-xl",
+      1: "",
+      2: "",
+      3: "",
+      4: "",
+    },
+    variant: {
+      surface: "",
+      soft: "",
+      ghost: "",
     },
   },
 });
 
-interface DisclosureGroupProps extends RacDisclosureGroupProps {
-  size?: Size;
-}
+interface DisclosureGroupProps
+  extends RacDisclosureGroupProps,
+    VariantProps<typeof style> {}
 
 function DisclosureGroup({
   children,
   className,
   size: _size,
+  variant = "soft",
   ...props
 }: DisclosureGroupProps) {
   let { size } = useThemeProps({ size: _size });
@@ -39,7 +46,11 @@ function DisclosureGroup({
       className={cnRenderProps(className, style({ size }))}
     >
       {composeRenderProps(children, (renderedChildren) => (
-        <Theme size={size}>{renderedChildren}</Theme>
+        <Theme size={size}>
+          <DisclosureVariantContext.Provider value={variant}>
+            {renderedChildren}
+          </DisclosureVariantContext.Provider>
+        </Theme>
       ))}
     </RacDisclosureGroup>
   );

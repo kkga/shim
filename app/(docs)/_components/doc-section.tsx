@@ -28,7 +28,8 @@ function DocSection({
   return (
     <section
       className={cx(
-        "col-span-full grid scroll-mt-0 items-start gap-x-8 gap-y-8",
+        "col-span-full grid items-start gap-x-8 gap-y-8",
+        "target:animate-section-target",
         stacked ? "md:grid-cols-1" : "@3xl/main:grid-cols-[2fr_3fr]",
         className
       )}

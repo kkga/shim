@@ -13,8 +13,8 @@ export function Toc({ toc }: Props) {
   return (
     <ul className="space-y-1.5 text-sm">
       <li className="flex items-center gap-1">
-        <Link className="inline-block" href="#" intent="neutral">
-          Back to top ↑
+        <Link className="inline-block" href="#top" intent="neutral">
+          Top ↑
         </Link>
       </li>
       {toc.map((heading) => (

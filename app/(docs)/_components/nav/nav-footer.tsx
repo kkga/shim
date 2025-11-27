@@ -4,7 +4,7 @@ import { LinkButton } from "@/shim-ui/button";
 
 export function NavFooter() {
   return (
-    <footer className="hidden h-12 shrink-0 items-center gap-1 border-neutral-3 border-t px-3 lg:flex">
+    <footer className="hidden h-12 shrink-0 items-center gap-1 px-3 lg:flex">
       <LinkButton
         href="https://github.com/kkga/shim"
         intent="neutral"

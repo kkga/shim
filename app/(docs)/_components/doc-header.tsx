@@ -21,7 +21,7 @@ export function DocHeader({
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-1 font-book text-base text-neutral-text lg:mt-2 lg:text-lg">
+          <p className="mt-1 font-book text-base text-neutral-text lg:mt-2">
             {subtitle}
           </p>
         )}

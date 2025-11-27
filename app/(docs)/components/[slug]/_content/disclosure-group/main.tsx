@@ -1,31 +1,18 @@
-import {
-  Disclosure,
-  DisclosureHeader,
-  DisclosurePanel,
-} from "@/shim-ui/disclosure";
+import { Disclosure } from "@/shim-ui/disclosure";
 import { DisclosureGroup } from "@/shim-ui/disclosure-group";
 
 export default () => (
   <DisclosureGroup defaultExpandedKeys={["refund"]}>
-    <Disclosure id="refund">
-      <DisclosureHeader>What is your refund policy?</DisclosureHeader>
-      <DisclosurePanel>
-        We offer a 30-day no-questions-asked refund policy.
-      </DisclosurePanel>
+    <Disclosure id="refund" title="What is your refund policy?">
+      We offer a 30-day no-questions-asked refund policy.
     </Disclosure>
 
-    <Disclosure>
-      <DisclosureHeader>What is your return policy?</DisclosureHeader>
-      <DisclosurePanel>
-        We offer a 30-day no-questions-asked return policy.
-      </DisclosurePanel>
+    <Disclosure title="What is your return policy?">
+      We offer a 30-day no-questions-asked return policy.
     </Disclosure>
 
-    <Disclosure>
-      <DisclosureHeader>What is your exchange policy?</DisclosureHeader>
-      <DisclosurePanel>
-        We offer a 30-day no-questions-asked exchange policy.
-      </DisclosurePanel>
+    <Disclosure title="What is your exchange policy?">
+      We offer a 30-day no-questions-asked exchange policy.
     </Disclosure>
   </DisclosureGroup>
 );

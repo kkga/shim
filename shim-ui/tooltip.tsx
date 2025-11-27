@@ -6,7 +6,7 @@ import {
   TooltipTrigger as RacTooltipTrigger,
   type TooltipTriggerComponentProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import { useThemeProps } from "./lib/theme";
 
@@ -22,18 +22,20 @@ const style = tv({
   },
 });
 
+interface TooltipProps extends RacTooltipProps, VariantProps<typeof style> {}
+
 function Tooltip({
   className,
   offset = 4,
-  size = 2,
+  size: _size = 2,
   ...props
-}: RacTooltipProps & { size?: 1 | 2 }) {
-  let themeProps = useThemeProps({ size });
+}: TooltipProps) {
+  let { size } = useThemeProps({ size: _size });
 
   return (
     <RacTooltip
       {...props}
-      className={cnRenderProps(className, style({ size: themeProps.size }))}
+      className={cnRenderProps(className, style({ size }))}
       offset={offset}
     />
   );

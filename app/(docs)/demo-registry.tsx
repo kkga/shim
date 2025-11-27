@@ -233,6 +233,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   disclosure: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/disclosure/main`)),
     size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/disclosure/size`)),
+    variant: dynamic(
+      () => import(`${COMPONENT_DEMOS_PATH}/disclosure/variant`)
+    ),
   },
   "disclosure-group": {
     main: dynamic(
@@ -240,6 +243,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     ),
     size: dynamic(
       () => import(`${COMPONENT_DEMOS_PATH}/disclosure-group/size`)
+    ),
+    variant: dynamic(
+      () => import(`${COMPONENT_DEMOS_PATH}/disclosure-group/variant`)
     ),
   },
 
@@ -255,6 +261,7 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     placement: dynamic(
       () => import(`${COMPONENT_DEMOS_PATH}/tooltip/placement`)
     ),
+    size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/tooltip/size`)),
   },
   dialog: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/dialog/main`)),

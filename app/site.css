@@ -22,6 +22,19 @@
 @theme {
   --color-background: var(--color-pure);
   --color-background-subtle: var(--color-neutral-1);
+
+  --animate-section-target: section-target-fade 3s linear;
+  @keyframes section-target-fade {
+    0% {
+      background-color: var(--color-accent-2);
+    }
+    80% {
+      background-color: var(--color-accent-2);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
 }
 
 ::selection {
@@ -40,6 +53,10 @@ article {
   .prose {
     @apply p-6 md:p-8;
 
+    &.prose-changelog {
+      @apply [&_h2]:text-base [&_h2]:text-neutral-text [&_h2]:font-medium;
+    }
+
     :where(h1, h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
       @apply col-span-full;
     }
@@ -53,19 +70,19 @@ article {
     }
 
     :where(h3):not(:where(.not-prose, .not-prose *)) {
-      @apply not-first:mt-8 mb-2 scroll-mt-6 text-balance font-medium text-base lg:text-lg text-neutral-text-contrast;
+      @apply not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-base lg:text-lg text-neutral-text-contrast;
     }
 
     :where(h4):not(:where(.not-prose, .not-prose *)) {
-      @apply not-first:mt-6 mb-4 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast;
+      @apply not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-base text-neutral-text-contrast;
     }
 
     :where(h5):not(:where(.not-prose, .not-prose *)) {
-      @apply not-first:mt-6 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
+      @apply not-first:mt-6 mb-2 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
     }
 
     :where(h6):not(:where(.not-prose, .not-prose *)) {
-      @apply not-first:mt-8 mb-4 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
+      @apply not-first:mt-8 mb-2 scroll-mt-6 text-balance font-medium text-neutral-text-contrast text-sm;
     }
 
     :where(h1, h2, h3, h4, h5, h6) a:not(:where(.not-prose, .not-prose *)) {
@@ -77,11 +94,11 @@ article {
     }
 
     :where(ul):not(:where(.not-prose, .not-prose *)) {
-      @apply not-last:my-4 list-outside list-disc pl-8;
+      @apply not-last:mb-4 ml-4 list-disc;
     }
 
     :where(li):not(:where(.not-prose, .not-prose *)) {
-      @apply not-last:mb-0;
+      @apply my-0.5;
     }
 
     :where(hr):not(:where(.not-prose, .not-prose *)) {

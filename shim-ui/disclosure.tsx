@@ -1,47 +1,54 @@
 "use client";
 
 import { CaretDownIcon } from "@phosphor-icons/react";
-import { useContext } from "react";
+import { createContext, useContext } from "react";
 import {
   Button,
-  composeRenderProps,
   DisclosureGroupStateContext,
-  DisclosureStateContext,
   Heading,
   Disclosure as RacDisclosure,
   DisclosurePanel as RacDisclosurePanel,
-  type DisclosurePanelProps as RacDisclosurePanelProps,
   type DisclosureProps as RacDisclosureProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
-import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
-import {
-  ICON_SIZE_MAP,
-  type Size,
-  Theme,
-  useThemeProps,
-} from "@/shim-ui/lib/theme";
+import { tv, type VariantProps } from "tailwind-variants";
+import { cnRenderProps } from "@/shim-ui/lib/style";
+import { ICON_SIZE_MAP, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
-    disclosure: "group border border-neutral-line text-neutral-text",
+    disclosure: "group overflow-hidden",
     button: [
-      focusStyle(),
-      "flex w-full cursor-default items-center gap-2 bg-neutral-panel text-start",
+      "focus-ring -outline-offset-2",
+      "group/button flex w-full cursor-default items-center gap-1 bg-neutral-panel text-start",
+      "group-data-disabled:cursor-not-allowed group-data-disabled:text-neutral-text-subtle",
     ],
     heading: "font-medium text-neutral-text-contrast leading-tight",
-    chevron: "ml-auto text-neutral-text",
-    panel: "",
+    chevron: [
+      "ml-auto text-neutral-text",
+      "group-data-expanded:rotate-180 group-data-expanded:transform",
+      "group-data-disabled:text-neutral-text-subtle",
+    ],
+    panel: "text-neutral-text",
   },
   variants: {
-    // TODO: Add support for `soft` variant
     variant: {
-      soft: {
-        disclosure: "bg-transparent",
-        button: "bg-neutral-panel",
-      },
       surface: {
-        disclosure: "group bg-neutral-bg text-neutral-text",
+        disclosure: "border border-neutral-line",
+        button:
+          "bg-panel data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active group-data-expanded:rounded-b-none",
+        panel: "border-neutral-line bg-panel group-data-expanded:border-t",
+      },
+      soft: {
+        disclosure: "",
+        button:
+          "bg-panel data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active group-data-expanded:rounded-b-none",
+        panel: "bg-panel",
+      },
+      ghost: {
+        disclosure: "border-0 bg-transparent",
+        button:
+          "bg-transparent hover:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
+        chevron: "group-data-hovered/button:ml-auto",
       },
     },
     size: {
@@ -52,7 +59,7 @@ const style = tv({
       },
       2: {
         disclosure: "rounded-[7px] text-sm",
-        button: "rounded-[6px] px-3 py-2.5",
+        button: "rounded-md px-3 py-2.5",
         panel: "group-data-expanded:px-3 group-data-expanded:py-2.5",
       },
       3: {
@@ -66,109 +73,104 @@ const style = tv({
         panel: "group-data-expanded:px-4 group-data-expanded:py-3.5",
       },
     },
-    isHovered: {
-      true: {
-        button: "bg-neutral-bg-hover",
-      },
-    },
-    isPressed: {
-      true: {
-        button: "bg-neutral-bg-active",
-      },
-    },
     isInGroup: {
-      true: {
-        disclosure: "rounded-none border-0 border-b last:border-b-0",
+      true: {},
+      false: {},
+    },
+  },
+  compoundVariants: [
+    {
+      variant: ["soft", "surface"],
+      isInGroup: true,
+      class: {
+        disclosure:
+          "not-first:not-last:rounded-none not-first:border-t-0 first:rounded-b-none last:rounded-t-none",
         button:
           "not-group-first:not-group-last:rounded-none group-first:rounded-b-none group-last:rounded-t-none",
       },
     },
-    isDisabled: {
-      true: {
-        button: "text-neutral-text-subtle",
-        chevron: "text-neutral-text-subtle",
+    {
+      variant: "ghost",
+      size: 1,
+      class: {
+        chevron: "ml-0.5 group-data-hovered/button:ml-auto",
       },
     },
-    isExpanded: {
-      true: {
-        chevron: "rotate-180 transform",
-        button: "rounded-b-none shadow-[0_1px] shadow-neutral-line",
+    {
+      variant: "ghost",
+      size: 2,
+      class: {
+        chevron: "ml-1 group-data-hovered/button:ml-auto",
       },
     },
-  },
+    {
+      variant: "ghost",
+      size: 3,
+      class: {
+        chevron: "ml-1.5 group-data-hovered/button:ml-auto",
+      },
+    },
+    {
+      variant: "ghost",
+      size: 4,
+      class: {
+        chevron: "ml-2 group-data-hovered/button:ml-auto",
+      },
+    },
+  ],
 });
 
-interface DisclosureProps extends RacDisclosureProps {
-  size?: Size;
+interface DisclosureProps
+  extends Omit<RacDisclosureProps, "children">,
+    VariantProps<typeof style> {
+  title: React.ReactNode;
+  children: React.ReactNode;
 }
 
-function Disclosure({ children, size: _size, ...props }: DisclosureProps) {
+type DisclosureVariant = VariantProps<typeof style>["variant"];
+const DisclosureVariantContext = createContext<DisclosureVariant | null>(null);
+
+function Disclosure({
+  title,
+  children,
+  size,
+  variant = "soft",
+  className,
+  ...props
+}: DisclosureProps) {
   let isInGroup = useContext(DisclosureGroupStateContext) !== null;
-  let { size } = useThemeProps({ size: _size });
-  let { disclosure } = style({ isInGroup, size });
+  let contextVariant = useContext(DisclosureVariantContext);
+  let groupVariant = isInGroup ? contextVariant : null;
+  let themeProps = useThemeProps({ size });
+  let { disclosure, panel, heading, chevron, button } = style({
+    isInGroup,
+    variant: groupVariant ?? variant,
+    size: themeProps.size,
+  });
+
   return (
     <RacDisclosure
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) =>
-        disclosure({ ...renderProps, isInGroup, className })
-      )}
+      className={cnRenderProps(className, disclosure())}
     >
-      {composeRenderProps(children, (renderChildren) => (
-        <Theme size={size}>{renderChildren}</Theme>
-      ))}
+      <Heading className={heading()}>
+        <Button
+          className={(renderProps) => button({ ...renderProps, isInGroup })}
+          slot="trigger"
+        >
+          {title}
+          <CaretDownIcon
+            aria-hidden
+            className={chevron()}
+            size={ICON_SIZE_MAP[size]}
+            weight="bold"
+          />
+        </Button>
+      </Heading>
+      <RacDisclosurePanel className={panel()}>{children}</RacDisclosurePanel>
     </RacDisclosure>
   );
 }
 
-interface DisclosureHeaderProps {
-  children: React.ReactNode;
-}
-
-function DisclosureHeader({ children }: DisclosureHeaderProps) {
-  let context = useContext(DisclosureStateContext);
-  if (!context) {
-    throw new Error(
-      "DisclosureStateContext is null. Ensure this component is used within a Disclosure."
-    );
-  }
-  let { isExpanded } = context;
-  let isInGroup = useContext(DisclosureGroupStateContext) !== null;
-  let { size } = useThemeProps();
-  let { button, chevron, heading } = style({ isExpanded, isInGroup, size });
-  return (
-    <Heading className={heading()}>
-      <Button
-        className={(renderProps) => button({ ...renderProps, isInGroup })}
-        slot="trigger"
-      >
-        {({ isDisabled }) => (
-          <>
-            {children}
-            <CaretDownIcon
-              aria-hidden
-              className={chevron({ isExpanded, isDisabled })}
-              size={ICON_SIZE_MAP[size]}
-              weight="bold"
-            />
-          </>
-        )}
-      </Button>
-    </Heading>
-  );
-}
-
-interface DisclosurePanelProps extends RacDisclosurePanelProps {}
-
-function DisclosurePanel({ className, ...props }: DisclosurePanelProps) {
-  let { size } = useThemeProps();
-  let { panel } = style({ size });
-  return (
-    <RacDisclosurePanel
-      {...props}
-      className={cnRenderProps(className, panel())}
-    />
-  );
-}
-
-export { Disclosure, DisclosureHeader, DisclosurePanel };
-export type { DisclosureHeaderProps, DisclosurePanelProps, DisclosureProps };
+export { Disclosure, DisclosureVariantContext };
+export type { DisclosureProps };

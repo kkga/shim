@@ -67,8 +67,8 @@ export default async function DocPage({
     .filter((dep): dep is { name: string; slug: string } => dep !== null);
 
   return (
-    <article>
-      <DocHeader className="col-span-full" subtitle={description} title={title}>
+    <>
+      <DocHeader subtitle={description} title={title}>
         <DocMetadata
           ariaUrl={ariaUrl}
           dependencies={dependencies}
@@ -113,7 +113,7 @@ export default async function DocPage({
           </Fragment>
         );
       })}
-    </article>
+    </>
   );
 }
 

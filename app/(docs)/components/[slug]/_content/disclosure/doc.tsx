@@ -9,9 +9,16 @@ export default {
       },
     },
     {
+      title: "Variant",
+      description: (
+        <p>
+          Use the <code>variant</code> prop to change the visual style of the
+          disclosure.
+        </p>
+      ),
       demo: {
-        group: "data-list",
-        name: "main",
+        group: "disclosure",
+        name: "variant",
       },
     },
     {

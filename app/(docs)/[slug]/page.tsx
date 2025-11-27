@@ -1,3 +1,4 @@
+import { cx } from "tailwind-variants";
 import { getFileSource } from "@/app/_lib/utils";
 import { DocHeader } from "@/app/(docs)/_components/doc-header";
 import { mdxComponents } from "@/app/(docs)/_components/mdx-components";
@@ -39,33 +40,33 @@ export default async function GuidePage({
   ];
 
   let { default: GuideContent, toc } = await import(`./_content/${slug}.mdx`);
+  let hasToc = toc && toc.length > 0;
 
   return (
-    <article className="grid grid-cols-5">
-      <DocHeader
-        className="col-span-full"
-        subtitle={description}
-        title={title}
-      />
-      <div className="prose -col-end-1 col-start-1 xl:col-end-5">
-        <GuideContent
-          components={mdxComponents}
-          styleUtilsSrc={styleUtilsSrc}
-          styleUtilsUrl={styleUtilsUrl}
-          themeCssSrc={themeCssSrc}
-          themeCssUrl={themeCssUrl}
-          themeUtilsSrc={themeUtilsSrc}
-          themeUtilsUrl={themeUtilsUrl}
-        />
-      </div>
+    <>
+      <DocHeader subtitle={description} title={title} />
 
-      {toc && toc.length > 0 && (
-        <aside className="hidden min-w-48 border-neutral-3 border-l xl:block">
-          <nav className="sticky top-0 p-4">
-            <Toc toc={toc} />
-          </nav>
-        </aside>
-      )}
-    </article>
+      <div className="flex grow">
+        <div className={cx("prose", slug === "changelog" && "prose-changelog")}>
+          <GuideContent
+            components={mdxComponents}
+            styleUtilsSrc={styleUtilsSrc}
+            styleUtilsUrl={styleUtilsUrl}
+            themeCssSrc={themeCssSrc}
+            themeCssUrl={themeCssUrl}
+            themeUtilsSrc={themeUtilsSrc}
+            themeUtilsUrl={themeUtilsUrl}
+          />
+        </div>
+
+        {hasToc && (
+          <aside className="hidden w-60 shrink-0 border-neutral-3 border-l xl:block">
+            <nav className="sticky top-0 p-4">
+              <Toc toc={toc} />
+            </nav>
+          </aside>
+        )}
+      </div>
+    </>
   );
 }

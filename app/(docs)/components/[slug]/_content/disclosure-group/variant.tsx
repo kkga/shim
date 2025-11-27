@@ -1,10 +1,13 @@
-"use client";
 import { Disclosure } from "@/shim-ui/disclosure";
 import { DisclosureGroup } from "@/shim-ui/disclosure-group";
 
 export default () =>
-  ([1, 2, 3, 4] as const).map((size) => (
-    <DisclosureGroup defaultExpandedKeys={["refund"]} key={size} size={size}>
+  (["soft", "surface", "ghost"] as const).map((variant) => (
+    <DisclosureGroup
+      defaultExpandedKeys={["refund"]}
+      key={variant}
+      variant={variant}
+    >
       <Disclosure id="refund" title="What is your refund policy?">
         We offer refunds.
       </Disclosure>

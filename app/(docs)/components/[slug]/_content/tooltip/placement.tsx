@@ -1,8 +1,8 @@
 import {
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/shim-ui/button";
 import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
@@ -11,28 +11,28 @@ export default () => (
   <>
     <TooltipTrigger>
       <Button>
-        <ArrowUp size={16} />
+        <ArrowUpIcon size={16} />
       </Button>
       <Tooltip placement="top">Top</Tooltip>
     </TooltipTrigger>
 
     <TooltipTrigger>
       <Button>
-        <ArrowRight size={16} />
+        <ArrowRightIcon size={16} />
       </Button>
       <Tooltip placement="right">Right</Tooltip>
     </TooltipTrigger>
 
     <TooltipTrigger>
       <Button>
-        <ArrowLeft size={16} />
+        <ArrowLeftIcon size={16} />
       </Button>
       <Tooltip placement="left">Left</Tooltip>
     </TooltipTrigger>
 
     <TooltipTrigger>
       <Button>
-        <ArrowDown size={16} />
+        <ArrowDownIcon size={16} />
       </Button>
       <Tooltip placement="bottom">Bottom</Tooltip>
     </TooltipTrigger>

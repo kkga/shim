@@ -22,5 +22,18 @@ export default {
         name: "size",
       },
     },
+    {
+      title: "Variant",
+      description: (
+        <p>
+          Use the <code>variant</code> prop on <code>DisclosureGroup</code> to
+          set the visual style of the child <code>Disclosure</code> components.
+        </p>
+      ),
+      demo: {
+        group: "disclosure-group",
+        name: "variant",
+      },
+    },
   ],
 } satisfies DocModule;

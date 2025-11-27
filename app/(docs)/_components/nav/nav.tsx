@@ -12,6 +12,7 @@ import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 import { Badge } from "@/shim-ui/badge";
 import { focusStyle } from "@/shim-ui/lib/style";
+import { Separator } from "@/shim-ui/separator";
 import { CategoryIcon } from "./category-icon";
 import { NavFooter } from "./nav-footer";
 import { NavHeader } from "./nav-header";
@@ -51,8 +52,10 @@ export function Nav({ navSections }: Props) {
   let { header: headerStyle, item: itemStyle } = style();
 
   return (
-    <div className="sticky top-0 z-30 flex flex-col border-neutral-3 border-b bg-background lg:h-svh lg:border-r lg:border-b-0">
+    <div className="sticky top-0 z-30 flex flex-col border-neutral-3 border-b bg-background-subtle lg:h-svh lg:border-r lg:border-b-0">
       <NavHeader navSections={navSections} />
+
+      <Separator className="mx-3 hidden w-auto self-stretch bg-neutral-3 lg:block" />
 
       <nav
         className="hidden grow overflow-y-scroll p-3 lg:block"
@@ -142,6 +145,7 @@ export function Nav({ navSections }: Props) {
         </ListBox>
       </nav>
 
+      <Separator className="mx-3 hidden w-auto self-stretch bg-neutral-3 lg:block" />
       <NavFooter />
     </div>
   );
