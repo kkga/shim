@@ -36,7 +36,7 @@ const style = tv({
         disclosure: "border border-neutral-line",
         button:
           "bg-panel data-hovered:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active group-data-expanded:rounded-b-none",
-        panel: "border-neutral-line bg-panel group-data-expanded:border-t",
+        panel: "border-neutral-line bg-background group-data-expanded:border-t",
       },
       soft: {
         disclosure: "",
