@@ -21,6 +21,7 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   badge: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/badge/main`)),
     size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/badge/size`)),
+    variant: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/badge/variant`)),
     intent: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/badge/intent`)),
     content: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/badge/content`)),
   },

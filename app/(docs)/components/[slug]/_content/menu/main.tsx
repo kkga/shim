@@ -1,11 +1,11 @@
-import { DotsThreeVerticalIcon } from "@phosphor-icons/react/dist/ssr";
+import { ListIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/shim-ui/button";
 import { Menu, MenuItem, MenuSeparator, MenuTrigger } from "@/shim-ui/menu";
 
 export default () => (
   <MenuTrigger>
     <Button aria-label="Menu">
-      <DotsThreeVerticalIcon size={16} weight="bold" />
+      <ListIcon size={16} />
     </Button>
     <Menu>
       <MenuItem>Edit</MenuItem>

@@ -1,55 +1,18 @@
-import { DotsThreeVerticalIcon } from "@phosphor-icons/react/dist/ssr";
+import { ListIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/shim-ui/button";
 import { Menu, MenuItem, MenuSeparator, MenuTrigger } from "@/shim-ui/menu";
 
-export default () => (
-  <>
-    <MenuTrigger>
-      <Button aria-label="Menu" size={1}>
-        <DotsThreeVerticalIcon size={16} weight="bold" />
+export default () =>
+  ([1, 2, 3, 4] as const).map((size) => (
+    <MenuTrigger key={size}>
+      <Button aria-label="Menu" size={size}>
+        <ListIcon size={"1em"} />
       </Button>
-      <Menu size={1}>
+      <Menu size={size}>
         <MenuItem>Edit</MenuItem>
         <MenuItem>Duplicate</MenuItem>
         <MenuSeparator />
         <MenuItem intent="danger">Delete</MenuItem>
       </Menu>
     </MenuTrigger>
-
-    <MenuTrigger>
-      <Button aria-label="Menu" size={2}>
-        <DotsThreeVerticalIcon size={16} weight="bold" />
-      </Button>
-      <Menu size={2}>
-        <MenuItem>Edit</MenuItem>
-        <MenuItem>Duplicate</MenuItem>
-        <MenuSeparator />
-        <MenuItem intent="danger">Delete</MenuItem>
-      </Menu>
-    </MenuTrigger>
-
-    <MenuTrigger>
-      <Button aria-label="Menu" size={3}>
-        <DotsThreeVerticalIcon size={20} weight="bold" />
-      </Button>
-      <Menu size={3}>
-        <MenuItem>Edit</MenuItem>
-        <MenuItem>Duplicate</MenuItem>
-        <MenuSeparator />
-        <MenuItem intent="danger">Delete</MenuItem>
-      </Menu>
-    </MenuTrigger>
-
-    <MenuTrigger>
-      <Button aria-label="Menu" size={4}>
-        <DotsThreeVerticalIcon size={24} weight="bold" />
-      </Button>
-      <Menu size={4}>
-        <MenuItem>Edit</MenuItem>
-        <MenuItem>Duplicate</MenuItem>
-        <MenuSeparator />
-        <MenuItem intent="danger">Delete</MenuItem>
-      </Menu>
-    </MenuTrigger>
-  </>
-);
+  ));

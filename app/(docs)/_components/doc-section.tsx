@@ -28,7 +28,7 @@ function DocSection({
   return (
     <section
       className={cx(
-        "col-span-full grid items-start gap-x-8 gap-y-8",
+        "col-span-full grid scroll-mt-0 items-start gap-x-8 gap-y-8",
         "target:animate-section-target",
         stacked ? "md:grid-cols-1" : "@3xl/main:grid-cols-[2fr_3fr]",
         className
@@ -37,7 +37,7 @@ function DocSection({
     >
       <div className="col-start-1 self-stretch">
         {title && (
-          <h3 className="mb-2 font-semibold text-base text-neutral-text-contrast leading-tight">
+          <h3 className="mb-2 font-semibold text-lg text-neutral-text-contrast leading-tight">
             {id ? (
               <a
                 className="no-underline hover:underline focus-visible:underline focus-visible:outline-none"

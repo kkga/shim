@@ -1,4 +1,5 @@
-import { ListIcon } from "@phosphor-icons/react/dist/ssr";
+"use client";
+import { ListIcon } from "@phosphor-icons/react";
 import { Button } from "@/shim-ui/button";
 import { ICON_SIZE_MAP } from "@/shim-ui/lib/theme";
 import { Menu, MenuItem, MenuSeparator, MenuTrigger } from "@/shim-ui/menu";
@@ -20,7 +21,7 @@ export default () =>
           Button
         </Button>
         <MenuTrigger>
-          <Button aria-label="Menu" size={size}>
+          <Button aria-label="Menu" isIconOnly size={size}>
             <ListIcon size={ICON_SIZE_MAP[size]} />
           </Button>
           <Menu size={size}>
