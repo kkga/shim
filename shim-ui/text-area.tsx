@@ -15,7 +15,11 @@ import {
   TextAreaInput,
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 interface TextAreaProps extends RacTextFieldProps, FieldProps {}
 
@@ -42,8 +46,11 @@ function TextArea({
   className,
   ...props
 }: TextAreaProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
-  let { labelPosition, size, fieldVariant: variant } = themeProps;
+  let themeProps = useThemeProps({
+    ...props,
+    ...buildVariantOverrides("field", props.variant),
+  });
+  let { labelPosition, size, variants } = themeProps;
 
   return (
     <RacTextField
@@ -53,7 +60,7 @@ function TextArea({
       <Theme {...themeProps}>
         {label && <Label>{label}</Label>}
         <TextAreaInput
-          className={textAreaStyle({ size, variant })}
+          className={textAreaStyle({ size, variant: variants.field })}
           placeholder={placeholder}
         />
         {description && <Description>{description}</Description>}

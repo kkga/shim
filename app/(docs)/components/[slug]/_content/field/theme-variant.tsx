@@ -9,9 +9,9 @@ import { TextField } from "@/shim-ui/text-field";
 
 export default () => (
   <>
-    <div className="flex grow-1 basis-2xs flex-col gap-3 rounded-lg border border-neutral-line p-4">
+    <div className="flex grow basis-2xs flex-col gap-3 rounded-lg border border-neutral-line p-4">
       <h5>Classic variant</h5>
-      <Theme fieldVariant="classic">
+      <Theme variants={{ field: "classic" }}>
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />
@@ -28,9 +28,9 @@ export default () => (
       </Theme>
     </div>
 
-    <div className="flex grow-1 basis-2xs flex-col gap-3 rounded-lg border border-neutral-line p-4">
+    <div className="flex grow basis-2xs flex-col gap-3 rounded-lg border border-neutral-line p-4">
       <h5>Soft variant</h5>
-      <Theme fieldVariant="soft">
+      <Theme variants={{ field: "soft" }}>
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />
@@ -47,9 +47,9 @@ export default () => (
       </Theme>
     </div>
 
-    <div className="flex grow-1 basis-2xs flex-col gap-3 rounded-lg border border-neutral-line p-4">
+    <div className="flex grow basis-2xs flex-col gap-3 rounded-lg border border-neutral-line p-4">
       <h5>Outline variant</h5>
-      <Theme fieldVariant="outline">
+      <Theme variants={{ field: "outline" }}>
         <TextField label="Label" />
         <TextArea label="Label" />
         <NumberField label="Label" />

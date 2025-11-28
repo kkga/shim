@@ -16,7 +16,11 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -118,7 +122,7 @@ function RadioGroup({
   let themeProps = useThemeProps({
     ...props,
     labelPosition,
-    fieldVariant: props.variant,
+    ...buildVariantOverrides("field", props.variant),
   });
   let { group } = style();
 
@@ -147,8 +151,8 @@ interface RadioProps extends RacRadioProps {
 }
 
 function Radio({ description, ...props }: RadioProps) {
-  let { size, fieldVariant: variant } = useThemeProps();
-  let { item, itemInput } = style({ size, variant });
+  let { size, variants } = useThemeProps();
+  let { item, itemInput } = style({ size, variant: variants.field });
 
   return (
     <RacRadio

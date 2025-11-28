@@ -15,7 +15,11 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -163,9 +167,15 @@ function Slider<T extends number | number[]>({
   className,
   ...props
 }: SliderProps<T>) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
-  let { labelPosition, size, fieldVariant: variant } = themeProps;
-  let { track, indicator, fill, output, thumb } = style({ size, variant });
+  let themeProps = useThemeProps({
+    ...props,
+    ...buildVariantOverrides("field", props.variant),
+  });
+  let { labelPosition, size, variants } = themeProps;
+  let { track, indicator, fill, output, thumb } = style({
+    size,
+    variant: variants.field,
+  });
   const MaxPercent = 100;
 
   return (

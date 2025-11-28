@@ -15,16 +15,14 @@ function Form({
   className,
   children,
   labelPosition,
-  fieldVariant,
-  buttonVariant,
   size,
+  variants,
   ...props
 }: RacFormProps & Partial<ThemeContextProps>) {
   let themeProps = useThemeProps({
     labelPosition,
-    fieldVariant,
-    buttonVariant,
     size,
+    variants,
   });
 
   return (

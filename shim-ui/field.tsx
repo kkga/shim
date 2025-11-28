@@ -77,14 +77,17 @@ interface InputProps
     VariantProps<typeof inputBaseStyle> {}
 
 function Input({ size, variant, className, ...props }: InputProps) {
-  let theme = useThemeProps({ size, fieldVariant: variant });
+  let theme = useThemeProps({
+    size,
+    variants: variant ? { field: variant } : undefined,
+  });
 
   return (
     <RacInput
       {...props}
       className={cnRenderProps(
         className,
-        inputBaseStyle({ variant: theme.fieldVariant, size: theme.size })
+        inputBaseStyle({ variant: theme.variants.field, size: theme.size })
       )}
     />
   );
@@ -231,7 +234,10 @@ interface FieldGroupProps
     VariantProps<typeof fieldGroupStyle> {}
 
 function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
-  let themeProps = useThemeProps({ size, fieldVariant: variant });
+  let themeProps = useThemeProps({
+    size,
+    variants: variant ? { field: variant } : undefined,
+  });
 
   return (
     <RacGroup
@@ -240,7 +246,7 @@ function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
         className,
         fieldGroupStyle({
           size: themeProps.size,
-          variant: themeProps.fieldVariant,
+          variant: themeProps.variants.field,
         })
       )}
     />

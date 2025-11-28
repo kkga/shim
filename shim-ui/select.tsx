@@ -18,7 +18,12 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  ICON_SIZE_MAP,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 import {
   ListBox,
   ListBoxItem,
@@ -43,10 +48,10 @@ function Select<T extends object>({
   items,
   ...props
 }: SelectProps<T>) {
-  let { size, labelPosition, fieldVariant } = useThemeProps({
+  let { size, labelPosition, variants } = useThemeProps({
     size: props.size,
     labelPosition: props.labelPosition,
-    fieldVariant: props.variant,
+    ...buildVariantOverrides("field", props.variant),
   });
 
   return (
@@ -58,7 +63,7 @@ function Select<T extends object>({
       )}
     >
       {() => (
-        <Theme {...{ size, fieldVariant, labelPosition }}>
+        <Theme {...{ size, variants, labelPosition }}>
           {label && <Label>{label}</Label>}
           <Button intent="neutral">
             <RacSelectValue className="flex-1 truncate text-left font-normal data-placeholder:text-neutral-text-subtle" />

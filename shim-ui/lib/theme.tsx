@@ -1,58 +1,115 @@
 "use client";
 import { createContext, useContext } from "react";
 
-export const SIZE_SMALL = 1;
-export const SIZE_MEDIUM = 2;
-export const SIZE_LARGE = 3;
-export const SIZE_EXTRA_LARGE = 4;
+type Size = 1 | 2 | 3 | 4;
+type LabelPosition = "top" | "side";
+type ButtonVariant = "soft" | "solid" | "ghost";
+type FieldVariant = "classic" | "soft" | "outline";
+type TableVariant = "classic" | "grid";
+type BadgeVariant = "surface" | "soft" | "solid";
 
-const SIZES = [SIZE_SMALL, SIZE_MEDIUM, SIZE_LARGE, SIZE_EXTRA_LARGE] as const;
-export type Size = (typeof SIZES)[number];
-
-export const ICON_SIZE_MAP: Record<Size, number> = {
-  [SIZE_SMALL]: 12,
-  [SIZE_MEDIUM]: 16,
-  [SIZE_LARGE]: 16,
-  [SIZE_EXTRA_LARGE]: 20,
+const ICON_SIZE_MAP: Record<Size, number> = {
+  1: 12,
+  2: 16,
+  3: 16,
+  4: 20,
 };
 
-export interface ThemeContextProps {
+interface ThemeContextProps {
   size: Size;
-  labelPosition: "top" | "side";
-  fieldVariant: "classic" | "soft" | "outline";
-  buttonVariant: "soft" | "solid" | "ghost";
+  labelPosition: LabelPosition;
+  variants: {
+    button: ButtonVariant;
+    field: FieldVariant;
+    table: TableVariant;
+    badge: BadgeVariant;
+  };
 }
 
 const ThemeContext = createContext<ThemeContextProps>({
   size: 1,
   labelPosition: "top",
-  fieldVariant: "classic",
-  buttonVariant: "soft",
+  variants: {
+    button: "soft",
+    field: "classic",
+    table: "classic",
+    badge: "surface",
+  },
 });
 
-interface ThemeProps extends Partial<ThemeContextProps> {
+interface ThemeProps {
   children: React.ReactNode;
+  size?: Size;
+  labelPosition?: LabelPosition;
+  variants?: Partial<ThemeContextProps["variants"]>;
 }
 
-export function Theme({ children, ...props }: ThemeProps) {
-  const currentContextValue = useContext(ThemeContext);
-  const contextValue = { ...currentContextValue, ...props };
+/**
+ * Theme provider component that allows overriding theme values for a subtree.
+ * Merges provided values with the current theme context.
+ * @example
+ *   <Theme size={2} variants={{ field: "soft", button: "ghost" }}>
+ *     <MyForm />
+ *   </Theme>
+ */
+function Theme({ children, ...props }: ThemeProps) {
+  let currentValue = useContext(ThemeContext);
+  let newValue = {
+    ...currentValue,
+    ...props,
+    variants: {
+      ...currentValue.variants,
+      ...props.variants,
+    },
+  };
   return (
-    <ThemeContext.Provider value={contextValue}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={newValue}>{children}</ThemeContext.Provider>
   );
 }
 
-export function useThemeProps(
-  props: Partial<ThemeContextProps> = {}
-): ThemeContextProps {
+/**
+ * Hook to access and merge theme properties from context.
+ * Returns the current theme with any provided overrides merged in.
+ * @example
+ *   const { size, variants } = useThemeProps({
+ *     size: props.size,
+ *     ...buildVariantOverrides("field", props.variant),
+ *   });
+ */
+function useThemeProps(props?: {
+  size?: Size;
+  labelPosition?: LabelPosition;
+  variants?: Partial<ThemeContextProps["variants"]>;
+}): ThemeContextProps {
   let themeProps = useContext(ThemeContext);
 
   return {
-    size: props.size ?? themeProps.size,
-    labelPosition: props.labelPosition ?? themeProps.labelPosition,
-    fieldVariant: props.fieldVariant ?? themeProps.fieldVariant,
-    buttonVariant: props.buttonVariant ?? themeProps.buttonVariant,
+    size: props?.size ?? themeProps.size,
+    labelPosition: props?.labelPosition ?? themeProps.labelPosition,
+    variants: {
+      ...themeProps.variants,
+      ...props?.variants,
+    },
   };
 }
+
+type VariantKind = keyof ThemeContextProps["variants"];
+
+/**
+ * Helper to create typed variant overrides consistently across components
+ * for use with `useThemeProps`.
+ * @example
+ *   const themeProps = useThemeProps({
+ *     ...props,
+ *     ...buildVariantOverrides("button", props.variant),
+ *   });
+ */
+function buildVariantOverrides<K extends VariantKind>(
+  kind: K,
+  variant?: ThemeContextProps["variants"][K]
+): { variants: Partial<ThemeContextProps["variants"]> } | undefined {
+  return variant ? { variants: { [kind]: variant } } : undefined;
+}
+
+export type { Size, ThemeContextProps };
+export { useThemeProps, ICON_SIZE_MAP, Theme, buildVariantOverrides };

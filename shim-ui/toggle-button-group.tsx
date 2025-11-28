@@ -14,7 +14,11 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "group grid auto-cols-fr grid-flow-col",
@@ -49,7 +53,10 @@ function ToggleButtonGroup({
   errorMessage,
   ...props
 }: ToggleButtonGroupProps) {
-  let themeProps = useThemeProps({ ...props, buttonVariant: props.variant });
+  let themeProps = useThemeProps({
+    ...props,
+    ...buildVariantOverrides("button", props.variant),
+  });
 
   return (
     <RacToggleButtonGroup

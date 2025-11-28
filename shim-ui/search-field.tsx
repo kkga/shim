@@ -21,7 +21,11 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -85,7 +89,10 @@ function SearchField({
   prefixIcon = "search",
   ...props
 }: SearchFieldProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let themeProps = useThemeProps({
+    ...props,
+    ...buildVariantOverrides("field", props.variant),
+  });
   let { labelPosition, size } = themeProps;
   let { clearButtonContainer, clearButton, iconContainer, icon } = style({
     size,

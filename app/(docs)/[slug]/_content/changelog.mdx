@@ -4,11 +4,23 @@ description: Recent updates and changes to Shim.
 order: 4
 ---
 
+## 29 November 2025
+
+### Theme
+
+* **Breaking:** Refactored theme structure to use nested `variants` object instead of flat `fieldVariant` and `buttonVariant` props;
+* Added `table` and `badge` variant types to theme context;
+* Added `buildVariantOverrides()` helper for consistent variant override construction across components;
+* Updated all components to use standardized theme merging pattern;
+* Updated [theming documentation](/theming) with new API and examples;
+
+***
+
 ## 28 November 2025
 
 ### Badge
 
-* Add `solid` and `soft` [variants](/components/badge#badge-variant) (in addition to the existing `surface` variant);
+* Added `solid` and `soft` [variants](/components/badge#badge-variant) (in addition to the existing `surface` variant);
 
 ***
 
@@ -16,8 +28,8 @@ order: 4
 
 ### Disclosure and DisclosureGroup
 
-* Add `soft` and `ghost` [variants](/components/disclosure-group#disclosure-group-variant) (in addition to the existing `surface` variant);
-* Simplify `Disclosure` anatomy by removing the `DisclosureHeader` and `DisclosurePanel` subcomponents, replaced with `title` and `children` props;
+* Added `soft` and `ghost` [variants](/components/disclosure-group#disclosure-group-variant) (in addition to the existing `surface` variant);
+* Refactored `Disclosure` anatomy by removing the `DisclosureHeader` and `DisclosurePanel` subcomponents, replaced with `title` and `children` props;
 
 ***
 
@@ -25,10 +37,10 @@ order: 4
 
 ### Table
 
-* Add `ghost` and `zebra` [variants](/components/table#table-variant) (in addition to the existing `surface` variant);
-* Add [selection example](/components/table#table-selection);
-* Add support for `size` prop and [size example](/components/table#table-size);
+* Added `ghost` and `zebra` [variants](/components/table#table-variant) (in addition to the existing `surface` variant);
+* Added [selection example](/components/table#table-selection);
+* Added support for `size` prop and [size example](/components/table#table-size);
 
 ### Tooltip
 
-* Add support for `size` prop and [size example](/components/tooltip#tooltip-size);
+* Added support for `size` prop and [size example](/components/tooltip#tooltip-size);

@@ -12,7 +12,7 @@ import {
 } from "react-aria-components";
 import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { focusStyle, INTENTS, type Intent } from "@/shim-ui/lib/style";
-import { useThemeProps } from "@/shim-ui/lib/theme";
+import { buildVariantOverrides, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   extend: focusStyle,
@@ -178,10 +178,11 @@ function Button({
   isIconOnly,
   ...props
 }: ButtonProps) {
-  let { buttonVariant, size } = useThemeProps({
+  let themeProps = useThemeProps({
     size: _size,
-    buttonVariant: _variant,
+    ...buildVariantOverrides("button", _variant),
   });
+  let { variants, size } = themeProps;
   let { container, circle } = progressStyle({ size });
 
   return (
@@ -190,7 +191,7 @@ function Button({
       className={composeRenderProps(props.className, (className, renderProps) =>
         style({
           ...renderProps,
-          variant: buttonVariant,
+          variant: variants.button,
           intent,
           size,
           isIconOnly:
@@ -258,10 +259,11 @@ function LinkButton({
   isIconOnly,
   ...props
 }: RacLinkProps & VariantProps<typeof style>) {
-  let { buttonVariant, size } = useThemeProps({
+  let themeProps = useThemeProps({
     size: _size,
-    buttonVariant: _variant,
+    ...buildVariantOverrides("button", _variant),
   });
+  let { variants, size } = themeProps;
 
   return (
     <RacLink
@@ -271,7 +273,7 @@ function LinkButton({
         (className, { isDisabled, ...renderProps }) =>
           style({
             ...renderProps,
-            variant: buttonVariant,
+            variant: variants.button,
             intent,
             isDisabled,
             size,

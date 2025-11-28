@@ -24,7 +24,12 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  ICON_SIZE_MAP,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 interface NumberFieldProps extends RacNumberFieldProps, FieldProps {
   stepperLayout?: "inline" | "stacked";
@@ -38,7 +43,10 @@ function NumberField({
   stepperLayout = "inline",
   ...props
 }: NumberFieldProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let themeProps = useThemeProps({
+    ...props,
+    ...buildVariantOverrides("field", props.variant),
+  });
   let { size, labelPosition } = themeProps;
 
   return (

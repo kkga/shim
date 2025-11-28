@@ -17,7 +17,11 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 interface CheckboxGroupProps extends RacCheckboxGroupProps, FieldProps {}
 
@@ -28,7 +32,10 @@ function CheckboxGroup({
   errorMessage,
   ...props
 }: CheckboxGroupProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let themeProps = useThemeProps({
+    ...props,
+    ...buildVariantOverrides("field", props.variant),
+  });
   let { labelPosition } = themeProps;
 
   return (
@@ -142,11 +149,14 @@ function Checkbox({
 }: CheckboxProps) {
   let themeProps = useThemeProps({
     ...props,
-    fieldVariant: _variant,
+    variants: _variant ? { field: _variant } : undefined,
     size: _size,
   });
-  let { size, fieldVariant } = themeProps;
-  let { container, checkbox } = checkboxStyle({ size, variant: fieldVariant });
+  let { size, variants } = themeProps;
+  let { container, checkbox } = checkboxStyle({
+    size,
+    variant: variants.field,
+  });
 
   return (
     <RacCheckbox

@@ -13,7 +13,11 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 interface ColorFieldProps extends RacColorFieldProps, FieldProps {}
 
@@ -23,7 +27,10 @@ export function ColorField({
   errorMessage,
   ...props
 }: ColorFieldProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let themeProps = useThemeProps({
+    ...props,
+    ...buildVariantOverrides("field", props.variant),
+  });
   let { labelPosition } = themeProps;
 
   return (

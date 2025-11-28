@@ -8,7 +8,11 @@ import {
 import { tv, type VariantProps } from "tailwind-variants";
 import type { FieldProps } from "@/shim-ui/field";
 import { focusStyle } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -24,8 +28,8 @@ const style = tv({
   variants: {
     variant: {
       classic: {
-        track: "bg-neutral-panel shadow-[var(--shadow-inner)]",
-        handle: "bg-white shadow-[var(--shadow-xs)]",
+        track: "bg-neutral-panel shadow-(--shadow-inner)",
+        handle: "bg-white shadow-(--shadow-xs)",
       },
       soft: {
         track: "inset-ring-1 inset-ring-neutral-3 bg-neutral-bg-hover",
@@ -48,17 +52,17 @@ const style = tv({
     size: {
       1: {
         container: "h-6 gap-1.5 text-xs",
-        track: "h-4 w-[28px]",
+        track: "h-4 w-7",
         handle: "size-3.5",
       },
       2: {
         container: "h-7 gap-2 text-sm",
-        track: "h-[18px] w-[32px]",
+        track: "h-[18px] w-8",
         handle: "size-4",
       },
       3: {
         container: "h-8 gap-2 text-[15px] leading-normal",
-        track: "h-5 w-[36px]",
+        track: "h-5 w-9",
         handle: "size-[18px]",
       },
       4: {
@@ -73,9 +77,9 @@ const style = tv({
     },
   },
   compoundVariants: [
-    { size: 1, isSelected: true, class: { handle: "translate-x-[12px]" } },
-    { size: 2, isSelected: true, class: { handle: "translate-x-[14px]" } },
-    { size: 3, isSelected: true, class: { handle: "translate-x-[16px]" } },
+    { size: 1, isSelected: true, class: { handle: "translate-x-3" } },
+    { size: 2, isSelected: true, class: { handle: "translate-x-3.5" } },
+    { size: 3, isSelected: true, class: { handle: "translate-x-4" } },
     { size: 4, isSelected: true, class: { handle: "translate-x-[18px]" } },
     {
       isPressed: true,
@@ -134,10 +138,14 @@ interface SwitchProps
 function Switch({ labelPosition, ...props }: SwitchProps) {
   let themeProps = useThemeProps({
     size: props.size,
-    fieldVariant: props.variant,
+    ...buildVariantOverrides("field", props.variant),
   });
-  let { size, fieldVariant: variant } = themeProps;
-  let { container, track, handle } = style({ size, variant, labelPosition });
+  let { size, variants } = themeProps;
+  let { container, track, handle } = style({
+    size,
+    variant: variants.field,
+    labelPosition,
+  });
 
   return (
     <RacSwitch

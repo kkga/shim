@@ -13,7 +13,11 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  buildVariantOverrides,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 interface TextFieldProps extends RacTextFieldProps, FieldProps {}
 
@@ -25,7 +29,10 @@ function TextField({
   placeholder,
   ...props
 }: TextFieldProps) {
-  let themeProps = useThemeProps({ ...props, fieldVariant: props.variant });
+  let themeProps = useThemeProps({
+    ...props,
+    ...buildVariantOverrides("field", props.variant),
+  });
   let { labelPosition } = themeProps;
 
   return (

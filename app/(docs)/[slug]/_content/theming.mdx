@@ -60,7 +60,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Theme fieldVariant="soft" labelPosition="side" size={2}>
+        <Theme 
+          size={2} 
+          labelPosition="side"
+          variants={{ field: "soft", button: "ghost" }}
+        >
           {children}
         </Theme>
       </body>
@@ -77,7 +81,7 @@ import { Button } from "@/shim-ui/button";
 
 export function Callout() {
   return (
-    <Theme buttonVariant="solid">
+    <Theme variants={{ button: "solid" }}>
       {...}
       <Button>Get started</Button>
       <Button>Learn more</Button>
@@ -88,7 +92,7 @@ export function Callout() {
 
 ### Theme API reference
 
-<Table aria-label="Theme API reference" className="md:table-fixed" size={2} variant="zebra">
+<Table aria-label="Theme API reference" className="md:table-fixed" size={2}>
   <TableHeader>
     <Column className="md:w-1/4" isRowHeader>Prop</Column>
     <Column>Type</Column>
@@ -115,29 +119,63 @@ export function Callout() {
       </Cell>
 
       <Cell><code>"side" | "top"</code></Cell>
-      <Cell><code>"side"</code></Cell>
+      <Cell><code>"top"</code></Cell>
     </Row>
 
     <Row>
       <Cell className="flex items-center gap-1">
-        <code>fieldVariant</code>
+        <code>variants</code>
 
-        <Tooltip text="Default visual style for form and field components." />
+        <Tooltip text="Object containing default visual styles for component categories. Merges with parent theme context." />
       </Cell>
 
-      <Cell><code>"classic" | "soft" | "outline"</code></Cell>
-      <Cell><code>"classic"</code></Cell>
+      <Cell>
+        <code>
+          {`{ button?, field?, table?, badge? }`}
+        </code>
+      </Cell>
+
+      <Cell>
+        <code>
+          {`{ button: "soft", field: "classic", table: "classic", badge: "surface" }`}
+        </code>
+      </Cell>
     </Row>
+  </TableBody>
+</Table>
 
+### Variant types
+
+<Table aria-label="Variant types" className="md:table-fixed" size={2}>
+  <TableHeader>
+    <Column className="md:w-1/4" isRowHeader>Category</Column>
+    <Column>Values</Column>
+    <Column>Applied to</Column>
+  </TableHeader>
+
+  <TableBody>
     <Row>
-      <Cell className="flex items-center gap-1">
-        <code>buttonVariant</code>
-
-        <Tooltip text="Default visual style for button components." />
-      </Cell>
-
+      <Cell><code>button</code></Cell>
       <Cell><code>"soft" | "solid" | "ghost"</code></Cell>
-      <Cell><code>"soft"</code></Cell>
+      <Cell>Button, ToggleButton, ToggleButtonGroup</Cell>
+    </Row>
+
+    <Row>
+      <Cell><code>field</code></Cell>
+      <Cell><code>"classic" | "soft" | "outline"</code></Cell>
+      <Cell>TextField, Checkbox, RadioGroup, Switch, Slider, and other form inputs</Cell>
+    </Row>
+
+    <Row>
+      <Cell><code>table</code></Cell>
+      <Cell><code>"classic" | "grid"</code></Cell>
+      <Cell>Table components</Cell>
+    </Row>
+
+    <Row>
+      <Cell><code>badge</code></Cell>
+      <Cell><code>"surface" | "soft" | "solid"</code></Cell>
+      <Cell>Badge components</Cell>
     </Row>
   </TableBody>
 </Table>
