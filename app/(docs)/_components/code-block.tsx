@@ -106,7 +106,7 @@ function CodePane({
   let { content, note } = code;
   let isContentLong = content.split("\n").length > LONG_CODE_LINE_THRESHOLD;
   let codeElement = (
-    <pre className="min-h-8 w-full overflow-x-scroll whitespace-pre px-3 py-2 **:[code]:text-[100%]">
+    <pre className="min-h-8 w-full overflow-x-scroll whitespace-pre px-3 py-2">
       <Code highlight={highlight}>
         {content.replace(TRAILING_NEWLINES_REGEX, "")}
       </Code>
@@ -152,7 +152,7 @@ export function CodeBlock(props: Props) {
   return (
     <div
       className={cn(
-        "group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-(--gray-3) bg-background font-normal text-[13px] text-neutral-text leading-5",
+        "not-prose group relative isolate my-6 min-w-0 overflow-clip rounded-lg border border-(--gray-3) bg-background font-normal text-[13px] text-neutral-text leading-5",
         props.className
       )}
     >

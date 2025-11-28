@@ -114,11 +114,7 @@ article {
     }
 
     :where(code):not(:where(.not-prose, .not-prose *)) {
-      @apply min-w-min font-mono text-accent-text text-[95%];
-    }
-
-    :is(:where(pre):not(:where(.not-prose, .not-prose *))) > :is(code) {
-      @apply text-[100%];
+      @apply font-mono text-accent-text text-[95%];
     }
 
     :where(dl):not(:where(.not-prose, .not-prose *)) {

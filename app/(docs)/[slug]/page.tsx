@@ -47,7 +47,12 @@ export default async function GuidePage({
       <DocHeader subtitle={description} title={title} />
 
       <div className="flex grow">
-        <div className={cx("prose", slug === "changelog" && "prose-changelog")}>
+        <div
+          className={cx(
+            "prose overflow-auto",
+            slug === "changelog" && "prose-changelog"
+          )}
+        >
           <GuideContent
             components={mdxComponents}
             styleUtilsSrc={styleUtilsSrc}
