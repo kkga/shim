@@ -48,7 +48,8 @@ Note that ToggleButton and ToggleButtonGroup do not support the "solid" variant 
 
 ## Set global defaults
 
-Wrap your application (or any subtree) in the `<Theme>` provider to broadcast shared props to every Shim component underneath it. The provider merges values from the nearest ancestor, so you can layer overrides as needed.
+Wrap your application (or any subtree) in the `<Theme>` provider to broadcast shared props to every Shim component underneath it.
+The provider merges values from the nearest ancestor, so you can layer overrides as needed.
 
 ```tsx title="layout.tsx"
 import type { ReactNode } from "react";
@@ -87,7 +88,7 @@ export function Callout() {
 
 ### Theme API reference
 
-<Table aria-label="Theme API reference" className="table-fixed" size={2} variant="zebra">
+<Table aria-label="Theme API reference" className="md:table-fixed" size={2} variant="zebra">
   <TableHeader>
     <Column className="md:w-1/4" isRowHeader>Prop</Column>
     <Column>Type</Column>
