@@ -37,6 +37,20 @@ export default {
       demoLayout: "row",
     },
     {
+      title: "Variant",
+      description: (
+        <p>
+          Use the <code>variant</code> prop to set the visual style of the
+          badge.
+        </p>
+      ),
+      demo: {
+        group: "badge",
+        name: "variant",
+      },
+      demoLayout: "row",
+    },
+    {
       title: "Content",
       description: (
         <>
