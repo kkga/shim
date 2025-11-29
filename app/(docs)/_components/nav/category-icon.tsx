@@ -6,6 +6,7 @@ import {
   CheckFatIcon,
   CursorClickIcon,
   FlagBannerIcon,
+  GearFineIcon,
   GithubLogoIcon,
   HandGrabbingIcon,
   HouseSimpleIcon,
@@ -51,6 +52,7 @@ export function CategoryIcon({ name }: Props): React.ReactNode {
       .with("CLI", () => <TerminalIcon {...iconProps} />)
       .with("GitHub", () => <GithubLogoIcon {...iconProps} />)
       .with("Twitter", () => <XLogoIcon {...iconProps} />)
+      .with("Manual setup", () => <GearFineIcon {...iconProps} />)
 
       // Default case
       .otherwise((): React.ReactNode => null)

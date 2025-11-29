@@ -67,7 +67,7 @@ creates the configuration file, and installs utility and CSS files.
 shim init [options]
 ```
 
-<Table aria-label="Shim init command options" className="table-fixed" size={2} variant="zebra">
+<Table aria-label="Shim init command options" className="table-fixed" size={2}>
   <TableHeader>
     <Column className="w-1/3" isRowHeader>Option</Column>
     <Column>Description</Column>
@@ -164,6 +164,58 @@ shim add <components...> [options]
 
 ---
 
+## Features
+
+- Import transformation: component import paths are rewritten based on your
+  configured destinations.
+- Dependency resolution: component dependencies are installed automatically.
+- Utility management: `style.ts`, `theme.tsx`, and `theme.css` are created and
+  kept in your chosen directories.
+
+---
+
+## Path Resolution
+
+- Components: flag `--path` → config `componentsPath` → `components/`.
+- Utilities: flag `--utils-path` (init) → config `utilsPath` → `utils/`.
+- CSS: flag `--css-path` (init) → config `cssPath` → `styles/`.
+
+All paths are relative to your project root (where `package.json` resides).
+
+---
+
+## Examples
+
+```bash title="Initialize with defaults"
+pnpm dlx @kkga/shim init
+```
+
+```bash title="Initialize with custom paths"
+pnpm dlx @kkga/shim init \
+  --components-path src/ui \
+  --utils-path src/lib \
+  --css-path src/styles
+```
+
+```bash title="Install components"
+pnpm dlx @kkga/shim add button dialog form
+```
+
+```bash title="Install to a different directory"
+pnpm dlx @kkga/shim add button --path src/features/ui
+```
+
+```bash title="Overwrite existing files"
+pnpm dlx @kkga/shim add dialog --overwrite
+```
+
+```bash title="Use a package script"
+# package.json: { "scripts": { "shim": "pnpm dlx @kkga/shim" } }
+pnpm shim add button
+```
+
+---
+
 ## Configuration File
 
 Running **shim init** creates a configuration file in your project root:
@@ -176,7 +228,7 @@ Running **shim init** creates a configuration file in your project root:
 }
 ```
 
-<Table variant="zebra" aria-label="Shim configuration file options" className="table-fixed" size={2}>
+<Table aria-label="Shim configuration file options" className="table-fixed" size={2}>
   <TableHeader>
     <Column className="w-1/3" isRowHeader>Option</Column>
     <Column>Description</Column>

@@ -6,10 +6,9 @@ order: 1
 
 ## Introduction
 
-Shim is a collection of pre-styled, accessible UI components built on
+Shim is a collection of accessible UI components built on
 [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html).
-Components are installed directly into your codebase—you own the code and can
-customize styling and behavior to fit your needs.
+Components install into your codebase—so you own and customize them.
 
 This guide assumes you have a React project set up and covers the initial setup
 of Shim in your project using the CLI. For more detailed instructions on manual
@@ -19,38 +18,55 @@ setup, refer to the [manual setup guide](/manual-setup).
 
 ## Set up
 
-<Step title="Install Tailwind CSS">
-  Shim requires Tailwind CSS for styling. Please follow the [official Tailwind
-  installation guide](https://tailwindcss.com/docs/installation) for your
-  framework before continuing.
+<Step title="Install Tailwind CSS (v4)">
+
+Shim requires Tailwind CSS for styling.
+
+Follow the
+[official Tailwind v4 installation guide](https://tailwindcss.com/docs/installation)
+for your framework (Next.js, Vite, etc.) before continuing.
+
 </Step>
 
-<Step title="Initialize Shim" code={`pnpm dlx @kkga/shim init`}>
-  Shim provides a CLI to help set up your project. Run the following command in
-  your terminal to initialize Shim.
-  <br /> This creates a <strong>shim.config.json</strong> file in your project root
-  that defines where components, utility files, and CSS are installed.
-</Step>
+<Step title="Initialize Shim">
 
-<Step
-  title="Configure path alias"
+Run the CLI to set up Shim. It checks for Tailwind, installs required
+dependencies, and scaffolds config, utilities, and theme CSS. For more commands
+and options, see the [CLI guide](/cli).
+
+<CodeBlock
   code={[
-    {
-      title: "tsconfig.json",
-      content: `
-{
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["./*"]
-        }
-    }
-}`,
-    },
+    { content: "pnpm dlx @kkga/shim init", title: "pnpm" },
+    { content: "npx @kkga/shim init", title: "npm" },
+    { content: "yarn dlx @kkga/shim init", title: "yarn" },
+    { content: "bunx @kkga/shim init", title: "bun" },
   ]}
->
-  Shim components import files via the <strong>@/</strong> alias. <br />
-  Configure the path in <strong>tsconfig.json</strong> (or <strong>
-    jsconfig.json
-  </strong>) so those imports resolve.
+/>
+
 </Step>
+
+<Step title="Configure path alias">
+
+Shim uses the `@/` alias—configure it in `tsconfig.json` (or `jsconfig.json`) so
+imports resolve correctly.
+
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+</Step>
+
+---
+
+## Next steps
+
+- Try adding your first component: [Button](/components/button)
+- Learn about [theming and customization](/theming)
+- Explore more [CLI commands and options](/cli)

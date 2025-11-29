@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 import { highlight as sugar } from "sugar-high";
 
 export function Code({
-  highlight = true,
+  highlight = false,
   ...props
 }: ComponentPropsWithoutRef<"code"> & {
   highlight?: boolean;

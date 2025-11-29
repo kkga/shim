@@ -6,47 +6,132 @@ order: 2
 
 ## Overview
 
-This guide covers the manual setup of Shim in your project. For a quicker setup,
-refer to the [quick start guide](/quick-start) that uses the Shim CLI.
+This guide covers manual installation of Shim without the CLI. It's useful when
+you need granular control or prefer managing dependencies yourself. If you'd
+like an automated setup, see the [quick start guide](/quick-start).
 
 ---
 
 ## Set up
 
-<Step
+<Step title="Install Tailwind CSS (v4)">
+
+Shim requires Tailwind CSS for styling.
+
+Follow the
+[official Tailwind v4 installation guide](https://tailwindcss.com/docs/installation)
+for your framework (Next.js, Vite, etc.) before continuing.
+
+</Step>
+
+<Step title="Install dependencies">
+
+Install the required packages for Shim components:
+
+- **react-aria-components** – Core unstyled primitives from Adobe
+- **tailwind-variants** – Type-safe variant API for Tailwind
+- **@radix-ui/colors** – Semantic color palette
+- **@phosphor-icons/react** – Icon set for UI elements
+
+<CodeBlock
   code={[
     {
-      title: "tsconfig.json",
-      content: `{
+      content:
+        "pnpm add react-aria-components tailwind-variants @radix-ui/colors @phosphor-icons/react",
+      title: "pnpm",
+    },
+    {
+      content:
+        "npm install react-aria-components tailwind-variants @radix-ui/colors @phosphor-icons/react",
+      title: "npm",
+    },
+    {
+      content:
+        "yarn add react-aria-components tailwind-variants @radix-ui/colors @phosphor-icons/react",
+      title: "yarn",
+    },
+    {
+      content:
+        "bun add react-aria-components tailwind-variants @radix-ui/colors @phosphor-icons/react",
+      title: "bun",
+    },
+  ]}
+/>
+
+</Step>
+
+<Step title="Create utility files">
+
+Create `style.ts` and `theme.tsx` in your utilities directory (e.g., `utils/` or
+`lib/`). These files provide styling utilities and theme context used by
+components.
+
+Visit the
+[Shim repository](https://github.com/kkga/shim/tree/master/shim-ui/lib) to copy
+the latest versions of:
+
+- `style.ts` – Design tokens and styling utilities
+- `theme.tsx` – Theme provider and context
+
+</Step>
+
+<Step title="Add theme CSS">
+
+Create `theme.css` in your styles directory (e.g., `styles/` or `app/`). This
+file includes design tokens, animations, and utility classes.
+
+Visit the
+[Shim repository](https://github.com/kkga/shim/tree/master/shim-ui/css) to copy
+the latest `theme.css`.
+
+Import it in your root layout or main entry file:
+
+```tsx title="app/layout.tsx or pages/_app.tsx"
+import "@/styles/theme.css";
+```
+
+</Step>
+
+<Step title="Configure path alias">
+
+Shim uses the `@/` alias—configure it in `tsconfig.json` (or `jsconfig.json`) so
+imports resolve correctly.
+
+```json title="tsconfig.json"
+{
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
   }
-}`,
-    },
-  ]}
-  reset
-  title="Configure path alias"
->
-  <p>
-    Shim components import files via the <strong>@/</strong> alias. <br />
-    Configure the path in <strong>tsconfig.json</strong> (or <strong>
-      jsconfig.json
-    </strong>) so those imports resolve.
-  </p>
+}
+```
+
 </Step>
 
-<Step code="pnpm dlx @kkga/shim init" title="Initialize Shim">
-  Run the `init` command to initialize Shim. <br />
-  It creates a **shim.config.json** file in your project root that defines where
-  components, utility files, and CSS are installed.
+<Step title="Add components">
+
+Copy component files directly from the
+[Shim repository](https://github.com/kkga/shim/tree/master/shim-ui) or the
+[component docs](/components) into your components directory.
+
+Update import paths in the copied files to match your project structure. For
+example, if components have dependencies on other components or utilities,
+adjust the imports accordingly:
+
+```tsx
+// From:
+import { Field } from "@/shim-ui/field";
+import { Theme } from "@/shim-ui/lib/theme";
+
+// To:
+import { Field } from "@/src/ui/field";
+import { Theme } from "@/src/lib/theme";
+```
+
 </Step>
 
-<Step code="pnpm dlx @kkga/shim add button" title="Add components">
-  Use the <code>add</code> command to copy components into your project.
-  <br />
-  The CLI resolves dependencies, rewrites imports, and installs into the paths
-  defined in <strong>shim.config.json</strong>.
-</Step>
+---
+
+For an automated setup that handles these steps for you, use the [CLI](/cli).
