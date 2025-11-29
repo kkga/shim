@@ -31,12 +31,11 @@
       "description": "Group multiple toggle buttons, with single or multiple selection.",
       "category": "Buttons",
       "status": "stable",
-      "dependencies": ["field", "toggle-button"],
+      "dependencies": ["field"],
       "files": ["shim-ui/toggle-button-group.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ToggleButtonGroup.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/"
     },
-
     {
       "name": "list-box",
       "title": "ListBox",
@@ -65,7 +64,7 @@
       "description": "Display tabular data in a grid with selection and sorting.",
       "category": "Collections",
       "status": "alpha",
-      "dependencies": [],
+      "dependencies": ["checkbox"],
       "files": ["shim-ui/table.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Table.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/grid/"
@@ -92,7 +91,6 @@
       "docUrl": null,
       "ariaUrl": null
     },
-
     {
       "name": "color-area",
       "title": "ColorArea",
@@ -121,7 +119,14 @@
       "description": "Combine a color swatch with a popover for editing the color.",
       "category": "Color",
       "status": "beta",
-      "dependencies": [],
+      "dependencies": [
+        "color-area",
+        "color-field",
+        "color-slider",
+        "color-swatch",
+        "popover",
+        "select"
+      ],
       "files": ["shim-ui/color-picker.tsx"],
       "docUrl": null,
       "ariaUrl": null
@@ -132,7 +137,7 @@
       "description": "Adjust an individual color channel with a slider.",
       "category": "Color",
       "status": "beta",
-      "dependencies": [],
+      "dependencies": ["field", "slider"],
       "files": ["shim-ui/color-slider.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorSlider.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/slider/"
@@ -154,12 +159,11 @@
       "description": "Display a list of selectable color swatches.",
       "category": "Color",
       "status": "beta",
-      "dependencies": [],
+      "dependencies": ["color-swatch"],
       "files": ["shim-ui/color-swatch-picker.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorSwatchPicker.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
     },
-
     {
       "name": "avatar",
       "title": "Avatar",
@@ -204,7 +208,6 @@
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Toolbar.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/"
     },
-
     {
       "name": "calendar",
       "title": "Calendar",
@@ -216,7 +219,6 @@
       "docUrl": null,
       "ariaUrl": null
     },
-
     {
       "name": "drop-zone",
       "title": "DropZone",
@@ -228,7 +230,6 @@
       "docUrl": "https://react-spectrum.adobe.com/react-aria/DropZone.html",
       "ariaUrl": null
     },
-
     {
       "name": "checkbox",
       "title": "Checkbox",
@@ -312,7 +313,7 @@
       "description": "Toggle between two states.",
       "category": "Forms",
       "status": "stable",
-      "dependencies": [],
+      "dependencies": ["field"],
       "files": ["shim-ui/switch.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Switch.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/switch/"
@@ -339,7 +340,6 @@
       "docUrl": "https://react-spectrum.adobe.com/react-aria/TextField.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#textbox"
     },
-
     {
       "name": "breadcrumbs",
       "title": "Breadcrumbs",
@@ -368,7 +368,7 @@
       "description": "Group multiple disclosures into an accordion.",
       "category": "Navigation",
       "status": "stable",
-      "dependencies": [],
+      "dependencies": ["disclosure"],
       "files": ["shim-ui/disclosure-group.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/DisclosureGroup.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/examples/accordion/"
@@ -395,7 +395,6 @@
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Tabs.html",
       "ariaUrl": "tabs"
     },
-
     {
       "name": "dialog",
       "title": "Dialog",
@@ -429,14 +428,13 @@
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Tooltip.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#tooltip"
     },
-
     {
       "name": "autocomplete",
       "title": "Autocomplete",
       "description": "Combine a search field with a filterable list of options.",
       "category": "Pickers",
       "status": "alpha",
-      "dependencies": ["field", "search-field", "menu"],
+      "dependencies": ["field", "menu", "search-field"],
       "files": ["shim-ui/autocomplete.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Autocomplete.html",
       "ariaUrl": "https://w3c.github.io/aria/#aria-autocomplete"
@@ -463,7 +461,6 @@
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Select.html",
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/listbox/"
     },
-
     {
       "name": "badge",
       "title": "Badge",
@@ -503,7 +500,7 @@
       "description": "Display determinate or indeterminate progress over time.",
       "category": "Status",
       "status": "stable",
-      "dependencies": ["field"],
+      "dependencies": [],
       "files": ["shim-ui/progress-circle.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ProgressBar.html",
       "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#progressbar"

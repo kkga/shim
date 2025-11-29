@@ -7,7 +7,8 @@
     "start": "next start",
     "check": "pnpx ultracite check",
     "fix": "pnpx ultracite fix",
-    "knip": "knip"
+    "knip": "knip",
+    "sync:registry": "node scripts/sync-registry.mjs && biome format shim-ui/registry/registry.json --write"
   },
   "workspaces": [
     "packages/*"
