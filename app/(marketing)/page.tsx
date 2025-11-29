@@ -10,7 +10,7 @@ import { Examples } from "./_components/examples/examples";
 
 export default function Page() {
   return (
-    <main className="flex h-svh flex-col overflow-clip md:overflow-y-auto">
+    <main className="background-gradient flex h-svh flex-col overflow-clip md:overflow-y-auto">
       <div className="mx-auto flex w-full max-w-7xl flex-col text-[15px] leading-normal md:grid md:grid-cols-[46ch_1fr_1fr] md:gap-8">
         <div className="col-span-1 p-8 md:p-12 lg:py-20 2xl:py-24">
           <div className="flex items-center gap-4">
@@ -83,7 +83,7 @@ export default function Page() {
             </strong>
             <p className="mt-1 text-neutral-text">
               React Aria, TypeScript, Tailwind v4 with Radix Colors. The good
-              stuff, no fluff—nothing cute, just speed.
+              stuff, no fluff.
             </p>
           </div>
         </div>

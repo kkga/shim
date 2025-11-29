@@ -45,6 +45,15 @@ html {
   min-width: 360px;
 }
 
+@utility background-gradient {
+  background-image: radial-gradient(
+    104.37% 134.11% at 14.28% -24.5%,
+    var(--gray-a2) 0%,
+    var(--gray-a4) 4.81%,
+    var(--gray-a2) 95.19%
+  );
+}
+
 article {
   :where(section):not(:where(.not-prose, .not-prose *)) {
     @apply p-6 md:p-8 not-last:border-b border-neutral-3;
