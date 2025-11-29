@@ -1,8 +1,10 @@
 # Shim CLI
 
-Command-line tool for installing UI components from [Shim](https://shim.kkga.me).
+Command-line tool for installing UI components from
+[Shim](https://shim.kkga.me).
 
-[Documentation](https://shim.kkga.me) • [GitHub](https://github.com/kkga/shim) • [npm](https://www.npmjs.com/package/@kkga/shim)
+[Documentation](https://shim.kkga.me) • [GitHub](https://github.com/kkga/shim) •
+[npm](https://www.npmjs.com/package/@kkga/shim)
 
 ## Usage
 
@@ -34,7 +36,8 @@ Path is relative to your project root (where `package.json` is located).
 
 ### `init`
 
-Initialize your project with configuration and utility files:
+Initialize your project. Automatically installs required dependencies, then
+creates configuration and utility files.
 
 ```bash
 # Create config with default paths
@@ -47,9 +50,19 @@ pnpm dlx @kkga/shim init --components-path src/ui --utils-path src/lib --css-pat
 pnpm dlx @kkga/shim init --force
 ```
 
-The `init` command:
+Prerequisite:
+
+- Tailwind CSS must be installed and configured in your project. If Tailwind is
+  missing, `init` exits with a helpful message. Follow the official guide:
+  https://tailwindcss.com/docs/installation
+
+What `init` does:
+
+- Installs dependencies: `react-aria-components`, `tailwind-variants`,
+  `@radix-ui/colors`, `@phosphor-icons/react`
 - Creates a `shim.config.json` configuration file
-- Downloads required utility files (`style.ts`, `theme.tsx`) to your utils directory
+- Downloads required utility files (`style.ts`, `theme.tsx`) to your utils
+  directory
 - Downloads CSS theme file (`theme.css`) to your styles directory
 - Ensures your project is ready for component installation
 
@@ -89,6 +102,7 @@ Components with dependencies are installed automatically.
 ### Utility Files
 
 Essential utility files are managed automatically:
+
 - `style.ts` - Styling utilities and design tokens
 - `theme.tsx` - Theme configuration and React context
 - `theme.css` - Complete CSS theme with design tokens, animations, and utilities
@@ -98,7 +112,7 @@ Essential utility files are managed automatically:
 ### Component Installation
 
 1. `--path` flag (highest priority)
-2. `componentsPath` in config file  
+2. `componentsPath` in config file
 3. `components/` directory (default)
 
 ### Utility Files
@@ -109,7 +123,7 @@ Essential utility files are managed automatically:
 
 ### CSS Files
 
-1. `--css-path` flag during `init` (highest priority)  
+1. `--css-path` flag during `init` (highest priority)
 2. `cssPath` in config file
 3. `styles/` directory (default)
 
@@ -127,4 +141,3 @@ pnpm dlx @kkga/shim add button dialog
 # Custom paths
 pnpm dlx @kkga/shim init --components-path src/ui --utils-path src/lib --css-path src/styles
 ```
-
