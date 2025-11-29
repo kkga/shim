@@ -1,53 +1,56 @@
 ---
 title: Quick start
-description: Set up Shim in your project.
+description: Set up Shim in your project using the CLI.
 order: 1
 ---
 
-import { SetupShimSection } from "./setup-shim";
-
 ## Introduction
 
-Shim is a collection of pre-styled, accessible UI components built on [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html).
-Components are installed directly into your codebase—you own the code and can customize styling and behavior to fit your needs.
+Shim is a collection of pre-styled, accessible UI components built on
+[React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html).
+Components are installed directly into your codebase—you own the code and can
+customize styling and behavior to fit your needs.
 
-This guide covers the prerequisites and setup steps to get Shim running in your React project.
+This guide assumes you have a React project set up and covers the initial setup
+of Shim in your project using the CLI. For more detailed instructions on manual
+setup, refer to the [manual setup guide](/manual-setup).
 
-***
+---
 
-## Install the prerequisites
+## Set up
 
-Shim components depend on several libraries. Use the commands below to install them.
-
-<Step title="React Aria Components" code="pnpm add react-aria-components">
-  Core unstyled primitives used by Shim components.
-  Read the docs at
-  [react-spectrum.adobe.com/react-aria/components](https://react-spectrum.adobe.com/react-aria/components.html).
+<Step title="Install Tailwind CSS">
+  Shim requires Tailwind CSS for styling. Please follow the [official Tailwind
+  installation guide](https://tailwindcss.com/docs/installation) for your
+  framework before continuing.
 </Step>
 
-<Step title="Tailwind CSS v4">
-  Utility-first styling foundation.<br />
-  Installation depends on your framework—follow the
-  [official Tailwind guide](https://tailwindcss.com/docs) for the
-  correct steps.
+<Step title="Initialize Shim" code={`pnpm dlx @kkga/shim init`}>
+  Shim provides a CLI to help set up your project. Run the following command in
+  your terminal to initialize Shim.
+  <br /> This creates a <strong>shim.config.json</strong> file in your project root
+  that defines where components, utility files, and CSS are installed.
 </Step>
 
-<Step title="Tailwind Variants" code="pnpm add tailwind-variants">
-  Declarative Tailwind [variant helpers](https://www.tailwind-variants.org/).
+<Step
+  title="Configure path alias"
+  code={[
+    {
+      title: "tsconfig.json",
+      content: `
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./*"]
+        }
+    }
+}`,
+    },
+  ]}
+>
+  Shim components import files via the <strong>@/</strong> alias. <br />
+  Configure the path in <strong>tsconfig.json</strong> (or <strong>
+    jsconfig.json
+  </strong>) so those imports resolve.
 </Step>
-
-<Step title="Radix Colors" code="pnpm add @radix-ui/colors">
-  Semantic color palette used by Shim tokens.<br />
-  Browse palettes at [radix-ui.com/colors](https://www.radix-ui.com/colors).
-</Step>
-
-<Step title="Phosphor Icons" code="pnpm add @phosphor-icons/react">
-  Icon set referenced by several components. <br />
-  Explore the catalog at [phosphoricons.com](https://phosphoricons.com).
-</Step>
-
-***
-
-## Set up Shim
-
-<SetupShimSection />

@@ -16,40 +16,62 @@ import { Tooltip } from "../../_components/tooltip";
 
 ## Overview
 
-Many Shim components support theming options like size and visual variants to help you adapt the look and feel to your design needs.
-You can also set global defaults using a theme provider to ensure consistency across your application.
+Many Shim components support theming options like size and visual variants to
+help you adapt the look and feel to your design needs. You can also set global
+defaults using a theme provider to ensure consistency across your application.
 
-***
+---
 
 ## Size
 
 Most components support four sizes that scale proportionally.
 
-<ComponentDemo component="theme" codeTitle="Size example" stacked demo="size" demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8" />
+<ComponentDemo
+  component="theme"
+  codeTitle="Size example"
+  stacked
+  demo="size"
+  demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8"
+/>
 
-***
+---
 
 ## Variants
 
 ### Field variants
 
-Forms and field-based components support "classic", "soft", and "outline" variants that adjust visual styles while preserving spacing and layout.
+Forms and field-based components support "classic", "soft", and "outline"
+variants that adjust visual styles while preserving spacing and layout.
 
-<ComponentDemo component="theme" demo="field-variant" demoClassName="grid sm:grid-cols-3 gap-8" codeTitle="Field variants example" stacked />
+<ComponentDemo
+  component="theme"
+  demo="field-variant"
+  demoClassName="grid sm:grid-cols-3 gap-8"
+  codeTitle="Field variants example"
+  stacked
+/>
 
 ### Button variants
 
-Buttons support "soft", "ghost", and "solid" variants for different visual emphasis levels.
-Note that ToggleButton and ToggleButtonGroup do not support the "solid" variant to avoid confusion with selected states.
+Buttons support "soft", "ghost", and "solid" variants for different visual
+emphasis levels. Note that ToggleButton and ToggleButtonGroup do not support the
+"solid" variant to avoid confusion with selected states.
 
-<ComponentDemo component="theme" demo="button-variant" demoClassName="grid sm:grid-cols-3 gap-8" codeTitle="Button variants example" stacked />
+<ComponentDemo
+  component="theme"
+  demo="button-variant"
+  demoClassName="grid sm:grid-cols-3 gap-8"
+  codeTitle="Button variants example"
+  stacked
+/>
 
-***
+---
 
 ## Set global defaults
 
-Wrap your application (or any subtree) in the `<Theme>` provider to broadcast shared props to every Shim component underneath it.
-The provider merges values from the nearest ancestor, so you can layer overrides as needed.
+Wrap your application (or any subtree) in the `<Theme>` provider to broadcast
+shared props to every Shim component underneath it. The provider merges values
+from the nearest ancestor, so you can layer overrides as needed.
 
 ```tsx title="layout.tsx"
 import type { ReactNode } from "react";
@@ -60,8 +82,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Theme 
-          size={2} 
+        <Theme
+          size={2}
           labelPosition="side"
           variants={{ field: "soft", button: "ghost" }}
         >
@@ -73,7 +95,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 }
 ```
 
-Inside a page or component you can scope a more specific override while inheriting the rest of the defaults:
+Inside a page or component you can scope a more specific override while
+inheriting the rest of the defaults:
 
 ```tsx title="components/callout.tsx"
 import { Theme } from "@/shim-ui/lib/theme";
@@ -103,38 +126,29 @@ export function Callout() {
     <Row>
       <Cell className="flex items-center gap-1">
         <code>size</code>
-
         <Tooltip text="Default component size, ranging from 1 (smallest) to 4 (largest)." />
       </Cell>
-
       <Cell><code>1 | 2 | 3 | 4</code></Cell>
       <Cell><code>1</code></Cell>
     </Row>
-
     <Row>
       <Cell className="flex items-center gap-1">
         <code>labelPosition</code>
-
         <Tooltip text="Default position of the label relative to the input field." />
       </Cell>
-
       <Cell><code>"side" | "top"</code></Cell>
       <Cell><code>"top"</code></Cell>
     </Row>
-
     <Row>
       <Cell className="flex items-center gap-1">
         <code>variants</code>
-
         <Tooltip text="Object containing default visual styles for component categories. Merges with parent theme context." />
       </Cell>
-
       <Cell>
         <code>
           {`{ button?, field?, table?, badge? }`}
         </code>
       </Cell>
-
       <Cell>
         <code>
           {`{ button: "soft", field: "classic", table: "classic", badge: "surface" }`}
@@ -159,19 +173,16 @@ export function Callout() {
       <Cell><code>"soft" | "solid" | "ghost"</code></Cell>
       <Cell>Button, ToggleButton, ToggleButtonGroup</Cell>
     </Row>
-
     <Row>
       <Cell><code>field</code></Cell>
       <Cell><code>"classic" | "soft" | "outline"</code></Cell>
       <Cell>TextField, Checkbox, RadioGroup, Switch, Slider, and other form inputs</Cell>
     </Row>
-
     <Row>
       <Cell><code>table</code></Cell>
       <Cell><code>"classic" | "grid"</code></Cell>
       <Cell>Table components</Cell>
     </Row>
-
     <Row>
       <Cell><code>badge</code></Cell>
       <Cell><code>"surface" | "soft" | "solid"</code></Cell>

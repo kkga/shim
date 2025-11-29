@@ -1,0 +1,52 @@
+---
+title: Manual setup
+description: Manually setup Shim in your project.
+order: 2
+---
+
+## Overview
+
+This guide covers the manual setup of Shim in your project. For a quicker setup,
+refer to the [quick start guide](/quick-start) that uses the Shim CLI.
+
+---
+
+## Set up
+
+<Step
+  code={[
+    {
+      title: "tsconfig.json",
+      content: `{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}`,
+    },
+  ]}
+  reset
+  title="Configure path alias"
+>
+  <p>
+    Shim components import files via the <strong>@/</strong> alias. <br />
+    Configure the path in <strong>tsconfig.json</strong> (or <strong>
+      jsconfig.json
+    </strong>) so those imports resolve.
+  </p>
+</Step>
+
+<Step code="pnpm dlx @kkga/shim init" title="Initialize Shim">
+  Run the `init` command to initialize Shim. <br />
+  It creates a **shim.config.json** file in your project root that defines where
+  components, utility files, and CSS are installed.
+</Step>
+
+<Step code="pnpm dlx @kkga/shim add button" title="Add components">
+  Use the <code>add</code> command to copy components into your project.
+  <br />
+  The CLI resolves dependencies, rewrites imports, and installs into the paths
+  defined in <strong>shim.config.json</strong>.
+</Step>

@@ -15,9 +15,10 @@ import {
 
 ## Overview
 
-The Shim CLI lets you bootstrap configuration and install components (and their dependencies) straight into your project.
+The Shim CLI lets you bootstrap configuration and install components (and their
+dependencies) straight into your project.
 
-***
+---
 
 ## Usage
 
@@ -44,18 +45,23 @@ Then run commands like this:
 pnpm shim add button
 ```
 
-***
+---
 
 ## Commands
 
 ### shim init
 
-Initialize Shim in your project. Creates the configuration file and installs utility and CSS files.
+Initialize Shim in your project. Automatically installs required dependencies,
+creates the configuration file, and installs utility and CSS files.
 
-* Creates a **shim.config.json** configuration file
-* Downloads required utility files (**style.ts**, **theme.tsx**) to your utils directory
-* Downloads CSS theme file (**theme.css**) to your styles directory
-* Ensures your project is ready for component installation
+- Checks if **Tailwind CSS** is installed (required prerequisite)
+- Installs all required dependencies (**react-aria-components**,
+  **tailwind-variants**, **@radix-ui/colors**, **@phosphor-icons/react**)
+- Creates a **shim.config.json** configuration file
+- Downloads required utility files (**style.ts**, **theme.tsx**) to your utils
+  directory
+- Downloads CSS theme file (**theme.css**) to your styles directory
+- Ensures your project is ready for component installation
 
 ```bash title="Terminal"
 shim init [options]
@@ -105,12 +111,14 @@ shim init [options]
 
       <Cell>Overwrite existing config and installed files.</Cell>
     </Row>
+
   </TableBody>
 </Table>
 
 ### shim add
 
-Install one or more components by name. Automatically installs component dependencies.
+Install one or more components by name. Automatically installs component
+dependencies.
 
 ```bash title="Terminal"
 shim add <components...> [options]
@@ -150,10 +158,11 @@ shim add <components...> [options]
 
       <Cell>Overwrite files that already exist.</Cell>
     </Row>
+
   </TableBody>
 </Table>
 
-***
+---
 
 ## Configuration File
 
@@ -203,14 +212,20 @@ Running **shim init** creates a configuration file in your project root:
         Destination for downloaded CSS files.
       </Cell>
     </Row>
+
   </TableBody>
 </Table>
 
-***
+---
 
 ## Troubleshooting
 
-* Use `--overwrite` / `--force` if existing files block installation.
-* For path-related options, reference directories from your project root (avoid full filesystem paths like /Users/... ).
-* If a component fails to install, re-run with a single name to isolate the issue.
-* Remove partially installed files before retrying to avoid stale code.
+- Tailwind CSS required: If `shim init` fails with a Tailwind error, install and
+  configure Tailwind CSS first by following the
+  [official guide](https://tailwindcss.com/docs/installation).
+- Use `--overwrite` / `--force` if existing files block installation.
+- For path-related options, reference directories from your project root (avoid
+  full filesystem paths like /Users/... ).
+- If a component fails to install, re-run with a single name to isolate the
+  issue.
+- Remove partially installed files before retrying to avoid stale code.
