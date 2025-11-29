@@ -2,7 +2,8 @@ import path from "node:path";
 import { fetchCSS, fetchUtilities } from "../lib/api.js";
 import { type ShimConfig, saveConfig } from "../lib/config.js";
 import { ensureDirectoryExists, writeFile } from "../lib/files.js";
-import { findProjectRoot } from "../lib/project.js";
+import { installDependencies, SHIM_DEPENDENCIES } from "../lib/install.js";
+import { findProjectRoot, isTailwindInstalled } from "../lib/project.js";
 
 interface InitOptions {
   force?: boolean;
@@ -45,6 +46,17 @@ async function installCSS(config: ShimConfig, force: boolean): Promise<void> {
 }
 
 export async function initCommand(options: InitOptions): Promise<void> {
+  // Check if Tailwind CSS is installed
+  if (!isTailwindInstalled()) {
+    process.stderr.write(
+      "Error: Tailwind CSS is not installed in this project.\n\n" +
+        "Please install and set up Tailwind CSS first by following the official guide:\n" +
+        "https://tailwindcss.com/docs/installation\n\n" +
+        "After setting up Tailwind, run this command again.\n"
+    );
+    process.exit(1);
+  }
+
   const config: ShimConfig = {
     componentsPath: options.componentsPath || "components",
     utilsPath: options.utilsPath || "utils",
@@ -52,6 +64,7 @@ export async function initCommand(options: InitOptions): Promise<void> {
   };
 
   try {
+    installDependencies(SHIM_DEPENDENCIES);
     saveConfig(config);
     await installUtilities(config, Boolean(options.force));
     await installCSS(config, Boolean(options.force));

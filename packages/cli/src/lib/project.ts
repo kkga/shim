@@ -13,3 +13,18 @@ export function findProjectRoot(): string {
 
   return process.cwd();
 }
+
+export function isTailwindInstalled(): boolean {
+  const root = findProjectRoot();
+  const packageJsonPath = path.join(root, "package.json");
+
+  if (!fs.existsSync(packageJsonPath)) {
+    return false;
+  }
+
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+  const dependencies = packageJson.dependencies || {};
+  const devDependencies = packageJson.devDependencies || {};
+
+  return "tailwindcss" in dependencies || "tailwindcss" in devDependencies;
+}
