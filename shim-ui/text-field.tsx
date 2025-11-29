@@ -41,10 +41,10 @@ function TextField({
       className={cnRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
       <Theme {...themeProps}>
-        {label && <Label isRequired={props.isRequired}>{label}</Label>}
+        {label ? <Label isRequired={props.isRequired}>{label}</Label> : null}
         <Input placeholder={placeholder} />
-        {description && <Description>{description}</Description>}
-        <FieldError>{errorMessage}</FieldError>
+        {description ? <Description>{description}</Description> : null}
+        {errorMessage ? <FieldError>{errorMessage}</FieldError> : null}
       </Theme>
     </RacTextField>
   );

@@ -6,6 +6,7 @@
     "build": "next build",
     "start": "next start",
     "check": "pnpx ultracite check",
+    "fix": "pnpx ultracite fix",
     "knip": "knip"
   },
   "workspaces": [
@@ -14,7 +15,7 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.0.4",
+    "@next/mdx": "^16.0.5",
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/colors": "^3.0.0",
     "@tailwindcss/postcss": "4.1.17",
@@ -26,7 +27,7 @@
     "babel-plugin-react-compiler": "^1.0.0",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
-    "next": "16.0.4",
+    "next": "16.0.5",
     "next-themes": "^0.4.6",
     "postcss": "^8.5.6",
     "react": "19.2.0",
@@ -44,12 +45,12 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.7",
+    "@biomejs/biome": "2.3.8",
     "@types/node": "24.10.1",
     "knip": "^5.70.2",
     "lefthook": "^2.0.4",
     "typescript": "5.9.3",
-    "ultracite": "6.3.6"
+    "ultracite": "6.3.8"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

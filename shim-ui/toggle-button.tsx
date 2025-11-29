@@ -8,14 +8,11 @@ import {
   ToggleGroupStateContext,
 } from "react-aria-components";
 import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
-import { focusStyle, INTENTS, type Intent } from "@/shim-ui/lib/style";
+import { INTENTS, type Intent } from "@/shim-ui/lib/style";
 import { useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
-  extend: focusStyle,
-  base: [
-    "inline-flex shrink-0 items-center justify-center font-book font-sans leading-none!",
-  ],
+  base: "focus-ring inline-flex shrink-0 items-center justify-center font-book font-sans leading-none!",
   variants: {
     variant: { soft: "", ghost: "bg-transparent" },
     intent: INTENTS.reduce(

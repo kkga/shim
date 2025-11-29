@@ -16,7 +16,7 @@ import {
   fieldLayoutStyle,
   Label,
 } from "@/shim-ui/field";
-import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
   Theme,
@@ -45,9 +45,9 @@ function CheckboxGroup({
     >
       {composeRenderProps(props.children, (children) => (
         <Theme {...themeProps}>
-          {label && <Label>{label}</Label>}
+          {label ? <Label>{label}</Label> : null}
           <div className="flex flex-col">{children}</div>
-          {description && <Description>{description}</Description>}
+          {description ? <Description>{description}</Description> : null}
           <FieldError>{errorMessage}</FieldError>
         </Theme>
       ))}
@@ -59,8 +59,7 @@ const checkboxStyle = tv({
   slots: {
     container: ["group flex text-neutral-text outline-none"],
     checkbox: [
-      focusStyle(),
-      "flex shrink-0 items-center justify-center outline-offset-1",
+      "focus-ring flex shrink-0 items-center justify-center outline-offset-1",
     ],
   },
   variants: {
@@ -181,12 +180,12 @@ function Checkbox({
                 return null;
               })()}
             </div>
-            {children && (
+            {children ? (
               <div className="flex flex-col gap-1">
                 {children}
-                {description && <Description>{description}</Description>}
+                {description ? <Description>{description}</Description> : null}
               </div>
-            )}
+            ) : null}
           </>
         )
       )}

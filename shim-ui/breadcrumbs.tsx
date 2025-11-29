@@ -30,9 +30,9 @@ function Breadcrumb({
       className={cnRenderProps(className, "flex items-center gap-1")}
     >
       <Link href={href} intent="neutral" {...props} />
-      {href && (
+      {href ? (
         <CaretRightIcon className="text-neutral-text-subtle" size={12} />
-      )}
+      ) : null}
     </RacBreadcrumb>
   );
 }

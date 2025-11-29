@@ -61,14 +61,14 @@ function Dialog({ title, description, ...props }: DialogProps) {
         <RacDialog aria-label={title} className={dialog()}>
           {title || description ? (
             <div className="mb-4 flex flex-col gap-1.5">
-              {title && (
+              {title ? (
                 <RacHeading className={headingText()} slot="title">
                   {title}
                 </RacHeading>
-              )}
-              {description && (
+              ) : null}
+              {description ? (
                 <RacText className={descriptionText()}>{description}</RacText>
-              )}
+              ) : null}
             </div>
           ) : null}
           {children}

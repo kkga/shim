@@ -2,7 +2,7 @@
 
 import { ArrowLineDownIcon, ArrowLineUpIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
-import { cn } from "tailwind-variants";
+import { cn, cx } from "tailwind-variants";
 import { Button } from "@/shim-ui/button";
 
 interface Props {
@@ -26,13 +26,16 @@ export function Collapsible({ children, collapsed: defaultCollapsed }: Props) {
 
   return (
     <div
-      className={cn(
+      className={cx(
         "relative flex w-full flex-col",
-        collapsed && "max-h-80 overflow-hidden"
+        collapsed ? "max-h-80 overflow-hidden" : "max-h-none"
       )}
     >
       <div
-        className={cn("grow", collapsed && "overflow-hidden")}
+        className={cx(
+          "grow",
+          collapsed ? "overflow-hidden" : "overflow-visible"
+        )}
         ref={ref}
         style={
           collapsed

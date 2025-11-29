@@ -5,15 +5,12 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Switch } from "react-aria-components";
 import { tv } from "tailwind-variants";
-import { focusStyle } from "@/shim-ui/lib/style";
 
 const style = tv({
   slots: {
     container: "group flex w-7 items-center text-neutral-text outline-none",
-    track: [
-      focusStyle(),
-      "flex h-3 w-full shrink-0 items-center justify-start rounded-full outline-offset-1",
-    ],
+    track:
+      "focus-ring flex h-3 w-full shrink-0 items-center justify-start rounded-full outline-offset-1",
     handle:
       "flex size-4.5 items-center justify-center rounded-full bg-clip-content transition-transform will-change-transform",
   },

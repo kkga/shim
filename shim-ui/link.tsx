@@ -5,17 +5,13 @@ import {
   type LinkProps as RacLinkProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 
 const style = tv({
-  extend: focusStyle,
   base: [
-    "underline-offset-2",
-    // hovered
+    "focus-ring underline-offset-2",
     "data-hovered:underline",
-    // disabled
     "data-disabled:cursor-default data-disabled:text-neutral-text-subtle data-disabled:no-underline",
-    // current
     "data-current:text-neutral-text",
   ],
   variants: {

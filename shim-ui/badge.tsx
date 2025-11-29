@@ -163,7 +163,8 @@ function Badge({
         intent,
         size,
         variant,
-        isSquare: typeof isSquare === "boolean" ? isSquare : hasOnlySvg,
+        isSquare:
+          typeof isSquare === "boolean" ? isSquare : Boolean(hasOnlySvg),
         className,
       })}
       {...props}

@@ -25,15 +25,15 @@ export function Step({
         </div>
       </div>
 
-      {title && (
+      {title ? (
         <strong className="col-start-2! row-start-1! leading-6">{title}</strong>
-      )}
+      ) : null}
 
       <div className="col-span-full *:last:mb-0! md:col-start-2 md:col-end-3">
         {children}
       </div>
 
-      {code && (
+      {code ? (
         <div className="col-span-full mt-4 md:col-start-3 md:row-start-1 md:row-end-3 md:mt-0">
           {typeof code === "string" ? (
             <CodeBlock
@@ -44,7 +44,7 @@ export function Step({
             <CodeBlock className="m-0" code={code} />
           )}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

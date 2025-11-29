@@ -135,7 +135,7 @@ export function NavPalette({ navSections }: Props) {
                         })()}
                         isDisabled={status === "planned"}
                         key={name}
-                        target={src.startsWith("http") ? "_blank" : undefined}
+                        target={src.startsWith("http") ? "_blank" : ""}
                         textValue={name}
                       >
                         {() => (
@@ -147,7 +147,7 @@ export function NavPalette({ navSections }: Props) {
                                 size={16}
                               />
                             )}
-                            {status && status !== "stable" && (
+                            {!!status && status !== "stable" && (
                               <Badge
                                 className="ml-1"
                                 intent={match(status)

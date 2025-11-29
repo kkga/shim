@@ -64,13 +64,13 @@ export default async function GuidePage({
           />
         </div>
 
-        {hasToc && (
+        {hasToc ? (
           <aside className="hidden w-60 shrink-0 border-neutral-3 border-l xl:block">
             <nav className="sticky top-0 p-4">
               <Toc toc={toc} />
             </nav>
           </aside>
-        )}
+        ) : null}
       </div>
     </>
   );

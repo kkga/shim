@@ -21,7 +21,7 @@ function Logo({ className, withType = true, size = 1 }: Props) {
         size={size === 1 ? 16 : 20}
         weight="fill"
       />
-      {withType && (
+      {withType ? (
         <span
           className={cx(
             "font-semibold text-neutral-text-contrast",
@@ -30,7 +30,7 @@ function Logo({ className, withType = true, size = 1 }: Props) {
         >
           Shim
         </span>
-      )}
+      ) : null}
     </div>
   );
 }

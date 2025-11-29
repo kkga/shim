@@ -57,9 +57,9 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
                 />
               </div>
             </div>
-            {description && (
+            {description ? (
               <Description slot="description">{description}</Description>
-            )}
+            ) : null}
           </>
         );
       }}

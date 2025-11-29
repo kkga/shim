@@ -51,9 +51,9 @@ function ProgressCircle(props: ProgressCircleProps) {
           <circle
             className={cx(
               "origin-center",
-              !isIndeterminate &&
-                "transition-[stroke-dashoffset] duration-500 ease-in-out",
-              isIndeterminate && "animate-[spin_700ms_linear_infinite]"
+              isIndeterminate
+                ? "animate-[spin_700ms_linear_infinite]"
+                : "transition-[stroke-dashoffset] duration-500 ease-in-out"
             )}
             cx={c}
             cy={c}

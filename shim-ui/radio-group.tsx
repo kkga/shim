@@ -15,7 +15,7 @@ import {
   fieldLayoutStyle,
   Label,
 } from "@/shim-ui/field";
-import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
   Theme,
@@ -27,8 +27,7 @@ const style = tv({
     group: "flex",
     item: "group flex text-neutral-text outline-none",
     itemInput: [
-      focusStyle(),
-      "flex shrink-0 items-center justify-center rounded-full outline-offset-1 before:invisible before:rounded-full",
+      "focus-ring flex shrink-0 items-center justify-center rounded-full outline-offset-1 before:invisible before:rounded-full",
     ],
   },
   variants: {
@@ -136,9 +135,9 @@ function RadioGroup({
     >
       {composeRenderProps(props.children, (children, { orientation }) => (
         <Theme {...themeProps}>
-          {label && <Label>{label}</Label>}
+          {label ? <Label>{label}</Label> : null}
           <div className={group({ orientation })}>{children}</div>
-          {description && <Description>{description}</Description>}
+          {description ? <Description>{description}</Description> : null}
           <FieldError>{errorMessage}</FieldError>
         </Theme>
       ))}
@@ -170,7 +169,7 @@ function Radio({ description, ...props }: RadioProps) {
             <div className={itemInput({ isPressed, isSelected, isDisabled })} />
             <div className="flex flex-col gap-1">
               {children}
-              {description && <Description>{description}</Description>}
+              {description ? <Description>{description}</Description> : null}
             </div>
           </>
         )

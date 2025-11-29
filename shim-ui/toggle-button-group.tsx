@@ -68,10 +68,10 @@ function ToggleButtonGroup({
     >
       {composeRenderProps(props.children, (children) => (
         <Theme {...themeProps}>
-          {label && <Label>{label}</Label>}
+          {label ? <Label>{label}</Label> : null}
           <div className={style()}>{children}</div>
-          {description && <Description>{description}</Description>}
-          <FieldError>{errorMessage}</FieldError>
+          {description ? <Description>{description}</Description> : null}
+          {errorMessage ? <FieldError>{errorMessage}</FieldError> : null}
         </Theme>
       ))}
     </RacToggleButtonGroup>

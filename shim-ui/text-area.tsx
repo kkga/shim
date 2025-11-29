@@ -58,13 +58,13 @@ function TextArea({
       className={cnRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
       <Theme {...themeProps}>
-        {label && <Label>{label}</Label>}
+        {label ? <Label>{label}</Label> : null}
         <TextAreaInput
           className={textAreaStyle({ size, variant: variants.field })}
           placeholder={placeholder}
         />
-        {description && <Description>{description}</Description>}
-        <FieldError>{errorMessage}</FieldError>
+        {description ? <Description>{description}</Description> : null}
+        {errorMessage ? <FieldError>{errorMessage}</FieldError> : null}
       </Theme>
     </RacTextField>
   );

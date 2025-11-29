@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 const COLORS = {
-  gray: "text-[var(--slate-2)] bg-[var(--slate-9)]",
-  blue: "text-[var(--iris-2)] bg-[var(--iris-9)]",
-  green: "text-[var(--green-2)] bg-[var(--green-9)]",
-  orange: "text-[var(--orange-2)] bg-[var(--orange-9)]",
+  gray: "text-(--slate-2) bg-(--slate-9)",
+  blue: "text-(--iris-2) bg-(--iris-9)",
+  green: "text-(--green-2) bg-(--green-9)",
+  orange: "text-(--orange-2) bg-(--orange-9)",
 };
 type Color = keyof typeof COLORS;
 
@@ -91,7 +91,7 @@ function Avatar({ src, name, size, color, radius, className }: AvatarProps) {
 
   return (
     <div className={base({ size, color, className })}>
-      {src && (isLoading || didLoad) && (
+      {Boolean(src) && (isLoading || didLoad) && (
         // biome-ignore lint/performance/noImgElement: not necessarily a nextjs app
         <img
           alt={name}

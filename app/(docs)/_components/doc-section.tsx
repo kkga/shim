@@ -36,7 +36,7 @@ function DocSection({
       id={id}
     >
       <div className="col-start-1 self-stretch">
-        {title && (
+        {title ? (
           <h3 className="mb-2 font-semibold text-lg text-neutral-text-contrast leading-tight">
             {id ? (
               <a
@@ -49,9 +49,9 @@ function DocSection({
               title
             )}
           </h3>
-        )}
+        ) : null}
 
-        {children && (
+        {children ? (
           <div
             className={cn(
               "space-y-2 text-neutral-text [&_code]:font-book [&_code]:font-sans [&_code]:text-neutral-text-contrast",
@@ -60,9 +60,9 @@ function DocSection({
           >
             {children}
           </div>
-        )}
+        ) : null}
 
-        {demo && (
+        {demo ? (
           <div
             className={cx(
               "not-prose not-first:mt-6 flex text-[15px] text-neutral-text",
@@ -74,16 +74,16 @@ function DocSection({
           >
             <Theme size={2}>{demo}</Theme>
           </div>
-        )}
+        ) : null}
       </div>
 
-      {code && (
+      {code ? (
         <CodeBlock
           className="m-0"
           code={Array.isArray(code) ? code : [{ content: code }]}
           lang="tsx"
         />
-      )}
+      ) : null}
     </section>
   );
 }

@@ -11,7 +11,6 @@ import {
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 import { Badge } from "@/shim-ui/badge";
-import { focusStyle } from "@/shim-ui/lib/style";
 import { Separator } from "@/shim-ui/separator";
 import { CategoryIcon } from "./category-icon";
 import { NavFooter } from "./nav-footer";
@@ -22,10 +21,7 @@ const style = tv({
   slots: {
     header:
       "col-span-full flex h-7 items-center gap-1.5 px-2 font-medium text-neutral-text-contrast text-sm leading-none",
-    item: [
-      focusStyle(),
-      "flex h-7 items-center gap-2 rounded px-2 text-neutral-text text-sm leading-none",
-    ],
+    item: "focus-ring flex h-7 items-center gap-2 rounded px-2 text-neutral-text text-sm leading-none",
   },
   variants: {
     isDisabled: {
@@ -45,6 +41,25 @@ interface Props {
     section: string;
     items: NavItem[];
   }[];
+}
+
+function StatusBadge({ status }: { status: string }) {
+  if (typeof status !== "string" || status === "stable") {
+    return null;
+  }
+
+  return (
+    <Badge
+      intent={match(status)
+        .with("planned", () => "neutral" as const)
+        .with("beta", () => "accent" as const)
+        .with("alpha", () => "warning" as const)
+        .otherwise(() => "neutral" as const)}
+      size={1}
+    >
+      {status.length > 0 ? `${status[0].toUpperCase()}${status.slice(1)}` : ""}
+    </Badge>
+  );
 }
 
 export function Nav({ navSections }: Props) {
@@ -109,32 +124,25 @@ export function Nav({ navSections }: Props) {
                     id={src.startsWith("http") ? src : `/${src}`}
                     isDisabled={status === "planned"}
                     key={src.startsWith("http") ? src : `/${src}`}
-                    target={src.startsWith("http") ? "_blank" : undefined}
+                    {...(src.startsWith("http")
+                      ? { target: "_blank", rel: "noopener" }
+                      : {})}
                     textValue={name}
                   >
                     {({ isHovered }) => (
                       <>
                         {section === "Overview" && <CategoryIcon name={name} />}
                         {name}
-                        {status && status !== "stable" && (
-                          <Badge
-                            intent={match(status)
-                              .with("planned", () => "neutral" as const)
-                              .with("beta", () => "accent" as const)
-                              .with("alpha", () => "warning" as const)
-                              .otherwise(() => "neutral" as const)}
-                            size={1}
-                          >
-                            {status[0].toUpperCase() + status.slice(1)}
-                          </Badge>
-                        )}
+                        <StatusBadge status={status} />
 
-                        {isHovered && src.startsWith("http") && (
-                          <ArrowSquareOutIcon
-                            className="ml-auto text-neutral-text"
-                            size={16}
-                          />
-                        )}
+                        {isHovered
+                          ? src.startsWith("http") && (
+                              <ArrowSquareOutIcon
+                                className="ml-auto text-neutral-text"
+                                size={16}
+                              />
+                            )
+                          : null}
                       </>
                     )}
                   </ListBoxItem>

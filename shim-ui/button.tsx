@@ -11,12 +11,11 @@ import {
   type ProgressBarProps as RacProgressBarProps,
 } from "react-aria-components";
 import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
-import { focusStyle, INTENTS, type Intent } from "@/shim-ui/lib/style";
+import { INTENTS, type Intent } from "@/shim-ui/lib/style";
 import { buildVariantOverrides, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
-  extend: focusStyle,
-  base: "inline-flex shrink-0 items-center justify-center font-book font-sans leading-none!",
+  base: "focus-ring inline-flex shrink-0 items-center justify-center font-book font-sans leading-none!",
   variants: {
     variant: { soft: "", solid: "text-white", ghost: "bg-transparent" },
     intent: INTENTS.reduce(
@@ -204,11 +203,11 @@ function Button({
     >
       {composeRenderProps(props.children, (children, { isPending }) => (
         <>
-          {isPending && (
+          {isPending ? (
             <div className={container()} data-progress>
               <ProgressCircle className={circle()} />
             </div>
-          )}
+          ) : null}
           <span className="contents">{children}</span>
         </>
       ))}

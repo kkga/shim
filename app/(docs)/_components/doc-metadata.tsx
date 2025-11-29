@@ -15,20 +15,19 @@ interface MetadataLinkProps {
 }
 
 function MetadataLink({ href, title, external, children }: MetadataLinkProps) {
+  const externalProps = external
+    ? { rel: "noopener noreferrer" as const, target: "_blank" as const }
+    : {};
+
   return (
-    <Link
-      aria-label={title}
-      href={href}
-      rel={external ? "noreferrer" : undefined}
-      target={external ? "_blank" : undefined}
-    >
+    <Link aria-label={title} href={href} {...externalProps}>
       {children}
-      {external && (
+      {external ? (
         <ArrowUpRightIcon
           className="ml-0.5 inline align-text-top text-accent-10"
           size={16}
         />
-      )}
+      ) : null}
     </Link>
   );
 }
@@ -50,7 +49,7 @@ export function DocMetadata({
       className="grid grid-cols-2 gap-x-6 gap-y-3 md:grid-flow-col md:grid-cols-none"
       size={1}
     >
-      {docUrl && (
+      {docUrl ? (
         <DataListItem
           label="Documentation"
           value={
@@ -63,8 +62,8 @@ export function DocMetadata({
             </MetadataLink>
           }
         />
-      )}
-      {ariaUrl && (
+      ) : null}
+      {ariaUrl ? (
         <DataListItem
           label="Pattern"
           value={
@@ -77,7 +76,7 @@ export function DocMetadata({
             </MetadataLink>
           }
         />
-      )}
+      ) : null}
       <DataListItem
         label="Source"
         value={

@@ -1,5 +1,5 @@
 import { composeRenderProps } from "react-aria-components";
-import { type ClassValue, cn, tv } from "tailwind-variants";
+import { type ClassValue, cn } from "tailwind-variants";
 
 /**
  * Combine a `className` render prop with additional Tailwind classes.
@@ -45,9 +45,9 @@ export const INTENTS = [
 ] as const;
 export type Intent = (typeof INTENTS)[number];
 
-export const focusStyle = tv({
-  base: [
-    "outline-0 outline-accent-focus-ring outline-offset-1",
-    "data-focus-visible:outline-2 group-data-focus-visible:outline-2",
-  ],
-});
+// export const focusStyle = tv({
+//   base: [
+//     "outline-0 outline-accent-focus-ring outline-offset-1",
+//     "data-focus-visible:outline-2 group-data-focus-visible:outline-2",
+//   ],
+// });

@@ -42,9 +42,9 @@ export function ColorField({
       )}
     >
       <Theme {...themeProps}>
-        {label && <Label>{label}</Label>}
+        {label ? <Label>{label}</Label> : null}
         <Input className="tabular-nums" />
-        {description && <Description>{description}</Description>}
+        {description ? <Description>{description}</Description> : null}
         <FieldError>{errorMessage}</FieldError>
       </Theme>
     </RacColorField>

@@ -94,7 +94,7 @@ function ComboBox<T extends object>({
       menuTrigger={menuTrigger}
     >
       <Theme {...themeProps}>
-        {label && <Label>{label}</Label>}
+        {label ? <Label>{label}</Label> : null}
         <FieldGroup>
           <GroupInput />
           <RacButton className={triggerButton()}>
@@ -111,7 +111,7 @@ function ComboBox<T extends object>({
             )}
           </RacButton>
         </FieldGroup>
-        {description && <Description>{description}</Description>}
+        {description ? <Description>{description}</Description> : null}
         <FieldError>{errorMessage}</FieldError>
         <Popover isNonModal>
           <ListBox className={listBox()} items={items}>

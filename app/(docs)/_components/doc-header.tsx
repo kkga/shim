@@ -20,18 +20,18 @@ export function DocHeader({
         <h1 className="font-bold text-neutral-text-contrast text-xl leading-tight lg:text-2xl">
           {title}
         </h1>
-        {subtitle && (
+        {subtitle ? (
           <p className="mt-1 font-book text-base text-neutral-text lg:mt-2">
             {subtitle}
           </p>
-        )}
+        ) : null}
 
-        {children && (
+        {children ? (
           <>
             <Separator className="my-6 max-w-40 bg-neutral-3" />
             {children}
           </>
-        )}
+        ) : null}
       </div>
     </header>
   );

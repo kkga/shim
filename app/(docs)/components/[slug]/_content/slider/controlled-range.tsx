@@ -9,7 +9,8 @@ export default () => {
     <>
       <Slider label="Range" onChange={setRange} value={range} />
       <p className="tabular-nums">
-        Range: {Array.isArray(range) ? `${range[0]}–${range[1]}` : range}
+        Range:{" "}
+        {Array.isArray(range) ? `${range[0]}–${range[1]}` : String(range)}
       </p>
     </>
   );

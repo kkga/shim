@@ -7,7 +7,6 @@ import {
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
 import type { FieldProps } from "@/shim-ui/field";
-import { focusStyle } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
   Theme,
@@ -18,10 +17,8 @@ const style = tv({
   slots: {
     container:
       "group flex items-center font-medium text-neutral-text outline-none",
-    track: [
-      focusStyle(),
-      "flex shrink-0 items-center rounded-full px-px outline-offset-1 transition-colors",
-    ],
+    track:
+      "focus-ring flex shrink-0 items-center rounded-full px-px outline-offset-1 transition-colors",
     handle:
       "translateX-0 transform rounded-full bg-clip-content transition-all",
   },

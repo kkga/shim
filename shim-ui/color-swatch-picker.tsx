@@ -8,7 +8,7 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 import { ColorSwatch } from "@/shim-ui/color-swatch";
-import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 
 function ColorSwatchPicker({
   children,
@@ -24,20 +24,23 @@ function ColorSwatchPicker({
   );
 }
 
-const itemStyle = tv({
-  extend: focusStyle,
-  base: "relative rounded",
+const style = tv({
+  slots: {
+    item: "focus-ring relative rounded",
+    selectedIndicator:
+      "-outline-offset-4 absolute top-0 left-0 h-full w-full rounded border-2 border-black outline-2 outline-white forced-color-adjust-none dark:border-white dark:outline-black",
+  },
 });
 
 function ColorSwatchPickerItem(props: RacColorSwatchPickerItemProps) {
+  let { item, selectedIndicator } = style();
+
   return (
-    <RacColorSwatchPickerItem {...props} className={itemStyle()}>
+    <RacColorSwatchPickerItem {...props} className={item()}>
       {({ isSelected }) => (
         <>
           <ColorSwatch />
-          {isSelected && (
-            <div className="-outline-offset-4 absolute top-0 left-0 h-full w-full rounded border-2 border-black outline-2 outline-white forced-color-adjust-none dark:border-white dark:outline-black" />
-          )}
+          {isSelected ? <div className={selectedIndicator()} /> : null}
         </>
       )}
     </RacColorSwatchPickerItem>

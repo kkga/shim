@@ -14,14 +14,13 @@ import { ColorArea } from "@/shim-ui/color-area";
 import { ColorField } from "@/shim-ui/color-field";
 import { ColorSlider } from "@/shim-ui/color-slider";
 import { ColorSwatch } from "@/shim-ui/color-swatch";
-import { focusStyle } from "@/shim-ui/lib/style";
 import { Popover } from "@/shim-ui/popover";
 import { Select, SelectItem } from "@/shim-ui/select";
 import { Separator } from "@/shim-ui/separator";
 
 const buttonStyles = tv({
-  extend: focusStyle,
-  base: "flex cursor-default items-center gap-2 rounded text-gray-800 text-sm dark:text-gray-200",
+  // TODO: update colors
+  base: "focus-ring flex cursor-default items-center gap-2 rounded text-gray-800 text-sm dark:text-gray-200",
 });
 
 interface ColorPickerProps extends RacColorPickerProps {
@@ -62,9 +61,9 @@ function ColorEditor() {
       <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-2">
         <Select
           aria-label="Color mode"
-          onSelectionChange={(key) => setMode(key as ColorSpace)}
-          selectedKey={mode}
+          onChange={(key) => setMode(key as ColorSpace)}
           size={1}
+          value={mode}
         >
           <SelectItem id="hsb">HSB</SelectItem>
           <SelectItem id="hsl">HSL</SelectItem>

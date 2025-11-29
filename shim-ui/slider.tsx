@@ -14,7 +14,7 @@ import {
   fieldLayoutStyle,
   Label,
 } from "@/shim-ui/field";
-import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
   Theme,
@@ -26,7 +26,7 @@ const style = tv({
     track: "relative flex shrink-0 grow items-center",
     indicator: "absolute overflow-hidden rounded-full",
     fill: "absolute",
-    thumb: [focusStyle(), "rounded-full outline-offset-0"],
+    thumb: "focus-ring rounded-full outline-offset-0",
     output:
       "min-w-[3ch] self-center justify-self-end text-end text-neutral-text text-xs tabular-nums",
   },
@@ -184,10 +184,10 @@ function Slider<T extends number | number[]>({
       className={cnRenderProps(className, fieldLayoutStyle({ labelPosition }))}
     >
       <Theme {...themeProps}>
-        {label && (
+        {label ? (
           <div className="flex justify-between">
             <Label>{label}</Label>
-            {labelPosition === "top" && (
+            {labelPosition === "top" ? (
               <SliderOutput className={output()}>
                 {({ state }) =>
                   state.values
@@ -195,16 +195,16 @@ function Slider<T extends number | number[]>({
                     .join("–")
                 }
               </SliderOutput>
-            )}
+            ) : null}
           </div>
-        )}
+        ) : null}
 
         <div className="flex grow gap-1">
           <SliderTrack className={({ orientation }) => track({ orientation })}>
             {({ state, orientation }) => (
               <>
                 <div className={indicator({ orientation })}>
-                  {isFilled && (
+                  {isFilled ? (
                     <div
                       className={fill({ orientation })}
                       style={
@@ -225,7 +225,7 @@ function Slider<T extends number | number[]>({
                             }
                       }
                     />
-                  )}
+                  ) : null}
                 </div>
                 {state.values.map((_, i) => (
                   <SliderThumb
@@ -240,7 +240,7 @@ function Slider<T extends number | number[]>({
             )}
           </SliderTrack>
 
-          {labelPosition === "side" && (
+          {labelPosition === "side" ? (
             <SliderOutput className={output({ size })}>
               {({ state }) =>
                 state.values
@@ -248,10 +248,10 @@ function Slider<T extends number | number[]>({
                   .join("–")
               }
             </SliderOutput>
-          )}
+          ) : null}
         </div>
 
-        {description && <Description>{description}</Description>}
+        {description ? <Description>{description}</Description> : null}
       </Theme>
     </RacSlider>
   );

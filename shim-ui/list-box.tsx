@@ -12,7 +12,7 @@ import {
   type ListBoxSectionProps as RacListBoxSectionProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { cnRenderProps, focusStyle } from "@/shim-ui/lib/style";
+import { cnRenderProps } from "@/shim-ui/lib/style";
 import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 interface ListBoxProps<T> extends RacListBoxProps<T> {
@@ -36,8 +36,7 @@ function ListBox<T extends object>({
 }
 
 const itemStyle = tv({
-  extend: focusStyle(),
-  base: "relative flex shrink-0 cursor-default items-center truncate font-book outline-0",
+  base: "focus-ring relative flex shrink-0 cursor-default items-center truncate font-book outline-0",
   variants: {
     size: {
       1: "h-6 gap-2 rounded-sm px-2 text-xs",
@@ -143,7 +142,7 @@ function ListBoxSection<T extends object>({
 
   return (
     <RacListBoxSection {...props} className={section({ className })}>
-      {title && <RacHeader className={header()}>{title}</RacHeader>}
+      {title ? <RacHeader className={header()}>{title}</RacHeader> : null}
       <RacCollection items={items}>{children}</RacCollection>
     </RacListBoxSection>
   );

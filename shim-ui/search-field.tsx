@@ -10,7 +10,7 @@ import {
   SearchField as RacSearchField,
   type SearchFieldProps as RacSearchFieldProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { cx, tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -109,9 +109,9 @@ function SearchField({
     >
       {({ isEmpty, isDisabled }) => (
         <Theme {...themeProps}>
-          {label && <Label>{label}</Label>}
+          {label ? <Label>{label}</Label> : null}
           <FieldGroup>
-            {prefixIcon && (
+            {prefixIcon ? (
               <div aria-hidden className={iconContainer({ isEmpty })}>
                 {(() => {
                   if (prefixIcon === "search") {
@@ -123,9 +123,11 @@ function SearchField({
                   return prefixIcon;
                 })()}
               </div>
-            )}
+            ) : null}
             <GroupInput
-              className={prefixIcon ? "indent-0" : undefined}
+              className={cx({
+                "indent-0": prefixIcon,
+              })}
               placeholder={placeholder}
             />
             <div className={clearButtonContainer({ isEmpty })}>
@@ -134,7 +136,7 @@ function SearchField({
               </RacButton>
             </div>
           </FieldGroup>
-          {description && <Description>{description}</Description>}
+          {description ? <Description>{description}</Description> : null}
           <FieldError>{errorMessage}</FieldError>
         </Theme>
       )}

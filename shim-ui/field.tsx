@@ -144,7 +144,7 @@ function Label({
       slot="label"
     >
       {children}
-      {isRequired && <span> *</span>}
+      {isRequired ? <span> *</span> : null}
     </RacLabel>
   );
 }

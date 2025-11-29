@@ -171,25 +171,25 @@ function Column(props: ColumnProps) {
               tabIndex={-1}
             >
               <span className="truncate">{children}</span>
-              {allowsSorting && (
+              {allowsSorting ? (
                 <span
                   className={cx(
                     "flex size-4 items-center justify-center text-neutral-text group-data-hovered:visible",
                     sortDirection ? "visible" : "invisible"
                   )}
                 >
-                  {sortDirection &&
-                    (sortDirection === "ascending" ? (
-                      <ArrowDownIcon aria-hidden size={16} weight="regular" />
-                    ) : (
-                      <ArrowUpIcon aria-hidden size={16} weight="regular" />
-                    ))}
+                  {sortDirection === "ascending" && (
+                    <ArrowDownIcon aria-hidden size={16} weight="regular" />
+                  )}
+                  {sortDirection === "descending" && (
+                    <ArrowUpIcon aria-hidden size={16} weight="regular" />
+                  )}
                 </span>
-              )}
+              ) : null}
             </RacGroup>
-            {props.allowsResizing && !props.width && (
+            {Boolean(props.allowsResizing) && !props.width ? (
               <RacColumnResizer className={resizer()} />
-            )}
+            ) : null}
           </div>
         )
       )}
@@ -213,7 +213,7 @@ function TableHeader<T extends object>(props: RacTableHeaderProps<T>) {
       className={cnRenderProps(props.className, header())}
     >
       {/* Add extra columns for drag and drop and selection. */}
-      {allowsDragging && <Column />}
+      {allowsDragging ? <Column /> : null}
       {selectionBehavior === "toggle" && (
         <RacColumn className={selectionCell()}>
           {selectionMode === "multiple" && <SelectionCheckbox />}
@@ -237,18 +237,18 @@ function Row<T extends object>({
 
   return (
     <RacRow id={id} {...props} className={row()}>
-      {allowsDragging && (
+      {allowsDragging ? (
         <Cell className="max-w-8 px-2">
           <RacButton slot="drag">
             <DotsSixVerticalIcon size={16} weight="bold" />
           </RacButton>
         </Cell>
-      )}
-      {selectionBehavior === "toggle" && (
+      ) : null}
+      {selectionBehavior === "toggle" ? (
         <Cell className={selectionCell()}>
           <SelectionCheckbox />
         </Cell>
-      )}
+      ) : null}
       <RacCollection items={columns}>{children}</RacCollection>
     </RacRow>
   );

@@ -3,11 +3,9 @@ import {
   type ColorThumbProps as RacColorThumbProps,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
-import { focusStyle } from "@/shim-ui/lib/style";
 
 const thumbStyles = tv({
-  extend: focusStyle,
-  base: "top-[50%] left-[50%] border border-white",
+  base: "focus-ring top-[50%] left-[50%] border border-white",
   variants: {
     variant: {
       loupe: "rounded-full border-3",
@@ -23,6 +21,7 @@ const thumbStyles = tv({
       horizontal: "",
       vertical: "",
     },
+    // TODO: cleanup unused variants
     // isFocusVisible: {
     //   true: "h-8 w-8",
     // },

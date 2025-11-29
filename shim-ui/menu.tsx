@@ -107,13 +107,13 @@ function MenuItem({ children, intent, ...props }: MenuItemProps) {
               <span
                 className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
               >
-                {isSelected && (
+                {isSelected ? (
                   <CheckIcon
                     aria-hidden
                     size={ICON_SIZE_MAP[size]}
                     weight="bold"
                   />
-                )}
+                ) : null}
               </span>
             )}
             <span
@@ -124,9 +124,9 @@ function MenuItem({ children, intent, ...props }: MenuItemProps) {
             >
               {renderedChildren}
             </span>
-            {hasSubmenu && (
+            {hasSubmenu ? (
               <CaretRightIcon aria-hidden size={12} weight="bold" />
-            )}
+            ) : null}
           </>
         )
       )}
@@ -170,7 +170,7 @@ function MenuSection<T extends object>({
 
   return (
     <RacMenuSection {...props} className={section({ className })}>
-      {title && <RacHeader className={header()}>{title}</RacHeader>}
+      {title ? <RacHeader className={header()}>{title}</RacHeader> : null}
       <RacCollection items={items}>{children}</RacCollection>
     </RacMenuSection>
   );

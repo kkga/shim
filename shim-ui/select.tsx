@@ -64,7 +64,7 @@ function Select<T extends object>({
     >
       {() => (
         <Theme {...{ size, variants, labelPosition }}>
-          {label && <Label>{label}</Label>}
+          {label ? <Label>{label}</Label> : null}
           <Button intent="neutral">
             <RacSelectValue className="flex-1 truncate text-left font-normal data-placeholder:text-neutral-text-subtle" />
             <CaretDownIcon
@@ -73,7 +73,7 @@ function Select<T extends object>({
               size={ICON_SIZE_MAP[size]}
             />
           </Button>
-          {description && <Description>{description}</Description>}
+          {description ? <Description>{description}</Description> : null}
           <FieldError>{errorMessage}</FieldError>
           <Popover>
             <ListBox
@@ -105,13 +105,13 @@ function SelectItem(props: ListBoxItemProps) {
               <span
                 className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
               >
-                {isSelected && (
+                {isSelected ? (
                   <CheckIcon
                     aria-hidden
                     size={ICON_SIZE_MAP[size]}
                     weight="bold"
                   />
-                )}
+                ) : null}
               </span>
             )}
             <span

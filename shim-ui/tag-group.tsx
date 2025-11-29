@@ -15,7 +15,6 @@ import {
 } from "react-aria-components";
 import { tv } from "tailwind-variants";
 import { Description, fieldLayoutStyle, Label } from "@/shim-ui/field";
-import { focusStyle } from "@/shim-ui/lib/style";
 import {
   ICON_SIZE_MAP,
   type Size,
@@ -65,11 +64,11 @@ function TagGroup<T extends object>({
         labelPosition,
         className: props.className,
       })}
-
+      // TODO: cleanup
       // className={cx("group flex flex-col gap-1.5", props.className)}
     >
       <Theme {...themeProps}>
-        {label && <Label>{label}</Label>}
+        {label ? <Label>{label}</Label> : null}
         <ColorContext.Provider value={props.color || "gray"}>
           <RacTagList
             className="flex flex-wrap gap-1.5"
@@ -79,12 +78,12 @@ function TagGroup<T extends object>({
             {children}
           </RacTagList>
         </ColorContext.Provider>
-        {description && <Description>{description}</Description>}
-        {errorMessage && (
+        {description ? <Description>{description}</Description> : null}
+        {errorMessage ? (
           <RacText className="text-error-text text-xs" slot="errorMessage">
             {errorMessage}
           </RacText>
-        )}
+        ) : null}
       </Theme>
     </RacTagGroup>
   );
@@ -93,8 +92,7 @@ function TagGroup<T extends object>({
 const style = tv({
   slots: {
     tag: [
-      focusStyle(),
-      "flex max-w-fit cursor-default items-center overflow-clip rounded-full border leading-none",
+      "focus-ring flex max-w-fit cursor-default items-center overflow-clip rounded-full border leading-none",
       // selected
       "data-selected:border-transparent! data-selected:text-white",
       // disabled
@@ -163,11 +161,11 @@ function Tag({ children, color, size: _size, ...props }: TagProps) {
       {({ allowsRemoving }) => (
         <>
           {children as React.ReactNode}
-          {allowsRemoving && (
+          {allowsRemoving ? (
             <RacButton className={removeButton()} slot="remove">
               <XIcon aria-hidden size={ICON_SIZE_MAP[size]} />
             </RacButton>
-          )}
+          ) : null}
         </>
       )}
     </RacTag>

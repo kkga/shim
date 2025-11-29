@@ -78,7 +78,7 @@ function CodeActions({
 
   return (
     <div className="pointer-events-auto ml-auto flex gap-1">
-      {sourceUrl && (
+      {sourceUrl ? (
         <LinkButton
           className="backdrop-blur-sm"
           href={sourceUrl}
@@ -88,8 +88,10 @@ function CodeActions({
           GitHub
           <ArrowUpRightIcon size={16} />
         </LinkButton>
-      )}
-      {content && <CopyButton className="backdrop-blur-md" text={content} />}
+      ) : null}
+      {content ? (
+        <CopyButton className="backdrop-blur-md" text={content} />
+      ) : null}
     </div>
   );
 }
@@ -115,12 +117,12 @@ function CodePane({
 
   return (
     <>
-      {note && (
+      {note ? (
         <div className="m-2 flex items-start gap-2 rounded-sm bg-warning-panel px-2.5 py-2 font-medium text-[13px]/5 text-warning-text-contrast *:m-0!">
           <WarningDiamondIcon className="h-lh" size={16} />
           {note}
         </div>
-      )}
+      ) : null}
       {isContentLong ? (
         <Collapsible collapsed>{codeElement}</Collapsible>
       ) : (
@@ -177,11 +179,11 @@ export function CodeBlock(props: Props) {
       ) : (
         <>
           <CodeHeader selectedCode={selectedCode}>
-            {normalizedCode[0].title && (
+            {normalizedCode[0].title ? (
               <span className="px-2 font-medium font-sans text-[13px] text-neutral-text leading-6">
                 {normalizedCode[0].title}
               </span>
-            )}
+            ) : null}
           </CodeHeader>
           <CodePane code={selectedCode} highlight={selectedCode.highlight} />
         </>

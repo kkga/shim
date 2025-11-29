@@ -58,7 +58,7 @@ function NumberField({
       )}
     >
       <Theme {...themeProps}>
-        {label && <Label>{label}</Label>}
+        {label ? <Label>{label}</Label> : null}
         <FieldGroup>
           {({ isDisabled }) =>
             stepperLayout === "stacked" ? (
@@ -102,7 +102,7 @@ function NumberField({
             )
           }
         </FieldGroup>
-        {description && <Description>{description}</Description>}
+        {description ? <Description>{description}</Description> : null}
         <FieldError>{errorMessage}</FieldError>
       </Theme>
     </RacNumberField>
