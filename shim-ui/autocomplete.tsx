@@ -7,14 +7,14 @@ import {
   useFilter,
 } from "react-aria-components";
 import type { FieldProps } from "@/shim-ui/field";
-import { SearchField, type SearchFieldProps } from "@/shim-ui/search-field";
 import {
   Menu,
   MenuItem,
   type MenuItemProps,
   MenuSection,
   type MenuSectionProps,
-} from "./menu";
+} from "@/shim-ui/menu";
+import { SearchField, type SearchFieldProps } from "@/shim-ui/search-field";
 
 interface AutocompleteProps<T extends object>
   extends Omit<RacAutocompleteProps, "children">,

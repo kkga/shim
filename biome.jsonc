@@ -3,14 +3,13 @@
   "files": {},
   "extends": ["ultracite/core", "ultracite/next"],
   "linter": {
+    "enabled": true,
     "rules": {
       "style": {
         "useConst": "off",
         "useConsistentTypeDefinitions": {
           "level": "error",
-          "options": {
-            "style": "interface"
-          }
+          "options": { "style": "interface" }
         }
       }
     }
@@ -22,9 +21,26 @@
         "app/(docs)/**/demos/**"
       ],
       "linter": {
+        "rules": { "style": { "noMagicNumbers": "off" } }
+      }
+    },
+    {
+      "includes": ["shim-ui/**"],
+      "linter": {
         "rules": {
           "style": {
-            "noMagicNumbers": "off"
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  { "group": ["./**"], "message": "Use alias imports." },
+                  {
+                    "group": ["../**"],
+                    "message": "Avoid parent relative imports."
+                  }
+                ]
+              }
+            }
           }
         }
       }

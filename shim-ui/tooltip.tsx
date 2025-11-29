@@ -8,7 +8,7 @@ import {
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { useThemeProps } from "./lib/theme";
+import { useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "flex max-w-64 animate-slide items-center gap-1 overflow-hidden rounded bg-panel font-book text-neutral-text-contrast shadow-(--shadow-sm) outline-0",

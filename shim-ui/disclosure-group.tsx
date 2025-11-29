@@ -6,9 +6,9 @@ import {
   DisclosureGroup as RacDisclosureGroup,
 } from "react-aria-components";
 import { tv, type VariantProps } from "tailwind-variants";
+import { DisclosureVariantContext } from "@/shim-ui/disclosure";
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
-import { DisclosureVariantContext } from "./disclosure";
 
 const style = tv({
   base: "",

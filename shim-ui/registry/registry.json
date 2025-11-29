@@ -436,7 +436,7 @@
       "description": "Combine a search field with a filterable list of options.",
       "category": "Pickers",
       "status": "alpha",
-      "dependencies": ["list-box", "search-field"],
+      "dependencies": ["field", "search-field", "menu"],
       "files": ["shim-ui/autocomplete.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/Autocomplete.html",
       "ariaUrl": "https://w3c.github.io/aria/#aria-autocomplete"

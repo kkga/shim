@@ -10,3 +10,5 @@ pre-commit:
         - "*.jsonc"
         - "*.css"
       stage_fixed: true
+    - name: forbid-relative-imports-in-shim-ui
+      run: rg -n --glob '!**/*.d.ts' -e "from\\s+[\"']\\./" -e "from\\s+[\"']\\.\./" shim-ui && echo "Relative imports found in shim-ui. Use @/shim-ui/... or @/shim-ui/lib/..." && exit 1 || true
