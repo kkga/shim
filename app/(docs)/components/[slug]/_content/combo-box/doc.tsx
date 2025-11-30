@@ -1,3 +1,4 @@
+import { Link } from "@/app/(docs)/_components/mdx-components";
 import type { DocModule } from "@/app/(docs)/components/schema";
 
 export default {
@@ -26,16 +27,15 @@ export default {
         <>
           <p>
             ComboBox follows the{" "}
-            <a href="https://react-spectrum.adobe.com/react-aria/collections.html">
+            <Link href="https://react-spectrum.adobe.com/react-aria/collections.html">
               Collections API
-            </a>{" "}
-            and accepts both static and dynamic items.
+            </Link>{" "}
+            and supports both static and dynamic items.
           </p>
           <p>
-            To use dynamic items, pass an <code>items</code> prop to the combo
-            box and a render function as children. The render function is called
-            with each item in
-            <code>items</code> and should return a React element.
+            Pass an <code>items</code> prop and a render function as children to
+            render dynamic collections. The render function receives each item
+            from <code>items</code> and should return a React element.
           </p>
         </>
       ),

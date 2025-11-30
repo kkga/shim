@@ -10,48 +10,6 @@ export default {
       },
     },
     {
-      title: "Content",
-      description: (
-        <>
-          <p>
-            Menu follows the{" "}
-            <Link href="https://react-spectrum.adobe.com/react-aria/collections.html">
-              Collections API
-            </Link>{" "}
-            and supports both static and dynamic items.
-          </p>
-          <p>
-            Pass an <code>items</code> prop and a render function as children to
-            render dynamic collections. The render function receives each item
-            from <code>items</code> and should return a React element.
-          </p>
-        </>
-      ),
-      demo: {
-        group: "menu",
-        name: "content",
-      },
-      demoClassName: "items-start",
-    },
-    {
-      title: "Selection",
-      description: (
-        <>
-          <p>
-            Menu supports single, multiple, and uncontrolled selection modes.
-          </p>
-          <p>
-            Enable selection by setting the <code>selectionMode</code> prop. The
-            default is <code>none</code>.
-          </p>
-        </>
-      ),
-      demo: {
-        group: "menu",
-        name: "selection",
-      },
-    },
-    {
       title: "Size",
       description: (
         <p>
@@ -92,6 +50,43 @@ export default {
         name: "submenu",
       },
       demoClassName: "items-start",
+    },
+    {
+      title: "Content",
+      description: (
+        <>
+          <p>
+            Menu follows the{" "}
+            <Link href="https://react-spectrum.adobe.com/react-aria/collections.html">
+              Collections API
+            </Link>{" "}
+            and supports both static and dynamic items.
+          </p>
+          <p>
+            Pass an <code>items</code> prop and a render function as children to
+            render dynamic collections. The render function receives each item
+            from <code>items</code> and should return a React element.
+          </p>
+        </>
+      ),
+      demo: {
+        group: "menu",
+        name: "content",
+      },
+      demoClassName: "items-start",
+    },
+    {
+      title: "Selection",
+      description: (
+        <p>
+          Menu supports single, multiple, and uncontrolled selection modes.
+          Enable selection by setting the <code>selectionMode</code> prop.
+        </p>
+      ),
+      demo: {
+        group: "menu",
+        name: "selection",
+      },
     },
   ],
 } satisfies DocModule;
