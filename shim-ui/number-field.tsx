@@ -43,11 +43,11 @@ function NumberField({
   stepperLayout = "inline",
   ...props
 }: NumberFieldProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { size, labelPosition } = themeProps;
+  const { size, labelPosition } = themeProps;
 
   return (
     <RacNumberField

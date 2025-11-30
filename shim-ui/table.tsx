@@ -30,7 +30,7 @@ import { Checkbox } from "@/shim-ui/checkbox";
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
-let style = tv({
+const style = tv({
   slots: {
     table: "group/table w-full overflow-hidden",
     header: "sticky top-0 z-10 font-medium",
@@ -133,8 +133,8 @@ const TableVariantContext = createContext<TableVariant>("surface");
 interface TableProps extends RacTableProps, VariantProps<typeof style> {}
 
 function Table({ className, variant = "surface", size, ...props }: TableProps) {
-  let themeProps = useThemeProps({ size });
-  let { table } = style({ variant, size: themeProps.size });
+  const themeProps = useThemeProps({ size });
+  const { table } = style({ variant, size: themeProps.size });
 
   return (
     <Theme {...themeProps}>
@@ -152,9 +152,9 @@ interface ColumnProps extends RacColumnProps {
 }
 
 function Column(props: ColumnProps) {
-  let { size } = useThemeProps();
-  let variant = useContext(TableVariantContext);
-  let { columnGroup, columnHeader, resizer } = style({ size, variant });
+  const { size } = useThemeProps();
+  const variant = useContext(TableVariantContext);
+  const { columnGroup, columnHeader, resizer } = style({ size, variant });
 
   return (
     <RacColumn
@@ -202,10 +202,11 @@ function SelectionCheckbox() {
 }
 
 function TableHeader<T extends object>(props: RacTableHeaderProps<T>) {
-  let { selectionBehavior, selectionMode, allowsDragging } = useTableOptions();
-  let variant = useContext(TableVariantContext);
-  let { size } = useThemeProps();
-  let { header, selectionCell } = style({ variant, size });
+  const { selectionBehavior, selectionMode, allowsDragging } =
+    useTableOptions();
+  const variant = useContext(TableVariantContext);
+  const { size } = useThemeProps();
+  const { header, selectionCell } = style({ variant, size });
 
   return (
     <RacTableHeader
@@ -230,10 +231,10 @@ function Row<T extends object>({
   children,
   ...props
 }: RacRowProps<T>) {
-  let { selectionBehavior, allowsDragging } = useTableOptions();
-  let { size } = useThemeProps();
-  let variant = useContext(TableVariantContext);
-  let { row, selectionCell } = style({ size, variant });
+  const { selectionBehavior, allowsDragging } = useTableOptions();
+  const { size } = useThemeProps();
+  const variant = useContext(TableVariantContext);
+  const { row, selectionCell } = style({ size, variant });
 
   return (
     <RacRow id={id} {...props} className={row()}>
@@ -255,9 +256,9 @@ function Row<T extends object>({
 }
 
 function Cell({ className, ...props }: RacCellProps) {
-  let { size } = useThemeProps();
-  let variant = useContext(TableVariantContext);
-  let { cell } = style({ size, variant });
+  const { size } = useThemeProps();
+  const variant = useContext(TableVariantContext);
+  const { cell } = style({ size, variant });
 
   return <RacCell {...props} className={cnRenderProps(className, cell())} />;
 }

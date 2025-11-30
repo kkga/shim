@@ -29,7 +29,7 @@ const style = tv({
 interface PopoverProps extends RacPopoverProps {}
 
 function Popover({ className, children, offset = 4, ...props }: PopoverProps) {
-  let { size } = useThemeProps();
+  const { size } = useThemeProps();
   return (
     <RacPopover
       {...props}

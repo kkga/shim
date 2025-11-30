@@ -80,9 +80,9 @@ function ComboBox<T extends object>({
   menuTrigger = "focus",
   ...props
 }: ComboBoxProps<T>) {
-  let themeProps = useThemeProps(props);
-  let { labelPosition, size } = themeProps;
-  let { triggerButton, triggerButtonContents, listBox } = style({ size });
+  const themeProps = useThemeProps(props);
+  const { labelPosition, size } = themeProps;
+  const { triggerButton, triggerButtonContents, listBox } = style({ size });
 
   return (
     <RacComboBox

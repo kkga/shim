@@ -18,7 +18,7 @@ interface MeterProps extends RacMeterProps {
 const HIGH_PERCENTAGE_THRESHOLD = 80;
 
 function Meter({ label, description, color, value, ...props }: MeterProps) {
-  let barColor = useMemo(() => {
+  const barColor = useMemo(() => {
     if (color instanceof Function) {
       return color(value ?? 0);
     }
@@ -32,7 +32,7 @@ function Meter({ label, description, color, value, ...props }: MeterProps) {
     >
       {/* TODO: these values dont work */}
       {({ percentage, valueText }) => {
-        let textColor = "";
+        const textColor = "";
         if (!color) {
           if (percentage > HIGH_PERCENTAGE_THRESHOLD) {
             color = "var(--color-error-solid)";

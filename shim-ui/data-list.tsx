@@ -41,12 +41,12 @@ function DataList({
   size,
   ...props
 }: DataListProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     labelPosition,
     size,
   });
 
-  let { list } = style({
+  const { list } = style({
     labelPosition: themeProps.labelPosition,
     size: themeProps.size,
   });
@@ -69,8 +69,8 @@ function DataListItem({
   value,
   ...props
 }: DataListItemProps) {
-  let { labelPosition } = useThemeProps();
-  let {
+  const { labelPosition } = useThemeProps();
+  const {
     item: itemStyle,
     label: labelStyle,
     value: valueStyle,

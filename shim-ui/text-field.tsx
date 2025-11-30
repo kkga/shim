@@ -29,11 +29,11 @@ function TextField({
   placeholder,
   ...props
 }: TextFieldProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { labelPosition } = themeProps;
+  const { labelPosition } = themeProps;
 
   return (
     <RacTextField

@@ -89,12 +89,12 @@ function SearchField({
   prefixIcon = "search",
   ...props
 }: SearchFieldProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { labelPosition, size } = themeProps;
-  let { clearButtonContainer, clearButton, iconContainer, icon } = style({
+  const { labelPosition, size } = themeProps;
+  const { clearButtonContainer, clearButton, iconContainer, icon } = style({
     size,
   });
 

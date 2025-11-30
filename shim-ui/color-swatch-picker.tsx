@@ -33,7 +33,7 @@ const style = tv({
 });
 
 function ColorSwatchPickerItem(props: RacColorSwatchPickerItemProps) {
-  let { item, selectedIndicator } = style();
+  const { item, selectedIndicator } = style();
 
   return (
     <RacColorSwatchPickerItem {...props} className={item()}>

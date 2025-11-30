@@ -32,8 +32,8 @@ interface ProgressCircleProps
     VariantProps<typeof style> {}
 
 function ProgressCircle(props: ProgressCircleProps) {
-  let [c, r] = ["50%", "calc(50% - 2px)"];
-  let { circle } = style({ size: props.size ?? style.defaultVariants.size });
+  const [c, r] = ["50%", "calc(50% - 2px)"];
+  const { circle } = style({ size: props.size ?? style.defaultVariants.size });
 
   return (
     <RacProgressBar {...props}>

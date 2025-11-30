@@ -127,8 +127,8 @@ function ToggleButton({
   isIconOnly,
   ...props
 }: ToggleButtonProps) {
-  let isInGroup = useContext(ToggleGroupStateContext) !== null;
-  let { variants, size } = useThemeProps({
+  const isInGroup = useContext(ToggleGroupStateContext) !== null;
+  const { variants, size } = useThemeProps({
     size: _size,
     variants: _variant ? { button: _variant } : undefined,
   });

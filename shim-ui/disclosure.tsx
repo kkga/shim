@@ -138,11 +138,11 @@ function Disclosure({
   className,
   ...props
 }: DisclosureProps) {
-  let isInGroup = useContext(DisclosureGroupStateContext) !== null;
-  let contextVariant = useContext(DisclosureVariantContext);
-  let groupVariant = isInGroup ? contextVariant : null;
-  let themeProps = useThemeProps({ size });
-  let { disclosure, panel, heading, chevron, button } = style({
+  const isInGroup = useContext(DisclosureGroupStateContext) !== null;
+  const contextVariant = useContext(DisclosureVariantContext);
+  const groupVariant = isInGroup ? contextVariant : null;
+  const themeProps = useThemeProps({ size });
+  const { disclosure, panel, heading, chevron, button } = style({
     isInGroup,
     variant: groupVariant ?? variant,
     size: themeProps.size,

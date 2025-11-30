@@ -32,11 +32,11 @@ function CheckboxGroup({
   errorMessage,
   ...props
 }: CheckboxGroupProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { labelPosition } = themeProps;
+  const { labelPosition } = themeProps;
 
   return (
     <RacCheckboxGroup
@@ -146,13 +146,13 @@ function Checkbox({
   description,
   ...props
 }: CheckboxProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     variants: _variant ? { field: _variant } : undefined,
     size: _size,
   });
-  let { size, variants } = themeProps;
-  let { container, checkbox } = checkboxStyle({
+  const { size, variants } = themeProps;
+  const { container, checkbox } = checkboxStyle({
     size,
     variant: variants.field,
   });

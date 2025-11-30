@@ -19,7 +19,7 @@ function Form({
   variants,
   ...props
 }: RacFormProps & Partial<ThemeContextProps>) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     labelPosition,
     size,
     variants,

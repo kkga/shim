@@ -133,12 +133,12 @@ interface SwitchProps
     VariantProps<typeof style> {}
 
 function Switch({ labelPosition, ...props }: SwitchProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     size: props.size,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { size, variants } = themeProps;
-  let { container, track, handle } = style({
+  const { size, variants } = themeProps;
+  const { container, track, handle } = style({
     size,
     variant: variants.field,
     labelPosition,

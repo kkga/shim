@@ -29,6 +29,7 @@
       "linter": {
         "rules": {
           "style": {
+            "useConst": "warn",
             "noRestrictedImports": {
               "level": "error",
               "options": {

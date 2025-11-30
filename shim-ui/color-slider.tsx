@@ -20,9 +20,9 @@ interface ColorSliderProps
 }
 
 function ColorSlider({ label, ...props }: ColorSliderProps) {
-  let themeProps = useThemeProps(props);
-  let { labelPosition, size } = themeProps;
-  let { track, output } = style({ size });
+  const themeProps = useThemeProps(props);
+  const { labelPosition, size } = themeProps;
+  const { track, output } = style({ size });
 
   return (
     <RacColorSlider

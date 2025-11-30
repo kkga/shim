@@ -27,11 +27,11 @@ export function ColorField({
   errorMessage,
   ...props
 }: ColorFieldProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { labelPosition } = themeProps;
+  const { labelPosition } = themeProps;
 
   return (
     <RacColorField

@@ -34,8 +34,8 @@ function Autocomplete<T extends object>({
   onAction,
   ...props
 }: AutocompleteProps<T>) {
-  let { contains } = useFilter({ sensitivity: "base" });
-  let { size, variant, prefixIcon, autoFocus } = props;
+  const { contains } = useFilter({ sensitivity: "base" });
+  const { size, variant, prefixIcon, autoFocus } = props;
 
   return (
     <RacAutocomplete filter={contains} {...props}>

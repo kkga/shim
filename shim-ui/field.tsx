@@ -77,7 +77,7 @@ interface InputProps
     VariantProps<typeof inputBaseStyle> {}
 
 function Input({ size, variant, className, ...props }: InputProps) {
-  let theme = useThemeProps({
+  const theme = useThemeProps({
     size,
     variants: variant ? { field: variant } : undefined,
   });
@@ -131,7 +131,7 @@ function Label({
   className,
   ...props
 }: LabelProps) {
-  let themeProps = useThemeProps({ size, labelPosition });
+  const themeProps = useThemeProps({ size, labelPosition });
 
   return (
     <RacLabel
@@ -171,7 +171,7 @@ interface DescriptionProps
     VariantProps<typeof descriptionStyle> {}
 
 function Description({ size, className, ...props }: DescriptionProps) {
-  let themeProps = useThemeProps({ size });
+  const themeProps = useThemeProps({ size });
 
   return (
     <RacText
@@ -200,7 +200,7 @@ interface FieldErrorProps
     VariantProps<typeof fieldErrorStyle> {}
 
 function FieldError({ size, className, ...props }: FieldErrorProps) {
-  let themeProps = useThemeProps({ size });
+  const themeProps = useThemeProps({ size });
 
   return (
     <RacFieldError
@@ -234,7 +234,7 @@ interface FieldGroupProps
     VariantProps<typeof fieldGroupStyle> {}
 
 function FieldGroup({ size, variant, className, ...props }: FieldGroupProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     size,
     variants: variant ? { field: variant } : undefined,
   });
@@ -271,8 +271,8 @@ const groupInputStyle = tv({
 });
 
 function GroupInput({ className, ...props }: Omit<InputProps, "variant">) {
-  let themeProps = useThemeProps({ ...props });
-  let { size } = themeProps;
+  const themeProps = useThemeProps({ ...props });
+  const { size } = themeProps;
 
   return (
     <RacInput

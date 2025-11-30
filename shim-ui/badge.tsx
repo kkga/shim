@@ -150,9 +150,9 @@ function Badge({
   variant,
   ...props
 }: BadgeProps) {
-  let { size } = useThemeProps({ size: _size });
-  let children = Children.toArray(props.children);
-  let hasOnlySvg =
+  const { size } = useThemeProps({ size: _size });
+  const children = Children.toArray(props.children);
+  const hasOnlySvg =
     children.length === 1 &&
     isValidElement(children[0]) &&
     children[0].type === "svg";

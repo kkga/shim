@@ -48,7 +48,7 @@ function Select<T extends object>({
   items,
   ...props
 }: SelectProps<T>) {
-  let { size, labelPosition, variants } = useThemeProps({
+  const { size, labelPosition, variants } = useThemeProps({
     size: props.size,
     labelPosition: props.labelPosition,
     ...buildVariantOverrides("field", props.variant),
@@ -90,8 +90,8 @@ function Select<T extends object>({
 }
 
 function SelectItem(props: ListBoxItemProps) {
-  let { size } = useThemeProps({ size: props.size });
-  let textValue =
+  const { size } = useThemeProps({ size: props.size });
+  const textValue =
     props.textValue ||
     (typeof props.children === "string" ? props.children : undefined);
 

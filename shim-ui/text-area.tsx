@@ -46,11 +46,11 @@ function TextArea({
   className,
   ...props
 }: TextAreaProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { labelPosition, size, variants } = themeProps;
+  const { labelPosition, size, variants } = themeProps;
 
   return (
     <RacTextField

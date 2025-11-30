@@ -167,12 +167,12 @@ function Slider<T extends number | number[]>({
   className,
   ...props
 }: SliderProps<T>) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { labelPosition, size, variants } = themeProps;
-  let { track, indicator, fill, output, thumb } = style({
+  const { labelPosition, size, variants } = themeProps;
+  const { track, indicator, fill, output, thumb } = style({
     size,
     variant: variants.field,
   });

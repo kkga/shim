@@ -54,8 +54,8 @@ function TagGroup<T extends object>({
   renderEmptyState,
   ...props
 }: TagGroupProps<T>) {
-  let themeProps = useThemeProps({ ...props });
-  let { labelPosition } = themeProps;
+  const themeProps = useThemeProps({ ...props });
+  const { labelPosition } = themeProps;
 
   return (
     <RacTagGroup
@@ -144,10 +144,10 @@ interface TagProps extends RacTagProps {
 }
 
 function Tag({ children, color, size: _size, ...props }: TagProps) {
-  let textValue = typeof children === "string" ? children : undefined;
-  let groupColor = useContext(ColorContext);
-  let { size } = useThemeProps({ size: _size });
-  let { tag, removeButton } = style({ size, color: color || groupColor });
+  const textValue = typeof children === "string" ? children : undefined;
+  const groupColor = useContext(ColorContext);
+  const { size } = useThemeProps({ size: _size });
+  const { tag, removeButton } = style({ size, color: color || groupColor });
 
   return (
     <RacTag

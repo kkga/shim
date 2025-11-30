@@ -118,12 +118,12 @@ function RadioGroup({
   labelPosition,
   ...props
 }: RadioGroupProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     labelPosition,
     ...buildVariantOverrides("field", props.variant),
   });
-  let { group } = style();
+  const { group } = style();
 
   return (
     <RacRadioGroup
@@ -150,8 +150,8 @@ interface RadioProps extends RacRadioProps {
 }
 
 function Radio({ description, ...props }: RadioProps) {
-  let { size, variants } = useThemeProps();
-  let { item, itemInput } = style({ size, variant: variants.field });
+  const { size, variants } = useThemeProps();
+  const { item, itemInput } = style({ size, variant: variants.field });
 
   return (
     <RacRadio

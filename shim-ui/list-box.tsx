@@ -24,7 +24,7 @@ function ListBox<T extends object>({
   className,
   ...props
 }: ListBoxProps<T>) {
-  let themeProps = useThemeProps({ size });
+  const themeProps = useThemeProps({ size });
   return (
     <Theme {...themeProps}>
       <RacListBox
@@ -71,8 +71,8 @@ interface ListBoxItemProps
     VariantProps<typeof itemStyle> {}
 
 function ListBoxItem({ intent, href, ...props }: ListBoxItemProps) {
-  let { size } = useThemeProps(props);
-  let textValue =
+  const { size } = useThemeProps(props);
+  const textValue =
     props.textValue ||
     (typeof props.children === "string" ? props.children : undefined);
 
@@ -136,9 +136,9 @@ function ListBoxSection<T extends object>({
   className,
   ...props
 }: ListBoxSectionProps<T>) {
-  let themeProps = useThemeProps(props);
-  let { size } = themeProps;
-  let { header, section } = sectionStyle({ size });
+  const themeProps = useThemeProps(props);
+  const { size } = themeProps;
+  const { header, section } = sectionStyle({ size });
 
   return (
     <RacListBoxSection {...props} className={section({ className })}>

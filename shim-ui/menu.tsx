@@ -57,8 +57,8 @@ function Menu<T extends object>({
   withPopover = true,
   ...props
 }: MenuProps<T>) {
-  let themeProps = useThemeProps({ size });
-  let { menu, popover } = style({ withPopover });
+  const themeProps = useThemeProps({ size });
+  const { menu, popover } = style({ withPopover });
 
   return (
     <Theme {...themeProps}>
@@ -80,8 +80,8 @@ interface MenuItemProps
     VariantProps<typeof menuItemStyle> {}
 
 function MenuItem({ children, intent, ...props }: MenuItemProps) {
-  let { size } = useThemeProps({ size: props.size });
-  let textValue =
+  const { size } = useThemeProps({ size: props.size });
+  const textValue =
     props.textValue || (typeof children === "string" ? children : undefined);
 
   return (
@@ -147,7 +147,7 @@ const separatorStyle = tv({
 });
 
 function MenuSeparator(props: RacSeparatorProps) {
-  let { size } = useThemeProps();
+  const { size } = useThemeProps();
   return <RacSeparator {...props} className={separatorStyle({ size })} />;
 }
 
@@ -164,9 +164,9 @@ function MenuSection<T extends object>({
   className,
   ...props
 }: MenuSectionProps<T>) {
-  let themeProps = useThemeProps(props);
-  let { size } = themeProps;
-  let { header, section } = sectionStyle({ size });
+  const themeProps = useThemeProps(props);
+  const { size } = themeProps;
+  const { header, section } = sectionStyle({ size });
 
   return (
     <RacMenuSection {...props} className={section({ className })}>

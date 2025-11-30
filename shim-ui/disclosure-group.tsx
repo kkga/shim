@@ -38,7 +38,7 @@ function DisclosureGroup({
   variant = "soft",
   ...props
 }: DisclosureGroupProps) {
-  let { size } = useThemeProps({ size: _size });
+  const { size } = useThemeProps({ size: _size });
 
   return (
     <RacDisclosureGroup

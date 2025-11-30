@@ -53,7 +53,7 @@ function ToggleButtonGroup({
   errorMessage,
   ...props
 }: ToggleButtonGroupProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     ...props,
     ...buildVariantOverrides("button", props.variant),
   });

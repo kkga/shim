@@ -65,12 +65,12 @@ interface AvatarProps
 }
 
 function Avatar({ src, name, size, color, radius, className }: AvatarProps) {
-  let [status, setStatus] = useState<Status>(
+  const [status, setStatus] = useState<Status>(
     src ? Status.Loading : Status.Idle
   );
-  let { base, img: imgStyle } = style({ size, color, radius });
+  const { base, img: imgStyle } = style({ size, color, radius });
 
-  let initials = name
+  const initials = name
     ?.split(" ")
     .map((chunk) => chunk.charAt(0).toLocaleUpperCase())
     .slice(0, 2)
@@ -79,15 +79,15 @@ function Avatar({ src, name, size, color, radius, className }: AvatarProps) {
   useEffect(() => {
     if (src) {
       setStatus(Status.Loading);
-      let img = new Image();
+      const img = new Image();
       img.onload = () => setStatus(Status.Success);
       img.onerror = () => setStatus(Status.Error);
       img.src = src;
     }
   }, [src]);
 
-  let isLoading = status === Status.Loading;
-  let didLoad = status === Status.Success;
+  const isLoading = status === Status.Loading;
+  const didLoad = status === Status.Success;
 
   return (
     <div className={base({ size, color, className })}>

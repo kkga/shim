@@ -35,9 +35,9 @@ interface DialogProps extends Omit<RacModalOverlayProps, "children"> {
 }
 
 function Dialog({ title, description, ...props }: DialogProps) {
-  let state = useContext(OverlayTriggerStateContext);
+  const state = useContext(OverlayTriggerStateContext);
   let { children } = props;
-  let { overlay, modal, dialog, headingText, descriptionText } = style();
+  const { overlay, modal, dialog, headingText, descriptionText } = style();
 
   if (typeof children === "function") {
     if (state) {

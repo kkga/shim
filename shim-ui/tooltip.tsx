@@ -30,7 +30,7 @@ function Tooltip({
   size: _size = 2,
   ...props
 }: TooltipProps) {
-  let { size } = useThemeProps({ size: _size });
+  const { size } = useThemeProps({ size: _size });
 
   return (
     <RacTooltip
@@ -42,7 +42,7 @@ function Tooltip({
 }
 
 function TooltipTrigger(props: TooltipTriggerComponentProps) {
-  let { delay = 500, closeDelay = 0, ...rest } = props;
+  const { delay = 500, closeDelay = 0, ...rest } = props;
   return <RacTooltipTrigger closeDelay={closeDelay} delay={delay} {...rest} />;
 }
 

@@ -28,8 +28,8 @@ interface ColorPickerProps extends RacColorPickerProps {
 }
 
 function ColorEditor() {
-  let [mode, setMode] = useState<ColorSpace | "hex">("hsb");
-  let [space, setSpace] = useState<ColorSpace>("hsb");
+  const [mode, setMode] = useState<ColorSpace | "hex">("hsb");
+  const [space, setSpace] = useState<ColorSpace>("hsb");
 
   useEffect(() => {
     if (mode === "hex") {

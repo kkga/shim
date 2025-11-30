@@ -28,7 +28,7 @@ interface ColorSwatchProps
     VariantProps<typeof style> {}
 
 function ColorSwatch(props: ColorSwatchProps) {
-  let { size } = useThemeProps(props);
+  const { size } = useThemeProps(props);
 
   return (
     <RacColorSwatch

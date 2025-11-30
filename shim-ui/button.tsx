@@ -177,12 +177,12 @@ function Button({
   isIconOnly,
   ...props
 }: ButtonProps) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     size: _size,
     ...buildVariantOverrides("button", _variant),
   });
-  let { variants, size } = themeProps;
-  let { container, circle } = progressStyle({ size });
+  const { variants, size } = themeProps;
+  const { container, circle } = progressStyle({ size });
 
   return (
     <RacButton
@@ -220,7 +220,7 @@ interface ProgressCircleProps extends Omit<RacProgressBarProps, "className"> {
 }
 
 function ProgressCircle({ className, ...props }: ProgressCircleProps) {
-  let [c, r] = ["50%", "calc(50% - 2px)"];
+  const [c, r] = ["50%", "calc(50% - 2px)"];
 
   return (
     <RacProgressBar {...props} aria-label="Loading">
@@ -258,11 +258,11 @@ function LinkButton({
   isIconOnly,
   ...props
 }: RacLinkProps & VariantProps<typeof style>) {
-  let themeProps = useThemeProps({
+  const themeProps = useThemeProps({
     size: _size,
     ...buildVariantOverrides("button", _variant),
   });
-  let { variants, size } = themeProps;
+  const { variants, size } = themeProps;
 
   return (
     <RacLink

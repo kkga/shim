@@ -53,8 +53,8 @@ interface ThemeProps {
  *   </Theme>
  */
 function Theme({ children, ...props }: ThemeProps) {
-  let currentValue = useContext(ThemeContext);
-  let newValue = {
+  const currentValue = useContext(ThemeContext);
+  const newValue = {
     ...currentValue,
     ...props,
     variants: {
@@ -81,7 +81,7 @@ function useThemeProps(props?: {
   labelPosition?: LabelPosition;
   variants?: Partial<ThemeContextProps["variants"]>;
 }): ThemeContextProps {
-  let themeProps = useContext(ThemeContext);
+  const themeProps = useContext(ThemeContext);
 
   return {
     size: props?.size ?? themeProps.size,

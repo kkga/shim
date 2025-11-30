@@ -131,7 +131,7 @@ const TabListVariantContext = createContext<TabListVariant>("soft");
 
 interface TabsProps extends RacTabsProps {}
 function Tabs(props: TabsProps) {
-  let { tabs } = style();
+  const { tabs } = style();
   return (
     <RacTabs
       {...props}
@@ -148,8 +148,8 @@ interface TabListProps<T extends object> extends RacTabListProps<T> {
 }
 
 function TabList<T extends object>(props: TabListProps<T>) {
-  let themeProps = useThemeProps({ size: props.size });
-  let { tabList } = style({ variant: props.variant, size: themeProps.size });
+  const themeProps = useThemeProps({ size: props.size });
+  const { tabList } = style({ variant: props.variant, size: themeProps.size });
 
   return (
     <Theme {...themeProps}>
@@ -167,9 +167,9 @@ function TabList<T extends object>(props: TabListProps<T>) {
 }
 
 function Tab(props: RacTabProps) {
-  let variant = useContext(TabListVariantContext);
-  let { size } = useThemeProps();
-  let { tab, selectionIndicator } = style({ variant, size });
+  const variant = useContext(TabListVariantContext);
+  const { size } = useThemeProps();
+  const { tab, selectionIndicator } = style({ variant, size });
 
   return (
     <RacTab
@@ -192,7 +192,7 @@ function Tab(props: RacTabProps) {
 }
 
 function TabPanel(props: RacTabPanelProps) {
-  let { tabPanel } = style();
+  const { tabPanel } = style();
   return (
     <RacTabPanel
       {...props}
