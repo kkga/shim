@@ -6,6 +6,7 @@ import { findProjectRoot } from "./project.js";
 export const SHIM_DEPENDENCIES = [
   "react-aria-components",
   "tailwind-variants",
+  "tailwind-merge",
   "@radix-ui/colors",
   "@phosphor-icons/react",
 ];

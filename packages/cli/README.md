@@ -59,7 +59,7 @@ Prerequisite:
 What `init` does:
 
 - Installs dependencies: `react-aria-components`, `tailwind-variants`,
-  `@radix-ui/colors`, `@phosphor-icons/react`
+  `tailwind-merge`, `@radix-ui/colors`, `@phosphor-icons/react`
 - Creates a `shim.config.json` configuration file
 - Downloads required utility files (`style.ts`, `theme.tsx`) to your utils
   directory
