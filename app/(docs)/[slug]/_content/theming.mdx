@@ -22,6 +22,74 @@ to ensure consistency across your application.
 
 ---
 
+## Colors
+
+Shim uses [Radix UI Colors](https://www.radix-ui.com/colors) for its color
+system. Radix provides a carefully designed color palette with automatic dark
+mode support and semantic scales that work across different use cases.
+
+### Color scales
+
+Each color has a 12-step scale designed for specific use cases. Shim maps these
+to semantic tokens you can use in your components:
+
+- **Steps 1-2**: Backgrounds and subtle surfaces
+- **Steps 3-5**: Interactive backgrounds (hover, active states)
+- **Steps 6-8**: Borders and focus rings
+- **Steps 9-10**: Solid colors and hover states
+- **Steps 11-12**: Text colors with proper contrast
+
+### Semantic color tokens
+
+Shim provides five color intents, each with a full set of use-case tokens:
+
+- `neutral` - Gray tones for UI elements
+- `accent` - Primary brand color (default: Iris)
+- `success` - Positive states (default: Green)
+- `warning` - Cautionary states (default: Orange)
+- `danger` - Destructive actions and errors (default: Red)
+
+Each intent includes tokens like `base`, `panel`, `bg`, `bg-hover`, `bg-active`,
+`line`, `border`, `border-hover`, `solid`, `solid-hover`, `text`,
+`text-contrast`, and `text-subtle`.
+
+### Using color tokens
+
+Reference color tokens in your Tailwind classes:
+
+```tsx
+<div className="bg-neutral-panel text-neutral-text border border-neutral-line">
+  <p className="text-neutral-text-subtle">Subtle text</p>
+  <p className="text-accent-text-contrast">Contrast text</p>
+  <button className="bg-accent-bg hover:bg-accent-bg-hover">Action</button>
+</div>
+```
+
+### Customizing accent colors
+
+To change the accent color, edit the Radix color imports in your `theme.css`
+file. For example, to use blue instead of iris:
+
+```css title="styles/theme.css"
+/* Replace iris imports with blue */
+@import "@radix-ui/colors/blue.css";
+@import "@radix-ui/colors/blue-alpha.css";
+@import "@radix-ui/colors/blue-dark.css";
+@import "@radix-ui/colors/blue-dark-alpha.css";
+
+/* Then update the accent aliases in @theme */
+@theme {
+  --color-accent-1: var(--blue-a1);
+  --color-accent-2: var(--blue-a2);
+  /* ... continue for all 12 steps */
+}
+```
+
+See the [Radix Colors documentation](https://www.radix-ui.com/colors/docs) for
+the full color palette and detailed usage guidance.
+
+---
+
 ## Size
 
 Most components support four sizes that scale proportionally.
