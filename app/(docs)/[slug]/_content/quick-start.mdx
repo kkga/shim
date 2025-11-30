@@ -4,15 +4,14 @@ description: Set up Shim in your project using the CLI.
 order: 1
 ---
 
-## Introduction
+## Overview
 
 Shim is a collection of accessible UI components built on
 [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html).
 Components install into your codebase—so you own and customize them.
 
-This guide assumes you have a React project set up and covers the initial setup
-of Shim in your project using the CLI. For more detailed instructions on manual
-setup, refer to the [manual setup guide](/manual-setup).
+This guide walks you through setting up Shim using the CLI. For manual setup
+without the CLI, see the [manual setup guide](/manual-setup).
 
 ---
 
@@ -45,10 +44,10 @@ and options, see the [CLI guide](/cli).
 
 </Step>
 
-<Step title="Import theme CSS">
+<Step title="Add theme CSS">
 
-Import the theme CSS file in your main CSS file. Adjust the path if you used a
-different `--css-path` during init.
+Import the theme CSS file in your main CSS file or root layout. Adjust the path
+if you used a different `--css-path` during init.
 
 ```css title="app/globals.css"
 @import "@/styles/theme.css";

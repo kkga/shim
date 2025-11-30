@@ -6,9 +6,10 @@ order: 2
 
 ## Overview
 
-This guide covers manual installation of Shim without the CLI. It's useful when
-you need granular control or prefer managing dependencies yourself. If you'd
-like an automated setup, see the [quick start guide](/quick-start).
+This guide walks you through manually setting up Shim without the CLI. Use this
+approach when you need granular control over installation or prefer managing
+dependencies yourself. For automated setup, see the
+[quick start guide](/quick-start).
 
 ---
 
@@ -81,16 +82,19 @@ the latest versions of:
 Create `theme.css` in your styles directory (e.g., `styles/` or `app/`). This
 file includes design tokens, animations, and utility classes. Visit the
 [Shim repository](https://github.com/kkga/shim/tree/master/shim-ui/css) to copy
-the latest `theme.css`. Import it in your root layout:
+the latest `theme.css`.
 
-```tsx title="app/layout.tsx"
-import "@/styles/theme.css";
-```
-
-Or in your main CSS file:
+Import the theme CSS file in your main CSS file or root layout. Adjust the path
+if you used a different location:
 
 ```css title="app/globals.css"
 @import "@/styles/theme.css";
+```
+
+Or import directly in your layout:
+
+```tsx title="app/layout.tsx"
+import "@/styles/theme.css";
 ```
 
 </Step>
@@ -137,4 +141,8 @@ import { Theme } from "@/src/lib/theme";
 
 ---
 
-For an automated setup that handles these steps for you, use the [CLI](/cli).
+## Next steps
+
+- Try adding your first component: [Button](/components/button)
+- Learn about [theming and customization](/theming)
+- Explore [CLI commands and options](/cli) for faster workflows
