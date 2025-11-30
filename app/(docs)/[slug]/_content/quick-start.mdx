@@ -45,6 +45,17 @@ and options, see the [CLI guide](/cli).
 
 </Step>
 
+<Step title="Import theme CSS">
+
+Import the theme CSS file in your main CSS file. Adjust the path if you used a
+different `--css-path` during init.
+
+```css title="app/globals.css"
+@import "@/styles/theme.css";
+```
+
+</Step>
+
 <Step title="Configure path alias">
 
 Shim uses the `@/` alias—configure it in `tsconfig.json` (or `jsconfig.json`) so

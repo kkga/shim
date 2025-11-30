@@ -79,16 +79,18 @@ the latest versions of:
 <Step title="Add theme CSS">
 
 Create `theme.css` in your styles directory (e.g., `styles/` or `app/`). This
-file includes design tokens, animations, and utility classes.
-
-Visit the
+file includes design tokens, animations, and utility classes. Visit the
 [Shim repository](https://github.com/kkga/shim/tree/master/shim-ui/css) to copy
-the latest `theme.css`.
+the latest `theme.css`. Import it in your root layout:
 
-Import it in your root layout or main entry file:
-
-```tsx title="app/layout.tsx or pages/_app.tsx"
+```tsx title="app/layout.tsx"
 import "@/styles/theme.css";
+```
+
+Or in your main CSS file:
+
+```css title="app/globals.css"
+@import "@/styles/theme.css";
 ```
 
 </Step>
