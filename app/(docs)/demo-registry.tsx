@@ -230,6 +230,10 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   },
   breadcrumbs: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/breadcrumbs/main`)),
+    content: dynamic(
+      () => import(`${COMPONENT_DEMOS_PATH}/breadcrumbs/content`)
+    ),
+    size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/breadcrumbs/size`)),
   },
   disclosure: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/disclosure/main`)),
