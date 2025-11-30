@@ -8,6 +8,7 @@ import { demoRegistry } from "@/app/(docs)/demo-registry";
 import { Code } from "./code";
 import { CodeBlock } from "./code-block";
 import { DocSection } from "./doc-section";
+import { NextSteps } from "./next-steps";
 import { Note } from "./note";
 import { Step } from "./step";
 
@@ -155,6 +156,7 @@ export const mdxComponents: MDXComponents = {
   ComponentDemo,
   Note,
   Step,
+  NextSteps,
   CodeBlock,
 };
 
