@@ -180,7 +180,7 @@
   --color-danger-text: var(--color-danger-11);
   --color-danger-text-contrast: var(--color-danger-12);
 
-  /* Functional colors /
+  /* Functional colors */
 
   /* Base body background color */
   --color-background: var(--color-neutral-1);
@@ -255,12 +255,6 @@
     0 0 0 1px color-mix(in oklab, var(--slate-a3), var(--slate-3) 25%), 0 12px
     60px var(--black-a3), 0 16px 64px var(--slate-a2), 0 16px 36px -20px
     var(--slate-a7);
-
-  /* TODO: remove? */
-  /* Inset shadows
-  --inset-shadow-xs: inset 0 1px rgb(0 0 0 / 0.05);
-  --inset-shadow-sm: inset 0 1px 1px rgb(0 0 0 / 0.05);
-  --inset-shadow: inset 0 2px 4px rgb(0 0 0 / 0.05); */
 }
 
 .dark,
