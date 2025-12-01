@@ -29,7 +29,7 @@ pnpm dlx @kkga/shim init
 pnpm dlx @kkga/shim add button dialog form
 ```
 
-For convenience, you can add a script to your package.json:
+**Tip:** Add a script to your **package.json** for shorter commands:
 
 ```json title="package.json"
 {
@@ -39,10 +39,9 @@ For convenience, you can add a script to your package.json:
 }
 ```
 
-Then run commands like this:
-
-```bash title="Using Shim CLI via package script"
-pnpm shim add button
+```bash title="Then run"
+pnpm shim init
+pnpm shim add button dialog form
 ```
 
 ---
@@ -68,7 +67,7 @@ creates the configuration file, and installs utility and CSS files.
 shim init [options]
 ```
 
-<Table aria-label="Shim init command options" className="table-fixed" size={2}>
+<Table variant="zebra" aria-label="Shim init command options" className="table-fixed" size={2}>
   <TableHeader>
     <Column className="w-1/3" isRowHeader>Option</Column>
     <Column>Description</Column>
@@ -175,16 +174,6 @@ shim add <components...> [options]
 
 ---
 
-## Path Resolution
-
-- Components: flag `--path` → config `componentsPath` → `components/`.
-- Utilities: flag `--utils-path` (init) → config `utilsPath` → `utils/`.
-- CSS: flag `--css-path` (init) → config `cssPath` → `styles/`.
-
-All paths are relative to your project root (where `package.json` resides).
-
----
-
 ## Examples
 
 ```bash title="Initialize with defaults"
@@ -229,7 +218,7 @@ Running **shim init** creates a configuration file in your project root:
 }
 ```
 
-<Table aria-label="Shim configuration file options" className="table-fixed" size={2}>
+<Table variant="zebra" aria-label="Shim configuration file options" className="table-fixed" size={2}>
   <TableHeader>
     <Column className="w-1/3" isRowHeader>Option</Column>
     <Column>Description</Column>
@@ -273,12 +262,43 @@ Running **shim init** creates a configuration file in your project root:
 
 ## Troubleshooting
 
-- Tailwind CSS required: If `shim init` fails with a Tailwind error, install and
-  configure Tailwind CSS first by following the
-  [official guide](https://tailwindcss.com/docs/installation).
-- Use `--overwrite` / `--force` if existing files block installation.
-- For path-related options, reference directories from your project root (avoid
-  full filesystem paths like /Users/... ).
-- If a component fails to install, re-run with a single name to isolate the
-  issue.
-- Remove partially installed files before retrying to avoid stale code.
+### Tailwind CSS is not installed
+
+`shim init` requires Tailwind CSS to be installed. If you see this error,
+install and configure Tailwind first:
+
+```bash
+pnpm add -D tailwindcss postcss autoprefixer
+pnpm tailwindcss init -p
+```
+
+See the [Tailwind installation guide](https://tailwindcss.com/docs/installation)
+for framework-specific setup.
+
+### Component not found
+
+If you get a "component not found" error, check your spelling. To see available
+components, visit the [components](/components) section or check the
+[registry](https://github.com/kkga/shim/blob/master/shim-ui/registry/registry.json).
+
+### Files already exist
+
+Use `--overwrite` (for `add`) or `--force` (for `init`) to replace existing
+files:
+
+```bash
+pnpm dlx @kkga/shim add button --overwrite
+pnpm dlx @kkga/shim init --force
+```
+
+### Invalid path error
+
+Paths should be relative to your project root (where `package.json` is):
+
+```bash
+# ✓ Good
+pnpm dlx @kkga/shim init --components-path src/components
+
+# ✗ Bad (absolute filesystem path)
+pnpm dlx @kkga/shim init --components-path /Users/name/project/src/components
+```
