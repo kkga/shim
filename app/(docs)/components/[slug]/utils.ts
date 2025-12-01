@@ -86,7 +86,7 @@ export async function loadDocSections(name: ComponentMetadata["name"]) {
 
 export function buildSectionAnchorId(section: DocSection, slug: string) {
   if (section.demo.group === slug) {
-    return `${slug}-${section.demo.name}`;
+    return `${section.demo.name}`;
   }
 
   return `${slug}-${section.demo.group}-${section.demo.name}`;

@@ -6,7 +6,7 @@ import { Logo } from "@/app/_components/logo";
 import { Badge } from "@/shim-ui/badge";
 import { Link } from "@/shim-ui/link";
 import { Separator } from "@/shim-ui/separator";
-import { Examples } from "./_components/examples/examples";
+import { Examples } from "./_components/examples/examples/examples";
 
 export default function Page() {
   return (
