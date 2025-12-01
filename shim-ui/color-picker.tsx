@@ -9,7 +9,6 @@ import {
   type ColorPickerProps as RacColorPickerProps,
   DialogTrigger as RacDialogTrigger,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
 import { ColorArea } from "@/shim-ui/color-area";
 import { ColorField } from "@/shim-ui/color-field";
 import { ColorSlider } from "@/shim-ui/color-slider";
@@ -17,15 +16,6 @@ import { ColorSwatch } from "@/shim-ui/color-swatch";
 import { Popover } from "@/shim-ui/popover";
 import { Select, SelectItem } from "@/shim-ui/select";
 import { Separator } from "@/shim-ui/separator";
-
-const buttonStyles = tv({
-  // TODO: update colors
-  base: "focus-ring flex cursor-default items-center gap-2 rounded text-gray-800 text-sm dark:text-gray-200",
-});
-
-interface ColorPickerProps extends RacColorPickerProps {
-  children?: React.ReactNode;
-}
 
 function ColorEditor() {
   const [mode, setMode] = useState<ColorSpace | "hex">("hsb");
@@ -89,11 +79,15 @@ function ColorEditor() {
   );
 }
 
+interface ColorPickerProps extends RacColorPickerProps {
+  children?: React.ReactNode;
+}
+
 function ColorPicker({ children, ...props }: ColorPickerProps) {
   return (
     <RacColorPicker {...props}>
       <RacDialogTrigger>
-        <RacButton className={buttonStyles}>
+        <RacButton className={"focus-ring w-min appearance-none rounded-sm"}>
           <ColorSwatch />
         </RacButton>
         <Popover placement="bottom start">

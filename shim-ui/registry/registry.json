@@ -128,7 +128,7 @@
         "select"
       ],
       "files": ["shim-ui/color-picker.tsx"],
-      "docUrl": null,
+      "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorPicker.html#colorpicker",
       "ariaUrl": null
     },
     {

@@ -1,3 +1,3 @@
 import { ColorPicker } from "@/shim-ui/color-picker";
 
-export default () => <ColorPicker defaultValue="hsl(200, 100%, 50%)" />;
+export default () => <ColorPicker defaultValue="hsba(245, 75%, 95%, 0.75)" />;
