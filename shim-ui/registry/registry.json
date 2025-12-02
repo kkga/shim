@@ -216,7 +216,18 @@
       "status": "planned",
       "dependencies": [],
       "files": ["shim-ui/calendar.tsx"],
-      "docUrl": null,
+      "docUrl": "https://react-spectrum.adobe.com/react-aria/Calendar.html",
+      "ariaUrl": null
+    },
+    {
+      "name": "date-field",
+      "title": "DateField",
+      "description": "Enter a date by typing.",
+      "category": "Date and time",
+      "status": "alpha",
+      "dependencies": ["field"],
+      "files": ["shim-ui/date-field.tsx"],
+      "docUrl": "https://react-spectrum.adobe.com/react-aria/DateField.html",
       "ariaUrl": null
     },
     {

@@ -33,7 +33,7 @@ const fieldLayoutStyle = tv({
   variants: {
     labelPosition: {
       top: "",
-      side: "has-[label]:grid has-[label]:grid-cols-[1fr_2fr]",
+      side: "has-[label,[slot=label]]:grid has-[label,[slot=label]]:grid-cols-[1fr_2fr]",
     },
   },
   defaultVariants: { labelPosition: "top" },

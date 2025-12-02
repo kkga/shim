@@ -390,6 +390,15 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     ),
   },
 
+  // Date and Time
+  "date-field": {
+    main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/date-field/main`)),
+    size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/date-field/size`)),
+    variant: dynamic(
+      () => import(`${COMPONENT_DEMOS_PATH}/date-field/variant`)
+    ),
+  },
+
   // Drag and Drop
   "drop-zone": {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/drop-zone/main`)),
