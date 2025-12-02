@@ -21,7 +21,7 @@ import {
 
 interface ColorFieldProps extends RacColorFieldProps, FieldProps {}
 
-export function ColorField({
+function ColorField({
   label,
   description,
   errorMessage,
@@ -50,3 +50,5 @@ export function ColorField({
     </RacColorField>
   );
 }
+
+export { ColorField, type ColorFieldProps };
