@@ -2,4 +2,4 @@ onlyBuiltDependencies:
   - lefthook
 
 packages:
-  - 'packages/*'
+  - "packages/*"
