@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import type { ComponentMetadata } from "@/app/(docs)/_lib/types";
 import { DataList, DataListItem } from "@/shim-ui/data-list";
 import { Link } from "@/shim-ui/link";
+import { Separator } from "@/shim-ui/separator";
 
 const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/shim-ui";
 const GITHUB_ISSUES_URL = "https://github.com/kkga/shim/issues";
@@ -44,10 +45,12 @@ export function DocMetadata({
   ariaUrl,
   dependencies,
 }: MetadataProps) {
+  let installCommand = `pnpm dlx @kkga/shim add ${name}`;
+
   return (
     <DataList
       className="grid grid-cols-2 gap-x-6 gap-y-3 md:grid-flow-col md:grid-cols-none"
-      size={1}
+      size={2}
     >
       {docUrl ? (
         <DataListItem
@@ -118,6 +121,17 @@ export function DocMetadata({
           ))}
         />
       )}
+
+      <Separator
+        className="hidden bg-neutral-3 md:block"
+        orientation="vertical"
+      />
+
+      <DataListItem
+        className="col-span-full md:col-span-1"
+        label="Install"
+        value={<code>{installCommand}</code>}
+      />
     </DataList>
   );
 }
