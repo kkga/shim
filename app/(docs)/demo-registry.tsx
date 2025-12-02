@@ -97,15 +97,6 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
   },
   field: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/field/main`)),
-    "theme-size": dynamic(
-      () => import(`${COMPONENT_DEMOS_PATH}/field/theme-size`)
-    ),
-    "theme-variant": dynamic(
-      () => import(`${COMPONENT_DEMOS_PATH}/field/theme-variant`)
-    ),
-    "theme-label-position": dynamic(
-      () => import(`${COMPONENT_DEMOS_PATH}/field/theme-label-position`)
-    ),
   },
   checkbox: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/checkbox/main`)),
