@@ -2,7 +2,7 @@
 import { createContext, useContext } from "react";
 
 type Size = 1 | 2 | 3 | 4;
-type LabelPosition = "top" | "side";
+type LabelPosition = "top" | "side" | "side-end";
 type ButtonVariant = "soft" | "solid" | "ghost";
 type FieldVariant = "classic" | "soft" | "outline";
 type TableVariant = "classic" | "grid";

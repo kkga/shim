@@ -33,7 +33,9 @@ const fieldLayoutStyle = tv({
   variants: {
     labelPosition: {
       top: "",
-      side: "has-[label,[slot=label]]:grid has-[label,[slot=label]]:grid-cols-[1fr_2fr]",
+      side: "has-[label,[slot=label]]:grid has-[label,[slot=label]]:grid-cols-[1fr_2fr] has-[label,[slot=label]]:gap-4",
+      "side-end":
+        "has-[label,[slot=label]]:grid has-[label,[slot=label]]:grid-cols-[1fr_2fr] has-[label,[slot=label]]:gap-4",
     },
   },
   defaultVariants: { labelPosition: "top" },
@@ -108,13 +110,15 @@ const labelStyle = tv({
     labelPosition: {
       top: "",
       side: "col-start-1 flex items-center self-start",
+      "side-end":
+        "col-start-1 flex items-center self-end justify-self-end text-right",
     },
   },
   compoundVariants: [
-    { size: 1, labelPosition: "side", className: "min-h-6" },
-    { size: 2, labelPosition: "side", className: "min-h-7" },
-    { size: 3, labelPosition: "side", className: "min-h-8" },
-    { size: 4, labelPosition: "side", className: "min-h-10" },
+    { size: 1, labelPosition: ["side", "side-end"], className: "min-h-6" },
+    { size: 2, labelPosition: ["side", "side-end"], className: "min-h-7" },
+    { size: 3, labelPosition: ["side", "side-end"], className: "min-h-8" },
+    { size: 4, labelPosition: ["side", "side-end"], className: "min-h-10" },
   ],
   defaultVariants: { size: 1, labelPosition: "top" },
 });
