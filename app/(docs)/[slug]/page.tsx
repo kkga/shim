@@ -66,7 +66,7 @@ export default async function GuidePage({
 
         {hasToc ? (
           <aside className="hidden w-60 shrink-0 border-neutral-3 border-l xl:block">
-            <nav className="sticky top-0 p-4">
+            <nav className="sticky top-0 max-h-svh overflow-scroll p-4">
               <Toc toc={toc} />
             </nav>
           </aside>

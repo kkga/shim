@@ -23,7 +23,7 @@ export function Toc({ toc }: Props) {
             .with(2, () => "ml-0")
             .with(3, () => "ml-4")
             .otherwise(() => "ml-0")}
-          key={heading.value}
+          key={heading.href}
         >
           <Link className="inline-block" href={heading.href} intent="neutral">
             <div className={`h${heading.depth} `}>{heading.value}</div>
