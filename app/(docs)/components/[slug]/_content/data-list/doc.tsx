@@ -9,7 +9,7 @@ export default {
       },
     },
     {
-      title: "Orientation",
+      title: "Label Position",
       description: (
         <p>
           Use the <code>labelPosition</code> prop to set the label position.
@@ -24,9 +24,9 @@ export default {
       title: "Size",
       description: (
         <p>
-          Use the <code>size</code> prop to control the size of the data list.
-          Child components that support <code>size</code> will inherit it
-          automatically.
+          Use the <code>size</code> prop to set the size of the data list. Child
+          components that support <code>size</code> will use the same size
+          unless overridden.
         </p>
       ),
       demo: {

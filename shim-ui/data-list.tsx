@@ -22,6 +22,11 @@ const style = tv({
         list: "grid auto-rows-fr grid-cols-[max-content_auto]",
         item: "col-span-2 grid grid-cols-subgrid items-center",
       },
+      "side-end": {
+        list: "grid auto-rows-fr grid-cols-[max-content_auto]",
+        item: "col-span-2 grid grid-cols-subgrid items-center",
+        label: "justify-self-end text-right",
+      },
       top: {
         list: "flex flex-col items-stretch gap-y-3",
         item: "flex flex-col gap-y-1",
