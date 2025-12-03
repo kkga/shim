@@ -23,8 +23,7 @@ import {
 const style = tv({
   base: "group grid auto-cols-fr grid-flow-col",
   variants: {
-    variant: { soft: "", ghost: "" },
-    intent: { neutral: "", accent: "", success: "", warning: "", danger: "" },
+    variant: { soft: "", solid: "", ghost: "" },
     size: {
       1: "rounded-sm",
       2: "rounded-sm",
@@ -35,16 +34,13 @@ const style = tv({
   defaultVariants: {
     size: 1,
     variant: "soft",
-    intent: "neutral",
   },
 });
 
 interface ToggleButtonGroupProps
   extends RacToggleButtonGroupProps,
     Omit<FieldProps, "variant">,
-    VariantProps<typeof style> {
-  variant?: "soft" | "ghost";
-}
+    VariantProps<typeof style> {}
 
 function ToggleButtonGroup({
   label,
