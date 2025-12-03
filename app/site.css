@@ -62,6 +62,10 @@ article {
   .prose {
     @apply p-6 md:p-8;
 
+    :where(section) {
+      @apply my-8;
+    }
+
     &.prose-changelog {
       @apply [&_h2]:text-base [&_h2]:text-neutral-text [&_h2]:font-medium;
     }
