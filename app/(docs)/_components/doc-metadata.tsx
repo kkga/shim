@@ -123,7 +123,7 @@ export function DocMetadata({
       )}
 
       <Separator
-        className="hidden bg-neutral-3 md:block"
+        className="m-0 hidden bg-neutral-3 md:block"
         orientation="vertical"
       />
 

@@ -321,7 +321,7 @@ export function ExampleRepo() {
             </Button>
           </div>
 
-          <Separator />
+          <Separator className="m-0" />
 
           <div className="grid grid-cols-3 gap-4">
             <div className="col-span-2 flex flex-col gap-4">
@@ -483,7 +483,7 @@ export function ExampleRepo() {
                 <Tag>ui-components</Tag>
               </TagGroup>
 
-              <Separator />
+              <Separator className="m-0" />
 
               <DataList className="gap-x-2" labelPosition="side">
                 <DataListItem
@@ -504,7 +504,7 @@ export function ExampleRepo() {
                 />
               </DataList>
 
-              <Separator />
+              <Separator className="m-0" />
 
               <div className="flex items-center gap-2">
                 <h4 className="font-medium text-neutral-text-contrast text-sm leading-none">

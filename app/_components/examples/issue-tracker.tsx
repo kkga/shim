@@ -413,14 +413,14 @@ export function ExampleIssueTracker() {
                       <SelectItem id="oldest">Oldest</SelectItem>
                       <SelectItem id="priorty">Priority</SelectItem>
                     </Select>
-                    <Separator />
+                    <Separator className="m-0" />
                     <div className="flex flex-col">
                       <Switch defaultSelected labelPosition="start">
                         Show snoozed
                       </Switch>
                       <Switch labelPosition="start">Show read</Switch>
                     </div>
-                    <Separator />
+                    <Separator className="m-0" />
                     <TagGroup
                       defaultSelectedKeys={"id"}
                       label="Display properties"
@@ -627,7 +627,7 @@ export function ExampleIssueTracker() {
                   Add links
                 </Button>
               </div>
-              <Separator />
+              <Separator className="m-0" />
               <h5 className="font-medium text-neutral-text-contrast text-sm">
                 Activity
               </h5>

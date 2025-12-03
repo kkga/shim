@@ -70,7 +70,7 @@ export function Nav({ navSections }: Props) {
     <div className="background-gradient sticky top-0 z-30 flex flex-col border-neutral-3 border-b bg-pure lg:h-svh lg:border-r lg:border-b-0">
       <NavHeader navSections={navSections} />
 
-      <Separator className="mx-3 hidden w-auto self-stretch bg-neutral-3 lg:block" />
+      <Separator className="m-0 mx-3 hidden w-auto self-stretch bg-neutral-3 lg:block" />
 
       <nav
         className="hidden grow overflow-y-scroll p-3 lg:block"
@@ -153,7 +153,7 @@ export function Nav({ navSections }: Props) {
         </ListBox>
       </nav>
 
-      <Separator className="mx-3 hidden w-auto self-stretch bg-neutral-3 lg:block" />
+      <Separator className="m-0 mx-3 hidden w-auto self-stretch bg-neutral-3 lg:block" />
       <NavFooter />
     </div>
   );

@@ -46,7 +46,7 @@ function ColorEditor() {
         <ColorSlider channel="alpha" orientation="vertical" size={1} />
       </div>
 
-      <Separator />
+      <Separator className="m-0" />
 
       <div className="grid grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-2">
         <Select
