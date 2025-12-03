@@ -1,7 +1,7 @@
 import {
-  TextAlignCenter,
-  TextAlignLeft,
-  TextAlignRight,
+  TextAlignCenterIcon,
+  TextAlignLeftIcon,
+  TextAlignRightIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { ToggleButton } from "@/shim-ui/toggle-button";
 import { ToggleButtonGroup } from "@/shim-ui/toggle-button-group";
@@ -9,13 +9,13 @@ import { ToggleButtonGroup } from "@/shim-ui/toggle-button-group";
 export default () => (
   <ToggleButtonGroup aria-label="Align" className="self-start">
     <ToggleButton aria-label="Left" id="left">
-      <TextAlignLeft size={16} />
+      <TextAlignLeftIcon size={16} />
     </ToggleButton>
     <ToggleButton aria-label="Center" id="center">
-      <TextAlignCenter size={16} />
+      <TextAlignCenterIcon size={16} />
     </ToggleButton>
     <ToggleButton aria-label="Right" id="right">
-      <TextAlignRight size={16} />
+      <TextAlignRightIcon size={16} />
     </ToggleButton>
   </ToggleButtonGroup>
 );
