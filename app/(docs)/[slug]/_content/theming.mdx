@@ -99,7 +99,7 @@ Most components support four sizes that scale proportionally.
   codeTitle="Size example"
   stacked
   demo="size"
-  demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.5fr_2fr_2.5fr] gap-8"
+  demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.25fr_1.5fr_2fr] gap-4 items-start"
 />
 
 ---
@@ -114,7 +114,7 @@ variants that adjust visual styles while preserving spacing and layout.
 <ComponentDemo
   component="theme"
   demo="field-variant"
-  demoClassName="grid sm:grid-cols-3 gap-8"
+  demoClassName="grid md:grid-cols-3 gap-4"
   codeTitle="Field variants example"
   stacked
 />
@@ -128,9 +128,24 @@ emphasis levels. Note that ToggleButton and ToggleButtonGroup do not support the
 <ComponentDemo
   component="theme"
   demo="button-variant"
-  demoClassName="grid sm:grid-cols-3 gap-8"
+  demoClassName="grid md:grid-cols-3 gap-4"
   codeTitle="Button variants example"
   stacked
+/>
+
+---
+
+## Label position
+
+Form field components support positioning the label on the side or side-end of
+the input for more compact layouts.
+
+<ComponentDemo
+  component="theme"
+  codeTitle="Label position example"
+  stacked
+  demo="label-position"
+  demoClassName="grid md:grid-cols-3 gap-4"
 />
 
 ---

@@ -2,59 +2,36 @@ import { PushPinIcon } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/shim-ui/button";
 import { ToggleButton } from "@/shim-ui/toggle-button";
 import { ToggleButtonGroup } from "@/shim-ui/toggle-button-group";
+import { Well } from "@/shim-ui/well";
 
 export default () => (
   <>
-    <div className="grid grid-cols-[1fr_auto] gap-4">
-      <span className="col-span-full font-semibold text-neutral-text-subtle text-sm">
-        Variant: soft
-      </span>
+    {(["soft", "ghost", "solid"] as const).map((variant) => (
+      <Well className="gap-4" key={variant}>
+        <code className="col-span-full mb-2 text-xs">variant: "{variant}"</code>
 
-      <Button>Button</Button>
-      <ToggleButton>
-        <PushPinIcon size={16} />
-      </ToggleButton>
-      <ToggleButtonGroup className="col-span-full" defaultSelectedKeys={[1]}>
-        <ToggleButton id={1}>Left</ToggleButton>
-        <ToggleButton id={2}>Center</ToggleButton>
-        <ToggleButton id={3}>Right</ToggleButton>
-      </ToggleButtonGroup>
-    </div>
+        <Button className="col-span-full" variant={variant}>
+          Button
+        </Button>
+      </Well>
+    ))}
 
-    <div className="grid grid-cols-[1fr_auto] gap-4">
-      <span className="col-span-full font-semibold text-neutral-text-subtle text-sm">
-        Variant: ghost
-      </span>
+    {(["soft", "ghost"] as const).map((variant) => (
+      <Well className="grid grid-cols-[1fr_auto] gap-4" key={variant}>
+        <code className="col-span-full mb-2 text-xs">
+          variant: "{variant}"{" "}
+          <span className="font-normal font-sans">(ToggleButton)</span>
+        </code>
 
-      <Button variant="ghost">Button</Button>
-      <ToggleButton variant="ghost">
-        <PushPinIcon size={16} />
-      </ToggleButton>
-      <ToggleButtonGroup
-        className="col-span-full"
-        defaultSelectedKeys={[1]}
-        variant="ghost"
-      >
-        <ToggleButton id={1}>Left</ToggleButton>
-        <ToggleButton id={2}>Center</ToggleButton>
-        <ToggleButton id={3}>Right</ToggleButton>
-      </ToggleButtonGroup>
-    </div>
-
-    <div className="grid grid-cols-[1fr_auto] gap-4">
-      <span className="col-span-full font-semibold text-neutral-text-subtle text-sm">
-        Variant: solid
-      </span>
-
-      <Button variant="solid">Button</Button>
-      <ToggleButton>
-        <PushPinIcon size={16} />
-      </ToggleButton>
-      <ToggleButtonGroup className="col-span-full" defaultSelectedKeys={[1]}>
-        <ToggleButton id={1}>Left</ToggleButton>
-        <ToggleButton id={2}>Center</ToggleButton>
-        <ToggleButton id={3}>Right</ToggleButton>
-      </ToggleButtonGroup>
-    </div>
+        <ToggleButtonGroup defaultSelectedKeys={[1]} variant={variant}>
+          <ToggleButton id={1}>Left</ToggleButton>
+          <ToggleButton id={2}>Center</ToggleButton>
+          <ToggleButton id={3}>Right</ToggleButton>
+        </ToggleButtonGroup>
+        <ToggleButton variant={variant}>
+          <PushPinIcon size={16} />
+        </ToggleButton>
+      </Well>
+    ))}
   </>
 );

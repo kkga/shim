@@ -5,13 +5,12 @@ import { SearchField } from "@/shim-ui/search-field";
 import { Slider } from "@/shim-ui/slider";
 import { Switch } from "@/shim-ui/switch";
 import { TextField } from "@/shim-ui/text-field";
+import { Well } from "@/shim-ui/well";
 
 export default () =>
   (["classic", "soft", "outline"] as const).map((variant) => (
-    <div className="grid grid-cols-4 gap-4" key={variant}>
-      <span className="col-span-full font-semibold text-neutral-text-subtle text-sm">
-        Variant: {variant}
-      </span>
+    <Well className="grid grid-cols-4 gap-4" key={variant}>
+      <code className="col-span-full mb-2 text-xs">variant: "{variant}"</code>
 
       <TextField
         className="col-span-2"
@@ -39,5 +38,5 @@ export default () =>
         <Checkbox value="1">Option 1</Checkbox>
         <Checkbox value="2">Option 2</Checkbox>
       </CheckboxGroup>
-    </div>
+    </Well>
   ));

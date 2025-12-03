@@ -8,23 +8,19 @@ import { Switch } from "@/shim-ui/switch";
 import { TextField } from "@/shim-ui/text-field";
 import { ToggleButton } from "@/shim-ui/toggle-button";
 import { ToggleButtonGroup } from "@/shim-ui/toggle-button-group";
+import { Well } from "@/shim-ui/well";
 
 export default () =>
   ([1, 2, 3, 4] as const).map((size) => (
-    <div className="flex flex-col gap-3" key={size}>
-      <span className="font-semibold text-neutral-text-subtle text-sm">
-        Size: {size}
-      </span>
-
-      <div className="flex gap-2">
-        <Button className="flex-1" size={size}>
-          Button
-        </Button>
+    <Well key={size} size={size}>
+      <code className="col-span-full mb-2 text-xs">size: {size}</code>
+      <div className="flex gap-[inherit]">
+        <Button className="flex-1">Let's go</Button>
         <MenuTrigger>
-          <Button aria-label="Menu" isIconOnly size={size}>
+          <Button aria-label="Menu" isIconOnly>
             <ListIcon size={ICON_SIZE_MAP[size]} />
           </Button>
-          <Menu size={size}>
+          <Menu>
             <MenuItem>Edit</MenuItem>
             <MenuItem>Duplicate</MenuItem>
             <MenuSeparator />
@@ -32,14 +28,19 @@ export default () =>
           </Menu>
         </MenuTrigger>
       </div>
-      <ToggleButtonGroup size={size}>
+      <ToggleButtonGroup defaultSelectedKeys={["1"]}>
         <ToggleButton id="1">Left</ToggleButton>
-        <ToggleButton id="3">Right</ToggleButton>
+        <ToggleButton id="2">Right</ToggleButton>
       </ToggleButtonGroup>
-      <TextField aria-label="TextField" defaultValue="Hello" size={size} />
-      <div className="flex gap-3">
-        <Slider aria-label="Slider" className="flex-1" isFilled size={size} />
-        <Switch aria-label="Switch" size={size} />
+      <TextField aria-label="TextField" defaultValue="Hello" />
+      <div className="flex gap-[inherit]">
+        <Slider
+          aria-label="Slider"
+          className="flex-1"
+          defaultValue={50}
+          isFilled
+        />
+        <Switch aria-label="Switch" defaultSelected />
       </div>
-    </div>
+    </Well>
   ));
