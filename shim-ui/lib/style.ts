@@ -2,26 +2,28 @@ import { composeRenderProps } from "react-aria-components";
 import { type ClassValue, cn } from "tailwind-variants";
 
 /**
- * Combine a `className` render prop with additional Tailwind classes.
+ * Merge an incoming `className` prop with additional Tailwind classes.
  *
- * Accepts either a static string or a render-prop function and returns the same shape.
- * Conflicts are resolved so that the incoming `className` wins over added classes.
+ * Use this helper when building React Aria Components wrappers to combine
+ * user-provided classes with your own styling. The incoming `className` takes
+ * precedence in conflicts.
  *
- * @typeParam T - The render-prop argument type forwarded to `className` functions.
- * @param className - Static class string or `(v: T) => string` render prop.
- * @param tw - One or more extra Tailwind class values to merge.
- * @returns A string if `className` is a string; otherwise a function `(v: T) => string`.
+ * **Note:** If you need access to render prop values (like `isDisabled`, `isPressed`)
+ * to compute dynamic styles, use `composeRenderProps` directly instead.
+ *
+ * @param className - The incoming `className` prop (static string, render function, or undefined).
+ * @param tw - Additional Tailwind classes to merge.
+ * @returns A className value of the same type as the input.
  *
  * @example
- * // Using an existing render-prop `className` and adding width
- * <Button className={cnRenderProps(props.className, "w-20")} />
+ * // Merge incoming className prop with additional styling
+ * <Button className={cnRenderProps(props.className, "px-4 py-2 rounded")} />
  *
  * @example
- * // With a render-prop function (e.g., React Aria state)
- * <ListBoxItem
- *   className={cnRenderProps(
- *     ({ isSelected }) => (isSelected ? "bg-neutral-bg-active" : ""),
- *     "px-2"
+ * // When you need dynamic styles based on component state, use composeRenderProps
+ * <Button
+ *   className={composeRenderProps(props.className, (className, renderProps) =>
+ *     style({ ...renderProps, size, className })
  *   )}
  * />
  *
@@ -44,10 +46,3 @@ export const INTENTS = [
   "danger",
 ] as const;
 export type Intent = (typeof INTENTS)[number];
-
-// export const focusStyle = tv({
-//   base: [
-//     "outline-0 outline-accent-focus-ring outline-offset-1",
-//     "data-focus-visible:outline-2 group-data-focus-visible:outline-2",
-//   ],
-// });
