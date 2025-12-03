@@ -28,12 +28,15 @@ const style = tv({
       full: "rounded-full! before:rounded-full!",
     },
     size: {
-      1: "size-5 rounded-sm text-[9px] before:rounded-sm",
+      1: "size-5 rounded-xs text-[9px] before:rounded-xs",
       2: "size-6 rounded-sm text-[10px] before:rounded-sm",
       3: "size-8 rounded-md text-[12px] before:rounded-md",
       4: "size-10 rounded-md text-sm before:rounded-md",
       5: "size-12 rounded-md text-base before:rounded-md",
       6: "size-16 rounded-lg text-lg before:rounded-lg",
+      7: "size-24 rounded-xl text-lg before:rounded-xl",
+      8: "size-32 rounded-xl text-xl before:rounded-xl",
+      9: "size-40 rounded-2xl text-xl before:rounded-2xl",
     },
     color: COLORS,
     loading: {

@@ -11,5 +11,6 @@ export default () => (
     <Avatar name="Kale Frost" size={4} src={SRC} />
     <Avatar name="Kale Frost" size={5} src={SRC} />
     <Avatar name="Kale Frost" size={6} src={SRC} />
+    <Avatar name="Kale Frost" size={7} src={SRC} />
   </>
 );
