@@ -15,6 +15,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
       () => import(`${GUIDE_DEMOS_PATH}/theme-button-variant`)
     ),
     size: dynamic(() => import(`${GUIDE_DEMOS_PATH}/theme-size`)),
+    "label-position": dynamic(
+      () => import(`${GUIDE_DEMOS_PATH}/theme-label-position`)
+    ),
   },
 
   // Status
@@ -353,6 +356,11 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
       () => import(`${COMPONENT_DEMOS_PATH}/data-list/label-position`)
     ),
     size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/data-list/size`)),
+  },
+  well: {
+    main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/well/main`)),
+    size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/well/size`)),
+    variant: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/well/variant`)),
   },
 
   // Color

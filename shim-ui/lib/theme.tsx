@@ -7,6 +7,7 @@ type ButtonVariant = "soft" | "solid" | "ghost";
 type FieldVariant = "classic" | "soft" | "outline";
 type TableVariant = "classic" | "grid";
 type BadgeVariant = "surface" | "soft" | "solid";
+type WellVariant = "classic" | "soft" | "surface" | "outline";
 
 const ICON_SIZE_MAP: Record<Size, number> = {
   1: 12,
@@ -23,6 +24,7 @@ interface ThemeContextProps {
     field: FieldVariant;
     table: TableVariant;
     badge: BadgeVariant;
+    well: WellVariant;
   };
 }
 
@@ -34,6 +36,7 @@ const ThemeContext = createContext<ThemeContextProps>({
     field: "classic",
     table: "classic",
     badge: "surface",
+    well: "classic",
   },
 });
 

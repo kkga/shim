@@ -209,6 +209,17 @@
       "ariaUrl": "https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/"
     },
     {
+      "name": "well",
+      "title": "Well",
+      "description": "Group content in a visually distinct container.",
+      "category": "Content",
+      "status": "stable",
+      "dependencies": [],
+      "files": ["shim-ui/well.tsx"],
+      "docUrl": null,
+      "ariaUrl": null
+    },
+    {
       "name": "calendar",
       "title": "Calendar",
       "description": "Select a date or range of dates.",
