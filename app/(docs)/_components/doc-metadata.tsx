@@ -4,6 +4,7 @@ import type { ComponentMetadata } from "@/app/(docs)/_lib/types";
 import { DataList, DataListItem } from "@/shim-ui/data-list";
 import { Link } from "@/shim-ui/link";
 import { Separator } from "@/shim-ui/separator";
+import { CopyButton } from "./copy-button";
 
 const GITHUB_FILE_URL = "https://github.com/kkga/shim/blob/master/shim-ui";
 const GITHUB_ISSUES_URL = "https://github.com/kkga/shim/issues";
@@ -45,7 +46,7 @@ export function DocMetadata({
   ariaUrl,
   dependencies,
 }: MetadataProps) {
-  let installCommand = `pnpm dlx @kkga/shim add ${name}`;
+  const installCommand = `pnpm dlx @kkga/shim add ${name}`;
 
   return (
     <DataList
@@ -130,8 +131,19 @@ export function DocMetadata({
       <DataListItem
         className="col-span-full md:col-span-1"
         label="Install"
-        value={<code>{installCommand}</code>}
+        value={<InstallCommand text={installCommand} />}
       />
     </DataList>
+  );
+}
+
+function InstallCommand({ text }: { text: string }) {
+  return (
+    <>
+      <code className="text-[13px] leading-5">{text}</code>
+      <div className="ml-2 inline-flex h-5 items-center">
+        <CopyButton size={1} text={text} />
+      </div>
+    </>
   );
 }
