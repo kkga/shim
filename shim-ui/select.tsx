@@ -33,21 +33,21 @@ import {
 } from "@/shim-ui/list-box";
 import { Popover } from "@/shim-ui/popover";
 
-interface SelectProps<T extends object>
-  extends Omit<RacSelectProps<T>, "children">,
+interface SelectProps<T extends object, M extends "single" | "multiple">
+  extends Omit<RacSelectProps<T, M>, "children">,
     FieldProps {
   items?: Iterable<T>;
   children: ReactNode | ((item: T) => ReactNode);
 }
 
-function Select<T extends object>({
+function Select<T extends object, M extends "single" | "multiple" = "single">({
   label,
   description,
   errorMessage,
   children,
   items,
   ...props
-}: SelectProps<T>) {
+}: SelectProps<T, M>) {
   const { size, labelPosition, variants } = useThemeProps({
     size: props.size,
     labelPosition: props.labelPosition,
@@ -89,21 +89,27 @@ function Select<T extends object>({
   );
 }
 
-function SelectItem(props: ListBoxItemProps) {
+function SelectItem({ children, className, ...props }: ListBoxItemProps) {
   const { size } = useThemeProps({ size: props.size });
   const textValue =
-    props.textValue ||
-    (typeof props.children === "string" ? props.children : undefined);
+    props.textValue || (typeof children === "string" ? children : undefined);
 
   return (
-    <ListBoxItem {...props} textValue={textValue}>
+    <ListBoxItem
+      {...props}
+      className={cnRenderProps(className, props.href ? "cursor-pointer" : "")}
+      textValue={textValue}
+    >
       {composeRenderProps(
-        props.children,
-        (children, { selectionMode, isSelected }) => (
+        children,
+        (renderedChildren, { selectionMode, isSelected }) => (
           <>
             {selectionMode !== "none" && (
               <span
-                className={cx("flex items-center", size === 1 ? "w-3" : "w-4")}
+                className={cx(
+                  "hidden items-center group-data-rac/list-box-item:flex",
+                  size === 1 ? "w-3" : "w-4"
+                )}
               >
                 {isSelected ? (
                   <CheckIcon
@@ -114,14 +120,7 @@ function SelectItem(props: ListBoxItemProps) {
                 ) : null}
               </span>
             )}
-            <span
-              className={cx(
-                "flex flex-1 items-center truncate",
-                size === 1 ? "gap-2" : "gap-2.5"
-              )}
-            >
-              {children}
-            </span>
+            <span>{renderedChildren}</span>
           </>
         )
       )}

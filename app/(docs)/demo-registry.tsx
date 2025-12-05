@@ -321,6 +321,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     controlled: dynamic(
       () => import(`${COMPONENT_DEMOS_PATH}/select/controlled`)
     ),
+    "multiple-selection": dynamic(
+      () => import(`${COMPONENT_DEMOS_PATH}/select/multiple-selection`)
+    ),
     sections: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/select/sections`)),
     states: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/select/states`)),
     size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/select/size`)),

@@ -12,10 +12,5 @@ export default () => (
       <SelectItem>Broccoli</SelectItem>
       <SelectItem>Spinach</SelectItem>
     </SelectSection>
-    <SelectSection title="Grains">
-      <SelectItem>Rice</SelectItem>
-      <SelectItem>Quinoa</SelectItem>
-      <SelectItem>Barley</SelectItem>
-    </SelectSection>
   </Select>
 );

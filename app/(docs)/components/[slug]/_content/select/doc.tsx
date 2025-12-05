@@ -7,6 +7,7 @@ export default {
         group: "select",
         name: "main",
       },
+      demoClassName: "max-w-3xs",
     },
     {
       title: "Size",
@@ -19,23 +20,37 @@ export default {
         group: "select",
         name: "size",
       },
+      demoClassName: "max-w-3xs",
       code: "size",
     },
     {
       title: "Controlled selection with dynamic items",
       description: (
         <p>
-          Combine <code>selectedKey</code>, <code>onSelectionChange</code>, and
-          dynamic
-          <code>items</code> to manage selection in application state.
+          Combine <code>items</code>, <code>onChange</code>, and{" "}
+          <code>value</code> props to control the selection state.
         </p>
       ),
       demo: {
         group: "select",
         name: "controlled",
       },
-      demoClassName: "items-stretch",
+      demoClassName: "max-w-3xs",
       code: "controlled",
+    },
+    {
+      title: "Multiple selection",
+      description: (
+        <p>
+          Use the <code>selectionMode</code> prop to enable multiple selection.
+        </p>
+      ),
+      demo: {
+        group: "select",
+        name: "multiple-selection",
+      },
+      demoClassName: "max-w-3xs",
+      code: "multiple-selection",
     },
     {
       title: "Sections",
@@ -49,7 +64,7 @@ export default {
         group: "select",
         name: "sections",
       },
-      demoClassName: "items-stretch",
+      demoClassName: "max-w-3xs",
       code: "sections",
     },
     {
@@ -65,7 +80,7 @@ export default {
         group: "select",
         name: "states",
       },
-      demoClassName: "items-stretch",
+      demoClassName: "max-w-3xs",
       code: "states",
     },
     {
@@ -80,7 +95,7 @@ export default {
         group: "select",
         name: "links",
       },
-      demoClassName: "items-stretch",
+      demoClassName: "max-w-3xs",
       code: "links",
     },
   ],

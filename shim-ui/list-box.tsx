@@ -36,7 +36,7 @@ function ListBox<T extends object>({
 }
 
 const itemStyle = tv({
-  base: "focus-ring relative flex shrink-0 cursor-default items-center truncate font-book outline-0",
+  base: "group/list-box-item focus-ring relative flex shrink-0 cursor-default items-center truncate font-book outline-0",
   variants: {
     size: {
       1: "h-6 gap-2 rounded-sm px-2 text-xs",

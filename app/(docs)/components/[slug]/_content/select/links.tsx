@@ -7,6 +7,5 @@ export default () => (
     </SelectItem>
     <SelectItem>Project A</SelectItem>
     <SelectItem>Project B</SelectItem>
-    <SelectItem>Project C</SelectItem>
   </Select>
 );

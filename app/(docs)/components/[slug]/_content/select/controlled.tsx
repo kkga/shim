@@ -18,12 +18,8 @@ export default () => {
       <Select
         aria-label="Status"
         items={options}
-        onSelectionChange={(selected) => {
-          if (selected !== null) {
-            setStatus(selected);
-          }
-        }}
-        selectedKey={status}
+        onChange={(selected) => setStatus(selected)}
+        value={status}
       >
         {({ name }) => <SelectItem id={name}>{name}</SelectItem>}
       </Select>

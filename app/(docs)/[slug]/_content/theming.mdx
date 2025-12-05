@@ -1,6 +1,6 @@
 ---
 title: Theming
-description: Sizes, variants, and global defaults.
+description: Colors, sizes, variants and other theming options.
 order: 4
 ---
 
@@ -13,12 +13,21 @@ import {
   TableHeader,
 } from "@/shim-ui/table";
 import { Tooltip } from "../../_components/tooltip";
+import { DataList, DataListItem } from "@/shim-ui/data-list";
 
 ## Overview
 
-Shim components support theming options like size and visual variants to adapt
-the look and feel to your design. Set global defaults using the theme provider
-to ensure consistency across your application.
+Shim components are customizable through several theming options:
+
+- **Colors**: Semantic color system with five intents (neutral, accent, success,
+  warning, danger) — defined globally as CSS variables
+- **Size**: Four proportional sizes (`1`, `2`, `3`, `4`) for different density
+  needs
+- **Variants**: Visual styling options for buttons, fields, tables, and badges
+- **Label position**: Position labels `side` or `side-end` of form inputs
+
+Size, variants, and label position can be applied per-component, on container
+components, or globally via `Theme`. Colors are global only.
 
 ---
 
@@ -28,19 +37,6 @@ Shim uses [Radix UI Colors](https://www.radix-ui.com/colors) for its color
 system. Radix provides a carefully designed color palette with automatic dark
 mode support and semantic scales that work across different use cases.
 
-### Color scales
-
-Each color has a 12-step scale designed for specific use cases. Shim maps these
-to semantic tokens you can use in your components:
-
-- **Steps 1-2**: Backgrounds and subtle surfaces
-- **Steps 3-5**: Interactive backgrounds (hover, active states)
-- **Steps 6-8**: Borders and focus rings
-- **Steps 9-10**: Solid colors and hover states
-- **Steps 11-12**: Text colors with proper contrast
-
-### Semantic color tokens
-
 Shim provides five color intents, each with a full set of use-case tokens:
 
 - `neutral` - Gray tones for UI elements
@@ -48,10 +44,6 @@ Shim provides five color intents, each with a full set of use-case tokens:
 - `success` - Positive states (default: Green)
 - `warning` - Cautionary states (default: Orange)
 - `danger` - Destructive actions and errors (default: Red)
-
-Each intent includes tokens like `base`, `panel`, `bg`, `bg-hover`, `bg-active`,
-`line`, `border`, `border-hover`, `solid`, `solid-hover`, `text`,
-`text-contrast`, and `text-subtle`.
 
 ### Using color tokens
 
@@ -65,13 +57,13 @@ Reference color tokens in your Tailwind classes:
 </div>
 ```
 
-### Customizing accent colors
+### Customizing colors
 
-To change the accent color, edit the Radix color imports in your `theme.css`
-file. For example, to use blue instead of iris:
+To change the colors, edit the Radix color imports and aliases in your
+`theme.css` file. For example, to change the accent color to `blue`:
 
 ```css title="styles/theme.css"
-/* Replace iris imports with blue */
+/* Import blue scales */
 @import "@radix-ui/colors/blue.css";
 @import "@radix-ui/colors/blue-alpha.css";
 @import "@radix-ui/colors/blue-dark.css";
@@ -92,14 +84,17 @@ the full color palette and detailed usage guidance.
 
 ## Size
 
-Most components support four sizes that scale proportionally.
+Most components support four sizes (`1`, `2`, `3`, `4`) via the `size` prop that
+scale proportionally. Size can be set on individual components, on container
+components like `Form`, `Well`, or `Toolbar` to affect their children, or via
+the Theme provider to set a default for all components.
 
 <ComponentDemo
   component="theme"
   codeTitle="Size example"
   stacked
   demo="size"
-  demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.25fr_1.5fr_2fr] gap-4 items-start"
+  demoClassName="grid sm:grid-cols-2 md:grid-cols-[1fr_1.25fr_1.5fr_1.75fr] gap-4 items-start"
 />
 
 ---
@@ -108,7 +103,7 @@ Most components support four sizes that scale proportionally.
 
 ### Field variants
 
-Forms and field-based components support "classic", "soft", and "outline"
+Forms and field-based components support `classic`, `soft`, and `outline`
 variants that adjust visual styles while preserving spacing and layout.
 
 <ComponentDemo
@@ -121,9 +116,9 @@ variants that adjust visual styles while preserving spacing and layout.
 
 ### Button variants
 
-Buttons support "soft", "ghost", and "solid" variants for different visual
-emphasis levels. Note that ToggleButton and ToggleButtonGroup do not support the
-"solid" variant to avoid confusion with selected states.
+Buttons support `soft`, `ghost`, and `solid` variants for different visual
+emphasis levels. Note that `ToggleButton` and `ToggleButtonGroup` do not support
+the `solid` variant to avoid confusion with selected states.
 
 <ComponentDemo
   component="theme"
@@ -137,8 +132,8 @@ emphasis levels. Note that ToggleButton and ToggleButtonGroup do not support the
 
 ## Label position
 
-Form field components support positioning the label on the side or side-end of
-the input for more compact layouts.
+Form field components support positioning the label on the `side` or `side-end`
+of the input for more compact layouts.
 
 <ComponentDemo
   component="theme"
@@ -150,11 +145,11 @@ the input for more compact layouts.
 
 ---
 
-## Set global defaults
+## Theme provider
 
-Wrap your application (or any subtree) in the `<Theme>` provider to broadcast
-shared props to every Shim component underneath it. The provider merges values
-from the nearest ancestor, so you can layer overrides as needed.
+Use the `<Theme>` provider to set default theming props for all components in a
+subtree. The provider merges values from the nearest ancestor, allowing layered
+overrides as needed.
 
 ```tsx title="layout.tsx"
 import type { ReactNode } from "react";
@@ -196,9 +191,9 @@ export function Callout() {
 }
 ```
 
-### Theme API reference
+### Props
 
-<Table aria-label="Theme API reference" className="md:table-fixed" size={2}>
+<Table aria-label="Theme provider props" className="md:table-fixed" size={2}>
   <TableHeader>
     <Column className="md:w-1/4" isRowHeader>Prop</Column>
     <Column>Type</Column>
@@ -207,69 +202,39 @@ export function Callout() {
 
   <TableBody>
     <Row>
-      <Cell className="flex items-center gap-1">
-        <code>size</code>
-        <Tooltip text="Default component size, ranging from 1 (smallest) to 4 (largest)." />
-      </Cell>
+      <Cell><code>size</code></Cell>
       <Cell><code>1 | 2 | 3 | 4</code></Cell>
       <Cell><code>1</code></Cell>
     </Row>
     <Row>
-      <Cell className="flex items-center gap-1">
-        <code>labelPosition</code>
-        <Tooltip text="Default position of the label relative to the input field." />
-      </Cell>
+      <Cell><code>labelPosition</code></Cell>
       <Cell><code>"side" | "top"</code></Cell>
       <Cell><code>"top"</code></Cell>
     </Row>
     <Row>
-      <Cell className="flex items-center gap-1">
-        <code>variants</code>
-        <Tooltip text="Object containing default visual styles for component categories. Merges with parent theme context." />
-      </Cell>
-      <Cell>
-        <code>
-          {`{ button?, field?, table?, badge? }`}
-        </code>
-      </Cell>
-      <Cell>
-        <code>
-          {`{ button: "soft", field: "classic", table: "classic", badge: "surface" }`}
-        </code>
-      </Cell>
-    </Row>
-  </TableBody>
-</Table>
-
-### Variant types
-
-<Table aria-label="Variant types" className="md:table-fixed" size={2}>
-  <TableHeader>
-    <Column className="md:w-1/4" isRowHeader>Category</Column>
-    <Column>Values</Column>
-    <Column>Applied to</Column>
-  </TableHeader>
-
-  <TableBody>
-    <Row>
-      <Cell><code>button</code></Cell>
+      <Cell><code>variants.button</code></Cell>
       <Cell><code>"soft" | "solid" | "ghost"</code></Cell>
-      <Cell>Button, ToggleButton, ToggleButtonGroup</Cell>
+      <Cell><code>"soft"</code></Cell>
     </Row>
     <Row>
-      <Cell><code>field</code></Cell>
+      <Cell><code>variants.field</code></Cell>
       <Cell><code>"classic" | "soft" | "outline"</code></Cell>
-      <Cell>TextField, Checkbox, RadioGroup, Switch, Slider, and other form inputs</Cell>
+      <Cell><code>"classic"</code></Cell>
     </Row>
     <Row>
-      <Cell><code>table</code></Cell>
+      <Cell><code>variants.table</code></Cell>
       <Cell><code>"classic" | "grid"</code></Cell>
-      <Cell>Table components</Cell>
+      <Cell><code>"classic"</code></Cell>
     </Row>
     <Row>
-      <Cell><code>badge</code></Cell>
+      <Cell><code>variants.badge</code></Cell>
       <Cell><code>"surface" | "soft" | "solid"</code></Cell>
-      <Cell>Badge components</Cell>
+      <Cell><code>"surface"</code></Cell>
+    </Row>
+    <Row>
+      <Cell><code>variants.well</code></Cell>
+      <Cell><code>"classic" | "soft" | "surface" | "outline"</code></Cell>
+      <Cell><code>"classic"</code></Cell>
     </Row>
   </TableBody>
 </Table>
