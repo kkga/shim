@@ -50,6 +50,12 @@ const style = tv({
       class:
         "not-first:not-last:rounded-none first:rounded-r-none last:rounded-l-none",
     },
+    {
+      isInGroup: true,
+      variant: "ghost",
+      class:
+        "[[data-selected]+[data-selected]]:rounded-l-none! [[data-selected]:has(+[data-selected])]:rounded-r-none!",
+    },
     { size: 1, isInGroup: true, class: "after:inset-y-0.75" },
     { size: 2, isInGroup: true, class: "after:inset-y-1" },
     { size: 3, isInGroup: true, class: "after:inset-y-1.25" },
