@@ -28,7 +28,7 @@ const style = tv({
       "group-data-expanded:rotate-180 group-data-expanded:transform",
       "group-data-disabled:text-neutral-text-subtle",
     ],
-    panel: "text-neutral-text",
+    panel: "h-(--disclosure-panel-height) text-neutral-text",
   },
   variants: {
     variant: {
