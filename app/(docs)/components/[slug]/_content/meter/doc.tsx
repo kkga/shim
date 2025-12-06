@@ -1,3 +1,4 @@
+import { Link } from "@/app/(docs)/_components/mdx-components";
 import type { DocModule } from "@/app/(docs)/components/schema";
 
 export default {
@@ -19,9 +20,9 @@ export default {
           </p>
           <p>
             See the{" "}
-            <a href="https://react-spectrum.adobe.com/react-aria/Meter.html#props">
+            <Link href="https://react-spectrum.adobe.com/react-aria/Meter.html#props">
               API documentation
-            </a>{" "}
+            </Link>{" "}
             for details on each prop.
           </p>
         </>
