@@ -48,7 +48,7 @@ export default function DocsLayout({
   return (
     <div className="flex min-h-svh flex-col bg-background-subtle lg:grid lg:grid-cols-[var(--sidebar-width)_var(--content-width)_1fr] dark:bg-pure">
       <Nav navSections={navSections} />
-      <main className="@container/main flex w-full grow flex-col bg-background text-base">
+      <main className="@container/main flex w-full grow flex-col border-neutral-3 bg-background text-base lg:border-x">
         <article className="flex grow flex-col">{children}</article>
       </main>
     </div>

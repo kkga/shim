@@ -67,7 +67,7 @@ export function Nav({ navSections }: Props) {
   let { header: headerStyle, item: itemStyle } = style();
 
   return (
-    <div className="background-gradient sticky top-0 z-30 flex flex-col border-neutral-3 border-b bg-pure lg:h-svh lg:border-r lg:border-b-0">
+    <div className="background-gradient sticky top-0 z-30 flex flex-col border-neutral-3 border-b bg-pure lg:h-svh lg:border-b-0">
       <NavHeader navSections={navSections} />
 
       <Separator className="m-0 mx-3 hidden w-auto self-stretch bg-neutral-3 lg:block" />

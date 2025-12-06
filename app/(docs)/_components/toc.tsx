@@ -22,6 +22,7 @@ export function Toc({ toc }: Props) {
           className={match(heading.depth)
             .with(2, () => "ml-0")
             .with(3, () => "ml-4")
+            .with(4, () => "ml-8")
             .otherwise(() => "ml-0")}
           key={heading.href}
         >

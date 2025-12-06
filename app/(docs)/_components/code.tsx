@@ -3,6 +3,7 @@ import { highlight as sugar } from "sugar-high";
 
 export function Code({
   highlight = false,
+  className,
   ...props
 }: ComponentPropsWithoutRef<"code"> & {
   highlight?: boolean;
@@ -13,6 +14,7 @@ export function Code({
   if (highlight) {
     return (
       <code
+        className={className}
         // biome-ignore lint/security/noDangerouslySetInnerHtml: Highlighted code
         dangerouslySetInnerHTML={{ __html: html }}
       />
