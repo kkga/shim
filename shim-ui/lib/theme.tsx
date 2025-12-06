@@ -9,6 +9,14 @@ type TableVariant = "classic" | "grid";
 type BadgeVariant = "surface" | "soft" | "solid";
 type WellVariant = "classic" | "soft" | "surface" | "outline";
 
+interface ThemeVariants {
+  button: ButtonVariant;
+  field: FieldVariant;
+  table: TableVariant;
+  badge: BadgeVariant;
+  well: WellVariant;
+}
+
 const ICON_SIZE_MAP: Record<Size, number> = {
   1: 12,
   2: 16,
@@ -16,19 +24,13 @@ const ICON_SIZE_MAP: Record<Size, number> = {
   4: 20,
 };
 
-interface ThemeContextProps {
+interface ThemeValues {
   size: Size;
   labelPosition: LabelPosition;
-  variants: {
-    button: ButtonVariant;
-    field: FieldVariant;
-    table: TableVariant;
-    badge: BadgeVariant;
-    well: WellVariant;
-  };
+  variants: ThemeVariants;
 }
 
-const ThemeContext = createContext<ThemeContextProps>({
+const ThemeContext = createContext<ThemeValues>({
   size: 1,
   labelPosition: "top",
   variants: {
@@ -40,11 +42,14 @@ const ThemeContext = createContext<ThemeContextProps>({
   },
 });
 
-interface ThemeProps {
-  children: React.ReactNode;
+interface ThemeOverrides {
   size?: Size;
   labelPosition?: LabelPosition;
-  variants?: Partial<ThemeContextProps["variants"]>;
+  variants?: Partial<ThemeVariants>;
+}
+
+interface ThemeProps extends ThemeOverrides {
+  children: React.ReactNode;
 }
 
 /**
@@ -82,8 +87,8 @@ function Theme({ children, ...props }: ThemeProps) {
 function useThemeProps(props?: {
   size?: Size;
   labelPosition?: LabelPosition;
-  variants?: Partial<ThemeContextProps["variants"]>;
-}): ThemeContextProps {
+  variants?: Partial<ThemeVariants>;
+}): ThemeValues {
   const themeProps = useContext(ThemeContext);
 
   return {
@@ -96,7 +101,7 @@ function useThemeProps(props?: {
   };
 }
 
-type VariantKind = keyof ThemeContextProps["variants"];
+type VariantKind = keyof ThemeVariants;
 
 /**
  * Helper to create typed variant overrides consistently across components
@@ -109,10 +114,17 @@ type VariantKind = keyof ThemeContextProps["variants"];
  */
 function buildVariantOverrides<K extends VariantKind>(
   kind: K,
-  variant?: ThemeContextProps["variants"][K]
-): { variants: Partial<ThemeContextProps["variants"]> } | undefined {
+  variant?: ThemeVariants[K]
+): { variants: Partial<ThemeVariants> } | undefined {
   return variant ? { variants: { [kind]: variant } } : undefined;
 }
 
-export type { Size, ThemeContextProps };
+export type {
+  Size,
+  LabelPosition,
+  ThemeVariants,
+  ThemeValues,
+  ThemeOverrides,
+  ThemeProps,
+};
 export { useThemeProps, ICON_SIZE_MAP, Theme, buildVariantOverrides };
