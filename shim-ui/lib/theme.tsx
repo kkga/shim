@@ -5,7 +5,7 @@ type Size = 1 | 2 | 3 | 4;
 type LabelPosition = "top" | "side" | "side-end";
 type ButtonVariant = "soft" | "solid" | "ghost";
 type FieldVariant = "classic" | "soft" | "outline";
-type TableVariant = "classic" | "grid";
+type TableVariant = "surface" | "ghost" | "zebra";
 type BadgeVariant = "surface" | "soft" | "solid";
 type WellVariant = "classic" | "soft" | "surface" | "outline";
 
@@ -36,7 +36,7 @@ const ThemeContext = createContext<ThemeValues>({
   variants: {
     button: "soft",
     field: "classic",
-    table: "classic",
+    table: "surface",
     badge: "surface",
     well: "classic",
   },
