@@ -13,14 +13,16 @@ export default () => (
       title="Edit profile"
     >
       {({ close }) => (
-        <Form labelPosition="side" size={2}>
+        <Form>
           <TextField label="Name" />
           <TextField label="Email" />
-          <div className="flex gap-2 self-end">
+          <div className="mt-2 flex gap-[inherit] self-end">
             <Button intent="neutral" onPress={close} variant="ghost">
               Cancel
             </Button>
-            <Button variant="solid">Save</Button>
+            <Button intent="accent" variant="solid">
+              Save
+            </Button>
           </div>
         </Form>
       )}

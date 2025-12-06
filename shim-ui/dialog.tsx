@@ -34,6 +34,7 @@ interface DialogProps extends Omit<RacModalOverlayProps, "children"> {
   children: RacDialogProps["children"];
 }
 
+// TODO: support size prop
 function Dialog({ title, description, ...props }: DialogProps) {
   const state = useContext(OverlayTriggerStateContext);
   let { children } = props;

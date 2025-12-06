@@ -11,10 +11,10 @@ export default () => (
       description="Edit your profile information."
       title="Edit profile"
     >
-      <Form labelPosition="side" size={2}>
+      <Form>
         <TextField label="Name" />
         <TextField label="Email" />
-        <Button className="self-end" variant="solid">
+        <Button className="mt-2 self-end" intent="accent" variant="solid">
           Save
         </Button>
       </Form>
