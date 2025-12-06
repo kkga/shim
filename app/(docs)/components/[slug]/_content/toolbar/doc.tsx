@@ -21,5 +21,18 @@ export default {
         name: "orientation",
       },
     },
+    {
+      title: "Size",
+      description: (
+        <p>
+          Use the <code>size</code> prop to set the size of the toolbar and its
+          children.
+        </p>
+      ),
+      demo: {
+        group: "toolbar",
+        name: "size",
+      },
+    },
   ],
 } satisfies DocModule;

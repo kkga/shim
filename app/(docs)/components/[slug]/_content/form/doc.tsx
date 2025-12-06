@@ -1,3 +1,4 @@
+import { Link } from "@/app/(docs)/_components/mdx-components";
 import type { DocModule } from "@/app/(docs)/components/schema";
 
 export default {
@@ -7,6 +8,7 @@ export default {
         group: "form",
         name: "main",
       },
+      demoClassName: "max-w-3xs",
     },
     {
       title: "Validation",
@@ -14,9 +16,9 @@ export default {
         <p>
           Use the <code>validationErrors</code> prop to supply error messages
           for each field. Refer to the{" "}
-          <a href="https://react-spectrum.adobe.com/react-aria/forms.html">
+          <Link href="https://react-spectrum.adobe.com/react-aria/forms.html">
             React Aria forms guide
-          </a>{" "}
+          </Link>{" "}
           for validation patterns.
         </p>
       ),
@@ -24,7 +26,7 @@ export default {
         group: "form",
         name: "validation",
       },
-      demoClassName: "items-stretch",
+      demoClassName: "max-w-3xs",
     },
   ],
 } satisfies DocModule;

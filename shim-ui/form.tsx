@@ -4,29 +4,33 @@ import {
   Form as RacForm,
   type FormProps as RacFormProps,
 } from "react-aria-components";
-import { cn } from "tailwind-variants";
-import {
-  Theme,
-  type ThemeContextProps,
-  useThemeProps,
-} from "@/shim-ui/lib/theme";
+import { tv, type VariantProps } from "tailwind-variants";
+import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
-function Form({
-  className,
-  children,
-  labelPosition,
-  size,
-  variants,
-  ...props
-}: RacFormProps & Partial<ThemeContextProps>) {
+const style = tv({
+  base: "flex flex-col",
+  variants: {
+    size: {
+      1: "gap-2",
+      2: "gap-3",
+      3: "gap-4",
+      4: "gap-5",
+    },
+  },
+  defaultVariants: {
+    size: 1,
+  },
+});
+
+interface FormProps extends RacFormProps, VariantProps<typeof style> {}
+
+function Form({ className, children, ...props }: FormProps) {
   const themeProps = useThemeProps({
-    labelPosition,
-    size,
-    variants,
+    size: props.size,
   });
 
   return (
-    <RacForm {...props} className={cn("flex flex-col gap-3", className)}>
+    <RacForm {...props} className={style({ size: themeProps.size, className })}>
       <Theme {...themeProps}>{children}</Theme>
     </RacForm>
   );

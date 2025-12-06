@@ -35,15 +35,18 @@ interface WellProps
 
 function Well({ className, children, ...props }: WellProps) {
   const themeProps = useThemeProps({
-    ...props,
+    size: props.size,
     ...buildVariantOverrides("well", props.variant),
   });
-  const { size, variants } = themeProps;
 
   return (
     <div
       {...props}
-      className={style({ size, variant: variants.well, className })}
+      className={style({
+        size: themeProps.size,
+        variant: themeProps.variants.well,
+        className,
+      })}
     >
       <Theme {...themeProps}>{children}</Theme>
     </div>
