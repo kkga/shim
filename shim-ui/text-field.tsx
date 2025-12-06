@@ -44,7 +44,7 @@ function TextField({
         {label ? <Label isRequired={props.isRequired}>{label}</Label> : null}
         <Input placeholder={placeholder} />
         {description ? <Description>{description}</Description> : null}
-        {errorMessage ? <FieldError>{errorMessage}</FieldError> : null}
+        <FieldError>{errorMessage}</FieldError>
       </Theme>
     </RacTextField>
   );

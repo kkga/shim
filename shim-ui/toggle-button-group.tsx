@@ -67,7 +67,7 @@ function ToggleButtonGroup({
           {label ? <Label>{label}</Label> : null}
           <div className={style()}>{children}</div>
           {description ? <Description>{description}</Description> : null}
-          {errorMessage ? <FieldError>{errorMessage}</FieldError> : null}
+          <FieldError>{errorMessage}</FieldError>
         </Theme>
       ))}
     </RacToggleButtonGroup>

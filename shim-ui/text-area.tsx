@@ -64,7 +64,7 @@ function TextArea({
           placeholder={placeholder}
         />
         {description ? <Description>{description}</Description> : null}
-        {errorMessage ? <FieldError>{errorMessage}</FieldError> : null}
+        <FieldError>{errorMessage}</FieldError>
       </Theme>
     </RacTextField>
   );
