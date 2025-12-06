@@ -17,17 +17,11 @@ import { DataList, DataListItem } from "@/shim-ui/data-list";
 
 ## Overview
 
-Shim components are customizable through several theming options:
-
-- **Colors**: Semantic color system with five intents (neutral, accent, success,
-  warning, danger) — defined globally as CSS variables
-- **Size**: Four proportional sizes (`1`, `2`, `3`, `4`) for different density
-  needs
-- **Variants**: Visual styling options for buttons, fields, tables, and badges
-- **Label position**: Position labels `side` or `side-end` of form inputs
-
-Size, variants, and label position can be applied per-component, on container
-components, or globally via `Theme`. Colors are global only.
+Shim makes it easy to set the overall look and feel of your app: semantic
+colors, preferred density, variants for key components, and flexible label
+positions keep things consistent while staying easy to tweak. Apply size,
+variant, and label choices per component or set defaults globally with the
+`Theme` provider.
 
 ---
 
@@ -87,7 +81,7 @@ the full color palette and detailed usage guidance.
 Most components support four sizes (`1`, `2`, `3`, `4`) via the `size` prop that
 scale proportionally. Size can be set on individual components, on container
 components like `Form`, `Well`, or `Toolbar` to affect their children, or via
-the Theme provider to set a default for all components.
+the `Theme` provider to set a default for all components.
 
 <ComponentDemo
   component="theme"
@@ -117,8 +111,8 @@ variants that adjust visual styles while preserving spacing and layout.
 ### Button variants
 
 Buttons support `soft`, `ghost`, and `solid` variants for different visual
-emphasis levels. Note that `ToggleButton` and `ToggleButtonGroup` do not support
-the `solid` variant to avoid confusion with selected states.
+emphasis levels. Note that `ToggleButton` uses the same visual appearance for
+`soft` and `solid` variants to avoid confusion with the selected state.
 
 <ComponentDemo
   component="theme"
@@ -208,7 +202,7 @@ export function Callout() {
     </Row>
     <Row>
       <Cell><code>labelPosition</code></Cell>
-      <Cell><code>"side" | "top"</code></Cell>
+      <Cell><code>"top" | "side" | "side-end"</code></Cell>
       <Cell><code>"top"</code></Cell>
     </Row>
     <Row>
@@ -223,7 +217,7 @@ export function Callout() {
     </Row>
     <Row>
       <Cell><code>variants.table</code></Cell>
-      <Cell><code>"classic" | "grid"</code></Cell>
+      <Cell><code>"surface" | "ghost" | "zebra"</code></Cell>
       <Cell><code>"classic"</code></Cell>
     </Row>
     <Row>

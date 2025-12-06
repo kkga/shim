@@ -1,3 +1,4 @@
+import { Badge } from "@/shim-ui/badge";
 import { Checkbox, CheckboxGroup } from "@/shim-ui/checkbox";
 import { NumberField } from "@/shim-ui/number-field";
 import { Radio, RadioGroup } from "@/shim-ui/radio-group";
@@ -10,7 +11,7 @@ import { Well } from "@/shim-ui/well";
 export default () =>
   (["classic", "soft", "outline"] as const).map((variant) => (
     <Well className="grid grid-cols-4 gap-4" key={variant}>
-      <code className="col-span-full mb-2 text-xs">variant: "{variant}"</code>
+      <Badge className="col-span-full">{variant}</Badge>
 
       <TextField
         className="col-span-2"

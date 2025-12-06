@@ -1,4 +1,5 @@
 "use client";
+import { Badge } from "@/shim-ui/badge";
 import { Select, SelectItem } from "@/shim-ui/select";
 import { TextField } from "@/shim-ui/text-field";
 import { Well } from "@/shim-ui/well";
@@ -6,9 +7,8 @@ import { Well } from "@/shim-ui/well";
 export default () =>
   (["top", "side", "side-end"] as const).map((labelPosition) => (
     <Well className="gap-4" key={labelPosition}>
-      <code className="col-span-full mb-2 text-xs">
-        labelPosition: "{labelPosition}"
-      </code>
+      <Badge>{labelPosition}</Badge>
+
       <TextField
         label="Name"
         labelPosition={labelPosition}
