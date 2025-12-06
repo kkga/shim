@@ -20,22 +20,22 @@ const styles = tv({
     {
       orientation: "vertical",
       size: 1,
-      className: "mx-2",
+      className: "mx-1",
     },
     {
       orientation: "vertical",
       size: 2,
-      className: "mx-3",
+      className: "mx-2",
     },
     {
       orientation: "vertical",
       size: 3,
-      className: "mx-4",
+      className: "mx-3",
     },
     {
       orientation: "vertical",
       size: 4,
-      className: "mx-6",
+      className: "mx-4",
     },
     {
       orientation: "horizontal",
