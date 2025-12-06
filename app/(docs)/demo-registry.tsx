@@ -347,6 +347,7 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     orientation: dynamic(
       () => import(`${COMPONENT_DEMOS_PATH}/toolbar/orientation`)
     ),
+    size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/toolbar/size`)),
   },
   kbd: {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/kbd/main`)),
