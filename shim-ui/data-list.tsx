@@ -8,7 +8,7 @@ const style = tv({
     list: "place-content-start items-center",
     item: "",
     label: "font-medium text-neutral-text",
-    value: "flex overflow-ellipsis text-neutral-text-contrast",
+    value: "text-neutral-text-contrast",
   },
   variants: {
     size: {
