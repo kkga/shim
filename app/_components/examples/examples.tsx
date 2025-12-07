@@ -26,11 +26,11 @@ let items = [
 export function Examples() {
   return (
     <Tabs>
-      <div className="mb-4 flex items-center justify-between">
-        <TabList items={items} size={1} variant="soft">
+      <div className="mb-4 flex h-6 items-center justify-between">
+        <TabList items={items} variant="soft">
           {({ name }) => <Tab aria-label={name}>{name}</Tab>}
         </TabList>
-        <div className="sticky right-4">
+        <div className="sticky right-4 flex">
           <ThemeToggle />
         </div>
       </div>

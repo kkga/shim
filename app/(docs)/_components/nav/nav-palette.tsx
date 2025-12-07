@@ -1,6 +1,10 @@
 "use client";
 
-import { ArrowSquareOutIcon, XIcon } from "@phosphor-icons/react";
+import {
+  ArrowSquareOutIcon,
+  MagnifyingGlassIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import { ListIcon } from "@phosphor-icons/react/dist/ssr";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -16,6 +20,7 @@ import { Dialog, DialogTrigger } from "@/shim-ui/dialog";
 import { Kbd } from "@/shim-ui/kbd";
 import { Menu } from "@/shim-ui/menu";
 import { TextField } from "@/shim-ui/text-field";
+import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
 import type { NavItem } from "./utils";
 
 const MAC_REGEX = /mac(os|intosh)/i;
@@ -60,21 +65,27 @@ export function NavPalette({ navSections }: Props) {
 
   return (
     <DialogTrigger isOpen={isOpen} onOpenChange={setOpen}>
-      <Button
-        className="hidden text-neutral-text-subtle md:flex"
-        intent="neutral"
-        onPress={() => setOpen(true)}
-        size={2}
-        variant="ghost"
-      >
-        Go to…
-        <Kbd className="ml-1 text-neutral-text" size={1}>
-          ⌘K
-        </Kbd>
-      </Button>
+      <TooltipTrigger>
+        <Button
+          className="hidden lg:flex"
+          intent="neutral"
+          isIconOnly
+          onPress={() => setOpen(true)}
+          size={2}
+          variant="ghost"
+        >
+          <MagnifyingGlassIcon size={16} />
+        </Button>
+        <Tooltip>
+          Go to page
+          <Kbd className="ml-1 text-neutral-text" size={1}>
+            ⌘K
+          </Kbd>
+        </Tooltip>
+      </TooltipTrigger>
 
       <Button
-        className="md:hidden"
+        className="order-last lg:hidden"
         isIconOnly
         onPress={() => setOpen(true)}
         size={3}

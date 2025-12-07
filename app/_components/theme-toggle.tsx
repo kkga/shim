@@ -1,69 +1,15 @@
 "use client";
 
-import { CircleHalfIcon } from "@phosphor-icons/react";
+import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Switch } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { Button } from "@/shim-ui/button";
+import type { Size } from "@/shim-ui/lib/theme";
+import { Tooltip, TooltipTrigger } from "@/shim-ui/tooltip";
 
-const style = tv({
-  slots: {
-    container: "group flex w-7 items-center text-neutral-text outline-none",
-    track:
-      "focus-ring flex h-3 w-full shrink-0 items-center justify-start rounded-full outline-offset-1",
-    handle:
-      "flex size-4.5 items-center justify-center rounded-full bg-clip-content transition-transform will-change-transform",
-  },
-  variants: {
-    size: {
-      1: {
-        container: "w-7",
-        track: "h-3",
-        handle: "size-4.5",
-      },
-      2: {
-        container: "w-9",
-        track: "h-4",
-        handle: "size-5",
-      },
-    },
-    isPressed: { true: "" },
-    isSelected: { true: "" },
-    dark: {
-      true: {
-        track: "bg-neutral-bg",
-        handle: "-translate-x-0.75 bg-neutral-solid",
-      },
-    },
-    light: {
-      true: {
-        track: "bg-neutral-bg",
-        handle: "translate-x-3.25 bg-white shadow-xs",
-      },
-    },
-  },
-  compoundVariants: [
-    {
-      isPressed: true,
-      class: { track: "bg-neutral-bg-active" },
-    },
-    {
-      size: 2,
-      dark: true,
-      class: { handle: "-translate-x-0.5" },
-    },
-    {
-      size: 2,
-      light: true,
-      class: { handle: "translate-x-4.5" },
-    },
-  ],
-});
-
-function ThemeToggle({ size }: { size?: 1 | 2 } = { size: 1 }) {
+function ThemeToggle({ size = 2 }: { size?: Size }) {
   let [mounted, setMounted] = useState(false);
   let { theme, systemTheme, resolvedTheme, setTheme } = useTheme();
-  let { container, track, handle } = style({ size });
 
   let themes: string[];
   if (systemTheme === "dark") {
@@ -77,7 +23,7 @@ function ThemeToggle({ size }: { size?: 1 | 2 } = { size: 1 }) {
   }, []);
 
   if (!mounted) {
-    return null;
+    return <div aria-hidden="true" className="size-7" />;
   }
 
   const handleThemeChange = () => {
@@ -88,35 +34,22 @@ function ThemeToggle({ size }: { size?: 1 | 2 } = { size: 1 }) {
   };
 
   return (
-    <Switch
-      aria-label="Toggle theme"
-      className={container()}
-      isSelected={resolvedTheme === "dark"}
-      onChange={handleThemeChange}
-    >
-      {({ isPressed }) => (
-        <div
-          className={track({
-            dark: resolvedTheme === "dark",
-            light: resolvedTheme === "light",
-            isPressed,
-          })}
-        >
-          <div
-            className={handle({
-              dark: resolvedTheme === "dark",
-              light: resolvedTheme === "light",
-            })}
-          >
-            <CircleHalfIcon
-              className={theme === "dark" ? "rotate-0" : "rotate-180"}
-              size={16}
-              weight="fill"
-            />
-          </div>
-        </div>
-      )}
-    </Switch>
+    <TooltipTrigger>
+      <Button
+        aria-label="Toggle theme"
+        isIconOnly
+        onClick={handleThemeChange}
+        size={size}
+        variant="ghost"
+      >
+        {resolvedTheme === "dark" ? (
+          <MoonIcon size={16} />
+        ) : (
+          <SunIcon size={16} />
+        )}
+      </Button>
+      <Tooltip>Toggle theme</Tooltip>
+    </TooltipTrigger>
   );
 }
 

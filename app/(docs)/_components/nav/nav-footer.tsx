@@ -1,5 +1,4 @@
 import { GithubLogoIcon, XLogoIcon } from "@phosphor-icons/react/dist/ssr";
-import { ThemeToggle } from "@/app/_components/theme-toggle";
 import { LinkButton } from "@/shim-ui/button";
 
 export function NavFooter() {
@@ -26,8 +25,6 @@ export function NavFooter() {
         <XLogoIcon size={16} />
         kkga_
       </LinkButton>
-
-      <ThemeToggle size={1} />
     </footer>
   );
 }
