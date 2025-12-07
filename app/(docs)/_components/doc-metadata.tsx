@@ -22,11 +22,16 @@ function MetadataLink({ href, title, external, children }: MetadataLinkProps) {
     : {};
 
   return (
-    <Link aria-label={title} href={href} {...externalProps}>
+    <Link
+      aria-label={title}
+      className="inline-block rounded-sm"
+      href={href}
+      {...externalProps}
+    >
       {children}
       {external ? (
         <ArrowUpRightIcon
-          className="ml-0.5 inline align-text-top text-accent-10"
+          className="ml-0.5 inline align-text-top text-accent-text-subtle"
           size={16}
         />
       ) : null}
@@ -50,7 +55,7 @@ export function DocMetadata({
 
   return (
     <DataList
-      className="grid grid-cols-2 gap-x-6 gap-y-3 md:grid-flow-col md:grid-cols-none"
+      className="grid grid-cols-2 gap-x-6 gap-y-3 xl:grid-flow-col xl:grid-cols-none"
       size={2}
     >
       {docUrl ? (
@@ -129,7 +134,7 @@ export function DocMetadata({
       />
 
       <DataListItem
-        className="col-span-full md:col-span-1"
+        className="col-span-full xl:col-span-1"
         label="Install"
         value={<InstallCommand text={installCommand} />}
       />
@@ -139,11 +144,11 @@ export function DocMetadata({
 
 function InstallCommand({ text }: { text: string }) {
   return (
-    <>
+    <div className="inline-flex items-center">
       <code className="text-[13px] leading-5">{text}</code>
       <div className="ml-2 inline-flex h-5 items-center">
         <CopyButton size={1} text={text} />
       </div>
-    </>
+    </div>
   );
 }
