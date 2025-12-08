@@ -354,6 +354,9 @@ export const demoRegistry: Record<string, Record<string, ComponentType>> = {
     variant: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/kbd/variant`)),
     size: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/kbd/size`)),
   },
+  separator: {
+    main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/separator/main`)),
+  },
   "data-list": {
     main: dynamic(() => import(`${COMPONENT_DEMOS_PATH}/data-list/main`)),
     "label-position": dynamic(

@@ -125,7 +125,8 @@
         "color-slider",
         "color-swatch",
         "popover",
-        "select"
+        "select",
+        "separator"
       ],
       "files": ["shim-ui/color-picker.tsx"],
       "docUrl": "https://react-spectrum.adobe.com/react-aria/ColorPicker.html#colorpicker",
@@ -196,6 +197,17 @@
       "files": ["shim-ui/kbd.tsx"],
       "docUrl": null,
       "ariaUrl": null
+    },
+    {
+      "name": "separator",
+      "title": "Separator",
+      "description": "Visually separate content with a horizontal or vertical line.",
+      "category": "Content",
+      "status": "stable",
+      "dependencies": [],
+      "files": ["shim-ui/separator.tsx"],
+      "docUrl": "https://react-spectrum.adobe.com/react-aria/Separator.html",
+      "ariaUrl": "https://www.w3.org/TR/wai-aria-1.2/#separator"
     },
     {
       "name": "toolbar",
