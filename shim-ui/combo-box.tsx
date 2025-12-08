@@ -7,7 +7,7 @@ import {
   type ComboBoxProps as RacComboBoxProps,
   type ListBoxItemProps as RacListBoxItemProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { type ClassValue, tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -18,7 +18,12 @@ import {
   Label,
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  ICON_SIZE_MAP,
+  type Size,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 import {
   ListBox,
   ListBoxItem,
@@ -52,7 +57,7 @@ const style = tv({
         triggerButton: "size-10",
         triggerButtonContents: "size-7 rounded-[3px]",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     isHovered: {
       true: { triggerButtonContents: "bg-neutral-bg-hover" },
     },

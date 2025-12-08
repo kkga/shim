@@ -1,8 +1,13 @@
 "use client";
 
 import { Children, isValidElement } from "react";
-import { tv, type VariantProps } from "tailwind-variants";
-import { useThemeProps } from "@/shim-ui/lib/theme";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
+import {
+  type BadgeVariant,
+  type Intent,
+  type Size,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "inline-flex w-fit items-center justify-center bg-clip-padding font-book",
@@ -11,20 +16,20 @@ const style = tv({
       surface: "inset-ring",
       soft: "",
       solid: "",
-    },
+    } satisfies Record<BadgeVariant, ClassValue>,
     intent: {
       neutral: "text-neutral-text",
       accent: "text-accent-text",
       success: "text-success-text",
       warning: "text-warning-text",
       danger: "text-danger-text",
-    },
+    } satisfies Record<Intent, ClassValue>,
     size: {
       1: "h-4 gap-1 rounded-xs px-1 text-[11px] leading-none",
       2: "h-5 gap-1 rounded-[3px] px-1.5 text-xs leading-none",
       3: "h-6 gap-1.5 rounded-sm px-2 text-[13px] leading-none",
       4: "h-7 gap-2 rounded-md px-2.5 text-sm leading-none",
-    },
+    } satisfies Record<Size, ClassValue>,
     isSquare: {
       true: "",
     },

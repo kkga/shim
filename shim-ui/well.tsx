@@ -1,10 +1,12 @@
 "use client";
 
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import {
   buildVariantOverrides,
+  type Size,
   Theme,
   useThemeProps,
+  type WellVariant,
 } from "@/shim-ui/lib/theme";
 
 const style = tv({
@@ -15,13 +17,13 @@ const style = tv({
       2: "gap-3 rounded-lg p-4 text-sm/snug",
       3: "gap-4 rounded-xl p-5 text-[15px]/snug",
       4: "gap-5 rounded-2xl p-6 text-base/snug",
-    },
+    } satisfies Record<Size, ClassValue>,
     variant: {
       classic: "bg-panel shadow-xs",
       soft: "bg-panel",
       surface: "inset-ring inset-ring-neutral-line bg-panel",
       outline: "inset-ring inset-ring-neutral-line",
-    },
+    } satisfies Record<WellVariant, ClassValue>,
   },
   defaultVariants: {
     size: 1,

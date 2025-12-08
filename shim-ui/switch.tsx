@@ -5,10 +5,12 @@ import {
   Switch as RacSwitch,
   type SwitchProps as RacSwitchProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import type { FieldProps } from "@/shim-ui/field";
 import {
   buildVariantOverrides,
+  type FieldVariant,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -37,7 +39,7 @@ const style = tv({
         handle:
           "inset-ring inset-ring-neutral-border border border-transparent bg-neutral-bg",
       },
-    },
+    } satisfies Record<FieldVariant, Record<string, ClassValue>>,
     isPressed: { true: "" },
     isSelected: { true: "" },
     isDisabled: {
@@ -67,7 +69,7 @@ const style = tv({
         track: "h-6 w-[42px]",
         handle: "size-5.5",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     labelPosition: {
       start: { container: "flex-row-reverse justify-between" },
       end: { container: "" },

@@ -13,7 +13,7 @@ import {
   NumberField as RacNumberField,
   type NumberFieldProps as RacNumberFieldProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -27,6 +27,7 @@ import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
   ICON_SIZE_MAP,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -119,7 +120,7 @@ const stepperButtonStyle = tv({
       2: "mx-0.5 size-6 rounded-xs",
       3: "mx-1 size-6 rounded-xs",
       4: "mx-1.5 size-7 rounded-[3px]",
-    },
+    } satisfies Record<Size, ClassValue>,
     isInline: { true: "grow-0" },
     isStacked: { true: "flex-col self-stretch p-0.5" },
     isHovered: { true: "bg-neutral-bg-hover" },

@@ -11,9 +11,14 @@ import {
   ListBoxSection as RacListBoxSection,
   type ListBoxSectionProps as RacListBoxSectionProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  type Intent,
+  type Size,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 interface ListBoxProps<T> extends RacListBoxProps<T> {
   size?: Size;
@@ -43,7 +48,7 @@ const itemStyle = tv({
       2: "h-7 gap-2.5 rounded-sm px-2 text-sm",
       3: "h-8 gap-2.5 rounded-md px-2.5 text-[15px] leading-normal",
       4: "h-10 gap-2.5 rounded-lg px-3 text-base",
-    },
+    } satisfies Record<Size, ClassValue>,
     intent: {
       neutral:
         "text-neutral-text data-focus-visible:bg-neutral-bg-hover data-hovered:bg-neutral-bg-hover data-open:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active data-selected:bg-neutral-bg-active data-selected:text-neutral-text-contrast",
@@ -55,7 +60,7 @@ const itemStyle = tv({
         "text-warning-text data-focus-visible:bg-warning-bg-hover data-hovered:bg-warning-bg-hover data-open:bg-warning-bg-hover data-pressed:bg-warning-bg-active data-selected:bg-warning-bg-active data-selected:text-warning-text-contrast",
       danger:
         "text-danger-text data-focus-visible:bg-danger-bg-hover data-hovered:bg-danger-bg-hover data-open:bg-danger-bg-hover data-pressed:bg-danger-bg-active data-selected:bg-danger-bg-active data-selected:text-danger-text-contrast",
-    },
+    } satisfies Record<Intent, ClassValue>,
     isDisabled: {
       true: "text-neutral-text-subtle",
     },

@@ -7,7 +7,7 @@ import {
   SliderThumb,
   SliderTrack,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { type ClassValue, tv } from "tailwind-variants";
 import {
   Description,
   type FieldProps,
@@ -17,6 +17,8 @@ import {
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
+  type FieldVariant,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -36,22 +38,7 @@ const style = tv({
       2: { output: "text-sm", thumb: "size-[18px]" },
       3: { output: "text-[15px] leading-normal", thumb: "size-5" },
       4: { output: "text-base", thumb: "size-6" },
-    },
-    orientation: {
-      horizontal: {
-        track: "min-w-20",
-        indicator: "inset-y-auto",
-        fill: "inset-y-0",
-        thumb: "left-0",
-      },
-      vertical: {
-        track: "min-h-32 flex-col-reverse",
-        indicator: "inset-x-auto",
-        fill: "inset-x-0",
-        thumb: "top-0",
-        output: "hidden",
-      },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     variant: {
       classic: {
         indicator: "bg-neutral-panel shadow-(--shadow-inner)",
@@ -68,6 +55,21 @@ const style = tv({
           "inset-ring-1 inset-ring-neutral-line bg-transparent shadow-none",
         fill: "bg-accent-bg-solid",
         thumb: "bg-white ring-1 ring-neutral-border",
+      },
+    } satisfies Record<FieldVariant, Record<string, ClassValue>>,
+    orientation: {
+      horizontal: {
+        track: "min-w-20",
+        indicator: "inset-y-auto",
+        fill: "inset-y-0",
+        thumb: "left-0",
+      },
+      vertical: {
+        track: "min-h-32 flex-col-reverse",
+        indicator: "inset-x-auto",
+        fill: "inset-x-0",
+        thumb: "top-0",
+        output: "hidden",
       },
     },
     isDisabled: {

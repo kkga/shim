@@ -5,7 +5,7 @@ import {
   composeRenderProps,
   ToggleButtonGroup as RacToggleButtonGroup,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -15,7 +15,9 @@ import {
 } from "@/shim-ui/field";
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
+  type ButtonVariant,
   buildVariantOverrides,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -23,13 +25,17 @@ import {
 const style = tv({
   base: "group grid auto-cols-fr grid-flow-col",
   variants: {
-    variant: { soft: "", solid: "", ghost: "" },
+    variant: {
+      soft: "",
+      solid: "",
+      ghost: "",
+    } satisfies Record<ButtonVariant, ClassValue>,
     size: {
       1: "rounded-sm",
       2: "rounded-sm",
       3: "rounded-md",
       4: "rounded-lg",
-    },
+    } satisfies Record<Size, ClassValue>,
   },
   defaultVariants: {
     size: 1,

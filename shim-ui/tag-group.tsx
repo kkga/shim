@@ -13,7 +13,7 @@ import {
   type TagProps as RacTagProps,
   Text as RacText,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { type ClassValue, tv } from "tailwind-variants";
 import { Description, fieldLayoutStyle, Label } from "@/shim-ui/field";
 import {
   ICON_SIZE_MAP,
@@ -125,7 +125,7 @@ const style = tv({
         tag: "h-9 gap-2 px-3.5 text-base",
         removeButton: "h-9 w-[38px] pr-1.5",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     color: Object.keys(COLORS).reduce(
       (acc, key) => {
         acc[key as Color] = {

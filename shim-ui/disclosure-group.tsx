@@ -5,10 +5,10 @@ import {
   composeRenderProps,
   DisclosureGroup as RacDisclosureGroup,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { DisclosureVariantContext } from "@/shim-ui/disclosure";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "",
@@ -18,12 +18,12 @@ const style = tv({
       2: "",
       3: "",
       4: "",
-    },
+    } satisfies Record<Size, ClassValue>,
     variant: {
       surface: "",
       soft: "",
       ghost: "",
-    },
+    } satisfies Record<"surface" | "soft" | "ghost", ClassValue>,
   },
 });
 

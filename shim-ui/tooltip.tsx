@@ -6,9 +6,9 @@ import {
   TooltipTrigger as RacTooltipTrigger,
   type TooltipTriggerComponentProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { useThemeProps } from "@/shim-ui/lib/theme";
+import { type Size, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "flex max-w-64 animate-slide items-center gap-1 overflow-hidden rounded bg-panel font-book text-neutral-text-contrast shadow-(--shadow-sm) outline-0",
@@ -18,7 +18,7 @@ const style = tv({
       2: "max-w-64 rounded-md px-2 py-1 text-[13px]/snug",
       3: "max-w-80 rounded-lg px-3 py-1.5 text-base/snug",
       4: "max-w-96 rounded-xl px-4 py-2 text-lg/snug",
-    },
+    } satisfies Record<Size, ClassValue>,
   },
 });
 

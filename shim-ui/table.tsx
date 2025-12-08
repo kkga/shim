@@ -25,10 +25,15 @@ import {
   type TableProps as RacTableProps,
   useTableOptions,
 } from "react-aria-components";
-import { cx, tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, cx, tv, type VariantProps } from "tailwind-variants";
 import { Checkbox } from "@/shim-ui/checkbox";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  type Size,
+  type TableVariant,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -80,10 +85,10 @@ const style = tv({
       2: {
         table: "rounded-lg text-sm/5",
         columnGroup:
-          "h-8 px-2.5 py-1.5 group-first:rounded-tl-[7px] group-last:rounded-tr-[7px]",
+          "h-8 px-3 py-1.5 group-first:rounded-tl-[7px] group-last:rounded-tr-[7px]",
         selectionCell: "w-8.5 px-2",
         row: "last:rounded-b-[7px]",
-        cell: "h-8 px-2.5 py-1.5 group-last/row:last:rounded-br-[7px] group-last/row:first:rounded-bl-[7px]",
+        cell: "h-8 px-3 py-1.5 group-last/row:last:rounded-br-[7px] group-last/row:first:rounded-bl-[7px]",
       },
       3: {
         table: "rounded-[10px] text-[15px]/[22px]",
@@ -101,13 +106,18 @@ const style = tv({
         row: "last:rounded-b-[11px]",
         cell: "h-12 px-4 py-3 group-last/row:last:rounded-br-[11px] group-last/row:first:rounded-bl-[11px]",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     variant: {
       surface: {
         table:
           "border-separate border-spacing-0 border border-neutral-line bg-background",
         header: "inset-shadow-[0_-1px_0_var(--color-neutral-line)] bg-panel",
         cell: "not-group-last/row:inset-shadow-[0_-1px_0_var(--color-neutral-line)]",
+      },
+      soft: {
+        table: "bg-neutral-panel",
+        header: "",
+        cell: "",
       },
       ghost: {
         table: "rounded-none! border-transparent",
@@ -123,11 +133,10 @@ const style = tv({
         row: "rounded-none! odd:bg-neutral-panel even:bg-background",
         cell: "rounded-none!",
       },
-    },
+    } satisfies Record<TableVariant, Record<string, ClassValue>>,
   },
 });
 
-type TableVariant = "surface" | "ghost" | "zebra";
 const TableVariantContext = createContext<TableVariant>("surface");
 
 interface TableProps extends RacTableProps, VariantProps<typeof style> {}

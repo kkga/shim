@@ -11,26 +11,35 @@ import {
   type ProgressBarProps as RacProgressBarProps,
 } from "react-aria-components";
 import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
-import { INTENTS, type Intent } from "@/shim-ui/lib/style";
-import { buildVariantOverrides, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  type ButtonVariant,
+  buildVariantOverrides,
+  type Intent,
+  type Size,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "focus-ring inline-flex shrink-0 items-center justify-center font-book font-sans leading-none!",
   variants: {
-    variant: { soft: "", solid: "text-white", ghost: "bg-transparent" },
-    intent: INTENTS.reduce(
-      (acc, intent) => {
-        acc[intent] = "";
-        return acc;
-      },
-      {} as Record<Intent, ClassValue>
-    ),
+    intent: {
+      neutral: "",
+      accent: "",
+      success: "",
+      warning: "",
+      danger: "",
+    } satisfies Record<Intent, ClassValue>,
+    variant: {
+      soft: "",
+      solid: "text-white",
+      ghost: "bg-transparent",
+    } satisfies Record<ButtonVariant, ClassValue>,
     size: {
       1: "h-6 gap-1 rounded-sm px-1.5 text-xs/none",
       2: "h-7 gap-1.5 rounded-sm px-2 text-sm/none",
       3: "h-8 gap-1.5 rounded-md px-2.5 text-[15px]/none",
       4: "h-10 gap-2 rounded-lg px-3 text-base/none",
-    },
+    } satisfies Record<Size, ClassValue>,
     isDisabled: {
       true: "cursor-not-allowed",
     },

@@ -8,7 +8,7 @@ import {
   DateSegment as RacDateSegment,
   type DateValue as RacDateValue,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { type ClassValue, tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -20,6 +20,7 @@ import {
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -67,7 +68,7 @@ const dateInputStyle = tv({
       2: "px-1",
       3: "px-1.25",
       4: "px-1.5",
-    },
+    } satisfies Record<Size, ClassValue>,
   },
 });
 
@@ -79,7 +80,7 @@ const segmentStyle = tv({
       2: "h-5 rounded-xs px-1",
       3: "h-5.5 rounded-xs px-1.25",
       4: "h-7 rounded-[3px] px-1.5",
-    },
+    } satisfies Record<Size, ClassValue>,
     isPlaceholder: {
       true: "text-neutral-text-subtle",
     },

@@ -15,9 +15,14 @@ import {
   type TextProps as RacTextProps,
   type ValidationResult,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  type FieldVariant,
+  type LabelPosition,
+  type Size,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 interface FieldProps
   extends VariantProps<typeof fieldLayoutStyle>,
@@ -36,7 +41,7 @@ const fieldLayoutStyle = tv({
       side: "has-[label,[slot=label]]:grid has-[label,[slot=label]]:grid-cols-[1fr_2fr] has-[label,[slot=label]]:gap-4",
       "side-end":
         "has-[label,[slot=label]]:grid has-[label,[slot=label]]:grid-cols-[1fr_2fr] has-[label,[slot=label]]:gap-4",
-    },
+    } satisfies Record<LabelPosition, ClassValue>,
   },
   defaultVariants: { labelPosition: "top" },
 });
@@ -62,14 +67,14 @@ const inputBaseStyle = tv({
       classic: "bg-neutral-panel shadow-(--shadow-inner)",
       soft: "bg-neutral-bg",
       outline: "inset-ring inset-ring-neutral-border bg-transparent",
-    },
+    } satisfies Record<FieldVariant, ClassValue>,
     size: {
       // TODO: the field text size should match other components text size map (listbox, button, etc)
       1: "h-6 rounded indent-1.5 text-xs",
       2: "h-7 rounded indent-2 text-sm",
       3: "h-8 rounded-md indent-2.5 text-[15px] leading-normal",
       4: "h-10 rounded-lg indent-3 text-base",
-    },
+    } satisfies Record<Size, ClassValue>,
   },
   defaultVariants: { variant: "classic", size: 1 },
 });

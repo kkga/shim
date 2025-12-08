@@ -4,7 +4,7 @@ import {
   TextField as RacTextField,
   type TextFieldProps as RacTextFieldProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { type ClassValue, tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -17,6 +17,7 @@ import {
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -31,7 +32,8 @@ const textAreaStyle = tv({
       1: "min-h-12 px-1.5 py-1 indent-0",
       2: "min-h-16 px-2 py-1.5 indent-0",
       3: "min-h-20 px-2 py-1.5 indent-0",
-    },
+      4: "min-h-24 px-2.5 py-2 indent-0",
+    } satisfies Record<Size, ClassValue>,
   },
   defaultVariants: {
     size: 1,

@@ -7,9 +7,14 @@ import {
   Breadcrumbs as RacBreadcrumbs,
   type BreadcrumbsProps as RacBreadcrumbsProps,
 } from "react-aria-components";
-import { cx, tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, cx, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { ICON_SIZE_MAP, Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  ICON_SIZE_MAP,
+  type Size,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 import { Link, type LinkProps } from "@/shim-ui/link";
 
 const style = tv({
@@ -31,7 +36,7 @@ const style = tv({
       4: {
         breadcrumbs: "gap-1.5 text-base/normal",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
   },
 });
 

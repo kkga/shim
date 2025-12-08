@@ -4,8 +4,8 @@ import {
   Separator as RacSeparator,
   type SeparatorProps as RacSeparatorProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
-import { useThemeProps } from "@/shim-ui/lib/theme";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
+import { type Size, useThemeProps } from "@/shim-ui/lib/theme";
 
 const styles = tv({
   base: "shrink-0 self-stretch border-none bg-neutral-line",
@@ -14,7 +14,12 @@ const styles = tv({
       horizontal: "h-px w-full",
       vertical: "w-px",
     },
-    size: { 1: "", 2: "", 3: "", 4: "" },
+    size: {
+      1: "",
+      2: "",
+      3: "",
+      4: "",
+    } satisfies Record<Size, ClassValue>,
   },
   compoundVariants: [
     {

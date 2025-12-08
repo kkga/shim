@@ -10,7 +10,7 @@ import {
   SearchField as RacSearchField,
   type SearchFieldProps as RacSearchFieldProps,
 } from "react-aria-components";
-import { cx, tv } from "tailwind-variants";
+import { type ClassValue, cx, tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -23,6 +23,7 @@ import {
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -61,7 +62,7 @@ const style = tv({
         clearButtonContainer: "size-10",
         clearButton: "size-7 rounded-[3px]",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     isEmpty: {
       true: {
         iconContainer: "text-neutral-text-subtle",

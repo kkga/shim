@@ -10,9 +10,9 @@ import {
   DisclosurePanel as RacDisclosurePanel,
   type DisclosureProps as RacDisclosureProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { ICON_SIZE_MAP, useThemeProps } from "@/shim-ui/lib/theme";
+import { ICON_SIZE_MAP, type Size, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -50,7 +50,10 @@ const style = tv({
           "bg-transparent hover:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
         chevron: "group-data-hovered/button:ml-auto",
       },
-    },
+    } satisfies Record<
+      "surface" | "soft" | "ghost",
+      Record<string, ClassValue>
+    >,
     size: {
       1: {
         disclosure: "rounded-md text-xs",
@@ -72,7 +75,7 @@ const style = tv({
         button: "rounded-[11px] px-4 py-3.5",
         panel: "group-data-expanded:px-4 group-data-expanded:py-3.5",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     isInGroup: {
       true: {},
       false: {},

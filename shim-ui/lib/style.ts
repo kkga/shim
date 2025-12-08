@@ -37,12 +37,3 @@ export function cnRenderProps<T>(
     cn(tw, innerClassName)
   );
 }
-
-export const INTENTS = [
-  "neutral",
-  "accent",
-  "success",
-  "warning",
-  "danger",
-] as const;
-export type Intent = (typeof INTENTS)[number];

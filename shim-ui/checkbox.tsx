@@ -8,7 +8,7 @@ import {
   type CheckboxGroupProps as RacCheckboxGroupProps,
   type CheckboxProps as RacCheckboxProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -19,6 +19,8 @@ import {
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
+  type FieldVariant,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -85,7 +87,7 @@ const checkboxStyle = tv({
         container: "gap-2.5 py-2 text-base leading-6",
         checkbox: "size-6 rounded-md",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     variant: {
       classic: {
         checkbox: [
@@ -120,7 +122,7 @@ const checkboxStyle = tv({
           "group-data-indeterminate:inset-ring-neutral-border-hover group-data-indeterminate:bg-transparent",
         ],
       },
-    },
+    } satisfies Record<FieldVariant, Record<string, ClassValue>>,
   },
   compoundVariants: [
     {

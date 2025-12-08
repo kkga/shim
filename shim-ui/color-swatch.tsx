@@ -4,9 +4,9 @@ import {
   ColorSwatch as RacColorSwatch,
   type ColorSwatchProps as RacColorSwatchProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { useThemeProps } from "@/shim-ui/lib/theme";
+import { type Size, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "rounded shadow-inner",
@@ -16,7 +16,7 @@ const style = tv({
       2: "size-7 rounded-sm",
       3: "size-8 rounded-md",
       4: "size-10 rounded-lg",
-    },
+    } satisfies Record<Size, ClassValue>,
   },
   defaultVariants: {
     size: 1,

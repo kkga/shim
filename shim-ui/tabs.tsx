@@ -13,8 +13,13 @@ import {
   Tabs as RacTabs,
   type TabsProps as RacTabsProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
-import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import { type ClassValue, tv } from "tailwind-variants";
+import {
+  type Size,
+  type TabListVariant,
+  Theme,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -42,7 +47,7 @@ const style = tv({
         tab: "h-10 gap-2 rounded-lg px-3 text-base/none",
         selectionIndicator: "rounded-lg",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     variant: {
       underline: {
         tabList: "py-1",
@@ -52,7 +57,7 @@ const style = tv({
       soft: {
         selectionIndicator: "absolute top-0 left-0 z-10 size-full",
       },
-    },
+    } satisfies Record<TabListVariant, Record<string, ClassValue>>,
     orientation: {
       horizontal: {
         tabs: "flex-col",
@@ -126,7 +131,6 @@ const style = tv({
   },
 });
 
-type TabListVariant = "soft" | "underline";
 const TabListVariantContext = createContext<TabListVariant>("soft");
 
 interface TabsProps extends RacTabsProps {}

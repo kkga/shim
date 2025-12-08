@@ -4,8 +4,9 @@ import {
   Link as RacLink,
   type LinkProps as RacLinkProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
+import type { Intent } from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: [
@@ -29,7 +30,7 @@ const style = tv({
         "text-success-text decoration-success-line data-hovered:decoration-success-border-hover",
       danger:
         "text-danger-text decoration-danger-line data-hovered:decoration-danger-border-hover",
-    },
+    } satisfies Record<Intent, ClassValue>,
   },
   defaultVariants: {
     intent: "accent",

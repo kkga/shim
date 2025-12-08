@@ -7,7 +7,7 @@ import {
   type RadioGroupProps as RacRadioGroupProps,
   type RadioProps as RacRadioProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { type ClassValue, tv } from "tailwind-variants";
 import {
   Description,
   FieldError,
@@ -18,6 +18,8 @@ import {
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   buildVariantOverrides,
+  type FieldVariant,
+  type Size,
   Theme,
   useThemeProps,
 } from "@/shim-ui/lib/theme";
@@ -56,7 +58,7 @@ const style = tv({
         item: "gap-3 py-2 text-base leading-6",
         itemInput: "size-6 before:size-2.5",
       },
-    },
+    } satisfies Record<Size, Record<string, ClassValue>>,
     variant: {
       classic: {
         itemInput: "bg-neutral-panel shadow-(--shadow-inner) before:bg-white",
@@ -69,7 +71,7 @@ const style = tv({
         itemInput:
           "inset-ring-1 inset-ring-neutral-border bg-transparent before:bg-accent-text-contrast",
       },
-    },
+    } satisfies Record<FieldVariant, Record<string, ClassValue>>,
     isDisabled: {
       true: {
         item: "cursor-not-allowed text-neutral-text-subtle",

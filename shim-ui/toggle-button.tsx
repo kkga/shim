@@ -8,8 +8,13 @@ import {
   ToggleGroupStateContext,
 } from "react-aria-components";
 import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
-import { INTENTS, type Intent } from "@/shim-ui/lib/style";
-import { buildVariantOverrides, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  type ButtonVariant,
+  buildVariantOverrides,
+  type Intent,
+  type Size,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "focus-ring inline-flex shrink-0 items-center justify-center font-book font-sans leading-none!",
@@ -18,20 +23,20 @@ const style = tv({
       soft: "",
       solid: "",
       ghost: "bg-transparent",
-    },
-    intent: INTENTS.reduce(
-      (acc, intent) => {
-        acc[intent] = "";
-        return acc;
-      },
-      {} as Record<Intent, ClassValue>
-    ),
+    } satisfies Record<ButtonVariant, ClassValue>,
+    intent: {
+      neutral: "",
+      accent: "",
+      success: "",
+      warning: "",
+      danger: "",
+    } satisfies Record<Intent, ClassValue>,
     size: {
       1: "h-6 gap-1 rounded-sm px-1.5 text-xs",
       2: "h-7 gap-1.5 rounded-sm px-2 text-sm",
       3: "h-8 gap-1.5 rounded-md px-2.5 text-[15px] leading-normal",
       4: "h-10 gap-2 rounded-lg px-3 text-base",
-    },
+    } satisfies Record<Size, ClassValue>,
     isFocusVisible: { true: "relative" },
     isDisabled: { true: "cursor-not-allowed" },
     isIconOnly: { true: "" },

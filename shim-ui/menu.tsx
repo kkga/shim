@@ -17,7 +17,7 @@ import {
   type SeparatorProps as RacSeparatorProps,
   SubmenuTrigger as RacSubmenuTrigger,
 } from "react-aria-components";
-import { cx, tv, type VariantProps } from "tailwind-variants";
+import { type ClassValue, cx, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
 import {
   ICON_SIZE_MAP,
@@ -142,7 +142,7 @@ const separatorStyle = tv({
       2: "mx-2",
       3: "mx-2.5",
       4: "mx-3",
-    },
+    } satisfies Record<Size, ClassValue>,
   },
 });
 

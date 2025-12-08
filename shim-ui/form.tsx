@@ -4,8 +4,8 @@ import {
   Form as RacForm,
   type FormProps as RacFormProps,
 } from "react-aria-components";
-import { tv, type VariantProps } from "tailwind-variants";
-import { Theme, useThemeProps } from "@/shim-ui/lib/theme";
+import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
+import { type Size, Theme, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: "flex flex-col",
@@ -15,7 +15,7 @@ const style = tv({
       2: "gap-3",
       3: "gap-4",
       4: "gap-5",
-    },
+    } satisfies Record<Size, ClassValue>,
   },
   defaultVariants: {
     size: 1,

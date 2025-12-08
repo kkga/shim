@@ -1,13 +1,22 @@
 "use client";
 import { createContext, useContext } from "react";
 
-type Size = 1 | 2 | 3 | 4;
-type LabelPosition = "top" | "side" | "side-end";
-type ButtonVariant = "soft" | "solid" | "ghost";
-type FieldVariant = "classic" | "soft" | "outline";
-type TableVariant = "surface" | "ghost" | "zebra";
-type BadgeVariant = "surface" | "soft" | "solid";
-type WellVariant = "classic" | "soft" | "surface" | "outline";
+export type Size = 1 | 2 | 3 | 4;
+export type Intent = "neutral" | "accent" | "success" | "warning" | "danger";
+export type LabelPosition = "top" | "side" | "side-end";
+export type ButtonVariant = "soft" | "solid" | "ghost";
+export type FieldVariant = "classic" | "soft" | "outline";
+export type TableVariant = "surface" | "soft" | "ghost" | "zebra";
+export type BadgeVariant = "surface" | "soft" | "solid";
+export type WellVariant = "classic" | "soft" | "surface" | "outline";
+export type TabListVariant = "soft" | "underline";
+
+export const ICON_SIZE_MAP: Record<Size, number> = {
+  1: 12,
+  2: 16,
+  3: 16,
+  4: 20,
+};
 
 interface ThemeVariants {
   button: ButtonVariant;
@@ -16,13 +25,6 @@ interface ThemeVariants {
   badge: BadgeVariant;
   well: WellVariant;
 }
-
-const ICON_SIZE_MAP: Record<Size, number> = {
-  1: 12,
-  2: 16,
-  3: 16,
-  4: 20,
-};
 
 interface ThemeValues {
   size: Size;
@@ -60,7 +62,7 @@ interface ThemeProps extends ThemeOverrides {
  *     <MyForm />
  *   </Theme>
  */
-function Theme({ children, ...props }: ThemeProps) {
+export function Theme({ children, ...props }: ThemeProps) {
   const currentValue = useContext(ThemeContext);
   const newValue = {
     ...currentValue,
@@ -84,7 +86,7 @@ function Theme({ children, ...props }: ThemeProps) {
  *     ...buildVariantOverrides("field", props.variant),
  *   });
  */
-function useThemeProps(props?: {
+export function useThemeProps(props?: {
   size?: Size;
   labelPosition?: LabelPosition;
   variants?: Partial<ThemeVariants>;
@@ -112,19 +114,9 @@ type VariantKind = keyof ThemeVariants;
  *     ...buildVariantOverrides("button", props.variant),
  *   });
  */
-function buildVariantOverrides<K extends VariantKind>(
+export function buildVariantOverrides<K extends VariantKind>(
   kind: K,
   variant?: ThemeVariants[K]
 ): { variants: Partial<ThemeVariants> } | undefined {
   return variant ? { variants: { [kind]: variant } } : undefined;
 }
-
-export type {
-  Size,
-  LabelPosition,
-  ThemeVariants,
-  ThemeValues,
-  ThemeOverrides,
-  ThemeProps,
-};
-export { useThemeProps, ICON_SIZE_MAP, Theme, buildVariantOverrides };

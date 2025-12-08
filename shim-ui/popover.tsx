@@ -7,9 +7,9 @@ import {
   Popover as RacPopover,
   type PopoverProps as RacPopoverProps,
 } from "react-aria-components";
-import { tv } from "tailwind-variants";
+import { type ClassValue, tv } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { useThemeProps } from "@/shim-ui/lib/theme";
+import { type Size, useThemeProps } from "@/shim-ui/lib/theme";
 
 const style = tv({
   base: [
@@ -22,7 +22,7 @@ const style = tv({
       2: "rounded-lg",
       3: "rounded-[10px]",
       4: "rounded-xl",
-    },
+    } satisfies Record<Size, ClassValue>,
   },
 });
 
