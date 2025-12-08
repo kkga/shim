@@ -17,7 +17,7 @@ export default () =>
     <Well key={size} size={size}>
       <Badge className="aspect-square">{size}</Badge>
       <div className="flex gap-[inherit]">
-        <Button className="flex-1">Let's go</Button>
+        <Button className="flex-1">Let's Go</Button>
         <MenuTrigger>
           <Button aria-label="Menu" isIconOnly>
             <ListIcon size={ICON_SIZE_MAP[size]} />

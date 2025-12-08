@@ -22,7 +22,7 @@ dependencies directly into your project.
 
 ## Usage
 
-Run commands on demand via **pnpm dlx** (no local install required):
+Run commands on demand via `pnpm dlx` (no local install required):
 
 ```bash title="Initialize Shim and add components"
 pnpm dlx @kkga/shim init
@@ -50,18 +50,18 @@ pnpm shim add button dialog form
 
 ### shim init
 
-Initialize Shim in your project. Automatically installs required dependencies,
-creates the configuration file, and installs utility and CSS files.
+Initialize Shim in your project.
 
 - Checks if **Tailwind CSS** is installed (required prerequisite)
-- Installs all required dependencies (**react-aria-components**,
-  **tailwind-variants**, **tailwind-merge**, **@radix-ui/colors**,
-  **@phosphor-icons/react**)
+- Installs dependencies (**react-aria-components**, **tailwind-variants**,
+  **tailwind-merge**, **@radix-ui/colors**, **@phosphor-icons/react**)
 - Creates a **shim.config.json** configuration file
-- Downloads required utility files (**style.ts**, **theme.tsx**) to your utils
-  directory
-- Downloads CSS theme file (**theme.css**) to your styles directory
-- Ensures your project is ready for component installation
+- Downloads
+  [utility files](https://github.com/kkga/shim/tree/master/shim-ui/lib)
+  (**style.ts**, **theme.tsx**) to your utils directory
+- Downloads
+  [CSS theme file](https://github.com/kkga/shim/blob/master/shim-ui/css/theme.css)
+  (**theme.css**) to your styles directory
 
 ```bash title="Terminal"
 shim init [options]
@@ -117,8 +117,12 @@ shim init [options]
 
 ### shim add
 
-Install one or more components by name. Automatically installs component
-dependencies.
+Install one or more components by name.
+
+- Dependency resolution: any required peer components are installed
+  automatically
+- Import transforms: imports inside installed components are rewritten to match
+  the [configured paths](#configuration-file)
 
 ```bash title="Terminal"
 shim add <components...> [options]
@@ -164,16 +168,6 @@ shim add <components...> [options]
 
 ---
 
-## Features
-
-- Import transformation: component import paths are rewritten based on your
-  configured destinations.
-- Dependency resolution: component dependencies are installed automatically.
-- Utility management: `style.ts`, `theme.tsx`, and `theme.css` are created and
-  kept in your chosen directories.
-
----
-
 ## Examples
 
 ```bash title="Initialize with defaults"
@@ -208,7 +202,7 @@ pnpm shim add button
 
 ## Configuration File
 
-Running **shim init** creates a configuration file in your project root:
+Running `init` creates a configuration file in your project root:
 
 ```json title="shim.config.json"
 {
@@ -217,6 +211,8 @@ Running **shim init** creates a configuration file in your project root:
   "cssPath": "styles"
 }
 ```
+
+Paths are relative to your project root (where `package.json` is).
 
 <Table variant="soft" aria-label="Shim configuration file options" className="table-fixed" size={2}>
   <TableHeader>
@@ -264,22 +260,16 @@ Running **shim init** creates a configuration file in your project root:
 
 ### Tailwind CSS is not installed
 
-`shim init` requires Tailwind CSS to be installed. If you see this error,
-install and configure Tailwind first:
-
-```bash
-pnpm add -D tailwindcss postcss autoprefixer
-pnpm tailwindcss init -p
-```
-
-See the [Tailwind installation guide](https://tailwindcss.com/docs/installation)
-for framework-specific setup.
+`shim init` requires Tailwind CSS to be installed. See the
+[Tailwind installation guide](https://tailwindcss.com/docs/installation) for
+framework-specific setup.
 
 ### Component not found
 
 If you get a "component not found" error, check your spelling. To see available
-components, visit the [components](/components) section or check the
-[registry](https://github.com/kkga/shim/blob/master/shim-ui/registry/registry.json).
+components, visit the [components](/components) section, see the
+[registry API endpoint](/api/registry), or check the
+[registry source](https://github.com/kkga/shim/blob/master/shim-ui/registry/registry.json).
 
 ### Files already exist
 
