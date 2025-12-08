@@ -8,7 +8,7 @@ import {
 } from "@/shim-ui/table";
 
 export default () =>
-  (["zebra", "ghost", "surface"] as const).map((variant) => (
+  (["surface", "soft", "ghost", "zebra"] as const).map((variant) => (
     <Table
       aria-label="People"
       className="table-fixed"
