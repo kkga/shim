@@ -8,6 +8,7 @@ export type ButtonVariant = "soft" | "solid" | "ghost";
 export type FieldVariant = "classic" | "soft" | "outline";
 export type TableVariant = "surface" | "soft" | "ghost" | "zebra";
 export type BadgeVariant = "surface" | "soft" | "solid";
+export type DisclosureVariant = "surface" | "soft" | "ghost";
 export type WellVariant = "classic" | "soft" | "surface" | "outline";
 export type TabListVariant = "soft" | "underline";
 

@@ -12,7 +12,12 @@ import {
 } from "react-aria-components";
 import { type ClassValue, tv, type VariantProps } from "tailwind-variants";
 import { cnRenderProps } from "@/shim-ui/lib/style";
-import { ICON_SIZE_MAP, type Size, useThemeProps } from "@/shim-ui/lib/theme";
+import {
+  type DisclosureVariant,
+  ICON_SIZE_MAP,
+  type Size,
+  useThemeProps,
+} from "@/shim-ui/lib/theme";
 
 const style = tv({
   slots: {
@@ -50,10 +55,7 @@ const style = tv({
           "bg-transparent hover:bg-neutral-bg-hover data-pressed:bg-neutral-bg-active",
         chevron: "group-data-hovered/button:ml-auto",
       },
-    } satisfies Record<
-      "surface" | "soft" | "ghost",
-      Record<string, ClassValue>
-    >,
+    } satisfies Record<DisclosureVariant, Record<string, ClassValue>>,
     size: {
       1: {
         disclosure: "rounded-md text-xs",
@@ -130,7 +132,6 @@ interface DisclosureProps
   children: React.ReactNode;
 }
 
-type DisclosureVariant = VariantProps<typeof style>["variant"];
 const DisclosureVariantContext = createContext<DisclosureVariant | null>(null);
 
 function Disclosure({
